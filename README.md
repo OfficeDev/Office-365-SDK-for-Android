@@ -26,7 +26,7 @@ We've created an archetype that creates a new android application with ADAL as d
 git clone https://github.com/LagashSystemsArgentina/MSOpenTech-Office365-SDK-prv.git
 ```
 
-3- Open a console in the root of the downloaded repository and run the maven command to install the archetype
+2- Open a console in the root of the downloaded repository and run the maven command to install the archetype
 	
 ```
 mvn clean install
@@ -34,7 +34,7 @@ mvn clean install
 
 >Note: If asked for archetype version, use 0.1.0 as this is the current version.
 
-4- Now that the archetype is installed, generate the sample by running the following command:
+3- Now that the archetype is installed, generate the sample by running the following command:
 
 ```
 mvn archetype:generate -DarchetypeArtifactId=office365-quickstart -DarchetypeGroupId=com.microsoft.office365 ^
@@ -42,13 +42,13 @@ mvn archetype:generate -DarchetypeArtifactId=office365-quickstart -DarchetypeGro
 -DartifactId=[YOUR-ARTIFACT-ID]  -B
 ```
 
-5- In Android Studio, open the generated code and start the application.
+4- In Android Studio, open the generated code and start the application.
 
-6- Open preferences view and set your client id, the redirect url and the resource url (for more information about this, go to Azure Active Directory Library for Android [site](https://github.com/AzureAD/azure-activedirectory-library-for-android)). 
+5- Open preferences view and set your client id, the redirect url and the resource url (for more information about this, go to Azure Active Directory Library for Android [site](https://github.com/AzureAD/azure-activedirectory-library-for-android)). 
 
-7- Click get token. A login view will appear, enter your credentials. 
+6- Click get token. A login view will appear, enter your credentials. 
 
-8- Your token will appear in the screen.
+7- Your token will appear in the screen.
 
 Now you are able to start using any of the Office 365 SDKs to create your own projects.
 
