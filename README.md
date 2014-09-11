@@ -78,6 +78,6 @@ git clone https://github.com/LagashSystemsArgentina/MSOpenTech-Office365-SDK-prv
 
 4- Import the ADAL project you downloaded in the previous steps.
 
-4- Update the sample to use ADAL by adding a reference to ADAL project from Properties | Android | Library.
+5- Update the sample to use ADAL by adding a reference to ADAL project from Properties | Android | Library.
 
 >Note: You might have compiling errors due to the android support library's version shipped with ADAL. Please make sure you're using the same version in both projects.
