@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<version>${version}</version>
+	<packaging>apk</packaging>
+	<name>${artifactId}</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<platform.version>#if(${platform} == 14) 4.0
+			#elseif(${platform} == 16) 4.1.1.4
+			#elseif(${platform} == 17) 4.2.2
+			#elseif(${platform} == 18) 4.3
+			#elseif(${platform} == 19) 4.4.2
+			#end</platform.version>
+		<android.plugin.version>${android-plugin-version}</android.plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${platform.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.aad</groupId>
+			<artifactId>adal</artifactId>
+			<version>1.0.0</version>
+			<type>aar</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>${android.plugin.version}</version>
+					<extensions>true</extensions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<configuration>
+					<sdk>
+						<platform>${platform}</platform>
+					</sdk>
+					#if(${emulator} != "not-specified")
+					<emulator>
+						<avd>${emulator}</avd>
+					</emulator>
+					#end
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

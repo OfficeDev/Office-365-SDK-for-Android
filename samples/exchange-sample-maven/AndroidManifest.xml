@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.microsoft.mailservice"
+    android:screenOrientation="portrait"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.microsoft.mailservice.ExchangeAPIApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/office365_icon"
+        android:label="@string/app_name"
+        android:theme="@style/MyCustomTheme" >
+        <activity
+            android:name="com.microsoft.mailservice.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.microsoft.mailservice.AppPreferencesActivity"
+            android:label="Preferences"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.mailservice.MailActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.mailservice.SendMailActivity"
+            android:label="Compose Email"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.mailservice.ContactsActivity"
+            android:label="Contacts"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.mailservice.CalendarEventsActivity"
+            android:label="Calendar Events"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.mailservice.ContactActivity"
+            android:label="Contact"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.aad.adal.AuthenticationActivity"
+            android:label="Authenticate to Azure AD"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_contacts_edit"
+        android:icon="@drawable/ic_action_edit"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        android:title="Edit Contact"/>
+    <item
+        android:id="@+id/menu_contacts_delete"
+        android:icon="@drawable/ic_action_delete"
+        android:orderInCategory="102"
+        android:showAsAction="always"
+        android:title="Delete Contact"/>
+
+</menu>

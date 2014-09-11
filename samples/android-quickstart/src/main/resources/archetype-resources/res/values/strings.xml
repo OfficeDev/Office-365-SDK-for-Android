@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hello Android with ADAL</string>
+    <string name="action_settings">Preferences</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="get_access_token">Get Access Token</string>
+
+</resources>
