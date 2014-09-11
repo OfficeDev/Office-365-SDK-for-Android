@@ -42,9 +42,9 @@
                     <target>
 
                         <get dest="${project.basedir}/metadata_files/metadata_file.xml"
-                            password="lagash!00"
+                            password="foopassword"
                             src="https://outlook.office365.com/EWS/OData/$metadata"
-                            username="marcost@lagash.com" />
+                            username="foo@bar.com" />
 
                     </target>
                 </configuration>
