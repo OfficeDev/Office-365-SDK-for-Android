@@ -24,27 +24,27 @@ public class ContactClient extends BaseOfficeClient {
      */
     public Contact newContact() {
 
-        return container.newEntityInstance(Contact.class);
+        return getEntityContainer().newEntityInstance(Contact.class);
 
     }
 
     public void addContact(Contact contact) {
-        container.getMe().getContacts().add(contact);
-        container.flush();
+        getEntityContainer().getMe().getContacts().add(contact);
+        getEntityContainer().flush();
     }
 
     public void deleteContact(String contactId) {
 
-        Contact contact = container.getMe().getContacts().getByKey(contactId);
+        Contact contact = getEntityContainer().getMe().getContacts().getByKey(contactId);
         if (contact != null) {
-            container.getMe().getContacts().delete(contact);
-            container.flush();
+            getEntityContainer().getMe().getContacts().delete(contact);
+            getEntityContainer().flush();
         }
     }
 
     public void deleteContact(Contact contact) {
-        container.getMe().getContacts().delete(contact); // TODO:REVIEW
-        container.flush();
+        getEntityContainer().getMe().getContacts().delete(contact); // TODO:REVIEW
+        getEntityContainer().flush();
     }
 
     /**
@@ -54,7 +54,7 @@ public class ContactClient extends BaseOfficeClient {
      */
     public ContactCollection getContacts() {
 
-        ContactCollection contacts = container.getMe().getContacts()
+        ContactCollection contacts = getEntityContainer().getMe().getContacts()
                 .top(mBuilder.getMaxResults())
                 .execute();
         return contacts;
@@ -116,8 +116,8 @@ public class ContactClient extends BaseOfficeClient {
          * (java.lang.String)
          */
         @Override
-        public Builder setOdataEndpoint(String odataEndpoint) {
-            return (Builder) super.setOdataEndpoint(odataEndpoint);
+        public Builder setODataEndpoint(String odataEndpoint) {
+            return (Builder) super.setODataEndpoint(odataEndpoint);
         }
 
         /*

@@ -26,21 +26,21 @@ public class CalendarClient extends BaseOfficeClient {
 
     public void newEvent(String subject, AttendeeCollection attendees) {
 
-        Event event = container.newEntityInstance(Event.class);
+        Event event = getEntityContainer().newEntityInstance(Event.class);
         event.setSubject(subject);
 
-        AttendeeCollection ac = container.newComplexCollection(AttendeeCollection.class);
-        Attendee a = container.newComplexInstance(Attendee.class);
+        AttendeeCollection ac = getEntityContainer().newComplexCollection(AttendeeCollection.class);
+        Attendee a = getEntityContainer().newComplexInstance(Attendee.class);
 
         ac.add(a);
         event.setAttendees(attendees);
 
-        container.getMe().getEvents().add(event);
-        container.flush();
+        getEntityContainer().getMe().getEvents().add(event);
+        getEntityContainer().flush();
     }
 
     public CalendarGroupCollection getCalendarGroups(){
-        return container.getMe().getCalendarGroups().execute();
+        return getEntityContainer().getMe().getCalendarGroups().execute();
     }
 
 
@@ -50,7 +50,7 @@ public class CalendarClient extends BaseOfficeClient {
      * @return the events
      */
     public EventCollection getEvents() {
-        return container.getMe().getEvents().execute();
+        return getEntityContainer().getMe().getEvents().execute();
     }
 
     /**
@@ -60,7 +60,7 @@ public class CalendarClient extends BaseOfficeClient {
      * @return the event
      */
     public Event getEvent(String eventId) {
-        return container.getMe().getEvents().getByKey(eventId);
+        return getEntityContainer().getMe().getEvents().getByKey(eventId);
     }
 
     /**
@@ -69,7 +69,7 @@ public class CalendarClient extends BaseOfficeClient {
      * @return the calendars
      */
     public CalendarCollection getCalendars() {
-        return container.getMe().getCalendars().execute();
+        return getEntityContainer().getMe().getCalendars().execute();
     }
 
     /**
@@ -79,7 +79,7 @@ public class CalendarClient extends BaseOfficeClient {
      * @return the calendar
      */
     public Calendar getCalendar(String calendarId) {
-        return container.getMe().getCalendars().getByKey(calendarId);
+        return getEntityContainer().getMe().getCalendars().getByKey(calendarId);
     }
 
     /**
@@ -125,8 +125,8 @@ public class CalendarClient extends BaseOfficeClient {
          * @see com.microsoft.office365.api.BaseOfficeClient.Builder#setOdataEndpoint(java.lang.String)
          */
         @Override
-        public Builder setOdataEndpoint(String odataEndpoint) {
-            return (Builder) super.setOdataEndpoint(odataEndpoint);
+        public Builder setODataEndpoint(String odataEndpoint) {
+            return (Builder) super.setODataEndpoint(odataEndpoint);
         }
 
         /* (non-Javadoc)

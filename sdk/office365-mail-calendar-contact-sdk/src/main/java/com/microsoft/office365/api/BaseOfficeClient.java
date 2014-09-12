@@ -24,16 +24,19 @@ public abstract class BaseOfficeClient {
 
     private final String odataEndpoint;
     private final String resourceId;
-
     private Service<EdmEnabledODataClient> service;
-    public static EntityContainer container;
+    private EntityContainer container;
 
     protected BaseOfficeClient(Builder builder) {
 
-        odataEndpoint = builder.getOdataEndpoint();
+        odataEndpoint = builder.getODataEndpoint();
         resourceId = builder.getResourceId();
 
         initialize(builder);
+    }
+
+    public EntityContainer getEntityContainer(){
+        return container;
     }
 
     protected void initialize(final Builder builder) {
@@ -119,7 +122,7 @@ public abstract class BaseOfficeClient {
          * @param odataEndpoint the odata endpoint
          * @return the builder
          */
-        public Builder setOdataEndpoint(String odataEndpoint) {
+        public Builder setODataEndpoint(String odataEndpoint) {
             mOdataEndpoint = odataEndpoint;
             return this;
         }
@@ -140,7 +143,7 @@ public abstract class BaseOfficeClient {
          *
          * @return the odata endpoint
          */
-        public String getOdataEndpoint() {
+        public String getODataEndpoint() {
             return mOdataEndpoint;
         }
 

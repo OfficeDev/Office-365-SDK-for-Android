@@ -26,28 +26,14 @@ public class MailClient extends BaseOfficeClient {
 	 * 
 	 * @return the message
 	 */
-	public Message newMessage() {
-		return container.newEntityInstance(Message.class);
+	public Message createMessage() {
+		return getEntityContainer().newEntityInstance(Message.class);
 
-	}
-
-	/**
-	 * Save.
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public void save(Message message) {
-
-		if (message == null) {
-			throw new IllegalArgumentException("message cannot be null");
-		}
-		container.flush();
 	}
 
 	/**
 	 * Send.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 */
@@ -60,7 +46,7 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Creates the reply.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @return the message
@@ -77,7 +63,7 @@ public class MailClient extends BaseOfficeClient {
 	// TODO:Is this one necessary or createReply is enough??
 	/**
 	 * Creates the reply all.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @return the message
@@ -88,14 +74,14 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Reply.
-	 * 
+	 *
 	 * @param messageId
 	 *            the message id
 	 * @param comment
 	 *            the comment
 	 */
 	public void reply(String messageId, String comment) {
-		Message message = container.getMe().getMessages().getByKey(messageId);
+		Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
 		if (message != null) {
 			message.operations().reply(comment).execute();
 		}
@@ -103,7 +89,7 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Reply.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param comment
@@ -115,12 +101,12 @@ public class MailClient extends BaseOfficeClient {
 			throw new IllegalArgumentException("message cannot be null");
 		}
 		message.operations().reply(comment).execute();
-		container.flush(); // Required ? execute always flush?
+		getEntityContainer().flush(); // Required ? execute always flush?
 	}
 
 	/**
 	 * Reply all.
-	 * 
+	 *
 	 * @param messageId
 	 *            the message id
 	 * @param comment
@@ -128,17 +114,17 @@ public class MailClient extends BaseOfficeClient {
 	 */
 	public void replyAll(String messageId, String comment) {
 
-		Message message = container.getMe().getMessages().getByKey(messageId);
+		Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
 
 		if (message != null) {
 			message.operations().replyAll(comment).execute();
-			container.flush(); // Required?
+			getEntityContainer().flush(); // Required?
 		}
 	}
 
 	/**
 	 * Reply all.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param comment
@@ -151,12 +137,12 @@ public class MailClient extends BaseOfficeClient {
 		}
 
 		message.operations().replyAll(comment);
-		container.flush();
+		getEntityContainer().flush();
 	}
 
 	/**
 	 * Forward.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param comment
@@ -170,25 +156,28 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Creates the file attachment.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @return the file attachment
 	 */
-	public FileAttachment createFileAttachment(Message message) {
+	public FileAttachment addAttachment(Message message, String name, byte[] bytes ) {
 
 		if (message == null) {
 			throw new IllegalArgumentException("message cannot be null");
 		}
 
-		FileAttachment fileAttachment = container.newEntityInstance(FileAttachment.class);
+		FileAttachment fileAttachment = getEntityContainer().newEntityInstance(FileAttachment.class);
+        fileAttachment.setContentBytes(bytes);
+        fileAttachment.setName(name);
+
 		message.getAttachments().add(fileAttachment);
 		return fileAttachment;
 	}
 
 	/**
 	 * Creates the item attachment.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @return the item attachment
@@ -199,21 +188,21 @@ public class MailClient extends BaseOfficeClient {
 			throw new IllegalArgumentException("message cannot be null");
 		}
 
-		ItemAttachment itemAttachment = container.newEntityInstance(ItemAttachment.class);
+		ItemAttachment itemAttachment = getEntityContainer().newEntityInstance(ItemAttachment.class);
 		message.getAttachments().add(itemAttachment);
 		return itemAttachment;
 	}
 
 	/**
 	 * Move.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param destinationFolder
 	 *            the destination folder
 	 */
 	public Message move(Message message, String destinationFolder) {
-		Folder folder = container.getMe().getFolders().getByKey(destinationFolder);
+		Folder folder = getEntityContainer().getMe().getFolders().getByKey(destinationFolder);
 
 		if (folder != null) {
 			return message.operations().move(folder.getId()).execute();
@@ -223,7 +212,7 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Move.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param destinationFolder
@@ -244,7 +233,7 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Delete.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 */
@@ -254,14 +243,14 @@ public class MailClient extends BaseOfficeClient {
 			throw new IllegalArgumentException("message cannot be null");
 		}
 
-		container.getMe().getMessages().delete(message.getId());
-		container.flush();
+		getEntityContainer().getMe().getMessages().delete(message.getId());
+		getEntityContainer().flush();
 	}
 
 	// this could be the same as delete but only applies to drafts
 	/**
 	 * Discard.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 */
@@ -271,7 +260,7 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Mark as read.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 */
@@ -280,12 +269,12 @@ public class MailClient extends BaseOfficeClient {
 			throw new IllegalArgumentException("message cannot be null");
 		}
 		message.setIsRead(true);
-		container.flush();
+		getEntityContainer().flush();
 	}
 
 	/**
 	 * Mark as unread.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 */
@@ -295,23 +284,23 @@ public class MailClient extends BaseOfficeClient {
 			throw new IllegalArgumentException("message cannot be null");
 		}
 		message.setIsRead(false);
-		container.flush();
+		getEntityContainer().flush();
 	}
 
 	/**
 	 * Gets the child folders.
-	 * 
+	 *
 	 * @return the child folders
 	 */
 	public ChildFolders getChildFolders() {
 
-		ChildFolders childFolders = container.getMe().getRootFolder().getChildFolders();
+		ChildFolders childFolders = getEntityContainer().getMe().getRootFolder().getChildFolders();
 		return childFolders;
 	}
 
 	/**
 	 * Gets the messages.
-	 * 
+	 *
 	 * @param folderId
 	 *            the folder id
 	 * @param from
@@ -324,10 +313,10 @@ public class MailClient extends BaseOfficeClient {
 
 		try {
 
-			messages = container.getMe().getFolders().getByKey(folderId).getMessages()
+			messages = getEntityContainer().getMe().getFolders().getByKey(folderId).getMessages()
 					.select("Id,From,Sender,Subject,BodyPreview,DateTimeSent,LastModifiedTime")
 					.expand("From,Sender")
-					.skip(from).top(mBuilder.getMaxRsults()).execute();
+					.skip(from).top(mBuilder.getMaxResults()).execute();
 
 		} catch (Throwable t) {
 			//Log.e("Client", t.getMessage());
@@ -339,7 +328,7 @@ public class MailClient extends BaseOfficeClient {
 
 	/**
 	 * Gets the messages.
-	 * 
+	 *
 	 * @param folderId
 	 *            the folder id
 	 * @return the messages
@@ -348,10 +337,10 @@ public class MailClient extends BaseOfficeClient {
 
 		MessageCollection messages = null;
 		try {
-			messages = container.getMe().getFolders().getByKey(folderId).getMessages()
+			messages = getEntityContainer().getMe().getFolders().getByKey(folderId).getMessages()
 					.select("Id,From,Sender,Subject,BodyPreview,DateTimeSent,LastModifiedTime")
 					.expand("From,Sender")
-					.top(mBuilder.getMaxRsults()).execute();
+					.top(mBuilder.getMaxResults()).execute();
 		} catch (Throwable t) {
 			//Log.e("Client", t.getMessage());
 		}
@@ -417,8 +406,8 @@ public class MailClient extends BaseOfficeClient {
 		 * (java.lang.String)
 		 */
 		@Override
-		public Builder setOdataEndpoint(String odataEndpoint) {
-			return (Builder) super.setOdataEndpoint(odataEndpoint);
+		public Builder setODataEndpoint(String odataEndpoint) {
+			return (Builder) super.setODataEndpoint(odataEndpoint);
 		}
 
 		/*
@@ -450,7 +439,7 @@ public class MailClient extends BaseOfficeClient {
 		 * 
 		 * @return the max rsults
 		 */
-		public int getMaxRsults() {
+		public int getMaxResults() {
 			return mMaxResults;
 		}
 	}

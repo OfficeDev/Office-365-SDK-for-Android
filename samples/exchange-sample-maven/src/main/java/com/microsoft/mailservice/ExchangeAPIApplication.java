@@ -55,17 +55,17 @@ public class ExchangeAPIApplication extends Application {
 
 	public CalendarClient getCalendarClient() {
 
-		return new CalendarClient.Builder().setCredentials(mCredentials).setOdataEndpoint(Constants.ODATA_ENDPOINT)
+		return new CalendarClient.Builder().setCredentials(mCredentials).setODataEndpoint(Constants.ODATA_ENDPOINT)
 				.setResourceId(Constants.RESOURCE_ID).build();
 	}
 
 	public ContactClient getContactClient() {
-		return new ContactClient.Builder().setCredentials(mCredentials).setOdataEndpoint(Constants.ODATA_ENDPOINT)
+		return new ContactClient.Builder().setCredentials(mCredentials).setODataEndpoint(Constants.ODATA_ENDPOINT)
 				.setResourceId(Constants.RESOURCE_ID).setMaxResults(Constants.TOP_VALUE).build();
 	}
 
 	public MailClient getMailClient() {
-		return new MailClient.Builder().setCredentials(mCredentials).setOdataEndpoint(Constants.ODATA_ENDPOINT)
+		return new MailClient.Builder().setCredentials(mCredentials).setODataEndpoint(Constants.ODATA_ENDPOINT)
 				.setResourceId(Constants.RESOURCE_ID).setMaxResults(Constants.TOP_VALUE).build();
 	}
 
