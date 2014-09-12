@@ -8,10 +8,11 @@ import org.apache.olingo.client.api.v4.EdmEnabledODataClient;
 import org.apache.olingo.client.core.http.DefaultHttpUriRequestFactory;
 import org.apache.olingo.commons.api.format.ODataFormat;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
 import com.microsoft.office365.oauth.OAuthCredentials;
 import com.microsoft.office.Service;
-
-//TODO:FIX Namespace
 import com.microsoft.office.microsoft.exchange.services.odata.model.EntityContainer;
 
 /**
@@ -19,139 +20,137 @@ import com.microsoft.office.microsoft.exchange.services.odata.model.EntityContai
  */
 public abstract class BaseOfficeClient {
 
-	private final String odataEndpoint;
-	private final String resourceId;
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseOfficeClient.class);
 
-	private Service<EdmEnabledODataClient> service;
-	public static EntityContainer container;
+    private final String odataEndpoint;
+    private final String resourceId;
 
-	protected BaseOfficeClient(Builder builder) {
+    private Service<EdmEnabledODataClient> service;
+    public static EntityContainer container;
 
-		odataEndpoint = builder.getOdataEndpoint();
-		resourceId = builder.getResourceId();
+    protected BaseOfficeClient(Builder builder) {
 
-		initialize(builder);
-	}
+        odataEndpoint = builder.getOdataEndpoint();
+        resourceId = builder.getResourceId();
 
-	protected void initialize(final Builder builder) {
+        initialize(builder);
+    }
 
-		// TODO:
-		// Check for preconditions.
-		// Cannot initialize if all the builder setting are not already set.
+    protected void initialize(final Builder builder) {
 
-		service = Service.getV4(resourceId + odataEndpoint, false);
-		service.getClient().getConfiguration()
-				.setDefaultPubFormat(ODataFormat.JSON_FULL_METADATA);
-		
-		service.getClient().getConfiguration().setUseChuncked(false);
-		service.getClient().getConfiguration().setAddressingDerivedTypes(false);
-		service.getClient().getConfiguration().setUseUrlOperationFQN(false);
+        service = Service.getV4(resourceId + odataEndpoint, false);
+        service.getClient().getConfiguration()
+                .setDefaultPubFormat(ODataFormat.JSON_FULL_METADATA);
 
-		service.getClient().getConfiguration()
-				.setHttpUriRequestFactory(new DefaultHttpUriRequestFactory() {
-					@Override
-					public HttpUriRequest create(HttpMethod method, URI uri) {
+        service.getClient().getConfiguration().setUseChuncked(false);
+        service.getClient().getConfiguration().setAddressingDerivedTypes(false);
+        service.getClient().getConfiguration().setUseUrlOperationFQN(false);
 
-						HttpUriRequest request = super.create(method, uri);
-						request.addHeader("Authorization", "Bearer " + builder.getCredentials().getToken());
-						return request;
-					}
-				});
-		
-		container = service.getEntityContainer(EntityContainer.class);
-	}
+        service.getClient().getConfiguration()
+                .setHttpUriRequestFactory(new DefaultHttpUriRequestFactory() {
+                    @Override
+                    public HttpUriRequest create(HttpMethod method, URI uri) {
 
-	/**
-	 * The Class Builder.
-	 */
-	public abstract static class Builder {
+                        HttpUriRequest request = super.create(method, uri);
+                        request.addHeader("Authorization", "Bearer " + builder.getCredentials().getToken());
 
-		private OAuthCredentials mCredentials;
-		private String mResourceId;
-		private String mOdataEndpoint;
+                        LOGGER.debug("URI" + uri.getRawQuery());
 
-		protected Builder(final OAuthCredentials credentials,
-				String resourceId, String odataEndpoint) {
+                        return request;
+                    }
+                });
 
-			mCredentials = credentials;
-			mResourceId = resourceId;
-			mOdataEndpoint = odataEndpoint;
-		}
+        container = service.getEntityContainer(EntityContainer.class);
+    }
 
-		/**
-		 * Instantiates a new builder.
-		 */
-		public Builder() {
-		}
+    /**
+     * The Class Builder.
+     */
+    public abstract static class Builder {
 
-		/**
-		 * Builds the.
-		 * 
-		 * @return the base office client
-		 */
-		public abstract BaseOfficeClient build();
+        private OAuthCredentials mCredentials;
+        private String mResourceId;
+        private String mOdataEndpoint;
 
-		/**
-		 * Sets the resource id.
-		 * 
-		 * @param resourceId
-		 *            the resource id
-		 * @return the builder
-		 */
-		public Builder setResourceId(String resourceId) {
-			mResourceId = resourceId;
-			return this;
-		}
+        protected Builder(final OAuthCredentials credentials,
+                          String resourceId, String odataEndpoint) {
 
-		/**
-		 * Gets the resource id.
-		 * 
-		 * @return the resource id
-		 */
-		public String getResourceId() {
-			return mResourceId;
-		}
+            mCredentials = credentials;
+            mResourceId = resourceId;
+            mOdataEndpoint = odataEndpoint;
+        }
 
-		/**
-		 * Sets the odata endpoint.
-		 * 
-		 * @param odataEndpoint
-		 *            the odata endpoint
-		 * @return the builder
-		 */
-		public Builder setOdataEndpoint(String odataEndpoint) {
-			mOdataEndpoint = odataEndpoint;
-			return this;
-		}
+        /**
+         * Instantiates a new builder.
+         */
+        public Builder() {
+        }
 
-		/**
-		 * Sets the credentials.
-		 * 
-		 * @param credentials
-		 *            the credentials
-		 * @return the builder
-		 */
-		public Builder setCredentials(OAuthCredentials credentials) {
-			mCredentials = credentials;
-			return this;
-		}
+        /**
+         * Builds the.
+         *
+         * @return the base office client
+         */
+        public abstract BaseOfficeClient build();
 
-		/**
-		 * Gets the odata endpoint.
-		 * 
-		 * @return the odata endpoint
-		 */
-		public String getOdataEndpoint() {
-			return mOdataEndpoint;
-		}
+        /**
+         * Sets the resource id.
+         *
+         * @param resourceId the resource id
+         * @return the builder
+         */
+        public Builder setResourceId(String resourceId) {
+            mResourceId = resourceId;
+            return this;
+        }
 
-		/**
-		 * Gets the credentials.
-		 * 
-		 * @return the credentials
-		 */
-		public OAuthCredentials getCredentials() {
-			return mCredentials;
-		}
-	}
+        /**
+         * Gets the resource id.
+         *
+         * @return the resource id
+         */
+        public String getResourceId() {
+            return mResourceId;
+        }
+
+        /**
+         * Sets the odata endpoint.
+         *
+         * @param odataEndpoint the odata endpoint
+         * @return the builder
+         */
+        public Builder setOdataEndpoint(String odataEndpoint) {
+            mOdataEndpoint = odataEndpoint;
+            return this;
+        }
+
+        /**
+         * Sets the credentials.
+         *
+         * @param credentials the credentials
+         * @return the builder
+         */
+        public Builder setCredentials(OAuthCredentials credentials) {
+            mCredentials = credentials;
+            return this;
+        }
+
+        /**
+         * Gets the odata endpoint.
+         *
+         * @return the odata endpoint
+         */
+        public String getOdataEndpoint() {
+            return mOdataEndpoint;
+        }
+
+        /**
+         * Gets the credentials.
+         *
+         * @return the credentials
+         */
+        public OAuthCredentials getCredentials() {
+            return mCredentials;
+        }
+    }
 }

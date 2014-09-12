@@ -28,35 +28,17 @@
             <version>4.3.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-android</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.5</version>
-                <configuration>
-                    <target>
-
-                        <get dest="${project.basedir}/metadata_files/metadata_file.xml"
-                            password="foopassword"
-                            src="https://outlook.office365.com/EWS/OData/$metadata"
-                            username="foo@bar.com" />
-
-                    </target>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.olingo</groupId>
@@ -130,6 +112,7 @@
                                     <exclude>org.apache.httpcomponents:*</exclude>
                                     <exlude>commons-logging:commons-logging</exlude>
                                     <exclude>commons-codec:commons-codec</exclude>
+                                    <exclude>org.slf4j:slf4j-api</exclude>
                                 </excludes>
                             </artifactSet>
                         </configuration>
