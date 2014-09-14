@@ -12,7 +12,16 @@
 
 ##Buid instructions
 
-Maven (for mail-calendar-contact):
+Office 365 Android SDK uses Apache Olingo (http://olingo.apache.org/) to handle all things OData V4 and must be installed in your local maven repository (/.m2). This extra step is required since Olingo OData V4 has not been released yet. 
+
+In the future, this step won't be required and will be handled by Maven as another dependency.
+To deploy Olingo into your local Maven repository simply:
+
+```
+git clone https://github.com/apache/olingo-odata4.git
+mvn clean install
+``` 
+After successfully builded and installed, please proceed to build *mail-calendar-contact SDK*
 
 ```
 git clone https://github.com/MSOpenTech/O365-Android.git
