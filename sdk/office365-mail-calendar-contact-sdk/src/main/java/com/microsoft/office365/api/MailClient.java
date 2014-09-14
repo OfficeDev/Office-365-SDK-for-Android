@@ -29,6 +29,10 @@ public class MailClient extends BaseOfficeClient {
         return getEntityContainer().newEntityInstance(Message.class);
     }
 
+
+    public Message getMessage(String folderId, String messageId){
+        return null; //TODO:
+    }
     /**
      * Sends a Message.
      *

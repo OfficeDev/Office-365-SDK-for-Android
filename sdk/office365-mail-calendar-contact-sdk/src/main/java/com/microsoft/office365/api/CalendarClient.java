@@ -2,6 +2,7 @@ package com.microsoft.office365.api;
 
 import java.sql.Timestamp;
 
+import com.microsoft.office.microsoft.exchange.services.odata.model.types.CalendarGroup;
 import com.microsoft.office.microsoft.exchange.services.odata.model.types.CalendarGroupCollection;
 import com.microsoft.office365.oauth.OAuthCredentials;
 import com.microsoft.office.microsoft.exchange.services.odata.model.types.Attendee;
@@ -39,10 +40,22 @@ public class CalendarClient extends BaseOfficeClient {
         getEntityContainer().flush();
     }
 
+    //List<CalendarGroup>
     public CalendarGroupCollection getCalendarGroups(){
         return getEntityContainer().getMe().getCalendarGroups().execute();
     }
 
+    public CalendarGroup getCalendarGroup(String calendarGroupId){
+        return getEntityContainer().getMe().getCalendarGroups().getByKey(calendarGroupId);
+    }
+
+    public EventCollection getEvents(String calendarId){
+        return getEntityContainer().getMe().getCalendars().getByKey(calendarId).getEvents().execute();
+    }
+
+    public Event getEvent(String calendarId, String eventId){
+        return null; //TODO
+    }
 
     /**
      * Gets the events.

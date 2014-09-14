@@ -1,6 +1,29 @@
-#Office 365 Samples
+#Office 365 Android SDK
 
-We've created a sample to use as starting point to develop android application using all the new set of SDKs Office 365 provides. In order to make it even simpler, we propose 2 different approaches depending on your needs and preferences.
+*Readme in progress*
+
+* Overview
+* Build instructions
+* Sample applications
+  * Maven archetypes
+
+#Overview
+(goals, approach, etc.)
+
+##Buid instructions
+
+Maven (for mail-calendar-contact):
+
+```
+git clone https://github.com/MSOpenTech/O365-Android.git
+cd /sdk/office365-mail-calendar-contact-sdk
+mvn clean install
+```
+
+
+##Office 365 Samples
+
+We've created a sample to use as starting point to develop android application using all the new set of SDKs Office 365 provides. In order to make it even simpler, we propose two different approaches depending on your needs and preferences.
 
 The first (and simpler) one, uses Android Studio and Maven archetypes to generate the sample and download its dependencies. The other approach, uses eclipse and download the code and dependencies manually.
 
