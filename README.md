@@ -2,15 +2,28 @@
 
 *Readme in progress*
 
-* Overview
-* Build instructions
-* Sample applications
-  * Maven archetypes
+**Table of Contents**
 
-#Overview
-(goals, approach, etc.)
+- [Overview](#overview)
+- [Build instructions](#build-instructions)
+- [Office 365 Samples](#office-365-samples)
+    - [Simple Office 365 Sample](#simple-office-365-sample)
+        - [Using Maven archetypes](#using-maven-archetypes)
+        - [Using Eclipse](#using-eclipse)
+- [Features](#features)
+- [Tests](#tests)
+- [Contributing](#contributing)
+- [License](#license)
 
-##Buid instructions
+## Overview ##
+
+With the Office 365 SDK for Android Preview, it’s now possible to use data stored in Microsoft Office 365 from your Android Apps. This means, you can access SharePoint lists, folders or Exchange calendar, contacts and emails from within your Android-based applications. 
+
+[Microsoft Open Technologies, Inc. (MS Open Tech)](http://msopentech.com) has built the **Office 365 SDK for Android Preview**, an open source project that strives to help Android developers access Office 365 data from their apps.
+
+This SDK provides access to: Microsoft SharePoint Lists, Microsoft SharePoint Files, Microsoft Exchange Calendar, Microsoft Exchange Contacts, Microsoft Exchange Mail.
+
+##Build instructions
 
 Office 365 Android SDK uses Apache Olingo (http://olingo.apache.org/) to handle all things OData V4 and must be installed in your local maven repository (/.m2). This extra step is required since Olingo OData V4 has not been released yet. 
 
@@ -36,17 +49,17 @@ We've created a sample to use as starting point to develop android application u
 
 The first (and simpler) one, uses Android Studio and Maven archetypes to generate the sample and download its dependencies. The other approach, uses eclipse and download the code and dependencies manually.
 
-##The Sample Application
+##Simple Office 365 Sample
 
 The application is a really simple android sample, with all the dependencies and code needed to obtain an authentication token using ADAL libraries.
 
 It is composed by an activity where to display the obtained token and a view to set some information needed to authenticate (client id, return url, and resource url)
 
-##Using Maven + Android Studio
+###Using Maven archetypes
 
 We've created an archetype that creates a new android application with ADAL as dependency. In order to use it, you will need to have installed and configured Maven and Android Studio.
 
-###Prerequisites
+####Prerequisites
 
 - [Git](http://git-scm.com/)
 - [Android Studio](https://developer.android.com/sdk/installing/studio.html) 
@@ -58,7 +71,7 @@ We've created an archetype that creates a new android application with ADAL as d
 git clone https://github.com/LagashSystemsArgentina/MSOpenTech-Office365-SDK-prv.git
 ```
 
-2- Open a console in the root of the downloaded repository and run the maven command to install the archetype
+2- Open a console in the samples/android-quickstart folder within the downloaded repository and run the maven command to install the archetype
 	
 ```
 mvn clean install
@@ -84,9 +97,9 @@ mvn archetype:generate -DarchetypeArtifactId=office365-quickstart -DarchetypeGro
 
 Now you are able to start using any of the Office 365 SDKs to create your own projects.
 
-##Using Eclipse
+###Using Eclipse
 
-###Prerequisites
+####Prerequisites
 
 - [Git](http://git-scm.com/)
 - [Eclipse](https://www.eclipse.org/home/index.php)
@@ -113,3 +126,17 @@ git clone https://github.com/LagashSystemsArgentina/MSOpenTech-Office365-SDK-prv
 5- Update the sample to use ADAL by adding a reference to ADAL project from Properties | Android | Library.
 
 >Note: You might have compiling errors due to the android support library's version shipped with ADAL. Please make sure you're using the same version in both projects.
+
+## Features ##
+For the entire list of methods available in the SDK, please refer to the java docs under each SDK in the SDK folder.
+
+## Tests ##
+
+Apart from the sample apps, we also have end to end tests that demonstrate the use of the SDK. Please look at the tests folder under the root of the SDK.
+
+##Contributing##
+
+You will need to sign a [Contributor License Agreement](https://cla.msopentech.com/) before submitting your pull request. To complete the Contributor License Agreement (CLA), you will need to submit a request via the form and then electronically sign the Contributor License Agreement when you receive the email containing the link to the document. This needs to only be done once for any Microsoft Open Technologies OSS project.
+
+## License ##
+Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License");
