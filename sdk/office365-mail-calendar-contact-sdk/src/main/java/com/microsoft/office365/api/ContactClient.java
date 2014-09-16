@@ -1,8 +1,8 @@
 package com.microsoft.office365.api;
 
 import com.microsoft.office365.oauth.OAuthCredentials;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Contact;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.ContactCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Contact;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.ContactCollection;
 
 /**
  * The Class ContactClient.

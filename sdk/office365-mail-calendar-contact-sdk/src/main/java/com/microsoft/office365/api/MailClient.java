@@ -1,12 +1,12 @@
 package com.microsoft.office365.api;
 
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Item;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Item;
 import com.microsoft.office365.oauth.OAuthCredentials;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.FileAttachment;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Folder;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.ItemAttachment;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Message;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.MessageCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.FileAttachment;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Folder;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.ItemAttachment;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
 
 /**
  * The Class MailClient.
@@ -88,7 +88,7 @@ public class MailClient extends BaseOfficeClient {
 
         Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
 
-        if (message == null){
+        if (message == null) {
             throw new UnsupportedOperationException("Message cannot be null");
         }
 
@@ -375,6 +375,55 @@ public class MailClient extends BaseOfficeClient {
         return messages;
     }
 
+    /*
+    public MessageCollection getMessages(String folderId){
+
+        return null;
+    }
+    */
+
+    public MessageCollection getMessages(String folderId, String selectClause,
+                                         String expandClause, int topResults) {
+
+        if (folderId == null) {
+            throw new IllegalArgumentException("FolderId cannot be null");
+        }
+
+        Folder folder = getEntityContainer().getMe().getFolders().getByKey(folderId);
+
+        if (folder == null) {
+            throw new UnsupportedOperationException("Folder cannot be null");
+        }
+
+        Folder.Messages messages = folder.getMessages();
+
+        if (messages == null) {
+            throw new IllegalStateException("Messages cannot be null");
+        }
+
+        if (selectClause != null) {
+            messages = messages.select(selectClause);
+
+            if (expandClause != null) {
+                messages = messages.expand(expandClause);
+            }
+
+             if (topResults > 0) {
+                messages.top(topResults);
+            } else {
+                messages.top(mBuilder.getMaxDefaultResults());
+            }
+
+        } else {
+            if (topResults > 0) {
+                messages.top(topResults);
+            } else {
+                messages.top(mBuilder.getMaxDefaultResults());
+            }
+        }
+
+        return messages.execute();
+    }
 
     /**
      * The Class Builder.

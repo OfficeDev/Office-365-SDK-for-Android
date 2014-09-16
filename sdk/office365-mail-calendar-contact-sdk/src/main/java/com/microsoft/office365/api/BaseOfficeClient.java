@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 import com.microsoft.office365.oauth.OAuthCredentials;
-import com.microsoft.office.Service;
-import com.microsoft.office.microsoft.exchange.services.odata.model.EntityContainer;
+import com.microsoft.office365.Service;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.EntityContainer;
 
 /**
  * The Class BaseOfficeClient.

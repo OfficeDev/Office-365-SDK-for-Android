@@ -2,15 +2,15 @@ package com.microsoft.office365.api;
 
 import java.sql.Timestamp;
 
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.CalendarGroup;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.CalendarGroupCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.CalendarGroup;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.CalendarGroupCollection;
 import com.microsoft.office365.oauth.OAuthCredentials;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Attendee;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.AttendeeCollection;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Calendar;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.CalendarCollection;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Event;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.EventCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Attendee;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.AttendeeCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Calendar;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.CalendarCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Event;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.EventCollection;
 
 /**
  * The Class CalendarClient.
