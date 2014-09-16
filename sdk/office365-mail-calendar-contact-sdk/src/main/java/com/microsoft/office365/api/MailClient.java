@@ -30,9 +30,10 @@ public class MailClient extends BaseOfficeClient {
     }
 
 
-    public Message getMessage(String folderId, String messageId){
+    public Message getMessage(String folderId, String messageId) {
         return null; //TODO:
     }
+
     /**
      * Sends a Message.
      *
@@ -86,6 +87,11 @@ public class MailClient extends BaseOfficeClient {
     public void reply(String messageId, String comment) {
 
         Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
+
+        if (message == null){
+            throw new UnsupportedOperationException("Message cannot be null");
+        }
+
         message.operations().reply(comment).execute();
 
     }
@@ -114,6 +120,11 @@ public class MailClient extends BaseOfficeClient {
     public void replyAll(String messageId, String comment) {
 
         Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
+
+        if (message == null) {
+            throw new UnsupportedOperationException("Message cannot be null");
+        }
+
         message.operations().replyAll(comment).execute();
     }
 
@@ -222,7 +233,7 @@ public class MailClient extends BaseOfficeClient {
         Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
 
         if (message == null) {
-            throw new IllegalArgumentException("Invalid message");
+            throw new UnsupportedOperationException("Invalid message");
         }
         return message.operations().move(destinationFolderId).execute();
     }
@@ -246,7 +257,7 @@ public class MailClient extends BaseOfficeClient {
         Message message = getEntityContainer().getMe().getMessages().getByKey(messageId);
 
         if (message == null) {
-            throw new IllegalArgumentException("Invalid message");
+            throw new UnsupportedOperationException("Invalid message");
         }
 
         return message.operations().copy(destinationFolderId).execute();
@@ -270,7 +281,7 @@ public class MailClient extends BaseOfficeClient {
      * Creates a Folder with given folder name.
      *
      * @param parentFolderId the parent folder id
-     * @param folderName the folder name
+     * @param folderName     the folder name
      */
     public Folder createFolder(String parentFolderId, String folderName) {
 
@@ -278,6 +289,11 @@ public class MailClient extends BaseOfficeClient {
         newFolder.setDisplayName(folderName);
 
         Folder parentFolder = getEntityContainer().getMe().getFolders().getByKey(parentFolderId);
+
+        if (parentFolder == null) {
+            throw new UnsupportedOperationException("Parent folder cannot be null");
+        }
+
         parentFolder.getChildFolders().add(newFolder);
         getEntityContainer().flush();
         return newFolder;
@@ -286,7 +302,7 @@ public class MailClient extends BaseOfficeClient {
     /**
      * Move Folder.
      *
-     * @param folder           the message
+     * @param folder         the message
      * @param parentFolderId the destination folder
      */
     public Folder moveFolder(Folder folder, String parentFolderId) {

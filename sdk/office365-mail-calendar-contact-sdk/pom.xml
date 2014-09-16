@@ -58,7 +58,7 @@
                             <outputDirectory>${project.build.directory}/generated-sources
                             </outputDirectory>
                             <localEdm>${project.basedir}/metadata_files/metadata_file.xml</localEdm>
-                            <basePackage>com.microsoft.office</basePackage>
+                            <basePackage>com.microsoft.office365</basePackage>
                         </configuration>
                         <id>v4pojoGen</id>
                         <phase>generate-sources</phase>
