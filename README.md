@@ -25,13 +25,14 @@ This SDK provides access to: Microsoft SharePoint Lists, Microsoft SharePoint Fi
 
 ##Build instructions
 
-Office 365 Android SDK uses Apache Olingo (http://olingo.apache.org/) to handle all things OData V4 and must be installed in your local maven repository (/.m2). This extra step is required since Olingo OData V4 has not been released yet. 
+Office 365 Android SDK uses [Apache Olingo](http://olingo.apache.org/) to handle all things OData V4 and must be installed in your local maven repository (/.m2). This extra step is required since Olingo OData V4 has not been released yet. 
 
 In the future, this step won't be required and will be handled by Maven as another dependency.
 To deploy Olingo into your local Maven repository simply:
 
 ```
 git clone https://github.com/apache/olingo-odata4.git
+git checkout dff439f
 mvn clean install
 ``` 
 After successfully builded and installed, please proceed to build *mail-calendar-contact SDK*
@@ -119,7 +120,7 @@ git clone https://github.com/AzureAD/azure-activedirectory-library-for-android.g
 git clone https://github.com/MSOpenTech/O365-Android.git
 ```
 
-3- In Samples folder, open hello-android sample using eclipse.
+3- In Samples folder, open	 hello-android sample using eclipse.
 
 4- Import the ADAL project you downloaded in the previous steps.
 

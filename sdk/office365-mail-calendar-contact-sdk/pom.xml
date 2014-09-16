@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-client-android</artifactId>
-            <version>4.0.0-beta-01-SNAPSHOT</version>
+            <version>${olingo4.version}</version>
         </dependency>
 
         <dependency>
