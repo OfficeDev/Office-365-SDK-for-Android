@@ -68,7 +68,7 @@ We've created an archetype that creates a new android application with ADAL as d
 1- Install the archetype in your local repository. To do this, clone the archetype's git repository: 
 
 ```
-git clone https://github.com/LagashSystemsArgentina/MSOpenTech-Office365-SDK-prv.git
+git clone https://github.com/MSOpenTech/O365-Android.git
 ```
 
 2- Open a console in the samples/android-quickstart folder within the downloaded repository and run the maven command to install the archetype
@@ -84,7 +84,7 @@ mvn clean install
 ```
 mvn archetype:generate -DarchetypeArtifactId=office365-quickstart -DarchetypeGroupId=com.microsoft.office365 ^
 -DarchetypeVersion=0.1.0 -DgroupId=[YOUR-GROUP-ID] ^
--DartifactId=[YOUR-ARTIFACT-ID]  -B
+-DartifactId=[YOUR-ARTIFACT-ID]
 ```
 
 4- In Android Studio, open the generated code and start the application.
@@ -116,7 +116,7 @@ git clone https://github.com/AzureAD/azure-activedirectory-library-for-android.g
 2- Clone Office 365 SDK repository
 
 ```
-git clone https://github.com/LagashSystemsArgentina/MSOpenTech-Office365-SDK-prv.git
+git clone https://github.com/MSOpenTech/O365-Android.git
 ```
 
 3- In Samples folder, open hello-android sample using eclipse.
