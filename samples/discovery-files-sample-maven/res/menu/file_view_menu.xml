@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_save_image"
+        android:icon="@drawable/ic_action_accept"
+        android:orderInCategory="101"
+        android:showAsAction="ifRoom|withText"
+        android:title="Save Image">
+    </item>
+    <item
+        android:id="@+id/menu_file_save"
+        android:icon="@drawable/ic_action_camera"
+        android:orderInCategory="101"
+        android:showAsAction="ifRoom|withText"
+        android:title="Add Picture">
+    </item>
+</menu>
