@@ -32,7 +32,6 @@ To deploy Olingo into your local Maven repository simply:
 
 ```
 git clone https://github.com/apache/olingo-odata4.git
-git checkout dff439f
 mvn clean install
 ``` 
 After successfully builded and installed, please proceed to build *mail-calendar-contact SDK*

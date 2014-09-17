@@ -26,12 +26,27 @@ public class MailClient extends BaseOfficeClient {
      * @return the message
      */
     public Message createMessage() {
+
         return getEntityContainer().newEntityInstance(Message.class);
     }
 
-
+    /**
+     * Gets a Message with a given folder id and message id.
+     *
+     * @param folderId  the folder id
+     * @param messageId the message id
+     * @return the message
+     */
     public Message getMessage(String folderId, String messageId) {
-        return null; //TODO:
+
+
+        Folder folder = getEntityContainer().getMe().getFolders().getByKey(folderId);
+
+        if (folder == null) {
+            throw new UnsupportedOperationException("Folder cannot be null");
+        }
+
+        return folder.getMessages().getByKey(messageId);
     }
 
     /**
@@ -147,6 +162,8 @@ public class MailClient extends BaseOfficeClient {
      * Creates the file attachment.
      *
      * @param message the message
+     * @param name    the FileAttachment name
+     * @param data    the data
      * @return the file attachment
      */
     public FileAttachment addAttachment(Message message, String name, byte[] data) {
@@ -175,7 +192,9 @@ public class MailClient extends BaseOfficeClient {
      * Creates the item attachment.
      *
      * @param message the message
-     * @return the item attachment
+     * @param name    the ItemAttachment name
+     * @param item    the ItemAttachment
+     * @return the ItemAttachment
      */
     public ItemAttachment addAttachment(Message message, String name, Item item) {
 
@@ -333,12 +352,23 @@ public class MailClient extends BaseOfficeClient {
      * Gets the messages.
      *
      * @param folderId the folder id
-     * @param from     the from
      * @return the messages
      */
-    public MessageCollection getMessages(String folderId, int from) {
+    public MessageCollection getMessages(String folderId) {
 
-        MessageCollection messages = null;
+        return getMessages(folderId, null, null, 0, 0);
+    }
+
+    /**
+     * Gets the messages.
+     *
+     * @param folderId the folder id
+     * @param skip     the from
+     * @return the messages
+     */
+    public MessageCollection getMessages(String folderId, int skip) {
+
+      /*  MessageCollection messages = null;
 
         try {
 
@@ -352,38 +382,58 @@ public class MailClient extends BaseOfficeClient {
             //Log.e("Client", t.getMessage());
         }
 
-        return messages;
+        return messages;*/
+        return getMessages(folderId, null, null, skip, 0);
     }
 
     /**
      * Gets the messages.
      *
      * @param folderId the folder id
+     * @param skip     the from
+     * @param top      the top
      * @return the messages
      */
-    public MessageCollection getMessages(String folderId) {
-
-        MessageCollection messages = null;
-        try {
-            messages = getEntityContainer().getMe().getFolders().getByKey(folderId).getMessages()
-                    .select("Id,From,Sender,Subject,BodyPreview,DateTimeSent,LastModifiedTime")
-                    .expand("From,Sender")
-                    .top(mBuilder.getMaxDefaultResults()).execute();
-        } catch (Throwable t) {
-            //Log.e("Client", t.getMessage());
-        }
-        return messages;
+    public MessageCollection getMessages(String folderId, int skip, int top) {
+        return getMessages(folderId, null, null, skip, top);
     }
 
-    /*
-    public MessageCollection getMessages(String folderId){
-
-        return null;
+    /**
+     * Gets the messages.
+     *
+     * @param folderId     the folder id
+     * @param selectClause the select clause
+     * @return the messages
+     */
+    public MessageCollection getMessages(String folderId, String selectClause) {
+        return getMessages(folderId, selectClause, null, 0, 0);
     }
-    */
 
+    /**
+     * Gets the messages.
+     *
+     * @param folderId     the folder id
+     * @param selectClause the select clause
+     * @param expandClause the expand clause
+     * @return the messages
+     */
     public MessageCollection getMessages(String folderId, String selectClause,
-                                         String expandClause, int topResults) {
+                                         String expandClause) {
+        return getMessages(folderId, selectClause, expandClause, 0, 0);
+    }
+
+    /**
+     * Gets the messages.
+     *
+     * @param folderId     the folder id
+     * @param selectClause the select clause
+     * @param expandClause the expand clause
+     * @param skip         number of records to skip
+     * @param top          number of records to return
+     * @return the messages
+     */
+    public MessageCollection getMessages(String folderId, String selectClause,
+                                         String expandClause, int skip, int top) {
 
         if (folderId == null) {
             throw new IllegalArgumentException("FolderId cannot be null");
@@ -407,22 +457,31 @@ public class MailClient extends BaseOfficeClient {
             if (expandClause != null) {
                 messages = messages.expand(expandClause);
             }
-
-             if (topResults > 0) {
-                messages.top(topResults);
-            } else {
-                messages.top(mBuilder.getMaxDefaultResults());
-            }
+            messages = addSkipAndTop(skip, top, messages);
 
         } else {
-            if (topResults > 0) {
-                messages.top(topResults);
-            } else {
-                messages.top(mBuilder.getMaxDefaultResults());
-            }
+            messages = addSkipAndTop(skip, top, messages);
         }
 
         return messages.execute();
+    }
+
+    private Folder.Messages addSkipAndTop(int skip, int topResults, Folder.Messages messages) {
+
+        if (messages == null) {
+            throw new IllegalStateException("Messages cannot be null");
+        }
+
+        if (skip > 0) {
+            messages = messages.skip(skip);
+        }
+
+        if (topResults > 0) {
+            messages = messages.top(topResults);
+        } else {
+            messages = messages.top(mBuilder.getMaxDefaultResults());
+        }
+        return messages;
     }
 
     /**
