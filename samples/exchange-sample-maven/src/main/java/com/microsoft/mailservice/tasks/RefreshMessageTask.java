@@ -14,7 +14,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import com.microsoft.mailservice.ErrorHandler;
 import com.microsoft.mailservice.ExchangeAPIApplication;
 import com.microsoft.mailservice.adapters.MessageItemAdapter;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.MessageCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
 import com.microsoft.office365.api.MailClient;
 
 //TODO:Review. This looks so familiar to retrieve messages

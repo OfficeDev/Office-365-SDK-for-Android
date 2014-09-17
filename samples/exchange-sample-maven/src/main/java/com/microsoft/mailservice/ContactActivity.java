@@ -16,7 +16,7 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.microsoft.mailservice.tasks.CRUDContactTask;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Contact;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Contact;
 import com.microsoft.office365.api.ContactClient;
 
 public class ContactActivity extends Activity {

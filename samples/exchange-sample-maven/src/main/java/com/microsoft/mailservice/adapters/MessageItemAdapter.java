@@ -21,9 +21,9 @@ import android.widget.TextView;
 import com.google.common.collect.Lists;
 import com.microsoft.mailservice.R;
 import com.microsoft.mailservice.MainActivity;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Message;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.MessageCollection;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Recipient;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Recipient;
 
 public class MessageItemAdapter extends BaseAdapter {
 

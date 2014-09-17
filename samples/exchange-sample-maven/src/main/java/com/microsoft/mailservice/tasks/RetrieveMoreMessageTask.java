@@ -14,7 +14,7 @@ import android.os.AsyncTask;
 import com.microsoft.mailservice.ErrorHandler;
 import com.microsoft.mailservice.ExchangeAPIApplication;
 import com.microsoft.mailservice.adapters.MessageItemAdapter;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.MessageCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
 import com.microsoft.office365.api.MailClient;
 
 public class RetrieveMoreMessageTask extends AsyncTask<String, Void, MessageCollection> {

@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.google.common.collect.Lists;
 import com.microsoft.mailservice.R;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Contact;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.ContactCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Contact;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.ContactCollection;
 
 public class ContactItemAdapter extends BaseAdapter {
 

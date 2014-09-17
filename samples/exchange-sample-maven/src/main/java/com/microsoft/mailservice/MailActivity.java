@@ -8,8 +8,8 @@ package com.microsoft.mailservice;
 
 import org.json.JSONObject;
 
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.ItemBody;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Message;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.ItemBody;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
 
 
 import android.app.Activity;

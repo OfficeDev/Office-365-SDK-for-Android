@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.google.common.collect.Lists;
 import com.microsoft.mailservice.R;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Event;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.EventCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Event;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.EventCollection;
 
 public class EventItemAdapter extends BaseAdapter {
 

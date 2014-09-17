@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.microsoft.mailservice.ContactsActivity;
 import com.microsoft.mailservice.ErrorHandler;
 import com.microsoft.mailservice.ExchangeAPIApplication;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Contact;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Contact;
 import com.microsoft.office365.api.ContactClient;
 
 // TODO: Auto-generated Javadoc

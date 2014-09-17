@@ -16,7 +16,7 @@ import com.microsoft.mailservice.ContactsActivity;
 import com.microsoft.mailservice.ExchangeAPIApplication;
 import com.microsoft.mailservice.R;
 import com.microsoft.mailservice.adapters.ContactItemAdapter;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.ContactCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.ContactCollection;
 import com.microsoft.office365.api.ContactClient;
 
 // TODO: Auto-generated Javadoc

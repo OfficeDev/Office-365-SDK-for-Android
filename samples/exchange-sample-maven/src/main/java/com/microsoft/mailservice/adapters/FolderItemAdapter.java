@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.microsoft.mailservice.MainActivity;
 import com.microsoft.mailservice.R;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Folder;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Folder;
 
 public class FolderItemAdapter extends BaseAdapter {
 

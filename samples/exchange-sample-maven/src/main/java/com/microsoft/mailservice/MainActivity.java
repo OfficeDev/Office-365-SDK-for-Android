@@ -40,9 +40,9 @@ import com.microsoft.mailservice.tasks.RefreshMessageTask;
 import com.microsoft.mailservice.tasks.RetrieveFoldersTask;
 import com.microsoft.mailservice.tasks.RetrieveMessagesTask;
 import com.microsoft.mailservice.tasks.RetrieveMoreMessageTask;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Folder;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Message;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.MessageCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Folder;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
 
 /**
  * The Class MainActivity.

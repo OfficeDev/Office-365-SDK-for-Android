@@ -23,8 +23,8 @@ import com.microsoft.mailservice.ExchangeAPIApplication;
 import com.microsoft.mailservice.MainActivity;
 import com.microsoft.mailservice.R;
 import com.microsoft.mailservice.adapters.FolderItemAdapter;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Folder;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.Folder.ChildFolders;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Folder;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Folder.ChildFolders;
 import com.microsoft.office365.api.MailClient;
 
 // TODO: Auto-generated Javadoc
@@ -112,7 +112,8 @@ public class RetrieveFoldersTask extends AsyncTask<String, Void, Map<String, Lis
 		try {
 
 			MailClient mailClient = mApplication.getMailClient();	
-			ChildFolders auxFolders = mailClient.getChildFolders();
+			ChildFolders auxFolders = mailClient.getEntityContainer()
+                                                .getMe().getRootFolder().getChildFolders();
 			Folder inbox = null, draft = null, sentItems = null, deletedItems = null;
 
 			folders.put("Primary", new ArrayList<Folder>());
@@ -145,27 +146,5 @@ public class RetrieveFoldersTask extends AsyncTask<String, Void, Map<String, Lis
 		}
 
 		return folders;
-	}
-
-	List<Folder> orderFolders(List<Folder> folders) {
-		List<Folder> orderedFolder = new ArrayList<Folder>();
-
-		for (Folder folder : folders) {
-			if (folder.getDisplayName().equals("Inbox")) {
-				orderedFolder.add(folder);
-			}
-			folders.remove(folder);
-			break;
-		}
-
-		for (Folder folder : folders) {
-			if (folder.getDisplayName().equals("Inbox")) {
-				orderedFolder.add(folder);
-			}
-			folders.remove(folder);
-			break;
-		}
-
-		return orderedFolder;
 	}
 }

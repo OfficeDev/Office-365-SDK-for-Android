@@ -16,7 +16,7 @@ import com.microsoft.mailservice.CalendarEventsActivity;
 import com.microsoft.mailservice.ExchangeAPIApplication;
 import com.microsoft.mailservice.R;
 import com.microsoft.mailservice.adapters.EventItemAdapter;
-import com.microsoft.office.microsoft.exchange.services.odata.model.types.EventCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.EventCollection;
 import com.microsoft.office365.api.CalendarClient;
 
 // TODO: Auto-generated Javadoc

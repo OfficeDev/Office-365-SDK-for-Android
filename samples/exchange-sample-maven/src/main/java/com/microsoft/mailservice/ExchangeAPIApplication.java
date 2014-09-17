@@ -66,7 +66,7 @@ public class ExchangeAPIApplication extends Application {
 
 	public MailClient getMailClient() {
 		return new MailClient.Builder().setCredentials(mCredentials).setODataEndpoint(Constants.ODATA_ENDPOINT)
-				.setResourceId(Constants.RESOURCE_ID).setMaxResults(Constants.TOP_VALUE).build();
+				.setResourceId(Constants.RESOURCE_ID).setMaxDefaultResults(Constants.TOP_VALUE).build();
 	}
 
 	public AppPreferences getAppPreferences() {
