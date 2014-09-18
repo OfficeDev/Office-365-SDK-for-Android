@@ -16,6 +16,9 @@ import com.microsoft.aad.adal.AuthenticationCancelError;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.office365.api.MailClient;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.FolderCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
 import com.microsoft.office365.oauth.OAuthCredentials;
 
 import java.security.NoSuchAlgorithmException;
@@ -122,7 +125,7 @@ public class MainActivity extends Activity {
             }
 
             case R.id.load_mails: {
-                //getDataForListView();
+                getDataForListView();
                 return true;
             }
 
@@ -142,7 +145,14 @@ public class MainActivity extends Activity {
                 .setCredentials(new OAuthCredentials(mToken))
                 .setResourceId(Constants.RESOURCE_ID)
                 .setODataEndpoint(Constants.ODATA_ENDPOINT)
+                .setMaxDefaultResults(10)
                 .build();
+
+        FolderCollection folderCollection = client.
+
+        MessageCollection c = client.getMessages("Inbox");
+        Message m = c.iterator().next();
+        String s = m.getId();
 
 
        /*                                   .build();
