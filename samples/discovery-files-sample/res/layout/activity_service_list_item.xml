@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/serviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Some Service"
+        android:textColor="#040404"
+        android:textSize="15dip"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/capability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capability"
+        android:textColor="#040404"
+        android:textSize="15dip"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@+id/serviceName"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/resourceId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceName"
+        android:layout_marginTop="1dip"
+      	android:text="12345"
+        android:textColor="#343434"
+        android:textSize="10dip" />
+
+    <!-- Rightend Arrow -->
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow" />
+
+</RelativeLayout>

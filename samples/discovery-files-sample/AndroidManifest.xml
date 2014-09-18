@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.microsoft.assetmanagement"
+    android:screenOrientation="portrait"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.microsoft.onedrivediscovery.DiscoveryAPIApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/office365_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.microsoft.onedrivediscovery.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.microsoft.onedrivediscovery.ServiceListActivity"
+            android:label="@string/title_activity_service_lists"
+            android:parentActivityName="com.microsoft.onedrivediscovery.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.onedrivediscovery.FileListActivity"
+            android:label="@string/title_activity_files_lists"
+            android:parentActivityName="com.microsoft.onedrivediscovery.ServiceListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.onedrivediscovery.FileItemActivity"
+            android:label="@string/title_activity_file_item"
+            android:parentActivityName="com.microsoft.onedrivediscovery.FileListActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter android:label="OneDrive" >
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.microsoft.onedrivediscovery.AppPreferencesActivity"
+            android:label="Preferences"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.microsoft.adal.AuthenticationActivity"
+            android:label="Authenticate to Azure AD" >
+        </activity>
+    </application>
+
+</manifest>
