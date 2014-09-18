@@ -44,38 +44,9 @@ public class MainActivity extends Activity {
         if (mApplication.hasConfiguration()) {
             authenticate();
         } else {
-            Intent intent = new Intent(MainActivity.this,
-                    AppPreferencesActivity.class);
+            Intent intent = new Intent(MainActivity.this, AppPreferencesActivity.class);
             startActivity(intent);
         }
-    }
-
-    private void authenticate() {
-
-
-        getAuthContext().acquireToken(this, mAppPreferences.getResourceUrl(),
-                mAppPreferences.getClientId(),
-                mAppPreferences.getRedirectUrl(), "",
-                new AuthenticationCallback<AuthenticationResult>() {
-
-                    @Override
-                    public void onError(Exception exc) {
-                        if (exc.getClass() == AuthenticationCancelError.class) {
-                            // User canceled
-                        } else {
-                            // Do something with the error
-                        }
-                    }
-
-                    @Override
-                    public void onSuccess(AuthenticationResult result) {
-                        if (result != null
-                                && !result.getAccessToken().isEmpty()) {
-                            mToken = result.getAccessToken();
-                            getDataForListView();
-                        }
-                    }
-                });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -97,8 +68,8 @@ public class MainActivity extends Activity {
         return mAuthContext;
     }
 
-    protected void getToken() {
-        getAuthContext().acquireToken(this, mAppPreferences.getResourceUrl(),
+    protected void authenticate() {
+        getAuthContext().acquireToken(this, Constants.RESOURCE_ID,
                 mAppPreferences.getClientId(),
                 mAppPreferences.getRedirectUrl(), Constants.USER_HINT,
                 new AuthenticationCallback<AuthenticationResult>() {
@@ -168,7 +139,11 @@ public class MainActivity extends Activity {
     private void getDataForListView() {
 
         MailClient client = new MailClient.Builder()
-                .setCredentials(new OAuthCredentials(mToken)).build();
+                .setCredentials(new OAuthCredentials(mToken))
+                .setResourceId(Constants.RESOURCE_ID)
+                .setODataEndpoint(Constants.ODATA_ENDPOINT)
+                .build();
+
 
        /*                                   .build();
         List<Message> messages = new ArrayList<Message>();
@@ -194,7 +169,6 @@ public class MainActivity extends Activity {
         });
     }
 
-
     public void resetToken() {
         Log.i(TAG, "Clearing cached tokens");
         getAuthContext().getCache().removeAll();
@@ -206,5 +180,4 @@ public class MainActivity extends Activity {
         cookieManager.removeAllCookie();
         CookieSyncManager.getInstance().sync();
     }
-
 }

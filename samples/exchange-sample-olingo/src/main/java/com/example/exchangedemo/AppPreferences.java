@@ -19,9 +19,4 @@ public class AppPreferences {
 		String redirectUrl = mPreferences.getString("prefAADRedirectUrl", null);
 		return redirectUrl;
 	}
-	
-	public String getResourceUrl() {
-		String url = mPreferences.getString("prefResourceUrl", null);
-		return url;
-	}
 }

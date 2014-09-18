@@ -31,5 +31,8 @@ public class Constants {
 	 */
 	public static final String USER_HINT = "";
 	public static final String AUTHORITY_URL = "https://login.windows.net/common";
+    public static final String RESOURCE_ID = "https://outlook.office365.com/";
+    public static final String ODATA_ENDPOINT = "ews/odata";
+
 
 }

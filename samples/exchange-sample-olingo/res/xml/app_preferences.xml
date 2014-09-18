@@ -14,11 +14,5 @@
             android:summary="Enter the Redirect URL"
             android:title="Redirect URL" >
         </EditTextPreference>
-         <EditTextPreference
-            android:name="resource_url"
-            android:key="prefResourceUrl"
-            android:summary="Enter the Resource URL"
-            android:title="Resource URL" >
-        </EditTextPreference>
     </PreferenceCategory>
 </PreferenceScreen>

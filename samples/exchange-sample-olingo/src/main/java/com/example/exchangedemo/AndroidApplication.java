@@ -26,9 +26,6 @@ public class AndroidApplication extends Application {
 		if (isNullOrEmpty(mPreferences.getRedirectUrl()))
 			return false;
 
-		if (isNullOrEmpty(mPreferences.getResourceUrl()))
-			return false;
-		
 		return true;
 	}
 
