@@ -28,6 +28,14 @@
             <version>1.0.0</version>
             <type>aar</type>
         </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.office</groupId>
+            <artifactId>mail-calendar-contact-sdk</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
