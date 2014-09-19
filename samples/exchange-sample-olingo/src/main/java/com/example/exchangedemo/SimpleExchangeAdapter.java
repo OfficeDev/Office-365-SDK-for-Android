@@ -1,7 +1,9 @@
 package com.example.exchangedemo;
 
+import java.text.DateFormat;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +15,10 @@ import android.widget.TextView;
 public class SimpleExchangeAdapter extends BaseAdapter {
 
     private List<MessageViewModel> messageList;
-    private MainActivity mActivity;
+    private Activity mActivity;
     private LayoutInflater inflater;
 
-    public SimpleExchangeAdapter(MainActivity activity, List<MessageViewModel> messages) {
+    public SimpleExchangeAdapter(Activity activity, List<MessageViewModel> messages) {
         messageList = messages;
         mActivity = activity;
         inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -49,7 +51,12 @@ public class SimpleExchangeAdapter extends BaseAdapter {
 
         TextView senderName = (TextView) arg1.findViewById(R.id.sender);
         TextView subject = (TextView) arg1.findViewById(R.id.subject);
+        TextView sendOn = (TextView)arg1.findViewById(R.id.sendOn);
         MessageViewModel message = messageList.get(arg0);
+
+        DateFormat dateTimeFormatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+
+        sendOn.setText(dateTimeFormatter.format(message.getDateTimeSent()));
         senderName.setText(message.getSenderName());
         subject.setText(message.getSubject());
 

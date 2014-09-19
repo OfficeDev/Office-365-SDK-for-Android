@@ -15,13 +15,9 @@ import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationCancelError;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
-import com.microsoft.office365.api.MailClient;
-import com.microsoft.office365.microsoft.exchange.services.odata.model.types.FolderCollection;
-import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
-import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
-import com.microsoft.office365.oauth.OAuthCredentials;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.crypto.NoSuchPaddingException;
@@ -31,7 +27,7 @@ public class MainActivity extends Activity {
 
     private static final int MENU_RESET_TOKEN = 0;
     SimpleExchangeAdapter mailAdapter;
-    String mToken;
+    static String mToken;
     private AuthenticationContext mAuthContext;
     private AppPreferences mAppPreferences;
     private AndroidApplication mApplication;
@@ -97,6 +93,7 @@ public class MainActivity extends Activity {
                             Toast.makeText(getApplicationContext(), "Got token!",
                                     Toast.LENGTH_LONG).show();
                             Log.i(TAG, result.getAccessToken());
+                            mApplication.setToken(result.getAccessToken());
                         }
                     }
                 });
@@ -140,31 +137,15 @@ public class MainActivity extends Activity {
     }
 
     private void getDataForListView() {
-
-        MailClient client = new MailClient.Builder()
-                .setCredentials(new OAuthCredentials(mToken))
-                .setResourceId(Constants.RESOURCE_ID)
-                .setODataEndpoint(Constants.ODATA_ENDPOINT)
-                .setMaxDefaultResults(10)
-                .build();
-
-        FolderCollection folderCollection = client.
-
-        MessageCollection c = client.getMessages("Inbox");
-        Message m = c.iterator().next();
-        String s = m.getId();
-
-
-       /*                                   .build();
-        List<Message> messages = new ArrayList<Message>();
+        List<MessageViewModel> viewModels = new ArrayList<MessageViewModel>();
         try {
-            messages = client.getMessages("Inbox").get();
+            new RetrieveMessagesTask(this).execute("Inbox");
+            //fillList(viewModels);
         } catch (Exception e) {
-            // TODO: handle exception
+            Log.e(TAG, e.getMessage());
+            Toast.makeText(getApplicationContext(), e.getMessage(),
+                    Toast.LENGTH_LONG).show();
         }
-        fillList(messages);
-        */
-
     }
 
     private void fillList(final List<MessageViewModel> messages) {
