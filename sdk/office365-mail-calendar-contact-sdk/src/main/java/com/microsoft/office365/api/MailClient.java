@@ -1,12 +1,13 @@
 package com.microsoft.office365.api;
 
-import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Item;
-import com.microsoft.office365.oauth.OAuthCredentials;
 import com.microsoft.office365.microsoft.exchange.services.odata.model.types.FileAttachment;
 import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Folder;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.FolderCollection;
+import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Item;
 import com.microsoft.office365.microsoft.exchange.services.odata.model.types.ItemAttachment;
 import com.microsoft.office365.microsoft.exchange.services.odata.model.types.Message;
 import com.microsoft.office365.microsoft.exchange.services.odata.model.types.MessageCollection;
+import com.microsoft.office365.oauth.OAuthCredentials;
 
 /**
  * The Class MailClient.
@@ -464,6 +465,14 @@ public class MailClient extends BaseOfficeClient {
         }
 
         return messages.execute();
+    }
+
+    //TODO;
+    public FolderCollection getChildFolders() {
+
+        FolderCollection childFolders = getEntityContainer().getMe()
+                                                            .getRootFolder().getChildFolders().execute();
+        return childFolders;
     }
 
     private Folder.Messages addSkipAndTop(int skip, int topResults, Folder.Messages messages) {
