@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">com.microsoft.aad.adal</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="app_loading"></string>
+    <string name="title_activity_token">TokenActivity</string>
+    <string name="title_activity_authentication">Authentication </string>
+    <string name="title_confirmation_activity_authentication">Confirm</string>
+    <string name="confirmation_activity_authentication">Are you sure you want to cancel?</string>
+    <string name="confirmation_yes">Yes</string>
+    <string name="confirmation_no">No</string>
+    <string name="default_not_supported_msg">This operation is not supported in AAD Broker</string>
+    <string name="error_token_type_not_supported">Token type is not supported</string>
+    <string name="broker_authentication_request_is_invalid">Authetication request is invalid</string>
+    <string name="broker_processing">Broker is processing</string>
+
+</resources>
