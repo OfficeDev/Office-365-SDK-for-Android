@@ -19,10 +19,6 @@ android {
     }
 
     repositories {
-        flatDir {
-            dirs 'aars'
-        }
-
         mavenCentral()
     }
 }
@@ -31,11 +27,11 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.google.guava:guava:16.0.1'
-    compile(name:'adal-1.0.0', ext:'aar')
-    //compile 'com.microsoft.aad:adal:1.0.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile('com.microsoft.aad:adal:1.0.0') {
+        exclude group: 'com.android.support'
+    }
     compile files('libs/office365-files-sdk.jar')
     compile files('libs/office365-base-sdk.jar')
-
-    compile 'com.google.code.gson:gson:2.2.4'
 
 }
