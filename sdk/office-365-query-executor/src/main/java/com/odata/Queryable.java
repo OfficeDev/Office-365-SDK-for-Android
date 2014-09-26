@@ -40,7 +40,9 @@ public class Queryable<T> extends ODataExecutable implements Executable<List<T>>
 
     @Override
     ListenableFuture<String> oDataExecute(String path) {
+
         String query = "?$top=" + top + "&$skip=" + skip;
+
         return parent.oDataExecute(urlComponent + query);
     }
 
