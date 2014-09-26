@@ -6,6 +6,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.infrastructure.DependencyResolver;
 import com.infrastructure.Executable;
+import com.infrastructure.LogLevel;
+import com.infrastructure.Logger;
 import com.infrastructure.http.Response;
 import com.model.Message;
 import com.model.User;
@@ -31,7 +33,10 @@ public class UserQuery extends ODataExecutable implements Executable<User> {
 
     @Override
     ListenableFuture<Response> oDataExecute(String path) {
-        return parent.oDataExecute(urlComponent + "/" + path);
+        String url = urlComponent + "/" + path;
+        Logger.log(url, LogLevel.Verbose);
+
+        return parent.oDataExecute(url);
     }
 
     @Override
@@ -43,7 +48,7 @@ public class UserQuery extends ODataExecutable implements Executable<User> {
     public ListenableFuture<User> execute() {
         final SettableFuture<User> result = SettableFuture.create();
 
-        ListenableFuture<Response> future = oDataExecute("");
+        ListenableFuture<Response> future = oDataExecute(""); //TODO:REVIEW
         Futures.addCallback(future, new FutureCallback<Response>() {
             @Override
             public void onSuccess(Response response) {
