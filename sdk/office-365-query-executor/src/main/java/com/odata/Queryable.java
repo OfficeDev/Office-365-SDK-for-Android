@@ -5,7 +5,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.infrastructure.DependencyResolver;
+import com.infrastructure.http.Response;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
@@ -39,10 +41,9 @@ public class Queryable<T> extends ODataExecutable implements Executable<List<T>>
     }
 
     @Override
-    ListenableFuture<String> oDataExecute(String path) {
+    ListenableFuture<Response> oDataExecute(String path) {
 
         String query = "?$top=" + top + "&$skip=" + skip;
-
         return parent.oDataExecute(urlComponent + query);
     }
 
@@ -55,11 +56,16 @@ public class Queryable<T> extends ODataExecutable implements Executable<List<T>>
     public ListenableFuture<List<T>> execute() {
         final SettableFuture<List<T>> result = SettableFuture.create();
 
-        ListenableFuture<String> future = oDataExecute("");
-        Futures.addCallback(future, new FutureCallback<String>() {
+        ListenableFuture<Response> future = oDataExecute("");
+        Futures.addCallback(future, new FutureCallback<Response>() {
             @Override
-            public void onSuccess(String s) {
-                List<T> list = Arrays.asList(getResolver().getJsonSerializer().deserialize(s, clazz));
+            public void onSuccess(Response s) {
+                List<T> list = null;
+                try {
+                    list = Arrays.asList(getResolver().getJsonSerializer().deserialize(s.readToEnd(), clazz));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 result.set(list);
             }
 

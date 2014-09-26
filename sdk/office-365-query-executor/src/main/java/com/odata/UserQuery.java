@@ -5,11 +5,11 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.infrastructure.DependencyResolver;
+import com.infrastructure.http.Response;
 import com.model.Message;
 import com.model.User;
-import com.odata.Executable;
-import com.odata.ODataExecutable;
-import com.odata.Queryable;
+
+import java.io.IOException;
 
 /**
  * Created by PabloZaiden on 26/09/14.
@@ -29,7 +29,7 @@ public class UserQuery extends ODataExecutable implements Executable<User> {
     }
 
     @Override
-    ListenableFuture<String> oDataExecute(String path) {
+    ListenableFuture<Response> oDataExecute(String path) {
         return parent.oDataExecute(urlComponent + "/" + path);
     }
 
@@ -42,11 +42,15 @@ public class UserQuery extends ODataExecutable implements Executable<User> {
     public ListenableFuture<User> execute() {
         final SettableFuture<User> result = SettableFuture.create();
 
-        ListenableFuture<String> future = oDataExecute("");
-        Futures.addCallback(future, new FutureCallback<String>() {
+        ListenableFuture<Response> future = oDataExecute("");
+        Futures.addCallback(future, new FutureCallback<Response>() {
             @Override
-            public void onSuccess(String s) {
-                getResolver().getJsonSerializer().deserialize(s, User.class);
+            public void onSuccess(Response response) {
+                try {
+                    getResolver().getJsonSerializer().deserialize(response.readToEnd(), User.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
