@@ -2,7 +2,6 @@ package com.odata;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.infrastructure.DependencyResolver;
-import com.infrastructure.http.Request;
 import com.infrastructure.http.Response;
 
 /**

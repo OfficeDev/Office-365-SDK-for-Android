@@ -11,7 +11,6 @@ public class DependencyResolver {
     }
 
     public JsonSerializer getJsonSerializer() {
-        return new JsonSerializer();
+        return new GsonSerializer();
     }
-
 }

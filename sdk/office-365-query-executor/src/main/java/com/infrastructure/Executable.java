@@ -1,4 +1,4 @@
-package com.odata;
+package com.infrastructure;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
