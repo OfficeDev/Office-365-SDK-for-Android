@@ -1,9 +1,7 @@
-package com.microsoft.office365.query;
+package com.infrastructure;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-
-import java.io.Console;
 
 /**
  * Created by marcote on 9/25/14.

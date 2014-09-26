@@ -1,8 +1,9 @@
+
 import com.google.common.util.concurrent.ListenableFuture;
-import com.microsoft.office365.query.DependencyResolver;
-import com.microsoft.office365.query.EntryPoint;
-import com.microsoft.office365.query.Message;
-import com.microsoft.office365.query.QueryableFuture;
+import com.infrastructure.DependencyResolver;
+import com.model.Message;
+import com.model.User;
+import com.odata.EntryPoint;
 
 import java.util.List;
 
@@ -15,7 +16,14 @@ public class Program {
         EntryPoint entryPoint = new EntryPoint("https://exchange.com/owa", new DependencyResolver());
 
         ListenableFuture<List<Message>> future =
-                entryPoint.getMe().getMessages().top(10).skip(20).execute(Message.class);
+                entryPoint.getMe().getMessages()
+                        .top(10)
+                        .skip(20)
+                        .execute();
+
+
+        ListenableFuture<User> future2 =
+                entryPoint.getMe().execute();
 
         // https://exchange.com/owa/me/messages?$top=10&skip=20
     }

@@ -1,4 +1,4 @@
-package com.microsoft.office365.query;
+package com.model;
 
 /**
  * Created by marcote on 9/25/14.
