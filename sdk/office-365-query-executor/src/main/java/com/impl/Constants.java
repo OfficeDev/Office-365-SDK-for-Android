@@ -3,11 +3,21 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.infrastructure;
+package com.impl;
+
+import java.nio.charset.Charset;
 
 /**
- * Represents a logging level
+ * Constants used through the framework
  */
-public enum LogLevel {
-	Critical, Information, Verbose
+public class Constants {
+	/**
+	 * UTF-8 Encoding name
+	 */
+	public static final String UTF8_NAME = "UTF-8";
+	
+	/**
+	 * UTF-8 Charset instance
+	 */
+	public static final Charset UTF8 = Charset.forName(UTF8_NAME);
 }

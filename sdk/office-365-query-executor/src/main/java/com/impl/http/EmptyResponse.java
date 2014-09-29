@@ -1,13 +1,13 @@
-package com.infrastructure.http;
+package com.impl.http;
+
+import com.interfaces.Response;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by marcote on 9/29/14.
- */
 public class EmptyResponse implements Response {
 
     private Map<String, List<String>> mHeaders = new HashMap<String, List<String>>();
@@ -20,31 +20,21 @@ public class EmptyResponse implements Response {
 
     @Override
     public Map<String, List<String>> getHeaders() {
-        return mHeaders;
+        return new HashMap<String, List<String>>(mHeaders);
     }
 
     @Override
-    public List<String> getHeader(String headerName) {
-        return null;
-    }
-
-    @Override
-    public String readToEnd() throws IOException {
-        return "";
-    }
-
-    @Override
-    public String readLine() throws IOException {
-        return "";
-    }
-
-    @Override
-    public byte[] readAllBytes() throws IOException {
-        return new byte[0];
+    public List<String> getHeaders(String headerName) {
+        return mHeaders.get(headerName);
     }
 
     @Override
     public int getStatus() {
         return statusCode;
+    }
+
+    @Override
+    public InputStream getStream() throws IOException {
+        return null;
     }
 }

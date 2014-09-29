@@ -3,17 +3,18 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.infrastructure.http;
+package com.impl.http;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.interfaces.Request;
+import com.interfaces.Response;
 
 /**
  * Runnable that executes a network operation
@@ -67,7 +68,7 @@ class NetworkRunnable implements Runnable {
 			}
 
 			if (mResponseStream != null && !mFuture.isCancelled()) {
-				mFuture.set(new StreamResponse(mResponseStream, responseCode,
+				mFuture.set(new ResponseImpl(mResponseStream, responseCode,
 						mConnection.getHeaderFields()));
 			} else if (mErrorWasFound) {
                 mFuture.set(new EmptyResponse(responseCode, mConnection.getHeaderFields()));
@@ -118,7 +119,7 @@ class NetworkRunnable implements Runnable {
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-		connection.setRequestMethod(request.getVerb());
+		connection.setRequestMethod(request.getVerb().toString());
 
 		Map<String, String> headers = request.getHeaders();
 

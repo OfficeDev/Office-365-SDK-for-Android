@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.infrastructure.http;
+package com.impl.http;
 
 /**
  * A thread that can release resources when stopped

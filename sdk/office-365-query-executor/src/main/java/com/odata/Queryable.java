@@ -4,10 +4,9 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.infrastructure.DependencyResolver;
-import com.infrastructure.Executable;
-import com.infrastructure.Logger;
-import com.infrastructure.http.Constants;
+import com.impl.Constants;
+import com.interfaces.DependencyResolver;
+import com.interfaces.HttpVerb;
 
 import java.util.List;
 
@@ -60,14 +59,14 @@ public class Queryable<T,U> extends ODataExecutable implements Executable<List<T
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path) {
+    ListenableFuture<byte[]> oDataExecute(String path, HttpVerb verb) {
         if (selectedId == null) {
             String query = "?$top=" + top + "&$skip=" + skip;
-            return parent.oDataExecute(urlComponent + query);
+            return parent.oDataExecute(urlComponent + query, verb);
         } else {
             String selector = "('" + selectedId + "')";
 
-            return parent.oDataExecute(urlComponent + selector + "/" + path);
+            return parent.oDataExecute(urlComponent + selector + "/" + path, verb);
         }
     }
 
@@ -79,14 +78,14 @@ public class Queryable<T,U> extends ODataExecutable implements Executable<List<T
     @Override
     public ListenableFuture<List<T>> execute() {
         final SettableFuture<List<T>> result = SettableFuture.create();
-        ListenableFuture<byte[]> future = oDataExecute("");
+        ListenableFuture<byte[]> future = oDataExecute("", HttpVerb.GET);
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
             public void onSuccess(byte[] payload) {
                 List<T> list;
                 try {
                     String string = new String(payload, Constants.UTF8_NAME);
-                    DependencyResolver resolver = getResolver();
+                    com.interfaces.DependencyResolver resolver = getResolver();
                     list = resolver.getJsonSerializer().deserializeList(string, clazz);
                     result.set(list);
                 } catch (Throwable e) {

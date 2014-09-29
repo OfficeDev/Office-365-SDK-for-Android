@@ -3,19 +3,21 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.infrastructure.http;
+package com.impl.http;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.infrastructure.HttpConnection;
+import com.interfaces.HttpTransport;
+import com.interfaces.Request;
+import com.interfaces.Response;
 
 /**
  * Java HttpConnection implementation, based on HttpURLConnection and threads
  * async operations
  */
-public class JavaHttpConnection implements HttpConnection {
+public class JavaHttpConnection implements HttpTransport {
 
     /**
      * User agent header name
@@ -23,9 +25,14 @@ public class JavaHttpConnection implements HttpConnection {
     private static final String USER_AGENT_HEADER = "User-Agent";
 
     @Override
+    public Request createRequest() {
+        return new RequestImpl();
+    }
+
+    @Override
     public ListenableFuture<Response> execute(final Request request) {
 
-        request.addHeader(USER_AGENT_HEADER, Platform.getUserAgent());
+        request.addHeader(USER_AGENT_HEADER, "Office365-SDK-Test");
 
         final SettableFuture<Response> future = SettableFuture.create();
         final NetworkRunnable target = new NetworkRunnable(request, future);

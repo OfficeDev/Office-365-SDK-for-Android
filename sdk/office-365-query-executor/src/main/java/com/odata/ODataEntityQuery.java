@@ -4,9 +4,9 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.infrastructure.DependencyResolver;
-import com.infrastructure.Executable;
-import com.infrastructure.http.Constants;
+import com.impl.Constants;
+import com.interfaces.DependencyResolver;
+import com.interfaces.HttpVerb;
 
 public abstract class ODataEntityQuery<E> extends ODataExecutable implements Executable<E> {
 
@@ -19,9 +19,9 @@ public abstract class ODataEntityQuery<E> extends ODataExecutable implements Exe
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path) {
+    ListenableFuture<byte[]> oDataExecute(String path, HttpVerb verb) {
         String url = urlComponent + "/" + path;
-        return parent.oDataExecute(url);
+        return parent.oDataExecute(url, verb);
     }
 
     @Override
@@ -32,7 +32,7 @@ public abstract class ODataEntityQuery<E> extends ODataExecutable implements Exe
     protected ListenableFuture<E> executeInternal(final Class<E> clazz) {
         final SettableFuture<E> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("");
+        ListenableFuture<byte[]> future = oDataExecute("", HttpVerb.GET);
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
             public void onSuccess(byte[] payload) {
