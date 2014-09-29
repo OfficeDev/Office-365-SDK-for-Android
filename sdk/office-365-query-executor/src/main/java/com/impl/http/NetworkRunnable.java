@@ -129,14 +129,10 @@ class NetworkRunnable implements Runnable {
 
 		if (request.getContent() != null) {
 			connection.setDoOutput(true);
-			// OutputStreamWriter out = new
-			// OutputStreamWriter(connection.getOutputStream());
 			byte[] requestContent = request.getContent();
 			OutputStream stream = connection.getOutputStream();
 			stream.write(requestContent, 0, requestContent.length);
 			stream.close();
-			// out.write(requestContent);
-			// out.close();
 
 		}
 

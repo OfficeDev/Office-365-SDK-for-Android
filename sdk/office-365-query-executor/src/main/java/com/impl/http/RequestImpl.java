@@ -19,7 +19,7 @@ public class RequestImpl implements Request {
 
 	private HttpVerb mVerb = HttpVerb.GET;
 
-	private byte[] mContent = new byte[0];
+	private byte[] mContent = null;
 
 	private HashMap<String, String> mHeaders = new HashMap<String, String>();
 

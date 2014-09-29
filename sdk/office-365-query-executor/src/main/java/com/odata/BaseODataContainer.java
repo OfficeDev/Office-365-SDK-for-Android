@@ -1,6 +1,7 @@
 package com.odata;
 
 import com.google.common.util.concurrent.*;
+import com.impl.Constants;
 import com.interfaces.*;
 
 import java.io.ByteArrayOutputStream;
@@ -24,7 +25,14 @@ public abstract class BaseODataContainer extends ODataExecutable {
         Request request = httpTransport.createRequest();
         request.setVerb(verb);
         request.setUrl(url + "/" + path);
-        resolver.getCredentialsFactory().getCredentials().prepareRequest(request);
+        getResolver().getCredentialsFactory().getCredentials().prepareRequest(request);
+
+        getResolver().getLogger().log("URL: " + request.getUrl(), LogLevel.VERBOSE);
+        getResolver().getLogger().log("HEADERS: ", LogLevel.VERBOSE);
+        for (String key :request.getHeaders().keySet()) {
+            getResolver().getLogger().log(key + " : " + request.getHeaders().get(key).toString(), LogLevel.VERBOSE);
+        }
+
 
         final ListenableFuture<Response> future = httpTransport.execute(request);
         final SettableFuture<byte[]> result = SettableFuture.create();
@@ -35,6 +43,12 @@ public abstract class BaseODataContainer extends ODataExecutable {
             public void onSuccess(Response response) {
                 try {
                     byte[] data = readAllBytes(response.getStream());
+
+                    if (response.getStatus() != 200) {
+                        String responseData = new String(data, Constants.UTF8_NAME);
+                        result.setException(new IllegalStateException("Response status: " + response.getStatus() + "\n" + "Response content: " + responseData));
+                        return;
+                    }
                     result.set(data);
                 } catch (Throwable t) {
                     result.setException(t);
