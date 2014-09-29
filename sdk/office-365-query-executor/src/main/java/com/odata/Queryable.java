@@ -6,18 +6,15 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.infrastructure.DependencyResolver;
 import com.infrastructure.Executable;
-import com.infrastructure.http.Response;
+import com.infrastructure.Logger;
+import com.infrastructure.http.Constants;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by PabloZaiden on 26/09/14.
- */
-public class Queryable<T> extends ODataExecutable implements Executable<List<T>> {
+public class Queryable<T,U> extends ODataExecutable implements Executable<List<T>> {
     private int top;
     private int skip;
+    private String selectedId = null;
     private String urlComponent;
     private ODataExecutable parent;
     private Class<T> clazz;
@@ -25,26 +22,53 @@ public class Queryable<T> extends ODataExecutable implements Executable<List<T>>
     public Queryable(String urlComponent, ODataExecutable parent, Class<T> clazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
-        this.clazz = (Class<T>) Array.newInstance(clazz, 0).getClass();
+        this.clazz = clazz;
     }
 
-    public Queryable<T> top(int top) {
+    public Queryable<T, U> top(int top) {
 
         this.top = top;
         return this;
     }
 
-    public Queryable<T> skip(int skip) {
+    public Queryable<T, U> skip(int skip) {
 
         this.skip = skip;
         return this;
     }
 
-    @Override
-    ListenableFuture<Response> oDataExecute(String path) {
+    public U getById(String id) {
+        this.selectedId = id;
 
-        String query = "?$top=" + top + "&$skip=" + skip;
-        return parent.oDataExecute(path + query);
+        String[] classNameParts = (clazz.getCanonicalName() + "Query").split("\\.");
+
+        // TODO: use proper namespace resolution for this class!!
+        String className = "com.odata." + classNameParts[classNameParts.length - 1];
+
+        try {
+            Class entityQueryClass = Class.forName(className);
+            ODataEntityQuery odataEntityQuery = (ODataEntityQuery) entityQueryClass
+                    .getConstructor(String.class, ODataExecutable.class)
+                    .newInstance("", this);
+
+            return (U)odataEntityQuery;
+        } catch (Throwable e) {
+            // if this happens, we couldn't find the xxxQuery class at runtime.
+            // this must NEVER happen
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    ListenableFuture<byte[]> oDataExecute(String path) {
+        if (selectedId == null) {
+            String query = "?$top=" + top + "&$skip=" + skip;
+            return parent.oDataExecute(urlComponent + query);
+        } else {
+            String selector = "('" + selectedId + "')";
+
+            return parent.oDataExecute(urlComponent + selector + "/" + path);
+        }
     }
 
     @Override
@@ -55,19 +79,19 @@ public class Queryable<T> extends ODataExecutable implements Executable<List<T>>
     @Override
     public ListenableFuture<List<T>> execute() {
         final SettableFuture<List<T>> result = SettableFuture.create();
-        ListenableFuture<Response> future = oDataExecute(urlComponent);
-
-        Futures.addCallback(future, new FutureCallback<Response>() {
+        ListenableFuture<byte[]> future = oDataExecute("");
+        Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(Response response) {
-                List<T> list = null;
+            public void onSuccess(byte[] payload) {
+                List<T> list;
                 try {
-                    list = Arrays.asList(getResolver()
-                            .getJsonSerializer().deserialize(response.readToEnd(), clazz));
+                    String string = new String(payload, Constants.UTF8_NAME);
+                    DependencyResolver resolver = getResolver();
+                    list = resolver.getJsonSerializer().deserializeList(string, clazz);
+                    result.set(list);
                 } catch (Throwable e) {
-                    e.printStackTrace();
+                    result.setException(e);
                 }
-                result.set(list);
             }
 
             @Override

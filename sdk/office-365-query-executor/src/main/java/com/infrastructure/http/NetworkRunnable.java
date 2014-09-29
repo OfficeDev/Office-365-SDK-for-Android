@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.util.concurrent.SettableFuture;
@@ -22,6 +23,7 @@ class NetworkRunnable implements Runnable {
 	HttpURLConnection mConnection = null;
 	InputStream mResponseStream = null;
 	Request mRequest;
+    boolean mErrorWasFound = false;
 	SettableFuture<Response> mFuture;
 
 	Object mCloseLock = new Object();
@@ -57,6 +59,7 @@ class NetworkRunnable implements Runnable {
 
 					if (responseCode >= 400) {
 						mResponseStream = mConnection.getErrorStream();
+                        mErrorWasFound = true;
 					} else {
 						mResponseStream = mConnection.getInputStream();
 					}
@@ -66,7 +69,9 @@ class NetworkRunnable implements Runnable {
 			if (mResponseStream != null && !mFuture.isCancelled()) {
 				mFuture.set(new StreamResponse(mResponseStream, responseCode,
 						mConnection.getHeaderFields()));
-			}
+			} else if (mErrorWasFound) {
+                mFuture.set(new EmptyResponse(responseCode, mConnection.getHeaderFields()));
+            }
 		} catch (Throwable e) {
 			if (!mFuture.isCancelled()) {
 				if (mConnection != null) {
