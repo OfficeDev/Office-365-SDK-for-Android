@@ -1,13 +1,7 @@
 package com.impl;
 
-import com.impl.http.CredentialsImpl;
 import com.impl.http.JavaHttpConnection;
-import com.interfaces.Credentials;
-import com.interfaces.CredentialsFactory;
-import com.interfaces.DependencyResolver;
-import com.interfaces.HttpTransport;
-import com.interfaces.JsonSerializer;
-import com.interfaces.Logger;
+import com.interfaces.*;
 
 public class DefaultDependencyResolver implements DependencyResolver {
 

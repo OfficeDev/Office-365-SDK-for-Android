@@ -1,8 +1,6 @@
 package com.odata;
 
-import com.interfaces.Credentials;
 import com.interfaces.DependencyResolver;
-
 
 public class EntryPoint extends BaseODataContainer {
     public EntryPoint(String url, DependencyResolver resolver) {

@@ -10,7 +10,7 @@ import com.interfaces.HttpVerb;
 
 import java.util.List;
 
-public class Queryable<T,U> extends ODataExecutable implements Executable<List<T>> {
+public class Queryable<T, U> extends ODataExecutable implements Executable<List<T>> {
     private int top;
     private int skip;
     private String selectedId = null;
@@ -50,7 +50,7 @@ public class Queryable<T,U> extends ODataExecutable implements Executable<List<T
                     .getConstructor(String.class, ODataExecutable.class)
                     .newInstance("", this);
 
-            return (U)odataEntityQuery;
+            return (U) odataEntityQuery;
         } catch (Throwable e) {
             // if this happens, we couldn't find the xxxQuery class at runtime.
             // this must NEVER happen
@@ -65,7 +65,6 @@ public class Queryable<T,U> extends ODataExecutable implements Executable<List<T
             return parent.oDataExecute(urlComponent + query, verb);
         } else {
             String selector = "('" + selectedId + "')";
-
             return parent.oDataExecute(urlComponent + selector + "/" + path, verb);
         }
     }
@@ -85,7 +84,7 @@ public class Queryable<T,U> extends ODataExecutable implements Executable<List<T
                 List<T> list;
                 try {
                     String string = new String(payload, Constants.UTF8_NAME);
-                    com.interfaces.DependencyResolver resolver = getResolver();
+                    DependencyResolver resolver = getResolver();
                     list = resolver.getJsonSerializer().deserializeList(string, clazz);
                     result.set(list);
                 } catch (Throwable e) {

@@ -50,7 +50,7 @@ public abstract class BaseODataContainer extends ODataExecutable {
     }
 
     @Override
-    com.interfaces.DependencyResolver getResolver() {
+    DependencyResolver getResolver() {
         return resolver;
     }
 
