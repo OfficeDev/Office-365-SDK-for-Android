@@ -7,19 +7,14 @@ import com.model.Message;
 public class FolderQuery extends ODataEntityQuery<Folder> implements Executable<Folder> {
 
     public FolderQuery(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent);
+        super(urlComponent, parent, Folder.class);
     }
 
-    @Override
-    public ListenableFuture<Folder> execute() {
-        return executeInternal(Folder.class);
+    public ODataCollection<Message, MessageQuery> getMessages() {
+        return new ODataCollection<Message, MessageQuery>("Messages", this, Message.class);
     }
 
-    public Queryable<Message, MessageQuery> getMessages() {
-        return new Queryable<Message, MessageQuery>("Messages", this, Message.class);
-    }
-
-    public Queryable<Folder, FolderQuery> getChildFolders(){
-        return new Queryable<Folder, FolderQuery>("ChildFolders",this, Folder.class);
+    public ODataCollection<Folder, FolderQuery> getChildFolders(){
+        return new ODataCollection<Folder, FolderQuery>("ChildFolders",this, Folder.class);
     }
 }

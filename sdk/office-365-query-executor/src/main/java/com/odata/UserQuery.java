@@ -9,19 +9,14 @@ import com.model.User;
 public class UserQuery extends ODataEntityQuery<User> implements Executable<User> {
 
     public UserQuery(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent);
+        super(urlComponent, parent, User.class);
     }
 
-    public Queryable<Message, MessageQuery> getMessages() {
-        return new Queryable<Message, MessageQuery>("Messages", this, Message.class);
+    public ODataCollection<Message, MessageQuery> getMessages() {
+        return new ODataCollection<Message, MessageQuery>("Messages", this, Message.class);
     }
 
     public FolderQuery getInbox() {
         return new FolderQuery("Inbox",this);
-    }
-
-    @Override
-    public ListenableFuture<User> execute() {
-        return executeInternal(User.class);
     }
 }

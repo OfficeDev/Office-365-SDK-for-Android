@@ -6,7 +6,7 @@ import com.interfaces.HttpVerb;
 
 abstract class ODataExecutable {
 
-    abstract ListenableFuture<byte[]> oDataExecute(String path, HttpVerb verb);
+    abstract ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb);
 
     abstract DependencyResolver getResolver();
 }

@@ -19,12 +19,13 @@ public abstract class BaseODataContainer extends ODataExecutable {
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path, HttpVerb verb) {
+    ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
 
         HttpTransport httpTransport = resolver.getHttpTransport();
         Request request = httpTransport.createRequest();
         request.setVerb(verb);
         request.setUrl(url + "/" + path);
+        request.setContent(content);
         getResolver().getCredentialsFactory().getCredentials().prepareRequest(request);
 
         getResolver().getLogger().log("URL: " + request.getUrl(), LogLevel.VERBOSE);
@@ -32,7 +33,6 @@ public abstract class BaseODataContainer extends ODataExecutable {
         for (String key :request.getHeaders().keySet()) {
             getResolver().getLogger().log(key + " : " + request.getHeaders().get(key).toString(), LogLevel.VERBOSE);
         }
-
 
         final ListenableFuture<Response> future = httpTransport.execute(request);
         final SettableFuture<byte[]> result = SettableFuture.create();
@@ -44,7 +44,8 @@ public abstract class BaseODataContainer extends ODataExecutable {
                 try {
                     byte[] data = readAllBytes(response.getStream());
 
-                    if (response.getStatus() != 200) {
+                    int status = response.getStatus();
+                    if (status < 200 || status > 299) {
                         String responseData = new String(data, Constants.UTF8_NAME);
                         result.setException(new IllegalStateException("Response status: " + response.getStatus() + "\n" + "Response content: " + responseData));
                         return;

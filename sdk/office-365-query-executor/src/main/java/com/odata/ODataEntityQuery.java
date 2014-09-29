@@ -12,16 +12,18 @@ public abstract class ODataEntityQuery<E> extends ODataExecutable implements Exe
 
     private String urlComponent;
     private ODataExecutable parent;
+    private Class<E> clazz;
 
-    public ODataEntityQuery(String urlComponent, ODataExecutable parent) {
+    public ODataEntityQuery(String urlComponent, ODataExecutable parent, Class<E> clazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
+        this.clazz = clazz;
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path, HttpVerb verb) {
+    ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
         String url = urlComponent + "/" + path;
-        return parent.oDataExecute(url, verb);
+        return parent.oDataExecute(url, content, verb);
     }
 
     @Override
@@ -29,10 +31,59 @@ public abstract class ODataEntityQuery<E> extends ODataExecutable implements Exe
         return parent.getResolver();
     }
 
-    protected ListenableFuture<E> executeInternal(final Class<E> clazz) {
+    public ListenableFuture<E> update(E updatedEntity) {
         final SettableFuture<E> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("", HttpVerb.GET);
+        String payload = getResolver().getJsonSerializer().serialize(updatedEntity);
+
+        ListenableFuture<byte[]> future = oDataExecute("", payload.getBytes(Constants.UTF8), HttpVerb.PATCH);
+
+        Futures.addCallback(future, new FutureCallback<byte[]>() {
+            @Override
+            public void onSuccess(byte[] payload) {
+                try {
+                    String string = new String(payload, Constants.UTF8_NAME);
+                    DependencyResolver resolver = getResolver();
+                    E entity = resolver.getJsonSerializer().deserialize(string, clazz);
+                    result.set(entity);
+                } catch (Throwable e) {
+                    result.setException(e);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                result.setException(throwable);
+            }
+        });
+
+        return result;
+    }
+
+    public ListenableFuture delete() {
+        final SettableFuture<E> result = SettableFuture.create();
+
+        ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.DELETE);
+
+        Futures.addCallback(future, new FutureCallback<byte[]>() {
+            @Override
+            public void onSuccess(byte[] payload) {
+                result.set(null);
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                result.setException(throwable);
+            }
+        });
+
+        return result;
+    }
+
+    public ListenableFuture<E> execute() {
+        final SettableFuture<E> result = SettableFuture.create();
+
+        ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.GET);
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
             public void onSuccess(byte[] payload) {
