@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.impl;
+package com.odata;
 
 import java.nio.charset.Charset;
 

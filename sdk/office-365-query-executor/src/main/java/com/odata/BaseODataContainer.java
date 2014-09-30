@@ -1,7 +1,6 @@
 package com.odata;
 
 import com.google.common.util.concurrent.*;
-import com.impl.Constants;
 import com.interfaces.*;
 
 import java.io.ByteArrayOutputStream;

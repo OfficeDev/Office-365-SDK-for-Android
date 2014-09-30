@@ -1,9 +1,7 @@
 package com.odata;
 
-import com.google.common.util.concurrent.ListenableFuture;
 import com.model.Message;
 import com.model.User;
-
 
 
 public class UserQuery extends ODataEntityQuery<User> implements Executable<User> {
@@ -17,6 +15,6 @@ public class UserQuery extends ODataEntityQuery<User> implements Executable<User
     }
 
     public FolderQuery getInbox() {
-        return new FolderQuery("Inbox",this);
+        return new FolderQuery("Inbox", this);
     }
 }

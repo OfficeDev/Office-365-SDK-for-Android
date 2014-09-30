@@ -61,8 +61,14 @@ public class Program {
             logger.log(message.getSubject(), LogLevel.VERBOSE);
 
 
-            /*
-            ListenableFuture deleteFuture = entryPoint.getMe().getInbox().getMessages().getById("AAMkADE1ZTA3YjlhLWJjYzktNDcxMi04ZmVlLWQ5NWU1M2JjMjU4MABGAAAAAAAByh0rJH6DT7WCPbQQmyVpBwDVFK1Y7CyPTrjfscGqbU3_AAAAfh1XAACuHQeKbeB2Trl-paQKiTbkAAFcKCXqAAA=").delete();
+            //entryPoint.getMe().getInbox().getMessages().add(message).g
+
+            ListenableFuture deleteFuture = entryPoint
+                    .getMe()
+                    .getInbox()
+                    .getMessages()
+                    .getById("AAMkADE1ZTA3YjlhLWJjYzktNDcxMi04ZmVlLWQ5NWU1M2JjMjU4MABGAAAAAAAByh0rJH6DT7WCPbQQmyVpBwDVFK1Y7CyPTrjfscGqbU3_AAAAfh1XAACuHQeKbeB2Trl-paQKiTbkAAFcKCXqAAA=")
+                    .delete();
 
             Futures.addCallback(deleteFuture, new FutureCallback() {
                 @Override
@@ -75,7 +81,7 @@ public class Program {
                     logger.log("Error: " + throwable.toString(), LogLevel.VERBOSE);
                 }
             });
-            */
+
         } catch (Throwable t) {
             logger.log(t.getMessage(), LogLevel.VERBOSE);
         }
