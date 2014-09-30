@@ -37,4 +37,8 @@ public class EmptyResponse implements Response {
     public InputStream getStream() throws IOException {
         return null;
     }
+
+    @Override
+    public void close() throws IOException {
+    }
 }

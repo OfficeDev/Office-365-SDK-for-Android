@@ -29,7 +29,8 @@ public class Program {
                     return new Credentials() {
                         @Override
                         public void prepareRequest(Request request) {
-                            request.addHeader("Authorization", "Bearer " + token);
+                            //request.addHeader("Authorization", "Bearer " + token);
+                            request.addHeader("Authorization", "Basic bWFyY29zdEBsYWdhc2guY29tOmxhZ2FzaCEwMA==");
                         }
                     };
                 }
@@ -63,6 +64,7 @@ public class Program {
 
             //entryPoint.getMe().getInbox().getMessages().add(message).g
 
+            /*
             ListenableFuture deleteFuture = entryPoint
                     .getMe()
                     .getInbox()
@@ -82,8 +84,10 @@ public class Program {
                 }
             });
 
+*/
         } catch (Throwable t) {
-            logger.log(t.getMessage(), LogLevel.VERBOSE);
+            t.printStackTrace();
+            //logger.log(t.getMessage(), LogLevel.VERBOSE);
         }
     }
 }

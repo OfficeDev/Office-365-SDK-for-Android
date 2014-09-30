@@ -13,4 +13,6 @@ public interface Response {
     public int getStatus();
 
     public InputStream getStream() throws IOException;
+
+    public void close() throws IOException;
 }

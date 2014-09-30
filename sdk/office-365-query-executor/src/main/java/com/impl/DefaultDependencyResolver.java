@@ -1,6 +1,6 @@
 package com.impl;
 
-import com.impl.http.JavaHttpConnection;
+import com.impl.http.ApacheHttpConnection;
 import com.interfaces.*;
 
 public class DefaultDependencyResolver implements DependencyResolver {
@@ -9,7 +9,7 @@ public class DefaultDependencyResolver implements DependencyResolver {
 
     @Override
     public HttpTransport getHttpTransport() {
-        return new JavaHttpConnection();
+        return new ApacheHttpConnection();
     }
 
     @Override

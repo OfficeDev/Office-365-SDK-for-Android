@@ -5,17 +5,28 @@
  ******************************************************************************/
 package com.impl.http;
 
+import com.google.common.util.concurrent.SettableFuture;
+import com.interfaces.Request;
+import com.interfaces.Response;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.entity.EntityBuilder;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.EntityEnclosingRequestWrapper;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicHttpEntityEnclosingRequest;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import com.google.common.util.concurrent.SettableFuture;
-import com.interfaces.HttpVerb;
-import com.interfaces.Request;
-import com.interfaces.Response;
 
 /**
  * Runnable that executes a network operation
@@ -25,7 +36,6 @@ class NetworkRunnable implements Runnable {
 	HttpURLConnection mConnection = null;
 	InputStream mResponseStream = null;
 	Request mRequest;
-    boolean mErrorWasFound = false;
 	SettableFuture<Response> mFuture;
 
 	Object mCloseLock = new Object();
@@ -43,6 +53,66 @@ class NetworkRunnable implements Runnable {
 		mFuture = future;
 	}
 
+
+    @Override
+    public void run() {
+        CloseableHttpClient client = null;
+        try {
+            client = HttpClients.createDefault();
+            //client = new SystemDefaultHttpClient();
+            BasicHttpEntityEnclosingRequest realRequest = new BasicHttpEntityEnclosingRequest(mRequest.getVerb().toString(), mRequest.getUrl());
+
+            Map<String, String> headers = mRequest.getHeaders();
+            for (String key : headers.keySet()) {
+                realRequest.addHeader(key, headers.get(key));
+            }
+
+            if (mRequest.getContent() != null) {
+                HttpEntity entity = EntityBuilder.create().setBinary(mRequest.getContent()).build();
+                realRequest.setEntity(entity);
+            }
+
+            EntityEnclosingRequestWrapper wrapper = new EntityEnclosingRequestWrapper(realRequest);
+
+            CloseableHttpResponse realResponse = client.execute(wrapper);
+
+            int status = realResponse.getStatusLine().getStatusCode();
+
+            Map<String, List<String>> responseHeaders = new HashMap<String, List<String>>();
+            for (Header header : realResponse.getAllHeaders()) {
+                List<String> headerValues = new ArrayList<String>();
+                for (HeaderElement element : header.getElements()) {
+                    headerValues.add(element.getValue());
+                }
+                responseHeaders.put(header.getName(), headerValues);
+            }
+
+            InputStream stream = realResponse.getEntity().getContent();
+
+            if (stream != null) {
+                ResponseImpl response = new ResponseImpl(
+                        stream,
+                        status,
+                        responseHeaders,
+                        client);
+
+                mFuture.set(response);
+            } else {
+                client.close();
+                mFuture.set(new EmptyResponse(status, responseHeaders));
+            }
+
+        } catch (Throwable t) {
+            try {
+                if (client != null) {
+                    client.close();
+                }
+            } catch (IOException e) {
+            }
+            mFuture.setException(t);
+        }
+    }
+/*
 	@Override
 	public void run() {
 		try {
@@ -87,6 +157,8 @@ class NetworkRunnable implements Runnable {
 		}
 
 	}
+
+    */
 
 	/**
 	 * Closes the stream and connection, if possible

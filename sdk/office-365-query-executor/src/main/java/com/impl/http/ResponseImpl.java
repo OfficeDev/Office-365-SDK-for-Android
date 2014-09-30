@@ -6,6 +6,7 @@
 package com.impl.http;
 
 import com.interfaces.Response;
+import org.apache.http.impl.client.CloseableHttpClient;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,11 +21,13 @@ public class ResponseImpl implements Response {
     private InputStream mStream;
     private int mStatus;
     Map<String, List<String>> mHeaders;
+    CloseableHttpClient mClient;
 
-    public ResponseImpl(InputStream stream, int status, Map<String, List<String>> headers) {
+    public ResponseImpl(InputStream stream, int status, Map<String, List<String>> headers, CloseableHttpClient client) {
         mHeaders = new HashMap<String, List<String>>(headers);
         mStream = stream;
         mStatus = status;
+        mClient = client;
     }
 
     @Override
@@ -35,6 +38,11 @@ public class ResponseImpl implements Response {
     @Override
     public InputStream getStream() throws IOException {
         return mStream;
+    }
+
+    @Override
+    public void close() throws IOException {
+        mClient.close();
     }
 
     @Override

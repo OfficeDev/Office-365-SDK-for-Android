@@ -17,7 +17,7 @@ import com.interfaces.Response;
  * Java HttpConnection implementation, based on HttpURLConnection and threads
  * async operations
  */
-public class JavaHttpConnection implements HttpTransport {
+public class ApacheHttpConnection implements HttpTransport {
 
     /**
      * User agent header name
