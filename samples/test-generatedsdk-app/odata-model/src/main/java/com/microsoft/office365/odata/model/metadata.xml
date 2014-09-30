@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<edmx:Edmx Version="4.0">
+    <edmx:DataServices>
+        <Schema Namespace="Microsoft.Exchange.Services.OData.Model">
+            <EnumType Name="BodyType">
+                <Member Name="Text" Value="0" />
+                <Member Name="HTML" Value="1" />
+            </EnumType>
+            <EnumType Name="Importance">
+                <Member Name="Low" Value="0" />
+                <Member Name="Normal" Value="1" />
+                <Member Name="High" Value="2" />
+            </EnumType>
+            <EnumType Name="AttendeeType">
+                <Member Name="Required" Value="0" />
+                <Member Name="Optional" Value="1" />
+                <Member Name="Resource" Value="2" />
+            </EnumType>
+            <EnumType Name="ResponseType">
+                <Member Name="None" Value="0" />
+                <Member Name="Organizer" Value="1" />
+                <Member Name="TentativelyAccepted" Value="2" />
+                <Member Name="Accepted" Value="3" />
+                <Member Name="Declined" Value="4" />
+                <Member Name="NotResponded" Value="5" />
+            </EnumType>
+            <EnumType Name="EventType">
+                <Member Name="SingleInstance" Value="0" />
+                <Member Name="Occurrence" Value="1" />
+                <Member Name="Exception" Value="2" />
+                <Member Name="SeriesMaster" Value="3" />
+            </EnumType>
+            <EnumType Name="FreeBusyStatus">
+                <Member Name="Free" Value="0" />
+                <Member Name="Tentative" Value="1" />
+                <Member Name="Busy" Value="2" />
+                <Member Name="Oof" Value="3" />
+                <Member Name="WorkingElsewhere" Value="4" />
+                <Member Name="Unknown" Value="-1" />
+            </EnumType>
+            <EnumType Name="MeetingMessageType">
+                <Member Name="None" Value="0" />
+                <Member Name="MeetingRequest" Value="1" />
+                <Member Name="MeetingCancelled" Value="2" />
+                <Member Name="MeetingAccepted" Value="3" />
+                <Member Name="MeetingTenativelyAccepted" Value="4" />
+                <Member Name="MeetingDeclined" Value="5" />
+            </EnumType>
+            <EnumType Name="RecurrencePatternType">
+                <Member Name="Daily" Value="0" />
+                <Member Name="Weekly" Value="1" />
+                <Member Name="AbsoluteMonthly" Value="2" />
+                <Member Name="RelativeMonthly" Value="3" />
+                <Member Name="AbsoluteYearly" Value="4" />
+                <Member Name="RelativeYearly" Value="5" />
+            </EnumType>
+            <EnumType Name="RecurrenceRangeType">
+                <Member Name="EndDate" Value="0" />
+                <Member Name="NoEnd" Value="1" />
+                <Member Name="Numbered" Value="2" />
+            </EnumType>
+            <EnumType Name="WeekIndex">
+                <Member Name="First" Value="0" />
+                <Member Name="Second" Value="1" />
+                <Member Name="Third" Value="2" />
+                <Member Name="Fourth" Value="3" />
+                <Member Name="Last" Value="4" />
+            </EnumType>
+            <ComplexType Name="Recipient">
+                <Property Name="Name" Type="Edm.String" />
+                <Property Name="Address" Type="Edm.String" />
+            </ComplexType>
+            <ComplexType Name="Attendee" BaseType="Microsoft.Exchange.Services.OData.Model.Recipient">
+                <Property Name="Status" Type="Microsoft.Exchange.Services.OData.Model.ResponseStatus" />
+                <Property Name="Type" Type="Microsoft.Exchange.Services.OData.Model.AttendeeType" />
+            </ComplexType>
+            <ComplexType Name="ItemBody">
+                <Property Name="ContentType" Type="Microsoft.Exchange.Services.OData.Model.BodyType" />
+                <Property Name="Content" Type="Edm.String" />
+            </ComplexType>
+            <ComplexType Name="Location">
+                <Property Name="DisplayName" Type="Edm.String" />
+            </ComplexType>
+            <ComplexType Name="ResponseStatus" BaseType="Microsoft.Exchange.Services.OData.Model.Recipient">
+                <Property Name="Response" Type="Microsoft.Exchange.Services.OData.Model.ResponseType" />
+                <Property Name="Time" Type="Edm.DateTimeOffset" />
+            </ComplexType>
+            <ComplexType Name="PhysicalAddress">
+                <Property Name="Street" Type="Edm.String" />
+                <Property Name="City" Type="Edm.String" />
+                <Property Name="State" Type="Edm.String" />
+                <Property Name="CountryOrRegion" Type="Edm.String" />
+                <Property Name="PostalCode" Type="Edm.String" />
+            </ComplexType>
+            <ComplexType Name="RecurrencePattern">
+                <Property Name="Type" Type="Microsoft.Exchange.Services.OData.Model.RecurrencePatternType" />
+                <Property Name="Interval" Type="Edm.Int32" Nullable="false" />
+                <Property Name="DayOfMonth" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Month" Type="Edm.Int32" Nullable="false" />
+                <Property Name="DaysOfWeek" Type="Collection(System.DayOfWeek)" />
+                <Property Name="FirstDayOfWeek" Type="System.DayOfWeek" />
+                <Property Name="Index" Type="Microsoft.Exchange.Services.OData.Model.WeekIndex" />
+            </ComplexType>
+            <ComplexType Name="RecurrenceRange">
+                <Property Name="Type" Type="Microsoft.Exchange.Services.OData.Model.RecurrenceRangeType" />
+                <Property Name="StartDate" Type="Edm.DateTimeOffset" />
+                <Property Name="EndDate" Type="Edm.DateTimeOffset" />
+                <Property Name="NumberOfOccurrences" Type="Edm.Int32" Nullable="false" />
+            </ComplexType>
+            <ComplexType Name="PatternedRecurrence">
+                <Property Name="Pattern" Type="Microsoft.Exchange.Services.OData.Model.RecurrencePattern" />
+                <Property Name="Range" Type="Microsoft.Exchange.Services.OData.Model.RecurrenceRange" />
+            </ComplexType>
+            <EntityType Name="Entity" Abstract="true">
+                <Key>
+                    <PropertyRef Name="Id" />
+                </Key>
+                <Property Name="Id" Type="Edm.String" />
+            </EntityType>
+            <EntityType Name="User" BaseType="Microsoft.Exchange.Services.OData.Model.Entity">
+                <Property Name="DisplayName" Type="Edm.String" />
+                <Property Name="Alias" Type="Edm.String" />
+                <Property Name="MailboxGuid" Type="Edm.Guid" />
+                <NavigationProperty Name="Folders" Type="Collection(Microsoft.Exchange.Services.OData.Model.Folder)" ContainsTarget="true" />
+                <NavigationProperty Name="Messages" Type="Collection(Microsoft.Exchange.Services.OData.Model.Message)" ContainsTarget="true" />
+                <NavigationProperty Name="RootFolder" Type="Microsoft.Exchange.Services.OData.Model.Folder" ContainsTarget="true" />
+                <NavigationProperty Name="Inbox" Type="Microsoft.Exchange.Services.OData.Model.Folder" ContainsTarget="true" />
+                <NavigationProperty Name="Drafts" Type="Microsoft.Exchange.Services.OData.Model.Folder" ContainsTarget="true" />
+                <NavigationProperty Name="SentItems" Type="Microsoft.Exchange.Services.OData.Model.Folder" ContainsTarget="true" />
+                <NavigationProperty Name="DeletedItems" Type="Microsoft.Exchange.Services.OData.Model.Folder" ContainsTarget="true" />
+                <NavigationProperty Name="Calendars" Type="Collection(Microsoft.Exchange.Services.OData.Model.Calendar)" ContainsTarget="true" />
+                <NavigationProperty Name="Calendar" Type="Microsoft.Exchange.Services.OData.Model.Calendar" ContainsTarget="true" />
+                <NavigationProperty Name="CalendarGroups" Type="Collection(Microsoft.Exchange.Services.OData.Model.CalendarGroup)" ContainsTarget="true" />
+                <NavigationProperty Name="Events" Type="Collection(Microsoft.Exchange.Services.OData.Model.Event)" ContainsTarget="true" />
+                <NavigationProperty Name="Contacts" Type="Collection(Microsoft.Exchange.Services.OData.Model.Contact)" ContainsTarget="true" />
+                <NavigationProperty Name="ContactFolders" Type="Collection(Microsoft.Exchange.Services.OData.Model.ContactFolder)" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="Folder" BaseType="Microsoft.Exchange.Services.OData.Model.Entity">
+                <Property Name="ParentFolderId" Type="Edm.String" />
+                <Property Name="DisplayName" Type="Edm.String" />
+                <Property Name="ClassName" Type="Edm.String" />
+                <Property Name="TotalCount" Type="Edm.Int32" />
+                <Property Name="ChildFolderCount" Type="Edm.Int32" />
+                <Property Name="UnreadItemCount" Type="Edm.Int32" />
+                <NavigationProperty Name="ChildFolders" Type="Collection(Microsoft.Exchange.Services.OData.Model.Folder)" ContainsTarget="true" />
+                <NavigationProperty Name="Messages" Type="Collection(Microsoft.Exchange.Services.OData.Model.Message)" ContainsTarget="true" />
+            </EntityType>
+            <Action Name="Copy" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Folder" />
+                <Parameter Name="DestinationId" Type="Edm.String" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Folder" />
+            </Action>
+            <Action Name="Move" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Folder" />
+                <Parameter Name="DestinationId" Type="Edm.String" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Folder" />
+            </Action>
+            <EntityType Name="Item" BaseType="Microsoft.Exchange.Services.OData.Model.Entity" Abstract="true">
+                <Property Name="ChangeKey" Type="Edm.String" />
+                <Property Name="ClassName" Type="Edm.String" />
+                <Property Name="Subject" Type="Edm.String" />
+                <Property Name="Body" Type="Microsoft.Exchange.Services.OData.Model.ItemBody" />
+                <Property Name="BodyPreview" Type="Edm.String" />
+                <Property Name="Importance" Type="Microsoft.Exchange.Services.OData.Model.Importance" />
+                <Property Name="Categories" Type="Collection(Edm.String)" />
+                <Property Name="HasAttachments" Type="Edm.Boolean" />
+                <NavigationProperty Name="Attachments" Type="Collection(Microsoft.Exchange.Services.OData.Model.Attachment)" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="Message" BaseType="Microsoft.Exchange.Services.OData.Model.Item">
+                <Property Name="ParentFolderId" Type="Edm.String" />
+                <Property Name="From" Type="Microsoft.Exchange.Services.OData.Model.Recipient" />
+                <Property Name="Sender" Type="Microsoft.Exchange.Services.OData.Model.Recipient" />
+                <Property Name="ToRecipients" Type="Collection(Microsoft.Exchange.Services.OData.Model.Recipient)" />
+                <Property Name="CcRecipients" Type="Collection(Microsoft.Exchange.Services.OData.Model.Recipient)" />
+                <Property Name="BccRecipients" Type="Collection(Microsoft.Exchange.Services.OData.Model.Recipient)" />
+                <Property Name="ReplyTo" Type="Collection(Microsoft.Exchange.Services.OData.Model.Recipient)" />
+                <Property Name="ConversationId" Type="Edm.String" />
+                <Property Name="UniqueBody" Type="Microsoft.Exchange.Services.OData.Model.ItemBody" />
+                <Property Name="DateTimeReceived" Type="Edm.DateTimeOffset" />
+                <Property Name="DateTimeSent" Type="Edm.DateTimeOffset" />
+                <Property Name="IsDeliveryReceiptRequested" Type="Edm.Boolean" />
+                <Property Name="IsReadReceiptRequested" Type="Edm.Boolean" />
+                <Property Name="IsDraft" Type="Edm.Boolean" />
+                <Property Name="IsRead" Type="Edm.Boolean" />
+                <Property Name="EventId" Type="Edm.String" />
+                <Property Name="MeetingMessageType" Type="Microsoft.Exchange.Services.OData.Model.MeetingMessageType" />
+                <Property Name="DateTimeCreated" Type="Edm.DateTimeOffset" />
+                <Property Name="LastModifiedTime" Type="Edm.DateTimeOffset" />
+            </EntityType>
+            <Action Name="Copy" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <Parameter Name="DestinationId" Type="Edm.String" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Message" />
+            </Action>
+            <Action Name="Move" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <Parameter Name="DestinationId" Type="Edm.String" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Message" />
+            </Action>
+            <Action Name="CreateReply" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Message" />
+            </Action>
+            <Action Name="CreateReplyAll" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Message" />
+            </Action>
+            <Action Name="CreateForward" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <ReturnType Type="Microsoft.Exchange.Services.OData.Model.Message" />
+            </Action>
+            <Action Name="Reply" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <Parameter Name="Comment" Type="Edm.String" />
+            </Action>
+            <Action Name="ReplyAll" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <Parameter Name="Comment" Type="Edm.String" />
+            </Action>
+            <Action Name="Forward" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+                <Parameter Name="Comment" Type="Edm.String" />
+                <Parameter Name="ToRecipients" Type="Collection(Microsoft.Exchange.Services.OData.Model.Recipient)" />
+            </Action>
+            <Action Name="Send" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Message" />
+            </Action>
+            <EntityType Name="Attachment" BaseType="Microsoft.Exchange.Services.OData.Model.Entity" Abstract="true">
+                <Property Name="Name" Type="Edm.String" />
+                <Property Name="ContentType" Type="Edm.String" />
+                <Property Name="Size" Type="Edm.Int32" Nullable="false" />
+                <Property Name="IsInline" Type="Edm.Boolean" Nullable="false" />
+                <Property Name="LastModifiedTime" Type="Edm.DateTimeOffset" />
+            </EntityType>
+            <EntityType Name="FileAttachment" BaseType="Microsoft.Exchange.Services.OData.Model.Attachment">
+                <Property Name="ContentId" Type="Edm.String" />
+                <Property Name="ContentLocation" Type="Edm.String" />
+                <Property Name="IsContactPhoto" Type="Edm.Boolean" Nullable="false" />
+                <Property Name="ContentBytes" Type="Edm.Binary" />
+            </EntityType>
+            <EntityType Name="ItemAttachment" BaseType="Microsoft.Exchange.Services.OData.Model.Attachment">
+                <NavigationProperty Name="Item" Type="Microsoft.Exchange.Services.OData.Model.Item" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="Calendar" BaseType="Microsoft.Exchange.Services.OData.Model.Entity">
+                <Property Name="Name" Type="Edm.String" />
+                <Property Name="ChangeKey" Type="Edm.String" />
+                <NavigationProperty Name="Events" Type="Collection(Microsoft.Exchange.Services.OData.Model.Event)" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="CalendarGroup" BaseType="Microsoft.Exchange.Services.OData.Model.Entity">
+                <Property Name="Name" Type="Edm.String" />
+                <Property Name="ChangeKey" Type="Edm.String" />
+                <Property Name="ClassId" Type="Edm.Guid" />
+                <NavigationProperty Name="Calendars" Type="Collection(Microsoft.Exchange.Services.OData.Model.Calendar)" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="Event" BaseType="Microsoft.Exchange.Services.OData.Model.Item">
+                <Property Name="Start" Type="Edm.DateTimeOffset" />
+                <Property Name="End" Type="Edm.DateTimeOffset" />
+                <Property Name="Location" Type="Microsoft.Exchange.Services.OData.Model.Location" />
+                <Property Name="ShowAs" Type="Microsoft.Exchange.Services.OData.Model.FreeBusyStatus" />
+                <Property Name="IsAllDay" Type="Edm.Boolean" />
+                <Property Name="IsCancelled" Type="Edm.Boolean" />
+                <Property Name="IsOrganizer" Type="Edm.Boolean" />
+                <Property Name="ResponseRequested" Type="Edm.Boolean" />
+                <Property Name="Type" Type="Microsoft.Exchange.Services.OData.Model.EventType" />
+                <Property Name="SeriesId" Type="Edm.String" />
+                <Property Name="SeriesMasterId" Type="Edm.String" />
+                <Property Name="Attendees" Type="Collection(Microsoft.Exchange.Services.OData.Model.Attendee)" />
+                <Property Name="Recurrence" Type="Microsoft.Exchange.Services.OData.Model.PatternedRecurrence" />
+                <Property Name="DateTimeCreated" Type="Edm.DateTimeOffset" />
+                <Property Name="LastModifiedTime" Type="Edm.DateTimeOffset" />
+                <NavigationProperty Name="Calendar" Type="Microsoft.Exchange.Services.OData.Model.Calendar" ContainsTarget="true" />
+            </EntityType>
+            <Action Name="Accept" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Event" />
+                <Parameter Name="Comment" Type="Edm.String" />
+            </Action>
+            <Action Name="Decline" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Event" />
+                <Parameter Name="Comment" Type="Edm.String" />
+            </Action>
+            <Action Name="TentativelyAccept" IsBound="true" EntitySetPath="bindingParameter">
+                <Parameter Name="bindingParameter" Type="Microsoft.Exchange.Services.OData.Model.Event" />
+                <Parameter Name="Comment" Type="Edm.String" />
+            </Action>
+            <EntityType Name="Contact" BaseType="Microsoft.Exchange.Services.OData.Model.Item">
+                <Property Name="ParentFolderId" Type="Edm.String" />
+                <Property Name="Birthday" Type="Edm.DateTimeOffset" />
+                <Property Name="FileAs" Type="Edm.String" />
+                <Property Name="DisplayName" Type="Edm.String" />
+                <Property Name="GivenName" Type="Edm.String" />
+                <Property Name="Initials" Type="Edm.String" />
+                <Property Name="MiddleName" Type="Edm.String" />
+                <Property Name="NickName" Type="Edm.String" />
+                <Property Name="Surname" Type="Edm.String" />
+                <Property Name="Title" Type="Edm.String" />
+                <Property Name="Generation" Type="Edm.String" />
+                <Property Name="EmailAddress1" Type="Edm.String" />
+                <Property Name="EmailAddress2" Type="Edm.String" />
+                <Property Name="EmailAddress3" Type="Edm.String" />
+                <Property Name="ImAddress1" Type="Edm.String" />
+                <Property Name="ImAddress2" Type="Edm.String" />
+                <Property Name="ImAddress3" Type="Edm.String" />
+                <Property Name="JobTitle" Type="Edm.String" />
+                <Property Name="CompanyName" Type="Edm.String" />
+                <Property Name="Department" Type="Edm.String" />
+                <Property Name="OfficeLocation" Type="Edm.String" />
+                <Property Name="Profession" Type="Edm.String" />
+                <Property Name="BusinessHomePage" Type="Edm.String" />
+                <Property Name="AssistantName" Type="Edm.String" />
+                <Property Name="Manager" Type="Edm.String" />
+                <Property Name="HomePhone1" Type="Edm.String" />
+                <Property Name="HomePhone2" Type="Edm.String" />
+                <Property Name="BusinessPhone1" Type="Edm.String" />
+                <Property Name="BusinessPhone2" Type="Edm.String" />
+                <Property Name="MobilePhone1" Type="Edm.String" />
+                <Property Name="OtherPhone" Type="Edm.String" />
+                <Property Name="HomeAddress" Type="Microsoft.Exchange.Services.OData.Model.PhysicalAddress" />
+                <Property Name="BusinessAddress" Type="Microsoft.Exchange.Services.OData.Model.PhysicalAddress" />
+                <Property Name="OtherAddress" Type="Microsoft.Exchange.Services.OData.Model.PhysicalAddress" />
+                <Property Name="DateTimeCreated" Type="Edm.DateTimeOffset" />
+                <Property Name="LastModifiedTime" Type="Edm.DateTimeOffset" />
+            </EntityType>
+            <EntityType Name="ContactFolder" BaseType="Microsoft.Exchange.Services.OData.Model.Entity">
+                <Property Name="ParentFolderId" Type="Edm.String" />
+                <Property Name="DisplayName" Type="Edm.String" />
+                <NavigationProperty Name="Contacts" Type="Collection(Microsoft.Exchange.Services.OData.Model.Contact)" ContainsTarget="true" />
+                <NavigationProperty Name="ChildFolders" Type="Collection(Microsoft.Exchange.Services.OData.Model.ContactFolder)" ContainsTarget="true" />
+            </EntityType>
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Users" EntityType="Microsoft.Exchange.Services.OData.Model.User" />
+                <Singleton Name="Me" Type="Microsoft.Exchange.Services.OData.Model.User" />
+            </EntityContainer>
+        </Schema>
+        <Schema Namespace="System">
+            <EnumType Name="DayOfWeek">
+                <Member Name="Sunday" Value="0" />
+                <Member Name="Monday" Value="1" />
+                <Member Name="Tuesday" Value="2" />
+                <Member Name="Wednesday" Value="3" />
+                <Member Name="Thursday" Value="4" />
+                <Member Name="Friday" Value="5" />
+                <Member Name="Saturday" Value="6" />
+            </EnumType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
