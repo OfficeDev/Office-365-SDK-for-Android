@@ -17,4 +17,6 @@ public class UserQuery extends ODataEntityQuery<User> implements Executable<User
     public FolderQuery getInbox() {
         return new FolderQuery("Inbox", this);
     }
+
+
 }

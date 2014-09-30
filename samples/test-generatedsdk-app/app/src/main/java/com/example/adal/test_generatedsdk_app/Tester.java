@@ -46,7 +46,20 @@ public class Tester {
             String id = null;
             EntryPoint entryPoint = new EntryPoint("https://outlook.office365.com/EWS/OData", resolver);
 
-            ListenableFuture<List<Message>> future = entryPoint.getMe().getInbox().getMessages()
+            ListenableFuture<List<Message>> future = entryPoint.getMe().getInbox().getMessages().top(10).skip(20).execute();
+
+            //entryPoint.getMe().getInbox().getMessages().add(new Message())
+
+            //Futures.addCallback(future);
+
+            ListenableFuture<Message> future2 = entryPoint.getMe().getInbox().getMessages().getById("1234").execute();
+
+            Message updatedMessage = new Message();
+            updatedMessage.setSubject("FromAndroid");
+
+            entryPoint.getMe().getInbox().getChildFolders().execute();
+
+            ListenableFuture<List<Message>> future3 = entryPoint.getMe().getInbox().getMessages()
                     .top(10)
                     .skip(20)
                     .execute();
@@ -57,20 +70,16 @@ public class Tester {
                 logger.log(m.getSubject(), LogLevel.VERBOSE);
             }
 
-            ListenableFuture<User> future2 = entryPoint.getMe().execute();
+            ListenableFuture<User> future4 = entryPoint.getMe().execute();
 
             String alias;
             Message message;
 
-            alias = future2.get().getAlias();
+            alias = future4.get().getAlias();
             logger.log(alias, LogLevel.VERBOSE);
 
             message = entryPoint.getMe().getInbox().getMessages().getById(id).execute().get();
             logger.log(message.getSubject(), LogLevel.VERBOSE);
-
-
-            //entryPoint.getMe().getInbox().getMessages().add(message).g
-
 
             Message m = new Message();
             m.setSubject("FromAndroid");

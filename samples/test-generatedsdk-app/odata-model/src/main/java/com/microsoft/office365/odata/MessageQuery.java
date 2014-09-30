@@ -6,5 +6,6 @@ public class MessageQuery extends ODataEntityQuery<Message> implements Executabl
 
     public MessageQuery(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Message.class);
+
     }
 }
