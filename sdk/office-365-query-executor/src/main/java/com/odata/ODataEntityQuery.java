@@ -22,8 +22,17 @@ public abstract class ODataEntityQuery<E> extends ODataExecutable implements Exe
 
     @Override
     ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
-        String url = urlComponent + "/" + path;
-        return parent.oDataExecute(url, content, verb);
+        StringBuilder url = new StringBuilder();
+        if (urlComponent.length() > 0) {
+            url.append(urlComponent);
+        }
+
+        if (path.length() > 0) {
+            url.append("/");
+            url.append(path);
+        }
+
+        return parent.oDataExecute(url.toString(), content, verb);
     }
 
     @Override
