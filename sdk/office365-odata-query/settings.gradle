@@ -1,5 +1,0 @@
-include ':app.sample'
-rootProject.name = 'office365-odata-query'
-
-include 'impl'
-
