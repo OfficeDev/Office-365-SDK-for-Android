@@ -26,6 +26,8 @@ public abstract class BaseODataContainer extends ODataExecutable {
         request.setVerb(verb);
         request.setUrl(url + "/" + path);
         request.setContent(content);
+        getResolver().getLogger().log(new String(content, Constants.UTF8), LogLevel.VERBOSE);
+        request.addHeader("Content-Type", "application/json");
         getResolver().getCredentialsFactory().getCredentials().prepareRequest(request);
 
         getResolver().getLogger().log("URL: " + request.getUrl(), LogLevel.VERBOSE);

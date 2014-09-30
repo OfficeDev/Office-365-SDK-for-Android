@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.Map;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.interfaces.HttpVerb;
 import com.interfaces.Request;
 import com.interfaces.Response;
 
@@ -119,7 +120,7 @@ class NetworkRunnable implements Runnable {
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-		connection.setRequestMethod(request.getVerb().toString());
+        connection.setRequestMethod(request.getVerb().toString());
 
 		Map<String, String> headers = request.getHeaders();
 
