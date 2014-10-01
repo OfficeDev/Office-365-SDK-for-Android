@@ -8,13 +8,13 @@ package com.microsoft.office365.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 
-public abstract class ODataEntityQuery<E> extends ODataExecutable implements Executable<E> {
+public abstract class BaseEntityODataComponent<E> extends ODataExecutable implements Executable<E> {
 
     private String urlComponent;
     private ODataExecutable parent;
     private Class<E> clazz;
 
-    public ODataEntityQuery(String urlComponent, ODataExecutable parent, Class<E> clazz) {
+    public BaseEntityODataComponent(String urlComponent, ODataExecutable parent, Class<E> clazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;

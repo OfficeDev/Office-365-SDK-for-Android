@@ -9,16 +9,16 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class FolderQuery extends ODataEntityQuery<Folder> implements Executable<Folder> {
+public class FolderODataComponent extends BaseEntityODataComponent<Folder> implements Executable<Folder> {
 
-	 public FolderQuery(String urlComponent, ODataExecutable parent) {
+	 public FolderODataComponent(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Folder.class);
     }
-	public ODataCollection<Folder, FolderQuery, FolderCollectionOperations> getChildFolders() {
-        return new ODataCollection<Folder, FolderQuery,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class);
+	public ODataCollection<Folder, FolderODataComponent, FolderCollectionOperations> getChildFolders() {
+        return new ODataCollection<Folder, FolderODataComponent,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class);
     }
-	public ODataCollection<Message, MessageQuery, MessageCollectionOperations> getMessages() {
-        return new ODataCollection<Message, MessageQuery,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
+	public ODataCollection<Message, MessageODataComponent, MessageCollectionOperations> getMessages() {
+        return new ODataCollection<Message, MessageODataComponent,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
     }
 			
 	public ListenableFuture<Folder> copy(String destinationid) {

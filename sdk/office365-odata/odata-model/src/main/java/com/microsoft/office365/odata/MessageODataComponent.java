@@ -9,9 +9,9 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class MessageQuery extends ODataEntityQuery<Message> implements Executable<Message> {
+public class MessageODataComponent extends BaseEntityODataComponent<Message> implements Executable<Message> {
 
-	 public MessageQuery(String urlComponent, ODataExecutable parent) {
+	 public MessageODataComponent(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Message.class);
     }
 			

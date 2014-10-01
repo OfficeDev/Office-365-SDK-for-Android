@@ -9,13 +9,13 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class EventQuery extends ODataEntityQuery<Event> implements Executable<Event> {
+public class EventODataComponent extends BaseEntityODataComponent<Event> implements Executable<Event> {
 
-	 public EventQuery(String urlComponent, ODataExecutable parent) {
+	 public EventODataComponent(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Event.class);
     }
-	public CalendarQuery getCalendar() {
-        return new CalendarQuery("Calendar", this);
+	public CalendarODataComponent getCalendar() {
+        return new CalendarODataComponent("Calendar", this);
     }
 			
 	public ListenableFuture<Integer> accept(String comment) {
