@@ -1,8 +1,12 @@
+/*******************************************************************************
+ * Copyright (c) Microsoft Open Technologies, Inc.
+ * All Rights Reserved
+ * See License.txt in the project root for license information.
+ ******************************************************************************/
 package com.microsoft.office365.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,17 +29,12 @@ public abstract class BaseODataContainer extends ODataExecutable {
         request.setVerb(verb);
         request.setUrl(url + "/" + path);
         request.setContent(content);
-
-        if (content != null) {
-            getResolver().getLogger().log(new String(content, Constants.UTF8), LogLevel.VERBOSE);
-        }
-
+        getResolver().getLogger().log(new String(content, Constants.UTF8), LogLevel.VERBOSE);
         request.addHeader("Content-Type", "application/json");
         getResolver().getCredentialsFactory().getCredentials().prepareRequest(request);
 
         getResolver().getLogger().log("URL: " + request.getUrl(), LogLevel.VERBOSE);
         getResolver().getLogger().log("HEADERS: ", LogLevel.VERBOSE);
-
         for (String key :request.getHeaders().keySet()) {
             getResolver().getLogger().log(key + " : " + request.getHeaders().get(key).toString(), LogLevel.VERBOSE);
         }

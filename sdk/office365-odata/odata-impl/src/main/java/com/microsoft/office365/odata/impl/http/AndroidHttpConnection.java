@@ -17,7 +17,7 @@ import com.microsoft.office365.odata.interfaces.Response;
  * Java HttpConnection implementation, based on HttpURLConnection and threads
  * async operations
  */
-public class ApacheHttpConnection implements HttpTransport {
+public class AndroidHttpConnection implements HttpTransport {
 
     /**
      * User agent header name
@@ -32,7 +32,7 @@ public class ApacheHttpConnection implements HttpTransport {
     @Override
     public ListenableFuture<Response> execute(final Request request) {
 
-        request.addHeader(USER_AGENT_HEADER, "Office365-SDK-Test");
+        request.addHeader(USER_AGENT_HEADER, "Office365-SDK");
 
         final SettableFuture<Response> future = SettableFuture.create();
         final NetworkRunnable target = new NetworkRunnable(request, future);

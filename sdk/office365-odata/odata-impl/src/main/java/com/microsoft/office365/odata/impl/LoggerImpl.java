@@ -1,6 +1,5 @@
 package com.microsoft.office365.odata.impl;
 
-
 import android.util.Log;
 
 import com.microsoft.office365.odata.interfaces.LogLevel;

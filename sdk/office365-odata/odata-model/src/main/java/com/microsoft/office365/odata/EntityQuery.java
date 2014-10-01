@@ -5,12 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.odata;
 
-import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
 
-abstract class ODataExecutable {
+public class EntityQuery extends ODataEntityQuery<Entity> implements Executable<Entity> {
 
-    abstract ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb);
-
-    abstract DependencyResolver getResolver();
+	 public EntityQuery(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Entity.class);
+    }
 }

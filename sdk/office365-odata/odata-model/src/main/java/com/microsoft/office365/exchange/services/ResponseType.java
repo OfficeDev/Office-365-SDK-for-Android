@@ -3,10 +3,14 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.office365.odata;
+package com.microsoft.office365.exchange.services;
 
-import com.google.common.util.concurrent.ListenableFuture;
-
-public interface Executable<T> {
-    public ListenableFuture<T> execute();
+public enum ResponseType	
+{
+	None,
+	Organizer,
+	TentativelyAccepted,
+	Accepted,
+	Declined,
+	NotResponded,
 }

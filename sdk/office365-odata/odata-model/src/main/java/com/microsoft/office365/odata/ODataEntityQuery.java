@@ -1,11 +1,12 @@
+/*******************************************************************************
+ * Copyright (c) Microsoft Open Technologies, Inc.
+ * All Rights Reserved
+ * See License.txt in the project root for license information.
+ ******************************************************************************/
 package com.microsoft.office365.odata;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.office365.odata.interfaces.DependencyResolver;
-import com.microsoft.office365.odata.interfaces.HttpVerb;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
 
 public abstract class ODataEntityQuery<E> extends ODataExecutable implements Executable<E> {
 

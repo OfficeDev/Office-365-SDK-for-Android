@@ -1,35 +1,42 @@
+/*******************************************************************************
+ * Copyright (c) Microsoft Open Technologies, Inc.
+ * All Rights Reserved
+ * See License.txt in the project root for license information.
+ ******************************************************************************/
 package com.microsoft.office365.odata;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.office365.odata.interfaces.DependencyResolver;
-import com.microsoft.office365.odata.interfaces.HttpVerb;
-
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class ODataCollection<T, U> extends ODataExecutable implements Executable<List<T>> {
+public class ODataCollection<T, U, V> extends ODataExecutable implements Executable<List<T>> {
     private int top;
     private int skip;
     private String selectedId = null;
     private String urlComponent;
     private ODataExecutable parent;
     private Class<T> clazz;
+    private V operations;
 
-    public ODataCollection(String urlComponent, ODataExecutable parent, Class<T> clazz) {
+    public ODataCollection(String urlComponent, ODataExecutable parent, Class<T> clazz, Class<V> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
+
+        try {
+            operations = operationClazz.getConstructor(String.class, ODataExecutable.class).newInstance("", this);
+        } catch (Throwable t) {
+        }
     }
 
-    public ODataCollection<T, U> top(int top) {
+    public ODataCollection<T, U, V> top(int top) {
 
         this.top = top;
         return this;
     }
 
-    public ODataCollection<T, U> skip(int skip) {
+    public ODataCollection<T, U, V> skip(int skip) {
 
         this.skip = skip;
         return this;
@@ -40,7 +47,6 @@ public class ODataCollection<T, U> extends ODataExecutable implements Executable
 
         String[] classNameParts = (clazz.getCanonicalName() + "Query").split("\\.");
 
-        // TODO: use proper namespace resolution for this class!!
         String className = "com.microsoft.office365.odata." + classNameParts[classNameParts.length - 1];
 
         try {
@@ -127,5 +133,9 @@ public class ODataCollection<T, U> extends ODataExecutable implements Executable
         });
 
         return result;
+    }
+
+    public V getOperations() {
+        return operations;
     }
 }

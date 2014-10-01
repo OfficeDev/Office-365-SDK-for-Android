@@ -5,7 +5,9 @@
  ******************************************************************************/
 package com.microsoft.office365.odata.impl.http;
 
+import android.annotation.TargetApi;
 import android.net.http.AndroidHttpClient;
+import android.os.Build;
 
 import com.microsoft.office365.odata.interfaces.Response;
 
@@ -41,6 +43,7 @@ public class ResponseImpl implements Response {
         return mStream;
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     @Override
     public void close() throws IOException {
         mClient.close();

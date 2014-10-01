@@ -58,9 +58,7 @@ public class NetworkRunnable implements Runnable {
     public void run() {
         AndroidHttpClient client = null;
         try {
-            //client = HttpClients.createDefault();
-            //client = new SystemDefaultHttpClient();
-            client = AndroidHttpClient.newInstance("test");
+            client = AndroidHttpClient.newInstance("Office-365-SDK");
 
             BasicHttpEntityEnclosingRequest realRequest = new BasicHttpEntityEnclosingRequest(mRequest.getVerb().toString(), mRequest.getUrl());
             EntityEnclosingRequestWrapper wrapper = new EntityEnclosingRequestWrapper(realRequest);

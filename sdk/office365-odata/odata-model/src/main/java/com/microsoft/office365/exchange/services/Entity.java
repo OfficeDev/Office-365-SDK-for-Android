@@ -3,10 +3,16 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.office365.odata;
+package com.microsoft.office365.exchange.services;
 
-import com.google.common.util.concurrent.ListenableFuture;
+public class Entity {
+	private String id;
 
-public interface Executable<T> {
-    public ListenableFuture<T> execute();
+	public String getId() {
+		 return id; 
+	}
+
+	public void setId(String value) { 
+		id = value; 
+	}
 }

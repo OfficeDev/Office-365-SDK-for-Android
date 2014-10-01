@@ -3,10 +3,17 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.office365.odata;
+package com.microsoft.office365.exchange.services;
 
-import com.google.common.util.concurrent.ListenableFuture;
+public class Location {
 
-public interface Executable<T> {
-    public ListenableFuture<T> execute();
+	private String displayName;
+
+	public String getDisplayName() {
+		 return displayName; 
+	}
+
+	public void setDisplayName(String value) { 
+		displayName = value; 
+	}
 }

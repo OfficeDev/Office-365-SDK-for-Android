@@ -1,6 +1,6 @@
 package com.microsoft.office365.odata.impl;
 
-import com.microsoft.office365.odata.impl.http.ApacheHttpConnection;
+import com.microsoft.office365.odata.impl.http.AndroidHttpConnection;
 import com.microsoft.office365.odata.interfaces.*;
 
 public class DefaultDependencyResolver implements DependencyResolver {
@@ -9,7 +9,7 @@ public class DefaultDependencyResolver implements DependencyResolver {
 
     @Override
     public HttpTransport getHttpTransport() {
-        return new ApacheHttpConnection();
+        return new AndroidHttpConnection();
     }
 
     @Override
