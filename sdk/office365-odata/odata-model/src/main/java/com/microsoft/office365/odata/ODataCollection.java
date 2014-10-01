@@ -64,7 +64,7 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     public U getById(String id) {
         this.selectedId = id;
 
-        String[] classNameParts = (clazz.getCanonicalName() + "Query").split("\\.");
+        String[] classNameParts = (clazz.getCanonicalName() + "ODataComponent").split("\\.");
 
         String className = "com.microsoft.office365.odata." + classNameParts[classNameParts.length - 1];
 
