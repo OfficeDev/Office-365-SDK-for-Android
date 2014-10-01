@@ -26,6 +26,7 @@
 /*/*/production
 *.iws
 *.ipr
+*.iml
 *~
 *.swp
 
