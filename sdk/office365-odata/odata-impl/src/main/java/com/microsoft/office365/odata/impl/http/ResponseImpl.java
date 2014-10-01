@@ -26,7 +26,8 @@ public class ResponseImpl implements Response {
     Map<String, List<String>> mHeaders;
     AndroidHttpClient mClient;
 
-    public ResponseImpl(InputStream stream, int status, Map<String, List<String>> headers, AndroidHttpClient client) {
+    public ResponseImpl(InputStream stream, int status, Map<String, List<String>> headers,
+                        AndroidHttpClient client) {
         mHeaders = new HashMap<String, List<String>>(headers);
         mStream = stream;
         mStatus = status;

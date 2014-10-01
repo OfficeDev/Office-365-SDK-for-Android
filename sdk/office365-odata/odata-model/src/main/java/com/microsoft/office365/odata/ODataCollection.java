@@ -11,6 +11,7 @@ import com.microsoft.office365.odata.interfaces.*;
 import java.util.List;
 
 public class ODataCollection<T, U, V> extends ODataExecutable implements Executable<List<T>> {
+
     private int top = -1;
     private int skip = -1;
     private String selectedId = null;
@@ -22,14 +23,16 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     private String expand;
     private String filter;
 
-    public ODataCollection(String urlComponent, ODataExecutable parent, Class<T> clazz, Class<V> operationClazz) {
+    public ODataCollection(String urlComponent, ODataExecutable parent,
+                           Class<T> clazz, Class<V> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
 
         try {
-            operations = operationClazz.getConstructor(String.class, ODataExecutable.class).newInstance("", this);
-        } catch (Throwable t) {
+            operations = operationClazz.getConstructor(String.class,
+                         ODataExecutable.class).newInstance("", this);
+        } catch (Throwable ignored) {
         }
     }
 
@@ -150,10 +153,9 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     }
 
     public ListenableFuture<T> add(T entity) {
+
         final SettableFuture<T> result = SettableFuture.create();
-
         String payload = getResolver().getJsonSerializer().serialize(entity);
-
         ListenableFuture<byte[]> future = oDataExecute("", payload.getBytes(Constants.UTF8), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {

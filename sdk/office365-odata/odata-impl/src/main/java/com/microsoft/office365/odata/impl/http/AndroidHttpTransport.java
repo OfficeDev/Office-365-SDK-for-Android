@@ -13,11 +13,8 @@ import com.microsoft.office365.odata.interfaces.HttpTransport;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
-/**
- * Java HttpConnection implementation, based on HttpURLConnection and threads
- * async operations
- */
-public class AndroidHttpConnection implements HttpTransport {
+
+public class AndroidHttpTransport implements HttpTransport {
 
     /**
      * User agent header name
@@ -42,14 +39,14 @@ public class AndroidHttpConnection implements HttpTransport {
             public void releaseAndStop() {
                 try {
                     target.closeStreamAndConnection();
-                } catch (Throwable error) {
+                } catch (Throwable ignored) {
                 }
             }
         };
 
         Futures.addCallback(future, new FutureCallback<Response>() {
             @Override
-            public void onFailure(Throwable arg0) {
+            public void onFailure(Throwable t) {
                 networkThread.releaseAndStop();
             }
 
