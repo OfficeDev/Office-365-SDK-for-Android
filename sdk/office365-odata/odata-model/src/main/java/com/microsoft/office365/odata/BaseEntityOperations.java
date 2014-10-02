@@ -8,13 +8,13 @@ package com.microsoft.office365.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 
-public abstract class BaseEntityODataComponent<E> extends ODataExecutable implements Executable<E> {
+public abstract class BaseEntityOperations<E> extends ODataExecutable implements Executable<E> {
 
     private String urlComponent;
     private ODataExecutable parent;
     private Class<E> clazz;
 
-    public BaseEntityODataComponent(String urlComponent, ODataExecutable parent, Class<E> clazz) {
+    public BaseEntityOperations(String urlComponent, ODataExecutable parent, Class<E> clazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
@@ -52,8 +52,7 @@ public abstract class BaseEntityODataComponent<E> extends ODataExecutable implem
             public void onSuccess(byte[] payload) {
                 try {
                     String string = new String(payload, Constants.UTF8_NAME);
-                    DependencyResolver resolver = getResolver();
-                    E entity = resolver.getJsonSerializer().deserialize(string, clazz);
+                    E entity = getResolver().getJsonSerializer().deserialize(string, clazz);
                     result.set(entity);
                 } catch (Throwable e) {
                     result.setException(e);

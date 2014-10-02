@@ -17,13 +17,13 @@ public class ResponseStatus extends Recipient {
 		response = value; 
 	}
 
-	private java.util.Date time;
+	private java.util.Calendar time;
 
-	public java.util.Date getTime() {
+	public java.util.Calendar getTime() {
 		 return time; 
 	}
 
-	public void setTime(java.util.Date value) { 
+	public void setTime(java.util.Calendar value) { 
 		time = value; 
 	}
 }

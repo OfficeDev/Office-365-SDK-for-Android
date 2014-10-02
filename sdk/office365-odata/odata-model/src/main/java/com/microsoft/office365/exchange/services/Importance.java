@@ -7,7 +7,7 @@ package com.microsoft.office365.exchange.services;
 
 public enum Importance	
 {
-	Normal,
 	Low,
+	Normal,
 	High,
 }

@@ -9,13 +9,16 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class EventODataComponent extends BaseEntityODataComponent<Event> implements Executable<Event> {
+public class EventOperations extends BaseEntityOperations<Event> implements Executable<Event> {
 
-	 public EventODataComponent(String urlComponent, ODataExecutable parent) {
+	 public EventOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Event.class);
     }
-	public CalendarODataComponent getCalendar() {
-        return new CalendarODataComponent("Calendar", this);
+	public ODataCollection<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
+        return new ODataCollection<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
+    }
+	public CalendarOperations getCalendar() {
+        return new CalendarOperations("Calendar", this);
     }
 			
 	public ListenableFuture<Integer> accept(String comment) {
@@ -70,7 +73,7 @@ public class EventODataComponent extends BaseEntityODataComponent<Event> impleme
         return result;
     }
 			
-	public ListenableFuture<Integer> tentativelyaccept(String comment) {
+	public ListenableFuture<Integer> tentativelyAccept(String comment) {
         final SettableFuture<Integer> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("TentativelyAccept", null, HttpVerb.POST);

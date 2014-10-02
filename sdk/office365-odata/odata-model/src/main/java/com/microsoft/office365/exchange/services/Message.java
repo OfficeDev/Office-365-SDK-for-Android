@@ -6,6 +6,51 @@
 package com.microsoft.office365.exchange.services;
 
 public class Message extends Item {
+	private String subject;
+
+	public String getSubject() {
+		 return subject; 
+	}
+
+	public void setSubject(String value) { 
+		subject = value; 
+	}
+	private ItemBody body;
+
+	public ItemBody getBody() {
+		 return body; 
+	}
+
+	public void setBody(ItemBody value) { 
+		body = value; 
+	}
+	private String bodyPreview;
+
+	public String getBodyPreview() {
+		 return bodyPreview; 
+	}
+
+	public void setBodyPreview(String value) { 
+		bodyPreview = value; 
+	}
+	private Importance importance;
+
+	public Importance getImportance() {
+		 return importance; 
+	}
+
+	public void setImportance(Importance value) { 
+		importance = value; 
+	}
+	private Boolean hasAttachments;
+
+	public Boolean getHasAttachments() {
+		 return hasAttachments; 
+	}
+
+	public void setHasAttachments(Boolean value) { 
+		hasAttachments = value; 
+	}
 	private String parentFolderId;
 
 	public String getParentFolderId() {
@@ -87,22 +132,22 @@ public class Message extends Item {
 	public void setUniqueBody(ItemBody value) { 
 		uniqueBody = value; 
 	}
-	private java.util.Date dateTimeReceived;
+	private java.util.Calendar dateTimeReceived;
 
-	public java.util.Date getDateTimeReceived() {
+	public java.util.Calendar getDateTimeReceived() {
 		 return dateTimeReceived; 
 	}
 
-	public void setDateTimeReceived(java.util.Date value) { 
+	public void setDateTimeReceived(java.util.Calendar value) { 
 		dateTimeReceived = value; 
 	}
-	private java.util.Date dateTimeSent;
+	private java.util.Calendar dateTimeSent;
 
-	public java.util.Date getDateTimeSent() {
+	public java.util.Calendar getDateTimeSent() {
 		 return dateTimeSent; 
 	}
 
-	public void setDateTimeSent(java.util.Date value) { 
+	public void setDateTimeSent(java.util.Calendar value) { 
 		dateTimeSent = value; 
 	}
 	private Boolean isDeliveryReceiptRequested;
@@ -158,23 +203,5 @@ public class Message extends Item {
 
 	public void setMeetingMessageType(MeetingMessageType value) { 
 		meetingMessageType = value; 
-	}
-	private java.util.Date dateTimeCreated;
-
-	public java.util.Date getDateTimeCreated() {
-		 return dateTimeCreated; 
-	}
-
-	public void setDateTimeCreated(java.util.Date value) { 
-		dateTimeCreated = value; 
-	}
-	private java.util.Date lastModifiedTime;
-
-	public java.util.Date getLastModifiedTime() {
-		 return lastModifiedTime; 
-	}
-
-	public void setLastModifiedTime(java.util.Date value) { 
-		lastModifiedTime = value; 
 	}
 }

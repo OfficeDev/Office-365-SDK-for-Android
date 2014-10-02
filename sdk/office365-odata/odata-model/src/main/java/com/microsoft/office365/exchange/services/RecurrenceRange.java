@@ -17,23 +17,23 @@ public class RecurrenceRange {
 		type = value; 
 	}
 
-	private java.util.Date startDate;
+	private java.util.Calendar startDate;
 
-	public java.util.Date getStartDate() {
+	public java.util.Calendar getStartDate() {
 		 return startDate; 
 	}
 
-	public void setStartDate(java.util.Date value) { 
+	public void setStartDate(java.util.Calendar value) { 
 		startDate = value; 
 	}
 
-	private java.util.Date endDate;
+	private java.util.Calendar endDate;
 
-	public java.util.Date getEndDate() {
+	public java.util.Calendar getEndDate() {
 		 return endDate; 
 	}
 
-	public void setEndDate(java.util.Date value) { 
+	public void setEndDate(java.util.Calendar value) { 
 		endDate = value; 
 	}
 

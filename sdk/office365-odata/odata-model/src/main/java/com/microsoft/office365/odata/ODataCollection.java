@@ -7,7 +7,7 @@ package com.microsoft.office365.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
-
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class ODataCollection<T, U, V> extends ODataExecutable implements Executable<List<T>> {
@@ -19,9 +19,9 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     private ODataExecutable parent;
     private Class<T> clazz;
     private V operations;
-    private String select;
-    private String expand;
-    private String filter;
+    private String select = null;
+    private String expand = null;
+    private String filter = null;
 
     public ODataCollection(String urlComponent, ODataExecutable parent,
                            Class<T> clazz, Class<V> operationClazz) {
@@ -29,12 +29,23 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
         this.parent = parent;
         this.clazz = clazz;
 
+		this.reset();
+
         try {
-            operations = operationClazz.getConstructor(String.class,
+            this.operations = operationClazz.getConstructor(String.class,
                          ODataExecutable.class).newInstance("", this);
         } catch (Throwable ignored) {
         }
     }
+
+	public void reset() {
+		this.top = -1;
+		this.skip = -1;
+		this.selectedId = null;
+		this.select = null;
+		this.expand = null;
+		this.filter = null;
+	}
 
     public ODataCollection<T, U, V> top(int top) {
         this.top = top;
@@ -64,13 +75,13 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     public U getById(String id) {
         this.selectedId = id;
 
-        String[] classNameParts = (clazz.getCanonicalName() + "ODataComponent").split("\\.");
+        String[] classNameParts = (clazz.getCanonicalName() + "Operations").split("\\.");
 
         String className = "com.microsoft.office365.odata." + classNameParts[classNameParts.length - 1];
 
         try {
             Class entityQueryClass = Class.forName(className);
-            BaseEntityODataComponent odataEntityQuery = (BaseEntityODataComponent) entityQueryClass
+            BaseEntityOperations odataEntityQuery = (BaseEntityOperations) entityQueryClass
                     .getConstructor(String.class, ODataExecutable.class)
                     .newInstance("", this);
 
@@ -135,8 +146,7 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
                 List<T> list;
                 try {
                     String string = new String(payload, Constants.UTF8_NAME);
-                    DependencyResolver resolver = getResolver();
-                    list = resolver.getJsonSerializer().deserializeList(string, clazz);
+                    list = getResolver().getJsonSerializer().deserializeList(string, clazz);
                     result.set(list);
                 } catch (Throwable e) {
                     result.setException(e);
@@ -163,8 +173,7 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
             public void onSuccess(byte[] payload) {
                 try {
                     String string = new String(payload, Constants.UTF8_NAME);
-                    DependencyResolver resolver = getResolver();
-                    T entity = resolver.getJsonSerializer().deserialize(string, clazz);
+                    T entity = getResolver().getJsonSerializer().deserialize(string, clazz);
                     result.set(entity);
                 } catch (Throwable e) {
                     result.setException(e);
@@ -181,6 +190,6 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     }
 
     public V getOperations() {
-        return operations;
+        return this.operations;
     }
 }

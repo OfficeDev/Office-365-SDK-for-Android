@@ -13,10 +13,10 @@ public class EntryPoint extends BaseODataContainer {
         super(url, resolver);
     }
 
-    public UserODataComponent getMe() {
-        return new UserODataComponent("Me", this);
+    public UserOperations getMe() {
+        return new UserOperations("Me", this);
     }
-    public UserODataComponent getUsers() {
-        return new UserODataComponent("Users", this);
+    public UserOperations getUsers() {
+        return new UserOperations("Users", this);
     }
 }

@@ -6,22 +6,67 @@
 package com.microsoft.office365.exchange.services;
 
 public class Event extends Item {
-	private java.util.Date start;
+	private String subject;
 
-	public java.util.Date getStart() {
+	public String getSubject() {
+		 return subject; 
+	}
+
+	public void setSubject(String value) { 
+		subject = value; 
+	}
+	private ItemBody body;
+
+	public ItemBody getBody() {
+		 return body; 
+	}
+
+	public void setBody(ItemBody value) { 
+		body = value; 
+	}
+	private String bodyPreview;
+
+	public String getBodyPreview() {
+		 return bodyPreview; 
+	}
+
+	public void setBodyPreview(String value) { 
+		bodyPreview = value; 
+	}
+	private Importance importance;
+
+	public Importance getImportance() {
+		 return importance; 
+	}
+
+	public void setImportance(Importance value) { 
+		importance = value; 
+	}
+	private Boolean hasAttachments;
+
+	public Boolean getHasAttachments() {
+		 return hasAttachments; 
+	}
+
+	public void setHasAttachments(Boolean value) { 
+		hasAttachments = value; 
+	}
+	private java.util.Calendar start;
+
+	public java.util.Calendar getStart() {
 		 return start; 
 	}
 
-	public void setStart(java.util.Date value) { 
+	public void setStart(java.util.Calendar value) { 
 		start = value; 
 	}
-	private java.util.Date end;
+	private java.util.Calendar end;
 
-	public java.util.Date getEnd() {
+	public java.util.Calendar getEnd() {
 		 return end; 
 	}
 
-	public void setEnd(java.util.Date value) { 
+	public void setEnd(java.util.Calendar value) { 
 		end = value; 
 	}
 	private Location location;
@@ -87,14 +132,14 @@ public class Event extends Item {
 	public void setType(EventType value) { 
 		type = value; 
 	}
-	private String seriesId;
+	private String seriesMasterId;
 
-	public String getSeriesId() {
-		 return seriesId; 
+	public String getSeriesMasterId() {
+		 return seriesMasterId; 
 	}
 
-	public void setSeriesId(String value) { 
-		seriesId = value; 
+	public void setSeriesMasterId(String value) { 
+		seriesMasterId = value; 
 	}
 	private java.util.List<Attendee> attendees;
 
@@ -113,5 +158,14 @@ public class Event extends Item {
 
 	public void setRecurrence(PatternedRecurrence value) { 
 		recurrence = value; 
+	}
+	private Recipient organizer;
+
+	public Recipient getOrganizer() {
+		 return organizer; 
+	}
+
+	public void setOrganizer(Recipient value) { 
+		organizer = value; 
 	}
 }

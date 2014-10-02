@@ -5,11 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.odata;
 
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class ContactODataComponent extends BaseEntityODataComponent<Contact> implements Executable<Contact> {
+public class ItemOperations extends BaseEntityOperations<Item> implements Executable<Item> {
 
-	 public ContactODataComponent(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Contact.class);
+	 public ItemOperations(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Item.class);
     }
 }

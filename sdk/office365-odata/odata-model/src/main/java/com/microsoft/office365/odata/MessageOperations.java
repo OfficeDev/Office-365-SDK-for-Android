@@ -9,10 +9,13 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class MessageODataComponent extends BaseEntityODataComponent<Message> implements Executable<Message> {
+public class MessageOperations extends BaseEntityOperations<Message> implements Executable<Message> {
 
-	 public MessageODataComponent(String urlComponent, ODataExecutable parent) {
+	 public MessageOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Message.class);
+    }
+	public ODataCollection<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
+        return new ODataCollection<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
     }
 			
 	public ListenableFuture<Message> copy(String destinationid) {
@@ -67,7 +70,7 @@ public class MessageODataComponent extends BaseEntityODataComponent<Message> imp
         return result;
     }
 			
-	public ListenableFuture<Message> createreply() {
+	public ListenableFuture<Message> createReply() {
         final SettableFuture<Message> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("CreateReply", null, HttpVerb.POST);
@@ -93,7 +96,7 @@ public class MessageODataComponent extends BaseEntityODataComponent<Message> imp
         return result;
     }
 			
-	public ListenableFuture<Message> createreplyall() {
+	public ListenableFuture<Message> createReplyAll() {
         final SettableFuture<Message> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("CreateReplyAll", null, HttpVerb.POST);
@@ -119,7 +122,7 @@ public class MessageODataComponent extends BaseEntityODataComponent<Message> imp
         return result;
     }
 			
-	public ListenableFuture<Message> createforward() {
+	public ListenableFuture<Message> createForward() {
         final SettableFuture<Message> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("CreateForward", null, HttpVerb.POST);
@@ -171,7 +174,7 @@ public class MessageODataComponent extends BaseEntityODataComponent<Message> imp
         return result;
     }
 			
-	public ListenableFuture<Integer> replyall(String comment) {
+	public ListenableFuture<Integer> replyAll(String comment) {
         final SettableFuture<Integer> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("ReplyAll", null, HttpVerb.POST);

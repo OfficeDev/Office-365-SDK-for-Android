@@ -5,11 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.odata;
 
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class AttachmentODataComponent extends BaseEntityODataComponent<Attachment> implements Executable<Attachment> {
+public class EntityOperations extends BaseEntityOperations<Entity> implements Executable<Entity> {
 
-	 public AttachmentODataComponent(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Attachment.class);
+	 public EntityOperations(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Entity.class);
     }
 }
