@@ -8,16 +8,23 @@ package com.microsoft.office365.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 
-public abstract class BaseEntityOperations<E> extends ODataExecutable implements Executable<E> {
+public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Executable<E> {
 
     private String urlComponent;
     private ODataExecutable parent;
     private Class<E> clazz;
+    private V operations;
 
-    public BaseEntityOperations(String urlComponent, ODataExecutable parent, Class<E> clazz) {
+    public ODataEntityFetcher(String urlComponent, ODataExecutable parent, Class<E> clazz, Class<V> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
+
+        try {
+            this.operations = operationClazz.getConstructor(String.class,
+                    ODataExecutable.class).newInstance("", this);
+        } catch (Throwable ignored) {
+        }
     }
 
     @Override
@@ -112,5 +119,9 @@ public abstract class BaseEntityOperations<E> extends ODataExecutable implements
         });
 
         return result;
+    }
+
+    public V getOperations() {
+        return this.operations;
     }
 }

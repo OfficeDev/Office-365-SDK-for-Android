@@ -9,9 +9,9 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class ContactFolderCollectionOperations extends ODataOperations {
+public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations> implements Executable<Message> {
 
-    public ContactFolderCollectionOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent);
+	 public MessageFetcher(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Message.class,MessageOperations.class);
     }
 }

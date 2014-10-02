@@ -9,9 +9,9 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class ContactOperations extends BaseEntityOperations<Contact> implements Executable<Contact> {
+public class ContactOperations extends ODataOperations {
 
 	 public ContactOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Contact.class);
+        super(urlComponent, parent);
     }
 }

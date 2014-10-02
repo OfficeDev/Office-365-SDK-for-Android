@@ -3,7 +3,7 @@ package com.microsoft.office365.odata.impl.http;
 import com.microsoft.office365.odata.interfaces.Credentials;
 import com.microsoft.office365.odata.interfaces.CredentialsFactory;
 
-public class CredentialsImpl implements CredentialsFactory {
+public class CredentialsFactoryImpl implements CredentialsFactory {
 
     private Credentials mCredentials;
 

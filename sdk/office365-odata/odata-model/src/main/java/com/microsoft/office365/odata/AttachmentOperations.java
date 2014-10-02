@@ -9,9 +9,9 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class AttachmentOperations extends BaseEntityOperations<Attachment> implements Executable<Attachment> {
+public class AttachmentOperations extends ODataOperations {
 
 	 public AttachmentOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Attachment.class);
+        super(urlComponent, parent);
     }
 }

@@ -7,13 +7,23 @@ package com.microsoft.office365.exchange.services;
 
 public class Recipient {
 
-	private EmailAddress emailAddress;
+	private String name;
 
-	public EmailAddress getEmailAddress() {
-		 return emailAddress; 
+	public String getName() {
+		 return name; 
 	}
 
-	public void setEmailAddress(EmailAddress value) { 
-		emailAddress = value; 
+	public void setName(String value) { 
+		name = value; 
+	}
+
+	private String address;
+
+	public String getAddress() {
+		 return address; 
+	}
+
+	public void setAddress(String value) { 
+		address = value; 
 	}
 }

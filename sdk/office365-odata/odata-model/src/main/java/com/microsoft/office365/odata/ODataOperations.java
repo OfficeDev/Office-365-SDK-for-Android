@@ -8,11 +8,11 @@ package com.microsoft.office365.odata;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.office365.odata.interfaces.*;
 
-public abstract class ODataCollectionOperations extends ODataExecutable {
+public abstract class ODataOperations extends ODataExecutable {
     private String urlComponent;
     private ODataExecutable parent;
 
-    public ODataCollectionOperations(String urlComponent, ODataExecutable parent) {
+    public ODataOperations(String urlComponent, ODataExecutable parent) {
         this.urlComponent = urlComponent;
         this.parent = parent;
     }

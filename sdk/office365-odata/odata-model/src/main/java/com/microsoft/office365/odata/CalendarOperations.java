@@ -9,12 +9,9 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class CalendarOperations extends BaseEntityOperations<Calendar> implements Executable<Calendar> {
+public class CalendarOperations extends ODataOperations {
 
 	 public CalendarOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Calendar.class);
-    }
-	public ODataCollectionFetcher<Event, EventOperations, EventCollectionOperations> getEvents() {
-        return new ODataCollectionFetcher<Event, EventOperations,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class);
+        super(urlComponent, parent);
     }
 }

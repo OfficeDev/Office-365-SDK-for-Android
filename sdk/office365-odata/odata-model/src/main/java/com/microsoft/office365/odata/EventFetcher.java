@@ -9,9 +9,12 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class ContactFolderCollectionOperations extends ODataOperations {
+public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> implements Executable<Event> {
 
-    public ContactFolderCollectionOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent);
+	 public EventFetcher(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Event.class,EventOperations.class);
+    }
+	public CalendarOperations getCalendar() {
+        return new CalendarOperations("Calendar", this);
     }
 }

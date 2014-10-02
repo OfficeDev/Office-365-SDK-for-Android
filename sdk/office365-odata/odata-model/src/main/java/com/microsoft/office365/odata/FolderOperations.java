@@ -9,19 +9,13 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class FolderOperations extends BaseEntityOperations<Folder> implements Executable<Folder> {
+public class FolderOperations extends ODataOperations {
 
 	 public FolderOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Folder.class);
-    }
-	public ODataCollectionFetcher<Folder, FolderOperations, FolderCollectionOperations> getChildFolders() {
-        return new ODataCollectionFetcher<Folder, FolderOperations,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class);
-    }
-	public ODataCollectionFetcher<Message, MessageOperations, MessageCollectionOperations> getMessages() {
-        return new ODataCollectionFetcher<Message, MessageOperations,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
+        super(urlComponent, parent);
     }
 			
-	public ListenableFuture<Folder> copy(String destinationid) {
+	public ListenableFuture<Folder> copy(String destinationId) {
         final SettableFuture<Folder> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("Copy", null, HttpVerb.POST);
@@ -47,7 +41,7 @@ public class FolderOperations extends BaseEntityOperations<Folder> implements Ex
         return result;
     }
 			
-	public ListenableFuture<Folder> move(String destinationid) {
+	public ListenableFuture<Folder> move(String destinationId) {
         final SettableFuture<Folder> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("Move", null, HttpVerb.POST);

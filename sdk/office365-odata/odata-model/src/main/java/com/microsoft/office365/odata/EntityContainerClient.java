@@ -13,10 +13,10 @@ public class EntityContainerClient extends BaseODataContainer {
         super(url, resolver);
     }
 
-    public UserOperations getMe() {
-        return new UserOperations("Me", this);
+    public UserFetcher getMe() {
+        return new UserFetcher("Me", this);
     }
-    public UserOperations getUsers() {
-        return new UserOperations("Users", this);
+    public UserFetcher getUsers() {
+        return new UserFetcher("Users", this);
     }
 }
