@@ -81,7 +81,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
 
         try {
             Class entityQueryClass = Class.forName(className);
-            BaseEntityOperations odataEntityQuery = (BaseEntityOperations) entityQueryClass
+            ODataEntityFetcher odataEntityQuery = (ODataEntityFetcher) entityQueryClass
                     .getConstructor(String.class, ODataExecutable.class)
                     .newInstance("", this);
 

@@ -6,51 +6,6 @@
 package com.microsoft.office365.exchange.services;
 
 public class Event extends Item {
-	private String subject;
-
-	public String getSubject() {
-		 return subject; 
-	}
-
-	public void setSubject(String value) { 
-		subject = value; 
-	}
-	private ItemBody body;
-
-	public ItemBody getBody() {
-		 return body; 
-	}
-
-	public void setBody(ItemBody value) { 
-		body = value; 
-	}
-	private String bodyPreview;
-
-	public String getBodyPreview() {
-		 return bodyPreview; 
-	}
-
-	public void setBodyPreview(String value) { 
-		bodyPreview = value; 
-	}
-	private Importance importance;
-
-	public Importance getImportance() {
-		 return importance; 
-	}
-
-	public void setImportance(Importance value) { 
-		importance = value; 
-	}
-	private Boolean hasAttachments;
-
-	public Boolean getHasAttachments() {
-		 return hasAttachments; 
-	}
-
-	public void setHasAttachments(Boolean value) { 
-		hasAttachments = value; 
-	}
 	private java.util.Calendar start;
 
 	public java.util.Calendar getStart() {
@@ -132,14 +87,14 @@ public class Event extends Item {
 	public void setType(EventType value) { 
 		type = value; 
 	}
-	private String seriesMasterId;
+	private String seriesId;
 
-	public String getSeriesMasterId() {
-		 return seriesMasterId; 
+	public String getSeriesId() {
+		 return seriesId; 
 	}
 
-	public void setSeriesMasterId(String value) { 
-		seriesMasterId = value; 
+	public void setSeriesId(String value) { 
+		seriesId = value; 
 	}
 	private java.util.List<Attendee> attendees;
 
@@ -158,14 +113,5 @@ public class Event extends Item {
 
 	public void setRecurrence(PatternedRecurrence value) { 
 		recurrence = value; 
-	}
-	private Recipient organizer;
-
-	public Recipient getOrganizer() {
-		 return organizer; 
-	}
-
-	public void setOrganizer(Recipient value) { 
-		organizer = value; 
 	}
 }

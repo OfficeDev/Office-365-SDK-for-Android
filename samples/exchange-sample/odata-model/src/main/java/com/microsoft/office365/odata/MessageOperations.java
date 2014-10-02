@@ -9,16 +9,13 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.*;
 
-public class MessageOperations extends BaseEntityOperations<Message> implements Executable<Message> {
+public class MessageOperations extends ODataOperations {
 
 	 public MessageOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Message.class);
-    }
-	public ODataCollectionFetcher<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
-        return new ODataCollectionFetcher<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
+        super(urlComponent, parent);
     }
 			
-	public ListenableFuture<Message> copy(String destinationid) {
+	public ListenableFuture<Message> copy(String destinationId) {
         final SettableFuture<Message> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("Copy", null, HttpVerb.POST);
@@ -44,7 +41,7 @@ public class MessageOperations extends BaseEntityOperations<Message> implements 
         return result;
     }
 			
-	public ListenableFuture<Message> move(String destinationid) {
+	public ListenableFuture<Message> move(String destinationId) {
         final SettableFuture<Message> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("Move", null, HttpVerb.POST);
@@ -200,7 +197,7 @@ public class MessageOperations extends BaseEntityOperations<Message> implements 
         return result;
     }
 			
-	public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> torecipients) {
+	public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> toRecipients) {
         final SettableFuture<Integer> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("Forward", null, HttpVerb.POST);

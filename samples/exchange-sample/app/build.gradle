@@ -21,6 +21,12 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile ('com.android.support:support-v4:19.1.+')
+
+    compile('com.microsoft.aad:adal:1.0.2') {
+        exclude group: 'com.android.support'
+    }
+
     compile project(':odata-impl')
     compile project(':odata-interfaces')
     compile project(':odata-model')

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fileContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:paddingLeft="8sp"
+    android:paddingTop="8sp"
+    android:paddingBottom="8sp">
+
+    <ImageView 
+        android:id="@+id/initials"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:typeface="sans"
+        />
+    
+    <TextView
+        android:id="@+id/sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Some Sender"
+        android:textColor="#040404"
+        android:paddingLeft="8sp"
+        android:textSize="15dip"
+        android:typeface="sans" 
+        android:layout_toRightOf="@+id/initials"
+        />
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sender"
+        android:layout_toRightOf="@+id/initials"
+        android:layout_marginTop="1dip"
+        android:paddingLeft="8sp"
+        android:text="Subject"
+        android:textColor="#343434"
+        android:textSize="12dip" />
+
+    <TextView
+        android:id="@+id/sendOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/subject"
+        android:layout_alignParentRight="true"
+        android:layout_margin="1dip"
+        android:layout_marginLeft="17dp"
+        android:text="12-12-12"
+        android:textColor="#343434"
+        android:textSize="10dip" />
+
+</RelativeLayout>

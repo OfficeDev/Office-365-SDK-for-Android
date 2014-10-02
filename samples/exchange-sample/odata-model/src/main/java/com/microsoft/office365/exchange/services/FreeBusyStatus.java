@@ -7,10 +7,10 @@ package com.microsoft.office365.exchange.services;
 
 public enum FreeBusyStatus	
 {
+	Unknown,
 	Free,
 	Tentative,
 	Busy,
 	Oof,
 	WorkingElsewhere,
-	Unknown,
 }
