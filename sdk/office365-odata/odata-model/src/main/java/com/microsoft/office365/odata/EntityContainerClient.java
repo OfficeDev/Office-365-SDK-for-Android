@@ -7,9 +7,9 @@ package com.microsoft.office365.odata;
 
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
 
-public class EntryPoint extends BaseODataContainer {
+public class EntityContainerClient extends BaseODataContainer {
 
-    public EntryPoint(String url, DependencyResolver resolver) {
+    public EntityContainerClient(String url, DependencyResolver resolver) {
         super(url, resolver);
     }
 

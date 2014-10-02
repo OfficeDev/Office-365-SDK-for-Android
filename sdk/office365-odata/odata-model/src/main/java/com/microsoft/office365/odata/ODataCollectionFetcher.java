@@ -10,7 +10,7 @@ import com.microsoft.office365.odata.interfaces.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class ODataCollection<T, U, V> extends ODataExecutable implements Executable<List<T>> {
+public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Executable<List<T>> {
 
     private int top = -1;
     private int skip = -1;
@@ -23,7 +23,7 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
     private String expand = null;
     private String filter = null;
 
-    public ODataCollection(String urlComponent, ODataExecutable parent,
+    public ODataCollectionFetcher(String urlComponent, ODataExecutable parent,
                            Class<T> clazz, Class<V> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
@@ -47,27 +47,27 @@ public class ODataCollection<T, U, V> extends ODataExecutable implements Executa
 		this.filter = null;
 	}
 
-    public ODataCollection<T, U, V> top(int top) {
+    public ODataCollectionFetcher<T, U, V> top(int top) {
         this.top = top;
         return this;
     }
 
-    public ODataCollection<T, U, V> skip(int skip) {
+    public ODataCollectionFetcher<T, U, V> skip(int skip) {
         this.skip = skip;
         return this;
     }
 
-    public ODataCollection<T, U, V> select(String select) {
+    public ODataCollectionFetcher<T, U, V> select(String select) {
         this.select = select;
         return this;
     }
 
-    public ODataCollection<T, U, V> expand(String expand) {
+    public ODataCollectionFetcher<T, U, V> expand(String expand) {
         this.expand = expand;
         return this;
     }
 
-    public ODataCollection<T, U, V> filter(String filter) {
+    public ODataCollectionFetcher<T, U, V> filter(String filter) {
         this.filter = filter;
         return this;
     }

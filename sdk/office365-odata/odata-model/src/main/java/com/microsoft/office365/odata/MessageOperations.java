@@ -14,8 +14,8 @@ public class MessageOperations extends BaseEntityOperations<Message> implements 
 	 public MessageOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Message.class);
     }
-	public ODataCollection<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
-        return new ODataCollection<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
+	public ODataCollectionFetcher<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
+        return new ODataCollectionFetcher<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
     }
 			
 	public ListenableFuture<Message> copy(String destinationid) {

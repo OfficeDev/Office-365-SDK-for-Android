@@ -14,7 +14,7 @@ public class CalendarGroupOperations extends BaseEntityOperations<CalendarGroup>
 	 public CalendarGroupOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, CalendarGroup.class);
     }
-	public ODataCollection<Calendar, CalendarOperations, CalendarCollectionOperations> getCalendars() {
-        return new ODataCollection<Calendar, CalendarOperations,CalendarCollectionOperations>("Calendars", this, Calendar.class,CalendarCollectionOperations.class);
+	public ODataCollectionFetcher<Calendar, CalendarOperations, CalendarCollectionOperations> getCalendars() {
+        return new ODataCollectionFetcher<Calendar, CalendarOperations,CalendarCollectionOperations>("Calendars", this, Calendar.class,CalendarCollectionOperations.class);
     }
 }

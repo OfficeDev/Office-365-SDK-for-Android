@@ -14,8 +14,8 @@ public class EventOperations extends BaseEntityOperations<Event> implements Exec
 	 public EventOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Event.class);
     }
-	public ODataCollection<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
-        return new ODataCollection<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
+	public ODataCollectionFetcher<Attachment, AttachmentOperations, AttachmentCollectionOperations> getAttachments() {
+        return new ODataCollectionFetcher<Attachment, AttachmentOperations,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
     }
 	public CalendarOperations getCalendar() {
         return new CalendarOperations("Calendar", this);

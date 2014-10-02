@@ -14,11 +14,11 @@ public class FolderOperations extends BaseEntityOperations<Folder> implements Ex
 	 public FolderOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Folder.class);
     }
-	public ODataCollection<Folder, FolderOperations, FolderCollectionOperations> getChildFolders() {
-        return new ODataCollection<Folder, FolderOperations,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class);
+	public ODataCollectionFetcher<Folder, FolderOperations, FolderCollectionOperations> getChildFolders() {
+        return new ODataCollectionFetcher<Folder, FolderOperations,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class);
     }
-	public ODataCollection<Message, MessageOperations, MessageCollectionOperations> getMessages() {
-        return new ODataCollection<Message, MessageOperations,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
+	public ODataCollectionFetcher<Message, MessageOperations, MessageCollectionOperations> getMessages() {
+        return new ODataCollectionFetcher<Message, MessageOperations,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
     }
 			
 	public ListenableFuture<Folder> copy(String destinationid) {

@@ -14,7 +14,7 @@ public class CalendarOperations extends BaseEntityOperations<Calendar> implement
 	 public CalendarOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Calendar.class);
     }
-	public ODataCollection<Event, EventOperations, EventCollectionOperations> getEvents() {
-        return new ODataCollection<Event, EventOperations,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class);
+	public ODataCollectionFetcher<Event, EventOperations, EventCollectionOperations> getEvents() {
+        return new ODataCollectionFetcher<Event, EventOperations,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class);
     }
 }

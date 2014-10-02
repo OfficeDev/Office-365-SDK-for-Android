@@ -14,32 +14,32 @@ public class UserOperations extends BaseEntityOperations<User> implements Execut
 	 public UserOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, User.class);
     }
-	public ODataCollection<Folder, FolderOperations, FolderCollectionOperations> getFolders() {
-        return new ODataCollection<Folder, FolderOperations,FolderCollectionOperations>("Folders", this, Folder.class,FolderCollectionOperations.class);
+	public ODataCollectionFetcher<Folder, FolderOperations, FolderCollectionOperations> getFolders() {
+        return new ODataCollectionFetcher<Folder, FolderOperations,FolderCollectionOperations>("Folders", this, Folder.class,FolderCollectionOperations.class);
     }
-	public ODataCollection<Message, MessageOperations, MessageCollectionOperations> getMessages() {
-        return new ODataCollection<Message, MessageOperations,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
+	public ODataCollectionFetcher<Message, MessageOperations, MessageCollectionOperations> getMessages() {
+        return new ODataCollectionFetcher<Message, MessageOperations,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
     }
 	public FolderOperations getRootFolder() {
         return new FolderOperations("RootFolder", this);
     }
-	public ODataCollection<Calendar, CalendarOperations, CalendarCollectionOperations> getCalendars() {
-        return new ODataCollection<Calendar, CalendarOperations,CalendarCollectionOperations>("Calendars", this, Calendar.class,CalendarCollectionOperations.class);
+	public ODataCollectionFetcher<Calendar, CalendarOperations, CalendarCollectionOperations> getCalendars() {
+        return new ODataCollectionFetcher<Calendar, CalendarOperations,CalendarCollectionOperations>("Calendars", this, Calendar.class,CalendarCollectionOperations.class);
     }
 	public CalendarOperations getCalendar() {
         return new CalendarOperations("Calendar", this);
     }
-	public ODataCollection<CalendarGroup, CalendarGroupOperations, CalendarGroupCollectionOperations> getCalendarGroups() {
-        return new ODataCollection<CalendarGroup, CalendarGroupOperations,CalendarGroupCollectionOperations>("CalendarGroups", this, CalendarGroup.class,CalendarGroupCollectionOperations.class);
+	public ODataCollectionFetcher<CalendarGroup, CalendarGroupOperations, CalendarGroupCollectionOperations> getCalendarGroups() {
+        return new ODataCollectionFetcher<CalendarGroup, CalendarGroupOperations,CalendarGroupCollectionOperations>("CalendarGroups", this, CalendarGroup.class,CalendarGroupCollectionOperations.class);
     }
-	public ODataCollection<Event, EventOperations, EventCollectionOperations> getEvents() {
-        return new ODataCollection<Event, EventOperations,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class);
+	public ODataCollectionFetcher<Event, EventOperations, EventCollectionOperations> getEvents() {
+        return new ODataCollectionFetcher<Event, EventOperations,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class);
     }
-	public ODataCollection<Contact, ContactOperations, ContactCollectionOperations> getContacts() {
-        return new ODataCollection<Contact, ContactOperations,ContactCollectionOperations>("Contacts", this, Contact.class,ContactCollectionOperations.class);
+	public ODataCollectionFetcher<Contact, ContactOperations, ContactCollectionOperations> getContacts() {
+        return new ODataCollectionFetcher<Contact, ContactOperations,ContactCollectionOperations>("Contacts", this, Contact.class,ContactCollectionOperations.class);
     }
-	public ODataCollection<ContactFolder, ContactFolderOperations, ContactFolderCollectionOperations> getContactFolders() {
-        return new ODataCollection<ContactFolder, ContactFolderOperations,ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class,ContactFolderCollectionOperations.class);
+	public ODataCollectionFetcher<ContactFolder, ContactFolderOperations, ContactFolderCollectionOperations> getContactFolders() {
+        return new ODataCollectionFetcher<ContactFolder, ContactFolderOperations,ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class,ContactFolderCollectionOperations.class);
     }
 			
 	public ListenableFuture<Integer> sendMail(Message message, Boolean savetosentitems) {
