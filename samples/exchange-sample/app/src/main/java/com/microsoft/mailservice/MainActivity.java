@@ -35,6 +35,8 @@ import com.microsoft.mailservice.tasks.RetrieveMessagesTask;
 import com.microsoft.mailservice.tasks.RetrieveMoreMessageTask;
 import com.microsoft.office365.exchange.services.Folder;
 import com.microsoft.office365.exchange.services.Message;
+import com.microsoft.office365.odata.EntityContainerClient;
+import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
 
 import org.json.JSONObject;
 
@@ -57,6 +59,7 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
     SwipeRefreshLayout mSwipeRefreshLayout;
     AppPreferences mAppPreferences;
     ExchangeAPIApplication mApplication;
+    DefaultDependencyResolver mResolver;
 
     // TODO: review this and do in a better way
     static Map<String, List<Message>> mMessages = new HashMap<String, List<Message>>();
@@ -73,6 +76,8 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
 
         mApplication = (ExchangeAPIApplication) getApplication();
         mAppPreferences = mApplication.getAppPreferences();
+        mResolver = new DefaultDependencyResolver();
+
         initialize();
         load();
     }
@@ -87,7 +92,7 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
     }
 
     private void startAuthentication() {
-        ListenableFuture<Void> authFuture = Authentication.authenticate(this);
+        ListenableFuture<Void> authFuture = Authentication.authenticate(this, mResolver);
         Futures.addCallback(authFuture, new FutureCallback<Void>() {
 
             @Override
@@ -111,6 +116,10 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
 
         if (mFolders == null) {
             new RetrieveFoldersTask(MainActivity.this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+            EntityContainerClient client = new EntityContainerClient("https://outlook.office365.com/EWS/OData", mResolver);
+
+
         } else {
             mListPrimaryFolderView.setAdapter(new FolderItemAdapter(this, mFolders.get("Primary")));
             mListSecondaryFolderView.setAdapter(new FolderItemAdapter(this, mFolders.get("Secondary")));
