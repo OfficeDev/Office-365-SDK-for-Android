@@ -11,6 +11,7 @@ import com.microsoft.office365.odata.interfaces.JsonSerializer;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class GsonSerializer implements JsonSerializer {
@@ -18,6 +19,7 @@ public class GsonSerializer implements JsonSerializer {
     private Gson createGson() {
         return new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .registerTypeAdapter(Calendar.class, new CalendarTypeAdapter())
                 .create();
     }
 
