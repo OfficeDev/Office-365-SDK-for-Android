@@ -30,7 +30,7 @@ import java.util.Random;
 public class Authentication {
 
     public static AuthenticationContext context = null;
-    private static String mLogedInUser;
+    private static String mLoggedInUser;
 
     public static SettableFuture<Void> authenticate(final Activity rootActivity, final DefaultDependencyResolver resolver) {
 
@@ -71,12 +71,12 @@ public class Authentication {
                         SharedPreferences sharedPref = rootActivity.getPreferences(Context.MODE_PRIVATE);
 
                         if (ui != null) {
-                            mLogedInUser = ui.getUserId();
+                            mLoggedInUser = ui.getUserId();
                             Editor editor = sharedPref.edit();
-                            editor.putString("UserId", mLogedInUser);
+                            editor.putString("UserId", mLoggedInUser);
                             editor.commit();
                         } else {
-                            mLogedInUser = sharedPref.getString("UserId", "");
+                            mLoggedInUser = sharedPref.getString("UserId", "");
                         }
                     }
 
@@ -136,9 +136,4 @@ public class Authentication {
             return new byte[32];
         }
     }
-
-    public static String getLogedUser() {
-        return mLogedInUser;
-    }
-
 }

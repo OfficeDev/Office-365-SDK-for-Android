@@ -21,16 +21,4 @@
         android:textColor="#282828"
         android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/folder_item_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:background="#FFFFFF"
-        android:gravity="center_vertical"
-        android:padding="6sp"
-        android:text="item2"
-        android:textColor="#282828"
-        android:textSize="15sp" />
-
 </RelativeLayout>

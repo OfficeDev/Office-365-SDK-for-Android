@@ -5,11 +5,6 @@
  ******************************************************************************/
 package com.microsoft.mailservice.tasks;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -24,126 +19,136 @@ import com.microsoft.mailservice.MainActivity;
 import com.microsoft.mailservice.R;
 import com.microsoft.mailservice.adapters.FolderItemAdapter;
 import com.microsoft.office365.exchange.services.Folder;
+import com.microsoft.office365.odata.EntityContainerClient;
 
-// TODO: Auto-generated Javadoc
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * The Class RetrieveFodersTask.
  */
 public class RetrieveFoldersTask extends AsyncTask<String, Void, Map<String, List<Folder>>> {
 
-	private ExchangeAPIApplication mApplication;
-	
-	/** The m dialog. */
-	private ProgressDialog mDialog;
+    private ExchangeAPIApplication mApplication;
 
-	/** The m context. */
-	private Context mContext;
+    /**
+     * The m dialog.
+     */
+    private ProgressDialog mDialog;
 
-	/** The m activity. */
-	private MainActivity mActivity;
+    /**
+     * The m context.
+     */
+    private Context mContext;
 
-	public RetrieveFoldersTask(MainActivity activity) {
-		mActivity = activity;
-		mContext = activity;
-		mDialog = new ProgressDialog(mContext);
-		mApplication = (ExchangeAPIApplication) mActivity.getApplication();
-	}
+    /**
+     * The m activity.
+     */
+    private MainActivity mActivity;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.os.AsyncTask#onPreExecute()
-	 */
-	protected void onPreExecute() {
+    public RetrieveFoldersTask(MainActivity activity) {
+        mActivity = activity;
+        mContext = activity;
+        mDialog = new ProgressDialog(mContext);
+        mApplication = (ExchangeAPIApplication) mActivity.getApplication();
+    }
 
-		mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+    /*
+     * (non-Javadoc)
+     *
+     * @see android.os.AsyncTask#onPreExecute()
+     */
+    protected void onPreExecute() {
 
-		mDialog.setTitle("Retrieving folders...");
-		mDialog.setMessage("Please wait.");
-		mDialog.setCancelable(false);
-		mDialog.setIndeterminate(true);
-		mDialog.show();
+        mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
-		Log.d("Folder task", "Retrieving Folders");
-	}
+        mDialog.setTitle("Retrieving folders...");
+        mDialog.setMessage("Please wait.");
+        mDialog.setCancelable(false);
+        mDialog.setIndeterminate(true);
+        mDialog.show();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
-	 */
-	@Override
-	protected void onPostExecute(Map<String, List<Folder>> folders) {
-		if (mDialog.isShowing()) {
-			mDialog.dismiss();
-		}
+        Log.d("Folder task", "Retrieving Folders");
+    }
 
-		if (folders != null) {
-			if (folders.size() != 0) {
-				FolderItemAdapter primaryAdapter = new FolderItemAdapter(mActivity, folders.get("Primary"));
-				FolderItemAdapter secondAdapter = new FolderItemAdapter(mActivity, folders.get("Secondary"));
+    /*
+     * (non-Javadoc)
+     *
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     */
+    @Override
+    protected void onPostExecute(Map<String, List<Folder>> folders) {
+        if (mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
 
-				((ListView) mActivity.findViewById(R.id.list_primary_foders)).setAdapter(primaryAdapter);
-				((ListView) mActivity.findViewById(R.id.list_secondary_foders)).setAdapter(secondAdapter);
+        if (folders != null) {
+            if (folders.size() != 0) {
+                FolderItemAdapter primaryAdapter = new FolderItemAdapter(mActivity, folders.get("Primary"));
+                FolderItemAdapter secondAdapter = new FolderItemAdapter(mActivity, folders.get("Secondary"));
 
-				primaryAdapter.notifyDataSetChanged();
-				secondAdapter.notifyDataSetChanged();
-				Log.d("Folder task", "Finished loading Folders");
-				
-				
-				mActivity.retrieveMesages("Inbox");
-			} else {
-				Toast.makeText(mActivity, "No Folders found", Toast.LENGTH_SHORT).show();
-			}
-		} else {
-			// mApplication.handleError(mThrowable);
-		}
-	}
+                ((ListView) mActivity.findViewById(R.id.list_primary_foders)).setAdapter(primaryAdapter);
+                ((ListView) mActivity.findViewById(R.id.list_secondary_foders)).setAdapter(secondAdapter);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.os.AsyncTask#doInBackground(Params[])
-	 */
-	protected Map<String, List<Folder>> doInBackground(final String... args) {
-		Map<String, List<Folder>> folders = new HashMap<String, List<Folder>>();
-		try {
+                primaryAdapter.notifyDataSetChanged();
+                secondAdapter.notifyDataSetChanged();
+                Log.d("Folder task", "Finished loading Folders");
 
-			//MailClient mailClient = mApplication.getMailClient();
-			//ChildFolders auxFolders = mailClient.getEntityContainer().getMe().getRootFolder().getChildFolders();
-			Folder inbox = null, draft = null, sentItems = null, deletedItems = null;
 
-			folders.put("Primary", new ArrayList<Folder>());
-			folders.put("Secondary", new ArrayList<Folder>());
+                mActivity.retrieveMesages("Inbox");
+            } else {
+                Toast.makeText(mActivity, "No Folders found", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // mApplication.handleError(mThrowable);
+        }
+    }
 
-            /*
-			for (Folder folder : auxFolders) {
-				String display = folder.getDisplayName();
+    /*
+     * (non-Javadoc)
+     *
+     * @see android.os.AsyncTask#doInBackground(Params[])
+     */
+    protected Map<String, List<Folder>> doInBackground(final String... args) {
+        Map<String, List<Folder>> folders = new HashMap<String, List<Folder>>();
+        try {
 
-				if (display.equals("Inbox")) {
-					inbox = folder;
-				} else if (display.equals("Drafts")) {
-					draft = folder;
-				} else if (display.equals("Sent Items")) {
-					sentItems = folder;
-				} else if (display.equals("Deleted Items")) {
-					deletedItems = folder;
-				} else {
-					folders.get("Secondary").add(folder);
-				}
-			}
-			*/
-			folders.get("Primary").add(inbox);
-			folders.get("Primary").add(draft);
-			folders.get("Primary").add(deletedItems);
-			folders.get("Primary").add(sentItems);
+            EntityContainerClient client = mApplication.getContainer();
+            List<Folder> auxFolders = client.getMe().getRootFolder().getChildFolders().execute().get();
+            Folder inbox = null, draft = null, sentItems = null, deletedItems = null;
 
-			mActivity.setFolders(folders);
+            folders.put("Primary", new ArrayList<Folder>());
+            folders.put("Secondary", new ArrayList<Folder>());
 
-		} catch (Exception e) {
-			ErrorHandler.handleError(e, mActivity);
-		}
+            for (Folder folder : auxFolders) {
+                String display = folder.getDisplayName();
 
-		return folders;
-	}
+                if (display.equals("Inbox")) {
+                    inbox = folder;
+                } else if (display.equals("Drafts")) {
+                    draft = folder;
+                } else if (display.equals("Sent Items")) {
+                    sentItems = folder;
+                } else if (display.equals("Deleted Items")) {
+                    deletedItems = folder;
+                } else {
+                    folders.get("Secondary").add(folder);
+                }
+            }
+
+            folders.get("Primary").add(inbox);
+            folders.get("Primary").add(draft);
+            folders.get("Primary").add(deletedItems);
+            folders.get("Primary").add(sentItems);
+
+            mActivity.setFolders(folders);
+
+        } catch (Exception e) {
+            ErrorHandler.handleError(e, mActivity);
+        }
+
+        return folders;
+    }
 }

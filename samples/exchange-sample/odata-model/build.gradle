@@ -1,0 +1,7 @@
+apply plugin: 'java'
+
+dependencies {
+    compile project(':odata-interfaces')
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+
+}

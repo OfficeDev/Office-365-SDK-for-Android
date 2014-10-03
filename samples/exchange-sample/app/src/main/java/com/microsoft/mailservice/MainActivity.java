@@ -76,7 +76,7 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
 
         mApplication = (ExchangeAPIApplication) getApplication();
         mAppPreferences = mApplication.getAppPreferences();
-        mResolver = new DefaultDependencyResolver();
+        mResolver = mApplication.getDependencyResolver();
 
         initialize();
         load();
@@ -116,10 +116,6 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
 
         if (mFolders == null) {
             new RetrieveFoldersTask(MainActivity.this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
-            EntityContainerClient client = new EntityContainerClient("https://outlook.office365.com/EWS/OData", mResolver);
-
-
         } else {
             mListPrimaryFolderView.setAdapter(new FolderItemAdapter(this, mFolders.get("Primary")));
             mListSecondaryFolderView.setAdapter(new FolderItemAdapter(this, mFolders.get("Secondary")));

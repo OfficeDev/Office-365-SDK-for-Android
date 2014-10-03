@@ -13,6 +13,9 @@ import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.widget.Toast;
 
+import com.microsoft.office365.odata.EntityContainerClient;
+import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
+
 // TODO: Auto-generated Javadoc
 
 /**
@@ -22,6 +25,8 @@ public class ExchangeAPIApplication extends Application {
 
     private AppPreferences mPreferences;
     private Thread.UncaughtExceptionHandler mDefaultUEH;
+
+    private DefaultDependencyResolver mResolver;
 
     private Thread.UncaughtExceptionHandler handler = new Thread.UncaughtExceptionHandler() {
 
@@ -40,17 +45,21 @@ public class ExchangeAPIApplication extends Application {
 
         mDefaultUEH = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(handler);
-
         mPreferences = new AppPreferences(PreferenceManager.getDefaultSharedPreferences(this));
+        mResolver = new DefaultDependencyResolver();
     }
 
-    /*
-    public EntryPoint getCalendarClient() {
 
-        return new CalendarClient.Builder().setCredentials(mCredentials).setODataEndpoint(Constants.ODATA_ENDPOINT)
-                .setResourceId(Constants.RESOURCE_ID).build();
+    public EntityContainerClient getContainer() {
+
+        EntityContainerClient container = new EntityContainerClient(Constants.ENDPOINT_ID, mResolver);
+        return container;
     }
-    */
+
+    public DefaultDependencyResolver getDependencyResolver() {
+        return mResolver;
+    }
+
 
     public AppPreferences getAppPreferences() {
         return mPreferences;
@@ -94,4 +103,5 @@ public class ExchangeAPIApplication extends Application {
             Authentication.resetToken(activity);
         }
     }
+
 }
