@@ -1,7 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.exchangedemo.MainActivity" >
-    <item android:id="@+id/new_mail" android:title="New Mail"></item>
-    <item android:id="@+id/load_mails" android:title="Load mails"></item>
-
-</menu>

@@ -1,1 +1,1 @@
-include ':app', ':odata-impl', ':odata-interfaces', ':odata-model'
+include ':app'
