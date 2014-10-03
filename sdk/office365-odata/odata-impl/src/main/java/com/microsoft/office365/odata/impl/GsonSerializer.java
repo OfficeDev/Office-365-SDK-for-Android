@@ -39,9 +39,7 @@ public class GsonSerializer implements JsonSerializer {
     public <E> List<E> deserializeList(String payload, Class<E> clazz) {
         Class arrayClass = Array.newInstance(clazz, 0).getClass();
 
-        Gson serializer = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create();
+        Gson serializer = createGson();
 
         JsonParser parser = new JsonParser();
         JsonObject json = (JsonObject) parser.parse(payload);
