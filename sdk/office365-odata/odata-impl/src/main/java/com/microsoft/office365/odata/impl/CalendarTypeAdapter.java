@@ -1,26 +1,19 @@
 package com.microsoft.office365.odata.impl;
 
 import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
-import com.microsoft.office365.odata.interfaces.JsonSerializer;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-/**
- * TODO: THIS CLASS IS STILL NOT IMPLEMENTED
- */
 public class CalendarTypeAdapter implements com.google.gson.JsonSerializer<Calendar>, com.google.gson.JsonDeserializer<Calendar> {
 
     @Override
