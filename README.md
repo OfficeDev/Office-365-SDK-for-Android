@@ -1,11 +1,12 @@
 #Office 365 Android SDK
 
-*Readme in progress*
+*Readme in progress - After samples section is not up to date*
 
 **Table of Contents**
 
 - [Overview](#overview)
 - [Build instructions](#build-instructions)
+- [Starting your app from scratch](#starting-your-app-from-scratch)
 - [Office 365 Samples](#office-365-samples)
     - [Simple Office 365 Sample](#simple-office-365-sample)
         - [Using Maven archetypes](#using-maven-archetypes)
@@ -25,21 +26,111 @@ This SDK provides access to: Microsoft SharePoint Lists, Microsoft SharePoint Fi
 
 ##Build instructions
 
-Office 365 Android SDK uses [Apache Olingo](http://olingo.apache.org/) to handle all things OData V4 and must be installed in your local maven repository (/.m2). This extra step is required since Olingo OData V4 has not been released yet. 
+Office 365 Android SDK uses [Gradle](http://www.gradle.org/) to manage dependencies.
+In order to open the sdk you just need to **import** the code with Android Studio and build the code to start downloading all the dependencies that are needed.
 
-In the future, this step won't be required and will be handled by Maven as another dependency.
-To deploy Olingo into your local Maven repository simply:
-
-```
-git clone https://github.com/apache/olingo-odata4.git
-mvn clean install
-``` 
-After successfully builded and installed, please proceed to build *mail-calendar-contact SDK*
 
 ```
 git clone https://github.com/MSOpenTech/O365-Android.git
-cd /sdk/office365-mail-calendar-contact-sdk
-mvn clean install
+```
+
+>Note: Make sure you **import** the code into Android Studio.
+
+
+##Starting your app from scratch
+This section will guide you through the process of creating a very simple application that retrieves messages using the Office 365 Android SDK and Azure Active Directory for Android SDK.
+
+1 - Create a new Android application using Android Studio. In the build.gradle file add the following dependencies.
+
+>**IMPORTANT**: Currently the skd is not available as gradle dependency. In order to use it, just import the modules within your sample.
+
+```
+repositories {
+        mavenCentral()
+    }
+    
+
+dependencies {
+    compile('[INSERT-SDK-MAVEN-ID-HERE]')
+    compile('com.microsoft.aad:adal:1.0.0')
+}
+```
+
+>Note: If you get an error with android support library, you might need to exclude it from ADAL. To do that, replace ADAL dependency with the following:
+>
+>```
+compile('com.microsoft.aad:adal:1.0.0') {
+        exclude group: 'com.android.support'
+    }
+>```
+
+2. Add the necesary code to get the authentication token using ADAL library. To do that, follow the steps described in the ADAL documentation (How to use this library section).
+
+```
+https://github.com/AzureAD/azure-activedirectory-library-for-android
+```
+
+3. Once you get the token, you will need to create an implementation of Credentials interface to handle authentication in the Office 365 SDK.
+
+```
+public class OauthCredentials implements Credentials {
+
+    String mToken;
+
+    public CustomCredentials(String token){
+        mToken = token;
+    }
+
+    @Override
+    public void prepareRequest(Request request) {
+        request.addHeader("Authorization","Bearer " + mToken);
+    }
+}
+```
+
+4. Now, add the following code to retrieve messages. Make sure you're using the right endpoint and you have replaced the authentication token.
+
+```
+String endpoint = "https://sdfpilot.outlook.com/ews/odata";
+String token = "[YOUR-TOKEN-HERE]";
+                DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
+
+                CredentialsFactoryImpl credentialsFactory = new CredentialsFactoryImpl();
+
+                OAuthCredentials oauthCredentials = new OAuthCredentials(token);
+                credentialsFactory.setCredentials(oauthCredentials);
+
+                dependencyResolver.setCredentialsFactory(credentialsFactory);
+                EntityContainerClient client = new EntityContainerClient(endpoint, dependencyResolver);
+                ListenableFuture<List<Message>> messagesFuture = client.getMe().getFolders().getById("Inbox").getMessages().execute();
+
+                Futures.addCallback(messagesFuture, new FutureCallback<List<Message>>() {
+                    @Override
+                    public void onSuccess(final List<Message> result) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, "Items: " + Integer.valueOf(result.size()).toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(final Throwable t) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                StringWriter writer = new StringWriter();
+                                t.printStackTrace(new PrintWriter(writer));
+
+                                String trace = writer.toString();
+
+                                Toast.makeText(MainActivity.this,trace,Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                });
+            }
 ```
 
 
