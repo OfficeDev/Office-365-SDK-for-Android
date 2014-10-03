@@ -75,7 +75,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     public U getById(String id) {
         this.selectedId = id;
 
-        String[] classNameParts = (clazz.getCanonicalName() + "Operations").split("\\.");
+        String[] classNameParts = (clazz.getCanonicalName() + "Fetcher").split("\\.");
 
         String className = "com.microsoft.office365.odata." + classNameParts[classNameParts.length - 1];
 
