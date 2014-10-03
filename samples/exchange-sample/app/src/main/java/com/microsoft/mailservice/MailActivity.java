@@ -43,7 +43,7 @@ public class MailActivity extends Activity {
 
 					mMessage = (Message)MainActivity.mMailListView.getItemAtPosition(position);
 
-					((TextView) findViewById(R.id.mail_sender)).setText(mMessage.getSender().getName());
+					((TextView) findViewById(R.id.mail_sender)).setText(mMessage.getSender().getEmailAddress().getName());
 					((TextView) findViewById(R.id.mail_subject)).setText(mMessage.getSubject());
 					((TextView) findViewById(R.id.mail_sendOn)).setText(mMessage.getDateTimeSent().toString());
 

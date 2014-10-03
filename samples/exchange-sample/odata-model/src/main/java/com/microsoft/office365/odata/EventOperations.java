@@ -92,4 +92,30 @@ public class EventOperations extends ODataOperations {
 
         return result;
     }
+			
+	public ListenableFuture<Event> instances(java.util.Calendar startDate, java.util.Calendar endDate) {
+        final SettableFuture<Event> result = SettableFuture.create();
+
+        ListenableFuture<byte[]> future = oDataExecute("Instances", null, HttpVerb.POST);
+
+        Futures.addCallback(future, new FutureCallback<byte[]>() {
+            @Override
+            public void onSuccess(byte[] event) {
+                DependencyResolver resolver = getResolver();
+
+                try {
+                    result.set(resolver.getJsonSerializer().deserialize(new String(event, Constants.UTF8), Event.class));
+                } catch (Throwable throwable) {
+                    result.setException(throwable);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                result.setException(t);
+            }
+        });
+
+        return result;
+    }
 }

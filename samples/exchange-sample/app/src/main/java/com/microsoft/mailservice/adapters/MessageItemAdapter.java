@@ -89,11 +89,12 @@ public class MessageItemAdapter extends BaseAdapter {
 
         if (sender != null) {
 
-            holder.sender.setText(sender == null ? "" : sender.getName());
+            holder.sender.setText(sender == null ? "" : sender.getEmailAddress().getName());
             holder.subject.setText(sender == null ? "" : (subject.length() > 30 ? subject.substring(0, 30) + "..."
                     : subject));
             holder.sendOn.setText(date == null ? "" : message.getDateTimeSent().toString());
-            Bitmap bitmap = mTileProvider.getLetterTile(sender.getName().substring(0, 1), sender.getName(), mTileSize,
+            Bitmap bitmap = mTileProvider.getLetterTile(sender.getEmailAddress().getName().substring(0, 1),
+                                                        sender.getEmailAddress().getName(), mTileSize,
                     mTileSize);
             holder.initials.setImageBitmap(bitmap);
         }
