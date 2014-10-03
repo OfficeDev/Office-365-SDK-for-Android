@@ -42,13 +42,13 @@ public class Attachment extends Entity {
 	public void setIsInline(Boolean value) { 
 		isInline = value; 
 	}
-	private java.util.Calendar lastModifiedTime;
+	private java.util.Calendar dateTimeLastModified;
 
-	public java.util.Calendar getLastModifiedTime() {
-		 return lastModifiedTime; 
+	public java.util.Calendar getDateTimeLastModified() {
+		 return dateTimeLastModified; 
 	}
 
-	public void setLastModifiedTime(java.util.Calendar value) { 
-		lastModifiedTime = value; 
+	public void setDateTimeLastModified(java.util.Calendar value) { 
+		dateTimeLastModified = value; 
 	}
 }

@@ -14,7 +14,7 @@ public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,Ite
 	 public ItemAttachmentFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, ItemAttachment.class,ItemAttachmentOperations.class);
     }
-	public ItemOperations getItem() {
-        return new ItemOperations("Item", this);
+	public ItemFetcher getItem() {
+        return new ItemFetcher("Item", this);
     }
 }

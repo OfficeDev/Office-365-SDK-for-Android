@@ -24,24 +24,6 @@ public class Folder extends Entity {
 	public void setDisplayName(String value) { 
 		displayName = value; 
 	}
-	private String className;
-
-	public String getClassName() {
-		 return className; 
-	}
-
-	public void setClassName(String value) { 
-		className = value; 
-	}
-	private Integer totalCount;
-
-	public Integer getTotalCount() {
-		 return totalCount; 
-	}
-
-	public void setTotalCount(Integer value) { 
-		totalCount = value; 
-	}
 	private Integer childFolderCount;
 
 	public Integer getChildFolderCount() {
@@ -50,14 +32,5 @@ public class Folder extends Entity {
 
 	public void setChildFolderCount(Integer value) { 
 		childFolderCount = value; 
-	}
-	private Integer unreadItemCount;
-
-	public Integer getUnreadItemCount() {
-		 return unreadItemCount; 
-	}
-
-	public void setUnreadItemCount(Integer value) { 
-		unreadItemCount = value; 
 	}
 }

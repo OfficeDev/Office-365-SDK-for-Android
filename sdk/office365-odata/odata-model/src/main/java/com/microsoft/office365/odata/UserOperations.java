@@ -14,4 +14,56 @@ public class UserOperations extends ODataOperations {
 	 public UserOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+			
+	public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) {
+        final SettableFuture<Integer> result = SettableFuture.create();
+
+        ListenableFuture<byte[]> future = oDataExecute("SendMail", null, HttpVerb.POST);
+
+        Futures.addCallback(future, new FutureCallback<byte[]>() {
+            @Override
+            public void onSuccess(byte[] integer) {
+                DependencyResolver resolver = getResolver();
+
+                try {
+                    result.set(resolver.getJsonSerializer().deserialize(new String(integer, Constants.UTF8), Integer.class));
+                } catch (Throwable throwable) {
+                    result.setException(throwable);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                result.setException(t);
+            }
+        });
+
+        return result;
+    }
+			
+	public ListenableFuture<Event> calendarView(java.util.Calendar startDate, java.util.Calendar endDate) {
+        final SettableFuture<Event> result = SettableFuture.create();
+
+        ListenableFuture<byte[]> future = oDataExecute("CalendarView", null, HttpVerb.POST);
+
+        Futures.addCallback(future, new FutureCallback<byte[]>() {
+            @Override
+            public void onSuccess(byte[] event) {
+                DependencyResolver resolver = getResolver();
+
+                try {
+                    result.set(resolver.getJsonSerializer().deserialize(new String(event, Constants.UTF8), Event.class));
+                } catch (Throwable throwable) {
+                    result.setException(throwable);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                result.setException(t);
+            }
+        });
+
+        return result;
+    }
 }

@@ -105,59 +105,23 @@ public class Contact extends Item {
 	public void setGeneration(String value) { 
 		generation = value; 
 	}
-	private String emailAddress1;
+	private java.util.List<EmailAddress> emailAddresses;
 
-	public String getEmailAddress1() {
-		 return emailAddress1; 
+	public java.util.List<EmailAddress> getEmailAddresses() {
+		 return emailAddresses; 
 	}
 
-	public void setEmailAddress1(String value) { 
-		emailAddress1 = value; 
+	public void setEmailAddresses(java.util.List<EmailAddress> value) { 
+		emailAddresses = value; 
 	}
-	private String emailAddress2;
+	private java.util.List<String> imAddresses;
 
-	public String getEmailAddress2() {
-		 return emailAddress2; 
-	}
-
-	public void setEmailAddress2(String value) { 
-		emailAddress2 = value; 
-	}
-	private String emailAddress3;
-
-	public String getEmailAddress3() {
-		 return emailAddress3; 
+	public java.util.List<String> getImAddresses() {
+		 return imAddresses; 
 	}
 
-	public void setEmailAddress3(String value) { 
-		emailAddress3 = value; 
-	}
-	private String imAddress1;
-
-	public String getImAddress1() {
-		 return imAddress1; 
-	}
-
-	public void setImAddress1(String value) { 
-		imAddress1 = value; 
-	}
-	private String imAddress2;
-
-	public String getImAddress2() {
-		 return imAddress2; 
-	}
-
-	public void setImAddress2(String value) { 
-		imAddress2 = value; 
-	}
-	private String imAddress3;
-
-	public String getImAddress3() {
-		 return imAddress3; 
-	}
-
-	public void setImAddress3(String value) { 
-		imAddress3 = value; 
+	public void setImAddresses(java.util.List<String> value) { 
+		imAddresses = value; 
 	}
 	private String jobTitle;
 
@@ -231,41 +195,23 @@ public class Contact extends Item {
 	public void setManager(String value) { 
 		manager = value; 
 	}
-	private String homePhone1;
+	private java.util.List<String> homePhones;
 
-	public String getHomePhone1() {
-		 return homePhone1; 
+	public java.util.List<String> getHomePhones() {
+		 return homePhones; 
 	}
 
-	public void setHomePhone1(String value) { 
-		homePhone1 = value; 
+	public void setHomePhones(java.util.List<String> value) { 
+		homePhones = value; 
 	}
-	private String homePhone2;
+	private java.util.List<String> businessPhones;
 
-	public String getHomePhone2() {
-		 return homePhone2; 
-	}
-
-	public void setHomePhone2(String value) { 
-		homePhone2 = value; 
-	}
-	private String businessPhone1;
-
-	public String getBusinessPhone1() {
-		 return businessPhone1; 
+	public java.util.List<String> getBusinessPhones() {
+		 return businessPhones; 
 	}
 
-	public void setBusinessPhone1(String value) { 
-		businessPhone1 = value; 
-	}
-	private String businessPhone2;
-
-	public String getBusinessPhone2() {
-		 return businessPhone2; 
-	}
-
-	public void setBusinessPhone2(String value) { 
-		businessPhone2 = value; 
+	public void setBusinessPhones(java.util.List<String> value) { 
+		businessPhones = value; 
 	}
 	private String mobilePhone1;
 
@@ -276,31 +222,58 @@ public class Contact extends Item {
 	public void setMobilePhone1(String value) { 
 		mobilePhone1 = value; 
 	}
-	private String otherPhone;
+	private PhysicalAddress homeAddress;
 
-	public String getOtherPhone() {
-		 return otherPhone; 
+	public PhysicalAddress getHomeAddress() {
+		 return homeAddress; 
 	}
 
-	public void setOtherPhone(String value) { 
-		otherPhone = value; 
+	public void setHomeAddress(PhysicalAddress value) { 
+		homeAddress = value; 
 	}
-	private java.util.Calendar dateTimeCreated;
+	private PhysicalAddress businessAddress;
 
-	public java.util.Calendar getDateTimeCreated() {
-		 return dateTimeCreated; 
-	}
-
-	public void setDateTimeCreated(java.util.Calendar value) { 
-		dateTimeCreated = value; 
-	}
-	private java.util.Calendar lastModifiedTime;
-
-	public java.util.Calendar getLastModifiedTime() {
-		 return lastModifiedTime; 
+	public PhysicalAddress getBusinessAddress() {
+		 return businessAddress; 
 	}
 
-	public void setLastModifiedTime(java.util.Calendar value) { 
-		lastModifiedTime = value; 
+	public void setBusinessAddress(PhysicalAddress value) { 
+		businessAddress = value; 
+	}
+	private PhysicalAddress otherAddress;
+
+	public PhysicalAddress getOtherAddress() {
+		 return otherAddress; 
+	}
+
+	public void setOtherAddress(PhysicalAddress value) { 
+		otherAddress = value; 
+	}
+	private String yomiCompanyName;
+
+	public String getYomiCompanyName() {
+		 return yomiCompanyName; 
+	}
+
+	public void setYomiCompanyName(String value) { 
+		yomiCompanyName = value; 
+	}
+	private String yomiGivenName;
+
+	public String getYomiGivenName() {
+		 return yomiGivenName; 
+	}
+
+	public void setYomiGivenName(String value) { 
+		yomiGivenName = value; 
+	}
+	private String yomiSurname;
+
+	public String getYomiSurname() {
+		 return yomiSurname; 
+	}
+
+	public void setYomiSurname(String value) { 
+		yomiSurname = value; 
 	}
 }

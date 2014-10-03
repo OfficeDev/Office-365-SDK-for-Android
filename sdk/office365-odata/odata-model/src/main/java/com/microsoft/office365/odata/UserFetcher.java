@@ -20,26 +20,14 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations> impleme
 	public ODataCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations> getMessages() {
         return new ODataCollectionFetcher<Message, MessageFetcher,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
     }
-	public FolderOperations getRootFolder() {
-        return new FolderOperations("RootFolder", this);
-    }
-	public FolderOperations getInbox() {
-        return new FolderOperations("Inbox", this);
-    }
-	public FolderOperations getDrafts() {
-        return new FolderOperations("Drafts", this);
-    }
-	public FolderOperations getSentItems() {
-        return new FolderOperations("SentItems", this);
-    }
-	public FolderOperations getDeletedItems() {
-        return new FolderOperations("DeletedItems", this);
+	public FolderFetcher getRootFolder() {
+        return new FolderFetcher("RootFolder", this);
     }
 	public ODataCollectionFetcher<Calendar, CalendarFetcher, CalendarCollectionOperations> getCalendars() {
         return new ODataCollectionFetcher<Calendar, CalendarFetcher,CalendarCollectionOperations>("Calendars", this, Calendar.class,CalendarCollectionOperations.class);
     }
-	public CalendarOperations getCalendar() {
-        return new CalendarOperations("Calendar", this);
+	public CalendarFetcher getCalendar() {
+        return new CalendarFetcher("Calendar", this);
     }
 	public ODataCollectionFetcher<CalendarGroup, CalendarGroupFetcher, CalendarGroupCollectionOperations> getCalendarGroups() {
         return new ODataCollectionFetcher<CalendarGroup, CalendarGroupFetcher,CalendarGroupCollectionOperations>("CalendarGroups", this, CalendarGroup.class,CalendarGroupCollectionOperations.class);
