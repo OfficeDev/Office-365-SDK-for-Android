@@ -34,105 +34,95 @@ In order to open the sdk you just need to **import** the code with Android Studi
 git clone https://github.com/MSOpenTech/O365-Android.git
 ```
 
->Note: Make sure you **import** the code into Android Studio.
-
+> Note: Make sure you **import** the code into Android Studio.
 
 ##Starting your app from scratch
 This section will guide you through the process of creating a very simple application that retrieves messages using the Office 365 Android SDK and Azure Active Directory for Android SDK.
 
-1 - Create a new Android application using Android Studio. In the build.gradle file add the following dependencies.
+1. Create a new Android application using Android Studio. In the build.gradle file add the following dependencies.
 
->**IMPORTANT**: Currently the skd is not available as gradle dependency. In order to use it, just import the modules within your sample.
+	> **IMPORTANT**: Currently the sdk is not available as gradle dependency. In order to use it, just import the modules within your sample.
 
-```
-repositories {
-        mavenCentral()
-    }
-    
+		repositories {
+		    mavenCentral()
+		}
+		
+		dependencies {
+		    compile('[INSERT-SDK-MAVEN-ID-HERE]')
+		    compile('com.microsoft.aad:adal:1.0.0')
+		}
 
-dependencies {
-    compile('[INSERT-SDK-MAVEN-ID-HERE]')
-    compile('com.microsoft.aad:adal:1.0.0')
-}
-```
-
->Note: If you get an error with android support library, you might need to exclude it from ADAL. To do that, replace ADAL dependency with the following:
->
->```
-compile('com.microsoft.aad:adal:1.0.0') {
-        exclude group: 'com.android.support'
-    }
->```
+	> Note: If you get an error with android support library, you might need to exclude it from ADAL. To do that, replace ADAL dependency with the following:
+	>
+	>```
+	compile('com.microsoft.aad:adal:1.0.0') {
+    	    exclude group: 'com.android.support'
+	}
+	>```
 
 2. Add the necesary code to get the authentication token using ADAL library. To do that, follow the steps described in the ADAL documentation (How to use this library section).
 
-```
-https://github.com/AzureAD/azure-activedirectory-library-for-android
-```
+		https://github.com/AzureAD/azure-activedirectory-library-for-android
 
 3. Once you get the token, you will need to create an implementation of Credentials interface to handle authentication in the Office 365 SDK.
 
-```
-public class OauthCredentials implements Credentials {
-
-    String mToken;
-
-    public CustomCredentials(String token){
-        mToken = token;
-    }
-
-    @Override
-    public void prepareRequest(Request request) {
-        request.addHeader("Authorization","Bearer " + mToken);
-    }
-}
-```
+		public class OauthCredentials implements Credentials {
+		    String mToken;
+		
+		    public CustomCredentials(String token){
+		        mToken = token;
+		    }
+		
+		    @Override
+		    public void prepareRequest(Request request) {
+		        request.addHeader("Authorization","Bearer " + mToken);
+		    }
+		}
 
 4. Now, add the following code to retrieve messages. Make sure you're using the right endpoint and you have replaced the authentication token.
 
-```
-String endpoint = "https://sdfpilot.outlook.com/ews/odata";
-String token = "[YOUR-TOKEN-HERE]";
-                DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
-
-                CredentialsFactoryImpl credentialsFactory = new CredentialsFactoryImpl();
-
-                OAuthCredentials oauthCredentials = new OAuthCredentials(token);
-                credentialsFactory.setCredentials(oauthCredentials);
-
-                dependencyResolver.setCredentialsFactory(credentialsFactory);
-                EntityContainerClient client = new EntityContainerClient(endpoint, dependencyResolver);
-                ListenableFuture<List<Message>> messagesFuture = client.getMe().getFolders().getById("Inbox").getMessages().execute();
-
-                Futures.addCallback(messagesFuture, new FutureCallback<List<Message>>() {
-                    @Override
-                    public void onSuccess(final List<Message> result) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(MainActivity.this, "Items: " + Integer.valueOf(result.size()).toString(), Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onFailure(final Throwable t) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                StringWriter writer = new StringWriter();
-                                t.printStackTrace(new PrintWriter(writer));
-
-                                String trace = writer.toString();
-
-                                Toast.makeText(MainActivity.this,trace,Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                });
-            }
-```
-
+		String endpoint = "https://sdfpilot.outlook.com/ews/odata";
+		String token = "[YOUR-TOKEN-HERE]";
+		DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
+		CredentialsFactoryImpl credentialsFactory = new CredentialsFactoryImpl();
+		OAuthCredentials oauthCredentials = new OAuthCredentials(token);
+		credentialsFactory.setCredentials(oauthCredentials);
+		
+		dependencyResolver.setCredentialsFactory(credentialsFactory);
+		EntityContainerClient client = new EntityContainerClient(
+					endpoint,
+					dependencyResolver);
+		ListenableFuture<List<Message>> messagesFuture = client.getMe().getFolders().
+			getById("Inbox").getMessages().execute();
+		
+		Futures.addCallback(messagesFuture, new FutureCallback<List<Message>>() {
+		    @Override
+		    public void onSuccess(final List<Message> result) {
+		        runOnUiThread(new Runnable() {
+		            @Override
+		            public void run() {
+		                Toast.makeText(MainActivity.this,
+							"Items: " + Integer.valueOf(result.size()).toString(),
+							Toast.LENGTH_LONG).show();
+		            }
+		        });
+		    }
+		
+		    @Override
+		    public void onFailure(final Throwable t) {
+		        runOnUiThread(new Runnable() {
+		            @Override
+		            public void run() {
+		                StringWriter writer = new StringWriter();
+		                t.printStackTrace(new PrintWriter(writer));
+		
+		                String trace = writer.toString();
+		
+		                Toast.makeText(MainActivity.this,trace,Toast.LENGTH_LONG).show();
+		            }
+		        });
+		    }
+		});
 
 ##Office 365 Samples
 
@@ -152,39 +142,35 @@ We've created an archetype that creates a new android application with ADAL as d
 
 ####Prerequisites
 
-- [Git](http://git-scm.com/)
-- [Android Studio](https://developer.android.com/sdk/installing/studio.html) 
-- [Maven](http://maven.apache.org/) - This sample was tested with Maven v3.2.3 
++ [Git](http://git-scm.com/)
++ [Android Studio](https://developer.android.com/sdk/installing/studio.html)
++ [Maven](http://maven.apache.org/) - This sample was tested with Maven v3.2.3
 
-1- Install the archetype in your local repository. To do this, clone the archetype's git repository: 
+<p/>
 
-```
-git clone https://github.com/MSOpenTech/O365-Android.git
-```
+1. Install the archetype in your local repository. To do this, clone the archetype's git repository:
 
-2- Open a console in the samples/android-quickstart folder within the downloaded repository and run the maven command to install the archetype
-	
-```
-mvn clean install
-```
+		git clone https://github.com/MSOpenTech/O365-Android.git
 
->Note: If asked for archetype version, use 0.1.0 as this is the current version.
+2. Open a console in the samples/android-quickstart folder within the downloaded repository and run the maven command to install the archetype
 
-3- Now that the archetype is installed, generate the sample by running the following command:
+		mvn clean install
 
-```
-mvn archetype:generate -DarchetypeArtifactId=office365-quickstart -DarchetypeGroupId=com.microsoft.office365 ^
--DarchetypeVersion=0.1.0 -DgroupId=[YOUR-GROUP-ID] ^
--DartifactId=[YOUR-ARTIFACT-ID]
-```
+	>Note: If asked for archetype version, use 0.1.0 as this is the current version.
 
-4- In Android Studio, open the generated code and start the application.
+3. Now that the archetype is installed, generate the sample by running the following command:
 
-5- Open preferences view and set your client id, the redirect url and the resource url (for more information about this, go to Azure Active Directory Library for Android [site](https://github.com/AzureAD/azure-activedirectory-library-for-android)). 
+		mvn archetype:generate -DarchetypeArtifactId=office365-quickstart -DarchetypeGroupId=com.microsoft.office365 ^
+		-DarchetypeVersion=0.1.0 -DgroupId=[YOUR-GROUP-ID] ^
+		-DartifactId=[YOUR-ARTIFACT-ID]
 
-6- Click get token. A login view will appear, enter your credentials. 
+4. In Android Studio, open the generated code and start the application.
 
-7- Your token will appear in the screen.
+5. Open preferences view and set your client id, the redirect url and the resource url (for more information about this, go to Azure Active Directory Library for Android [site](https://github.com/AzureAD/azure-activedirectory-library-for-android)). 
+
+6. Click get token. A login view will appear, enter your credentials. 
+
+7. Your token will appear in the screen.
 
 Now you are able to start using any of the Office 365 SDKs to create your own projects.
 
@@ -192,31 +178,28 @@ Now you are able to start using any of the Office 365 SDKs to create your own pr
 
 ####Prerequisites
 
-- [Git](http://git-scm.com/)
-- [Eclipse](https://www.eclipse.org/home/index.php)
-- [ADT Plugin](http://developer.android.com/tools/sdk/eclipse-adt.html)
++ [Git](http://git-scm.com/)
++ [Eclipse](https://www.eclipse.org/home/index.php)
++ [ADT Plugin](http://developer.android.com/tools/sdk/eclipse-adt.html)
+<p/>
 
 In order to start the sample an application using eclipse, you will first need to clone Office 365 and ADAL repositories.
 
-1- Go to Microsoft Azure Active Directory Authentication Library (ADAL) [site](https://github.com/AzureAD/azure-activedirectory-library-for-android) and follow the instructions to download and configure the library.
+1. Go to Microsoft Azure Active Directory Authentication Library (ADAL) [site](https://github.com/AzureAD/azure-activedirectory-library-for-android) and follow the instructions to download and configure the library.
 
-```
-git clone https://github.com/AzureAD/azure-activedirectory-library-for-android.git
-```
+		git clone https://github.com/AzureAD/azure-activedirectory-library-for-android.git
 
-2- Clone Office 365 SDK repository
+2. Clone Office 365 SDK repository
 
-```
-git clone https://github.com/MSOpenTech/O365-Android.git
-```
+		git clone https://github.com/MSOpenTech/O365-Android.git
 
-3- In Samples folder, open	 hello-android sample using eclipse.
+3. In Samples folder, open	 hello-android sample using eclipse.
 
-4- Import the ADAL project you downloaded in the previous steps.
+4. Import the ADAL project you downloaded in the previous steps.
 
-5- Update the sample to use ADAL by adding a reference to ADAL project from Properties | Android | Library.
+5. Update the sample to use ADAL by adding a reference to ADAL project from Properties | Android | Library.
 
->Note: You might have compiling errors due to the android support library's version shipped with ADAL. Please make sure you're using the same version in both projects.
+	>Note: You might have compiling errors due to the android support library's version shipped with ADAL. Please make sure you're using the same version in both projects.
 
 ## Features ##
 For the entire list of methods available in the SDK, please refer to the java docs under each SDK in the SDK folder.
