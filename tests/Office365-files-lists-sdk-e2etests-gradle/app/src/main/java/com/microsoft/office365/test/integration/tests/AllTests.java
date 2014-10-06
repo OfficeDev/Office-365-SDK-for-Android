@@ -21,8 +21,7 @@ public class AllTests extends TestGroup {
 
 		List<TestGroup> testGroups = new ArrayList<TestGroup>();
 
-		testGroups.add(new FilesTests());
-		testGroups.add(new ListsTests());
+		testGroups.add(new MailTests());
 
 		return testGroups;
 	}
