@@ -73,11 +73,11 @@ https://github.com/AzureAD/azure-activedirectory-library-for-android
 3. Once you get the token, you will need to create an implementation of Credentials interface to handle authentication in the Office 365 SDK.
 
 ```
-public class OauthCredentials implements Credentials {
+public class OAuthCredentials implements Credentials {
 
     String mToken;
 
-    public CustomCredentials(String token){
+    public OAuthCredentials(String token){
         mToken = token;
     }
 

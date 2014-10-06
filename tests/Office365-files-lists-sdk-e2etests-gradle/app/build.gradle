@@ -28,7 +28,6 @@ android {
 }
 
 dependencies {
-    compile(name: 'odata-impl', ext: 'aar')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.google.guava:guava:16.0.1'
@@ -36,6 +35,7 @@ dependencies {
     compile('com.microsoft.aad:adal:1.0.0') {
         exclude group: 'com.android.support'
     }
-    compile files('libs/odata-interfaces.jar')
-    compile files('libs/odata-model.jar')
+    compile project(':odata-engine-interfaces')
+    compile project(':mail-calendar-contact')
+    compile project(':odata-engine-android-impl')
 }

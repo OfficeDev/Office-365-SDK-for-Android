@@ -2,8 +2,8 @@ package com.microsoft.office365.test.integration;
 
 import java.util.concurrent.Future;
 
-import com.microsoft.office365.files.FileClient;
-import com.microsoft.office365.lists.SharepointListsClient;
+
+import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 
@@ -35,19 +35,7 @@ public class ApplicationContext {
         return mTestPlatformContext.getServerUrl();
     }
 
-    public static SharepointListsClient getListsClient() {
-        return mTestPlatformContext.getListsClient();
+    public static EntityContainerClient getMailCalendarContactClient(){
+        return mTestPlatformContext.getMailCalendarContactClient();
     }
-
-    public static String getTestListName() {
-        return mTestPlatformContext.getTestListName();
-    }
-    
-    public static String getTestDocumentListName() {
-        return mTestPlatformContext.getTestDocumentListName();
-    }
-
-	public static FileClient getFileClient() {
-		return mTestPlatformContext.getFileClient();
-	}
 }

@@ -7,22 +7,22 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
-import com.microsoft.office365.LogLevel;
-import com.microsoft.office365.Logger;
-import com.microsoft.office365.files.FileClient;
-import com.microsoft.office365.http.CookieCredentials;
-import com.microsoft.office365.http.OAuthCredentials;
-import com.microsoft.office365.http.SharepointCookieCredentials;
-import com.microsoft.office365.lists.SharepointListsClient;
+
+import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
+import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
+import com.microsoft.office365.odata.impl.http.CredentialsFactoryImpl;
+import com.microsoft.office365.odata.interfaces.Credentials;
+import com.microsoft.office365.odata.interfaces.CredentialsFactory;
+import com.microsoft.office365.odata.interfaces.DependencyResolver;
+import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.test.integration.TestPlatformContext;
+import com.microsoft.office365.test.integration.framework.OAuthCredentials;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
@@ -36,19 +36,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 	}
 
 	@Override
-	public Logger getLogger() {
-		return new Logger() {
-
-			@Override
-			public void log(String message, LogLevel level) {
-				Log.d(Constants.TAG, level.toString() + ": " + message);
-			}
-		};
-	}
-
-	@Override
 	public String getServerUrl() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_SHAREPOINT_URL,
+		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_RESOURCE_URL,
 				"");
 	}
 
@@ -70,20 +59,11 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 				Constants.PREFERENCE_AUTHENTICATION_METHOD, "");
 	}
 
-	@Override
-	public String getTestListName() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_LIST_NAME, "");
-	}
-	
-	@Override
-	public String getTestDocumentListName() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DOCUMENT_LIST_NAME, "");
-	}
-	
-	@Override
-	public String getSiteRelativeUrl() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_SITE_URL, "");
-	}
+    @Override
+    public String getEndpointUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_ENDPOINT_URL, "");
+    }
 
 	public static AuthenticationContext context = null;
 
@@ -148,106 +128,20 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 	}
 
 	@Override
-	public FileClient getFileClient() {
-		FileClient result;
+	public EntityContainerClient getMailCalendarContactClient() {
+        EntityContainerClient result;
 
 		if (getAuthenticationMethod().equals("AAD")) {
-			result = getFileClientAAD();
+			result = getEntityContainerClientAAD();
 		} else {
-			result = getFileClientCookies();
+			result = getEntityContainerClientBasic();
 		}
 
 		return result;
 	}
 
-	@Override
-	public SharepointListsClient getListsClient() {
-		SharepointListsClient result;
-
-		if (getAuthenticationMethod().equals("AAD")) {
-			result = getListsClientAAD();
-		} else {
-			result = getListsClientCookies();
-		}
-		return result;
-	}
-
-	SharepointListsClient getListsClientCookies() {
-
-		final SettableFuture<SharepointListsClient> clientFuture = SettableFuture.create();
-		mActivity.runOnUiThread(new Runnable() {
-
-			@Override
-			public void run() {
-				ListenableFuture<CookieCredentials> future = SharepointCookieCredentials.requestCredentials(
-						getServerUrl(), mActivity);
-
-				Futures.addCallback(future, new FutureCallback<CookieCredentials>() {
-					@Override
-					public void onFailure(Throwable t) {
-						clientFuture.setException(t);
-					}
-
-					@Override
-					public void onSuccess(CookieCredentials credentials) {
-						SharepointListsClient client = new SharepointListsClient(getServerUrl(), getSiteRelativeUrl(),
-								credentials, getLogger());
-						clientFuture.set(client);
-					}
-				});
-			}
-		});
-
-		try {
-			return clientFuture.get();
-		} catch (Throwable t) {
-			Log.e(Constants.TAG, t.getMessage());
-			return null;
-		}
-	}
-
-	SharepointListsClient getListsClientAAD() {
-		final SettableFuture<SharepointListsClient> future = SettableFuture.create();
-
-		try {
-			// here we get the token using ADAL Library
-			getAuthenticationContext().acquireToken(
-					mActivity, getServerUrl(),
-					getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-					new AuthenticationCallback<AuthenticationResult>() {
-
-						@Override
-						public void onError(Exception exc) {
-							future.setException(exc);
-						}
-
-						@Override
-						public void onSuccess(AuthenticationResult result) {
-							// once succeeded we create a credentials instance
-							// using the token from ADAL
-							OAuthCredentials credentials = new OAuthCredentials(result.getAccessToken());
-
-							// retrieve the OfficeClient with the credentials
-							SharepointListsClient client = new SharepointListsClient(getServerUrl(),
-									getSiteRelativeUrl(), credentials, getLogger());
-							future.set(client);
-						}
-					});
-
-		} catch (Throwable t) {
-			future.setException(t);
-		}
-
-		try {
-			return future.get();
-		} catch (Throwable t) {
-			Log.e(Constants.TAG, t.getMessage());
-			return null;
-		}
-	}
-
-	FileClient getFileClientAAD() {
-		final SettableFuture<FileClient> future = SettableFuture.create();
+    EntityContainerClient getEntityContainerClientAAD() {
+		final SettableFuture<EntityContainerClient> future = SettableFuture.create();
 
 		try {
 			getAuthenticationContext().acquireToken(
@@ -262,13 +156,10 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
 						@Override
 						public void onSuccess(AuthenticationResult result) {
-							OAuthCredentials credentials = new OAuthCredentials(result.getAccessToken());
-
-							FileClient client = new FileClient(getServerUrl(), getSiteRelativeUrl(), credentials,
-									getLogger());
+							EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),getDependencyResolver(result.getAccessToken()));
 							future.set(client);
 						}
-					});
+                    });
 
 		} catch (Throwable t) {
 			future.setException(t);
@@ -281,38 +172,34 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 		}
 	}
 
-	FileClient getFileClientCookies() {
 
-		final SettableFuture<FileClient> clientFuture = SettableFuture.create();
+    EntityContainerClient getEntityContainerClientBasic() {
+        final String token = "di1hbmhvam5AbXNvcGVudGVjaC5jY3NjdHAubmV0OjExUGFzc3dvcmQ=";
 
-		mActivity.runOnUiThread(new Runnable() {
+        DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
+        dependencyResolver.setCredentialsFactory(new CredentialsFactory() {
+            @Override
+            public Credentials getCredentials() {
+                return new Credentials() {
+                    @Override
+                    public void prepareRequest(Request request) {
+                        request.addHeader("Authorization", "Basic " + token);
+                    }
+                };
+            }
+        });
+        EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),dependencyResolver);
+        return client;
+    }
 
-			@Override
-			public void run() {
-				ListenableFuture<CookieCredentials> future = SharepointCookieCredentials.requestCredentials(
-						getServerUrl(), mActivity);
+    private DependencyResolver getDependencyResolver(final String token) {
+        OAuthCredentials credentials = new OAuthCredentials(token);
+        CredentialsFactoryImpl credFactory = new CredentialsFactoryImpl();
+        credFactory.setCredentials(credentials);
 
-				Futures.addCallback(future, new FutureCallback<CookieCredentials>() {
-					@Override
-					public void onFailure(Throwable t) {
-						clientFuture.setException(t);
-					}
+        DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
+        dependencyResolver.setCredentialsFactory(credFactory);
 
-					@Override
-					public void onSuccess(CookieCredentials credentials) {
-						FileClient client = new FileClient(getServerUrl(), getSiteRelativeUrl(), credentials,
-								getLogger());
-						clientFuture.set(client);
-					}
-				});
-			}
-		});
-
-		try {
-			return clientFuture.get();
-		} catch (Throwable t) {
-			Log.e(Constants.TAG, t.getMessage());
-			return null;
-		}
-	}
+        return dependencyResolver;
+    }
 }

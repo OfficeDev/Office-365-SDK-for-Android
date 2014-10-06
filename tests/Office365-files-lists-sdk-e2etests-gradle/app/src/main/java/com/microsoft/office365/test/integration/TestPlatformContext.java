@@ -2,9 +2,8 @@ package com.microsoft.office365.test.integration;
 
 import java.util.concurrent.Future;
 
-import com.microsoft.office365.Logger;
-import com.microsoft.office365.files.FileClient;
-import com.microsoft.office365.lists.SharepointListsClient;
+
+import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 
@@ -15,14 +14,8 @@ public interface TestPlatformContext {
 	String getClientId();
 	
 	String getRedirectUrl();
-	
-	String getTestListName();
-	
-	String getTestDocumentListName();
 
-	String getSiteRelativeUrl();
-
-	SharepointListsClient getListsClient();
+    String getEndpointUrl();
 
 	Future<Void> showMessage(String message);
 
@@ -30,10 +23,8 @@ public interface TestPlatformContext {
 
 	void sleep(int seconds) throws Exception;
 
-	Logger getLogger();
-
-	FileClient getFileClient();
-	
 	String getAuthenticationMethod();
+
+    EntityContainerClient getMailCalendarContactClient();
 
 }
