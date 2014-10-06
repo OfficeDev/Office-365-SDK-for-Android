@@ -13,6 +13,7 @@ import com.microsoft.office365.odata.interfaces.Response;
 
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.EntityEnclosingRequestWrapper;
@@ -80,7 +81,12 @@ public class NetworkRunnable implements Runnable {
                 responseHeaders.put(header.getName(), headerValues);
             }
 
-            InputStream stream = realResponse.getEntity().getContent();
+            HttpEntity entity = realResponse.getEntity();
+            InputStream stream = null;
+
+            if (entity != null) {
+                stream = entity.getContent();
+            }
 
             if (stream != null) {
                 Response response = new ResponseImpl(
