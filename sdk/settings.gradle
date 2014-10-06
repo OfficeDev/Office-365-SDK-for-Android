@@ -1,0 +1,1 @@
+include ':odata-engine-interfaces', ':odata-engine-android-impl', ':mail-calendar-contact'
