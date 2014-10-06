@@ -22,6 +22,7 @@ public abstract class ODataOperations extends ODataExecutable {
         return parent.oDataExecute(urlComponent + "/" + path, content, verb);
     }
 
+
     @Override
     DependencyResolver getResolver() {
         return parent.getResolver();
