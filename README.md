@@ -79,6 +79,7 @@ This section will guide you through the process of creating a very simple applic
 		    }
 		}
 
+
 4. Now, add the following code to retrieve messages. Make sure you're using the right endpoint and you have replaced the authentication token.
 
 		String endpoint = "https://sdfpilot.outlook.com/ews/odata";

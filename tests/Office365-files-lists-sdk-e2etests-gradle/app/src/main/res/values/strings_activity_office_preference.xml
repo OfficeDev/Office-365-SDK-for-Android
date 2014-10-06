@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="title_activity_office_preference">Settings</string>
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+	
+	<string name="pref_office_title_url">Sharepoint Server URL</string>
+    <string name="pref_office_url">http://sharepoint/</string>
+    <string name="title_activity_aad_settings">AAD Settings</string>
+    
+</resources>

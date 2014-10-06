@@ -1,0 +1,36 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditTextPreference
+        android:name="resourceUrl"
+        android:defaultValue=""
+        android:key="prefResourcetUrl"
+        android:summary="Enter the resource url"
+        android:title="Resource URL" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="endpointUrl"
+        android:defaultValue=""
+        android:key="prefEndpoint"
+        android:summary="Enter the endpoint url"
+        android:title="Endpoint URL" >
+    </EditTextPreference>
+
+    <ListPreference
+        android:defaultValue="COOKIES"
+        android:entries="@array/authOptions"
+        android:entryValues="@array/authValues"
+        android:key="prefAuthenticationMethod"
+        android:summary="Select an authentication method"
+        android:title="Authentication method" />
+
+    <PreferenceScreen
+        android:summary="Configure your AAD credentials"
+        android:title="AAD Settings" >
+        <intent android:action=".activities.AADSettingsActivity"/>
+    </PreferenceScreen>
+
+    <Preference
+        android:key="prefEraseSettings"
+        android:summary="Erase stored cookies"
+        android:title="Erase Cookies" />
+
+</PreferenceScreen>
