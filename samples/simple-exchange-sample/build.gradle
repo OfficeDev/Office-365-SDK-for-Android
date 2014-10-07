@@ -16,7 +16,7 @@ allprojects {
     repositories {
         jcenter()
         flatDir {
-            dirs 'aar'
+            dirs 'libs'
         }
     }
 }
