@@ -38,4 +38,6 @@ public class ApplicationContext {
     public static EntityContainerClient getMailCalendarContactClient(){
         return mTestPlatformContext.getMailCalendarContactClient();
     }
+
+    public static String getTestMail() { return mTestPlatformContext.getTestMail();}
 }

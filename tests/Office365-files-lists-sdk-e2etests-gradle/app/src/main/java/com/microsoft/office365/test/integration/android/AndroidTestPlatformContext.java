@@ -65,7 +65,13 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                 Constants.PREFERENCE_ENDPOINT_URL, "");
     }
 
-	public static AuthenticationContext context = null;
+    @Override
+    public String getTestMail() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_TEST_MAIL, "");
+    }
+
+    public static AuthenticationContext context = null;
 
 	public AuthenticationContext getAuthenticationContext() {
 

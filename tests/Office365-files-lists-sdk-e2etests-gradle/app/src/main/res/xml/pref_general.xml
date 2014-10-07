@@ -14,6 +14,14 @@
         android:title="Endpoint URL" >
     </EditTextPreference>
 
+    <EditTextPreference
+        android:name="testMail"
+        android:defaultValue=""
+        android:key="prefTestMail"
+        android:summary="Enter the email for tests"
+        android:title="Test Email" >
+    </EditTextPreference>
+
     <ListPreference
         android:defaultValue="COOKIES"
         android:entries="@array/authOptions"

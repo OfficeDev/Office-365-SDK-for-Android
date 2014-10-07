@@ -17,6 +17,8 @@ public interface TestPlatformContext {
 
     String getEndpointUrl();
 
+    String getTestMail();
+
 	Future<Void> showMessage(String message);
 
 	void executeTest(TestCase testCase, TestExecutionCallback callback);

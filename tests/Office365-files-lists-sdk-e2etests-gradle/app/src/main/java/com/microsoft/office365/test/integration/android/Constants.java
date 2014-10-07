@@ -29,4 +29,5 @@ public class Constants {
 	public static final String PREFERENCE_AAD_CLIENT_ID = "prefAADClientId";
 	public static final String PREFERENCE_AAD_Redirect_URL ="prefAADRedirectUrl";
     public static final String PREFERENCE_ENDPOINT_URL="prefEndpoint";
+    public static final String PREFERENCE_TEST_MAIL="prefTestMail";
 }
