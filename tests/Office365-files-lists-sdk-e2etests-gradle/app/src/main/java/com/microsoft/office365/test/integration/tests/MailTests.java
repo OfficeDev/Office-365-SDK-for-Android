@@ -37,7 +37,7 @@ public class MailTests extends TestGroup {
         this.addTest(canDeleteFolder("Can delete folder", true));
         this.addTest(canMoveFolder("Can move folder", false));
         this.addTest(canCopyFolder("Can copy folder", false));
-        //update folder
+        //TODO:update folder
 
         //Messages
         this.addTest(canGetMessages("Can get messages", true));
@@ -48,13 +48,13 @@ public class MailTests extends TestGroup {
         this.addTest(canDeleteMessage("Can delete message", true));
         this.addTest(canMoveMessage("Can move message", false));
         this.addTest(canMoveMessage("Can copy message", false));
-        //create message with attachment
-        //createReply ->to drafts
-        //reply all ->to drafts
-        //forward -> to drafts
-        //reply action
-        //reply all
-        //forward action
+        //TODO:create message with attachment
+        //TODO:createReply ->to drafts
+        //TODO:reply all ->to drafts
+        //TODO:forward -> to drafts
+        //TODO:reply action
+        //TODO:reply all
+        //TODO:forward action
 
 
     }

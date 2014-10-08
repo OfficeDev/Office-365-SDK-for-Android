@@ -18,8 +18,45 @@ public class ContactTests extends TestGroup {
     public ContactTests() {
         super("Contact tests");
 
+        this.addTest(canGetContactsFolder("Can get contacts folder", true));
         this.addTest(canGetContacts("Can get contacts", true));
         this.addTest(canCreateContact("Can create contacts", true));
+        this.addTest(canDeleteContact("Can delete contacts", true));
+        this.addTest(canUpdateContact("Can update contacts", false));
+    }
+
+    private TestCase canGetContactsFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Act
+                    List<Contact> contacts = client.getMe()
+                            .getContactFolders()
+                            .getById("Contacts")
+                            .getContacts().execute().get();
+
+                    //Assert
+                    if(contacts == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
     }
 
     private TestCase canGetContacts(String name, boolean enabled) {
@@ -72,7 +109,7 @@ public class ContactTests extends TestGroup {
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
-
+                    Thread.sleep(2000);
                     //Act
                     Contact storedContact = client.getMe()
                             .getContacts()
@@ -80,6 +117,90 @@ public class ContactTests extends TestGroup {
 
                     //Assert
                     if(!storedContact.getId().equals(addedContact.getId()))
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe().getContacts().getById(addedContact.getId()).delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canDeleteContact(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Contact addedContact = client.getMe().getContacts().add(getContact()).get();
+                    Thread.sleep(2000);
+                    //Act
+                    client.getMe().getContacts().getById(addedContact.getId()).delete().get();
+
+                    //Assert
+                    List<Contact> contacts = client.getMe().getContacts().execute().get();
+
+                    boolean exists = false;
+                    for(Contact c : contacts)
+                    {
+                        if(c.getId().equals(addedContact.getId()))
+                            exists = true;
+                    }
+
+                    if(exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canUpdateContact(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Contact contact = getContact();
+                    Contact addedContact = client.getMe().getContacts().add(contact).get();
+                    contact.setGivenName("Updated given name");
+                    client.getMe().getContacts().getById(addedContact.getId()).update(contact).get();
+                    Thread.sleep(2000);
+                    //Act
+                    Contact updatedContact = client.getMe()
+                            .getContacts()
+                            .getById(addedContact.getId()).execute().get();
+
+                    //Assert
+                    if(!updatedContact.getId().equals(addedContact.getId()) || !updatedContact.getGivenName().equals("Updated given name"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
