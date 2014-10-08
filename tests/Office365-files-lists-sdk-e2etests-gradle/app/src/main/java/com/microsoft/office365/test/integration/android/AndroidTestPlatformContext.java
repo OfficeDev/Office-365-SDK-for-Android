@@ -71,6 +71,12 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                 Constants.PREFERENCE_TEST_MAIL, "");
     }
 
+    @Override
+    public String getBasicAuthToken() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_BASIC_TOKEN, "di1hbmhvam5AbXNvcGVudGVjaC5jY3NjdHAubmV0OjExUGFzc3dvcmQ=");
+    }
+
     public static AuthenticationContext context = null;
 
 	public AuthenticationContext getAuthenticationContext() {
@@ -180,7 +186,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
 
     EntityContainerClient getEntityContainerClientBasic() {
-        final String token = "di1hbmhvam5AbXNvcGVudGVjaC5jY3NjdHAubmV0OjExUGFzc3dvcmQ=";
+        final String token = this.getBasicAuthToken();
 
         DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
         dependencyResolver.setCredentialsFactory(new CredentialsFactory() {

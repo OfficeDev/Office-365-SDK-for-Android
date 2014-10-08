@@ -40,4 +40,6 @@ public class ApplicationContext {
     }
 
     public static String getTestMail() { return mTestPlatformContext.getTestMail();}
+
+    public static String getBasicAuthToken() { return mTestPlatformContext.getBasicAuthToken();}
 }
