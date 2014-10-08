@@ -5,11 +5,9 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.model.*;
 
-public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,ContactFolderOperations> implements Executable<ContactFolder> {
+public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,ContactFolderOperations> implements Readable<ContactFolder> {
 
 	 public ContactFolderFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, ContactFolder.class,ContactFolderOperations.class);

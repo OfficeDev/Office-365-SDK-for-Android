@@ -6,7 +6,6 @@
 package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.Constants;
 import com.microsoft.office365.odata.interfaces.*;
 
 import static com.microsoft.office365.odata.EntityFetcherHelper.addEntityResultCallback;
@@ -14,7 +13,7 @@ import static com.microsoft.office365.odata.EntityFetcherHelper.addNullResultCal
 import static com.microsoft.office365.odata.EntityFetcherHelper.getODataExecuteUrlForPath;
 import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
 
-public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Executable<E> {
+public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Readable<E> {
 
     private String urlComponent;
     private ODataExecutable parent;
@@ -68,7 +67,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
         return result;
     }
 
-    public ListenableFuture<E> execute() {
+    public ListenableFuture<E> read() {
         final SettableFuture<E> result = SettableFuture.create();
 
         ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.GET);

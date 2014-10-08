@@ -6,20 +6,17 @@
 package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.Constants;
 import com.microsoft.office365.odata.EntityFetcherHelper;
 import com.microsoft.office365.odata.Helpers;
 import com.microsoft.office365.odata.interfaces.*;
 
-import static com.microsoft.office365.odata.BaseODataContainerHelper.*;
 import static com.microsoft.office365.odata.EntityCollectionFetcherHelper.addListResultCallback;
 import static com.microsoft.office365.odata.EntityFetcherHelper.getQueryString;
 import static com.microsoft.office365.odata.EntityFetcherHelper.getSelectorUrl;
-import static com.microsoft.office365.odata.Helpers.urlEncode;
 
 import java.util.List;
 
-public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Executable<List<T>> {
+public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Readable<List<T>> {
 
     private int top = -1;
     private int skip = -1;
@@ -119,7 +116,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     }
 
     @Override
-    public ListenableFuture<List<T>> execute() {
+    public ListenableFuture<List<T>> read() {
         final SettableFuture<List<T>> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.GET);
         addListResultCallback(result, future, getResolver(), clazz);

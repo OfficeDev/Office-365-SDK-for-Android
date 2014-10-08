@@ -7,6 +7,6 @@ package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
-public interface Executable<T> {
-    public ListenableFuture<T> execute();
+public interface Readable<T> {
+    public ListenableFuture<T> read();
 }

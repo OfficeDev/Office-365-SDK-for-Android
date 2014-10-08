@@ -5,11 +5,9 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.model.*;
 
-public class CalendarGroupFetcher extends ODataEntityFetcher<CalendarGroup,CalendarGroupOperations> implements Executable<CalendarGroup> {
+public class CalendarGroupFetcher extends ODataEntityFetcher<CalendarGroup,CalendarGroupOperations> implements Readable<CalendarGroup> {
 
 	 public CalendarGroupFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, CalendarGroup.class,CalendarGroupOperations.class);

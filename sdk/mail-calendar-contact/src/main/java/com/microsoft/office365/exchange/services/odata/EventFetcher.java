@@ -5,11 +5,9 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.model.*;
 
-public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> implements Executable<Event> {
+public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> implements Readable<Event> {
 
 	 public EventFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Event.class,EventOperations.class);

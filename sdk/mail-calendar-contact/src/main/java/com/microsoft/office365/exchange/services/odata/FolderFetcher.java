@@ -5,11 +5,9 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.model.*;
 
-public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations> implements Executable<Folder> {
+public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations> implements Readable<Folder> {
 
 	 public FolderFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Folder.class,FolderOperations.class);

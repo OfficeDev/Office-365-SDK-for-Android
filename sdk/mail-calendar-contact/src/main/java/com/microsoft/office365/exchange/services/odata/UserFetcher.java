@@ -5,11 +5,9 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.interfaces.*;
 import com.microsoft.office365.exchange.services.model.*;
 
-public class UserFetcher extends ODataEntityFetcher<User,UserOperations> implements Executable<User> {
+public class UserFetcher extends ODataEntityFetcher<User,UserOperations> implements Readable<User> {
 
 	 public UserFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, User.class,UserOperations.class);
