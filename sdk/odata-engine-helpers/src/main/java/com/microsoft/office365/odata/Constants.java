@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.office365.exchange.services.odata;
+package com.microsoft.office365.odata;
 
 import java.nio.charset.Charset;
 

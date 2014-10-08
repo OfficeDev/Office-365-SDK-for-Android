@@ -16,20 +16,4 @@ abstract class ODataExecutable {
     abstract ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb);
 
     abstract DependencyResolver getResolver();
-
-    String getODataParameterValue(Object value){
-
-        String serialized = getResolver().getJsonSerializer().serialize(value);
-        return urlEncode(serialized);
-    }
-
-
-    protected String urlEncode(String s){
-        try {
-            return URLEncoder.encode(s, Constants.UTF8_NAME);
-        } catch (UnsupportedEncodingException ignore) {
-            //ignore
-            return s;
-        }
-    }
 }
