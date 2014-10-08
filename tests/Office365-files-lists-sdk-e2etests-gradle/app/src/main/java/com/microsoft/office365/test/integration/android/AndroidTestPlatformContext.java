@@ -74,7 +74,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     @Override
     public String getBasicAuthToken() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                Constants.PREFERENCE_BASIC_TOKEN, "di1hbmhvam5AbXNvcGVudGVjaC5jY3NjdHAubmV0OjExUGFzc3dvcmQ=");
+                Constants.PREFERENCE_BASIC_TOKEN, "");
     }
 
     public static AuthenticationContext context = null;

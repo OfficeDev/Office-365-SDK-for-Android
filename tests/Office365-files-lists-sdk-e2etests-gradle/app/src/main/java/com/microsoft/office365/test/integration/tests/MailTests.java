@@ -563,7 +563,7 @@ public class MailTests extends TestGroup {
                             .getById(addedMessage.getId())
                             .getOperations().send().get();
 
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     //Assert
                     List<Message> sentMessages = client.getMe()
                             .getFolders()
