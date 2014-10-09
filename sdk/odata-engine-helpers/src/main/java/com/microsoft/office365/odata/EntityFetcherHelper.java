@@ -17,7 +17,10 @@ public class EntityFetcherHelper {
         }
 
         if (path.length() > 0) {
-            url.append("/");
+            if (!path.startsWith("/")) {
+                url.append("/");
+            }
+            
             url.append(path);
         }
         return url.toString();
@@ -108,6 +111,15 @@ public class EntityFetcherHelper {
 
     public static String getSelectorUrl(String urlComponent, String selectedId, String path) {
         String selector = "('" + selectedId + "')";
-        return urlComponent + selector + "/" + path;
+
+        if (path == null) {
+            path = "";
+        }
+
+        if (!path.startsWith("/")) {
+            path = "/" + path;
+        }
+
+        return urlComponent + selector + path;
     }
 }
