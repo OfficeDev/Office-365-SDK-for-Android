@@ -12,8 +12,9 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.office365.exchange.services.model.Message;
 import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
+import com.microsoft.office365.outlook.services.Message;
+import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
 
 import java.util.List;
 
