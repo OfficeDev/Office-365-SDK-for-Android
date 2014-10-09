@@ -14,8 +14,23 @@
         android:title="Endpoint URL" >
     </EditTextPreference>
 
+    <EditTextPreference
+        android:name="testMail"
+        android:defaultValue=""
+        android:key="prefTestMail"
+        android:summary="Enter the email for tests"
+        android:title="Test Email" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="basicToken"
+        android:defaultValue=""
+        android:key="prefBasicToken"
+        android:summary="Enter the basic auth token"
+        android:title="Basic Token" >
+    </EditTextPreference>
+
     <ListPreference
-        android:defaultValue="COOKIES"
+        android:defaultValue="BASIC"
         android:entries="@array/authOptions"
         android:entryValues="@array/authValues"
         android:key="prefAuthenticationMethod"

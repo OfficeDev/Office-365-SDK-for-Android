@@ -50,9 +50,16 @@ public abstract class BaseODataContainer extends ODataExecutable {
                     byte[] data = readAllBytes(response.getStream());
 
                     int status = response.getStatus();
+
+                    try{
+                        response.close();
+                    }
+                    catch(Throwable t){
+                        result.setException(t);
+                    }
                     if (status < 200 || status > 299) {
                         String responseData = new String(data, Constants.UTF8_NAME);
-                        result.setException(new IllegalStateException("Response status: " + response.getStatus() + "\n" + "Response content: " + responseData));
+                        result.setException(new IllegalStateException("Response status: " + status + "\n" + "Response content: " + responseData));
                         return;
                     }
                     result.set(data);

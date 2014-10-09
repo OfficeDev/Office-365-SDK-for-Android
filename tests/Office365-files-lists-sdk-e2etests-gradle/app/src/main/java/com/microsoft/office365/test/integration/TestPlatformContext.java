@@ -17,6 +17,10 @@ public interface TestPlatformContext {
 
     String getEndpointUrl();
 
+    String getTestMail();
+
+    String getBasicAuthToken();
+
 	Future<Void> showMessage(String message);
 
 	void executeTest(TestCase testCase, TestExecutionCallback callback);
