@@ -5,7 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.microsoft.office365.exchange.services.model.*;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.exchange.services.model.Folder;
+import com.microsoft.office365.exchange.services.model.Message;
+import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
+
+import java.lang.*;
 
 public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations> implements Readable<Folder> {
 

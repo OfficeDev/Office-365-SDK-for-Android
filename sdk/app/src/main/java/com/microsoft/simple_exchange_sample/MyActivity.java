@@ -13,7 +13,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.office365.exchange.services.model.Message;
-import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
 import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
 
 import java.util.List;

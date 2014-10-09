@@ -7,7 +7,8 @@ package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
-import com.microsoft.office365.exchange.services.model.*;
+import com.microsoft.office365.exchange.services.*;
+import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
 
 public class ItemOperations extends ODataOperations {
 

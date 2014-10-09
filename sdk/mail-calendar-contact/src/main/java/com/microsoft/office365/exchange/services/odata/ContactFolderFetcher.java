@@ -5,9 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.microsoft.office365.exchange.services.model.*;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
 
-public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,ContactFolderOperations> implements Readable<ContactFolder> {
+import java.lang.*;
+
+public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,ContactFolderOperations> implements java.lang.Readable<ContactFolder> {
 
 	 public ContactFolderFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, ContactFolder.class,ContactFolderOperations.class);

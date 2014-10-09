@@ -5,9 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.microsoft.office365.exchange.services.model.*;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
 
-public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,ItemAttachmentOperations> implements Readable<ItemAttachment> {
+import java.lang.*;
+
+public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,ItemAttachmentOperations> implements java.lang.Readable<ItemAttachment> {
 
 	 public ItemAttachmentFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, ItemAttachment.class,ItemAttachmentOperations.class);

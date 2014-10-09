@@ -6,9 +6,10 @@
 package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.Constants;
+import com.microsoft.office365.odata.*;
 import com.microsoft.office365.odata.interfaces.*;
-import com.microsoft.office365.exchange.services.model.*;
+import com.microsoft.office365.exchange.services.*;
+import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
 
 public class EventOperations extends ODataOperations {
 
@@ -19,15 +20,19 @@ public class EventOperations extends ODataOperations {
 	public ListenableFuture<Integer> accept(String comment) {
         final SettableFuture<Integer> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("Accept", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("Comment", comment);
+	
+
+        ListenableFuture<byte[]> future = oDataExecute("Accept", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(byte[] bytes) {
+            public void onSuccess(byte[] integer) {
                 DependencyResolver resolver = getResolver();
 
                 try {
-                    result.set(resolver.getJsonSerializer().deserialize(new String(bytes, Constants.UTF8), Integer.class));
+                    result.set(resolver.getJsonSerializer().deserialize(new String(integer, com.microsoft.office365.odata.Constants.UTF8), Integer.class));
                 } catch (Throwable throwable) {
                     result.setException(throwable);
                 }
@@ -45,15 +50,19 @@ public class EventOperations extends ODataOperations {
 	public ListenableFuture<Integer> decline(String comment) {
         final SettableFuture<Integer> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("Decline", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("Comment", comment);
+	
+
+        ListenableFuture<byte[]> future = oDataExecute("Decline", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(byte[] bytes) {
+            public void onSuccess(byte[] integer) {
                 DependencyResolver resolver = getResolver();
 
                 try {
-                    result.set(resolver.getJsonSerializer().deserialize(new String(bytes, Constants.UTF8), Integer.class));
+                    result.set(resolver.getJsonSerializer().deserialize(new String(integer, com.microsoft.office365.odata.Constants.UTF8), Integer.class));
                 } catch (Throwable throwable) {
                     result.setException(throwable);
                 }
@@ -71,15 +80,19 @@ public class EventOperations extends ODataOperations {
 	public ListenableFuture<Integer> tentativelyAccept(String comment) {
         final SettableFuture<Integer> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("TentativelyAccept", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("Comment", comment);
+	
+
+        ListenableFuture<byte[]> future = oDataExecute("TentativelyAccept", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(byte[] bytes) {
+            public void onSuccess(byte[] integer) {
                 DependencyResolver resolver = getResolver();
 
                 try {
-                    result.set(resolver.getJsonSerializer().deserialize(new String(bytes, Constants.UTF8), Integer.class));
+                    result.set(resolver.getJsonSerializer().deserialize(new String(integer, com.microsoft.office365.odata.Constants.UTF8), Integer.class));
                 } catch (Throwable throwable) {
                     result.setException(throwable);
                 }
@@ -97,15 +110,20 @@ public class EventOperations extends ODataOperations {
 	public ListenableFuture<Event> instances(java.util.Calendar startDate, java.util.Calendar endDate) {
         final SettableFuture<Event> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("Instances", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("StartDate", startDate);
+	map.put("EndDate", endDate);
+	
+
+        ListenableFuture<byte[]> future = oDataExecute("Instances", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(byte[] bytes) {
+            public void onSuccess(byte[] event) {
                 DependencyResolver resolver = getResolver();
 
                 try {
-                    result.set(resolver.getJsonSerializer().deserialize(new String(bytes, Constants.UTF8), Event.class));
+                    result.set(resolver.getJsonSerializer().deserialize(new String(event, com.microsoft.office365.odata.Constants.UTF8), Event.class));
                 } catch (Throwable throwable) {
                     result.setException(throwable);
                 }

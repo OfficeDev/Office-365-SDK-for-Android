@@ -9,12 +9,12 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.EntityFetcherHelper;
 import com.microsoft.office365.odata.Helpers;
 import com.microsoft.office365.odata.interfaces.*;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import static com.microsoft.office365.odata.EntityCollectionFetcherHelper.addListResultCallback;
 import static com.microsoft.office365.odata.EntityFetcherHelper.getQueryString;
 import static com.microsoft.office365.odata.EntityFetcherHelper.getSelectorUrl;
-
-import java.util.List;
 
 public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Readable<List<T>> {
 
@@ -80,10 +80,9 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
 
     public U getById(String id) {
         this.selectedId = id;
-
         String[] classNameParts = (clazz.getCanonicalName() + "Fetcher").split("\\.");
 
-        String className = "com.microsoft.office365.exchange.services.odata." + classNameParts[classNameParts.length - 1];
+        String className = "com.microsoft.office365.odata." + classNameParts[classNameParts.length - 1];
 
         try {
             Class entityQueryClass = Class.forName(className);
@@ -101,7 +100,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
 
     @Override
     ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
-        if (selectedId == null) {
+		if (selectedId == null) {
             String query = getQueryString(urlComponent, top, skip, select, expand, filter);
             return parent.oDataExecute(query, content, verb);
         } else {
@@ -117,23 +116,23 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
 
     @Override
     public ListenableFuture<List<T>> read() {
-        final SettableFuture<List<T>> result = SettableFuture.create();
+		final SettableFuture<List<T>> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.GET);
         addListResultCallback(result, future, getResolver(), clazz);
 
         return result;
     }
 
-
-
     public ListenableFuture<T> add(T entity) {
-
-        final SettableFuture<T> result = SettableFuture.create();
+		final SettableFuture<T> result = SettableFuture.create();
         byte[] payloadBytes = Helpers.serializeToJsonByteArray(entity, getResolver());
         ListenableFuture<byte[]> future = oDataExecute("", payloadBytes, HttpVerb.POST);
-
         EntityFetcherHelper.addEntityResultCallback(result, future, getResolver(), clazz);
 
         return result;
+    }
+
+    public V getOperations() {
+        return this.operations;
     }
 }

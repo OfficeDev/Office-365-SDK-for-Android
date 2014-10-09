@@ -34,8 +34,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
 
     @Override
     ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
-        String url = getODataExecuteUrlForPath(path, urlComponent);
-
+	String url = getODataExecuteUrlForPath(path, urlComponent);
         return parent.oDataExecute(url, content, verb);
     }
 
@@ -45,34 +44,24 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
     }
 
     public ListenableFuture<E> update(E updatedEntity) {
-        final SettableFuture<E> result = SettableFuture.create();
-
+	final SettableFuture<E> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(updatedEntity, getResolver());
-
         ListenableFuture<byte[]> future = oDataExecute("", payloadBytes, HttpVerb.PATCH);
-
         addEntityResultCallback(result, future, getResolver(), clazz);
-
         return result;
     }
 
-
     public ListenableFuture delete() {
-        final SettableFuture<E> result = SettableFuture.create();
-
+	final SettableFuture<E> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.DELETE);
-
         addNullResultCallback(result, future);
-
         return result;
     }
 
     public ListenableFuture<E> read() {
-        final SettableFuture<E> result = SettableFuture.create();
-
+	final SettableFuture<E> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.GET);
         addEntityResultCallback(result, future, getResolver(), clazz);
-
         return result;
     }
 

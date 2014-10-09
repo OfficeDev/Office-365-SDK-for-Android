@@ -6,9 +6,10 @@
 package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.Constants;
+import com.microsoft.office365.odata.*;
 import com.microsoft.office365.odata.interfaces.*;
-import com.microsoft.office365.exchange.services.model.*;
+import com.microsoft.office365.exchange.services.*;
+import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
 
 public class FolderOperations extends ODataOperations {
 
@@ -19,15 +20,19 @@ public class FolderOperations extends ODataOperations {
 	public ListenableFuture<Folder> copy(String destinationId) {
         final SettableFuture<Folder> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("Copy", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("DestinationId", destinationId);
+	
+
+        ListenableFuture<byte[]> future = oDataExecute("Copy", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(byte[] bytes) {
+            public void onSuccess(byte[] folder) {
                 DependencyResolver resolver = getResolver();
 
                 try {
-                    result.set(resolver.getJsonSerializer().deserialize(new String(bytes, Constants.UTF8), Folder.class));
+                    result.set(resolver.getJsonSerializer().deserialize(new String(folder, com.microsoft.office365.odata.Constants.UTF8), Folder.class));
                 } catch (Throwable throwable) {
                     result.setException(throwable);
                 }
@@ -45,15 +50,19 @@ public class FolderOperations extends ODataOperations {
 	public ListenableFuture<Folder> move(String destinationId) {
         final SettableFuture<Folder> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("Move", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("DestinationId", destinationId);
+	
+
+        ListenableFuture<byte[]> future = oDataExecute("Move", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
-            public void onSuccess(byte[] bytes) {
+            public void onSuccess(byte[] folder) {
                 DependencyResolver resolver = getResolver();
 
                 try {
-                    result.set(resolver.getJsonSerializer().deserialize(new String(bytes, Constants.UTF8), Folder.class));
+                    result.set(resolver.getJsonSerializer().deserialize(new String(folder, com.microsoft.office365.odata.Constants.UTF8), Folder.class));
                 } catch (Throwable throwable) {
                     result.setException(throwable);
                 }

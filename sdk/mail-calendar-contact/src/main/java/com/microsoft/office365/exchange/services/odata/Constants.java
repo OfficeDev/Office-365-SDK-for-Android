@@ -5,13 +5,19 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.google.common.util.concurrent.*;
-import com.microsoft.office365.odata.interfaces.*;
-import com.microsoft.office365.exchange.services.*;
+import java.nio.charset.Charset;
 
-public class ContactCollectionOperations extends ODataOperations {
-
-    public ContactCollectionOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent);
-    }
+/**
+ * Constants used through the framework
+ */
+public class Constants {
+	/**
+	 * UTF-8 Encoding name
+	 */
+	public static final String UTF8_NAME = "UTF-8";
+	
+	/**
+	 * UTF-8 Charset instance
+	 */
+	public static final Charset UTF8 = Charset.forName(UTF8_NAME);
 }

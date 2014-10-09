@@ -5,9 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.microsoft.office365.exchange.services.model.*;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
 
-public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations> implements Readable<Message> {
+import java.lang.*;
+
+public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations> implements java.lang.Readable<Message> {
 
 	 public MessageFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Message.class,MessageOperations.class);

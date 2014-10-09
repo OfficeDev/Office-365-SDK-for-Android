@@ -7,7 +7,7 @@ package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.office365.odata.interfaces.*;
-import com.microsoft.office365.exchange.services.model.*;
+import com.microsoft.office365.exchange.services.*;
 
 public class ContactFolderCollectionOperations extends ODataOperations {
 

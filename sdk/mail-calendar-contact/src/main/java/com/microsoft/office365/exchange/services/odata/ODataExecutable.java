@@ -7,9 +7,6 @@ package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.office365.odata.interfaces.*;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
 
 abstract class ODataExecutable {
 

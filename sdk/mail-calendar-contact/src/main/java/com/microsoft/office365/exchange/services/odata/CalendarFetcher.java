@@ -5,9 +5,13 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.microsoft.office365.exchange.services.model.*;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
 
-public class CalendarFetcher extends ODataEntityFetcher<Calendar,CalendarOperations> implements Readable<Calendar> {
+import java.lang.*;
+
+public class CalendarFetcher extends ODataEntityFetcher<Calendar,CalendarOperations> implements java.lang.Readable<Calendar> {
 
 	 public CalendarFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Calendar.class,CalendarOperations.class);

@@ -5,7 +5,12 @@
  ******************************************************************************/
 package com.microsoft.office365.exchange.services.odata;
 
-import com.microsoft.office365.exchange.services.model.*;
+import com.google.common.util.concurrent.*;
+import com.microsoft.office365.exchange.services.model.Attachment;
+import com.microsoft.office365.odata.interfaces.*;
+import com.microsoft.office365.exchange.services.*;
+
+import java.lang.*;
 
 public class AttachmentFetcher extends ODataEntityFetcher<Attachment,AttachmentOperations> implements Readable<Attachment> {
 

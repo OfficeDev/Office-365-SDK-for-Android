@@ -6,10 +6,12 @@
 package com.microsoft.office365.exchange.services.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.office365.exchange.services.model.Event;
 import com.microsoft.office365.odata.Constants;
 import com.microsoft.office365.odata.EntityFetcherHelper;
 import com.microsoft.office365.odata.interfaces.*;
-import com.microsoft.office365.exchange.services.model.*;
+import com.microsoft.office365.exchange.services.*;
+import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
 
 public class CalendarOperations extends ODataOperations {
 
@@ -20,9 +22,15 @@ public class CalendarOperations extends ODataOperations {
 	public ListenableFuture<Event> calendarView(java.util.Calendar startDate, java.util.Calendar endDate) {
         final SettableFuture<Event> result = SettableFuture.create();
 
-        ListenableFuture<byte[]> future = oDataExecute("CalendarView", null, HttpVerb.POST);
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		map.put("StartDate", startDate);
+	    map.put("EndDate", endDate);
+	
 
-        EntityFetcherHelper.addEntityResultCallback(result, future, getResolver(), Event.class);
+        ListenableFuture<byte[]> future = oDataExecute("CalendarView", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+
+        EntityFetcherHelper.addEntityResultCallback(result,future,getResolver(),Event.class);
+
 
         return result;
     }
