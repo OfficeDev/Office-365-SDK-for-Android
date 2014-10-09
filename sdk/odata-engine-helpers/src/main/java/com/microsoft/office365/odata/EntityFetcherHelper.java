@@ -20,7 +20,7 @@ public class EntityFetcherHelper {
             if (!path.startsWith("/")) {
                 url.append("/");
             }
-            
+
             url.append(path);
         }
         return url.toString();

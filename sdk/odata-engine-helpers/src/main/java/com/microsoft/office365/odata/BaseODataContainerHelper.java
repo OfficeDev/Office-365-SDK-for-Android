@@ -9,6 +9,7 @@ import com.microsoft.office365.odata.interfaces.DependencyResolver;
 import com.microsoft.office365.odata.interfaces.HttpTransport;
 import com.microsoft.office365.odata.interfaces.HttpVerb;
 import com.microsoft.office365.odata.interfaces.LogLevel;
+import com.microsoft.office365.odata.interfaces.Logger;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
@@ -32,22 +33,32 @@ public class BaseODataContainerHelper {
 
     public static ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
 
+        final Logger logger = resolver.getLogger();
+
+        String fullUrl = url + "/" + path;
+        String executionInfo = String.format("URL: %s - HTTP VERB: %s", fullUrl, verb);
+        logger.log("Start preparing OData execution for " + executionInfo, LogLevel.INFO);
+
+        if (content != null) {
+            logger.log("With " + content.length + " bytes of payload", LogLevel.INFO);
+        }
+
         HttpTransport httpTransport = resolver.getHttpTransport();
         Request request = httpTransport.createRequest();
         request.setVerb(verb);
-        request.setUrl(url + "/" + path);
+        request.setUrl(fullUrl);
         request.setContent(content);
-        resolver.getLogger().log(new String(content == null ? new byte[0] : content, Constants.UTF8), LogLevel.VERBOSE);
         request.addHeader("Content-Type", "application/json");
         resolver.getCredentialsFactory().getCredentials().prepareRequest(request);
 
-        resolver.getLogger().log("URL: " + request.getUrl(), LogLevel.VERBOSE);
-        resolver.getLogger().log("HEADERS: ", LogLevel.VERBOSE);
+        logger.log("Request Headers: ", LogLevel.VERBOSE);
         for (String key : request.getHeaders().keySet()) {
-            resolver.getLogger().log(key + " : " + request.getHeaders().get(key).toString(), LogLevel.VERBOSE);
+            logger.log(key + " : " + request.getHeaders().get(key).toString(), LogLevel.VERBOSE);
         }
 
         final ListenableFuture<Response> future = httpTransport.execute(request);
+        logger.log("OData request executed", LogLevel.INFO);
+
         final SettableFuture<byte[]> result = SettableFuture.create();
 
         Futures.addCallback(future, new FutureCallback<Response>() {
@@ -55,22 +66,35 @@ public class BaseODataContainerHelper {
             @Override
             public void onSuccess(Response response) {
                 try {
+                    logger.log("OData response received", LogLevel.INFO);
+
+                    logger.log("Reading response data...", LogLevel.VERBOSE);
                     byte[] data = readAllBytes(response.getStream());
+                    logger.log(data.length + " bytes read from response", LogLevel.VERBOSE);
+
                     int status = response.getStatus();
+                    logger.log("Response Status Code: " + status, LogLevel.INFO);
+
                     try {
+                        logger.log("Closing response", LogLevel.VERBOSE);
                         response.close();
                     } catch (Throwable t) {
+                        logger.log("Error closing response: " + t.toString(), LogLevel.ERROR);
                         result.setException(t);
                         return;
                     }
 
                     if (status < 200 || status > 299) {
+                        logger.log("Invalid status code. Processing response content as String", LogLevel.VERBOSE);
                         String responseData = new String(data, Constants.UTF8_NAME);
-                        result.setException(new IllegalStateException("Response status: " + response.getStatus() + "\n" + "Response content: " + responseData));
+                        String message = "Response status: " + response.getStatus() + "\n" + "Response content: " + responseData;
+                        logger.log(message, LogLevel.ERROR);
+                        result.setException(new IllegalStateException(message));
                         return;
                     }
                     result.set(data);
                 } catch (Throwable t) {
+                    logger.log("Unexpected error: " + t.toString(), LogLevel.ERROR);
                     result.setException(t);
                 }
             }
