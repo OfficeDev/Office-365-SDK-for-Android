@@ -13,7 +13,7 @@ public class DefaultDependencyResolver implements DependencyResolver {
     }
 
     @Override
-    public Logger getLogger() {
+    public LoggerImpl getLogger() {
         return new LoggerImpl();
     }
 
