@@ -24,13 +24,13 @@ public class FileAttachment extends Attachment {
 	public void setContentLocation(String value) { 
 		contentLocation = value; 
 	}
-	private Boolean isContactPhoto;
+	private boolean isContactPhoto;
 
-	public Boolean getIsContactPhoto() {
+	public boolean getIsContactPhoto() {
 		 return isContactPhoto; 
 	}
 
-	public void setIsContactPhoto(Boolean value) { 
+	public void setIsContactPhoto(boolean value) { 
 		isContactPhoto = value; 
 	}
 	private byte[] contentBytes;
@@ -39,7 +39,7 @@ public class FileAttachment extends Attachment {
 		 return contentBytes; 
 	}
 
-	public void setContentBytes(byte[] value) {
+	public void setContentBytes(byte[] value) { 
 		contentBytes = value; 
 	}
 }

@@ -24,13 +24,13 @@ public class Folder extends Entity {
 	public void setDisplayName(String value) { 
 		displayName = value; 
 	}
-	private Integer childFolderCount;
+	private int childFolderCount;
 
-	public Integer getChildFolderCount() {
+	public int getChildFolderCount() {
 		 return childFolderCount; 
 	}
 
-	public void setChildFolderCount(Integer value) { 
+	public void setChildFolderCount(int value) { 
 		childFolderCount = value; 
 	}
 }

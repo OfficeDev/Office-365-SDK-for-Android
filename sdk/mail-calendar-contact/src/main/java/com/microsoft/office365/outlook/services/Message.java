@@ -42,13 +42,13 @@ public class Message extends Item {
 	public void setImportance(Importance value) { 
 		importance = value; 
 	}
-	private Boolean hasAttachments;
+	private boolean hasAttachments;
 
-	public Boolean getHasAttachments() {
+	public boolean getHasAttachments() {
 		 return hasAttachments; 
 	}
 
-	public void setHasAttachments(Boolean value) { 
+	public void setHasAttachments(boolean value) { 
 		hasAttachments = value; 
 	}
 	private String parentFolderId;
@@ -150,40 +150,40 @@ public class Message extends Item {
 	public void setDateTimeSent(java.util.Calendar value) { 
 		dateTimeSent = value; 
 	}
-	private Boolean isDeliveryReceiptRequested;
+	private boolean isDeliveryReceiptRequested;
 
-	public Boolean getIsDeliveryReceiptRequested() {
+	public boolean getIsDeliveryReceiptRequested() {
 		 return isDeliveryReceiptRequested; 
 	}
 
-	public void setIsDeliveryReceiptRequested(Boolean value) { 
+	public void setIsDeliveryReceiptRequested(boolean value) { 
 		isDeliveryReceiptRequested = value; 
 	}
-	private Boolean isReadReceiptRequested;
+	private boolean isReadReceiptRequested;
 
-	public Boolean getIsReadReceiptRequested() {
+	public boolean getIsReadReceiptRequested() {
 		 return isReadReceiptRequested; 
 	}
 
-	public void setIsReadReceiptRequested(Boolean value) { 
+	public void setIsReadReceiptRequested(boolean value) { 
 		isReadReceiptRequested = value; 
 	}
-	private Boolean isDraft;
+	private boolean isDraft;
 
-	public Boolean getIsDraft() {
+	public boolean getIsDraft() {
 		 return isDraft; 
 	}
 
-	public void setIsDraft(Boolean value) { 
+	public void setIsDraft(boolean value) { 
 		isDraft = value; 
 	}
-	private Boolean isRead;
+	private boolean isRead;
 
-	public Boolean getIsRead() {
+	public boolean getIsRead() {
 		 return isRead; 
 	}
 
-	public void setIsRead(Boolean value) { 
+	public void setIsRead(boolean value) { 
 		isRead = value; 
 	}
 }

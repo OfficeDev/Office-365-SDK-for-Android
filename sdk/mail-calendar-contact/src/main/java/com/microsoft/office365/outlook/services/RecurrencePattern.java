@@ -17,33 +17,33 @@ public class RecurrencePattern {
 		type = value; 
 	}
 
-	private Integer interval;
+	private int interval;
 
-	public Integer getInterval() {
+	public int getInterval() {
 		 return interval; 
 	}
 
-	public void setInterval(Integer value) { 
+	public void setInterval(int value) { 
 		interval = value; 
 	}
 
-	private Integer dayOfMonth;
+	private int dayOfMonth;
 
-	public Integer getDayOfMonth() {
+	public int getDayOfMonth() {
 		 return dayOfMonth; 
 	}
 
-	public void setDayOfMonth(Integer value) { 
+	public void setDayOfMonth(int value) { 
 		dayOfMonth = value; 
 	}
 
-	private Integer month;
+	private int month;
 
-	public Integer getMonth() {
+	public int getMonth() {
 		 return month; 
 	}
 
-	public void setMonth(Integer value) { 
+	public void setMonth(int value) { 
 		month = value; 
 	}
 

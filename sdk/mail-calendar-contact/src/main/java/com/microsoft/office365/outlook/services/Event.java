@@ -42,13 +42,13 @@ public class Event extends Item {
 	public void setImportance(Importance value) { 
 		importance = value; 
 	}
-	private Boolean hasAttachments;
+	private boolean hasAttachments;
 
-	public Boolean getHasAttachments() {
+	public boolean getHasAttachments() {
 		 return hasAttachments; 
 	}
 
-	public void setHasAttachments(Boolean value) { 
+	public void setHasAttachments(boolean value) { 
 		hasAttachments = value; 
 	}
 	private java.util.Calendar start;
@@ -87,40 +87,40 @@ public class Event extends Item {
 	public void setShowAs(FreeBusyStatus value) { 
 		showAs = value; 
 	}
-	private Boolean isAllDay;
+	private boolean isAllDay;
 
-	public Boolean getIsAllDay() {
+	public boolean getIsAllDay() {
 		 return isAllDay; 
 	}
 
-	public void setIsAllDay(Boolean value) { 
+	public void setIsAllDay(boolean value) { 
 		isAllDay = value; 
 	}
-	private Boolean isCancelled;
+	private boolean isCancelled;
 
-	public Boolean getIsCancelled() {
+	public boolean getIsCancelled() {
 		 return isCancelled; 
 	}
 
-	public void setIsCancelled(Boolean value) { 
+	public void setIsCancelled(boolean value) { 
 		isCancelled = value; 
 	}
-	private Boolean isOrganizer;
+	private boolean isOrganizer;
 
-	public Boolean getIsOrganizer() {
+	public boolean getIsOrganizer() {
 		 return isOrganizer; 
 	}
 
-	public void setIsOrganizer(Boolean value) { 
+	public void setIsOrganizer(boolean value) { 
 		isOrganizer = value; 
 	}
-	private Boolean responseRequested;
+	private boolean responseRequested;
 
-	public Boolean getResponseRequested() {
+	public boolean getResponseRequested() {
 		 return responseRequested; 
 	}
 
-	public void setResponseRequested(Boolean value) { 
+	public void setResponseRequested(boolean value) { 
 		responseRequested = value; 
 	}
 	private EventType type;

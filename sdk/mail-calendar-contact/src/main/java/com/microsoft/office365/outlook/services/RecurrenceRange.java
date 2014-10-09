@@ -37,13 +37,13 @@ public class RecurrenceRange {
 		endDate = value; 
 	}
 
-	private Integer numberOfOccurrences;
+	private int numberOfOccurrences;
 
-	public Integer getNumberOfOccurrences() {
+	public int getNumberOfOccurrences() {
 		 return numberOfOccurrences; 
 	}
 
-	public void setNumberOfOccurrences(Integer value) { 
+	public void setNumberOfOccurrences(int value) { 
 		numberOfOccurrences = value; 
 	}
 }

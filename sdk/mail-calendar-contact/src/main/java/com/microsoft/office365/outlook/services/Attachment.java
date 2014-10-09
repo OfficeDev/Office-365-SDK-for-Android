@@ -24,22 +24,22 @@ public class Attachment extends Entity {
 	public void setContentType(String value) { 
 		contentType = value; 
 	}
-	private Integer size;
+	private int size;
 
-	public Integer getSize() {
+	public int getSize() {
 		 return size; 
 	}
 
-	public void setSize(Integer value) { 
+	public void setSize(int value) { 
 		size = value; 
 	}
-	private Boolean isInline;
+	private boolean isInline;
 
-	public Boolean getIsInline() {
+	public boolean getIsInline() {
 		 return isInline; 
 	}
 
-	public void setIsInline(Boolean value) { 
+	public void setIsInline(boolean value) { 
 		isInline = value; 
 	}
 	private java.util.Calendar dateTimeLastModified;
