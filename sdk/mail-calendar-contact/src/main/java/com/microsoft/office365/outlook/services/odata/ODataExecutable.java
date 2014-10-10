@@ -7,10 +7,26 @@ package com.microsoft.office365.outlook.services.odata;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.office365.odata.interfaces.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 abstract class ODataExecutable {
 
-    abstract ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb);
+    abstract ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb);
 
     abstract DependencyResolver getResolver();
+
+	Map<String, Object> customParamenters = new HashMap<String, Object>();
+
+    void addCustomParameter(String name, Object value) {
+	   this.customParamenters.put(name, value);
+	}
+
+
+	Map<String, Object> getCustomParameters() {
+		return customParamenters;
+	}
+
 }

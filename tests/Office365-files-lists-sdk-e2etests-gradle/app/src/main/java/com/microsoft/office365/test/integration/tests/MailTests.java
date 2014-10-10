@@ -3,14 +3,14 @@ package com.microsoft.office365.test.integration.tests;
 import android.util.Log;
 
 
-import com.microsoft.office365.exchange.services.model.Attachment;
-import com.microsoft.office365.exchange.services.model.EmailAddress;
-import com.microsoft.office365.exchange.services.model.FileAttachment;
-import com.microsoft.office365.exchange.services.model.Folder;
-import com.microsoft.office365.exchange.services.model.ItemBody;
-import com.microsoft.office365.exchange.services.model.Message;
-import com.microsoft.office365.exchange.services.model.Recipient;
-import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
+import com.google.common.io.Files;
+import com.microsoft.office365.outlook.services.EmailAddress;
+import com.microsoft.office365.outlook.services.FileAttachment;
+import com.microsoft.office365.outlook.services.Folder;
+import com.microsoft.office365.outlook.services.ItemBody;
+import com.microsoft.office365.outlook.services.Message;
+import com.microsoft.office365.outlook.services.Recipient;
+import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
@@ -18,11 +18,15 @@ import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MailTests extends TestGroup {
 
@@ -35,22 +39,23 @@ public class MailTests extends TestGroup {
         this.addTest(canRetrieveFolderById("Can retrieve folder by id", true));
         this.addTest(canCreateFolder("Can create folder", true));
         this.addTest(canDeleteFolder("Can delete folder", true));
-        this.addTest(canMoveFolder("Can move folder", false));
-        this.addTest(canCopyFolder("Can copy folder", false));
-        //TODO:update folder
+        this.addTest(canMoveFolder("Can move folder", true));
+        this.addTest(canCopyFolder("Can copy folder", true));
+        this.addTest(canUpdateFolder("Can update folder", true));
 
         //Messages
         this.addTest(canGetMessages("Can get messages", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
-        this.addTest(canCreateMessageAttachment("Can create message with attachment", false));
+        this.addTest(canCreateMessageAttachment("Can create message with attachment - Not finished", false));
         this.addTest(canSendMessage("Can send message", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
-        this.addTest(canMoveMessage("Can move message", false));
-        this.addTest(canMoveMessage("Can copy message", false));
+        this.addTest(canMoveMessage("Can move message", true));
+        this.addTest(canCopyMessage("Can copy message", true));
+        this.addTest(canCreateReplyMessage("Can create reply", true));
+        this.addTest(canCreateReplyAllMessage("Can create reply all", true));
+        this.addTest(canCreateForwardMessage("Can create forward", true));
         //TODO:create message with attachment
-        //TODO:createReply ->to drafts
-        //TODO:reply all ->to drafts
         //TODO:forward -> to drafts
         //TODO:reply action
         //TODO:reply all
@@ -71,7 +76,7 @@ public class MailTests extends TestGroup {
 
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
 
-                    if(client == null)
+                    if (client == null)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -97,8 +102,8 @@ public class MailTests extends TestGroup {
                     result.setTestCase(this);
 
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
-                    List<Folder> folders = client.getMe().getFolders().execute().get();
-                    if(folders == null || folders.size() == 0)
+                    List<Folder> folders = client.getMe().getFolders().read().get();
+                    if (folders == null || folders.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -124,8 +129,8 @@ public class MailTests extends TestGroup {
                     result.setTestCase(this);
 
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
-                    Folder folder = client.getMe().getFolders().getById("Inbox").execute().get();
-                    if(folder == null || !folder.getDisplayName().equals("Inbox"))
+                    Folder folder = client.getMe().getFolders().getById("Inbox").read().get();
+                    if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -168,9 +173,9 @@ public class MailTests extends TestGroup {
                             .getFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
-                            .getById(addedFolder.getId()).execute().get();
+                            .getById(addedFolder.getId()).read().get();
 
-                    if(folder == null || !folder.getDisplayName().equals(newFolderName)){
+                    if (folder == null || !folder.getDisplayName().equals(newFolderName)) {
                         result.setStatus(TestStatus.Failed);
                     }
 
@@ -237,15 +242,15 @@ public class MailTests extends TestGroup {
                             .getFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
-                            .execute().get();
+                            .read().get();
 
                     boolean exists = false;
                     for (Folder f : folders) {
-                        if(f.getId().equals(addedFolder.getId())){
+                        if (f.getId().equals(addedFolder.getId())) {
                             exists = true;
                         }
                     }
-                    if(exists)
+                    if (exists)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -286,10 +291,10 @@ public class MailTests extends TestGroup {
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
-                                        .getFolders()
-                                        .getById(parentFolderName)
-                                        .getChildFolders()
-                                        .add(newFolder).get();
+                            .getFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
 
                     //Act
                     client.getMe()
@@ -304,9 +309,9 @@ public class MailTests extends TestGroup {
                             .getById(destinationFolderName)
                             .getChildFolders()
                             .getById(addedFolder.getId())
-                            .execute().get();
+                            .read().get();
 
-                    if(movedFolder != null && movedFolder.getDisplayName().equals(newFolderName))
+                    if (movedFolder != null && movedFolder.getDisplayName().equals(newFolderName))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -356,10 +361,10 @@ public class MailTests extends TestGroup {
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
-                                        .getFolders()
-                                        .getById(parentFolderName)
-                                        .getChildFolders()
-                                        .add(newFolder).get();
+                            .getFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
 
                     //Act
                     Folder copiedFolder = client.getMe()
@@ -374,9 +379,9 @@ public class MailTests extends TestGroup {
                             .getById(destinationFolderName)
                             .getChildFolders()
                             .getById(copiedFolder.getId())
-                            .execute().get();
+                            .read().get();
 
-                    if(folder!= null && folder.getDisplayName().equals(newFolderName))
+                    if (folder != null && folder.getDisplayName().equals(newFolderName))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -413,6 +418,72 @@ public class MailTests extends TestGroup {
         return test;
     }
 
+    private TestCase canUpdateFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String folderName = "TestFolder";
+                    String updatedFolderName = "UpdatedTestFolder";
+                    String parentFolderName = "Inbox";
+
+                    //Create new folder
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    Folder newFolder = new Folder();
+                    newFolder.setDisplayName(folderName);
+                    Folder addedFolder = client.getMe()
+                            .getFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
+
+                    //Act
+                    newFolder.setDisplayName(updatedFolderName);
+                    client.getMe()
+                            .getFolders()
+                            .getById(addedFolder.getId())
+                            .update(newFolder);
+
+                    // Assert
+                    Folder folder = client.getMe()
+                            .getFolders()
+                            .getById(addedFolder.getId()).read().get();
+
+                    if (folder == null || !folder.getDisplayName().equals(updatedFolderName)) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+                    //Cleanup
+                    client.getMe()
+                            .getFolders()
+                            .getById(folder.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+                    //return createResultFromException(e);
+
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    // Messages tests
     private TestCase canGetMessages(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -429,9 +500,9 @@ public class MailTests extends TestGroup {
                             .getById("Inbox")
                             .getMessages()
                             .top(3)
-                            .execute().get();
+                            .read().get();
 
-                    if(messages == null || messages.size() == 0 || messages.size()>3)
+                    if (messages == null || messages.size() == 0 || messages.size() > 3)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -468,9 +539,9 @@ public class MailTests extends TestGroup {
                             .getFolders()
                             .getById("Drafts")
                             .getMessages()
-                            .getById(createdMessage.getId()).execute().get();
+                            .getById(createdMessage.getId()).read().get();
 
-                    if(searchedMessage == null || !searchedMessage.getSubject().equals("Test message"))
+                    if (searchedMessage == null || !searchedMessage.getSubject().equals("Test message"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -501,31 +572,29 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    /*EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
-
-                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "", true);
-
-                    //Act
-                    Message added = client.getMe().getMessages().add(message).get();
-
-                    String id = added.getId();
-
-
-
-                    client.getMe().getFolders().getById("Drafts").getMessages().getById(id).getAttachments().add(getFileAttachment());
-                    //Assert
-                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages().execute().get();
-
-                    Message myMessage = messages.get(0);
-                    if(messages.size()!= 1 || !myMessage.getSubject().equals("Test message"))
-                        result.setStatus(TestStatus.Failed);
-
-                    //Cleanup
-                    client.getMe().getFolders()
-                            .getById("Drafts")
-                            .getMessages()
-                            .getById(myMessage.getId())
-                            .delete().get();*/
+//                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+//
+//                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "", true);
+//
+//                    //Act
+//                    Message added = client.getMe().getMessages().add(message).get();
+//                    client.getMe().getMessages()
+//                            .getById(added.getId())
+//                            .getAttachments()
+//                            .add(getFileAttachment()).get();
+//
+//                    //Assert
+//                    Message storedMessage = client.getMe().getMessages().getById(added.getId()).read().get();
+//
+//                    if(!storedMessage.getHasAttachments())
+//                        result.setStatus(TestStatus.Failed);
+//
+//                    //Cleanup
+////                    client.getMe().getFolders()
+////                            .getById("Drafts")
+////                            .getMessages()
+////                            .getById(myMessage.getId())
+////                            .delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
@@ -555,11 +624,8 @@ public class MailTests extends TestGroup {
 
                     //Act
                     Message addedMessage = client.getMe().getMessages().add(message).get();
-                        client
-                            .getMe()
-                            .getFolders()
-                            .getById("Drafts")
-                            .getMessages()
+                    client
+                            .getMe().getMessages()
                             .getById(addedMessage.getId())
                             .getOperations().send().get();
 
@@ -568,9 +634,9 @@ public class MailTests extends TestGroup {
                     List<Message> sentMessages = client.getMe()
                             .getFolders()
                             .getById("SentItems")
-                            .getMessages().execute().get();
+                            .getMessages().read().get();
 
-                    if(sentMessages.size() != 1 || !sentMessages.get(0).getSubject().equals(mailSubject))
+                    if (sentMessages.size() != 1 || !sentMessages.get(0).getSubject().equals(mailSubject))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -623,9 +689,9 @@ public class MailTests extends TestGroup {
                             .getFolders()
                             .getById("Drafts")
                             .getMessages()
-                            .getById(addedMessage.getId()).execute().get();
+                            .getById(addedMessage.getId()).read().get();
 
-                    if(updatedMessage == null || !updatedMessage.getSubject().equals("New Test Update Message"))
+                    if (updatedMessage == null || !updatedMessage.getSubject().equals("New Test Update Message"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -677,15 +743,15 @@ public class MailTests extends TestGroup {
                     List<Message> messages = client.getMe()
                             .getFolders()
                             .getById("Drafts")
-                            .getMessages().execute().get();
+                            .getMessages().read().get();
 
                     boolean exists = false;
-                    for(Message m : messages){
-                        if(m.getId().equals(addedMessage.getId()))
+                    for (Message m : messages) {
+                        if (m.getId().equals(addedMessage.getId()))
                             exists = true;
                     }
 
-                    if(exists)
+                    if (exists)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -707,7 +773,7 @@ public class MailTests extends TestGroup {
             public TestResult executeTest() {
                 try {
                     TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
+                    result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
                     String destinationFolderName = "Inbox";
@@ -719,28 +785,106 @@ public class MailTests extends TestGroup {
 
                     Message addedMessage = client.getMe().getMessages().add(message).get();
                     //Act
-                    client.getMe()
+                    Message movedMessage = client.getMe()
                             .getFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(addedMessage.getId())
                             .getOperations().move(destinationFolderName).get();
 
+                    Thread.sleep(2000);
                     //Assert
-                    Message m = client.getMe()
-                            .getFolders()
-                            .getById(destinationFolderName)
-                            .getMessages()
-                            .getById(addedMessage.getId())
-                            .execute().get();
+                    try {
+                        Message m = client.getMe()
+                                .getFolders()
+                                .getById(destinationFolderName)
+                                .getMessages()
+                                .getById(movedMessage.getId())
+                                .read().get();
 
-                    if(m != null)
+                        if (m == null && !m.getId().equals(movedMessage.getId()))
+                            result.setStatus(TestStatus.Failed);
+                    } catch (Throwable t) {
                         result.setStatus(TestStatus.Failed);
+                    }
+
 
                     //Cleanup
                     client.getMe()
+                            .getMessages()
+                            .getById(movedMessage.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+                    //return createResultFromException(e);
+
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCopyMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String destinationFolderName = "Inbox";
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String mailSubject = "Test copy Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+
+                    //Act
+                    Message copiedMessage = client.getMe()
                             .getFolders()
-                            .getById(destinationFolderName)
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(addedMessage.getId())
+                            .getOperations().copy(destinationFolderName).get();
+
+                    Thread.sleep(2000);
+                    //Assert
+                    try {
+                        Message m = client.getMe()
+                                .getFolders()
+                                .getById(destinationFolderName)
+                                .getMessages()
+                                .getById(copiedMessage.getId())
+                                .read().get();
+
+                        if (m == null && !m.getId().equals(copiedMessage.getId()))
+                            result.setStatus(TestStatus.Failed);
+                    } catch (Throwable t) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(copiedMessage.getId())
+                            .delete().get();
+
+                    client.getMe()
                             .getMessages()
                             .getById(addedMessage.getId())
                             .delete().get();
@@ -755,6 +899,223 @@ public class MailTests extends TestGroup {
                     //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canCreateReplyMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    if(inboxMessages.size()== 0)
+                    {
+                        String mailSubject = "Test reply Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                        Message toSend = client.getMe().getMessages().add(message).get();
+                        client.getMe().getMessages().getById(toSend.getId()).getOperations().send().get();
+                        Thread.sleep(500);
+                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    Message messageToReply = inboxMessages.get(0);
+                    //Act
+                    Message repliedMessage = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .getOperations().createReply().get();
+
+                    Thread.sleep(500);
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for(Message m : messages){
+                        if(m.getConversationId().equals(messageToReply.getConversationId()))
+                            exists = true;
+                    }
+
+                    if(!exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(repliedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateReplyAllMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    if(inboxMessages.size()== 0)
+                    {
+                        String mailSubject = "Test reply all Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                        Message toSend = client.getMe().getMessages().add(message).get();
+                        client.getMe().getMessages().getById(toSend.getId()).getOperations().send().get();
+                        Thread.sleep(500);
+                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    Message messageToReply = inboxMessages.get(0);
+                    //Act
+                    Message repliedMessage = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .getOperations().createReplyAll().get();
+
+                    Thread.sleep(500);
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for(Message m : messages){
+                        if(m.getConversationId().equals(messageToReply.getConversationId()))
+                            exists = true;
+                    }
+
+                    if(!exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(repliedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateForwardMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    if(inboxMessages.size()== 0)
+                    {
+                        String mailSubject = "Test fw Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                        Message toSend = client.getMe().getMessages().add(message).get();
+                        client.getMe().getMessages().getById(toSend.getId()).getOperations().send().get();
+                        Thread.sleep(500);
+                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    Message messageToReply = inboxMessages.get(0);
+                    //Act
+                    Message repliedMessage = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .getOperations().createForward().get();
+
+                    Thread.sleep(500);
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for(Message m : messages){
+                        if(m.getConversationId().equals(messageToReply.getConversationId()))
+                            exists = true;
+                    }
+
+                    if(!exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(repliedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
                 }
             }
         };
@@ -806,10 +1167,6 @@ public class MailTests extends TestGroup {
     }*/
 
     private Message getSampleMessage(String subject, String to, String cc){
-        return getSampleMessage(subject, to, cc, false);
-    }
-
-    private Message getSampleMessage(String subject, String to, String cc, boolean withAttachment){
         Message m = new Message();
         // To Recipient
         final Recipient toRecipient = new Recipient();
@@ -836,19 +1193,24 @@ public class MailTests extends TestGroup {
         body.setContent("This is the email's body");
         m.setBody(body);
 
-        if(withAttachment){
-            //m.set
-        }
         return m;
     }
-    /*
-    FileAttachment getFileAttachment() {
 
-        FileAttachment a = new FileAttachment();
-        a.setName("Test attachment");
-        a.setContentBytes();
-
-        return a;
-
-    }*/
+//    FileAttachment getFileAttachment() {
+//        try {
+//            File testFile = null;
+//            testFile = new File("assets\\TestFile.txt");
+//
+//            byte[] bytes = Files.toByteArray(testFile);
+//
+//            testFile.delete();
+//            FileAttachment a = new FileAttachment();
+//            a.setName("Test attachment");
+//            a.setContentBytes(bytes);
+//            return a;
+//        }catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

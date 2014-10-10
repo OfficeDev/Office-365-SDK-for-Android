@@ -16,4 +16,9 @@ public class CalendarOperations extends ODataOperations {
 	 public CalendarOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public CalendarOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

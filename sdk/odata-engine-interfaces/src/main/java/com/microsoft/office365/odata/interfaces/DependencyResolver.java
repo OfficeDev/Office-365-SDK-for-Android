@@ -8,4 +8,6 @@ public interface DependencyResolver {
     JsonSerializer getJsonSerializer();
 
     CredentialsFactory getCredentialsFactory();
+
+    ODataURL createODataURL();
 }

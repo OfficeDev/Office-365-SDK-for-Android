@@ -5,11 +5,14 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonObject;
+import com.microsoft.office365.odata.interfaces.Credentials;
+import com.microsoft.office365.odata.interfaces.CredentialsFactory;
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
 import com.microsoft.office365.odata.interfaces.HttpTransport;
 import com.microsoft.office365.odata.interfaces.HttpVerb;
 import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Logger;
+import com.microsoft.office365.odata.interfaces.ODataURL;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
@@ -31,11 +34,12 @@ public class BaseODataContainerHelper {
         return  urlEncode(serialized);
     }
 
-    public static ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
+    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
 
         final Logger logger = resolver.getLogger();
+        path.setBaseUrl(url);
 
-        String fullUrl = url + "/" + path;
+        String fullUrl = path.toString();
         String executionInfo = String.format("URL: %s - HTTP VERB: %s", fullUrl, verb);
         logger.log("Start preparing OData execution for " + executionInfo, LogLevel.INFO);
 
@@ -49,7 +53,21 @@ public class BaseODataContainerHelper {
         request.setUrl(fullUrl);
         request.setContent(content);
         request.addHeader("Content-Type", "application/json");
-        resolver.getCredentialsFactory().getCredentials().prepareRequest(request);
+
+        boolean credentialsSet = false;
+        CredentialsFactory credFactory = resolver.getCredentialsFactory();
+        if (credFactory != null) {
+            Credentials cred = credFactory.getCredentials();
+            if (cred != null) {
+                cred.prepareRequest(request);
+                credentialsSet = true;
+            }
+        }
+
+        if (!credentialsSet) {
+            logger.log("Executing request without setting credentials", LogLevel.WARNING);
+        }
+
 
         logger.log("Request Headers: ", LogLevel.VERBOSE);
         for (String key : request.getHeaders().keySet()) {
