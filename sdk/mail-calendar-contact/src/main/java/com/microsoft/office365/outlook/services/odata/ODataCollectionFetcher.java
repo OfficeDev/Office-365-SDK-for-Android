@@ -13,8 +13,8 @@ import static com.microsoft.office365.odata.EntityCollectionFetcherHelper.addLis
 import static com.microsoft.office365.odata.EntityFetcherHelper.addEntityResultCallback;
 import static com.microsoft.office365.odata.EntityFetcherHelper.setPathForCollections;
 import static com.microsoft.office365.odata.EntityFetcherHelper.setSelectorUrl;
-import static com.microsoft.office365.odata.Helpers.addCustomParametersToODataURL;
 import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.office365.odata.Helpers.addCustomParametersToODataURL;
 
 public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Readable<List<T>> {
 
@@ -105,7 +105,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
         } else {
             setSelectorUrl(path, urlComponent, selectedId);
         }
-        addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
+		addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
 		return parent.oDataExecute(path, content, verb);
 
     }
@@ -136,4 +136,10 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     public V getOperations() {
         return this.operations;
     }
+
+    public ODataCollectionFetcher<T, U, V> addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+    }
+
 }

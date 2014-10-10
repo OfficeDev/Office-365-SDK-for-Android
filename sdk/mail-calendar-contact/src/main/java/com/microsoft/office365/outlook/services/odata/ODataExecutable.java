@@ -7,7 +7,6 @@ package com.microsoft.office365.outlook.services.odata;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.office365.odata.interfaces.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,13 +18,15 @@ abstract class ODataExecutable {
 
     abstract DependencyResolver getResolver();
 
-    Map<String, Object> customParamenters = new HashMap<String, Object>();
+	Map<String, Object> customParamenters = new HashMap<String, Object>();
 
-    public void addCustomParameter(String name, Object value) {
-        this.customParamenters.put(name, value);
-    }
+    void addCustomParameter(String name, Object value) {
+	   this.customParamenters.put(name, value);
+	}
 
-    protected Map<String, Object> getCustomParameters() {
-        return customParamenters;
-    }
+
+	Map<String, Object> getCustomParameters() {
+		return customParamenters;
+	}
+
 }
