@@ -6,8 +6,13 @@ import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Logger;
 
 public class LoggerImpl implements Logger {
-    boolean verboseMode = false;
-    boolean enabled = true;
+    boolean verboseMode;
+    boolean enabled;
+
+    public LoggerImpl() {
+        this.verboseMode = false;
+        this.enabled = true;
+    }
 
     private static final String TAG = "Office365-SDK";
 
@@ -17,7 +22,7 @@ public class LoggerImpl implements Logger {
             return;
         }
 
-        if (!this.verboseMode && (logLevel == LogLevel.VERBOSE || logLevel == LogLevel.WARNING)) {
+        if (!this.verboseMode && logLevel == LogLevel.VERBOSE) {
             return;
         }
 

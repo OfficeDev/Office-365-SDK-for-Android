@@ -6,6 +6,11 @@ import com.microsoft.office365.odata.interfaces.*;
 public class DefaultDependencyResolver implements DependencyResolver {
 
     private CredentialsFactory credentialsFactory;
+    private LoggerImpl logger;
+
+    public DefaultDependencyResolver() {
+        this.logger = new LoggerImpl();
+    }
 
     @Override
     public HttpTransport getHttpTransport() {
@@ -14,7 +19,7 @@ public class DefaultDependencyResolver implements DependencyResolver {
 
     @Override
     public LoggerImpl getLogger() {
-        return new LoggerImpl();
+        return this.logger;
     }
 
     @Override
