@@ -10,8 +10,8 @@ import com.microsoft.office365.odata.interfaces.*;
 
 import static com.microsoft.office365.odata.EntityFetcherHelper.addEntityResultCallback;
 import static com.microsoft.office365.odata.EntityFetcherHelper.addNullResultCallback;
-import static com.microsoft.office365.odata.Helpers.addCustomParametersToODataURL;
 import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.office365.odata.Helpers.addCustomParametersToODataURL;
 
 public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Readable<E> {
 
@@ -35,7 +35,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
     @Override
     ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
 		path.prependPathComponent(urlComponent);
-        addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
+		addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
         return parent.oDataExecute(path, content, verb);
     }
 

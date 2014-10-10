@@ -16,6 +16,11 @@ public class EventOperations extends ODataOperations {
 	 public EventOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public EventOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 			
 	public ListenableFuture<Integer> accept(String comment) {
         final SettableFuture<Integer> result = SettableFuture.create();

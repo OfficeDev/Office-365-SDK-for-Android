@@ -16,6 +16,11 @@ public class MessageOperations extends ODataOperations {
 	 public MessageOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public MessageOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 			
 	public ListenableFuture<Message> copy(String destinationId) {
         final SettableFuture<Message> result = SettableFuture.create();

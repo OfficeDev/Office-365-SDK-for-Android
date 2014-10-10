@@ -16,6 +16,11 @@ public class FolderOperations extends ODataOperations {
 	 public FolderOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public FolderOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 			
 	public ListenableFuture<Folder> copy(String destinationId) {
         final SettableFuture<Folder> result = SettableFuture.create();

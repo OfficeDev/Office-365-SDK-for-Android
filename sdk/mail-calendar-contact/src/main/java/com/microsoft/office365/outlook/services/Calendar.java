@@ -5,22 +5,47 @@
  ******************************************************************************/
 package com.microsoft.office365.outlook.services;
 
+/**
+ * The type Calendar.
+*/
 public class Calendar extends Entity {
 	private String name;
 
+
+     /**
+     * Gets the name.		
+     *
+     * @return the name
+     */
 	public String getName() {
 		 return name; 
 	}
-
+	
+     /**
+     * Sets the name.		
+     *
+     * @param value the value
+     */
 	public void setName(String value) { 
 		name = value; 
 	}
 	private String changeKey;
 
+
+     /**
+     * Gets the change key.		
+     *
+     * @return the change key
+     */
 	public String getChangeKey() {
 		 return changeKey; 
 	}
-
+	
+     /**
+     * Sets the change key.		
+     *
+     * @param value the value
+     */
 	public void setChangeKey(String value) { 
 		changeKey = value; 
 	}

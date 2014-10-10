@@ -16,6 +16,11 @@ public class UserOperations extends ODataOperations {
 	 public UserOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public UserOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 			
 	public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) {
         final SettableFuture<Integer> result = SettableFuture.create();
