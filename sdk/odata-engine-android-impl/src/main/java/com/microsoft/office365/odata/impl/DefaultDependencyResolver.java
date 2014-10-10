@@ -1,6 +1,7 @@
 package com.microsoft.office365.odata.impl;
 
 import com.microsoft.office365.odata.impl.http.AndroidHttpTransport;
+import com.microsoft.office365.odata.impl.http.ODataURLImpl;
 import com.microsoft.office365.odata.interfaces.*;
 
 public class DefaultDependencyResolver implements DependencyResolver {
@@ -30,6 +31,11 @@ public class DefaultDependencyResolver implements DependencyResolver {
     @Override
     public CredentialsFactory getCredentialsFactory() {
         return credentialsFactory;
+    }
+
+    @Override
+    public ODataURL createODataURL() {
+        return new ODataURLImpl();
     }
 
     public void setCredentialsFactory(CredentialsFactory credentialsFactory) {

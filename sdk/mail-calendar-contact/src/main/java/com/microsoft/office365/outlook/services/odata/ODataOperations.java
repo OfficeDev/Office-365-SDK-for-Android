@@ -18,8 +18,9 @@ public abstract class ODataOperations extends ODataExecutable {
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
-        return parent.oDataExecute(urlComponent + "/" + path, content, verb);
+    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
+	    path.prependPathComponent(urlComponent);
+        return parent.oDataExecute(path, content, verb);
     }
 
     @Override

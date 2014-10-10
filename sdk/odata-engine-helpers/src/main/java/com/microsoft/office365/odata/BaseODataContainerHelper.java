@@ -10,6 +10,7 @@ import com.microsoft.office365.odata.interfaces.HttpTransport;
 import com.microsoft.office365.odata.interfaces.HttpVerb;
 import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Logger;
+import com.microsoft.office365.odata.interfaces.ODataURL;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
@@ -31,11 +32,12 @@ public class BaseODataContainerHelper {
         return  urlEncode(serialized);
     }
 
-    public static ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
+    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
 
         final Logger logger = resolver.getLogger();
+        path.setBaseUrl(url);
 
-        String fullUrl = url + "/" + path;
+        String fullUrl = path.toString();
         String executionInfo = String.format("URL: %s - HTTP VERB: %s", fullUrl, verb);
         logger.log("Start preparing OData execution for " + executionInfo, LogLevel.INFO);
 
