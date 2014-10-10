@@ -1,7 +1,7 @@
 package com.microsoft.office365.odata.impl;
 
+import com.microsoft.office365.odata.ODataURLImpl;
 import com.microsoft.office365.odata.impl.http.AndroidHttpTransport;
-import com.microsoft.office365.odata.impl.http.ODataURLImpl;
 import com.microsoft.office365.odata.interfaces.*;
 
 public class DefaultDependencyResolver implements DependencyResolver {

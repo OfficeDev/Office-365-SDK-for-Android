@@ -5,6 +5,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonObject;
+import com.microsoft.office365.odata.interfaces.Credentials;
+import com.microsoft.office365.odata.interfaces.CredentialsFactory;
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
 import com.microsoft.office365.odata.interfaces.HttpTransport;
 import com.microsoft.office365.odata.interfaces.HttpVerb;
@@ -51,7 +53,21 @@ public class BaseODataContainerHelper {
         request.setUrl(fullUrl);
         request.setContent(content);
         request.addHeader("Content-Type", "application/json");
-        resolver.getCredentialsFactory().getCredentials().prepareRequest(request);
+
+        boolean credentialsSet = false;
+        CredentialsFactory credFactory = resolver.getCredentialsFactory();
+        if (credFactory != null) {
+            Credentials cred = credFactory.getCredentials();
+            if (cred != null) {
+                cred.prepareRequest(request);
+                credentialsSet = true;
+            }
+        }
+
+        if (!credentialsSet) {
+            logger.log("Executing request without setting credentials", LogLevel.WARNING);
+        }
+
 
         logger.log("Request Headers: ", LogLevel.VERBOSE);
         for (String key : request.getHeaders().keySet()) {

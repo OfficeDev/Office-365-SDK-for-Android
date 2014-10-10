@@ -1,6 +1,4 @@
-package com.microsoft.office365.odata.impl.http;
-
-import android.net.Uri;
+package com.microsoft.office365.odata;
 
 import com.microsoft.office365.odata.interfaces.ODataURL;
 
@@ -10,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ODataURLImpl implements ODataURL{
+import static com.microsoft.office365.odata.Helpers.urlEncode;
+
+public class ODataURLImpl implements ODataURL {
 
     String baseUrl;
     List<String> pathComponents = new ArrayList<String>();
@@ -18,7 +18,7 @@ public class ODataURLImpl implements ODataURL{
 
     @Override
     public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
+        this.baseUrl = removeTrailingSlash(baseUrl);
     }
 
     @Override
@@ -53,19 +53,46 @@ public class ODataURLImpl implements ODataURL{
 
     @Override
     public String toString() {
-        Uri.Builder builder = new Uri.Builder();
 
-        builder.appendPath(this.baseUrl);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(this.baseUrl);
+
+        sb.append("/");
 
         for (String component : this.pathComponents) {
-            builder.appendPath(component);
+            sb.append(addTrailingSlash(urlEncode(component)));
         }
 
         Set<String> parameterNames = this.queryStringParameters.keySet();
-        for (String name : parameterNames) {
-            builder.appendQueryParameter(name, this.queryStringParameters.get(name));
+
+        if (parameterNames.size() > 0) {
+
+            sb.append("?");
+
+            for (String name : parameterNames) {
+                sb.append(urlEncode(name));
+                sb.append("=");
+                sb.append(urlEncode(this.queryStringParameters.get(name)));
+                sb.append("&");
+            }
         }
 
-        return builder.build().toString();
+        return sb.toString();
+    }
+
+    private static String addTrailingSlash(String s) {
+        if (!s.endsWith("/")) {
+            s = s + "/";
+        }
+        return s;
+    }
+
+    private static String removeTrailingSlash(String s) {
+        if (s.endsWith("/")) {
+            s = s.substring(0, s.length() - 1);
+        }
+
+        return s;
     }
 }
