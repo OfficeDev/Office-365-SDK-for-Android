@@ -25,7 +25,9 @@ public class UserOperations extends ODataOperations {
 		map.put("SaveToSentItems", saveToSentItems);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("SendMail", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("SendMail");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;

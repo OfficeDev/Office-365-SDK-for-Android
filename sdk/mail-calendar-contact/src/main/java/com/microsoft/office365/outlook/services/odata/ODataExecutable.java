@@ -10,7 +10,7 @@ import com.microsoft.office365.odata.interfaces.*;
 
 abstract class ODataExecutable {
 
-    abstract ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb);
+    abstract ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb);
 
     abstract DependencyResolver getResolver();
 }

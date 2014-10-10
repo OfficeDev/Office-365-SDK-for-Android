@@ -24,7 +24,9 @@ public class MessageOperations extends ODataOperations {
 		map.put("DestinationId", destinationId);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Copy", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Copy");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Message.class);
 
         return result;
@@ -37,7 +39,9 @@ public class MessageOperations extends ODataOperations {
 		map.put("DestinationId", destinationId);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Move", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Move");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Message.class);
 
         return result;
@@ -49,7 +53,9 @@ public class MessageOperations extends ODataOperations {
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("CreateReply", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("CreateReply");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Message.class);
 
         return result;
@@ -61,7 +67,9 @@ public class MessageOperations extends ODataOperations {
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("CreateReplyAll", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("CreateReplyAll");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Message.class);
 
         return result;
@@ -73,7 +81,9 @@ public class MessageOperations extends ODataOperations {
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("CreateForward", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("CreateForward");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Message.class);
 
         return result;
@@ -86,7 +96,9 @@ public class MessageOperations extends ODataOperations {
 		map.put("Comment", comment);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Reply", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Reply");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;
@@ -99,7 +111,9 @@ public class MessageOperations extends ODataOperations {
 		map.put("Comment", comment);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("ReplyAll", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("ReplyAll");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;
@@ -113,7 +127,9 @@ public class MessageOperations extends ODataOperations {
 		map.put("ToRecipients", toRecipients);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Forward", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Forward");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;
@@ -125,7 +141,9 @@ public class MessageOperations extends ODataOperations {
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Send", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Send");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;

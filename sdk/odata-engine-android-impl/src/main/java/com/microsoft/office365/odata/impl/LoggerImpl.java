@@ -6,11 +6,11 @@ import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Logger;
 
 public class LoggerImpl implements Logger {
-    boolean verboseMode;
+    int logLevel;
     boolean enabled;
 
     public LoggerImpl() {
-        this.verboseMode = false;
+        this.logLevel = LogLevel.ERROR.getValue();
         this.enabled = true;
     }
 
@@ -22,7 +22,7 @@ public class LoggerImpl implements Logger {
             return;
         }
 
-        if (!this.verboseMode && logLevel == LogLevel.VERBOSE) {
+        if ((this.logLevel & logLevel.getValue()) != logLevel.getValue()) {
             return;
         }
 
@@ -44,12 +44,8 @@ public class LoggerImpl implements Logger {
         }
     }
 
-    public void setVerboseMode(boolean verbose) {
-        this.verboseMode = verbose;
-    }
-
-    public boolean getVerboseMode() {
-        return this.verboseMode;
+    public void setLogLevel(LogLevel logLevel) {
+        this.logLevel = logLevel.getValue();
     }
 
     public boolean isEnabled() {

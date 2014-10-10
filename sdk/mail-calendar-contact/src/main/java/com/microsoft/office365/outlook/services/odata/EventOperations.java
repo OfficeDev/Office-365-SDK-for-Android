@@ -24,7 +24,9 @@ public class EventOperations extends ODataOperations {
 		map.put("Comment", comment);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Accept", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Accept");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;
@@ -37,7 +39,9 @@ public class EventOperations extends ODataOperations {
 		map.put("Comment", comment);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Decline", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Decline");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;
@@ -50,7 +54,9 @@ public class EventOperations extends ODataOperations {
 		map.put("Comment", comment);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("TentativelyAccept", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("TentativelyAccept");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;

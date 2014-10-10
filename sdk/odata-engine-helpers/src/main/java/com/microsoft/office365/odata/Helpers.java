@@ -7,12 +7,63 @@ import java.net.URLEncoder;
 
 public class Helpers {
 
+    private static final String ENCODE_EXCEPTIONS = "!$&'()*+,;=:@";
+
     public static String urlEncode(String s) {
+        return percentEncode(s, ENCODE_EXCEPTIONS);
+        /*
         try {
             return URLEncoder.encode(s, Constants.UTF8_NAME);
         } catch (UnsupportedEncodingException ignore) {
             return s;
         }
+        */
+    }
+
+    private static String percentEncode(String s, String reserved) {
+        if (s == null) {
+            return null;
+        }
+
+        StringBuilder builder = new StringBuilder(s.length());
+
+        int escapeStart = -1;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || "-._~".indexOf(c) != -1 || reserved.indexOf(c) != -1) {
+                if (escapeStart != -1) {
+                    appendHex(builder, s.substring(escapeStart, i));
+                    escapeStart = -1;
+                }
+
+                builder.append(c);
+            } else if (escapeStart == -1) {
+                escapeStart = i;
+            }
+        }
+
+        if (escapeStart != -1) {
+            appendHex(builder, s.substring(escapeStart, s.length()));
+        }
+
+        return builder.toString();
+    }
+
+    private static void appendHex(StringBuilder builder, String s) {
+        try {
+            for (byte b : s.getBytes(Constants.UTF8_NAME)) {
+                appendHex(builder, b);
+            }
+        } catch (UnsupportedEncodingException e) {
+            // UTF-8 should support any string
+        }
+    }
+
+    private static void appendHex(StringBuilder sb, byte b) {
+        sb.append('%');
+        sb.append(String.format("%02X", b));
     }
 
     public static byte[] serializeToJsonByteArray(Object entity, DependencyResolver resolver) {
