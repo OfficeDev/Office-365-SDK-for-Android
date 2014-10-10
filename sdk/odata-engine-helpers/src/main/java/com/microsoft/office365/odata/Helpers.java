@@ -16,7 +16,8 @@ public class Helpers {
         Set<String> keys = parameters.keySet();
 
         for (String name : keys) {
-            String val = resolver.getJsonSerializer().serialize(parameters.get(name));
+            //TODO: Handle parameter value serialization for URL
+            String val = parameters.get(name).toString();
             url.addQueryStringParameter(name, val);
         }
     }

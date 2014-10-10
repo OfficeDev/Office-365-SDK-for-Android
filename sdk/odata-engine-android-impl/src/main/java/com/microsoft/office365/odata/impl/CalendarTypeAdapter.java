@@ -50,12 +50,17 @@ public class CalendarTypeAdapter implements com.google.gson.JsonSerializer<Calen
 
     @Override
     public JsonElement serialize(Calendar src, Type typeOfSrc, JsonSerializationContext context) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ssZ'", Locale.getDefault());
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-        String formatted = dateFormat.format(src.getTime());
+        String formatted = serialize(src);
 
         return new JsonPrimitive(formatted);
     }
+
+    public static String serialize(Calendar src) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd'T'HH:mm:ssZ");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        return dateFormat.format(src.getTime());
+    }
+
 }
