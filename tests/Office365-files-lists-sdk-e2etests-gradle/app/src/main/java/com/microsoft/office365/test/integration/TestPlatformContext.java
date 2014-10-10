@@ -3,7 +3,7 @@ package com.microsoft.office365.test.integration;
 import java.util.concurrent.Future;
 
 
-import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
+import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 
