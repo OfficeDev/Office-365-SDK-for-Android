@@ -1,13 +1,25 @@
 package com.microsoft.office365.odata;
 
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
+import com.microsoft.office365.odata.interfaces.ODataURL;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Map;
+import java.util.Set;
 
 public class Helpers {
 
     private static final String ENCODE_EXCEPTIONS = "!$&'()*+,;=:@";
+
+    public static void addCustomParametersToODataURL(ODataURL url, Map<String, Object> parameters, DependencyResolver resolver) {
+        Set<String> keys = parameters.keySet();
+
+        for (String name : keys) {
+            String val = resolver.getJsonSerializer().serialize(parameters.get(name));
+            url.addQueryStringParameter(name, val);
+        }
+    }
 
     public static String urlEncode(String s) {
         return percentEncode(s, ENCODE_EXCEPTIONS);
