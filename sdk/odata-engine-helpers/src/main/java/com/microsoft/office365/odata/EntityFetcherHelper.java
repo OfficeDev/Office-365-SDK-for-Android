@@ -9,8 +9,20 @@ import com.microsoft.office365.odata.interfaces.ODataURL;
 
 import static com.microsoft.office365.odata.Helpers.urlEncode;
 
+/**
+ * The type Entity fetcher helper.
+ */
 public class EntityFetcherHelper {
 
+    /**
+     * Add entity result callback.
+     *
+     * @param <E>  the type parameter
+     * @param result the result
+     * @param future the future
+     * @param resolver the resolver
+     * @param clazz the clazz
+     */
     public static <E> void addEntityResultCallback(final SettableFuture<E> result, ListenableFuture<byte[]> future, final DependencyResolver resolver, final Class<E> clazz) {
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
@@ -31,6 +43,15 @@ public class EntityFetcherHelper {
         });
     }
 
+    /**
+     * Add byte array result callback.
+     *
+     * @param <E>  the type parameter
+     * @param result the result
+     * @param future the future
+     * @param resolver the resolver
+     * @param clazz the clazz
+     */
     public static <E> void addByteArrayResultCallback(final SettableFuture<byte[]> result, ListenableFuture<byte[]> future, final DependencyResolver resolver, final Class<E> clazz) {
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
@@ -49,6 +70,13 @@ public class EntityFetcherHelper {
         });
     }
 
+    /**
+     * Add null result callback.
+     *
+     * @param <E>  the type parameter
+     * @param result the result
+     * @param future the future
+     */
     public static <E> void addNullResultCallback(final SettableFuture<E> result, ListenableFuture<byte[]> future) {
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
@@ -63,6 +91,17 @@ public class EntityFetcherHelper {
         });
     }
 
+    /**
+     * Sets path for collections.
+     *
+     * @param url the url
+     * @param urlComponent the url component
+     * @param top the top
+     * @param skip the skip
+     * @param select the select
+     * @param expand the expand
+     * @param filter the filter
+     */
     public static void setPathForCollections(ODataURL url, String urlComponent, int top, int skip, String select, String expand, String filter) {
         if (top > -1) {
             url.addQueryStringParameter("$top", Integer.valueOf(top).toString());
@@ -87,6 +126,13 @@ public class EntityFetcherHelper {
         url.prependPathComponent(urlComponent);
     }
 
+    /**
+     * Sets selector url.
+     *
+     * @param url the url
+     * @param urlComponent the url component
+     * @param selectedId the selected id
+     */
     public static void setSelectorUrl(ODataURL url, String urlComponent, String selectedId) {
         String selector = "('" + selectedId + "')";
         url.prependPathComponent(selector);

@@ -5,10 +5,22 @@ import android.util.Log;
 import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Logger;
 
+/**
+ * The type Logger impl.
+ */
 public class LoggerImpl implements Logger {
+    /**
+     * The Log level.
+     */
     int logLevel;
+    /**
+     * The Enabled.
+     */
     boolean enabled;
 
+    /**
+     * Instantiates a new Logger impl.
+     */
     public LoggerImpl() {
         this.logLevel = LogLevel.ERROR.getValue();
         this.enabled = true;
@@ -44,14 +56,29 @@ public class LoggerImpl implements Logger {
         }
     }
 
+    /**
+     * Sets log level.
+     *
+     * @param logLevel the log level
+     */
     public void setLogLevel(LogLevel logLevel) {
         this.logLevel = logLevel.getValue();
     }
 
+    /**
+     * Is enabled.
+     *
+     * @return the boolean
+     */
     public boolean isEnabled() {
         return this.enabled;
     }
 
+    /**
+     * Sets enabled.
+     *
+     * @param enabled the enabled
+     */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }

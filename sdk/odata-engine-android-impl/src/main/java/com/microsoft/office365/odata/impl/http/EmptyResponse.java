@@ -8,11 +8,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Empty response.
+ */
 public class EmptyResponse implements Response {
 
     private Map<String, List<String>> mHeaders = new HashMap<String, List<String>>();
     private int statusCode;
 
+    /**
+     * Instantiates a new Empty response.
+     *
+     * @param statusCode the status code
+     * @param headers the headers
+     */
     public EmptyResponse(int statusCode, Map<String, List<String>> headers) {
         this.mHeaders = headers;
         this.statusCode = statusCode;

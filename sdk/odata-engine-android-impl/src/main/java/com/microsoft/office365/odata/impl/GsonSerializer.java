@@ -15,6 +15,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * The type Gson serializer.
+ */
 public class GsonSerializer implements JsonSerializer {
 
     private Gson createGson() {

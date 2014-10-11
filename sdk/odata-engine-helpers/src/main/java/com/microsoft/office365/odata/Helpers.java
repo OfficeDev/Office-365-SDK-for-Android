@@ -8,10 +8,20 @@ import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The type Helpers.
+ */
 public class Helpers {
 
     private static final String ENCODE_EXCEPTIONS = "!$&'()*+,;=:@";
 
+    /**
+     * Add custom parameters to o data uRL.
+     *
+     * @param url the url
+     * @param parameters the parameters
+     * @param resolver the resolver
+     */
     public static void addCustomParametersToODataURL(ODataURL url, Map<String, Object> parameters, DependencyResolver resolver) {
         Set<String> keys = parameters.keySet();
 
@@ -22,6 +32,12 @@ public class Helpers {
         }
     }
 
+    /**
+     * Url encode.
+     *
+     * @param s the s
+     * @return the string
+     */
     public static String urlEncode(String s) {
         return percentEncode(s, ENCODE_EXCEPTIONS);
         /*
@@ -79,6 +95,13 @@ public class Helpers {
         sb.append(String.format("%02X", b));
     }
 
+    /**
+     * Serialize to json byte array.
+     *
+     * @param entity the entity
+     * @param resolver the resolver
+     * @return the byte [ ]
+     */
     public static byte[] serializeToJsonByteArray(Object entity, DependencyResolver resolver) {
         String payload = resolver.getJsonSerializer().serialize(entity);
         return payload.getBytes(Constants.UTF8);

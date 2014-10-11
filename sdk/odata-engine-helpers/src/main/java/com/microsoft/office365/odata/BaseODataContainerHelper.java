@@ -26,14 +26,34 @@ import java.util.Set;
 
 import static com.microsoft.office365.odata.Helpers.urlEncode;
 
+/**
+ * The type Base o data container helper.
+ */
 public class BaseODataContainerHelper {
 
+    /**
+     * Gets OData parameter value.
+     *
+     * @param resolver the resolver
+     * @param value the value
+     * @return the o data parameter value
+     */
     public static String getODataParameterValue(DependencyResolver resolver, Object value) {
 
         String serialized = resolver.getJsonSerializer().serialize(value);
         return  urlEncode(serialized);
     }
 
+    /**
+     * OData execute.
+     *
+     * @param path the path
+     * @param content the content
+     * @param verb the verb
+     * @param url the url
+     * @param resolver the resolver
+     * @return the listenable future
+     */
     public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
 
         final Logger logger = resolver.getLogger();
@@ -125,6 +145,13 @@ public class BaseODataContainerHelper {
         return result;
     }
 
+    /**
+     * Read all bytes.
+     *
+     * @param stream the stream
+     * @return the byte [ ]
+     * @throws IOException the iO exception
+     */
     public static byte[] readAllBytes(InputStream stream) throws IOException {
         if (stream == null) {
             return new byte[0];
@@ -140,6 +167,13 @@ public class BaseODataContainerHelper {
         return os.toByteArray();
     }
 
+    /**
+     * Generate parameters payload.
+     *
+     * @param parameters the parameters
+     * @param resolver the resolver
+     * @return the string
+     */
     public static String generateParametersPayload(Map<String, Object> parameters, DependencyResolver resolver) {
         return resolver.getJsonSerializer().serialize(parameters);
     }

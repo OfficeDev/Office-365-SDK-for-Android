@@ -10,10 +10,22 @@ import java.util.Set;
 
 import static com.microsoft.office365.odata.Helpers.urlEncode;
 
+/**
+ * The type ODataURLImpl.
+ */
 public class ODataURLImpl implements ODataURL {
 
+    /**
+     * The Base url.
+     */
     String baseUrl;
+    /**
+     * The Path components.
+     */
     List<String> pathComponents = new ArrayList<String>();
+    /**
+     * The Query string parameters.
+     */
     Map<String, String> queryStringParameters = new HashMap<String, String>();
 
     @Override
