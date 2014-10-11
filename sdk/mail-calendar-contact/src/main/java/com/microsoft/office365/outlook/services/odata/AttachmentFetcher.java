@@ -14,4 +14,9 @@ public class AttachmentFetcher extends ODataEntityFetcher<Attachment,AttachmentO
 	 public AttachmentFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Attachment.class,AttachmentOperations.class);
     }
+
+	public AttachmentFetcher addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+	}
 }

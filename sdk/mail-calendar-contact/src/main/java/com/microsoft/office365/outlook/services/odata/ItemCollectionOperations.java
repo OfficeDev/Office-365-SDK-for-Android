@@ -14,4 +14,9 @@ public class ItemCollectionOperations extends ODataOperations {
     public ItemCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public ItemCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

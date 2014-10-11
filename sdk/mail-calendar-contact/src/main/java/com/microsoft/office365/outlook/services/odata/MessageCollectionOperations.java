@@ -14,4 +14,9 @@ public class MessageCollectionOperations extends ODataOperations {
     public MessageCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public MessageCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

@@ -14,6 +14,11 @@ public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations
 	 public MessageFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Message.class,MessageOperations.class);
     }
+
+	public MessageFetcher addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+	}
 	public ODataCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
         return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
     }

@@ -8,6 +8,7 @@ package com.microsoft.office365.outlook.services.odata;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.office365.odata.BaseODataContainerHelper;
 import com.microsoft.office365.odata.interfaces.*;
+import static com.microsoft.office365.odata.Helpers.addCustomParametersToODataURL;
 
 public abstract class BaseODataContainer extends ODataExecutable {
 
@@ -20,7 +21,8 @@ public abstract class BaseODataContainer extends ODataExecutable {
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
+    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
+        addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
 		return BaseODataContainerHelper.oDataExecute(path, content, verb, url, getResolver());
     }
 

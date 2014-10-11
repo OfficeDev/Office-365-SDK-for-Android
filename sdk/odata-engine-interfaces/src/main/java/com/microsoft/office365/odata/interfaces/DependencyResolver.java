@@ -1,11 +1,41 @@
 package com.microsoft.office365.odata.interfaces;
 
+/**
+ * The interface Dependency resolver.
+ */
 public interface DependencyResolver {
+    /**
+     * Gets http transport.
+     *
+     * @return the http transport
+     */
     HttpTransport getHttpTransport();
 
+    /**
+     * Gets logger.
+     *
+     * @return the logger
+     */
     Logger getLogger();
 
+    /**
+     * Gets json serializer.
+     *
+     * @return the json serializer
+     */
     JsonSerializer getJsonSerializer();
 
+    /**
+     * Gets credentials factory.
+     *
+     * @return the credentials factory
+     */
     CredentialsFactory getCredentialsFactory();
+
+    /**
+     * Create o data uRL.
+     *
+     * @return the o data uRL
+     */
+    ODataURL createODataURL();
 }

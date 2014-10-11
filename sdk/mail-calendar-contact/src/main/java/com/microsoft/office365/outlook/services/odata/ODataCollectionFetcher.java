@@ -11,9 +11,10 @@ import java.util.List;
 
 import static com.microsoft.office365.odata.EntityCollectionFetcherHelper.addListResultCallback;
 import static com.microsoft.office365.odata.EntityFetcherHelper.addEntityResultCallback;
-import static com.microsoft.office365.odata.EntityFetcherHelper.getQueryString;
-import static com.microsoft.office365.odata.EntityFetcherHelper.getSelectorUrl;
+import static com.microsoft.office365.odata.EntityFetcherHelper.setPathForCollections;
+import static com.microsoft.office365.odata.EntityFetcherHelper.setSelectorUrl;
 import static com.microsoft.office365.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.office365.odata.Helpers.addCustomParametersToODataURL;
 
 public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Readable<List<T>> {
 
@@ -98,14 +99,15 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb) {
+    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
 		if (selectedId == null) {
-            String query = getQueryString(urlComponent, top, skip, select, expand, filter);
-            return parent.oDataExecute(query, content, verb);
+			setPathForCollections(path, urlComponent, top, skip, select, expand, filter);
         } else {
-            String query = getSelectorUrl(urlComponent, selectedId, path);
-            return parent.oDataExecute(query, content, verb);
+            setSelectorUrl(path, urlComponent, selectedId);
         }
+		addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
+		return parent.oDataExecute(path, content, verb);
+
     }
 
     @Override
@@ -116,7 +118,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     @Override
     public ListenableFuture<List<T>> read() {
 		final SettableFuture<List<T>> result = SettableFuture.create();
-        ListenableFuture<byte[]> future = oDataExecute("", null, HttpVerb.GET);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET);
         addListResultCallback(result, future, getResolver(), clazz);
 
         return result;
@@ -125,7 +127,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     public ListenableFuture<T> add(T entity) {
 		final SettableFuture<T> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(entity, getResolver());
-        ListenableFuture<byte[]> future = oDataExecute("", payloadBytes, HttpVerb.POST);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.POST);
         addEntityResultCallback(result, future, getResolver(), clazz);
 
         return result;
@@ -134,4 +136,10 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     public V getOperations() {
         return this.operations;
     }
+
+    public ODataCollectionFetcher<T, U, V> addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+    }
+
 }

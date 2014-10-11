@@ -1,9 +1,9 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import com.microsoft.office365.exchange.services.model.Contact;
-import com.microsoft.office365.exchange.services.model.EmailAddress;
-import com.microsoft.office365.exchange.services.odata.EntityContainerClient;
+import com.microsoft.office365.outlook.services.Contact;
+import com.microsoft.office365.outlook.services.EmailAddress;
+import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
@@ -22,7 +22,7 @@ public class ContactTests extends TestGroup {
         this.addTest(canGetContacts("Can get contacts", true));
         this.addTest(canCreateContact("Can create contacts", true));
         this.addTest(canDeleteContact("Can delete contacts", true));
-        this.addTest(canUpdateContact("Can update contacts", false));
+        this.addTest(canUpdateContact("Can update contacts", true));
     }
 
     private TestCase canGetContactsFolder(String name, boolean enabled) {
@@ -41,7 +41,7 @@ public class ContactTests extends TestGroup {
                     List<Contact> contacts = client.getMe()
                             .getContactFolders()
                             .getById("Contacts")
-                            .getContacts().execute().get();
+                            .getContacts().read().get();
 
                     //Assert
                     if(contacts == null)
@@ -75,7 +75,7 @@ public class ContactTests extends TestGroup {
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
 
                     //Act
-                    List<Contact> contacts = client.getMe().getContacts().top(2).execute().get();
+                    List<Contact> contacts = client.getMe().getContacts().top(2).read().get();
 
                     //Assert
                     if(contacts.size() == 0 || contacts.size() >2)
@@ -113,7 +113,7 @@ public class ContactTests extends TestGroup {
                     //Act
                     Contact storedContact = client.getMe()
                             .getContacts()
-                            .getById(addedContact.getId()).execute().get();
+                            .getById(addedContact.getId()).read().get();
 
                     //Assert
                     if(!storedContact.getId().equals(addedContact.getId()))
@@ -152,7 +152,7 @@ public class ContactTests extends TestGroup {
                     client.getMe().getContacts().getById(addedContact.getId()).delete().get();
 
                     //Assert
-                    List<Contact> contacts = client.getMe().getContacts().execute().get();
+                    List<Contact> contacts = client.getMe().getContacts().read().get();
 
                     boolean exists = false;
                     for(Contact c : contacts)
@@ -192,12 +192,12 @@ public class ContactTests extends TestGroup {
                     Contact contact = getContact();
                     Contact addedContact = client.getMe().getContacts().add(contact).get();
                     contact.setGivenName("Updated given name");
+                    //Act
                     client.getMe().getContacts().getById(addedContact.getId()).update(contact).get();
                     Thread.sleep(2000);
-                    //Act
                     Contact updatedContact = client.getMe()
                             .getContacts()
-                            .getById(addedContact.getId()).execute().get();
+                            .getById(addedContact.getId()).read().get();
 
                     //Assert
                     if(!updatedContact.getId().equals(addedContact.getId()) || !updatedContact.getGivenName().equals("Updated given name"))

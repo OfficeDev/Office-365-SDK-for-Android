@@ -16,4 +16,9 @@ public class ItemOperations extends ODataOperations {
 	 public ItemOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public ItemOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

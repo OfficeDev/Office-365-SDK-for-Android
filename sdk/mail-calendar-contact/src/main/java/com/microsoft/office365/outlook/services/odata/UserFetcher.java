@@ -14,6 +14,11 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations> impleme
 	 public UserFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, User.class,UserOperations.class);
     }
+
+	public UserFetcher addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+	}
 	public ODataCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getFolders() {
         return new ODataCollectionFetcher<Folder, FolderFetcher,FolderCollectionOperations>("Folders", this, Folder.class,FolderCollectionOperations.class);
     }

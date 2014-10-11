@@ -14,4 +14,9 @@ public class ContactCollectionOperations extends ODataOperations {
     public ContactCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public ContactCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

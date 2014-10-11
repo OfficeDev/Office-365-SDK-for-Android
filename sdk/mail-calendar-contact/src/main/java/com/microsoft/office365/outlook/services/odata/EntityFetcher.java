@@ -14,4 +14,9 @@ public class EntityFetcher extends ODataEntityFetcher<Entity,EntityOperations> i
 	 public EntityFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Entity.class,EntityOperations.class);
     }
+
+	public EntityFetcher addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+	}
 }

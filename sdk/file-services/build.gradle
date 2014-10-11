@@ -1,6 +1,8 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':odata-engine-interfaces')
+    compile project(':odata-engine-helpers')
 }

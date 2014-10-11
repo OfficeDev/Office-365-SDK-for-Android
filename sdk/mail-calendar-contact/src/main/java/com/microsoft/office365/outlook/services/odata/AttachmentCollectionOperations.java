@@ -14,4 +14,9 @@ public class AttachmentCollectionOperations extends ODataOperations {
     public AttachmentCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public AttachmentCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }
