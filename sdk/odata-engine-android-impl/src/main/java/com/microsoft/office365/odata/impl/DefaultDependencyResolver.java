@@ -1,5 +1,8 @@
 package com.microsoft.office365.odata.impl;
 
+import android.os.Build;
+
+import com.microsoft.office365.odata.Constants;
 import com.microsoft.office365.odata.ODataURLImpl;
 import com.microsoft.office365.odata.impl.http.AndroidHttpTransport;
 import com.microsoft.office365.odata.interfaces.*;
@@ -42,6 +45,17 @@ public class DefaultDependencyResolver implements DependencyResolver {
     @Override
     public ODataURL createODataURL() {
         return new ODataURLImpl();
+    }
+
+    @Override
+    public String getPlatformUserAgent(String productName) {
+        String userAgent = String.format(
+                "%s/1.0 (lang=%s; os=%s; os_version=%s; arch=%s; version=%s)",
+                productName, "Java", "Android", Build.VERSION.RELEASE,
+                Build.CPU_ABI, Constants.SDK_VERSION);
+
+        return userAgent;
+
     }
 
     /**

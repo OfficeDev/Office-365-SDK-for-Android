@@ -38,4 +38,11 @@ public interface DependencyResolver {
      * @return the o data uRL
      */
     ODataURL createODataURL();
+
+    /**
+     * Gets the user agent for a specific platform
+     * @param productName the product name
+     * @return the user agent
+     */
+    String getPlatformUserAgent(String productName);
 }

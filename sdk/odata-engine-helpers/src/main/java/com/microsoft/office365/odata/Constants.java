@@ -20,4 +20,9 @@ public class Constants {
 	 * UTF-8 Charset instance
 	 */
 	public static final Charset UTF8 = Charset.forName(UTF8_NAME);
+
+    /**
+     * SDK Version
+     */
+    public static final String SDK_VERSION = "0.9";
 }
