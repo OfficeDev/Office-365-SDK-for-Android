@@ -3,7 +3,6 @@ package com.microsoft.simple_exchange_sample;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,36 +10,30 @@ import android.widget.Toast;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.office365.exchange.services.Message;
-import com.microsoft.office365.odata.EntityContainerClient;
 import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
-
-import java.util.List;
 
 
 public class MyActivity extends Activity {
 
-    DefaultDependencyResolver mResolver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        mResolver = new DefaultDependencyResolver();
+        Controller.getInstance().setDependencyResolver(new DefaultDependencyResolver());
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Authentication.createEncryptionKey(getApplicationContext());
-                SettableFuture<Void> authenticated = Authentication.authenticate(MyActivity.this, mResolver);
+                SettableFuture<Void> authenticated = Authentication.authenticate(MyActivity.this, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
                 Futures.addCallback(authenticated, new FutureCallback<Void>() {
                     @Override
                     public void onSuccess(Void result) {
-                        retrieveMails();
+                        startMailActivity();
                     }
 
                     @Override
@@ -59,54 +52,9 @@ public class MyActivity extends Activity {
         Authentication.context.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void retrieveMails() {
-        EntityContainerClient client = new EntityContainerClient(Constants.ENDPOINT_ID, mResolver);
-
-        ListenableFuture<List<Message>> messagesFuture = client
-                .getMe()
-                .getFolders()
-                .getById("Inbox")
-                .getMessages()
-                .execute();
-
-        Futures.addCallback(messagesFuture, new FutureCallback<List<Message>>() {
-            @Override
-            public void onSuccess(List<Message> result) {
-                showMessages(result);
-
-            }
-
-            @Override
-            public void onFailure(final Throwable t) {
-                handleError(t);
-            }
-        });
-    }
-
-    private void showMessages(List<Message> result) {
-        String message;
-        if (result.size() == 0) {
-            message = "You have no messages";
-        } else {
-            StringBuilder sb = new StringBuilder();
-
-            sb.append("Your messages are:");
-            sb.append("\n");
-            for (Message m : result) {
-                sb.append(m.getSubject());
-                sb.append("\n");
-            }
-            message = sb.toString();
-        }
-
-        final String finalMessage = message;
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(MyActivity.this, finalMessage, Toast.LENGTH_LONG).show();
-            }
-        });
+    void startMailActivity() {
+        Intent intent = new Intent(this, MailActivity.class);
+        startActivity(intent);
     }
 
     private void handleError(final Throwable t) {
