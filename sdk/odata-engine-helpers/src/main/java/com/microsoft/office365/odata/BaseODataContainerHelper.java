@@ -54,7 +54,7 @@ public class BaseODataContainerHelper {
      * @param resolver the resolver
      * @return the listenable future
      */
-    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
+    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver, String productName) {
 
         final Logger logger = resolver.getLogger();
         path.setBaseUrl(url);
@@ -72,6 +72,7 @@ public class BaseODataContainerHelper {
         request.setVerb(verb);
         request.setUrl(fullUrl);
         request.setContent(content);
+        request.addHeader(Constants.USER_AGENT_HEADER, resolver.getPlatformUserAgent(productName));
         request.addHeader("Content-Type", "application/json");
 
         boolean credentialsSet = false;

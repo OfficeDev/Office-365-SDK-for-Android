@@ -8,6 +8,7 @@ package com.microsoft.office365.odata.impl.http;
 import android.net.http.AndroidHttpClient;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.microsoft.office365.odata.Constants;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
@@ -55,7 +56,15 @@ public class NetworkRunnable implements Runnable {
     public void run() {
         AndroidHttpClient client = null;
         try {
-            client = AndroidHttpClient.newInstance("Office-365-SDK");
+
+            String userAgent = mRequest.getHeaders().get(Constants.USER_AGENT_HEADER);
+
+            if (userAgent == null) {
+                userAgent = "";
+            }
+
+            client = AndroidHttpClient.newInstance(userAgent);
+
             BasicHttpEntityEnclosingRequest realRequest = new BasicHttpEntityEnclosingRequest(mRequest.getVerb().toString(), mRequest.getUrl());
             EntityEnclosingRequestWrapper wrapper = new EntityEnclosingRequestWrapper(realRequest);
 
