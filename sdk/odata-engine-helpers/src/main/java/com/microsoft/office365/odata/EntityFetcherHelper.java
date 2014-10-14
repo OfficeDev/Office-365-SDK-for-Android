@@ -135,7 +135,6 @@ public class EntityFetcherHelper {
      */
     public static void setSelectorUrl(ODataURL url, String urlComponent, String selectedId) {
         String selector = "('" + selectedId + "')";
-        url.prependPathComponent(selector);
-        url.prependPathComponent(urlComponent);
+        url.prependPathComponent(urlComponent + selector);
     }
 }
