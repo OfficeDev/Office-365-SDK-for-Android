@@ -23,7 +23,7 @@ public abstract class BaseODataContainer extends ODataExecutable {
     @Override
     ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
         addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
-		return BaseODataContainerHelper.oDataExecute(path, content, verb, url, getResolver());
+		return BaseODataContainerHelper.oDataExecute(path, content, verb, url, getResolver(), this.getClass().getCanonicalName());
     }
 
     @Override

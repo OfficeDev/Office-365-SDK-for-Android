@@ -19,11 +19,6 @@ import com.microsoft.office365.odata.interfaces.Response;
  */
 public class AndroidHttpTransport implements HttpTransport {
 
-    /**
-     * User agent header name
-     */
-    private static final String USER_AGENT_HEADER = "User-Agent";
-
     @Override
     public Request createRequest() {
         return new RequestImpl();
@@ -31,8 +26,6 @@ public class AndroidHttpTransport implements HttpTransport {
 
     @Override
     public ListenableFuture<Response> execute(final Request request) {
-
-        request.addHeader(USER_AGENT_HEADER, "Office365-SDK");
 
         final SettableFuture<Response> future = SettableFuture.create();
         final NetworkRunnable target = new NetworkRunnable(request, future);
