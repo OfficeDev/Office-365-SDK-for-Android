@@ -14,6 +14,9 @@ import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
 
+/**
+ * The type Android http transport.
+ */
 public class AndroidHttpTransport implements HttpTransport {
 
     /**

@@ -19,6 +19,7 @@ import com.microsoft.office365.odata.impl.http.CredentialsFactoryImpl;
 import com.microsoft.office365.odata.interfaces.Credentials;
 import com.microsoft.office365.odata.interfaces.CredentialsFactory;
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
+import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.TestPlatformContext;
@@ -200,7 +201,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                 };
             }
         });
-        dependencyResolver.getLogger().setVerboseMode(true);
+        dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),dependencyResolver);
         return client;
     }

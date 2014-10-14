@@ -56,7 +56,6 @@ public class MailTests extends TestGroup {
         this.addTest(canCreateReplyAllMessage("Can create reply all", true));
         this.addTest(canCreateForwardMessage("Can create forward", true));
         //TODO:create message with attachment
-        //TODO:forward -> to drafts
         //TODO:reply action
         //TODO:reply all
         //TODO:forward action

@@ -14,4 +14,9 @@ public class FileAttachmentCollectionOperations extends ODataOperations {
     public FileAttachmentCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public FileAttachmentCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

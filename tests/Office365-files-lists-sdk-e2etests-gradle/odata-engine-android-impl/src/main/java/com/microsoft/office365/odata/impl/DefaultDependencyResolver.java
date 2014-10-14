@@ -1,13 +1,23 @@
 package com.microsoft.office365.odata.impl;
 
+import android.os.Build;
+
+import com.microsoft.office365.odata.Constants;
+import com.microsoft.office365.odata.ODataURLImpl;
 import com.microsoft.office365.odata.impl.http.AndroidHttpTransport;
 import com.microsoft.office365.odata.interfaces.*;
 
+/**
+ * The type Default dependency resolver.
+ */
 public class DefaultDependencyResolver implements DependencyResolver {
 
     private CredentialsFactory credentialsFactory;
     private LoggerImpl logger;
 
+    /**
+     * Instantiates a new Default dependency resolver.
+     */
     public DefaultDependencyResolver() {
         this.logger = new LoggerImpl();
     }
@@ -32,6 +42,27 @@ public class DefaultDependencyResolver implements DependencyResolver {
         return credentialsFactory;
     }
 
+    @Override
+    public ODataURL createODataURL() {
+        return new ODataURLImpl();
+    }
+
+    @Override
+    public String getPlatformUserAgent(String productName) {
+        String userAgent = String.format(
+                "%s/1.0 (lang=%s; os=%s; os_version=%s; arch=%s; version=%s)",
+                productName, "Java", "Android", Build.VERSION.RELEASE,
+                Build.CPU_ABI, Constants.SDK_VERSION);
+
+        return userAgent;
+
+    }
+
+    /**
+     * Sets credentials factory.
+     *
+     * @param credentialsFactory the credentials factory
+     */
     public void setCredentialsFactory(CredentialsFactory credentialsFactory) {
         this.credentialsFactory = credentialsFactory;
     }

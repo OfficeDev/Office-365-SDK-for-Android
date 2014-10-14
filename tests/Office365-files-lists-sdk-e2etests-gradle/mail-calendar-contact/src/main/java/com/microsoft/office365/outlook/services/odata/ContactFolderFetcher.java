@@ -14,6 +14,11 @@ public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,Conta
 	 public ContactFolderFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, ContactFolder.class,ContactFolderOperations.class);
     }
+
+	public ContactFolderFetcher addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+	}
 	public ODataCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getContacts() {
         return new ODataCollectionFetcher<Contact, ContactFetcher,ContactCollectionOperations>("Contacts", this, Contact.class,ContactCollectionOperations.class);
     }

@@ -23,9 +23,23 @@ import java.util.Map;
 public class ResponseImpl implements Response {
     private InputStream mStream;
     private int mStatus;
+    /**
+     * The M headers.
+     */
     Map<String, List<String>> mHeaders;
+    /**
+     * The M client.
+     */
     AndroidHttpClient mClient;
 
+    /**
+     * Instantiates a new Response impl.
+     *
+     * @param stream the stream
+     * @param status the status
+     * @param headers the headers
+     * @param client the client
+     */
     public ResponseImpl(InputStream stream, int status, Map<String, List<String>> headers,
                         AndroidHttpClient client) {
         mHeaders = new HashMap<String, List<String>>(headers);
