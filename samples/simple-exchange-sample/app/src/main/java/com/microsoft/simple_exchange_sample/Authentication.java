@@ -104,6 +104,7 @@ public class Authentication {
 
     public static void resetToken(Activity activity) {
         getAuthenticationContext(activity).getCache().removeAll();
+        android.webkit.CookieManager.getInstance().removeAllCookie();
     }
 
     static void createEncryptionKey(Context applicationContext) {

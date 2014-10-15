@@ -12,8 +12,8 @@ public class Constants {
     public static final String REDIRECT_URL = "https://msopentechtest";
     public static final String CLIENT_ID = "1216da67-c9b9-44fa-bdc4-d8e2a06b4c0f";
 	public static final String ENCRYPTION_KEY = "EncryptionKey";
-    public static final String ENDPOINT_ID = RESOURCE_ID + "/ews/odata";
+    public static final String ENDPOINT_ID = RESOURCE_ID + "/api/v1.0";
     public static final String EMAIL_TARGET_KEY = "email";
-    // TODO: blacnk the target email before shipping
+    // TODO: blank the target email before shipping
     public static final String EMAIL_TARGET = "lorenzte@msopentech.ccsctp.net";
 }
