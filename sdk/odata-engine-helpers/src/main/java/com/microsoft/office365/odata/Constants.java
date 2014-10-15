@@ -30,4 +30,19 @@ public class Constants {
      * User Agent Header
      */
     public static final String USER_AGENT_HEADER = "User-Agent";
+
+    /**
+     * Telemetry Header
+     */
+    public static final String TELEMETRY_HEADER = "X-ClientService-ClientTag";
+
+    /**
+     * Content Type Header
+     */
+    public static final String CONTENT_TYPE_HEADER = "Content-Type";
+
+    /**
+     * Json Content Type
+     */
+    public static final String JSON_CONTENT_TYPE = "application/json";
 }
