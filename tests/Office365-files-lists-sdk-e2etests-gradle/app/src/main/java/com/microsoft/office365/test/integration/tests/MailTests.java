@@ -46,7 +46,7 @@ public class MailTests extends TestGroup {
         //Messages
         this.addTest(canGetMessages("Can get messages", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
-        this.addTest(canCreateMessageAttachment("Can create message with attachment - Not finished", false));
+        this.addTest(canCreateMessageAttachment("Can create message with attachment", false));
         this.addTest(canSendMessage("Can send message", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
@@ -571,29 +571,29 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-//                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
-//
-//                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "", true);
-//
-//                    //Act
-//                    Message added = client.getMe().getMessages().add(message).get();
-//                    client.getMe().getMessages()
-//                            .getById(added.getId())
-//                            .getAttachments()
-//                            .add(getFileAttachment()).get();
-//
-//                    //Assert
-//                    Message storedMessage = client.getMe().getMessages().getById(added.getId()).read().get();
-//
-//                    if(!storedMessage.getHasAttachments())
-//                        result.setStatus(TestStatus.Failed);
-//
-//                    //Cleanup
-////                    client.getMe().getFolders()
-////                            .getById("Drafts")
-////                            .getMessages()
-////                            .getById(myMessage.getId())
-////                            .delete().get();
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(getFileAttachment()).get();
+
+                    //Assert
+                    Message storedMessage = client.getMe().getMessages().getById(added.getId()).read().get();
+
+                    if(!storedMessage.getHasAttachments())
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+//                    client.getMe().getFolders()
+//                            .getById("Drafts")
+//                            .getMessages()
+//                            .getById(myMessage.getId())
+//                            .delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
@@ -1195,21 +1195,12 @@ public class MailTests extends TestGroup {
         return m;
     }
 
-//    FileAttachment getFileAttachment() {
-//        try {
-//            File testFile = null;
-//            testFile = new File("assets\\TestFile.txt");
-//
-//            byte[] bytes = Files.toByteArray(testFile);
-//
-//            testFile.delete();
-//            FileAttachment a = new FileAttachment();
-//            a.setName("Test attachment");
-//            a.setContentBytes(bytes);
-//            return a;
-//        }catch(IOException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    FileAttachment getFileAttachment() {
+        FileAttachment att = new FileAttachment();
+
+        att.setContentBytes("hello world".getBytes());
+        att.setName("myFile.txt");
+
+        return att;
+    }
 }

@@ -43,8 +43,16 @@ public class CalendarTypeAdapter implements com.google.gson.JsonSerializer<Calen
         String s = strVal.replace("Z", "+00:00");
 
         // Parse the well-formatted date string
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ssZ");
+        String datePattern;
+        if(s.contains(".")){
+            datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ";
+        }
+        else
+        {
+            datePattern = "yyyy-MM-dd'T'HH:mm:ssZ";
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
         dateFormat.setTimeZone(TimeZone.getDefault());
 
         Date date = dateFormat.parse(s);
@@ -68,11 +76,12 @@ public class CalendarTypeAdapter implements com.google.gson.JsonSerializer<Calen
      * @return the string
      */
     public static String serialize(Calendar src) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ssZ");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSSSSSS'Z'", Locale.getDefault());
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        return dateFormat.format(src.getTime());
+        String formatted = dateFormat.format(src.getTime());
+
+        return formatted;
     }
 
 }
