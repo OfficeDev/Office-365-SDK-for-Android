@@ -14,4 +14,9 @@ public class FolderCollectionOperations extends ODataOperations {
     public FolderCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public FolderCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

@@ -5,5 +5,8 @@
  ******************************************************************************/
 package com.microsoft.office365.outlook.services;
 
+/**
+ * The type ItemAttachment.
+*/
 public class ItemAttachment extends Attachment {
 }

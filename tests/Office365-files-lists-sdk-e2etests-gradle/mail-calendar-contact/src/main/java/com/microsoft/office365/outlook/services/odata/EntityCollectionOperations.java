@@ -14,4 +14,9 @@ public class EntityCollectionOperations extends ODataOperations {
     public EntityCollectionOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public EntityCollectionOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 }

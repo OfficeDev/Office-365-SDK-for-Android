@@ -5,11 +5,14 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonObject;
+import com.microsoft.office365.odata.interfaces.Credentials;
+import com.microsoft.office365.odata.interfaces.CredentialsFactory;
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
 import com.microsoft.office365.odata.interfaces.HttpTransport;
 import com.microsoft.office365.odata.interfaces.HttpVerb;
 import com.microsoft.office365.odata.interfaces.LogLevel;
 import com.microsoft.office365.odata.interfaces.Logger;
+import com.microsoft.office365.odata.interfaces.ODataURL;
 import com.microsoft.office365.odata.interfaces.Request;
 import com.microsoft.office365.odata.interfaces.Response;
 
@@ -23,19 +26,41 @@ import java.util.Set;
 
 import static com.microsoft.office365.odata.Helpers.urlEncode;
 
+/**
+ * The type Base o data container helper.
+ */
 public class BaseODataContainerHelper {
 
+    /**
+     * Gets OData parameter value.
+     *
+     * @param resolver the resolver
+     * @param value the value
+     * @return the o data parameter value
+     */
     public static String getODataParameterValue(DependencyResolver resolver, Object value) {
 
         String serialized = resolver.getJsonSerializer().serialize(value);
         return  urlEncode(serialized);
     }
 
-    public static ListenableFuture<byte[]> oDataExecute(String path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
+    /**
+     * OData execute.
+     *
+     * @param path the path
+     * @param content the content
+     * @param verb the verb
+     * @param url the url
+     * @param resolver the resolver
+     * @return the listenable future
+     */
+    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver) {
 
         final Logger logger = resolver.getLogger();
+        path.setBaseUrl(url);
 
-        String fullUrl = url + "/" + path;
+        String fullUrl = path.toString();
+        logger.log("URL: " + fullUrl, LogLevel.INFO);
         String executionInfo = String.format("URL: %s - HTTP VERB: %s", fullUrl, verb);
         logger.log("Start preparing OData execution for " + executionInfo, LogLevel.INFO);
 
@@ -49,7 +74,21 @@ public class BaseODataContainerHelper {
         request.setUrl(fullUrl);
         request.setContent(content);
         request.addHeader("Content-Type", "application/json");
-        resolver.getCredentialsFactory().getCredentials().prepareRequest(request);
+
+        boolean credentialsSet = false;
+        CredentialsFactory credFactory = resolver.getCredentialsFactory();
+        if (credFactory != null) {
+            Credentials cred = credFactory.getCredentials();
+            if (cred != null) {
+                cred.prepareRequest(request);
+                credentialsSet = true;
+            }
+        }
+
+        if (!credentialsSet) {
+            logger.log("Executing request without setting credentials", LogLevel.WARNING);
+        }
+
 
         logger.log("Request Headers: ", LogLevel.VERBOSE);
         for (String key : request.getHeaders().keySet()) {
@@ -107,6 +146,13 @@ public class BaseODataContainerHelper {
         return result;
     }
 
+    /**
+     * Read all bytes.
+     *
+     * @param stream the stream
+     * @return the byte [ ]
+     * @throws IOException the iO exception
+     */
     public static byte[] readAllBytes(InputStream stream) throws IOException {
         if (stream == null) {
             return new byte[0];
@@ -122,6 +168,13 @@ public class BaseODataContainerHelper {
         return os.toByteArray();
     }
 
+    /**
+     * Generate parameters payload.
+     *
+     * @param parameters the parameters
+     * @param resolver the resolver
+     * @return the string
+     */
     public static String generateParametersPayload(Map<String, Object> parameters, DependencyResolver resolver) {
         return resolver.getJsonSerializer().serialize(parameters);
     }

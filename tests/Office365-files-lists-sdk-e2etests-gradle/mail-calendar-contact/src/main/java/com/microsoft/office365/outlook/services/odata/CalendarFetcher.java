@@ -14,6 +14,11 @@ public class CalendarFetcher extends ODataEntityFetcher<Calendar,CalendarOperati
 	 public CalendarFetcher(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent, Calendar.class,CalendarOperations.class);
     }
+
+	public CalendarFetcher addParameter(String name, Object value) {
+	    addCustomParameter(name, value);
+		return this;
+	}
 	public ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getCalendarView() {
         return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("CalendarView", this, Event.class,EventCollectionOperations.class);
     }

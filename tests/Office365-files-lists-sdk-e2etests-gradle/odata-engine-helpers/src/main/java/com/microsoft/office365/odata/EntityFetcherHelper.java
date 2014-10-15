@@ -5,27 +5,24 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.office365.odata.interfaces.DependencyResolver;
+import com.microsoft.office365.odata.interfaces.ODataURL;
 
 import static com.microsoft.office365.odata.Helpers.urlEncode;
 
+/**
+ * The type Entity fetcher helper.
+ */
 public class EntityFetcherHelper {
 
-    public static String getODataExecuteUrlForPath(String path, String urlComponent) {
-        StringBuilder url = new StringBuilder();
-        if (urlComponent.length() > 0) {
-            url.append(urlComponent);
-        }
-
-        if (path.length() > 0) {
-            if (!path.startsWith("/")) {
-                url.append("/");
-            }
-
-            url.append(path);
-        }
-        return url.toString();
-    }
-
+    /**
+     * Add entity result callback.
+     *
+     * @param <E>  the type parameter
+     * @param result the result
+     * @param future the future
+     * @param resolver the resolver
+     * @param clazz the clazz
+     */
     public static <E> void addEntityResultCallback(final SettableFuture<E> result, ListenableFuture<byte[]> future, final DependencyResolver resolver, final Class<E> clazz) {
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
@@ -46,6 +43,15 @@ public class EntityFetcherHelper {
         });
     }
 
+    /**
+     * Add byte array result callback.
+     *
+     * @param <E>  the type parameter
+     * @param result the result
+     * @param future the future
+     * @param resolver the resolver
+     * @param clazz the clazz
+     */
     public static <E> void addByteArrayResultCallback(final SettableFuture<byte[]> result, ListenableFuture<byte[]> future, final DependencyResolver resolver, final Class<E> clazz) {
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
@@ -64,6 +70,13 @@ public class EntityFetcherHelper {
         });
     }
 
+    /**
+     * Add null result callback.
+     *
+     * @param <E>  the type parameter
+     * @param result the result
+     * @param future the future
+     */
     public static <E> void addNullResultCallback(final SettableFuture<E> result, ListenableFuture<byte[]> future) {
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
@@ -78,48 +91,50 @@ public class EntityFetcherHelper {
         });
     }
 
-    public static String getQueryString(String urlComponent, int top, int skip, String select, String expand, String filter) {
-        StringBuilder query = new StringBuilder();
-
-        query.append("?");
+    /**
+     * Sets path for collections.
+     *
+     * @param url the url
+     * @param urlComponent the url component
+     * @param top the top
+     * @param skip the skip
+     * @param select the select
+     * @param expand the expand
+     * @param filter the filter
+     */
+    public static void setPathForCollections(ODataURL url, String urlComponent, int top, int skip, String select, String expand, String filter) {
         if (top > -1) {
-            query.append("&$top=");
-            query.append(top);
+            url.addQueryStringParameter("$top", Integer.valueOf(top).toString());
         }
 
         if (skip> -1) {
-            query.append("&$skip=");
-            query.append(skip);
+            url.addQueryStringParameter("$skip", Integer.valueOf(skip).toString());
         }
 
         if (select != null) {
-            query.append("&$select=");
-            query.append(urlEncode(select));
+            url.addQueryStringParameter("$select", select);
         }
 
         if (expand != null) {
-            query.append("&expand=");
-            query.append(urlEncode(expand));
+            url.addQueryStringParameter("$expand", expand);
         }
 
         if (filter!= null) {
-            query.append("&filter=");
-            query.append(urlEncode(filter));
+            url.addQueryStringParameter("$filter", filter);
         }
-        return urlComponent + query.toString();
+
+        url.prependPathComponent(urlComponent);
     }
 
-    public static String getSelectorUrl(String urlComponent, String selectedId, String path) {
+    /**
+     * Sets selector url.
+     *
+     * @param url the url
+     * @param urlComponent the url component
+     * @param selectedId the selected id
+     */
+    public static void setSelectorUrl(ODataURL url, String urlComponent, String selectedId) {
         String selector = "('" + selectedId + "')";
-
-        if (path == null) {
-            path = "";
-        }
-
-        if (!path.startsWith("/")) {
-            path = "/" + path;
-        }
-
-        return urlComponent + selector + path;
+        url.prependPathComponent(urlComponent + selector);
     }
 }

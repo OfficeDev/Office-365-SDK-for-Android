@@ -16,6 +16,11 @@ public class UserOperations extends ODataOperations {
 	 public UserOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public UserOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 			
 	public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) {
         final SettableFuture<Integer> result = SettableFuture.create();
@@ -25,7 +30,9 @@ public class UserOperations extends ODataOperations {
 		map.put("SaveToSentItems", saveToSentItems);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("SendMail", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("SendMail");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Integer.class);
 
         return result;

@@ -16,6 +16,11 @@ public class FolderOperations extends ODataOperations {
 	 public FolderOperations(String urlComponent, ODataExecutable parent) {
         super(urlComponent, parent);
     }
+
+	public FolderOperations addParameter(String name, Object value) {
+		addCustomParameter(name, value);
+		return this;
+	}
 			
 	public ListenableFuture<Folder> copy(String destinationId) {
         final SettableFuture<Folder> result = SettableFuture.create();
@@ -24,7 +29,9 @@ public class FolderOperations extends ODataOperations {
 		map.put("DestinationId", destinationId);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Copy", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Copy");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Folder.class);
 
         return result;
@@ -37,7 +44,9 @@ public class FolderOperations extends ODataOperations {
 		map.put("DestinationId", destinationId);
 		
 
-        ListenableFuture<byte[]> future = oDataExecute("Move", serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ODataURL url = getResolver().createODataURL();
+		url.appendPathComponent("Move");
+        ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result,future,getResolver(),Folder.class);
 
         return result;
