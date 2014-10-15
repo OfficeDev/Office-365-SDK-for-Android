@@ -72,8 +72,11 @@ public class BaseODataContainerHelper {
         request.setVerb(verb);
         request.setUrl(fullUrl);
         request.setContent(content);
-        request.addHeader(Constants.USER_AGENT_HEADER, resolver.getPlatformUserAgent(productName));
-        request.addHeader("Content-Type", "application/json");
+
+        String userAgent = resolver.getPlatformUserAgent(productName);
+        request.addHeader(Constants.USER_AGENT_HEADER, userAgent);
+        request.addHeader(Constants.TELEMETRY_HEADER, userAgent);
+        request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
 
         boolean credentialsSet = false;
         CredentialsFactory credFactory = resolver.getCredentialsFactory();
