@@ -1,8 +1,9 @@
-com.microsoft.office365.files.services
-com.microsoft.office365.files.services.odata
-com.microsoft.office365.odata
-com.microsoft.office365.odata.impl
-com.microsoft.office365.odata.impl.http
-com.microsoft.office365.odata.interfaces
-com.microsoft.office365.outlook.services
-com.microsoft.office365.outlook.services.odata
+com.microsoft.coreservices
+com.microsoft.fileservices
+com.microsoft.fileservices.odata
+com.microsoft.outlookservices
+com.microsoft.outlookservices.odata
+com.microsoft.services.odata
+com.microsoft.services.odata.impl
+com.microsoft.services.odata.impl.http
+com.microsoft.services.odata.interfaces
