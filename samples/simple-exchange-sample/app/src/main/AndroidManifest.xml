@@ -24,6 +24,10 @@
             android:name=".MailActivity"
             android:label="@string/title_activity_mail" >
         </activity>
+        <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar" >
+        </activity>
     </application>
 
 </manifest>

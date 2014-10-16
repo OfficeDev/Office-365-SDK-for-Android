@@ -35,4 +35,18 @@ public class Controller {
     public DependencyResolver getDependencyResolver() {
         return this.dependencyResolver;
     }
+
+
+    /**
+     * notifies about the exception on executing the Future
+     * @param msg error message to be displayed
+     */
+    public static void handleError(final Activity activity, final String msg) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }

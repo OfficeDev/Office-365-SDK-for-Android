@@ -79,8 +79,8 @@ public class MailActivity extends Activity implements View.OnClickListener {
                 viewHolder = new ViewHolder();
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(R.layout.item_message, parent, false);
-                viewHolder.from = (TextView) convertView.findViewById(R.id.tvFrom);
-                viewHolder.subject = (TextView) convertView.findViewById(R.id.tvSubject);
+                viewHolder.from = (TextView) convertView.findViewById(R.id.tv_from);
+                viewHolder.subject = (TextView) convertView.findViewById(R.id.tv_subject);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
@@ -251,7 +251,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onFailure(final Throwable t) {
-                handleError(t);
+                Controller.handleError(MailActivity.this, t.getMessage());
             }
         });
 
@@ -269,7 +269,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
         final String email = preferences.getString(Constants.EMAIL_TARGET_KEY, Constants.EMAIL_TARGET);
 
         if (email.isEmpty()) {
-            handleError("Please set email address in Settings or edit Constants");
+            Controller.handleError(MailActivity.this, "Please set email address in Settings or edit Constants");
             return null;
         }
 
@@ -328,12 +328,12 @@ public class MailActivity extends Activity implements View.OnClickListener {
 
                 @Override
                 public void onFailure(final Throwable t) {
-                    handleError(t);
+                    Controller.handleError(MailActivity.this, t.getMessage());
                 }
             });
 
         } catch (final Throwable t) {
-            handleError(t);
+            Controller.handleError(MailActivity.this, t.getMessage());
         }
 
         return null;
@@ -370,7 +370,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
             }
         }
         catch (Throwable t) {
-            handleError(t);
+            Controller.handleError(MailActivity.this, t.getMessage());
         }
 
         return null;
@@ -385,31 +385,5 @@ public class MailActivity extends Activity implements View.OnClickListener {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(Constants.EMAIL_TARGET_KEY, email);
         editor.commit();
-    }
-
-    /**
-     * notifies about the exception on executing the Future
-     * @param t exception thrown on Future execution
-     */
-    private void handleError(final Throwable t) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(MailActivity.this, t.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    /**
-     * notifies about the exception on executing the Future
-     * @param msg error message to be displayed
-     */
-    private void handleError(final String msg) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(MailActivity.this, msg, Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }
