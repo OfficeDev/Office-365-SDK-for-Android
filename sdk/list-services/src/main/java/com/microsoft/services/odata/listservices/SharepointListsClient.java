@@ -12,8 +12,8 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.microsoft.services.odata.Constants;
-import com.microsoft.services.odata.interfaces.Credentials;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.HttpVerb;
 import com.microsoft.services.odata.interfaces.Logger;
 
 import java.io.UnsupportedEncodingException;
@@ -28,25 +28,31 @@ import java.util.Map;
  */
 public class SharepointListsClient extends SharepointClient {
 
-    /**
-     * Instantiates a new sharepoint lists client.
-     *
-     * @param credentials the credentials
-     */
-    public SharepointListsClient(String serverUrl, String siteRelativeUrl,
-                                 Credentials credentials, DependencyResolver resolver) {
-        super(serverUrl, siteRelativeUrl, credentials, resolver);
-    }
 
     /**
-     * Instantiates a new sharepoint lists client.
+     * Instantiates a new Sharepoint lists client.
      *
-     * @param credentials the credentials
-     * @param logger      the logger
+     * @param serverUrl       the server url
+     * @param siteRelativeUrl the site relative url
+     * @param resolver        the resolver
      */
     public SharepointListsClient(String serverUrl, String siteRelativeUrl,
-                                 Credentials credentials, DependencyResolver resolver, Logger logger) {
-        super(serverUrl, siteRelativeUrl, credentials, resolver, logger);
+                                 DependencyResolver resolver) {
+        super(serverUrl, siteRelativeUrl, resolver);
+    }
+
+
+    /**
+     * Instantiates a new Sharepoint lists client.
+     *
+     * @param serverUrl       the server url
+     * @param siteRelativeUrl the site relative url
+     * @param resolver        the resolver
+     * @param logger          the logger
+     */
+    public SharepointListsClient(String serverUrl, String siteRelativeUrl,
+                                 DependencyResolver resolver, Logger logger) {
+        super(serverUrl, siteRelativeUrl, resolver, logger);
     }
 
     /**
@@ -60,8 +66,7 @@ public class SharepointListsClient extends SharepointClient {
 
         String queryOData = generateODataQueryString(query);
         String getListsUrl = getSiteUrl() + "_api/web/lists/?" + queryEncode(queryOData);
-
-        ListenableFuture<JsonObject> request = executeRequestJson(getListsUrl, "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(getListsUrl, HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override
@@ -87,9 +92,10 @@ public class SharepointListsClient extends SharepointClient {
      */
     public ListenableFuture<SPList> getList(String listName) {
         final SettableFuture<SPList> result = SettableFuture.create();
+
         String getListUrl = getSiteUrl() + "_api/web/lists/GetByTitle('%s')";
         getListUrl = String.format(getListUrl, urlEncode(listName));
-        ListenableFuture<JsonObject> request = executeRequestJson(getListUrl, "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(getListUrl, HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override
@@ -120,7 +126,7 @@ public class SharepointListsClient extends SharepointClient {
 
         String listNamePart = String.format("_api/web/lists/GetByTitle('%s')/Items?", urlEncode(listName));
         String getListUrl = getSiteUrl() + listNamePart + generateODataQueryString(query);
-        ListenableFuture<JsonObject> request = executeRequestJson(getListUrl, "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(getListUrl, HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override
@@ -149,7 +155,7 @@ public class SharepointListsClient extends SharepointClient {
 
         String getListUrl = getSiteUrl() + "_api/web/lists/GetByTitle('%s')/Fields?" + generateODataQueryString(query);
         getListUrl = String.format(getListUrl, urlEncode(listName));
-        ListenableFuture<JsonObject> request = executeRequestJson(getListUrl, "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(getListUrl, HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override
@@ -199,7 +205,7 @@ public class SharepointListsClient extends SharepointClient {
                 }
             }
 
-            ListenableFuture<JsonObject> request = executeRequestJsonWithDigest(getListUrl, "POST", null,
+            ListenableFuture<JsonObject> request = executeRequestJsonWithDigest(getListUrl, HttpVerb.POST, null,
                     getBytes(payload.toString()));
 
             Futures.addCallback(request, new FutureCallback<JsonObject>() {
@@ -255,7 +261,7 @@ public class SharepointListsClient extends SharepointClient {
         headers.put("X-HTTP-Method", "MERGE");
         headers.put("If-Match", "*");
 
-        ListenableFuture<JsonObject> request = executeRequestJsonWithDigest(getListUrl, "POST", headers,
+        ListenableFuture<JsonObject> request = executeRequestJsonWithDigest(getListUrl, HttpVerb.POST, headers,
                 getBytes(payload.toString()));
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
@@ -289,7 +295,7 @@ public class SharepointListsClient extends SharepointClient {
             headers.put("X-HTTP-Method", "DELETE");
             headers.put("If-Match", "*");
 
-            ListenableFuture<JsonObject> request = executeRequestJsonWithDigest(getListUrl, "POST", headers, null);
+            ListenableFuture<JsonObject> request = executeRequestJsonWithDigest(getListUrl, HttpVerb.POST, headers, null);
 
             Futures.addCallback(request, new FutureCallback<JsonObject>() {
                 @Override
@@ -312,9 +318,10 @@ public class SharepointListsClient extends SharepointClient {
 
     public ListenableFuture<List<String>> getColumnsFromDefaultView(final String listName) {
         final SettableFuture<List<String>> result = SettableFuture.create();
+
         String getViewUrl = getSiteUrl()
                 + String.format("_api/web/lists/GetByTitle('%s')/defaultView/viewfields", urlEncode(listName));
-        ListenableFuture<JsonObject> request = executeRequestJson(getViewUrl, "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(getViewUrl, HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override
@@ -344,8 +351,7 @@ public class SharepointListsClient extends SharepointClient {
         final SettableFuture<String> result = SettableFuture.create();
 
         String url = getSiteUrl() + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties";
-
-        ListenableFuture<JsonObject> request = executeRequestJson(url, "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(url, HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override

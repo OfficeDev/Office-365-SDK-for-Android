@@ -87,15 +87,14 @@ public class QueryOperations {
 		}
 	}
 
-	/**
-	 * Creates Query with an existing query as its only internal
-	 * value
-	 * 
-	 * @param query
-	 *            The query step to add
-	 * @return The Query
-	 */
-	public static Query query(Query subQuery) {
+
+    /**
+     * Query query.
+     *
+     * @param subQuery the sub query
+     * @return the query
+     */
+    public static Query query(Query subQuery) {
 		Query query = new Query();
 
 		query.addInternalValue(subQuery);
@@ -854,14 +853,13 @@ public class QueryOperations {
 		return function("trim", exp);
 	}
 
-	/**
-	 * String value with the contents of the parameter value with all leading
-	 * and trailing white-space characters removed.
-	 * 
-	 * @param exp
-	 * @return Query
-	 */
-	public static Query trim(String field) {
+    /**
+     * Trim query.
+     *
+     * @param field the field
+     * @return the query
+     */
+    public static Query trim(String field) {
 		return trim(field(field));
 	}
 

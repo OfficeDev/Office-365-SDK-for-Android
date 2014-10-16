@@ -50,7 +50,9 @@ public class BaseODataContainerHelper {
      * @param resolver the resolver
      * @return the listenable future
      */
-    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, String url, DependencyResolver resolver, String productName) {
+    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content,
+                                                        HttpVerb verb, String url, DependencyResolver resolver,
+                                                        String productName) {
 
         final Logger logger = resolver.getLogger();
         path.setBaseUrl(url);

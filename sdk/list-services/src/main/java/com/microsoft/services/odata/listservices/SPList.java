@@ -9,7 +9,6 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SPList.
  */

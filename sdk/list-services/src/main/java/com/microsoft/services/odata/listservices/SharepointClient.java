@@ -10,9 +10,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonObject;
-import com.microsoft.services.odata.interfaces.Credentials;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.HttpTransport;
+import com.microsoft.services.odata.interfaces.HttpVerb;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.Logger;
 import com.microsoft.services.odata.interfaces.Request;
@@ -24,7 +24,6 @@ import java.util.Map;
 public class SharepointClient extends OfficeClient {
     private String mServerUrl;
     private String mSiteRelativeUrl;
-
     private DependencyResolver mResolver;
 
     protected String getSiteUrl() {
@@ -40,13 +39,13 @@ public class SharepointClient extends OfficeClient {
     }
 
     public SharepointClient(String serverUrl, String siteRelativeUrl,
-                            Credentials credentials, DependencyResolver resolver) {
-        this(serverUrl, siteRelativeUrl, credentials, resolver, null);
+                            DependencyResolver resolver) {
+        this(serverUrl, siteRelativeUrl, resolver, null);
     }
 
     public SharepointClient(String serverUrl, String siteRelativeUrl,
-                            Credentials credentials, DependencyResolver resolver, Logger logger) {
-        super(credentials, resolver, logger);
+                            DependencyResolver resolver, Logger logger) {
+        super(resolver);
 
         mResolver = resolver;
 
@@ -130,7 +129,7 @@ public class SharepointClient extends OfficeClient {
      * @return OfficeFuture<JsonObject>
      */
     protected ListenableFuture<JsonObject> executeRequestJsonWithDigest(
-            final String url, final String method,
+            final String url, final HttpVerb method,
             final Map<String, String> headers, final byte[] payload) {
 
         final SettableFuture<JsonObject> result = SettableFuture.create();
@@ -152,12 +151,9 @@ public class SharepointClient extends OfficeClient {
                     }
                 }
 
-                finalHeaders.put("Content-Type",
-                        "application/json;odata=verbose");
+                finalHeaders.put("Content-Type","application/json;odata=verbose");
                 finalHeaders.put("X-RequestDigest", digest);
-
-                ListenableFuture<JsonObject> request = executeRequestJson(url,
-                        method, finalHeaders, payload);
+                ListenableFuture<JsonObject> request = executeRequestJson(url,method, finalHeaders, payload);
 
                 Futures.addCallback(request, new FutureCallback<JsonObject>() {
                     @Override
@@ -178,8 +174,7 @@ public class SharepointClient extends OfficeClient {
     public ListenableFuture<String> getWebTitle() {
         final SettableFuture<String> result = SettableFuture.create();
 
-        ListenableFuture<JsonObject> request = executeRequestJson(mServerUrl
-                + "_api/web/title", "GET");
+        ListenableFuture<JsonObject> request = executeRequestJson(mServerUrl + "_api/web/title", HttpVerb.GET);
 
         Futures.addCallback(request, new FutureCallback<JsonObject>() {
             @Override

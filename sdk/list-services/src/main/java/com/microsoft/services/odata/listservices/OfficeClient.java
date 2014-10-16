@@ -6,14 +6,15 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.microsoft.services.odata.BaseODataContainerHelper;
 import com.microsoft.services.odata.Constants;
 import com.microsoft.services.odata.interfaces.Credentials;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
-import com.microsoft.services.odata.interfaces.HttpTransport;
+import com.microsoft.services.odata.interfaces.HttpVerb;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.Logger;
+import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
-import com.microsoft.services.odata.interfaces.Response;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -25,36 +26,14 @@ import java.util.UUID;
 public class OfficeClient {
 
     DependencyResolver mResolver;
-    Credentials mCredentials;
-    Logger mLogger;
 
-    public OfficeClient(Credentials credentials, DependencyResolver resolver) {
-        this(credentials, resolver, null);
-    }
+    public OfficeClient(DependencyResolver resolver) {
 
-    public OfficeClient(Credentials credentials, DependencyResolver resolver, Logger logger) {
-        if (credentials == null) {
-            throw new IllegalArgumentException("credentials must not be null");
-        }
-
-        if (logger == null) {
-            // add an empty logger
-            mLogger = new Logger() {
-
-                @Override
-                public void log(String message, LogLevel level) {
-                }
-            };
-        } else {
-            mLogger = logger;
-        }
-
-        mCredentials = credentials;
         mResolver = resolver;
     }
 
     protected void log(String message, LogLevel level) {
-        getLogger().log(message, level);
+        mResolver.getLogger().log(message, level);
     }
 
     protected void log(Throwable error) {
@@ -62,17 +41,9 @@ public class OfficeClient {
         PrintWriter pw = new PrintWriter(sw);
         error.printStackTrace(pw);
         String stackTrace = sw.toString();
-
-        getLogger().log(error.toString() + "\nStack Trace: " + stackTrace, LogLevel.ERROR);
+        mResolver.getLogger().log(error.toString() + "\nStack Trace: " + stackTrace, LogLevel.ERROR);
     }
 
-    protected Logger getLogger() {
-        return mLogger;
-    }
-
-    protected Credentials getCredentials() {
-        return mCredentials;
-    }
 
     protected String generateODataQueryString(Query query) {
         StringBuilder sb = new StringBuilder();
@@ -94,54 +65,23 @@ public class OfficeClient {
         return sb.toString();
     }
 
-    protected ListenableFuture<byte[]> executeRequest(String url, String method) {
+    protected ListenableFuture<byte[]> executeRequest(String url, HttpVerb method) {
         return executeRequest(url, method, null, null);
     }
 
-    protected ListenableFuture<byte[]> executeRequest(String url, String method, Map<String, String> headers,
+    protected ListenableFuture<byte[]> executeRequest(String url, HttpVerb method, Map<String, String> headers,
                                                       byte[] payload) {
-        HttpTransport connection = mResolver.getHttpTransport();
-        Request request = connection.createRequest();
 
-        if (headers != null) {
-            for (String key : headers.keySet()) {
-                request.addHeader(key, headers.get(key));
-            }
-        }
-
-        request.setUrl(url);
-        request.setContent(payload);
-        prepareRequest(request);
-
-        log("Generate request for " + url, LogLevel.INFO);
-
-        final SettableFuture<byte[]> result = SettableFuture.create();
-        final ListenableFuture<Response> future = connection.execute(request);
-
-        Futures.addCallback(future, new FutureCallback<Response>() {
-            @Override
-            public void onFailure(Throwable t) {
-                result.setException(t);
-            }
-
-            @Override
-            public void onSuccess(Response response) {
-                int statusCode = response.getStatus();
-                if (isValidStatus(statusCode)) {
-                    byte[] responseContentBytes = null; //TODO:FIX
-                    result.set(responseContentBytes);
-                } else {
-                }
-            }
-        });
-        return result;
+        ODataURL oDataURL = mResolver.createODataURL();
+        return BaseODataContainerHelper.oDataExecute(oDataURL, payload, method, url, mResolver, "");
     }
 
-    protected ListenableFuture<JsonObject> executeRequestJson(String url, String method) {
+    protected ListenableFuture<JsonObject> executeRequestJson(String url, HttpVerb method) {
         return executeRequestJson(url, method, null, null);
     }
 
-    protected ListenableFuture<JsonObject> executeRequestJson(String url, String method, Map<String, String> headers,
+    protected ListenableFuture<JsonObject> executeRequestJson(String url, HttpVerb method,
+                                                              Map<String, String> headers,
                                                               byte[] payload) {
 
         final SettableFuture<JsonObject> result = SettableFuture.create();
@@ -213,7 +153,6 @@ public class OfficeClient {
             contentLength = request.getContent().length;
         }
         request.addHeader("Content-Length", String.valueOf(contentLength));
-        mCredentials.prepareRequest(request);
     }
 
     protected static boolean isValidStatus(int status) {
