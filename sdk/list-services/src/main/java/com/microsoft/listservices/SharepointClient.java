@@ -3,13 +3,14 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.services.odata.listservices;
+package com.microsoft.listservices;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonObject;
+import com.microsoft.listservices.OfficeClient;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.HttpTransport;
 import com.microsoft.services.odata.interfaces.HttpVerb;

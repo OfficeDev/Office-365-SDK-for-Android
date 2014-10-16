@@ -1,4 +1,4 @@
-package com.microsoft.services.odata.listservices;
+package com.microsoft.listservices;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -8,11 +8,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.microsoft.services.odata.BaseODataContainerHelper;
 import com.microsoft.services.odata.Constants;
-import com.microsoft.services.odata.interfaces.Credentials;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.HttpVerb;
 import com.microsoft.services.odata.interfaces.LogLevel;
-import com.microsoft.services.odata.interfaces.Logger;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
 

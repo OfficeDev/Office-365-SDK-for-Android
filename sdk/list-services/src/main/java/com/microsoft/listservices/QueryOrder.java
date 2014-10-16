@@ -21,7 +21,7 @@ See the Apache Version 2.0 License for specific language governing permissions a
  * QueryOrder.java
  */
 
-package com.microsoft.services.odata.listservices;
+package com.microsoft.listservices;
 
 /**
  * Sort order values

@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.services.odata.listservices;
+package com.microsoft.listservices;
 
 import java.util.Map.Entry;
 

@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.services.odata.listservices;
+package com.microsoft.listservices;
 
 import com.google.gson.JsonObject;
 
@@ -22,7 +22,7 @@ public class SPList extends OfficeEntity {
 	 * @return the list
 	 */
 	public static List<SPList> listFromJson(JsonObject json)  {
-		return OfficeEntity.listFromJson(json, SPList.class);
+		return listFromJson(json, SPList.class);
 	}
 
 	/**

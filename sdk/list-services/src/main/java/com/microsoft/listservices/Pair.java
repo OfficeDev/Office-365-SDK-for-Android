@@ -1,4 +1,4 @@
-package com.microsoft.services.odata.listservices;
+package com.microsoft.listservices;
 
 public class Pair<T, K> {
     public T first;
