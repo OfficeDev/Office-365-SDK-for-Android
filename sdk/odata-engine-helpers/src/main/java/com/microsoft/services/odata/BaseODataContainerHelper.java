@@ -31,28 +31,48 @@ public class BaseODataContainerHelper {
      * Gets OData parameter value.
      *
      * @param resolver the resolver
-     * @param value the value
+     * @param value    the value
      * @return the o data parameter value
      */
     public static String getODataParameterValue(DependencyResolver resolver, Object value) {
 
         String serialized = resolver.getJsonSerializer().serialize(value);
-        return  urlEncode(serialized);
+        return urlEncode(serialized);
     }
 
     /**
-     * OData execute.
+     * OdataExecute.
      *
      * @param path the path
      * @param content the content
      * @param verb the verb
      * @param url the url
      * @param resolver the resolver
+     * @param productName the product name
      * @return the listenable future
      */
     public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content,
-                                                        HttpVerb verb, String url, DependencyResolver resolver,
-                                                        String productName) {
+                                                        HttpVerb verb, String url,
+                                                        DependencyResolver resolver, String productName) {
+        return oDataExecute(path, content, verb, url, null, resolver, productName);
+    }
+
+
+    /**
+     * ODataExecute.
+     *
+     * @param path the path
+     * @param content the content
+     * @param verb the verb
+     * @param url the url
+     * @param headers the headers
+     * @param resolver the resolver
+     * @param productName the product name
+     * @return the listenable future
+     */
+    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content,
+                                                        HttpVerb verb, String url, Map<String, String> headers,
+                                                        DependencyResolver resolver, String productName) {
 
         final Logger logger = resolver.getLogger();
         path.setBaseUrl(url);
@@ -75,6 +95,12 @@ public class BaseODataContainerHelper {
         request.addHeader(Constants.USER_AGENT_HEADER, userAgent);
         request.addHeader(Constants.TELEMETRY_HEADER, userAgent);
         request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
+
+        if (headers != null){
+            for (String key: headers.keySet() ){
+                request.addHeader(key, headers.get(key));
+            }
+        }
 
         boolean credentialsSet = false;
         CredentialsFactory credFactory = resolver.getCredentialsFactory();
@@ -173,7 +199,7 @@ public class BaseODataContainerHelper {
      * Generate parameters payload.
      *
      * @param parameters the parameters
-     * @param resolver the resolver
+     * @param resolver   the resolver
      * @return the string
      */
     public static String generateParametersPayload(Map<String, Object> parameters, DependencyResolver resolver) {

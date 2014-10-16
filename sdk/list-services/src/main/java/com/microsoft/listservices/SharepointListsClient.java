@@ -52,7 +52,7 @@ public class SharepointListsClient extends SharepointClient {
      */
     public SharepointListsClient(String serverUrl, String siteRelativeUrl,
                                  DependencyResolver resolver, Logger logger) {
-        super(serverUrl, siteRelativeUrl, resolver, logger);
+        super(serverUrl, siteRelativeUrl, resolver);
     }
 
     /**

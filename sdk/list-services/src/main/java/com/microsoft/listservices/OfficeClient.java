@@ -42,7 +42,6 @@ public class OfficeClient {
         mResolver.getLogger().log(error.toString() + "\nStack Trace: " + stackTrace, LogLevel.ERROR);
     }
 
-
     protected String generateODataQueryString(Query query) {
         StringBuilder sb = new StringBuilder();
         if (query != null) {
@@ -67,11 +66,14 @@ public class OfficeClient {
         return executeRequest(url, method, null, null);
     }
 
-    protected ListenableFuture<byte[]> executeRequest(String url, HttpVerb method, Map<String, String> headers,
+    protected ListenableFuture<byte[]> executeRequest(String url, HttpVerb method,
+                                                      Map<String, String> headers,
                                                       byte[] payload) {
 
         ODataURL oDataURL = mResolver.createODataURL();
-        return BaseODataContainerHelper.oDataExecute(oDataURL, payload, method, url, mResolver, "");
+        oDataURL.setBaseUrl(url);
+        return BaseODataContainerHelper.oDataExecute(oDataURL, payload, method, url,
+                                                     headers, mResolver, "");
     }
 
     protected ListenableFuture<JsonObject> executeRequestJson(String url, HttpVerb method) {
@@ -99,7 +101,7 @@ public class OfficeClient {
                     if (string == null || string.length() == 0) {
                         result.set(null);
                     } else {
-                        com.google.gson.JsonParser parser = new JsonParser();
+                        JsonParser parser = new JsonParser();
                         JsonObject json = parser.parse(string).getAsJsonObject();
                         result.set(json);
                     }
