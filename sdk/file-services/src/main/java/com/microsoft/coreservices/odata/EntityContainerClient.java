@@ -3,10 +3,11 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.fileservices.odata;
+package com.microsoft.coreservices.odata;
 
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.fileservices.*;
+import com.microsoft.fileservices.odata.*;
 
 /**
  * The type EntityContainerClient.
