@@ -8,9 +8,10 @@ package com.microsoft.fileservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
-import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 import static com.microsoft.services.odata.Helpers.getFunctionParameters;
+import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
 
 
 /**
@@ -62,7 +63,9 @@ public class ItemCollectionOperations extends ODataOperations{
 				url.appendPathComponent("Add");
 		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+
 		addEntityResultCallback(result, future, getResolver(), Item.class);
+		
         return result;
     }
 				
@@ -84,7 +87,9 @@ public class ItemCollectionOperations extends ODataOperations{
 		url.appendPathComponent("GetByPath(" + parameters + ")");
 		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET);
+
 		addEntityResultCallback(result, future, getResolver(), Item.class);
+		
         return result;
     }
 				

@@ -73,7 +73,9 @@ public class ODataURLImpl implements ODataURL {
         sb.append("/");
 
         for (String component : this.pathComponents) {
-            sb.append(addTrailingSlash(urlEncode(component)));
+            if (component.length() > 0) {
+                sb.append(addTrailingSlash(urlEncode(component)));
+            }
         }
 
         Set<String> parameterNames = this.queryStringParameters.keySet();
