@@ -16,7 +16,7 @@ import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 /**
  * The type CurrentUserRequestContextCollectionOperations
  */
-public class CurrentUserRequestContextCollectionOperations extends ODataOperations {
+public class CurrentUserRequestContextCollectionOperations extends ODataOperations{
 
     /**
      * Instantiates a new CurrentUserRequestContextCollectionOperations.

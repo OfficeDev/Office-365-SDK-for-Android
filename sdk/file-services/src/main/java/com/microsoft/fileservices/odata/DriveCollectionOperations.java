@@ -16,7 +16,7 @@ import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 /**
  * The type DriveCollectionOperations
  */
-public class DriveCollectionOperations extends ODataOperations {
+public class DriveCollectionOperations extends ODataOperations{
 
     /**
      * Instantiates a new DriveCollectionOperations.

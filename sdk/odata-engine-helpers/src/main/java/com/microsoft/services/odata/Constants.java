@@ -45,4 +45,9 @@ public class Constants {
      * Json Content Type
      */
     public static final String JSON_CONTENT_TYPE = "application/json";
+
+    /**
+     * Accept Header
+     */
+    public static final String ACCEPT_HEADER = "Accept";
 }

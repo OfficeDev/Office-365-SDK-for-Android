@@ -95,6 +95,7 @@ public class BaseODataContainerHelper {
         request.addHeader(Constants.USER_AGENT_HEADER, userAgent);
         request.addHeader(Constants.TELEMETRY_HEADER, userAgent);
         request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
+        request.addHeader(Constants.ACCEPT_HEADER, Constants.JSON_CONTENT_TYPE);
 
         if (headers != null){
             for (String key: headers.keySet() ){

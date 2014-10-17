@@ -15,7 +15,7 @@ import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCa
 /**
  * The type FolderOperations.
  */
-public class FolderOperations extends ODataOperations {
+public class FolderOperations extends ItemOperations {
 
      /**
       * Instantiates a new FolderOperations.

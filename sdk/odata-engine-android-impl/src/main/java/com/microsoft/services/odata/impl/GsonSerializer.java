@@ -22,7 +22,7 @@ public class GsonSerializer implements JsonSerializer {
 
     private Gson createGson() {
         return new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
                 .registerTypeAdapter(Calendar.class, new CalendarTypeAdapter())
                 .registerTypeAdapter(GregorianCalendar.class, new CalendarTypeAdapter())
                 .registerTypeAdapter(byte[].class, new ByteArrayTypeAdapter())

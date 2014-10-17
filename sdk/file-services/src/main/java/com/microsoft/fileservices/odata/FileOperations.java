@@ -15,7 +15,7 @@ import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCa
 /**
  * The type FileOperations.
  */
-public class FileOperations extends ODataOperations {
+public class FileOperations extends ItemOperations {
 
      /**
       * Instantiates a new FileOperations.

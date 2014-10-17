@@ -16,7 +16,7 @@ import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 /**
  * The type ItemCollectionOperations
  */
-public class ItemCollectionOperations extends ODataOperations {
+public class ItemCollectionOperations extends ODataOperations{
 
     /**
      * Instantiates a new ItemCollectionOperations.
