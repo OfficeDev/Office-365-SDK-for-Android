@@ -1,14 +1,14 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import com.microsoft.office365.outlook.services.Contact;
-import com.microsoft.office365.outlook.services.EmailAddress;
-import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.outlookservices.Contact;
+import com.microsoft.outlookservices.EmailAddress;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
 
 import java.util.ArrayList;
 import java.util.List;

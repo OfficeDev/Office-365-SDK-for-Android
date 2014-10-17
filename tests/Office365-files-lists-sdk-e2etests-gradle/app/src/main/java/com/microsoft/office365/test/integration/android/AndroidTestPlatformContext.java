@@ -14,19 +14,20 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 
-import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
-import com.microsoft.office365.odata.impl.http.CredentialsFactoryImpl;
-import com.microsoft.office365.odata.interfaces.Credentials;
-import com.microsoft.office365.odata.interfaces.CredentialsFactory;
-import com.microsoft.office365.odata.interfaces.DependencyResolver;
-import com.microsoft.office365.odata.interfaces.LogLevel;
-import com.microsoft.office365.odata.interfaces.Request;
-import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
+
 import com.microsoft.office365.test.integration.TestPlatformContext;
 import com.microsoft.office365.test.integration.framework.OAuthCredentials;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.services.odata.impl.DefaultDependencyResolver;
+import com.microsoft.services.odata.impl.http.CredentialsFactoryImpl;
+import com.microsoft.services.odata.interfaces.Credentials;
+import com.microsoft.services.odata.interfaces.CredentialsFactory;
+import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.services.odata.interfaces.Request;
 
 public class AndroidTestPlatformContext implements TestPlatformContext {
 

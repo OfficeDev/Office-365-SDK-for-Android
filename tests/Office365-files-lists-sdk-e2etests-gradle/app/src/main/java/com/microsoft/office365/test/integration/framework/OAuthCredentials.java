@@ -1,7 +1,8 @@
 package com.microsoft.office365.test.integration.framework;
 
-import com.microsoft.office365.odata.interfaces.Credentials;
-import com.microsoft.office365.odata.interfaces.Request;
+
+import com.microsoft.services.odata.interfaces.Credentials;
+import com.microsoft.services.odata.interfaces.Request;
 
 public class OAuthCredentials implements Credentials {
     String mToken;

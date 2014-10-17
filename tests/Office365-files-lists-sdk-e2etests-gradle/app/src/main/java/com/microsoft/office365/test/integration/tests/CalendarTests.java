@@ -1,22 +1,24 @@
 package com.microsoft.office365.test.integration.tests;
 
-import com.microsoft.office365.outlook.services.Attendee;
-import com.microsoft.office365.outlook.services.BodyType;
-import com.microsoft.office365.outlook.services.Calendar;
-import com.microsoft.office365.outlook.services.CalendarGroup;
-import com.microsoft.office365.outlook.services.EmailAddress;
-import com.microsoft.office365.outlook.services.Event;
-import com.microsoft.office365.outlook.services.Importance;
-import com.microsoft.office365.outlook.services.ItemBody;
-import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
+
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.outlookservices.Attendee;
+import com.microsoft.outlookservices.BodyType;
+import com.microsoft.outlookservices.Calendar;
+import com.microsoft.outlookservices.CalendarGroup;
+import com.microsoft.outlookservices.EmailAddress;
+import com.microsoft.outlookservices.Event;
+import com.microsoft.outlookservices.Importance;
+import com.microsoft.outlookservices.ItemBody;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class CalendarTests extends TestGroup {
 
@@ -278,8 +280,9 @@ public class CalendarTests extends TestGroup {
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
+                    String calendarName = "My testing calendar" + UUID.randomUUID().toString();
                     Calendar calendar = new Calendar();
-                    calendar.setName("My testing calendar");
+                    calendar.setName(calendarName);
                     Calendar addedCalendar = client.getMe()
                             .getCalendars()
                             .add(calendar).get();
@@ -352,14 +355,15 @@ public class CalendarTests extends TestGroup {
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Act
+                    String calendarName = "My testing calendar" + UUID.randomUUID().toString();
                     Calendar calendar = new Calendar();
-                    calendar.setName("My testing calendar");
+                    calendar.setName(calendarName);
                     Calendar addedCalendar = client.getMe()
                             .getCalendars()
                             .add(calendar).get();
 
                     //Assert
-                    if(!calendar.getName().equals(calendar.getName()))
+                    if(!addedCalendar.getName().equals(calendar.getName()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -392,8 +396,9 @@ public class CalendarTests extends TestGroup {
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
+                    String calendarName = "My testing calendar" + UUID.randomUUID().toString();
                     Calendar calendar = new Calendar();
-                    calendar.setName("My testing calendar");
+                    calendar.setName(calendarName);
                     Calendar addedCalendar = client.getMe()
                             .getCalendars()
                             .add(calendar).get();
@@ -436,20 +441,22 @@ public class CalendarTests extends TestGroup {
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
+                    String calendarName = "My testing calendar" + UUID.randomUUID().toString();
                     Calendar calendar = new Calendar();
-                    calendar.setName("My testing calendar");
+                    calendar.setName(calendarName);
                     Calendar addedCalendar = client.getMe()
                             .getCalendars()
                             .add(calendar).get();
 
                     // Act
-                    calendar.setName("Updated Calendar");
+                    String updatedCalendarName = "Updated Calendar" + UUID.randomUUID().toString();
+                    calendar.setName(updatedCalendarName);
                     Calendar updatedCalendar = client.getMe().getCalendars()
                             .getById(addedCalendar.getId())
                             .update(calendar).get();
 
                     //Assert
-                    if(!updatedCalendar.getName().equals("Updated Calendar"))
+                    if(!updatedCalendar.getName().equals(updatedCalendarName))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -482,14 +489,14 @@ public class CalendarTests extends TestGroup {
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
+                    String calendarName = "My testing calendar" + UUID.randomUUID().toString();
                     Calendar calendar = new Calendar();
-                    calendar.setName("My testing calendar");
+                    calendar.setName(calendarName);
                     Calendar addedCalendar = client.getMe()
                             .getCalendars()
                             .add(calendar).get();
 
                     // Act
-                    calendar.setName("Updated Calendar");
                     client.getMe().getCalendars()
                             .getById(addedCalendar.getId())
                             .delete().get();

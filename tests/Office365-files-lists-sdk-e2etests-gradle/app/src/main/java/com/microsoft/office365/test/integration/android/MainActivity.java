@@ -49,6 +49,7 @@ import com.microsoft.office365.test.integration.framework.TestResultsPostManager
 import com.microsoft.office365.test.integration.tests.AllTests;
 import com.microsoft.office365.test.integration.tests.CalendarTests;
 import com.microsoft.office365.test.integration.tests.ContactTests;
+import com.microsoft.office365.test.integration.tests.FilesTests;
 import com.microsoft.office365.test.integration.tests.MailTests;
 
 @SuppressWarnings("deprecation")
@@ -120,6 +121,7 @@ public class MainActivity extends Activity {
 		adapter.add(new MailTests());
         adapter.add(new ContactTests());
         adapter.add(new CalendarTests());
+        adapter.add(new FilesTests());
 		mTestGroupSpinner.setSelection(0);
 		selectTestGroup(0);
 	}
@@ -335,11 +337,12 @@ public class MainActivity extends Activity {
 		builder.create().show();
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-
-		AndroidTestPlatformContext.context.onActivityResult(requestCode, resultCode, data);
-	}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (AndroidTestPlatformContext.context != null) {
+            AndroidTestPlatformContext.context.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 
 }

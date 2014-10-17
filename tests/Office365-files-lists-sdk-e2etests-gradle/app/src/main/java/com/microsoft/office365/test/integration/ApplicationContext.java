@@ -3,9 +3,10 @@ package com.microsoft.office365.test.integration;
 import java.util.concurrent.Future;
 
 
-import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
+
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
 
 public class ApplicationContext {
 	

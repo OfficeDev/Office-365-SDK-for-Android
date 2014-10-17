@@ -4,18 +4,19 @@ import android.util.Log;
 
 
 import com.google.common.io.Files;
-import com.microsoft.office365.outlook.services.EmailAddress;
-import com.microsoft.office365.outlook.services.FileAttachment;
-import com.microsoft.office365.outlook.services.Folder;
-import com.microsoft.office365.outlook.services.ItemBody;
-import com.microsoft.office365.outlook.services.Message;
-import com.microsoft.office365.outlook.services.Recipient;
-import com.microsoft.office365.outlook.services.odata.EntityContainerClient;
+
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.outlookservices.EmailAddress;
+import com.microsoft.outlookservices.FileAttachment;
+import com.microsoft.outlookservices.Folder;
+import com.microsoft.outlookservices.ItemBody;
+import com.microsoft.outlookservices.Message;
+import com.microsoft.outlookservices.Recipient;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -494,14 +495,20 @@ public class MailTests extends TestGroup {
                     result.setTestCase(this);
 
                     EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
-                    List<Message> messages = client.getMe()
-                            .getFolders()
-                            .getById("Inbox")
-                            .getMessages()
-                            .top(3)
-                            .read().get();
 
-                    if (messages == null || messages.size() == 0 || messages.size() > 3)
+                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(3).read().get();
+                    if(inboxMessages.size()== 0)
+                    {
+                        String mailSubject = "Test get Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                        Message toSend = client.getMe().getMessages().add(message).get();
+                        client.getMe().getMessages().getById(toSend.getId()).getOperations().send().get();
+                        Thread.sleep(500);
+                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    if (inboxMessages == null || inboxMessages.size() == 0 || inboxMessages.size() > 3)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -622,11 +629,8 @@ public class MailTests extends TestGroup {
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
 
                     //Act
-                    Message addedMessage = client.getMe().getMessages().add(message).get();
-                    client
-                            .getMe().getMessages()
-                            .getById(addedMessage.getId())
-                            .getOperations().send().get();
+                        client
+                        .getMe().getOperations().sendMail(message, true).get();
 
                     Thread.sleep(2000);
                     //Assert
