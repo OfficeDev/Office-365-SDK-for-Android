@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
+import com.microsoft.services.odata.CalendarSerializer;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;
@@ -24,64 +25,21 @@ public class CalendarTypeAdapter implements com.google.gson.JsonSerializer<Calen
         String strVal = json.getAsString();
 
         try {
-            return deserialize(strVal);
+            return CalendarSerializer.deserialize(strVal);
         }
         catch (ParseException e) {
             throw new JsonParseException(e);
         }
     }
 
-    /**
-     * Deserializes an ISO-8601 formatted date
-     * @param strVal the str val
-     * @return the calendar
-     * @throws ParseException the parse exception
-     */
-    public static Calendar deserialize(String strVal) throws ParseException {
-        // Change Z to +00:00 to adapt the string to a format
-        // that can be parsed in Java
-        String s = strVal.replace("Z", "+00:00");
-
-        // Parse the well-formatted date string
-        String datePattern;
-        if(s.contains(".")){
-            datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ";
-        }
-        else
-        {
-            datePattern = "yyyy-MM-dd'T'HH:mm:ssZ";
-        }
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
-        dateFormat.setTimeZone(TimeZone.getDefault());
-
-        Date date = dateFormat.parse(s);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        return calendar;
-    }
 
     @Override
     public JsonElement serialize(Calendar src, Type typeOfSrc, JsonSerializationContext context) {
-        String formatted = serialize(src);
+        String formatted = CalendarSerializer.serialize(src);
 
         return new JsonPrimitive(formatted);
     }
 
-    /**
-     * Serialize string.
-     *
-     * @param src the src
-     * @return the string
-     */
-    public static String serialize(Calendar src) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSSSSSS'Z'", Locale.getDefault());
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        String formatted = dateFormat.format(src.getTime());
-
-        return formatted;
-    }
 
 }
