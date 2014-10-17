@@ -42,9 +42,9 @@ public abstract class OfficeEntity {
                                                                    Class<E> clazz) {
         List<E> list = new ArrayList<E>();
 
-        JsonArray results = null;
+        JsonArray results;
         if (json.has("d")) {
-            results = json.getAsJsonObject("d").getAsJsonArray("results");
+            results = json.get("d").getAsJsonObject().getAsJsonArray("results");
         } else {
             results = json.getAsJsonArray("results");
         }
