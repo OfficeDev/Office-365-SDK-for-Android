@@ -9,6 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
 
 /**
@@ -55,7 +56,9 @@ public class FileOperations extends ODataOperations {
 		map.put("newName", newName);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Copy");
+
+				url.appendPathComponent("Copy");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result, future, getResolver(), File.class);
 		
@@ -75,7 +78,9 @@ public class FileOperations extends ODataOperations {
 		map.put("contentStream", contentStream);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("UploadContent");
+
+				url.appendPathComponent("UploadContent");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
@@ -93,8 +98,11 @@ public class FileOperations extends ODataOperations {
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Content");
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+
+				String parameters = getFunctionParameters(map);
+		url.appendPathComponent("Content(" + parameters + ")");
+		
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET);
 		addEntityResultCallback(result, future, getResolver(), byte[].class);
 		
 		return result;

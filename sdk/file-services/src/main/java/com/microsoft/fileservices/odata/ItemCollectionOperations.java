@@ -8,13 +8,10 @@ package com.microsoft.fileservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
-
-import java.util.Map;
-import java.util.Set;
-
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
+
 
 /**
  * The type ItemCollectionOperations
@@ -59,9 +56,11 @@ public class ItemCollectionOperations extends ODataOperations {
 		map.put("nameConflict", nameConflict);
 		map.put("type", type);
 		map.put("content", content);
-		
+			
 		ODataURL url = getResolver().createODataURL();
-        url.appendPathComponent("Add");
+        
+				url.appendPathComponent("Add");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result, future, getResolver(), Item.class);
         return result;
@@ -78,16 +77,15 @@ public class ItemCollectionOperations extends ODataOperations {
 
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("path", path);
-
-        String parameters = getFunctionParameters(map);
-		
+			
 		ODataURL url = getResolver().createODataURL();
-        url.appendPathComponent("GetByPath(" + parameters + ")");
+        
+				String parameters = getFunctionParameters(map);
+		url.appendPathComponent("GetByPath(" + parameters + ")");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET);
 		addEntityResultCallback(result, future, getResolver(), Item.class);
         return result;
     }
-
-
-
+				
 }

@@ -9,6 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
 
 /**
@@ -55,7 +56,9 @@ public class FolderOperations extends ODataOperations {
 		map.put("newName", newName);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Copy");
+
+				url.appendPathComponent("Copy");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		addEntityResultCallback(result, future, getResolver(), Folder.class);
 		
