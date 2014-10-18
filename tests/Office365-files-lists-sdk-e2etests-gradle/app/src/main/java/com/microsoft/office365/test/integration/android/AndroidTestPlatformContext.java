@@ -202,7 +202,6 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                 };
             }
         });
-        dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),dependencyResolver);
         return client;
     }
@@ -215,6 +214,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
         dependencyResolver.setCredentialsFactory(credFactory);
 
+        dependencyResolver.getLogger().setEnabled(true);
+        dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         return dependencyResolver;
     }
 }
