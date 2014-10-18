@@ -5,12 +5,9 @@
  ******************************************************************************/
 package com.microsoft.services.odata.impl.http;
 
-import android.annotation.TargetApi;
-import android.net.http.AndroidHttpClient;
-import android.os.Build;
-
 import com.microsoft.services.odata.interfaces.Response;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -30,7 +27,7 @@ public class ResponseImpl implements Response {
     /**
      * The M client.
      */
-    AndroidHttpClient mClient;
+    Closeable mClient;
 
     /**
      * Instantiates a new Response impl.
@@ -41,7 +38,7 @@ public class ResponseImpl implements Response {
      * @param client the client
      */
     public ResponseImpl(InputStream stream, int status, Map<String, List<String>> headers,
-                        AndroidHttpClient client) {
+                        Closeable client) {
         mHeaders = new HashMap<String, List<String>>(headers);
         mStream = stream;
         mStatus = status;
@@ -58,7 +55,6 @@ public class ResponseImpl implements Response {
         return mStream;
     }
 
-    @TargetApi(Build.VERSION_CODES.FROYO)
     @Override
     public void close() throws IOException {
         mClient.close();

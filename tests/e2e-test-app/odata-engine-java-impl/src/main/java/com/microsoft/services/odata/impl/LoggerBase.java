@@ -1,14 +1,12 @@
 package com.microsoft.services.odata.impl;
 
-import android.util.Log;
-
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.Logger;
 
 /**
  * The type Logger impl.
  */
-public class LoggerImpl implements Logger {
+public abstract class LoggerBase implements Logger {
     /**
      * The Log level.
      */
@@ -21,7 +19,7 @@ public class LoggerImpl implements Logger {
     /**
      * Instantiates a new Logger impl.
      */
-    public LoggerImpl() {
+    public LoggerBase() {
         this.logLevel = LogLevel.ERROR.getValue();
         this.enabled = true;
     }
@@ -39,22 +37,13 @@ public class LoggerImpl implements Logger {
         }
 
         if (content != null) {
-            switch (logLevel) {
-                case ERROR:
-                    Log.e(TAG, content);
-                    break;
-                case INFO:
-                    Log.i(TAG, content);
-                    break;
-                case VERBOSE:
-                    Log.v(TAG, content);
-                    break;
-                case WARNING:
-                    Log.w(TAG, content);
-                    break;
-            }
+            print(content, logLevel);
         }
     }
+
+    public abstract void print(String content, LogLevel logLevel);
+
+
 
     /**
      * Sets log level.

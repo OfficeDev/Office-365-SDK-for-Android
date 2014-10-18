@@ -18,16 +18,18 @@ import java.util.List;
 /**
  * The type Gson serializer.
  */
-public class GsonSerializer implements JsonSerializer {
+public abstract class GsonSerializerBase implements JsonSerializer {
 
     private Gson createGson() {
         return new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                 .registerTypeAdapter(Calendar.class, new CalendarTypeAdapter())
                 .registerTypeAdapter(GregorianCalendar.class, new CalendarTypeAdapter())
-                .registerTypeAdapter(byte[].class, new ByteArrayTypeAdapter())
+                .registerTypeAdapter(byte[].class, getByteArrayTypeAdapter())
                 .create();
     }
+
+    protected abstract ByteArrayTypeAdapterBase getByteArrayTypeAdapter();
 
     @Override
     public String serialize(Object objectToSerialize) {

@@ -16,13 +16,14 @@ import org.apache.http.Header;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.EntityEnclosingRequestWrapper;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,14 +32,7 @@ import java.util.Map;
 /**
  * Runnable that executes a network operation
  */
-public class NetworkRunnable implements Runnable {
-
-    HttpURLConnection mConnection = null;
-    InputStream mResponseStream = null;
-    Request mRequest;
-    SettableFuture<Response> mFuture;
-
-    Object mCloseLock = new Object();
+public class AndroidNetworkRunnable extends NetworkRunnable {
 
     /**
      * Initializes the network runnable
@@ -46,9 +40,8 @@ public class NetworkRunnable implements Runnable {
      * @param request The request to execute
      * @param future  Future for the operation
      */
-    public NetworkRunnable(Request request, SettableFuture<Response> future) {
-        mRequest = request;
-        mFuture = future;
+    public AndroidNetworkRunnable(Request request, SettableFuture<Response> future) {
+        super(request, future);
     }
 
 
@@ -98,11 +91,19 @@ public class NetworkRunnable implements Runnable {
             }
 
             if (stream != null) {
+                final AndroidHttpClient finalClient = client;
+                Closeable closeable = new Closeable() {
+                    @Override
+                    public void close() throws IOException {
+                        finalClient.close();
+                    }
+                };
+
                 Response response = new ResponseImpl(
                         stream,
                         status,
                         responseHeaders,
-                        client);
+                        closeable);
 
                 mFuture.set(response);
             } else {
@@ -118,23 +119,4 @@ public class NetworkRunnable implements Runnable {
             mFuture.setException(t);
         }
     }
-
-    /**
-     * Closes the stream and connection, if possible
-     */
-    void closeStreamAndConnection() {
-        synchronized (mCloseLock) {
-            if (mResponseStream != null) {
-                try {
-                    mResponseStream.close();
-                } catch (IOException e) {
-                }
-            }
-
-            if (mConnection != null) {
-                mConnection.disconnect();
-            }
-        }
-    }
-
 }

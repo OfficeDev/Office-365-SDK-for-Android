@@ -1,4 +1,4 @@
-include ':app',
+include ':app', ':odata-engine-java-impl', ':odata-engine-java-desktop-impl',
         ':mail-calendar-contact',
         ':odata-engine-interfaces',
         ':file-services',
