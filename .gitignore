@@ -21,7 +21,6 @@
 # Android Studio
 .idea/
 .gradle/
-tests/e2e-test-app/.gradle/*
 /*/local.properties
 /*/*/local.properties
 /*/out
