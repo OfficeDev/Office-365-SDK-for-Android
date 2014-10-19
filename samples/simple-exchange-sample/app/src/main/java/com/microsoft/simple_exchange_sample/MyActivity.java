@@ -33,7 +33,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        startActivity(intent);
+
         final int clicked = view.getId();
         Authentication.createEncryptionKey(getApplicationContext());
         SettableFuture<Void> authenticated =
