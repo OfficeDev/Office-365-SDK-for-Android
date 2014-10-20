@@ -1,13 +1,17 @@
-include ':app', ':odata-engine-java-impl', ':odata-engine-java-desktop-impl',
+include ':app',
         ':mail-calendar-contact',
-        ':odata-engine-interfaces',
         ':file-services',
+        ':odata-engine-java-impl',
+        ':odata-engine-java-desktop-impl',
+        ':odata-engine-interfaces',
         ':odata-engine-helpers',
         ':odata-engine-android-impl'
 
 project (':mail-calendar-contact').projectDir = file('../../sdk/mail-calendar-contact')
-project (':odata-engine-interfaces').projectDir = file('../../sdk/odata-engine-interfaces')
 project (':file-services').projectDir = file('../../sdk/file-services')
+project (':odata-engine-interfaces').projectDir = file('../../sdk/odata-engine-interfaces')
 project (':odata-engine-helpers').projectDir = file('../../sdk/odata-engine-helpers')
 project (':odata-engine-android-impl').projectDir = file('../../sdk/odata-engine-android-impl')
+project (':odata-engine-java-desktop-impl').projectDir = file('../../sdk/odata-engine-java-desktop-impl')
+project (':odata-engine-java-impl').projectDir = file('../../sdk/odata-engine-java-impl')
 
