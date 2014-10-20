@@ -1,4 +1,4 @@
-package com.microsoft.services.odata.impl;
+package com.microsoft.services.odata.interfaces;
 
 public interface Base64Encoder {
     public String encode(byte[] data);

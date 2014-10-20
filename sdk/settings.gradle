@@ -1,1 +1,8 @@
-include ':odata-engine-interfaces', ':odata-engine-android-impl', ':mail-calendar-contact', ':file-services', ':odata-engine-helpers', ':list-services', ':app'
+include ':odata-engine-interfaces',
+        ':odata-engine-android-impl',
+        ':mail-calendar-contact',
+        ':file-services',
+        ':odata-engine-helpers',
+        ':list-services', ':app',
+        ":odata-engine-java-impl",
+        ":odata-engine-java-desktop-impl"

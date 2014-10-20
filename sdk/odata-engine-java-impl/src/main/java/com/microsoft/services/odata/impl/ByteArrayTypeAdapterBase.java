@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
+import com.microsoft.services.odata.interfaces.Base64Encoder;
 
 import java.lang.reflect.Type;
 

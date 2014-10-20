@@ -2,6 +2,8 @@ package com.microsoft.services.odata.impl;
 
 import android.util.Base64;
 
+import com.microsoft.services.odata.interfaces.Base64Encoder;
+
 public class Base64EncoderImpl implements Base64Encoder {
     private Base64EncoderImpl() {
     }

@@ -1,6 +1,6 @@
 package com.microsoft.services.odata.impl.desktop;
 
-import com.microsoft.services.odata.impl.Base64Encoder;
+import com.microsoft.services.odata.interfaces.Base64Encoder;
 
 import javax.xml.bind.DatatypeConverter;
 
