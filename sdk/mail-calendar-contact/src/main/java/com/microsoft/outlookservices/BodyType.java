@@ -10,11 +10,11 @@ package com.microsoft.outlookservices;
 */
 public enum BodyType	
 {
-    /*
+    /**
 	* Text
 	*/
 	Text,
-    /*
+    /**
 	* HTML
 	*/
 	HTML,

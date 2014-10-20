@@ -10,15 +10,15 @@ package com.microsoft.outlookservices;
 */
 public enum Importance	
 {
-    /*
+    /**
 	* Low
 	*/
 	Low,
-    /*
+    /**
 	* Normal
 	*/
 	Normal,
-    /*
+    /**
 	* High
 	*/
 	High,

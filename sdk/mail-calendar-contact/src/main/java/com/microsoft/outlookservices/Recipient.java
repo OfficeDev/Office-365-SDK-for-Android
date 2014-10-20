@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Recipient {
 
-	private EmailAddress emailAddress;
+	private EmailAddress EmailAddress;
 
 	/**
 	* Gets the Email Address.
@@ -18,7 +18,7 @@ public class Recipient {
 	* @return the EmailAddress
 	*/
 	public EmailAddress getEmailAddress() {
-		 return emailAddress; 
+		return this.EmailAddress; 
 	}
 
 	/**
@@ -27,6 +27,6 @@ public class Recipient {
 	* @param value the EmailAddress
 	*/
 	public void setEmailAddress(EmailAddress value) { 
-		emailAddress = value; 
+		EmailAddress = value; 
 	}
 }

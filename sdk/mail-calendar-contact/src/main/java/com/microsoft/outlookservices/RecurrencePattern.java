@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class RecurrencePattern {
 
-	private RecurrencePatternType type;
+	private RecurrencePatternType Type;
 
 	/**
 	* Gets the Type.
@@ -18,7 +18,7 @@ public class RecurrencePattern {
 	* @return the RecurrencePatternType
 	*/
 	public RecurrencePatternType getType() {
-		 return type; 
+		return this.Type; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class RecurrencePattern {
 	* @param value the RecurrencePatternType
 	*/
 	public void setType(RecurrencePatternType value) { 
-		type = value; 
+		Type = value; 
 	}
 
-	private Integer interval;
+	private Integer Interval;
 
 	/**
 	* Gets the Interval.
@@ -38,7 +38,7 @@ public class RecurrencePattern {
 	* @return the Integer
 	*/
 	public Integer getInterval() {
-		 return interval; 
+		return this.Interval; 
 	}
 
 	/**
@@ -47,10 +47,10 @@ public class RecurrencePattern {
 	* @param value the Integer
 	*/
 	public void setInterval(Integer value) { 
-		interval = value; 
+		Interval = value; 
 	}
 
-	private Integer dayOfMonth;
+	private Integer DayOfMonth;
 
 	/**
 	* Gets the Day Of Month.
@@ -58,7 +58,7 @@ public class RecurrencePattern {
 	* @return the Integer
 	*/
 	public Integer getDayOfMonth() {
-		 return dayOfMonth; 
+		return this.DayOfMonth; 
 	}
 
 	/**
@@ -67,10 +67,10 @@ public class RecurrencePattern {
 	* @param value the Integer
 	*/
 	public void setDayOfMonth(Integer value) { 
-		dayOfMonth = value; 
+		DayOfMonth = value; 
 	}
 
-	private Integer month;
+	private Integer Month;
 
 	/**
 	* Gets the Month.
@@ -78,7 +78,7 @@ public class RecurrencePattern {
 	* @return the Integer
 	*/
 	public Integer getMonth() {
-		 return month; 
+		return this.Month; 
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class RecurrencePattern {
 	* @param value the Integer
 	*/
 	public void setMonth(Integer value) { 
-		month = value; 
+		Month = value; 
 	}
 
-	private java.util.List<DayOfWeek> daysOfWeek;
+	private java.util.List<DayOfWeek> DaysOfWeek;
 
 	/**
 	* Gets the Days Of Week.
@@ -98,7 +98,7 @@ public class RecurrencePattern {
 	* @return the java.util.List<DayOfWeek>
 	*/
 	public java.util.List<DayOfWeek> getDaysOfWeek() {
-		 return daysOfWeek; 
+		return this.DaysOfWeek; 
 	}
 
 	/**
@@ -107,10 +107,10 @@ public class RecurrencePattern {
 	* @param value the java.util.List<DayOfWeek>
 	*/
 	public void setDaysOfWeek(java.util.List<DayOfWeek> value) { 
-		daysOfWeek = value; 
+		DaysOfWeek = value; 
 	}
 
-	private DayOfWeek firstDayOfWeek;
+	private DayOfWeek FirstDayOfWeek;
 
 	/**
 	* Gets the First Day Of Week.
@@ -118,7 +118,7 @@ public class RecurrencePattern {
 	* @return the DayOfWeek
 	*/
 	public DayOfWeek getFirstDayOfWeek() {
-		 return firstDayOfWeek; 
+		return this.FirstDayOfWeek; 
 	}
 
 	/**
@@ -127,10 +127,10 @@ public class RecurrencePattern {
 	* @param value the DayOfWeek
 	*/
 	public void setFirstDayOfWeek(DayOfWeek value) { 
-		firstDayOfWeek = value; 
+		FirstDayOfWeek = value; 
 	}
 
-	private WeekIndex index;
+	private WeekIndex Index;
 
 	/**
 	* Gets the Index.
@@ -138,7 +138,7 @@ public class RecurrencePattern {
 	* @return the WeekIndex
 	*/
 	public WeekIndex getIndex() {
-		 return index; 
+		return this.Index; 
 	}
 
 	/**
@@ -147,6 +147,6 @@ public class RecurrencePattern {
 	* @param value the WeekIndex
 	*/
 	public void setIndex(WeekIndex value) { 
-		index = value; 
+		Index = value; 
 	}
 }

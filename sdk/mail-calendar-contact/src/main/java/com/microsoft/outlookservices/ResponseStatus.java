@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class ResponseStatus {
 
-	private ResponseType response;
+	private ResponseType Response;
 
 	/**
 	* Gets the Response.
@@ -18,7 +18,7 @@ public class ResponseStatus {
 	* @return the ResponseType
 	*/
 	public ResponseType getResponse() {
-		 return response; 
+		return this.Response; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class ResponseStatus {
 	* @param value the ResponseType
 	*/
 	public void setResponse(ResponseType value) { 
-		response = value; 
+		Response = value; 
 	}
 
-	private java.util.Calendar time;
+	private java.util.Calendar Time;
 
 	/**
 	* Gets the Time.
@@ -38,7 +38,7 @@ public class ResponseStatus {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getTime() {
-		 return time; 
+		return this.Time; 
 	}
 
 	/**
@@ -47,6 +47,6 @@ public class ResponseStatus {
 	* @param value the java.util.Calendar
 	*/
 	public void setTime(java.util.Calendar value) { 
-		time = value; 
+		Time = value; 
 	}
 }

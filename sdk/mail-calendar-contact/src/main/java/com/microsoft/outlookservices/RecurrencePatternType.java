@@ -10,27 +10,27 @@ package com.microsoft.outlookservices;
 */
 public enum RecurrencePatternType	
 {
-    /*
+    /**
 	* Daily
 	*/
 	Daily,
-    /*
+    /**
 	* Weekly
 	*/
 	Weekly,
-    /*
+    /**
 	* Absolute Monthly
 	*/
 	AbsoluteMonthly,
-    /*
+    /**
 	* Relative Monthly
 	*/
 	RelativeMonthly,
-    /*
+    /**
 	* Absolute Yearly
 	*/
 	AbsoluteYearly,
-    /*
+    /**
 	* Relative Yearly
 	*/
 	RelativeYearly,

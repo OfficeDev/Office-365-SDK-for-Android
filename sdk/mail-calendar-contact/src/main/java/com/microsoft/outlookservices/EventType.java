@@ -10,19 +10,19 @@ package com.microsoft.outlookservices;
 */
 public enum EventType	
 {
-    /*
+    /**
 	* Single Instance
 	*/
 	SingleInstance,
-    /*
+    /**
 	* Occurrence
 	*/
 	Occurrence,
-    /*
+    /**
 	* Exception
 	*/
 	Exception,
-    /*
+    /**
 	* Series Master
 	*/
 	SeriesMaster,

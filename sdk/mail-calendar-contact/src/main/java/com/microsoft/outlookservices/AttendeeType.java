@@ -10,15 +10,15 @@ package com.microsoft.outlookservices;
 */
 public enum AttendeeType	
 {
-    /*
+    /**
 	* Required
 	*/
 	Required,
-    /*
+    /**
 	* Optional
 	*/
 	Optional,
-    /*
+    /**
 	* Resource
 	*/
 	Resource,

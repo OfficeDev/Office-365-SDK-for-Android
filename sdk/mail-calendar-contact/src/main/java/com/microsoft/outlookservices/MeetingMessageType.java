@@ -10,27 +10,27 @@ package com.microsoft.outlookservices;
 */
 public enum MeetingMessageType	
 {
-    /*
+    /**
 	* None
 	*/
 	None,
-    /*
+    /**
 	* Meeting Request
 	*/
 	MeetingRequest,
-    /*
+    /**
 	* Meeting Cancelled
 	*/
 	MeetingCancelled,
-    /*
+    /**
 	* Meeting Accepted
 	*/
 	MeetingAccepted,
-    /*
+    /**
 	* Meeting Tenatively Accepted
 	*/
 	MeetingTenativelyAccepted,
-    /*
+    /**
 	* Meeting Declined
 	*/
 	MeetingDeclined,

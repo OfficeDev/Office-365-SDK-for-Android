@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class PatternedRecurrence {
 
-	private RecurrencePattern pattern;
+	private RecurrencePattern Pattern;
 
 	/**
 	* Gets the Pattern.
@@ -18,7 +18,7 @@ public class PatternedRecurrence {
 	* @return the RecurrencePattern
 	*/
 	public RecurrencePattern getPattern() {
-		 return pattern; 
+		return this.Pattern; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class PatternedRecurrence {
 	* @param value the RecurrencePattern
 	*/
 	public void setPattern(RecurrencePattern value) { 
-		pattern = value; 
+		Pattern = value; 
 	}
 
-	private RecurrenceRange range;
+	private RecurrenceRange Range;
 
 	/**
 	* Gets the Range.
@@ -38,7 +38,7 @@ public class PatternedRecurrence {
 	* @return the RecurrenceRange
 	*/
 	public RecurrenceRange getRange() {
-		 return range; 
+		return this.Range; 
 	}
 
 	/**
@@ -47,6 +47,6 @@ public class PatternedRecurrence {
 	* @param value the RecurrenceRange
 	*/
 	public void setRange(RecurrenceRange value) { 
-		range = value; 
+		Range = value; 
 	}
 }

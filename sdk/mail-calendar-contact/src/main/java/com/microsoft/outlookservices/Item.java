@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Item.
 */
 public class Item extends Entity {
-	private String changeKey;
+	private String ChangeKey;
 
 	/**
 	* Gets the Change Key.
@@ -17,7 +17,7 @@ public class Item extends Entity {
 	* @return the String
 	*/
 	public String getChangeKey() {
-		 return changeKey; 
+		return this.ChangeKey; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class Item extends Entity {
 	* @param value the String
 	*/
 	public void setChangeKey(String value) { 
-		changeKey = value; 
+		ChangeKey = value; 
 	}
-	private java.util.List<String> categories;
+	private java.util.List<String> Categories;
 
 	/**
 	* Gets the Categories.
@@ -36,7 +36,7 @@ public class Item extends Entity {
 	* @return the java.util.List<String>
 	*/
 	public java.util.List<String> getCategories() {
-		 return categories; 
+		return this.Categories; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class Item extends Entity {
 	* @param value the java.util.List<String>
 	*/
 	public void setCategories(java.util.List<String> value) { 
-		categories = value; 
+		Categories = value; 
 	}
-	private java.util.Calendar dateTimeCreated;
+	private java.util.Calendar DateTimeCreated;
 
 	/**
 	* Gets the Date Time Created.
@@ -55,7 +55,7 @@ public class Item extends Entity {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getDateTimeCreated() {
-		 return dateTimeCreated; 
+		return this.DateTimeCreated; 
 	}
 
 	/**
@@ -64,9 +64,9 @@ public class Item extends Entity {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeCreated(java.util.Calendar value) { 
-		dateTimeCreated = value; 
+		DateTimeCreated = value; 
 	}
-	private java.util.Calendar dateTimeLastModified;
+	private java.util.Calendar DateTimeLastModified;
 
 	/**
 	* Gets the Date Time Last Modified.
@@ -74,7 +74,7 @@ public class Item extends Entity {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getDateTimeLastModified() {
-		 return dateTimeLastModified; 
+		return this.DateTimeLastModified; 
 	}
 
 	/**
@@ -83,6 +83,6 @@ public class Item extends Entity {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeLastModified(java.util.Calendar value) { 
-		dateTimeLastModified = value; 
+		DateTimeLastModified = value; 
 	}
 }

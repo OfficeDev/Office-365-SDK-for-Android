@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class ItemBody {
 
-	private BodyType contentType;
+	private BodyType ContentType;
 
 	/**
 	* Gets the Content Type.
@@ -18,7 +18,7 @@ public class ItemBody {
 	* @return the BodyType
 	*/
 	public BodyType getContentType() {
-		 return contentType; 
+		return this.ContentType; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class ItemBody {
 	* @param value the BodyType
 	*/
 	public void setContentType(BodyType value) { 
-		contentType = value; 
+		ContentType = value; 
 	}
 
-	private String content;
+	private String Content;
 
 	/**
 	* Gets the Content.
@@ -38,7 +38,7 @@ public class ItemBody {
 	* @return the String
 	*/
 	public String getContent() {
-		 return content; 
+		return this.Content; 
 	}
 
 	/**
@@ -47,6 +47,6 @@ public class ItemBody {
 	* @param value the String
 	*/
 	public void setContent(String value) { 
-		content = value; 
+		Content = value; 
 	}
 }

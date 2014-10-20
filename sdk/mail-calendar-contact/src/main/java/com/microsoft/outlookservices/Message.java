@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Message.
 */
 public class Message extends Item {
-	private String subject;
+	private String Subject;
 
 	/**
 	* Gets the Subject.
@@ -17,7 +17,7 @@ public class Message extends Item {
 	* @return the String
 	*/
 	public String getSubject() {
-		 return subject; 
+		return this.Subject; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setSubject(String value) { 
-		subject = value; 
+		Subject = value; 
 	}
-	private ItemBody body;
+	private ItemBody Body;
 
 	/**
 	* Gets the Body.
@@ -36,7 +36,7 @@ public class Message extends Item {
 	* @return the ItemBody
 	*/
 	public ItemBody getBody() {
-		 return body; 
+		return this.Body; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class Message extends Item {
 	* @param value the ItemBody
 	*/
 	public void setBody(ItemBody value) { 
-		body = value; 
+		Body = value; 
 	}
-	private String bodyPreview;
+	private String BodyPreview;
 
 	/**
 	* Gets the Body Preview.
@@ -55,7 +55,7 @@ public class Message extends Item {
 	* @return the String
 	*/
 	public String getBodyPreview() {
-		 return bodyPreview; 
+		return this.BodyPreview; 
 	}
 
 	/**
@@ -64,9 +64,9 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setBodyPreview(String value) { 
-		bodyPreview = value; 
+		BodyPreview = value; 
 	}
-	private Importance importance;
+	private Importance Importance;
 
 	/**
 	* Gets the Importance.
@@ -74,7 +74,7 @@ public class Message extends Item {
 	* @return the Importance
 	*/
 	public Importance getImportance() {
-		 return importance; 
+		return this.Importance; 
 	}
 
 	/**
@@ -83,9 +83,9 @@ public class Message extends Item {
 	* @param value the Importance
 	*/
 	public void setImportance(Importance value) { 
-		importance = value; 
+		Importance = value; 
 	}
-	private Boolean hasAttachments;
+	private Boolean HasAttachments;
 
 	/**
 	* Gets the Has Attachments.
@@ -93,7 +93,7 @@ public class Message extends Item {
 	* @return the Boolean
 	*/
 	public Boolean getHasAttachments() {
-		 return hasAttachments; 
+		return this.HasAttachments; 
 	}
 
 	/**
@@ -102,9 +102,9 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setHasAttachments(Boolean value) { 
-		hasAttachments = value; 
+		HasAttachments = value; 
 	}
-	private String parentFolderId;
+	private String ParentFolderId;
 
 	/**
 	* Gets the Parent Folder Id.
@@ -112,7 +112,7 @@ public class Message extends Item {
 	* @return the String
 	*/
 	public String getParentFolderId() {
-		 return parentFolderId; 
+		return this.ParentFolderId; 
 	}
 
 	/**
@@ -121,9 +121,9 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		parentFolderId = value; 
+		ParentFolderId = value; 
 	}
-	private Recipient from;
+	private Recipient From;
 
 	/**
 	* Gets the From.
@@ -131,7 +131,7 @@ public class Message extends Item {
 	* @return the Recipient
 	*/
 	public Recipient getFrom() {
-		 return from; 
+		return this.From; 
 	}
 
 	/**
@@ -140,9 +140,9 @@ public class Message extends Item {
 	* @param value the Recipient
 	*/
 	public void setFrom(Recipient value) { 
-		from = value; 
+		From = value; 
 	}
-	private Recipient sender;
+	private Recipient Sender;
 
 	/**
 	* Gets the Sender.
@@ -150,7 +150,7 @@ public class Message extends Item {
 	* @return the Recipient
 	*/
 	public Recipient getSender() {
-		 return sender; 
+		return this.Sender; 
 	}
 
 	/**
@@ -159,9 +159,9 @@ public class Message extends Item {
 	* @param value the Recipient
 	*/
 	public void setSender(Recipient value) { 
-		sender = value; 
+		Sender = value; 
 	}
-	private java.util.List<Recipient> toRecipients;
+	private java.util.List<Recipient> ToRecipients;
 
 	/**
 	* Gets the To Recipients.
@@ -169,7 +169,7 @@ public class Message extends Item {
 	* @return the java.util.List<Recipient>
 	*/
 	public java.util.List<Recipient> getToRecipients() {
-		 return toRecipients; 
+		return this.ToRecipients; 
 	}
 
 	/**
@@ -178,9 +178,9 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setToRecipients(java.util.List<Recipient> value) { 
-		toRecipients = value; 
+		ToRecipients = value; 
 	}
-	private java.util.List<Recipient> ccRecipients;
+	private java.util.List<Recipient> CcRecipients;
 
 	/**
 	* Gets the Cc Recipients.
@@ -188,7 +188,7 @@ public class Message extends Item {
 	* @return the java.util.List<Recipient>
 	*/
 	public java.util.List<Recipient> getCcRecipients() {
-		 return ccRecipients; 
+		return this.CcRecipients; 
 	}
 
 	/**
@@ -197,9 +197,9 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setCcRecipients(java.util.List<Recipient> value) { 
-		ccRecipients = value; 
+		CcRecipients = value; 
 	}
-	private java.util.List<Recipient> bccRecipients;
+	private java.util.List<Recipient> BccRecipients;
 
 	/**
 	* Gets the Bcc Recipients.
@@ -207,7 +207,7 @@ public class Message extends Item {
 	* @return the java.util.List<Recipient>
 	*/
 	public java.util.List<Recipient> getBccRecipients() {
-		 return bccRecipients; 
+		return this.BccRecipients; 
 	}
 
 	/**
@@ -216,9 +216,9 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setBccRecipients(java.util.List<Recipient> value) { 
-		bccRecipients = value; 
+		BccRecipients = value; 
 	}
-	private java.util.List<Recipient> replyTo;
+	private java.util.List<Recipient> ReplyTo;
 
 	/**
 	* Gets the Reply To.
@@ -226,7 +226,7 @@ public class Message extends Item {
 	* @return the java.util.List<Recipient>
 	*/
 	public java.util.List<Recipient> getReplyTo() {
-		 return replyTo; 
+		return this.ReplyTo; 
 	}
 
 	/**
@@ -235,9 +235,9 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setReplyTo(java.util.List<Recipient> value) { 
-		replyTo = value; 
+		ReplyTo = value; 
 	}
-	private String conversationId;
+	private String ConversationId;
 
 	/**
 	* Gets the Conversation Id.
@@ -245,7 +245,7 @@ public class Message extends Item {
 	* @return the String
 	*/
 	public String getConversationId() {
-		 return conversationId; 
+		return this.ConversationId; 
 	}
 
 	/**
@@ -254,9 +254,9 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setConversationId(String value) { 
-		conversationId = value; 
+		ConversationId = value; 
 	}
-	private ItemBody uniqueBody;
+	private ItemBody UniqueBody;
 
 	/**
 	* Gets the Unique Body.
@@ -264,7 +264,7 @@ public class Message extends Item {
 	* @return the ItemBody
 	*/
 	public ItemBody getUniqueBody() {
-		 return uniqueBody; 
+		return this.UniqueBody; 
 	}
 
 	/**
@@ -273,9 +273,9 @@ public class Message extends Item {
 	* @param value the ItemBody
 	*/
 	public void setUniqueBody(ItemBody value) { 
-		uniqueBody = value; 
+		UniqueBody = value; 
 	}
-	private java.util.Calendar dateTimeReceived;
+	private java.util.Calendar DateTimeReceived;
 
 	/**
 	* Gets the Date Time Received.
@@ -283,7 +283,7 @@ public class Message extends Item {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getDateTimeReceived() {
-		 return dateTimeReceived; 
+		return this.DateTimeReceived; 
 	}
 
 	/**
@@ -292,9 +292,9 @@ public class Message extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeReceived(java.util.Calendar value) { 
-		dateTimeReceived = value; 
+		DateTimeReceived = value; 
 	}
-	private java.util.Calendar dateTimeSent;
+	private java.util.Calendar DateTimeSent;
 
 	/**
 	* Gets the Date Time Sent.
@@ -302,7 +302,7 @@ public class Message extends Item {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getDateTimeSent() {
-		 return dateTimeSent; 
+		return this.DateTimeSent; 
 	}
 
 	/**
@@ -311,9 +311,9 @@ public class Message extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeSent(java.util.Calendar value) { 
-		dateTimeSent = value; 
+		DateTimeSent = value; 
 	}
-	private Boolean isDeliveryReceiptRequested;
+	private Boolean IsDeliveryReceiptRequested;
 
 	/**
 	* Gets the Is Delivery Receipt Requested.
@@ -321,7 +321,7 @@ public class Message extends Item {
 	* @return the Boolean
 	*/
 	public Boolean getIsDeliveryReceiptRequested() {
-		 return isDeliveryReceiptRequested; 
+		return this.IsDeliveryReceiptRequested; 
 	}
 
 	/**
@@ -330,9 +330,9 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsDeliveryReceiptRequested(Boolean value) { 
-		isDeliveryReceiptRequested = value; 
+		IsDeliveryReceiptRequested = value; 
 	}
-	private Boolean isReadReceiptRequested;
+	private Boolean IsReadReceiptRequested;
 
 	/**
 	* Gets the Is Read Receipt Requested.
@@ -340,7 +340,7 @@ public class Message extends Item {
 	* @return the Boolean
 	*/
 	public Boolean getIsReadReceiptRequested() {
-		 return isReadReceiptRequested; 
+		return this.IsReadReceiptRequested; 
 	}
 
 	/**
@@ -349,9 +349,9 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsReadReceiptRequested(Boolean value) { 
-		isReadReceiptRequested = value; 
+		IsReadReceiptRequested = value; 
 	}
-	private Boolean isDraft;
+	private Boolean IsDraft;
 
 	/**
 	* Gets the Is Draft.
@@ -359,7 +359,7 @@ public class Message extends Item {
 	* @return the Boolean
 	*/
 	public Boolean getIsDraft() {
-		 return isDraft; 
+		return this.IsDraft; 
 	}
 
 	/**
@@ -368,9 +368,9 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsDraft(Boolean value) { 
-		isDraft = value; 
+		IsDraft = value; 
 	}
-	private Boolean isRead;
+	private Boolean IsRead;
 
 	/**
 	* Gets the Is Read.
@@ -378,7 +378,7 @@ public class Message extends Item {
 	* @return the Boolean
 	*/
 	public Boolean getIsRead() {
-		 return isRead; 
+		return this.IsRead; 
 	}
 
 	/**
@@ -387,6 +387,6 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsRead(Boolean value) { 
-		isRead = value; 
+		IsRead = value; 
 	}
 }

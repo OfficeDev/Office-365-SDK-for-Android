@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class PhysicalAddress {
 
-	private String street;
+	private String Street;
 
 	/**
 	* Gets the Street.
@@ -18,7 +18,7 @@ public class PhysicalAddress {
 	* @return the String
 	*/
 	public String getStreet() {
-		 return street; 
+		return this.Street; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setStreet(String value) { 
-		street = value; 
+		Street = value; 
 	}
 
-	private String city;
+	private String City;
 
 	/**
 	* Gets the City.
@@ -38,7 +38,7 @@ public class PhysicalAddress {
 	* @return the String
 	*/
 	public String getCity() {
-		 return city; 
+		return this.City; 
 	}
 
 	/**
@@ -47,10 +47,10 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setCity(String value) { 
-		city = value; 
+		City = value; 
 	}
 
-	private String state;
+	private String State;
 
 	/**
 	* Gets the State.
@@ -58,7 +58,7 @@ public class PhysicalAddress {
 	* @return the String
 	*/
 	public String getState() {
-		 return state; 
+		return this.State; 
 	}
 
 	/**
@@ -67,10 +67,10 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setState(String value) { 
-		state = value; 
+		State = value; 
 	}
 
-	private String countryOrRegion;
+	private String CountryOrRegion;
 
 	/**
 	* Gets the Country Or Region.
@@ -78,7 +78,7 @@ public class PhysicalAddress {
 	* @return the String
 	*/
 	public String getCountryOrRegion() {
-		 return countryOrRegion; 
+		return this.CountryOrRegion; 
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setCountryOrRegion(String value) { 
-		countryOrRegion = value; 
+		CountryOrRegion = value; 
 	}
 
-	private String postalCode;
+	private String PostalCode;
 
 	/**
 	* Gets the Postal Code.
@@ -98,7 +98,7 @@ public class PhysicalAddress {
 	* @return the String
 	*/
 	public String getPostalCode() {
-		 return postalCode; 
+		return this.PostalCode; 
 	}
 
 	/**
@@ -107,6 +107,6 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setPostalCode(String value) { 
-		postalCode = value; 
+		PostalCode = value; 
 	}
 }

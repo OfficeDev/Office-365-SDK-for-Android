@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Attendee extends Recipient {
 
-	private ResponseStatus status;
+	private ResponseStatus Status;
 
 	/**
 	* Gets the Status.
@@ -18,7 +18,7 @@ public class Attendee extends Recipient {
 	* @return the ResponseStatus
 	*/
 	public ResponseStatus getStatus() {
-		 return status; 
+		return this.Status; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class Attendee extends Recipient {
 	* @param value the ResponseStatus
 	*/
 	public void setStatus(ResponseStatus value) { 
-		status = value; 
+		Status = value; 
 	}
 
-	private AttendeeType type;
+	private AttendeeType Type;
 
 	/**
 	* Gets the Type.
@@ -38,7 +38,7 @@ public class Attendee extends Recipient {
 	* @return the AttendeeType
 	*/
 	public AttendeeType getType() {
-		 return type; 
+		return this.Type; 
 	}
 
 	/**
@@ -47,6 +47,6 @@ public class Attendee extends Recipient {
 	* @param value the AttendeeType
 	*/
 	public void setType(AttendeeType value) { 
-		type = value; 
+		Type = value; 
 	}
 }

@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Location {
 
-	private String displayName;
+	private String DisplayName;
 
 	/**
 	* Gets the Display Name.
@@ -18,7 +18,7 @@ public class Location {
 	* @return the String
 	*/
 	public String getDisplayName() {
-		 return displayName; 
+		return this.DisplayName; 
 	}
 
 	/**
@@ -27,6 +27,6 @@ public class Location {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		displayName = value; 
+		DisplayName = value; 
 	}
 }
