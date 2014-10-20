@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type User.
 */
 public class User extends Entity {
-	private String displayName;
+	private String DisplayName;
 
 	/**
 	* Gets the Display Name.
@@ -17,7 +17,7 @@ public class User extends Entity {
 	* @return the String
 	*/
 	public String getDisplayName() {
-		 return displayName; 
+		return this.DisplayName; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class User extends Entity {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		displayName = value; 
+		DisplayName = value; 
 	}
-	private String alias;
+	private String Alias;
 
 	/**
 	* Gets the Alias.
@@ -36,7 +36,7 @@ public class User extends Entity {
 	* @return the String
 	*/
 	public String getAlias() {
-		 return alias; 
+		return this.Alias; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class User extends Entity {
 	* @param value the String
 	*/
 	public void setAlias(String value) { 
-		alias = value; 
+		Alias = value; 
 	}
-	private java.util.UUID mailboxGuid;
+	private java.util.UUID MailboxGuid;
 
 	/**
 	* Gets the Mailbox Guid.
@@ -55,7 +55,7 @@ public class User extends Entity {
 	* @return the java.util.UUID
 	*/
 	public java.util.UUID getMailboxGuid() {
-		 return mailboxGuid; 
+		return this.MailboxGuid; 
 	}
 
 	/**
@@ -64,6 +64,6 @@ public class User extends Entity {
 	* @param value the java.util.UUID
 	*/
 	public void setMailboxGuid(java.util.UUID value) { 
-		mailboxGuid = value; 
+		MailboxGuid = value; 
 	}
 }

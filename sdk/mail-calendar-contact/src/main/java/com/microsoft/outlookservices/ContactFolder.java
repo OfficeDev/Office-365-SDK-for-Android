@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Contact Folder.
 */
 public class ContactFolder extends Entity {
-	private String parentFolderId;
+	private String ParentFolderId;
 
 	/**
 	* Gets the Parent Folder Id.
@@ -17,7 +17,7 @@ public class ContactFolder extends Entity {
 	* @return the String
 	*/
 	public String getParentFolderId() {
-		 return parentFolderId; 
+		return this.ParentFolderId; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class ContactFolder extends Entity {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		parentFolderId = value; 
+		ParentFolderId = value; 
 	}
-	private String displayName;
+	private String DisplayName;
 
 	/**
 	* Gets the Display Name.
@@ -36,7 +36,7 @@ public class ContactFolder extends Entity {
 	* @return the String
 	*/
 	public String getDisplayName() {
-		 return displayName; 
+		return this.DisplayName; 
 	}
 
 	/**
@@ -45,6 +45,6 @@ public class ContactFolder extends Entity {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		displayName = value; 
+		DisplayName = value; 
 	}
 }

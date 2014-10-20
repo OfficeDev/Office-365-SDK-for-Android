@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Calendar Group.
 */
 public class CalendarGroup extends Entity {
-	private String name;
+	private String Name;
 
 	/**
 	* Gets the Name.
@@ -17,7 +17,7 @@ public class CalendarGroup extends Entity {
 	* @return the String
 	*/
 	public String getName() {
-		 return name; 
+		return this.Name; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class CalendarGroup extends Entity {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		name = value; 
+		Name = value; 
 	}
-	private String changeKey;
+	private String ChangeKey;
 
 	/**
 	* Gets the Change Key.
@@ -36,7 +36,7 @@ public class CalendarGroup extends Entity {
 	* @return the String
 	*/
 	public String getChangeKey() {
-		 return changeKey; 
+		return this.ChangeKey; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class CalendarGroup extends Entity {
 	* @param value the String
 	*/
 	public void setChangeKey(String value) { 
-		changeKey = value; 
+		ChangeKey = value; 
 	}
-	private java.util.UUID classId;
+	private java.util.UUID ClassId;
 
 	/**
 	* Gets the Class Id.
@@ -55,7 +55,7 @@ public class CalendarGroup extends Entity {
 	* @return the java.util.UUID
 	*/
 	public java.util.UUID getClassId() {
-		 return classId; 
+		return this.ClassId; 
 	}
 
 	/**
@@ -64,6 +64,6 @@ public class CalendarGroup extends Entity {
 	* @param value the java.util.UUID
 	*/
 	public void setClassId(java.util.UUID value) { 
-		classId = value; 
+		ClassId = value; 
 	}
 }

@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type File Attachment.
 */
 public class FileAttachment extends Attachment {
-	private String contentId;
+	private String ContentId;
 
 	/**
 	* Gets the Content Id.
@@ -17,7 +17,7 @@ public class FileAttachment extends Attachment {
 	* @return the String
 	*/
 	public String getContentId() {
-		 return contentId; 
+		return this.ContentId; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class FileAttachment extends Attachment {
 	* @param value the String
 	*/
 	public void setContentId(String value) { 
-		contentId = value; 
+		ContentId = value; 
 	}
-	private String contentLocation;
+	private String ContentLocation;
 
 	/**
 	* Gets the Content Location.
@@ -36,7 +36,7 @@ public class FileAttachment extends Attachment {
 	* @return the String
 	*/
 	public String getContentLocation() {
-		 return contentLocation; 
+		return this.ContentLocation; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class FileAttachment extends Attachment {
 	* @param value the String
 	*/
 	public void setContentLocation(String value) { 
-		contentLocation = value; 
+		ContentLocation = value; 
 	}
-	private Boolean isContactPhoto;
+	private Boolean IsContactPhoto;
 
 	/**
 	* Gets the Is Contact Photo.
@@ -55,7 +55,7 @@ public class FileAttachment extends Attachment {
 	* @return the Boolean
 	*/
 	public Boolean getIsContactPhoto() {
-		 return isContactPhoto; 
+		return this.IsContactPhoto; 
 	}
 
 	/**
@@ -64,9 +64,9 @@ public class FileAttachment extends Attachment {
 	* @param value the Boolean
 	*/
 	public void setIsContactPhoto(Boolean value) { 
-		isContactPhoto = value; 
+		IsContactPhoto = value; 
 	}
-	private byte[] contentBytes;
+	private byte[] ContentBytes;
 
 	/**
 	* Gets the Content Bytes.
@@ -74,7 +74,7 @@ public class FileAttachment extends Attachment {
 	* @return the byte[]
 	*/
 	public byte[] getContentBytes() {
-		 return contentBytes; 
+		return this.ContentBytes; 
 	}
 
 	/**
@@ -83,6 +83,6 @@ public class FileAttachment extends Attachment {
 	* @param value the byte[]
 	*/
 	public void setContentBytes(byte[] value) { 
-		contentBytes = value; 
+		ContentBytes = value; 
 	}
 }

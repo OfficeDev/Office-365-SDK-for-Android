@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class RecurrenceRange {
 
-	private RecurrenceRangeType type;
+	private RecurrenceRangeType Type;
 
 	/**
 	* Gets the Type.
@@ -18,7 +18,7 @@ public class RecurrenceRange {
 	* @return the RecurrenceRangeType
 	*/
 	public RecurrenceRangeType getType() {
-		 return type; 
+		return this.Type; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class RecurrenceRange {
 	* @param value the RecurrenceRangeType
 	*/
 	public void setType(RecurrenceRangeType value) { 
-		type = value; 
+		Type = value; 
 	}
 
-	private java.util.Calendar startDate;
+	private java.util.Calendar StartDate;
 
 	/**
 	* Gets the Start Date.
@@ -38,7 +38,7 @@ public class RecurrenceRange {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getStartDate() {
-		 return startDate; 
+		return this.StartDate; 
 	}
 
 	/**
@@ -47,10 +47,10 @@ public class RecurrenceRange {
 	* @param value the java.util.Calendar
 	*/
 	public void setStartDate(java.util.Calendar value) { 
-		startDate = value; 
+		StartDate = value; 
 	}
 
-	private java.util.Calendar endDate;
+	private java.util.Calendar EndDate;
 
 	/**
 	* Gets the End Date.
@@ -58,7 +58,7 @@ public class RecurrenceRange {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getEndDate() {
-		 return endDate; 
+		return this.EndDate; 
 	}
 
 	/**
@@ -67,10 +67,10 @@ public class RecurrenceRange {
 	* @param value the java.util.Calendar
 	*/
 	public void setEndDate(java.util.Calendar value) { 
-		endDate = value; 
+		EndDate = value; 
 	}
 
-	private Integer numberOfOccurrences;
+	private Integer NumberOfOccurrences;
 
 	/**
 	* Gets the Number Of Occurrences.
@@ -78,7 +78,7 @@ public class RecurrenceRange {
 	* @return the Integer
 	*/
 	public Integer getNumberOfOccurrences() {
-		 return numberOfOccurrences; 
+		return this.NumberOfOccurrences; 
 	}
 
 	/**
@@ -87,6 +87,6 @@ public class RecurrenceRange {
 	* @param value the Integer
 	*/
 	public void setNumberOfOccurrences(Integer value) { 
-		numberOfOccurrences = value; 
+		NumberOfOccurrences = value; 
 	}
 }

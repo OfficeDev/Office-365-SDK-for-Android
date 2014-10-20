@@ -10,15 +10,15 @@ package com.microsoft.outlookservices;
 */
 public enum RecurrenceRangeType	
 {
-    /*
+    /**
 	* End Date
 	*/
 	EndDate,
-    /*
+    /**
 	* No End
 	*/
 	NoEnd,
-    /*
+    /**
 	* Numbered
 	*/
 	Numbered,

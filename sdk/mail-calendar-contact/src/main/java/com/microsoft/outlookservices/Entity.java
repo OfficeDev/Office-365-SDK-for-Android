@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Entity.
 */
 public class Entity {
-	private String id;
+	private String Id;
 
 	/**
 	* Gets the Id.
@@ -17,7 +17,7 @@ public class Entity {
 	* @return the String
 	*/
 	public String getId() {
-		 return id; 
+		return this.Id; 
 	}
 
 	/**
@@ -26,6 +26,6 @@ public class Entity {
 	* @param value the String
 	*/
 	public void setId(String value) { 
-		id = value; 
+		Id = value; 
 	}
 }

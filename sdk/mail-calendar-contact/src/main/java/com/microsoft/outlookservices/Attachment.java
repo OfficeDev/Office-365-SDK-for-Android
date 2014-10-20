@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Attachment.
 */
 public class Attachment extends Entity {
-	private String name;
+	private String Name;
 
 	/**
 	* Gets the Name.
@@ -17,7 +17,7 @@ public class Attachment extends Entity {
 	* @return the String
 	*/
 	public String getName() {
-		 return name; 
+		return this.Name; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class Attachment extends Entity {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		name = value; 
+		Name = value; 
 	}
-	private String contentType;
+	private String ContentType;
 
 	/**
 	* Gets the Content Type.
@@ -36,7 +36,7 @@ public class Attachment extends Entity {
 	* @return the String
 	*/
 	public String getContentType() {
-		 return contentType; 
+		return this.ContentType; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class Attachment extends Entity {
 	* @param value the String
 	*/
 	public void setContentType(String value) { 
-		contentType = value; 
+		ContentType = value; 
 	}
-	private Integer size;
+	private Integer Size;
 
 	/**
 	* Gets the Size.
@@ -55,7 +55,7 @@ public class Attachment extends Entity {
 	* @return the Integer
 	*/
 	public Integer getSize() {
-		 return size; 
+		return this.Size; 
 	}
 
 	/**
@@ -64,9 +64,9 @@ public class Attachment extends Entity {
 	* @param value the Integer
 	*/
 	public void setSize(Integer value) { 
-		size = value; 
+		Size = value; 
 	}
-	private Boolean isInline;
+	private Boolean IsInline;
 
 	/**
 	* Gets the Is Inline.
@@ -74,7 +74,7 @@ public class Attachment extends Entity {
 	* @return the Boolean
 	*/
 	public Boolean getIsInline() {
-		 return isInline; 
+		return this.IsInline; 
 	}
 
 	/**
@@ -83,9 +83,9 @@ public class Attachment extends Entity {
 	* @param value the Boolean
 	*/
 	public void setIsInline(Boolean value) { 
-		isInline = value; 
+		IsInline = value; 
 	}
-	private java.util.Calendar dateTimeLastModified;
+	private java.util.Calendar DateTimeLastModified;
 
 	/**
 	* Gets the Date Time Last Modified.
@@ -93,7 +93,7 @@ public class Attachment extends Entity {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getDateTimeLastModified() {
-		 return dateTimeLastModified; 
+		return this.DateTimeLastModified; 
 	}
 
 	/**
@@ -102,6 +102,6 @@ public class Attachment extends Entity {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeLastModified(java.util.Calendar value) { 
-		dateTimeLastModified = value; 
+		DateTimeLastModified = value; 
 	}
 }

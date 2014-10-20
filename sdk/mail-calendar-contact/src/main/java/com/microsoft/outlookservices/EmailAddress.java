@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class EmailAddress {
 
-	private String name;
+	private String Name;
 
 	/**
 	* Gets the Name.
@@ -18,7 +18,7 @@ public class EmailAddress {
 	* @return the String
 	*/
 	public String getName() {
-		 return name; 
+		return this.Name; 
 	}
 
 	/**
@@ -27,10 +27,10 @@ public class EmailAddress {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		name = value; 
+		Name = value; 
 	}
 
-	private String address;
+	private String Address;
 
 	/**
 	* Gets the Address.
@@ -38,7 +38,7 @@ public class EmailAddress {
 	* @return the String
 	*/
 	public String getAddress() {
-		 return address; 
+		return this.Address; 
 	}
 
 	/**
@@ -47,6 +47,6 @@ public class EmailAddress {
 	* @param value the String
 	*/
 	public void setAddress(String value) { 
-		address = value; 
+		Address = value; 
 	}
 }

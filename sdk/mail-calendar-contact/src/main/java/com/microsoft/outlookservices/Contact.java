@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Contact.
 */
 public class Contact extends Item {
-	private String parentFolderId;
+	private String ParentFolderId;
 
 	/**
 	* Gets the Parent Folder Id.
@@ -17,7 +17,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getParentFolderId() {
-		 return parentFolderId; 
+		return this.ParentFolderId; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		parentFolderId = value; 
+		ParentFolderId = value; 
 	}
-	private java.util.Calendar birthday;
+	private java.util.Calendar Birthday;
 
 	/**
 	* Gets the Birthday.
@@ -36,7 +36,7 @@ public class Contact extends Item {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getBirthday() {
-		 return birthday; 
+		return this.Birthday; 
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class Contact extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setBirthday(java.util.Calendar value) { 
-		birthday = value; 
+		Birthday = value; 
 	}
-	private String fileAs;
+	private String FileAs;
 
 	/**
 	* Gets the File As.
@@ -55,7 +55,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getFileAs() {
-		 return fileAs; 
+		return this.FileAs; 
 	}
 
 	/**
@@ -64,9 +64,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setFileAs(String value) { 
-		fileAs = value; 
+		FileAs = value; 
 	}
-	private String displayName;
+	private String DisplayName;
 
 	/**
 	* Gets the Display Name.
@@ -74,7 +74,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getDisplayName() {
-		 return displayName; 
+		return this.DisplayName; 
 	}
 
 	/**
@@ -83,9 +83,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		displayName = value; 
+		DisplayName = value; 
 	}
-	private String givenName;
+	private String GivenName;
 
 	/**
 	* Gets the Given Name.
@@ -93,7 +93,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getGivenName() {
-		 return givenName; 
+		return this.GivenName; 
 	}
 
 	/**
@@ -102,9 +102,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setGivenName(String value) { 
-		givenName = value; 
+		GivenName = value; 
 	}
-	private String initials;
+	private String Initials;
 
 	/**
 	* Gets the Initials.
@@ -112,7 +112,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getInitials() {
-		 return initials; 
+		return this.Initials; 
 	}
 
 	/**
@@ -121,9 +121,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setInitials(String value) { 
-		initials = value; 
+		Initials = value; 
 	}
-	private String middleName;
+	private String MiddleName;
 
 	/**
 	* Gets the Middle Name.
@@ -131,7 +131,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getMiddleName() {
-		 return middleName; 
+		return this.MiddleName; 
 	}
 
 	/**
@@ -140,9 +140,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setMiddleName(String value) { 
-		middleName = value; 
+		MiddleName = value; 
 	}
-	private String nickName;
+	private String NickName;
 
 	/**
 	* Gets the Nick Name.
@@ -150,7 +150,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getNickName() {
-		 return nickName; 
+		return this.NickName; 
 	}
 
 	/**
@@ -159,9 +159,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setNickName(String value) { 
-		nickName = value; 
+		NickName = value; 
 	}
-	private String surname;
+	private String Surname;
 
 	/**
 	* Gets the Surname.
@@ -169,7 +169,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getSurname() {
-		 return surname; 
+		return this.Surname; 
 	}
 
 	/**
@@ -178,9 +178,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setSurname(String value) { 
-		surname = value; 
+		Surname = value; 
 	}
-	private String title;
+	private String Title;
 
 	/**
 	* Gets the Title.
@@ -188,7 +188,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getTitle() {
-		 return title; 
+		return this.Title; 
 	}
 
 	/**
@@ -197,9 +197,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setTitle(String value) { 
-		title = value; 
+		Title = value; 
 	}
-	private String generation;
+	private String Generation;
 
 	/**
 	* Gets the Generation.
@@ -207,7 +207,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getGeneration() {
-		 return generation; 
+		return this.Generation; 
 	}
 
 	/**
@@ -216,9 +216,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setGeneration(String value) { 
-		generation = value; 
+		Generation = value; 
 	}
-	private java.util.List<EmailAddress> emailAddresses;
+	private java.util.List<EmailAddress> EmailAddresses;
 
 	/**
 	* Gets the Email Addresses.
@@ -226,7 +226,7 @@ public class Contact extends Item {
 	* @return the java.util.List<EmailAddress>
 	*/
 	public java.util.List<EmailAddress> getEmailAddresses() {
-		 return emailAddresses; 
+		return this.EmailAddresses; 
 	}
 
 	/**
@@ -235,9 +235,9 @@ public class Contact extends Item {
 	* @param value the java.util.List<EmailAddress>
 	*/
 	public void setEmailAddresses(java.util.List<EmailAddress> value) { 
-		emailAddresses = value; 
+		EmailAddresses = value; 
 	}
-	private java.util.List<String> imAddresses;
+	private java.util.List<String> ImAddresses;
 
 	/**
 	* Gets the Im Addresses.
@@ -245,7 +245,7 @@ public class Contact extends Item {
 	* @return the java.util.List<String>
 	*/
 	public java.util.List<String> getImAddresses() {
-		 return imAddresses; 
+		return this.ImAddresses; 
 	}
 
 	/**
@@ -254,9 +254,9 @@ public class Contact extends Item {
 	* @param value the java.util.List<String>
 	*/
 	public void setImAddresses(java.util.List<String> value) { 
-		imAddresses = value; 
+		ImAddresses = value; 
 	}
-	private String jobTitle;
+	private String JobTitle;
 
 	/**
 	* Gets the Job Title.
@@ -264,7 +264,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getJobTitle() {
-		 return jobTitle; 
+		return this.JobTitle; 
 	}
 
 	/**
@@ -273,9 +273,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setJobTitle(String value) { 
-		jobTitle = value; 
+		JobTitle = value; 
 	}
-	private String companyName;
+	private String CompanyName;
 
 	/**
 	* Gets the Company Name.
@@ -283,7 +283,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getCompanyName() {
-		 return companyName; 
+		return this.CompanyName; 
 	}
 
 	/**
@@ -292,9 +292,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setCompanyName(String value) { 
-		companyName = value; 
+		CompanyName = value; 
 	}
-	private String department;
+	private String Department;
 
 	/**
 	* Gets the Department.
@@ -302,7 +302,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getDepartment() {
-		 return department; 
+		return this.Department; 
 	}
 
 	/**
@@ -311,9 +311,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setDepartment(String value) { 
-		department = value; 
+		Department = value; 
 	}
-	private String officeLocation;
+	private String OfficeLocation;
 
 	/**
 	* Gets the Office Location.
@@ -321,7 +321,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getOfficeLocation() {
-		 return officeLocation; 
+		return this.OfficeLocation; 
 	}
 
 	/**
@@ -330,9 +330,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setOfficeLocation(String value) { 
-		officeLocation = value; 
+		OfficeLocation = value; 
 	}
-	private String profession;
+	private String Profession;
 
 	/**
 	* Gets the Profession.
@@ -340,7 +340,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getProfession() {
-		 return profession; 
+		return this.Profession; 
 	}
 
 	/**
@@ -349,9 +349,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setProfession(String value) { 
-		profession = value; 
+		Profession = value; 
 	}
-	private String businessHomePage;
+	private String BusinessHomePage;
 
 	/**
 	* Gets the Business Home Page.
@@ -359,7 +359,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getBusinessHomePage() {
-		 return businessHomePage; 
+		return this.BusinessHomePage; 
 	}
 
 	/**
@@ -368,9 +368,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setBusinessHomePage(String value) { 
-		businessHomePage = value; 
+		BusinessHomePage = value; 
 	}
-	private String assistantName;
+	private String AssistantName;
 
 	/**
 	* Gets the Assistant Name.
@@ -378,7 +378,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getAssistantName() {
-		 return assistantName; 
+		return this.AssistantName; 
 	}
 
 	/**
@@ -387,9 +387,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setAssistantName(String value) { 
-		assistantName = value; 
+		AssistantName = value; 
 	}
-	private String manager;
+	private String Manager;
 
 	/**
 	* Gets the Manager.
@@ -397,7 +397,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getManager() {
-		 return manager; 
+		return this.Manager; 
 	}
 
 	/**
@@ -406,9 +406,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setManager(String value) { 
-		manager = value; 
+		Manager = value; 
 	}
-	private java.util.List<String> homePhones;
+	private java.util.List<String> HomePhones;
 
 	/**
 	* Gets the Home Phones.
@@ -416,7 +416,7 @@ public class Contact extends Item {
 	* @return the java.util.List<String>
 	*/
 	public java.util.List<String> getHomePhones() {
-		 return homePhones; 
+		return this.HomePhones; 
 	}
 
 	/**
@@ -425,9 +425,9 @@ public class Contact extends Item {
 	* @param value the java.util.List<String>
 	*/
 	public void setHomePhones(java.util.List<String> value) { 
-		homePhones = value; 
+		HomePhones = value; 
 	}
-	private java.util.List<String> businessPhones;
+	private java.util.List<String> BusinessPhones;
 
 	/**
 	* Gets the Business Phones.
@@ -435,7 +435,7 @@ public class Contact extends Item {
 	* @return the java.util.List<String>
 	*/
 	public java.util.List<String> getBusinessPhones() {
-		 return businessPhones; 
+		return this.BusinessPhones; 
 	}
 
 	/**
@@ -444,9 +444,9 @@ public class Contact extends Item {
 	* @param value the java.util.List<String>
 	*/
 	public void setBusinessPhones(java.util.List<String> value) { 
-		businessPhones = value; 
+		BusinessPhones = value; 
 	}
-	private String mobilePhone1;
+	private String MobilePhone1;
 
 	/**
 	* Gets the Mobile Phone1.
@@ -454,7 +454,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getMobilePhone1() {
-		 return mobilePhone1; 
+		return this.MobilePhone1; 
 	}
 
 	/**
@@ -463,9 +463,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setMobilePhone1(String value) { 
-		mobilePhone1 = value; 
+		MobilePhone1 = value; 
 	}
-	private PhysicalAddress homeAddress;
+	private PhysicalAddress HomeAddress;
 
 	/**
 	* Gets the Home Address.
@@ -473,7 +473,7 @@ public class Contact extends Item {
 	* @return the PhysicalAddress
 	*/
 	public PhysicalAddress getHomeAddress() {
-		 return homeAddress; 
+		return this.HomeAddress; 
 	}
 
 	/**
@@ -482,9 +482,9 @@ public class Contact extends Item {
 	* @param value the PhysicalAddress
 	*/
 	public void setHomeAddress(PhysicalAddress value) { 
-		homeAddress = value; 
+		HomeAddress = value; 
 	}
-	private PhysicalAddress businessAddress;
+	private PhysicalAddress BusinessAddress;
 
 	/**
 	* Gets the Business Address.
@@ -492,7 +492,7 @@ public class Contact extends Item {
 	* @return the PhysicalAddress
 	*/
 	public PhysicalAddress getBusinessAddress() {
-		 return businessAddress; 
+		return this.BusinessAddress; 
 	}
 
 	/**
@@ -501,9 +501,9 @@ public class Contact extends Item {
 	* @param value the PhysicalAddress
 	*/
 	public void setBusinessAddress(PhysicalAddress value) { 
-		businessAddress = value; 
+		BusinessAddress = value; 
 	}
-	private PhysicalAddress otherAddress;
+	private PhysicalAddress OtherAddress;
 
 	/**
 	* Gets the Other Address.
@@ -511,7 +511,7 @@ public class Contact extends Item {
 	* @return the PhysicalAddress
 	*/
 	public PhysicalAddress getOtherAddress() {
-		 return otherAddress; 
+		return this.OtherAddress; 
 	}
 
 	/**
@@ -520,9 +520,9 @@ public class Contact extends Item {
 	* @param value the PhysicalAddress
 	*/
 	public void setOtherAddress(PhysicalAddress value) { 
-		otherAddress = value; 
+		OtherAddress = value; 
 	}
-	private String yomiCompanyName;
+	private String YomiCompanyName;
 
 	/**
 	* Gets the Yomi Company Name.
@@ -530,7 +530,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getYomiCompanyName() {
-		 return yomiCompanyName; 
+		return this.YomiCompanyName; 
 	}
 
 	/**
@@ -539,9 +539,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setYomiCompanyName(String value) { 
-		yomiCompanyName = value; 
+		YomiCompanyName = value; 
 	}
-	private String yomiGivenName;
+	private String YomiGivenName;
 
 	/**
 	* Gets the Yomi Given Name.
@@ -549,7 +549,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getYomiGivenName() {
-		 return yomiGivenName; 
+		return this.YomiGivenName; 
 	}
 
 	/**
@@ -558,9 +558,9 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setYomiGivenName(String value) { 
-		yomiGivenName = value; 
+		YomiGivenName = value; 
 	}
-	private String yomiSurname;
+	private String YomiSurname;
 
 	/**
 	* Gets the Yomi Surname.
@@ -568,7 +568,7 @@ public class Contact extends Item {
 	* @return the String
 	*/
 	public String getYomiSurname() {
-		 return yomiSurname; 
+		return this.YomiSurname; 
 	}
 
 	/**
@@ -577,6 +577,6 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setYomiSurname(String value) { 
-		yomiSurname = value; 
+		YomiSurname = value; 
 	}
 }

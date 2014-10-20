@@ -9,7 +9,7 @@ package com.microsoft.outlookservices;
  * The type Calendar.
 */
 public class Calendar extends Entity {
-	private String name;
+	private String Name;
 
 	/**
 	* Gets the Name.
@@ -17,7 +17,7 @@ public class Calendar extends Entity {
 	* @return the String
 	*/
 	public String getName() {
-		 return name; 
+		return this.Name; 
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class Calendar extends Entity {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		name = value; 
+		Name = value; 
 	}
-	private String changeKey;
+	private String ChangeKey;
 
 	/**
 	* Gets the Change Key.
@@ -36,7 +36,7 @@ public class Calendar extends Entity {
 	* @return the String
 	*/
 	public String getChangeKey() {
-		 return changeKey; 
+		return this.ChangeKey; 
 	}
 
 	/**
@@ -45,6 +45,6 @@ public class Calendar extends Entity {
 	* @param value the String
 	*/
 	public void setChangeKey(String value) { 
-		changeKey = value; 
+		ChangeKey = value; 
 	}
 }
