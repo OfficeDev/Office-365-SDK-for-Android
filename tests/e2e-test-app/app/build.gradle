@@ -35,5 +35,7 @@ dependencies {
     compile('com.microsoft.aad:adal:1.0.0') {
         exclude group: 'com.android.support'
     }
-
+    compile project(':mail-calendar-contact')
+    compile project(':file-services')
+    compile project(':odata-engine-android-impl')
 }
