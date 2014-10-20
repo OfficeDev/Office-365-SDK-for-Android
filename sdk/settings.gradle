@@ -3,6 +3,6 @@ include ':odata-engine-interfaces', ':directory-services',
         ':mail-calendar-contact',
         ':file-services',
         ':odata-engine-helpers',
-        ':list-services', ':app',
+        ':list-services',
         ":odata-engine-java-impl",
         ":odata-engine-java-desktop-impl"
