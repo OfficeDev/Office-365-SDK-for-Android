@@ -84,7 +84,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
     }
 
 	 /**
-     * Deletes
+     * Reads
      *
      * @return the listenable future
      */

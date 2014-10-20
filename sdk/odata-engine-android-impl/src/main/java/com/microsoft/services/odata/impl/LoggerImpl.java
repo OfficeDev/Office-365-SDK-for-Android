@@ -8,36 +8,11 @@ import com.microsoft.services.odata.interfaces.Logger;
 /**
  * The type Logger impl.
  */
-public class LoggerImpl implements Logger {
-    /**
-     * The Log level.
-     */
-    int logLevel;
-    /**
-     * The Enabled.
-     */
-    boolean enabled;
-
-    /**
-     * Instantiates a new Logger impl.
-     */
-    public LoggerImpl() {
-        this.logLevel = LogLevel.ERROR.getValue();
-        this.enabled = true;
-    }
-
+public class LoggerImpl extends LoggerBase {
     private static final String TAG = "Office365-SDK";
 
     @Override
-    public void log(String content, LogLevel logLevel) {
-        if (!this.enabled) {
-            return;
-        }
-
-        if ((this.logLevel & logLevel.getValue()) != logLevel.getValue()) {
-            return;
-        }
-
+    public void print(String content, LogLevel logLevel) {
         if (content != null) {
             switch (logLevel) {
                 case ERROR:
@@ -54,32 +29,5 @@ public class LoggerImpl implements Logger {
                     break;
             }
         }
-    }
-
-    /**
-     * Sets log level.
-     *
-     * @param logLevel the log level
-     */
-    public void setLogLevel(LogLevel logLevel) {
-        this.logLevel = logLevel.getValue();
-    }
-
-    /**
-     * Is enabled.
-     *
-     * @return the boolean
-     */
-    public boolean isEnabled() {
-        return this.enabled;
-    }
-
-    /**
-     * Sets enabled.
-     *
-     * @param enabled the enabled
-     */
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }

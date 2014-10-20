@@ -1,0 +1,8 @@
+apply plugin: 'java'
+
+dependencies {
+    compile project(':odata-engine-interfaces')
+    compile project(':odata-engine-helpers')
+    compile 'com.google.code.gson:gson:2.3'
+
+}

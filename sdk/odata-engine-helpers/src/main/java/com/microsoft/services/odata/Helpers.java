@@ -4,6 +4,7 @@ import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.ODataURL;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,10 +26,39 @@ public class Helpers {
         Set<String> keys = parameters.keySet();
 
         for (String name : keys) {
-            //TODO: Handle parameter value serialization for URL
-            String val = parameters.get(name).toString();
-            url.addQueryStringParameter(name, val);
+            Object val = parameters.get(name);
+            url.addQueryStringParameter(name, toODataURLValue(val));
         }
+    }
+
+    public static String getFunctionParameters(Map<String, Object> map) {
+        StringBuilder sb = new StringBuilder();
+        Set<String> keys = map.keySet();
+        for (String key : keys) {
+            if (sb.length() > 0) {
+                sb.append(",");
+            }
+
+            sb.append(key);
+            sb.append("=");
+
+            String odataValue = toODataURLValue(map.get(key));
+            sb.append(odataValue);
+        }
+
+        return sb.toString();
+    }
+
+    private static String toODataURLValue(Object o) {
+       if (o instanceof String) {
+           return "'" + o + "'";
+       }
+
+       if (o instanceof Calendar) {
+           return "'" + CalendarSerializer.serialize((Calendar)o) + "'";
+       }
+
+       return o.toString();
     }
 
     /**
@@ -39,13 +69,6 @@ public class Helpers {
      */
     public static String urlEncode(String s) {
         return percentEncode(s, ENCODE_EXCEPTIONS);
-        /*
-        try {
-            return URLEncoder.encode(s, Constants.UTF8_NAME);
-        } catch (UnsupportedEncodingException ignore) {
-            return s;
-        }
-        */
     }
 
     private static String percentEncode(String s, String reserved) {
