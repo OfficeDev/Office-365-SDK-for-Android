@@ -32,7 +32,7 @@ public class VerifiedDomain {
 
     /**
 	private Boolean default;
-    **/
+    */
 
     /**
 	* Gets the default.
@@ -50,12 +50,11 @@ public class VerifiedDomain {
 	*
 	* @param value the Boolean
 	*/
-    /**
-	public void setdefault(Boolean value) { 
+	/**
+    public void setdefault(Boolean value) {
 		default = value; 
 	}
     */
-
 	private String id;
 
 	/**

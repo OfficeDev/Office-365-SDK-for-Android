@@ -55,4 +55,68 @@ public class DirectoryDataServiceClient extends BaseODataContainer {
 	public ODataCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getdeletedDirectoryObjects() {
         return new ODataCollectionFetcher<DirectoryObject, DirectoryObjectFetcher,DirectoryObjectCollectionOperations>("deletedDirectoryObjects", this, DirectoryObject.class,DirectoryObjectCollectionOperations.class);
     }
+	 /**
+     * Gets User.
+     *
+     * @return the User
+     */
+	public ODataCollectionFetcher<User, UserFetcher, UserCollectionOperations> getusers() {
+        return new ODataCollectionFetcher<User, UserFetcher,UserCollectionOperations>("users", this, User.class,UserCollectionOperations.class);
+    }
+	 /**
+     * Gets Application.
+     *
+     * @return the Application
+     */
+	public ODataCollectionFetcher<Application, ApplicationFetcher, ApplicationCollectionOperations> getapplications() {
+        return new ODataCollectionFetcher<Application, ApplicationFetcher,ApplicationCollectionOperations>("applications", this, Application.class,ApplicationCollectionOperations.class);
+    }
+	 /**
+     * Gets Contact.
+     *
+     * @return the Contact
+     */
+	public ODataCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getcontacts() {
+        return new ODataCollectionFetcher<Contact, ContactFetcher,ContactCollectionOperations>("contacts", this, Contact.class,ContactCollectionOperations.class);
+    }
+	 /**
+     * Gets Group.
+     *
+     * @return the Group
+     */
+	public ODataCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations> getgroups() {
+        return new ODataCollectionFetcher<Group, GroupFetcher,GroupCollectionOperations>("groups", this, Group.class,GroupCollectionOperations.class);
+    }
+	 /**
+     * Gets DirectoryRole.
+     *
+     * @return the DirectoryRole
+     */
+	public ODataCollectionFetcher<DirectoryRole, DirectoryRoleFetcher, DirectoryRoleCollectionOperations> getroles() {
+        return new ODataCollectionFetcher<DirectoryRole, DirectoryRoleFetcher,DirectoryRoleCollectionOperations>("roles", this, DirectoryRole.class,DirectoryRoleCollectionOperations.class);
+    }
+	 /**
+     * Gets ServicePrincipal.
+     *
+     * @return the ServicePrincipal
+     */
+	public ODataCollectionFetcher<ServicePrincipal, ServicePrincipalFetcher, ServicePrincipalCollectionOperations> getservicePrincipals() {
+        return new ODataCollectionFetcher<ServicePrincipal, ServicePrincipalFetcher,ServicePrincipalCollectionOperations>("servicePrincipals", this, ServicePrincipal.class,ServicePrincipalCollectionOperations.class);
+    }
+	 /**
+     * Gets TenantDetail.
+     *
+     * @return the TenantDetail
+     */
+	public ODataCollectionFetcher<TenantDetail, TenantDetailFetcher, TenantDetailCollectionOperations> gettenantDetails() {
+        return new ODataCollectionFetcher<TenantDetail, TenantDetailFetcher,TenantDetailCollectionOperations>("tenantDetails", this, TenantDetail.class,TenantDetailCollectionOperations.class);
+    }
+	 /**
+     * Gets Device.
+     *
+     * @return the Device
+     */
+	public ODataCollectionFetcher<Device, DeviceFetcher, DeviceCollectionOperations> getdevices() {
+        return new ODataCollectionFetcher<Device, DeviceFetcher,DeviceCollectionOperations>("devices", this, Device.class,DeviceCollectionOperations.class);
+    }
 }

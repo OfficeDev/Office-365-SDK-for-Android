@@ -237,43 +237,43 @@ public class Application extends DirectoryObject {
 	public void setlogoutUrl(String value) { 
 		logoutUrl = value; 
 	}
-	private Boolean oAuth2AllowImplicitFlow;
+	private Boolean oauth2AllowImplicitFlow;
 
 	/**
-	* Gets the o Auth2Allow Implicit Flow.
+	* Gets the oauth2Allow Implicit Flow.
 	*
 	* @return the Boolean
 	*/
-	public Boolean getoAuth2AllowImplicitFlow() {
-		return this.oAuth2AllowImplicitFlow; 
+	public Boolean getoauth2AllowImplicitFlow() {
+		return this.oauth2AllowImplicitFlow; 
 	}
 
 	/**
-	* Sets the o Auth2Allow Implicit Flow.
+	* Sets the oauth2Allow Implicit Flow.
 	*
 	* @param value the Boolean
 	*/
-	public void setoAuth2AllowImplicitFlow(Boolean value) { 
-		oAuth2AllowImplicitFlow = value; 
+	public void setoauth2AllowImplicitFlow(Boolean value) { 
+		oauth2AllowImplicitFlow = value; 
 	}
-	private Boolean oAuth2AllowUrlPathMatching;
+	private Boolean oauth2AllowUrlPathMatching;
 
 	/**
-	* Gets the o Auth2Allow Url Path Matching.
+	* Gets the oauth2Allow Url Path Matching.
 	*
 	* @return the Boolean
 	*/
-	public Boolean getoAuth2AllowUrlPathMatching() {
-		return this.oAuth2AllowUrlPathMatching; 
+	public Boolean getoauth2AllowUrlPathMatching() {
+		return this.oauth2AllowUrlPathMatching; 
 	}
 
 	/**
-	* Sets the o Auth2Allow Url Path Matching.
+	* Sets the oauth2Allow Url Path Matching.
 	*
 	* @param value the Boolean
 	*/
-	public void setoAuth2AllowUrlPathMatching(Boolean value) { 
-		oAuth2AllowUrlPathMatching = value; 
+	public void setoauth2AllowUrlPathMatching(Boolean value) { 
+		oauth2AllowUrlPathMatching = value; 
 	}
 	private java.util.List<OAuth2Permission> oauth2Permissions;
 
@@ -294,24 +294,24 @@ public class Application extends DirectoryObject {
 	public void setoauth2Permissions(java.util.List<OAuth2Permission> value) { 
 		oauth2Permissions = value; 
 	}
-	private Boolean oAuth2RequirePostResponse;
+	private Boolean oauth2RequirePostResponse;
 
 	/**
-	* Gets the o Auth2Require Post Response.
+	* Gets the oauth2Require Post Response.
 	*
 	* @return the Boolean
 	*/
-	public Boolean getoAuth2RequirePostResponse() {
-		return this.oAuth2RequirePostResponse; 
+	public Boolean getoauth2RequirePostResponse() {
+		return this.oauth2RequirePostResponse; 
 	}
 
 	/**
-	* Sets the o Auth2Require Post Response.
+	* Sets the oauth2Require Post Response.
 	*
 	* @param value the Boolean
 	*/
-	public void setoAuth2RequirePostResponse(Boolean value) { 
-		oAuth2RequirePostResponse = value; 
+	public void setoauth2RequirePostResponse(Boolean value) { 
+		oauth2RequirePostResponse = value; 
 	}
 	private java.util.List<PasswordCredential> passwordCredentials;
 

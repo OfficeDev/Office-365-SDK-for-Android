@@ -47,23 +47,23 @@ public class DirectoryObject {
 	public void setobjectId(String value) { 
 		objectId = value; 
 	}
-	private java.util.Calendar softDeletionTimestamp;
+	private java.util.Calendar deletionTimestamp;
 
 	/**
-	* Gets the soft Deletion Timestamp.
+	* Gets the deletion Timestamp.
 	*
 	* @return the java.util.Calendar
 	*/
-	public java.util.Calendar getsoftDeletionTimestamp() {
-		return this.softDeletionTimestamp; 
+	public java.util.Calendar getdeletionTimestamp() {
+		return this.deletionTimestamp; 
 	}
 
 	/**
-	* Sets the soft Deletion Timestamp.
+	* Sets the deletion Timestamp.
 	*
 	* @param value the java.util.Calendar
 	*/
-	public void setsoftDeletionTimestamp(java.util.Calendar value) { 
-		softDeletionTimestamp = value; 
+	public void setdeletionTimestamp(java.util.Calendar value) { 
+		deletionTimestamp = value; 
 	}
 }

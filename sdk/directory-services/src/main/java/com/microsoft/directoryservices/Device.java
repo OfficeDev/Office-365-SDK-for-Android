@@ -85,6 +85,25 @@ public class Device extends DirectoryObject {
 	public void setdeviceId(java.util.UUID value) { 
 		deviceId = value; 
 	}
+	private String deviceMetadata;
+
+	/**
+	* Gets the device Metadata.
+	*
+	* @return the String
+	*/
+	public String getdeviceMetadata() {
+		return this.deviceMetadata; 
+	}
+
+	/**
+	* Sets the device Metadata.
+	*
+	* @param value the String
+	*/
+	public void setdeviceMetadata(String value) { 
+		deviceMetadata = value; 
+	}
 	private Integer deviceObjectVersion;
 
 	/**
@@ -160,6 +179,25 @@ public class Device extends DirectoryObject {
 	*/
 	public void setdevicePhysicalIds(java.util.List<String> value) { 
 		devicePhysicalIds = value; 
+	}
+	private String deviceTrustType;
+
+	/**
+	* Gets the device Trust Type.
+	*
+	* @return the String
+	*/
+	public String getdeviceTrustType() {
+		return this.deviceTrustType; 
+	}
+
+	/**
+	* Sets the device Trust Type.
+	*
+	* @param value the String
+	*/
+	public void setdeviceTrustType(String value) { 
+		deviceTrustType = value; 
 	}
 	private Boolean dirSyncEnabled;
 
