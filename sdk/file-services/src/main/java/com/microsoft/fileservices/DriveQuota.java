@@ -18,7 +18,7 @@ public class DriveQuota {
 	* @return the long
 	*/
 	public long getdeleted() {
-		 return deleted; 
+		return this.deleted; 
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class DriveQuota {
 	* @return the long
 	*/
 	public long getremaining() {
-		 return remaining; 
+		return this.remaining; 
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class DriveQuota {
 	* @return the String
 	*/
 	public String getstate() {
-		 return state; 
+		return this.state; 
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class DriveQuota {
 	* @return the long
 	*/
 	public long gettotal() {
-		 return total; 
+		return this.total; 
 	}
 
 	/**

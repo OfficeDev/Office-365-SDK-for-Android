@@ -24,7 +24,8 @@ public class CurrentUserRequestContextFetcher extends ODataEntityFetcher<Current
 	 public CurrentUserRequestContextFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, CurrentUserRequestContext.class,CurrentUserRequestContextOperations.class);
     }
-	 /**
+
+		 /**
      * Gets drive.
      *
      * @return the drive

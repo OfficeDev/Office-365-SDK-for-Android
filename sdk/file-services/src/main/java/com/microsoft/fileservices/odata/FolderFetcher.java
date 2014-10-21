@@ -24,7 +24,8 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations> i
 	 public FolderFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Folder.class,FolderOperations.class);
     }
-     /**
+
+	     /**
      * Gets children.
      *
      * @return the children

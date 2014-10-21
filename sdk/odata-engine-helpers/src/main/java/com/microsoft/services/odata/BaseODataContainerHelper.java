@@ -83,6 +83,7 @@ public class BaseODataContainerHelper {
 
         if (content != null) {
             logger.log("With " + content.length + " bytes of payload", LogLevel.INFO);
+            //logger.log("Payload: " + new String(content), LogLevel.VERBOSE);
         }
 
         HttpTransport httpTransport = resolver.getHttpTransport();

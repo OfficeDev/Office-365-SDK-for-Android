@@ -13,7 +13,7 @@ import com.microsoft.fileservices.*;
 /**
  * The type  FileFetcher.
  */
-public class FileFetcher extends ODataEntityFetcher<File,FileOperations> implements Readable<File> {
+public class FileFetcher extends ODataMediaEntityFetcher<File,FileOperations> implements Readable<File> {
 
      /**
      * Instantiates a new FileFetcher.
@@ -24,4 +24,5 @@ public class FileFetcher extends ODataEntityFetcher<File,FileOperations> impleme
 	 public FileFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, File.class,FileOperations.class);
     }
-}
+
+	}

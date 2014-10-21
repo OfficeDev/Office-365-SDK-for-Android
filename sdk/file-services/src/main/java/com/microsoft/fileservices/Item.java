@@ -17,7 +17,7 @@ public class Item {
 	* @return the IdentitySet
 	*/
 	public IdentitySet getcreatedBy() {
-		 return createdBy; 
+		return this.createdBy; 
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class Item {
 	* @return the String
 	*/
 	public String geteTag() {
-		 return eTag; 
+		return this.eTag; 
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class Item {
 	* @return the String
 	*/
 	public String getid() {
-		 return id; 
+		return this.id; 
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class Item {
 	* @return the IdentitySet
 	*/
 	public IdentitySet getlastModifiedBy() {
-		 return lastModifiedBy; 
+		return this.lastModifiedBy; 
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class Item {
 	* @return the String
 	*/
 	public String getname() {
-		 return name; 
+		return this.name; 
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Item {
 	* @return the ItemReference
 	*/
 	public ItemReference getparentReference() {
-		 return parentReference; 
+		return this.parentReference; 
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class Item {
 	* @return the long
 	*/
 	public long getsize() {
-		 return size; 
+		return this.size; 
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class Item {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getdateTimeCreated() {
-		 return dateTimeCreated; 
+		return this.dateTimeCreated; 
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class Item {
 	* @return the java.util.Calendar
 	*/
 	public java.util.Calendar getdateTimeLastModified() {
-		 return dateTimeLastModified; 
+		return this.dateTimeLastModified; 
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class Item {
 	* @return the String
 	*/
 	public String gettype() {
-		 return type; 
+		return this.type; 
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class Item {
 	* @return the String
 	*/
 	public String getwebUrl() {
-		 return webUrl; 
+		return this.webUrl; 
 	}
 
 	/**

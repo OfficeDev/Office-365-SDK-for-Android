@@ -24,4 +24,5 @@ public class DriveFetcher extends ODataEntityFetcher<Drive,DriveOperations> impl
 	 public DriveFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Drive.class,DriveOperations.class);
     }
-}
+
+	}

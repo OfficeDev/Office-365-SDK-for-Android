@@ -6,9 +6,9 @@
 package com.microsoft.fileservices;
 
 /**
- * The type Application Info.
+ * The type Identity.
 */
-public class ApplicationInfo {
+public class Identity {
 
 	private String id;
 
@@ -18,7 +18,7 @@ public class ApplicationInfo {
 	* @return the String
 	*/
 	public String getid() {
-		 return id; 
+		return this.id; 
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class ApplicationInfo {
 	* @return the String
 	*/
 	public String getdisplayName() {
-		 return displayName; 
+		return this.displayName; 
 	}
 
 	/**
