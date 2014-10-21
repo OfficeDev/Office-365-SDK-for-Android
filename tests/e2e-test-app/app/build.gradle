@@ -38,4 +38,5 @@ dependencies {
     compile project(':mail-calendar-contact')
     compile project(':file-services')
     compile project(':odata-engine-android-impl')
+    compile project(':directory-services')
 }

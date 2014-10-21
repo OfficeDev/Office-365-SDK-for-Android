@@ -16,6 +16,7 @@ import com.microsoft.services.odata.interfaces.Request;
 
 
 import java.util.List;
+import java.util.UUID;
 
 
 public class FilesTests extends TestGroup {
@@ -24,7 +25,7 @@ public class FilesTests extends TestGroup {
         super("Files tests");
 
         this.addTest(canGetFiles("Can get files - WIP", false));
-        this.addTest(canCreateFile("Can create file - WIP", false));
+        this.addTest(canCreateFile("Can create file - WIP", true));
     }
 
     private TestCase canGetFiles(String name, boolean enabled) {
@@ -69,10 +70,22 @@ public class FilesTests extends TestGroup {
 
                     EntityContainerClient client = getFileClient();
 
-                    Item addedFile = client.getme().getfiles().getOperations().add("myFile.txt", "myFile.txt", "File", "Hello World".getBytes()).get();
+                    File newFile = new File();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item addedFile = client.getme().getfiles().add(newFile).get();
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
+
+                    byte[] content = client.getme().getfiles().getById(addedFile.getid()).asFile().getContent().get();
+
+                    //Item addedFile = client.getme().getfiles().getOperations().add("myFile.txt", "myFile.txt", "File", "Hello World".getBytes()).get();
 
                     //Assert
                     if(addedFile == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    if(content.length == 0)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -95,7 +108,7 @@ public class FilesTests extends TestGroup {
         credentialsFactory.setCredentials(new Credentials() {
             @Override
             public void prepareRequest(Request request) {
-                request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVUa0d0S1JrZ2FpZXpFWTJFc0xDMmdPTGpBNCJ9.eyJhdWQiOiJodHRwczovL21zb3BlbnRlY2guc3BvcHBlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MtcHBlLm5ldC8yYzc1YzM0NS02OWJmLTQzZTgtOWIzZi1lMmVjZGUwNDE0OGEvIiwiaWF0IjoxNDEzNDg5MDk3LCJuYmYiOjE0MTM0ODkwOTcsImV4cCI6MTQxMzQ5Mjk5NywidmVyIjoiMS4wIiwidGlkIjoiMmM3NWMzNDUtNjliZi00M2U4LTliM2YtZTJlY2RlMDQxNDhhIiwiYW1yIjpbInB3ZCJdLCJvaWQiOiI2Yjg3YjgwOS04NTIzLTQ5YTctOTExMy0xZGEwZDI2OTdmZDMiLCJ1cG4iOiJ2LWFuaG9qbkBtc29wZW50ZWNoLmNjc2N0cC5uZXQiLCJ1bmlxdWVfbmFtZSI6InYtYW5ob2puQG1zb3BlbnRlY2guY2NzY3RwLm5ldCIsInN1YiI6ImcwU0J6UFNZWmppaGJTMnhXZmIzNnNlemwxbGtwblNHcXh6RVhXTzUtOG8iLCJwdWlkIjoiMTAwMzAwMDA4Qjk3MDIxOSIsImZhbWlseV9uYW1lIjoiSG9qbmFkZWwiLCJnaXZlbl9uYW1lIjoiQW5haGkiLCJhcHBpZCI6IjEyMTZkYTY3LWM5YjktNDRmYS1iZGM0LWQ4ZTJhMDZiNGMwZiIsImFwcGlkYWNyIjoiMCIsInNjcCI6IkFsbFNpdGVzLkZ1bGxDb250cm9sIEFsbFNpdGVzLk1hbmFnZSBBbGxTaXRlcy5SZWFkIEFsbFNpdGVzLldyaXRlIE15RmlsZXMuUmVhZCBNeUZpbGVzLldyaXRlIFNlYXJjaCIsImFjciI6IjEifQ.ozoan8Nwh-ZhuOwLOgIdx1uKn10M9GHYwui-Ox7HBpVZM1iEvYxfDB-laHGtGpcw4-VzkKejqW2GcAk9WAVRnZFQJBO2RYLXh1U-_CO8kWXKWjRnqZlhYN01PaZ_Nm01r6yik6N1UEdD4LHtDLaPCr4NtGk0i3JJjvenSeS0Tg2vZ_2pyrM-Adxwe5Zt4MEvnSLaAusRY2VgJcxU9etcYEDqNZFx-RJ6J2JEcGYCiCFp3FsVX1j0wJyf6vIYE_NdgduX78OtYsS6B1DkF2a0XzdkwNTFS2Vip3COKQVRUOMf4kFby3cfhEwBKHmsVKgyZ17IfL_8oLjxpBrWt92XcQ");
+                request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVUa0d0S1JrZ2FpZXpFWTJFc0xDMmdPTGpBNCJ9.eyJhdWQiOiJodHRwczovL21zb3BlbnRlY2guc3BvcHBlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MtcHBlLm5ldC8yYzc1YzM0NS02OWJmLTQzZTgtOWIzZi1lMmVjZGUwNDE0OGEvIiwiaWF0IjoxNDEzOTI1OTE2LCJuYmYiOjE0MTM5MjU5MTYsImV4cCI6MTQxMzkyOTgxNiwidmVyIjoiMS4wIiwidGlkIjoiMmM3NWMzNDUtNjliZi00M2U4LTliM2YtZTJlY2RlMDQxNDhhIiwiYW1yIjpbInB3ZCJdLCJvaWQiOiI3OWRhZGJjMS03ZmRiLTRhOTItOGFhYy1lNjE2MWNiZTczZDQiLCJ1cG4iOiJ2LW1hcmN0b0Btc29wZW50ZWNoLmNjc2N0cC5uZXQiLCJ1bmlxdWVfbmFtZSI6InYtbWFyY3RvQG1zb3BlbnRlY2guY2NzY3RwLm5ldCIsInN1YiI6InVWS2tUOVFxUkROZkxpM2h5YmR1b1Fob1BvNGwzeF84RmNjeDhwSnpoeE0iLCJwdWlkIjoiMTAwM0JGRkQ4QjlGQTM1RCIsImZhbWlseV9uYW1lIjoiVG9ycmVzIiwiZ2l2ZW5fbmFtZSI6Ik1hcmNvcyIsImFwcGlkIjoiMTIxNmRhNjctYzliOS00NGZhLWJkYzQtZDhlMmEwNmI0YzBmIiwiYXBwaWRhY3IiOiIwIiwic2NwIjoiQWxsU2l0ZXMuRnVsbENvbnRyb2wgQWxsU2l0ZXMuTWFuYWdlIEFsbFNpdGVzLlJlYWQgQWxsU2l0ZXMuV3JpdGUgTXlGaWxlcy5SZWFkIE15RmlsZXMuV3JpdGUgU2VhcmNoIiwiYWNyIjoiMSJ9.cjLV2OPPSmzeUTHsciHsyQfc6xx4UmYelvjK0sChb_erGT08TWspnPJZKWgpKrsNrv1CNL2FpLhl2R7hdmZ-rbar3hPnFILYy2xH2sxALbQj8Ec250WzCp_deIE_Mo8hjlKzQoUboVhgMCUwkt-ZX4bSiulKMretYo0KLxrAY3ufJEt00p9QnCTfBMCX9nOzl5voxe0jRWhjAWza89logGIP31LSLwXI8Pclp7qzghv6FxRZ-4q8NAuvC1cQRVne3oEZKqit5vZXvtB2G-WLw-Re6Cx-XTs8KZR2J2Z3mqaCJn80cgQaBGTWX5GRtclO8r6e8lzCS7lg7oSm4q__IQ");
                 request.addHeader("Accept", "application/json");
             }
         });

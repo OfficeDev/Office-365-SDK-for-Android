@@ -24,4 +24,11 @@ public class ItemFetcher extends ODataEntityFetcher<Item,ItemOperations> impleme
 	 public ItemFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Item.class,ItemOperations.class);
     }
-}
+
+	     public FileFetcher asFile(){
+	      return new FileFetcher(this.urlComponent, this.parent);
+     }	
+	     public FolderFetcher asFolder(){
+	      return new FolderFetcher(this.urlComponent, this.parent);
+     }	
+	}

@@ -18,7 +18,7 @@ public class ItemReference {
 	* @return the String
 	*/
 	public String getdriveId() {
-		 return driveId; 
+		return this.driveId; 
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class ItemReference {
 	* @return the String
 	*/
 	public String getid() {
-		 return id; 
+		return this.id; 
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class ItemReference {
 	* @return the String
 	*/
 	public String getpath() {
-		 return path; 
+		return this.path; 
 	}
 
 	/**

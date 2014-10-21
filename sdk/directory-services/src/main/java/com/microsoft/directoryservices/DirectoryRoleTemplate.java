@@ -3,33 +3,31 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.fileservices;
+package com.microsoft.directoryservices;
 
 /**
- * The type User Info.
+ * The type Directory Role Template.
 */
-public class UserInfo {
-
-	private String id;
+public class DirectoryRoleTemplate extends DirectoryObject {
+	private String description;
 
 	/**
-	* Gets the id.
+	* Gets the description.
 	*
 	* @return the String
 	*/
-	public String getid() {
-		 return id; 
+	public String getdescription() {
+		return this.description; 
 	}
 
 	/**
-	* Sets the id.
+	* Sets the description.
 	*
 	* @param value the String
 	*/
-	public void setid(String value) { 
-		id = value; 
+	public void setdescription(String value) { 
+		description = value; 
 	}
-
 	private String displayName;
 
 	/**
@@ -38,7 +36,7 @@ public class UserInfo {
 	* @return the String
 	*/
 	public String getdisplayName() {
-		 return displayName; 
+		return this.displayName; 
 	}
 
 	/**

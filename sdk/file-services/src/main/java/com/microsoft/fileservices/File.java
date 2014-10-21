@@ -17,7 +17,7 @@ public class File extends Item {
 	* @return the String
 	*/
 	public String getcontentUrl() {
-		 return contentUrl; 
+		return this.contentUrl; 
 	}
 
 	/**

@@ -17,7 +17,7 @@ public class Folder extends Item {
 	* @return the Integer
 	*/
 	public Integer getchildCount() {
-		 return childCount; 
+		return this.childCount; 
 	}
 
 	/**

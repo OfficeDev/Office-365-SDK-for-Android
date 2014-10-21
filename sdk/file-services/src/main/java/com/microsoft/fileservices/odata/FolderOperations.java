@@ -42,7 +42,7 @@ public class FolderOperations extends ItemOperations {
 	}
 	
      /**
-     * Copy listenable future.
+     * copy listenable future.
      * @param destFolderId the destFolderId
  * @param destFolderPath the destFolderPath
  * @param newName the newName
@@ -58,7 +58,7 @@ public class FolderOperations extends ItemOperations {
 		
 		ODataURL url = getResolver().createODataURL();
 
-				url.appendPathComponent("Copy");
+				url.appendPathComponent("copy");
 		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		

@@ -3,50 +3,50 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.fileservices;
+package com.microsoft.directoryservices;
 
 /**
- * The type Application Info.
+ * The type Resource Access.
 */
-public class ApplicationInfo {
+public class ResourceAccess {
 
-	private String id;
+	private java.util.UUID id;
 
 	/**
 	* Gets the id.
 	*
-	* @return the String
+	* @return the java.util.UUID
 	*/
-	public String getid() {
-		 return id; 
+	public java.util.UUID getid() {
+		return this.id; 
 	}
 
 	/**
 	* Sets the id.
 	*
-	* @param value the String
+	* @param value the java.util.UUID
 	*/
-	public void setid(String value) { 
+	public void setid(java.util.UUID value) { 
 		id = value; 
 	}
 
-	private String displayName;
+	private String type;
 
 	/**
-	* Gets the display Name.
+	* Gets the type.
 	*
 	* @return the String
 	*/
-	public String getdisplayName() {
-		 return displayName; 
+	public String gettype() {
+		return this.type; 
 	}
 
 	/**
-	* Sets the display Name.
+	* Sets the type.
 	*
 	* @param value the String
 	*/
-	public void setdisplayName(String value) { 
-		displayName = value; 
+	public void settype(String value) { 
+		type = value; 
 	}
 }

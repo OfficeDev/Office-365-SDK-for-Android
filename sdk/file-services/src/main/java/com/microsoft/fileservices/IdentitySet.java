@@ -10,43 +10,43 @@ package com.microsoft.fileservices;
 */
 public class IdentitySet {
 
-	private ApplicationInfo application;
+	private Identity application;
 
 	/**
 	* Gets the application.
 	*
-	* @return the ApplicationInfo
+	* @return the Identity
 	*/
-	public ApplicationInfo getapplication() {
-		 return application; 
+	public Identity getapplication() {
+		return this.application; 
 	}
 
 	/**
 	* Sets the application.
 	*
-	* @param value the ApplicationInfo
+	* @param value the Identity
 	*/
-	public void setapplication(ApplicationInfo value) { 
+	public void setapplication(Identity value) { 
 		application = value; 
 	}
 
-	private UserInfo user;
+	private Identity user;
 
 	/**
 	* Gets the user.
 	*
-	* @return the UserInfo
+	* @return the Identity
 	*/
-	public UserInfo getuser() {
-		 return user; 
+	public Identity getuser() {
+		return this.user; 
 	}
 
 	/**
 	* Sets the user.
 	*
-	* @param value the UserInfo
+	* @param value the Identity
 	*/
-	public void setuser(UserInfo value) { 
+	public void setuser(Identity value) { 
 		user = value; 
 	}
 }

@@ -42,7 +42,7 @@ public class FileOperations extends ItemOperations {
 	}
 	
      /**
-     * Copy listenable future.
+     * copy listenable future.
      * @param destFolderId the destFolderId
  * @param destFolderPath the destFolderPath
  * @param newName the newName
@@ -58,54 +58,11 @@ public class FileOperations extends ItemOperations {
 		
 		ODataURL url = getResolver().createODataURL();
 
-				url.appendPathComponent("Copy");
+				url.appendPathComponent("copy");
 		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
 		
 		addEntityResultCallback(result, future, getResolver(), File.class);
-		
-		return result;
-    }
-	
-     /**
-     * UploadContent listenable future.
-     * @param contentStream the contentStream
-
-	 * @return the listenable future
-     */			
-	public ListenableFuture<Integer> uploadContent(byte[] contentStream) {
-	    final SettableFuture<Integer> result = SettableFuture.create();
-		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-		map.put("contentStream", contentStream);
-		
-		ODataURL url = getResolver().createODataURL();
-
-				url.appendPathComponent("UploadContent");
-		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
-		
-		addEntityResultCallback(result, future, getResolver(), Integer.class);
-		
-		return result;
-    }
-	
-     /**
-     * Content listenable future.
-    
-	 * @return the listenable future
-     */			
-	public ListenableFuture<byte[]> content() {
-	    final SettableFuture<byte[]> result = SettableFuture.create();
-		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-		
-		ODataURL url = getResolver().createODataURL();
-
-		String parameters = getFunctionParameters(map);
-		url.appendPathComponent("Content(" + parameters + ")");
-		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET);
-		
-        addByteArrayResultCallback(result, future, getResolver(), byte[].class);
 		
 		return result;
     }

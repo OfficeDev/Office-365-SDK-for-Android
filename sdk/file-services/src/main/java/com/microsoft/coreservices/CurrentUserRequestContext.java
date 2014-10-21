@@ -17,7 +17,7 @@ public class CurrentUserRequestContext {
 	* @return the String
 	*/
 	public String getid() {
-		 return id; 
+		return this.id; 
 	}
 
 	/**

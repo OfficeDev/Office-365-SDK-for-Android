@@ -30,7 +30,24 @@ public class ODataURLImpl implements ODataURL {
 
     @Override
     public void setBaseUrl(String baseUrl) {
-        this.baseUrl = removeTrailingSlash(baseUrl);
+        String[] urlParts = baseUrl.split("\\?");
+
+        this.baseUrl = removeTrailingSlash(urlParts[0]);
+
+        if (urlParts.length > 1) {
+            String[] parameters = urlParts[1].split("&");
+
+            for (String kv : parameters) {
+                String[] parameterParts = kv.split("=");
+                String key = parameterParts[0];
+                String val = "";
+                if (parameterParts.length > 1) {
+                    val = parameterParts[1];
+                }
+
+                this.addQueryStringParameter(key, val);
+            }
+        }
     }
 
     @Override
@@ -92,7 +109,12 @@ public class ODataURLImpl implements ODataURL {
             }
         }
 
-        return sb.toString();
+        String url = sb.toString();
+        if (url.endsWith("&")) {
+            url = url.substring(0, url.length() - 1);
+        }
+
+        return url;
     }
 
     private static String addTrailingSlash(String s) {

@@ -17,7 +17,7 @@ public class Drive {
 	* @return the String
 	*/
 	public String getid() {
-		 return id; 
+		return this.id; 
 	}
 
 	/**
@@ -28,23 +28,23 @@ public class Drive {
 	public void setid(String value) { 
 		id = value; 
 	}
-	private UserInfo owner;
+	private Identity owner;
 
 	/**
 	* Gets the owner.
 	*
-	* @return the UserInfo
+	* @return the Identity
 	*/
-	public UserInfo getowner() {
-		 return owner; 
+	public Identity getowner() {
+		return this.owner; 
 	}
 
 	/**
 	* Sets the owner.
 	*
-	* @param value the UserInfo
+	* @param value the Identity
 	*/
-	public void setowner(UserInfo value) { 
+	public void setowner(Identity value) { 
 		owner = value; 
 	}
 	private DriveQuota quota;
@@ -55,7 +55,7 @@ public class Drive {
 	* @return the DriveQuota
 	*/
 	public DriveQuota getquota() {
-		 return quota; 
+		return this.quota; 
 	}
 
 	/**
