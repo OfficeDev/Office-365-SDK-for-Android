@@ -7,7 +7,7 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.coreservices.odata.EntityContainerClient;
+import com.microsoft.sharepointservices.odata.EntityContainerClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import com.microsoft.services.odata.impl.http.CredentialsFactoryImpl;
 import com.microsoft.services.odata.interfaces.Credentials;

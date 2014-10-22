@@ -1,5 +1,5 @@
 include ':app',
-        ':mail-calendar-contact',
+        ':outlook-services',
         ':file-services',
         ':directory-services',
         ':odata-engine-java-impl',
@@ -8,7 +8,7 @@ include ':app',
         ':odata-engine-helpers',
         ':odata-engine-android-impl'
 
-project (':mail-calendar-contact').projectDir = file('../../sdk/mail-calendar-contact')
+project (':outlook-services').projectDir = file('../../sdk/outlook-services')
 project (':file-services').projectDir = file('../../sdk/file-services')
 project (':directory-services').projectDir = file('../../sdk/directory-services')
 project (':odata-engine-interfaces').projectDir = file('../../sdk/odata-engine-interfaces')
