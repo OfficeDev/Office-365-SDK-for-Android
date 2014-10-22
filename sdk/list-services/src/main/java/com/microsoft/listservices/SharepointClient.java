@@ -5,187 +5,196 @@
  ******************************************************************************/
 package com.microsoft.listservices;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.services.odata.interfaces.DependencyResolver;
-import com.microsoft.services.odata.interfaces.HttpTransport;
-import com.microsoft.services.odata.interfaces.HttpVerb;
-import com.microsoft.services.odata.interfaces.LogLevel;
-import com.microsoft.services.odata.interfaces.Request;
-import com.microsoft.services.odata.interfaces.Response;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.microsoft.listservices.http.HttpConnection;
+import com.microsoft.listservices.http.Request;
+import com.microsoft.listservices.http.Response;
 
 public class SharepointClient extends OfficeClient {
-    private String mServerUrl;
-    private String mSiteRelativeUrl;
-    private DependencyResolver mResolver;
+	private String mServerUrl;
+	private String mSiteRelativeUrl;
 
-    protected String getSiteUrl() {
-        return mServerUrl + mSiteRelativeUrl;
-    }
+	protected String getSiteUrl() {
+		return mServerUrl + mSiteRelativeUrl;
+	}
 
-    protected String getServerUrl() {
-        return mServerUrl;
-    }
+	protected String getServerUrl() {
+		return mServerUrl;
+	}
 
-    protected String getSiteRelativeUrl() {
-        return mSiteRelativeUrl;
-    }
+	protected String getSiteRelativeUrl() {
+		return mSiteRelativeUrl;
+	}
 
-    public SharepointClient(String serverUrl, String siteRelativeUrl,
-                            DependencyResolver resolver) {
-        super(resolver);
+	public SharepointClient(String serverUrl, String siteRelativeUrl,
+			Credentials credentials) {
+		this(serverUrl, siteRelativeUrl, credentials, null);
+	}
 
-        mResolver = resolver;
+	public SharepointClient(String serverUrl, String siteRelativeUrl,
+			Credentials credentials, Logger logger) {
+		super(credentials, logger);
 
-        if (serverUrl == null) {
-            throw new IllegalArgumentException("serverUrl must not be null");
-        }
+		if (serverUrl == null) {
+			throw new IllegalArgumentException("serverUrl must not be null");
+		}
 
-        if (siteRelativeUrl == null) {
-            throw new IllegalArgumentException(
-                    "siteRelativeUrl must not be null");
-        }
+		if (siteRelativeUrl == null) {
+			throw new IllegalArgumentException(
+					"siteRelativeUrl must not be null");
+		}
 
-        mServerUrl = serverUrl;
-        mSiteRelativeUrl = siteRelativeUrl;
+		mServerUrl = serverUrl;
+		mSiteRelativeUrl = siteRelativeUrl;
 
-        if (!mServerUrl.endsWith("/")) {
-            mServerUrl += "/";
-        }
+		if (!mServerUrl.endsWith("/")) {
+			mServerUrl += "/";
+		}
 
-        if (mSiteRelativeUrl.startsWith("/")) {
-            mSiteRelativeUrl = mSiteRelativeUrl.substring(1);
-        }
+		if (mSiteRelativeUrl.startsWith("/")) {
+			mSiteRelativeUrl = mSiteRelativeUrl.substring(1);
+		}
 
-        if (!mSiteRelativeUrl.endsWith("/") && mSiteRelativeUrl.length() > 0) {
-            mSiteRelativeUrl += "/";
-        }
-    }
+		if (!mSiteRelativeUrl.endsWith("/") && mSiteRelativeUrl.length() > 0) {
+			mSiteRelativeUrl += "/";
+		}
+	}
 
-    protected ListenableFuture<String> getFormDigest() {
+	protected ListenableFuture<String> getFormDigest() {
 
-        HttpTransport connection = mResolver.getHttpTransport();
-        Request request = connection.createRequest();
-        request.setUrl(getSiteUrl() + "_api/contextinfo");
-        prepareRequest(request);
+		HttpConnection connection = Platform.createHttpConnection();
+		Request request = new Request("POST");
+		request.setUrl(getSiteUrl() + "_api/contextinfo");
+		prepareRequest(request);
 
-        log("Generate request for getFormDigest", LogLevel.INFO);
+		log("Generate request for getFormDigest", LogLevel.Verbose);
+		request.log(getLogger());
 
-        final SettableFuture<String> result = SettableFuture.create();
-        ListenableFuture<Response> future = connection.execute(request);
+		final SettableFuture<String> result = SettableFuture.create();
+		ListenableFuture<Response> future = connection.execute(request);
 
-        Futures.addCallback(future, new FutureCallback<Response>() {
-            @Override
-            public void onFailure(Throwable t) {
-                result.setException(t);
-            }
+		Futures.addCallback(future, new FutureCallback<Response>() {
+			@Override
+			public void onFailure(Throwable t) {
+				result.setException(t);
+			}
 
-            @Override
-            public void onSuccess(Response response) {
-                try {
-                    int statusCode = response.getStatus();
-                    if (isValidStatus(statusCode)) {
+			@Override
+			public void onSuccess(Response response) {
+				try {
+					int statusCode = response.getStatus();
+					if (isValidStatus(statusCode)) {
+						String responseContent = response.readToEnd();
 
-                        //TODO:JUST TO MAKE IT COMPILE!
-                        String responseContent = response.getStream().toString();
+						JSONObject json = new JSONObject(responseContent);
 
-                        com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
-                        JsonObject json = parser.parse(responseContent).getAsJsonObject();
+						result.set(json.getJSONObject("d")
+								.getJSONObject("GetContextWebInformation")
+								.getString("FormDigestValue"));
+					} else {
+						result.setException(new Exception(
+								"Invalid status code " + statusCode + ": "
+										+ response.readToEnd()));
+					}
+				} catch (Exception e) {
+					log(e);
+				}
+			}
+		});
 
+		return result;
+	}
 
-                        result.set(String.valueOf(json.getAsJsonObject("d")
-                                .getAsJsonObject("GetContextWebInformation")
-                                .getAsJsonObject("FormDigestValue")));
-                    } else {
-                    }
-                } catch (Exception e) {
-                    log(e);
-                }
-            }
-        });
+	/**
+	 * Execute request json with digest.
+	 * 
+	 * @param url
+	 *            the url
+	 * @param method
+	 *            the method
+	 * @param headers
+	 *            the headers
+	 * @param payload
+	 *            the payload
+	 * @return OfficeFuture<JSONObject>
+	 */
+	protected ListenableFuture<JSONObject> executeRequestJsonWithDigest(
+			final String url, final String method,
+			final Map<String, String> headers, final byte[] payload) {
 
-        return result;
-    }
+		final SettableFuture<JSONObject> result = SettableFuture.create();
+		ListenableFuture<String> digestFuture = getFormDigest();
 
-    /**
-     * Execute request json with digest.
-     *
-     * @param url     the url
-     * @param method  the method
-     * @param headers the headers
-     * @param payload the payload
-     * @return OfficeFuture<JsonObject>
-     */
-    protected ListenableFuture<JsonObject> executeRequestJsonWithDigest(
-            final String url, final HttpVerb method,
-            final Map<String, String> headers, final byte[] payload) {
+		Futures.addCallback(digestFuture, new FutureCallback<String>() {
+			@Override
+			public void onFailure(Throwable t) {
+				result.setException(t);
+			}
 
-        final SettableFuture<JsonObject> result = SettableFuture.create();
-        ListenableFuture<String> digestFuture = getFormDigest();
+			@Override
+			public void onSuccess(String digest) {
+				Map<String, String> finalHeaders = new HashMap<String, String>();
 
-        Futures.addCallback(digestFuture, new FutureCallback<String>() {
-            @Override
-            public void onFailure(Throwable t) {
-                result.setException(t);
-            }
+				if (headers != null) {
+					for (String key : headers.keySet()) {
+						finalHeaders.put(key, headers.get(key));
+					}
+				}
 
-            @Override
-            public void onSuccess(String digest) {
-                Map<String, String> finalHeaders = new HashMap<String, String>();
+				finalHeaders.put("Content-Type",
+						"application/json;odata=verbose");
+				finalHeaders.put("X-RequestDigest", digest);
 
-                if (headers != null) {
-                    for (String key : headers.keySet()) {
-                        finalHeaders.put(key, headers.get(key));
-                    }
-                }
+				ListenableFuture<JSONObject> request = executeRequestJson(url,
+						method, finalHeaders, payload);
 
-                finalHeaders.put("Content-Type", "application/json;odata=verbose");
-                finalHeaders.put("X-RequestDigest", digest);
-                ListenableFuture<JsonObject> request = executeRequestJson(url, method, finalHeaders, payload);
+				Futures.addCallback(request, new FutureCallback<JSONObject>() {
+					@Override
+					public void onFailure(Throwable t) {
+						result.setException(t);
+					}
 
-                Futures.addCallback(request, new FutureCallback<JsonObject>() {
-                    @Override
-                    public void onFailure(Throwable t) {
-                        result.setException(t);
-                    }
+					@Override
+					public void onSuccess(JSONObject json) {
+						result.set(json);
+					}
+				});
+			}
+		});
+		return result;
+	}
 
-                    @Override
-                    public void onSuccess(JsonObject json) {
-                        result.set(json);
-                    }
-                });
-            }
-        });
-        return result;
-    }
+	public ListenableFuture<String> getWebTitle() {
+		final SettableFuture<String> result = SettableFuture.create();
 
-    public ListenableFuture<String> getWebTitle() {
-        final SettableFuture<String> result = SettableFuture.create();
+		ListenableFuture<JSONObject> request = executeRequestJson(mServerUrl
+				+ "_api/web/title", "GET");
 
-        ListenableFuture<JsonObject> request = executeRequestJson(mServerUrl + "_api/web/title", HttpVerb.GET);
+		Futures.addCallback(request, new FutureCallback<JSONObject>() {
+			@Override
+			public void onFailure(Throwable t) {
+				result.setException(t);
+			}
 
-        Futures.addCallback(request, new FutureCallback<JsonObject>() {
-            @Override
-            public void onFailure(Throwable t) {
-                result.setException(t);
-            }
+			@Override
+			public void onSuccess(JSONObject json) {
+				try {
+					result.set(json.getJSONObject("d").getString("Title"));
+				} catch (JSONException e) {
+					log(e);
+				}
+			}
+		});
 
-            @Override
-            public void onSuccess(JsonObject json) {
-
-                JsonElement element = json.get("d");
-                JsonElement title = element.getAsJsonObject().get("Title");
-                result.set(title.getAsString());
-            }
-        });
-
-        return result;
-    }
+		return result;
+	}
 }

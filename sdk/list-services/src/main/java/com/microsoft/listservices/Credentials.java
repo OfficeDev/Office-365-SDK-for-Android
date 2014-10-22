@@ -5,16 +5,17 @@
  ******************************************************************************/
 package com.microsoft.listservices;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class SPFieldUrlValue {
-	public static JSONObject getJsonForUrl(String url, String description) throws JSONException {
-		JSONObject json = new JSONObject();
-		
-		json.put("Description", description);
-		json.put("Url", url);
-		
-		return json;
-	}
+import com.microsoft.listservices.http.Request;
+
+/**
+ * Interface for credentials to be sent in a request
+ */
+public interface Credentials {
+	
+	/**
+	 * Adds the credentials to the request
+	 * @param request The request to prepare
+	 */
+	public void prepareRequest(Request request);
 }

@@ -25,8 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
-import com.microsoft.services.odata.Constants;
+import android.util.Pair;
 
 /**
  * Class that represents a query

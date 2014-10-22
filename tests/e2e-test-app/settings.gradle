@@ -2,6 +2,8 @@ include ':app',
         ':outlook-services',
         ':file-services',
         ':directory-services',
+        ':list-services',
+        ':discovery-services',
         ':odata-engine-java-impl',
         ':odata-engine-java-desktop-impl',
         ':odata-engine-interfaces',
@@ -11,6 +13,8 @@ include ':app',
 project (':outlook-services').projectDir = file('../../sdk/outlook-services')
 project (':file-services').projectDir = file('../../sdk/file-services')
 project (':directory-services').projectDir = file('../../sdk/directory-services')
+project (':discovery-services').projectDir = file('../../sdk/discovery-services')
+project (':list-services').projectDir = file('../../sdk/list-services')
 project (':odata-engine-interfaces').projectDir = file('../../sdk/odata-engine-interfaces')
 project (':odata-engine-helpers').projectDir = file('../../sdk/odata-engine-helpers')
 project (':odata-engine-android-impl').projectDir = file('../../sdk/odata-engine-android-impl')
