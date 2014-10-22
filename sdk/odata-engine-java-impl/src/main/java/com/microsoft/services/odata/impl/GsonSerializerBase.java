@@ -82,7 +82,7 @@ public abstract class GsonSerializerBase implements JsonSerializer {
         if (json.isJsonArray()) {
             JsonArray jsonArray = json.getAsJsonArray();
             for (JsonElement subElement : jsonArray) {
-                sanitizePostSerialization(json);
+                sanitizePostSerialization(subElement);
             }
         } else if (json.isJsonObject()) {
             JsonObject jsonObject = json.getAsJsonObject();
@@ -91,10 +91,13 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                 String propertyName = entry.getKey();
                 JsonElement subElement = entry.getValue();
 
-                String newName = propertyName.substring(getReservedPrefix().length());
-                if (getReservedNames().contains(newName)) {
-                    jsonObject.remove(newName);
-                    jsonObject.add(propertyName, subElement);
+                String newName = propertyName;
+                if (newName.startsWith(getReservedPrefix())) {
+                    newName = newName.substring(getReservedPrefix().length());
+                    if (getReservedNames().contains(newName)) {
+                        jsonObject.remove(newName);
+                        jsonObject.add(propertyName, subElement);
+                    }
                 }
 
                 sanitizePostSerialization(subElement);
@@ -106,7 +109,7 @@ public abstract class GsonSerializerBase implements JsonSerializer {
         if (json.isJsonArray()) {
             JsonArray jsonArray = json.getAsJsonArray();
             for (JsonElement subElement : jsonArray) {
-                sanitizeForDeserialization(json);
+                sanitizeForDeserialization(subElement);
             }
         } else if (json.isJsonObject()) {
             JsonObject jsonObject = json.getAsJsonObject();
@@ -115,7 +118,7 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                 String propertyName = entry.getKey();
                 JsonElement subElement = entry.getValue();
 
-                String newName = propertyName.substring(getReservedPrefix().length());
+                String newName = getReservedPrefix() + propertyName;
                 if (getReservedNames().contains(propertyName)) {
                     jsonObject.remove(propertyName);
                     jsonObject.add(newName, subElement);
