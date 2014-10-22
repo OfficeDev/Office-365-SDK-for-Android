@@ -24,4 +24,5 @@ public class SubscribedSkuFetcher extends ODataEntityFetcher<SubscribedSku,Subsc
 	 public SubscribedSkuFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, SubscribedSku.class,SubscribedSkuOperations.class);
     }
-}
+
+	}

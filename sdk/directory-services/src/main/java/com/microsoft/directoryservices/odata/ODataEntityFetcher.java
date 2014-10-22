@@ -20,8 +20,8 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
  */
 public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Readable<E> {
 
-    private String urlComponent;
-    private ODataExecutable parent;
+    protected String urlComponent;
+    protected ODataExecutable parent;
     private Class<E> clazz;
     private V operations;
 

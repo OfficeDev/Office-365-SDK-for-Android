@@ -24,4 +24,5 @@ public class DirectoryRoleTemplateFetcher extends ODataEntityFetcher<DirectoryRo
 	 public DirectoryRoleTemplateFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, DirectoryRoleTemplate.class,DirectoryRoleTemplateOperations.class);
     }
-}
+
+	}

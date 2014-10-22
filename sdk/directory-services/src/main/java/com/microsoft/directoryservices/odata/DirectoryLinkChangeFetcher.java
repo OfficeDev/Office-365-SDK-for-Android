@@ -24,4 +24,5 @@ public class DirectoryLinkChangeFetcher extends ODataEntityFetcher<DirectoryLink
 	 public DirectoryLinkChangeFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, DirectoryLinkChange.class,DirectoryLinkChangeOperations.class);
     }
-}
+
+	}

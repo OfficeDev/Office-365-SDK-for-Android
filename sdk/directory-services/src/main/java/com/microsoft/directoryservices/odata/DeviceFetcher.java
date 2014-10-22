@@ -24,7 +24,8 @@ public class DeviceFetcher extends ODataEntityFetcher<Device,DeviceOperations> i
 	 public DeviceFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Device.class,DeviceOperations.class);
     }
-     /**
+
+	     /**
      * Gets registered owners.
      *
      * @return the registered owners

@@ -24,7 +24,8 @@ public class ServicePrincipalFetcher extends ODataEntityFetcher<ServicePrincipal
 	 public ServicePrincipalFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, ServicePrincipal.class,ServicePrincipalOperations.class);
     }
-     /**
+
+	     /**
      * Gets app role assigned to.
      *
      * @return the app role assigned to

@@ -24,4 +24,5 @@ public class ContactFetcher extends ODataEntityFetcher<Contact,ContactOperations
 	 public ContactFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Contact.class,ContactOperations.class);
     }
-}
+
+	}
