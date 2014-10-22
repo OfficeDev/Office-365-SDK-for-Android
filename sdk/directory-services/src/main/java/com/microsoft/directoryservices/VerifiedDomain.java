@@ -30,25 +30,32 @@ public class VerifiedDomain {
 		capabilities = value; 
 	}
 
+    /**
 	private Boolean default;
+    */
 
 	/**
 	* Gets the default.
 	*
 	* @return the Boolean
 	*/
-	public Boolean getdefault() {
+
+    /**
+    public Boolean getdefault() {
 		return this.default; 
 	}
+    */
 
 	/**
 	* Sets the default.
 	*
 	* @param value the Boolean
 	*/
+    /**
 	public void setdefault(Boolean value) { 
 		default = value; 
 	}
+    */
 
 	private String id;
 
