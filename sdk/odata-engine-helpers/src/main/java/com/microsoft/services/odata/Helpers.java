@@ -4,7 +4,9 @@ import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.ODataURL;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,6 +16,21 @@ import java.util.Set;
 public class Helpers {
 
     private static final String ENCODE_EXCEPTIONS = "!$&'()*+,;=:@";
+
+    private static final List<String> reservedNames;
+
+    static {
+        reservedNames = new ArrayList<String>();
+        reservedNames.add("default");
+    }
+
+    public static List<String> getReservedNames() {
+        return reservedNames;
+    }
+
+    public static String getReservedPrefix() {
+        return "$$__$$";
+    }
 
     /**
      * Add custom parameters to o data uRL.
