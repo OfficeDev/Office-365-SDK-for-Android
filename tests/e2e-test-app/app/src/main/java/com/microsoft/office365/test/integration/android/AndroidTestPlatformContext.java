@@ -31,35 +31,35 @@ import com.microsoft.services.odata.interfaces.Request;
 
 public class AndroidTestPlatformContext implements TestPlatformContext {
 
-	private static Activity mActivity;
+    private static Activity mActivity;
+    private AuthenticationResult mAuthenticationResult;
+    public AndroidTestPlatformContext(Activity activity) {
+        mActivity = activity;
+    }
 
-	public AndroidTestPlatformContext(Activity activity) {
-		mActivity = activity;
-	}
+    @Override
+    public String getServerUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_RESOURCE_URL,
+                "");
+    }
 
-	@Override
-	public String getServerUrl() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_RESOURCE_URL,
-				"");
-	}
+    @Override
+    public String getClientId() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_AAD_CLIENT_ID,
+                "");
+    }
 
-	@Override
-	public String getClientId() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_AAD_CLIENT_ID,
-				"");
-	}
+    @Override
+    public String getRedirectUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_AAD_Redirect_URL, "");
+    }
 
-	@Override
-	public String getRedirectUrl() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-				Constants.PREFERENCE_AAD_Redirect_URL, "");
-	}
-
-	@Override
-	public String getAuthenticationMethod() {
-		return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-				Constants.PREFERENCE_AUTHENTICATION_METHOD, "");
-	}
+    @Override
+    public String getAuthenticationMethod() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_AUTHENTICATION_METHOD, "");
+    }
 
     @Override
     public String getEndpointUrl() {
@@ -81,111 +81,128 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     public static AuthenticationContext context = null;
 
-	public AuthenticationContext getAuthenticationContext() {
+    public AuthenticationContext getAuthenticationContext() {
 
-		try {
-			context = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, false);
-		} catch (Exception e) {
-		}
+        try {
+            context = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, false);
+        } catch (Exception e) {
+        }
 
-		return context;
-	}
+        return context;
+    }
 
-	@Override
-	public ListenableFuture<Void> showMessage(final String message) {
-		final SettableFuture<Void> result = SettableFuture.create();
+    @Override
+    public ListenableFuture<Void> showMessage(final String message) {
+        final SettableFuture<Void> result = SettableFuture.create();
 
-		mActivity.runOnUiThread(new Runnable() {
+        mActivity.runOnUiThread(new Runnable() {
 
-			@Override
-			public void run() {
-				AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
-				builder.setTitle("Message");
-				builder.setMessage(message);
-				builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                builder.setTitle("Message");
+                builder.setMessage(message);
+                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						result.set(null);
-					}
-				});
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result.set(null);
+                    }
+                });
 
-				builder.create().show();
-			}
-		});
+                builder.create().show();
+            }
+        });
 
-		return result;
-	}
+        return result;
+    }
 
-	@Override
-	public void executeTest(final TestCase testCase, final TestExecutionCallback callback) {
-		AsyncTask<Void, Void, TestResult> task = new AsyncTask<Void, Void, TestResult>() {
+    @Override
+    public void executeTest(final TestCase testCase, final TestExecutionCallback callback) {
+        AsyncTask<Void, Void, TestResult> task = new AsyncTask<Void, Void, TestResult>() {
 
-			@Override
-			protected TestResult doInBackground(Void... params) {
-				return testCase.executeTest();
-			}
+            @Override
+            protected TestResult doInBackground(Void... params) {
+                return testCase.executeTest();
+            }
 
-			@Override
-			protected void onPostExecute(TestResult result) {
-				callback.onTestComplete(testCase, result);
-			}
-		};
+            @Override
+            protected void onPostExecute(TestResult result) {
+                callback.onTestComplete(testCase, result);
+            }
+        };
 
-		task.execute();
-	}
+        task.execute();
+    }
 
-	@Override
-	public void sleep(int seconds) throws Exception {
-		Thread.sleep(seconds * 1000);
-	}
+    @Override
+    public void sleep(int seconds) throws Exception {
+        Thread.sleep(seconds * 1000);
+    }
 
-	@Override
-	public EntityContainerClient getMailCalendarContactClient() {
+    @Override
+    public EntityContainerClient getMailCalendarContactClient() {
         EntityContainerClient result;
 
-		if (getAuthenticationMethod().equals("AAD")) {
-			result = getEntityContainerClientAAD();
-		} else {
-			result = getEntityContainerClientBasic();
-		}
+        if (getAuthenticationMethod().equals("AAD")) {
+            result = getEntityContainerClientAAD();
+        } else {
+            result = getEntityContainerClientBasic();
+        }
 
-		return result;
-	}
+        return result;
+    }
 
     EntityContainerClient getEntityContainerClientAAD() {
-		final SettableFuture<EntityContainerClient> future = SettableFuture.create();
+        final SettableFuture<EntityContainerClient> future = SettableFuture.create();
 
-		try {
-			getAuthenticationContext().acquireToken(
-					mActivity, getServerUrl(),
-					getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-					new AuthenticationCallback<AuthenticationResult>() {
+        try {
+            if (mAuthenticationResult != null && mAuthenticationResult.getRefreshToken() != null && !mAuthenticationResult.getRefreshToken().isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(mAuthenticationResult.getRefreshToken(), getClientId(), getServerUrl(),
+                        new AuthenticationCallback<AuthenticationResult>() {
 
-						@Override
-						public void onError(Exception exc) {
-							future.setException(exc);
-						}
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
 
-						@Override
-						public void onSuccess(AuthenticationResult result) {
-							EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),getDependencyResolver(result.getAccessToken()));
-							future.set(client);
-						}
-                    });
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mAuthenticationResult = result;
+                                EntityContainerClient client = new EntityContainerClient(getEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            } else {
+                getAuthenticationContext().acquireToken(
+                        mActivity, getServerUrl(),
+                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                        new AuthenticationCallback<AuthenticationResult>() {
 
-		} catch (Throwable t) {
-			future.setException(t);
-		}
-		try {
-			return future.get();
-		} catch (Throwable t) {
-			Log.e(Constants.TAG, t.getMessage());
-			return null;
-		}
-	}
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
 
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mAuthenticationResult = result;
+                                EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            }
+        } catch (Throwable t) {
+            future.setException(t);
+        }
+        try {
+            return future.get();
+        } catch (Throwable t) {
+            Log.e(Constants.TAG, t.getMessage());
+            return null;
+        }
+    }
 
     EntityContainerClient getEntityContainerClientBasic() {
         final String token = this.getBasicAuthToken();
