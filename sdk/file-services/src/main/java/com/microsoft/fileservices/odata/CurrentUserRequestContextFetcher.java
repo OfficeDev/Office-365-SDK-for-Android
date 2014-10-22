@@ -8,7 +8,7 @@ package com.microsoft.fileservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*; 
-import com.microsoft.coreservices.*;		
+import com.microsoft.sharepointservices.*;		
 
 /**
  * The type  CurrentUserRequestContextFetcher.

@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.coreservices;
+package com.microsoft.sharepointservices;
 
 /**
  * The type Current User Request Context.

@@ -3,7 +3,7 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.coreservices.odata;
+package com.microsoft.sharepointservices.odata;
 
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.fileservices.*;
