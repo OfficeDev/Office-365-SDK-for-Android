@@ -15,17 +15,15 @@ public class CalendarSerializer {
      * @throws java.text.ParseException the parse exception
      */
     public static Calendar deserialize(String strVal) throws ParseException {
-        // Change Z to +00:00 to adapt the string to a format
+        // Change Z to +0000 to adapt the string to a format
         // that can be parsed in Java
-        String s = strVal.replace("Z", "+00:00");
+        String s = strVal.replace("Z", "+0000");
 
         // Parse the well-formatted date string
         String datePattern;
         if(s.contains(".")){
             datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ";
-        }
-        else
-        {
+        } else {
             datePattern = "yyyy-MM-dd'T'HH:mm:ssZ";
         }
 
