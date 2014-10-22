@@ -1,6 +1,6 @@
 include ':odata-engine-interfaces', ':directory-services', ':discovery-services',
         ':odata-engine-android-impl',
-        ':mail-calendar-contact',
+        ':outlook-services',
         ':file-services',
         ':odata-engine-helpers',
         ':list-services',
