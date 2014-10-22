@@ -77,9 +77,13 @@ public class FilesTests extends TestGroup {
                     Item addedFile = client.getme().getfiles().add(newFile).get();
                     client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
 
+                    client.getme().getfiles().getById("somefile.txt").asFile().putContent("somecontent".getBytes()).get();
+
+
                     byte[] content = client.getme().getfiles().getById(addedFile.getid()).asFile().getContent().get();
 
                     //Item addedFile = client.getme().getfiles().getOperations().add("myFile.txt", "myFile.txt", "File", "Hello World".getBytes()).get();
+
 
                     //Assert
                     if(addedFile == null)
@@ -108,7 +112,7 @@ public class FilesTests extends TestGroup {
         credentialsFactory.setCredentials(new Credentials() {
             @Override
             public void prepareRequest(Request request) {
-                request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVUa0d0S1JrZ2FpZXpFWTJFc0xDMmdPTGpBNCJ9.eyJhdWQiOiJodHRwczovL21zb3BlbnRlY2guc3BvcHBlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MtcHBlLm5ldC8yYzc1YzM0NS02OWJmLTQzZTgtOWIzZi1lMmVjZGUwNDE0OGEvIiwiaWF0IjoxNDEzOTI1OTE2LCJuYmYiOjE0MTM5MjU5MTYsImV4cCI6MTQxMzkyOTgxNiwidmVyIjoiMS4wIiwidGlkIjoiMmM3NWMzNDUtNjliZi00M2U4LTliM2YtZTJlY2RlMDQxNDhhIiwiYW1yIjpbInB3ZCJdLCJvaWQiOiI3OWRhZGJjMS03ZmRiLTRhOTItOGFhYy1lNjE2MWNiZTczZDQiLCJ1cG4iOiJ2LW1hcmN0b0Btc29wZW50ZWNoLmNjc2N0cC5uZXQiLCJ1bmlxdWVfbmFtZSI6InYtbWFyY3RvQG1zb3BlbnRlY2guY2NzY3RwLm5ldCIsInN1YiI6InVWS2tUOVFxUkROZkxpM2h5YmR1b1Fob1BvNGwzeF84RmNjeDhwSnpoeE0iLCJwdWlkIjoiMTAwM0JGRkQ4QjlGQTM1RCIsImZhbWlseV9uYW1lIjoiVG9ycmVzIiwiZ2l2ZW5fbmFtZSI6Ik1hcmNvcyIsImFwcGlkIjoiMTIxNmRhNjctYzliOS00NGZhLWJkYzQtZDhlMmEwNmI0YzBmIiwiYXBwaWRhY3IiOiIwIiwic2NwIjoiQWxsU2l0ZXMuRnVsbENvbnRyb2wgQWxsU2l0ZXMuTWFuYWdlIEFsbFNpdGVzLlJlYWQgQWxsU2l0ZXMuV3JpdGUgTXlGaWxlcy5SZWFkIE15RmlsZXMuV3JpdGUgU2VhcmNoIiwiYWNyIjoiMSJ9.cjLV2OPPSmzeUTHsciHsyQfc6xx4UmYelvjK0sChb_erGT08TWspnPJZKWgpKrsNrv1CNL2FpLhl2R7hdmZ-rbar3hPnFILYy2xH2sxALbQj8Ec250WzCp_deIE_Mo8hjlKzQoUboVhgMCUwkt-ZX4bSiulKMretYo0KLxrAY3ufJEt00p9QnCTfBMCX9nOzl5voxe0jRWhjAWza89logGIP31LSLwXI8Pclp7qzghv6FxRZ-4q8NAuvC1cQRVne3oEZKqit5vZXvtB2G-WLw-Re6Cx-XTs8KZR2J2Z3mqaCJn80cgQaBGTWX5GRtclO8r6e8lzCS7lg7oSm4q__IQ");
+                request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVUa0d0S1JrZ2FpZXpFWTJFc0xDMmdPTGpBNCJ9.eyJhdWQiOiJodHRwczovL21zb3BlbnRlY2guc3BvcHBlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MtcHBlLm5ldC8yYzc1YzM0NS02OWJmLTQzZTgtOWIzZi1lMmVjZGUwNDE0OGEvIiwiaWF0IjoxNDE0MDEwOTE1LCJuYmYiOjE0MTQwMTA5MTUsImV4cCI6MTQxNDAxNDgxNSwidmVyIjoiMS4wIiwidGlkIjoiMmM3NWMzNDUtNjliZi00M2U4LTliM2YtZTJlY2RlMDQxNDhhIiwiYW1yIjpbInB3ZCJdLCJvaWQiOiI3OWRhZGJjMS03ZmRiLTRhOTItOGFhYy1lNjE2MWNiZTczZDQiLCJ1cG4iOiJ2LW1hcmN0b0Btc29wZW50ZWNoLmNjc2N0cC5uZXQiLCJ1bmlxdWVfbmFtZSI6InYtbWFyY3RvQG1zb3BlbnRlY2guY2NzY3RwLm5ldCIsInN1YiI6InVWS2tUOVFxUkROZkxpM2h5YmR1b1Fob1BvNGwzeF84RmNjeDhwSnpoeE0iLCJwdWlkIjoiMTAwM0JGRkQ4QjlGQTM1RCIsImZhbWlseV9uYW1lIjoiVG9ycmVzIiwiZ2l2ZW5fbmFtZSI6Ik1hcmNvcyIsImFwcGlkIjoiMTIxNmRhNjctYzliOS00NGZhLWJkYzQtZDhlMmEwNmI0YzBmIiwiYXBwaWRhY3IiOiIwIiwic2NwIjoiQWxsU2l0ZXMuRnVsbENvbnRyb2wgQWxsU2l0ZXMuTWFuYWdlIEFsbFNpdGVzLlJlYWQgQWxsU2l0ZXMuV3JpdGUgTXlGaWxlcy5SZWFkIE15RmlsZXMuV3JpdGUgU2VhcmNoIiwiYWNyIjoiMSJ9.mu8P3GSz0kn8yGwF9cQ9elhR7BNL2_KNF91laOMvzZIbM_OePQEcQmhsUuEuyhDLV5eGnaHE_n0G5yoSm8zn0ocsWRpSQvl_7wAhCzFVjGm6bZmP4pcUBCN00bdf9ZGxDT2SD6ZjBd2zeYjGAmjllOhX9H-hE2MUZ74vdA-ESsKDkGbEi0G-EcI93JyMyBi5QJweHoO8svk0S3mkKl8R0iSfJrdJC-2p5XGS6TYmBwnwodV5QH70L27fu0dyf1_uxNABftkctC6EeyC2hgw8W5WtAi4L_fja-tzEU2owglLstr4gixy1gzstfRFJunM4osrDWEtEB5BpssSwBjae7g");
                 request.addHeader("Accept", "application/json");
             }
         });
