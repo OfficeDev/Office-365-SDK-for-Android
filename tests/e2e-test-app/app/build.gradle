@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "tests.office365.microsoft.office365_files_lists_sdk_e2etests_gradle"
+        applicationId "tests.office365.microsoft.e2eTestApp"
         minSdkVersion 15
         targetSdkVersion 20
         versionCode 1
@@ -18,8 +18,11 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     repositories {
-        mavenCentral()
 
         flatDir {
             dirs 'aar'
@@ -39,4 +42,5 @@ dependencies {
     compile project(':file-services')
     compile project(':odata-engine-android-impl')
     compile project(':directory-services')
+    compile project(':list-services')
 }

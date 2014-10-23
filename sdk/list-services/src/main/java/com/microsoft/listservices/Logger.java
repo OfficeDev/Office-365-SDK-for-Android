@@ -5,16 +5,14 @@
  ******************************************************************************/
 package com.microsoft.listservices;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class SPFieldUrlValue {
-	public static JSONObject getJsonForUrl(String url, String description) throws JSONException {
-		JSONObject json = new JSONObject();
-		
-		json.put("Description", description);
-		json.put("Url", url);
-		
-		return json;
-	}
+/**
+ * Interface to define a Logger
+ */
+public interface Logger {
+	/**
+	 * Logs a message
+	 * @param message Message to log
+	 * @param level Message level
+	 */
+	public void log(String message, LogLevel level);
 }
