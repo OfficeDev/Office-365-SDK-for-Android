@@ -1,8 +1,16 @@
 package com.microsoft.office365.test.integration.tests;
 
 
+import android.util.Log;
+
+import com.google.common.util.concurrent.SettableFuture;
+import com.microsoft.aad.adal.AuthenticationCallback;
+import com.microsoft.aad.adal.AuthenticationResult;
+import com.microsoft.aad.adal.PromptBehavior;
 import com.microsoft.fileservices.File;
 import com.microsoft.fileservices.Item;
+import com.microsoft.office365.test.integration.ApplicationContext;
+import com.microsoft.office365.test.integration.android.Constants;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
@@ -79,14 +87,15 @@ public class FilesTests extends TestGroup {
 
                     byte[] content = client.getme().getfiles().getById(addedFile.getid()).asFile().getContent().get();
 
-                    //Item addedFile = client.getme().getfiles().getOperations().add("myFile.txt", "myFile.txt", "File", "Hello World".getBytes()).get();
-
                     //Assert
                     if(addedFile == null)
                         result.setStatus(TestStatus.Failed);
 
                     if(content.length == 0)
                         result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -101,21 +110,24 @@ public class FilesTests extends TestGroup {
     }
 
     private EntityContainerClient getFileClient() {
-        DefaultDependencyResolver depResolver = new DefaultDependencyResolver();
-        depResolver.getLogger().setEnabled(true);
-        depResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
-        CredentialsFactoryImpl credentialsFactory = new CredentialsFactoryImpl();
-        credentialsFactory.setCredentials(new Credentials() {
-            @Override
-            public void prepareRequest(Request request) {
-                request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVUa0d0S1JrZ2FpZXpFWTJFc0xDMmdPTGpBNCJ9.eyJhdWQiOiJodHRwczovL21zb3BlbnRlY2guc3BvcHBlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MtcHBlLm5ldC8yYzc1YzM0NS02OWJmLTQzZTgtOWIzZi1lMmVjZGUwNDE0OGEvIiwiaWF0IjoxNDEzOTI1OTE2LCJuYmYiOjE0MTM5MjU5MTYsImV4cCI6MTQxMzkyOTgxNiwidmVyIjoiMS4wIiwidGlkIjoiMmM3NWMzNDUtNjliZi00M2U4LTliM2YtZTJlY2RlMDQxNDhhIiwiYW1yIjpbInB3ZCJdLCJvaWQiOiI3OWRhZGJjMS03ZmRiLTRhOTItOGFhYy1lNjE2MWNiZTczZDQiLCJ1cG4iOiJ2LW1hcmN0b0Btc29wZW50ZWNoLmNjc2N0cC5uZXQiLCJ1bmlxdWVfbmFtZSI6InYtbWFyY3RvQG1zb3BlbnRlY2guY2NzY3RwLm5ldCIsInN1YiI6InVWS2tUOVFxUkROZkxpM2h5YmR1b1Fob1BvNGwzeF84RmNjeDhwSnpoeE0iLCJwdWlkIjoiMTAwM0JGRkQ4QjlGQTM1RCIsImZhbWlseV9uYW1lIjoiVG9ycmVzIiwiZ2l2ZW5fbmFtZSI6Ik1hcmNvcyIsImFwcGlkIjoiMTIxNmRhNjctYzliOS00NGZhLWJkYzQtZDhlMmEwNmI0YzBmIiwiYXBwaWRhY3IiOiIwIiwic2NwIjoiQWxsU2l0ZXMuRnVsbENvbnRyb2wgQWxsU2l0ZXMuTWFuYWdlIEFsbFNpdGVzLlJlYWQgQWxsU2l0ZXMuV3JpdGUgTXlGaWxlcy5SZWFkIE15RmlsZXMuV3JpdGUgU2VhcmNoIiwiYWNyIjoiMSJ9.cjLV2OPPSmzeUTHsciHsyQfc6xx4UmYelvjK0sChb_erGT08TWspnPJZKWgpKrsNrv1CNL2FpLhl2R7hdmZ-rbar3hPnFILYy2xH2sxALbQj8Ec250WzCp_deIE_Mo8hjlKzQoUboVhgMCUwkt-ZX4bSiulKMretYo0KLxrAY3ufJEt00p9QnCTfBMCX9nOzl5voxe0jRWhjAWza89logGIP31LSLwXI8Pclp7qzghv6FxRZ-4q8NAuvC1cQRVne3oEZKqit5vZXvtB2G-WLw-Re6Cx-XTs8KZR2J2Z3mqaCJn80cgQaBGTWX5GRtclO8r6e8lzCS7lg7oSm4q__IQ");
-                request.addHeader("Accept", "application/json");
-            }
-        });
+//        DefaultDependencyResolver depResolver = new DefaultDependencyResolver();
+//        depResolver.getLogger().setEnabled(true);
+//        depResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
+//        CredentialsFactoryImpl credentialsFactory = new CredentialsFactoryImpl();
+//        credentialsFactory.setCredentials(new Credentials() {
+//            @Override
+//            public void prepareRequest(Request request) {
+//                request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVUa0d0S1JrZ2FpZXpFWTJFc0xDMmdPTGpBNCJ9.eyJhdWQiOiJodHRwczovL21zb3BlbnRlY2guc3BvcHBlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MtcHBlLm5ldC8yYzc1YzM0NS02OWJmLTQzZTgtOWIzZi1lMmVjZGUwNDE0OGEvIiwiaWF0IjoxNDEzOTI1OTE2LCJuYmYiOjE0MTM5MjU5MTYsImV4cCI6MTQxMzkyOTgxNiwidmVyIjoiMS4wIiwidGlkIjoiMmM3NWMzNDUtNjliZi00M2U4LTliM2YtZTJlY2RlMDQxNDhhIiwiYW1yIjpbInB3ZCJdLCJvaWQiOiI3OWRhZGJjMS03ZmRiLTRhOTItOGFhYy1lNjE2MWNiZTczZDQiLCJ1cG4iOiJ2LW1hcmN0b0Btc29wZW50ZWNoLmNjc2N0cC5uZXQiLCJ1bmlxdWVfbmFtZSI6InYtbWFyY3RvQG1zb3BlbnRlY2guY2NzY3RwLm5ldCIsInN1YiI6InVWS2tUOVFxUkROZkxpM2h5YmR1b1Fob1BvNGwzeF84RmNjeDhwSnpoeE0iLCJwdWlkIjoiMTAwM0JGRkQ4QjlGQTM1RCIsImZhbWlseV9uYW1lIjoiVG9ycmVzIiwiZ2l2ZW5fbmFtZSI6Ik1hcmNvcyIsImFwcGlkIjoiMTIxNmRhNjctYzliOS00NGZhLWJkYzQtZDhlMmEwNmI0YzBmIiwiYXBwaWRhY3IiOiIwIiwic2NwIjoiQWxsU2l0ZXMuRnVsbENvbnRyb2wgQWxsU2l0ZXMuTWFuYWdlIEFsbFNpdGVzLlJlYWQgQWxsU2l0ZXMuV3JpdGUgTXlGaWxlcy5SZWFkIE15RmlsZXMuV3JpdGUgU2VhcmNoIiwiYWNyIjoiMSJ9.cjLV2OPPSmzeUTHsciHsyQfc6xx4UmYelvjK0sChb_erGT08TWspnPJZKWgpKrsNrv1CNL2FpLhl2R7hdmZ-rbar3hPnFILYy2xH2sxALbQj8Ec250WzCp_deIE_Mo8hjlKzQoUboVhgMCUwkt-ZX4bSiulKMretYo0KLxrAY3ufJEt00p9QnCTfBMCX9nOzl5voxe0jRWhjAWza89logGIP31LSLwXI8Pclp7qzghv6FxRZ-4q8NAuvC1cQRVne3oEZKqit5vZXvtB2G-WLw-Re6Cx-XTs8KZR2J2Z3mqaCJn80cgQaBGTWX5GRtclO8r6e8lzCS7lg7oSm4q__IQ");
+//                request.addHeader("Accept", "application/json");
+//            }
+//        });
+//
+//        depResolver.setCredentialsFactory(credentialsFactory);
+//
+//        EntityContainerClient client = new  EntityContainerClient("https://msopentech.spoppe.com/_api/v1.0", depResolver);
+//        return client;
 
-        depResolver.setCredentialsFactory(credentialsFactory);
 
-        EntityContainerClient client = new  EntityContainerClient("https://msopentech.spoppe.com/_api/v1.0", depResolver);
-        return client;
+        return ApplicationContext.getFilesClient();
     }
 }

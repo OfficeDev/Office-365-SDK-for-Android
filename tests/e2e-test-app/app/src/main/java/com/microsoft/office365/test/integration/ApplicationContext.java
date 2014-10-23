@@ -33,11 +33,15 @@ public class ApplicationContext {
     }
     
     public static String getServerUrl() {
-        return mTestPlatformContext.getServerUrl();
+        return mTestPlatformContext.getExchangeServerUrl();
     }
 
     public static EntityContainerClient getMailCalendarContactClient(){
         return mTestPlatformContext.getMailCalendarContactClient();
+    }
+
+    public static com.microsoft.sharepointservices.odata.EntityContainerClient getFilesClient(){
+        return mTestPlatformContext.getFilesClient();
     }
 
     public static String getTestMail() { return mTestPlatformContext.getTestMail();}

@@ -8,15 +8,20 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.outlookservices.odata.EntityContainerClient;
 
+
 public interface TestPlatformContext {
 
-	String getServerUrl();
+	String getExchangeServerUrl();
+
+    String getFileServerUrl();
 
 	String getClientId();
 	
 	String getRedirectUrl();
 
-    String getEndpointUrl();
+    String getExchangeEndpointUrl();
+
+    String getFilesEndpointUrl();
 
     String getTestMail();
 
@@ -31,5 +36,7 @@ public interface TestPlatformContext {
 	String getAuthenticationMethod();
 
     EntityContainerClient getMailCalendarContactClient();
+
+    com.microsoft.sharepointservices.odata.EntityContainerClient getFilesClient();
 
 }

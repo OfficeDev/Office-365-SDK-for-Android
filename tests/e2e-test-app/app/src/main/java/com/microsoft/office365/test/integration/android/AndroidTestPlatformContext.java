@@ -32,14 +32,21 @@ import com.microsoft.services.odata.interfaces.Request;
 public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private static Activity mActivity;
-    private AuthenticationResult mAuthenticationResult;
+    private AuthenticationResult mExchangeAuthenticationResult;
+    private AuthenticationResult mFilesAuthenticationResult;
     public AndroidTestPlatformContext(Activity activity) {
         mActivity = activity;
     }
 
     @Override
-    public String getServerUrl() {
-        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_RESOURCE_URL,
+    public String getExchangeServerUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_EXCHANGE_RESOURCE_URL,
+                "");
+    }
+
+    @Override
+    public String getFileServerUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_FILES_RESOURCE_URL,
                 "");
     }
 
@@ -62,9 +69,15 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public String getEndpointUrl() {
+    public String getExchangeEndpointUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                Constants.PREFERENCE_ENDPOINT_URL, "");
+                Constants.PREFERENCE_EXCHANGE_ENDPOINT_URL, "");
+    }
+
+    @Override
+    public String getFilesEndpointUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_FILES_ENDPOINT_URL, "");
     }
 
     @Override
@@ -146,20 +159,25 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         EntityContainerClient result;
 
         if (getAuthenticationMethod().equals("AAD")) {
-            result = getEntityContainerClientAAD();
+            result = getExchangeEntityContainerClientAAD();
         } else {
-            result = getEntityContainerClientBasic();
+            result = getExchangeEntityContainerClientBasic();
         }
 
         return result;
     }
 
-    EntityContainerClient getEntityContainerClientAAD() {
+    @Override
+    public com.microsoft.sharepointservices.odata.EntityContainerClient getFilesClient() {
+        return getFilesEntityContainerClientAAD();
+    }
+
+    EntityContainerClient getExchangeEntityContainerClientAAD() {
         final SettableFuture<EntityContainerClient> future = SettableFuture.create();
 
         try {
-            if (mAuthenticationResult != null && mAuthenticationResult.getRefreshToken() != null && !mAuthenticationResult.getRefreshToken().isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(mAuthenticationResult.getRefreshToken(), getClientId(), getServerUrl(),
+            if (mExchangeAuthenticationResult != null && mExchangeAuthenticationResult.getRefreshToken() != null && !mExchangeAuthenticationResult.getRefreshToken().isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(mExchangeAuthenticationResult.getRefreshToken(), getClientId(), getExchangeServerUrl(),
                         new AuthenticationCallback<AuthenticationResult>() {
 
                             @Override
@@ -169,14 +187,14 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mAuthenticationResult = result;
-                                EntityContainerClient client = new EntityContainerClient(getEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                mExchangeAuthenticationResult = result;
+                                EntityContainerClient client = new EntityContainerClient(getExchangeEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
                         });
             } else {
                 getAuthenticationContext().acquireToken(
-                        mActivity, getServerUrl(),
+                        mActivity, getExchangeServerUrl(),
                         getClientId(),getRedirectUrl(), PromptBehavior.Auto,
                         new AuthenticationCallback<AuthenticationResult>() {
 
@@ -187,8 +205,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mAuthenticationResult = result;
-                                EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),getDependencyResolver(result.getAccessToken()));
+                                mExchangeAuthenticationResult = result;
+                                EntityContainerClient client = new EntityContainerClient(getExchangeEndpointUrl(),getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
                         });
@@ -204,7 +222,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         }
     }
 
-    EntityContainerClient getEntityContainerClientBasic() {
+    EntityContainerClient getExchangeEntityContainerClientBasic() {
         final String token = this.getBasicAuthToken();
 
         DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
@@ -219,7 +237,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                 };
             }
         });
-        EntityContainerClient client = new EntityContainerClient(getEndpointUrl(),dependencyResolver);
+        EntityContainerClient client = new EntityContainerClient(getExchangeEndpointUrl(),dependencyResolver);
         return client;
     }
 
@@ -234,5 +252,55 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         dependencyResolver.getLogger().setEnabled(true);
         dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         return dependencyResolver;
+    }
+
+    public com.microsoft.sharepointservices.odata.EntityContainerClient getFilesEntityContainerClientAAD() {
+        final SettableFuture<com.microsoft.sharepointservices.odata.EntityContainerClient> future = SettableFuture.create();
+
+        try {
+            if (mFilesAuthenticationResult != null && mFilesAuthenticationResult.getRefreshToken() != null && !mFilesAuthenticationResult.getRefreshToken().isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(mFilesAuthenticationResult.getRefreshToken(), getClientId(), getFileServerUrl(),
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mExchangeAuthenticationResult = result;
+                                com.microsoft.sharepointservices.odata.EntityContainerClient client = new com.microsoft.sharepointservices.odata.EntityContainerClient(getFilesEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            } else {
+                getAuthenticationContext().acquireToken(
+                        mActivity, getFileServerUrl(),
+                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mFilesAuthenticationResult = result;
+                                com.microsoft.sharepointservices.odata.EntityContainerClient client = new com.microsoft.sharepointservices.odata.EntityContainerClient(getFilesEndpointUrl(),getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            }
+        } catch (Throwable t) {
+            future.setException(t);
+        }
+        try {
+            return future.get();
+        } catch (Throwable t) {
+            Log.e(Constants.TAG, t.getMessage());
+            return null;
+        }
     }
 }

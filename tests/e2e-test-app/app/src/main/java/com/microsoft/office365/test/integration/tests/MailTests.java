@@ -47,7 +47,7 @@ public class MailTests extends TestGroup {
         //Messages
         this.addTest(canGetMessages("Can get messages", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
-        this.addTest(canCreateMessageAttachment("Can create message with attachment", false));
+        this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
         this.addTest(canSendMessage("Can send message", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
