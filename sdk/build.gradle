@@ -4,8 +4,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.2'
-
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6"
+        classpath 'com.android.tools.build:gradle:0.13+'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,4 +15,118 @@ allprojects {
     repositories {
         jcenter()
     }
+
+    apply plugin: 'idea'
+    group = 'org.microsoft.com'
+    version = '0.9'
 }
+
+subprojects {
+
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.jfrog.bintray'
+
+    if (project.name == 'list-services' || project.name == 'odata-engine-android-impl'){
+
+        uploadArchives {
+            repositories.mavenDeployer {
+                pom.groupId = 'com.microsoft'
+                pom.artifactId = project.name
+                pom.version = '1.0.0'
+                // Add other pom properties here if you want (developer details / licenses)
+                repository(url: "https://github.com/msopentech/O365-Android'")
+            }
+        }
+
+    }else {
+
+        apply plugin: 'java'
+        sourceSets {
+            main {
+                java {
+                    srcDir 'src/main/java'
+                }
+            }
+        }
+    }
+
+    configurations {
+        published
+    }
+
+    // custom tasks for creating source/javadoc jars
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource.srcDirs
+    }
+
+    // add javadoc/source jar tasks as artifacts
+    artifacts {
+        published sourcesJar
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+
+                artifact sourcesJar {
+                    classifier "sources"
+                }
+            }
+        }
+    }
+
+    ext.publish = false
+
+    bintray {
+
+        configurations = ['published'] //When uploading configuration files
+        apiUrl = "https://api.bintray.com"
+        user =  'bar'
+        key = 'foo'
+        dryRun = false
+
+        filesSpec {
+            from 'files'
+            into 'standalone_files/level1'
+            rename '(.+)\\.(.+)', '$1-suffix.$2'
+        }
+        publish = project.publish
+
+        pkg {
+            repo = 'Maven'
+            userOrg = 'msopentech'
+            name = 'o365_sdk'
+            publications = ['mavenJava'] // see publications closure
+            desc = 'Office 365 Android SDK for Android'
+            websiteUrl = 'https://github.com/msopentech/O365-Android'
+            issueTrackerUrl = 'https://github.com/msopentech/O365-Android/issues'
+            vcsUrl = 'https://github.com/msopentech/O365-Android.git'
+            licenses = ['Apache-2.0']
+            labels = ['office-365', 'android', 'exchange', 'sharepoint', 'files']
+            attributes= ['plat': ['android', 'java']]
+            publicDownloadNumbers = true
+
+            version {
+                name = '0.9' //Optional logical version name
+                desc = 'Office 365 Android SDK'
+                vcsTag = '0.9'
+            }
+        }
+    }
+}
+
+configurations {
+    published
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
+
