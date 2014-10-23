@@ -18,7 +18,6 @@ import com.microsoft.services.odata.interfaces.Response;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
 import java.util.Map;
 
 import static com.microsoft.services.odata.Helpers.urlEncode;
@@ -99,19 +98,10 @@ public class BaseODataContainerHelper {
         request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
         request.addHeader(Constants.ACCEPT_HEADER, Constants.JSON_CONTENT_TYPE);
 
-        boolean hasIfMatch = false;
         if (headers != null){
-            String lowerCaseIfMatch = Constants.IF_MATCH_HEADER.toLowerCase(Locale.getDefault());
             for (String key: headers.keySet() ){
-                if (key.toLowerCase(Locale.getDefault()).equals(lowerCaseIfMatch)) {
-                    hasIfMatch = true;
-                }
                 request.addHeader(key, headers.get(key));
             }
-        }
-
-        if (!hasIfMatch && (verb == HttpVerb.PATCH || verb == HttpVerb.DELETE)) {
-            request.addHeader(Constants.IF_MATCH_HEADER, "*");
         }
 
         boolean credentialsSet = false;
