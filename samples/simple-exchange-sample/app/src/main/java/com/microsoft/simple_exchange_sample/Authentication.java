@@ -20,10 +20,10 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.AuthenticationSettings;
 import com.microsoft.aad.adal.UserInfo;
-import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
-import com.microsoft.office365.odata.interfaces.Credentials;
-import com.microsoft.office365.odata.interfaces.CredentialsFactory;
-import com.microsoft.office365.odata.interfaces.Request;
+import com.microsoft.services.odata.impl.DefaultDependencyResolver;
+import com.microsoft.services.odata.interfaces.Credentials;
+import com.microsoft.services.odata.interfaces.CredentialsFactory;
+import com.microsoft.services.odata.interfaces.Request;
 
 import java.util.Random;
 

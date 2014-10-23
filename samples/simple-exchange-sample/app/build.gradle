@@ -24,9 +24,14 @@ android {
 }
 
 dependencies {
-    compile files('libs/odata-interfaces.jar')
-    compile files('libs/odata-model.jar')
-    compile(name: 'odata-impl', ext: 'aar')
+    compile files('libs/directory-services.jar')
+    compile files('libs/file-services.jar')
+    compile files('libs/list-services.jar')
+    compile files('libs/mail-calendar-contact.jar')
+    compile files('libs/odata-engine-helpers.jar')
+    compile files('libs/odata-engine-interfaces.jar')
+    compile files('libs/odata-engine-java-impl.jar')
+    compile(name: 'odata-engine-android-impl', ext: 'aar')
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.google.guava:guava:18.0'

@@ -11,7 +11,7 @@ import android.view.View;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
+import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 
 public class MyActivity extends Activity implements View.OnClickListener {
 

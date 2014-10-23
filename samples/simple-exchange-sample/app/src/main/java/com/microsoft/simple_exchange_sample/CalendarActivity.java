@@ -11,10 +11,10 @@ import android.widget.TextView;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.microsoft.office365.exchange.services.Attendee;
-import com.microsoft.office365.exchange.services.Event;
-import com.microsoft.office365.odata.EntityContainerClient;
-import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
+import com.microsoft.outlookservices.Attendee;
+import com.microsoft.outlookservices.Event;
+import com.microsoft.services.odata.impl.DefaultDependencyResolver;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
 
 import java.util.List;
 
@@ -65,7 +65,7 @@ public class CalendarActivity extends Activity implements View.OnTouchListener {
                 .getCalendars().getById("Calendar")
                 .getEvents()
                 .top(1)
-                .execute();
+                .read();
 
         // handle success and failure cases
         Futures.addCallback(events, new FutureCallback<List<Event>>() {

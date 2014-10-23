@@ -22,12 +22,12 @@ import android.widget.Toast;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.microsoft.office365.exchange.services.EmailAddress;
-import com.microsoft.office365.exchange.services.ItemBody;
-import com.microsoft.office365.exchange.services.Message;
-import com.microsoft.office365.exchange.services.Recipient;
-import com.microsoft.office365.odata.EntityContainerClient;
-import com.microsoft.office365.odata.impl.DefaultDependencyResolver;
+import com.microsoft.outlookservices.EmailAddress;
+import com.microsoft.outlookservices.ItemBody;
+import com.microsoft.outlookservices.Message;
+import com.microsoft.outlookservices.Recipient;
+import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -229,7 +229,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
                                                             .getFolders()
                                                             .getById("Inbox")
                                                             .getMessages()
-                                                            .execute();
+                                                            .read();
 
         // handle success and failure cases
         final MessagesAdapter adapter = this.adapter;
@@ -355,7 +355,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
                                                                 .getFolders()
                                                                 .getById("Inbox")
                                                                 .getMessages()
-                                                                .execute();
+                                                                .read();
 
             List<Message> messages = fetcher.get();
 

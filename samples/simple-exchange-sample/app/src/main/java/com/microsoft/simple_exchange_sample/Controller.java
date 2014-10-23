@@ -8,7 +8,8 @@ package com.microsoft.simple_exchange_sample;
 import android.app.Activity;
 import android.widget.Toast;
 
-import com.microsoft.office365.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.DependencyResolver;
+
 
 /**
  * holds the context of execution across activities
