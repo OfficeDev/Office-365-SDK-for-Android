@@ -50,4 +50,6 @@ public class Constants {
      * Accept Header
      */
     public static final String ACCEPT_HEADER = "Accept";
+
+    public static final String IF_MATCH_HEADER = "If-Match";
 }
