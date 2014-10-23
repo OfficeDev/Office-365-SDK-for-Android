@@ -10,6 +10,7 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.outlookservices.Attachment;
 import com.microsoft.outlookservices.EmailAddress;
 import com.microsoft.outlookservices.FileAttachment;
 import com.microsoft.outlookservices.Folder;
@@ -47,7 +48,8 @@ public class MailTests extends TestGroup {
         //Messages
         this.addTest(canGetMessages("Can get messages", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
-        this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
+        this.addTest(canCreateMessageAttachment("Can create message with attachment", false));
+        this.addTest(canRetrieveMessageAttachment("Can retrieve message with attachment", true));
         this.addTest(canSendMessage("Can send message", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
@@ -601,6 +603,48 @@ public class MailTests extends TestGroup {
 //                            .getMessages()
 //                            .getById(myMessage.getId())
 //                            .delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canRetrieveMessageAttachment(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Get mail
+                    List<Message> messages = client.getMe()
+                            .getFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                             .filter("HasAttachments eq true").read().get();
+
+                    List<Attachment> attachments= null;
+                    if(messages.size() > 0)
+                    {
+                        attachments = client.getMe().getMessages().getById(messages.get(0).getId()).getAttachments().read().get();
+                        //attachments = client.getMe().getMessages().getById(messages.get(0).getId()).getAttachments().getById("").r
+                    }
+
+                    //Assert
+                    if(attachments != null && attachments.size() > 0)
+                        result.setStatus(TestStatus.Passed);
+
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
