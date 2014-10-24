@@ -497,7 +497,7 @@ public class MailTests extends TestGroup {
 
                         Message toSend = client.getMe().getMessages().add(message).get();
                         client.getMe().getMessages().getById(toSend.getId()).getOperations().send().get();
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                         inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
@@ -923,6 +923,7 @@ public class MailTests extends TestGroup {
                         String mailSubject = "Test reply Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                         client.getMe().getOperations().sendMail(message, true).get();
+                        Thread.sleep(1000);
                         inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
@@ -934,8 +935,6 @@ public class MailTests extends TestGroup {
                             .getMessages()
                             .getById(messageToReply.getId())
                             .getOperations().createReply().get();
-
-                    Thread.sleep(500);
 
                     //Assert
                     List<Message> messages = client.getMe()
@@ -992,6 +991,7 @@ public class MailTests extends TestGroup {
                         String mailSubject = "Test reply all Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                         client.getMe().getOperations().sendMail(message, true).get();
+                        Thread.sleep(1000);
                         inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
@@ -1003,8 +1003,6 @@ public class MailTests extends TestGroup {
                             .getMessages()
                             .getById(messageToReply.getId())
                             .getOperations().createReplyAll().get();
-
-                    Thread.sleep(500);
 
                     //Assert
                     List<Message> messages = client.getMe()
@@ -1062,6 +1060,7 @@ public class MailTests extends TestGroup {
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
 
                         client.getMe().getOperations().sendMail(message, true).get();
+                        Thread.sleep(1000);
                         inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
@@ -1073,8 +1072,6 @@ public class MailTests extends TestGroup {
                             .getMessages()
                             .getById(messageToReply.getId())
                             .getOperations().createForward().get();
-
-                    Thread.sleep(500);
 
                     //Assert
                     List<Message> messages = client.getMe()
