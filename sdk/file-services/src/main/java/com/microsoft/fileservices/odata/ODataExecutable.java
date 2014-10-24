@@ -22,7 +22,7 @@ abstract class ODataExecutable {
      * @param verb the verb
      * @return the listenable future
      */
-    abstract ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb);
+    abstract ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, Map<String, String> headers);
 
 	/**
      * Gets resolver.

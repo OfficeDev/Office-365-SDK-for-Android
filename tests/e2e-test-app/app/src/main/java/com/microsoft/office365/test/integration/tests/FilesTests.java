@@ -82,7 +82,7 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -108,7 +108,7 @@ public class FilesTests extends TestGroup {
 
                     SharePointClient client = ApplicationContext.getFilesClient();
 
-                    File newFile = new File();
+                    Item newFile = new Item();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
@@ -125,7 +125,7 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -169,7 +169,7 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
-                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -211,7 +211,7 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {

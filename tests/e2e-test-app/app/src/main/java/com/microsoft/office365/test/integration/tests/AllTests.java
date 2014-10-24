@@ -24,7 +24,7 @@ public class AllTests extends TestGroup {
         testGroups.add(new CalendarTests());
         testGroups.add(new ContactTests());
 		testGroups.add(new MailTests());
-        //testGroups.add(new FilesTests());
+        testGroups.add(new FilesTests());
         testGroups.add(new ListsTests());
 
 		return testGroups;

@@ -41,24 +41,6 @@ public class BaseODataContainerHelper {
     }
 
     /**
-     * OdataExecute.
-     *
-     * @param path the path
-     * @param content the content
-     * @param verb the verb
-     * @param url the url
-     * @param resolver the resolver
-     * @param productName the product name
-     * @return the listenable future
-     */
-    public static ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content,
-                                                        HttpVerb verb, String url,
-                                                        DependencyResolver resolver, String productName) {
-        return oDataExecute(path, content, verb, url, null, resolver, productName);
-    }
-
-
-    /**
      * ODataExecute.
      *
      * @param path the path
