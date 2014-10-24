@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Assigned License.
 */
-public class AssignedLicense {
+public class AssignedLicense extends ODataBaseEntity {
+
+	public AssignedLicense(){
+		setODataType("#Microsoft.DirectoryServices.AssignedLicense");
+	}
+
 
 	private java.util.List<java.util.UUID> disabledPlans;
 
@@ -27,7 +32,7 @@ public class AssignedLicense {
 	* @param value the java.util.List<java.util.UUID>
 	*/
 	public void setdisabledPlans(java.util.List<java.util.UUID> value) { 
-		disabledPlans = value; 
+		this.disabledPlans = value; 
 	}
 
 	private java.util.UUID skuId;
@@ -47,6 +52,6 @@ public class AssignedLicense {
 	* @param value the java.util.UUID
 	*/
 	public void setskuId(java.util.UUID value) { 
-		skuId = value; 
+		this.skuId = value; 
 	}
 }

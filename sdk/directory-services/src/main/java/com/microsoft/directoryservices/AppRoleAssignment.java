@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type App Role Assignment.
 */
 public class AppRoleAssignment extends DirectoryObject {
+
+	public AppRoleAssignment(){
+		setODataType("#Microsoft.DirectoryServices.AppRoleAssignment");
+	}
+
 	private java.util.Calendar creationTimestamp;
 
 	/**
@@ -26,7 +31,7 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setcreationTimestamp(java.util.Calendar value) { 
-		creationTimestamp = value; 
+		this.creationTimestamp = value; 
 	}
 	private java.util.UUID id;
 
@@ -45,7 +50,7 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the java.util.UUID
 	*/
 	public void setid(java.util.UUID value) { 
-		id = value; 
+		this.id = value; 
 	}
 	private String principalDisplayName;
 
@@ -64,7 +69,7 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setprincipalDisplayName(String value) { 
-		principalDisplayName = value; 
+		this.principalDisplayName = value; 
 	}
 	private java.util.UUID principalId;
 
@@ -83,7 +88,7 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the java.util.UUID
 	*/
 	public void setprincipalId(java.util.UUID value) { 
-		principalId = value; 
+		this.principalId = value; 
 	}
 	private String principalType;
 
@@ -102,7 +107,7 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setprincipalType(String value) { 
-		principalType = value; 
+		this.principalType = value; 
 	}
 	private String resourceDisplayName;
 
@@ -121,7 +126,7 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setresourceDisplayName(String value) { 
-		resourceDisplayName = value; 
+		this.resourceDisplayName = value; 
 	}
 	private java.util.UUID resourceId;
 
@@ -140,6 +145,6 @@ public class AppRoleAssignment extends DirectoryObject {
 	* @param value the java.util.UUID
 	*/
 	public void setresourceId(java.util.UUID value) { 
-		resourceId = value; 
+		this.resourceId = value; 
 	}
 }

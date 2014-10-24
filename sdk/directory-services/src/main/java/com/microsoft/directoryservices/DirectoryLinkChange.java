@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Directory Link Change.
 */
 public class DirectoryLinkChange extends DirectoryObject {
+
+	public DirectoryLinkChange(){
+		setODataType("#Microsoft.DirectoryServices.DirectoryLinkChange");
+	}
+
 	private String associationType;
 
 	/**
@@ -26,7 +31,7 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setassociationType(String value) { 
-		associationType = value; 
+		this.associationType = value; 
 	}
 	private String sourceObjectId;
 
@@ -45,7 +50,7 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsourceObjectId(String value) { 
-		sourceObjectId = value; 
+		this.sourceObjectId = value; 
 	}
 	private String sourceObjectType;
 
@@ -64,7 +69,7 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsourceObjectType(String value) { 
-		sourceObjectType = value; 
+		this.sourceObjectType = value; 
 	}
 	private String sourceObjectUri;
 
@@ -83,7 +88,7 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsourceObjectUri(String value) { 
-		sourceObjectUri = value; 
+		this.sourceObjectUri = value; 
 	}
 	private String targetObjectId;
 
@@ -102,7 +107,7 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void settargetObjectId(String value) { 
-		targetObjectId = value; 
+		this.targetObjectId = value; 
 	}
 	private String targetObjectType;
 
@@ -121,7 +126,7 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void settargetObjectType(String value) { 
-		targetObjectType = value; 
+		this.targetObjectType = value; 
 	}
 	private String targetObjectUri;
 
@@ -140,6 +145,6 @@ public class DirectoryLinkChange extends DirectoryObject {
 	* @param value the String
 	*/
 	public void settargetObjectUri(String value) { 
-		targetObjectUri = value; 
+		this.targetObjectUri = value; 
 	}
 }

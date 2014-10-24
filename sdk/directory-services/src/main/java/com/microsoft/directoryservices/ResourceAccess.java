@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Resource Access.
 */
-public class ResourceAccess {
+public class ResourceAccess extends ODataBaseEntity {
+
+	public ResourceAccess(){
+		setODataType("#Microsoft.DirectoryServices.ResourceAccess");
+	}
+
 
 	private java.util.UUID id;
 
@@ -27,7 +32,7 @@ public class ResourceAccess {
 	* @param value the java.util.UUID
 	*/
 	public void setid(java.util.UUID value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private String type;
@@ -47,6 +52,6 @@ public class ResourceAccess {
 	* @param value the String
 	*/
 	public void settype(String value) { 
-		type = value; 
+		this.type = value; 
 	}
 }

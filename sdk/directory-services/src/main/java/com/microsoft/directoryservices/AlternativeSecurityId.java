@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Alternative Security Id.
 */
-public class AlternativeSecurityId {
+public class AlternativeSecurityId extends ODataBaseEntity {
+
+	public AlternativeSecurityId(){
+		setODataType("#Microsoft.DirectoryServices.AlternativeSecurityId");
+	}
+
 
 	private Integer type;
 
@@ -27,7 +32,7 @@ public class AlternativeSecurityId {
 	* @param value the Integer
 	*/
 	public void settype(Integer value) { 
-		type = value; 
+		this.type = value; 
 	}
 
 	private String identityProvider;
@@ -47,7 +52,7 @@ public class AlternativeSecurityId {
 	* @param value the String
 	*/
 	public void setidentityProvider(String value) { 
-		identityProvider = value; 
+		this.identityProvider = value; 
 	}
 
 	private byte[] key;
@@ -67,6 +72,6 @@ public class AlternativeSecurityId {
 	* @param value the byte[]
 	*/
 	public void setkey(byte[] value) { 
-		key = value; 
+		this.key = value; 
 	}
 }

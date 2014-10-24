@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Directory Role.
 */
 public class DirectoryRole extends DirectoryObject {
+
+	public DirectoryRole(){
+		setODataType("#Microsoft.DirectoryServices.DirectoryRole");
+	}
+
 	private String description;
 
 	/**
@@ -26,7 +31,7 @@ public class DirectoryRole extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdescription(String value) { 
-		description = value; 
+		this.description = value; 
 	}
 	private String displayName;
 
@@ -45,7 +50,7 @@ public class DirectoryRole extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private Boolean isSystem;
 
@@ -64,7 +69,7 @@ public class DirectoryRole extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setisSystem(Boolean value) { 
-		isSystem = value; 
+		this.isSystem = value; 
 	}
 	private Boolean roleDisabled;
 
@@ -83,7 +88,7 @@ public class DirectoryRole extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setroleDisabled(Boolean value) { 
-		roleDisabled = value; 
+		this.roleDisabled = value; 
 	}
 	private String roleTemplateId;
 
@@ -102,6 +107,6 @@ public class DirectoryRole extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setroleTemplateId(String value) { 
-		roleTemplateId = value; 
+		this.roleTemplateId = value; 
 	}
 }

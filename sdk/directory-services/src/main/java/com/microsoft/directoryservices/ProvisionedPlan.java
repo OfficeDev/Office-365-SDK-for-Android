@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Provisioned Plan.
 */
-public class ProvisionedPlan {
+public class ProvisionedPlan extends ODataBaseEntity {
+
+	public ProvisionedPlan(){
+		setODataType("#Microsoft.DirectoryServices.ProvisionedPlan");
+	}
+
 
 	private String capabilityStatus;
 
@@ -27,7 +32,7 @@ public class ProvisionedPlan {
 	* @param value the String
 	*/
 	public void setcapabilityStatus(String value) { 
-		capabilityStatus = value; 
+		this.capabilityStatus = value; 
 	}
 
 	private String provisioningStatus;
@@ -47,7 +52,7 @@ public class ProvisionedPlan {
 	* @param value the String
 	*/
 	public void setprovisioningStatus(String value) { 
-		provisioningStatus = value; 
+		this.provisioningStatus = value; 
 	}
 
 	private String service;
@@ -67,6 +72,6 @@ public class ProvisionedPlan {
 	* @param value the String
 	*/
 	public void setservice(String value) { 
-		service = value; 
+		this.service = value; 
 	}
 }

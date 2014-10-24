@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Contact.
 */
 public class Contact extends DirectoryObject {
+
+	public Contact(){
+		setODataType("#Microsoft.DirectoryServices.Contact");
+	}
+
 	private String city;
 
 	/**
@@ -26,7 +31,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcity(String value) { 
-		city = value; 
+		this.city = value; 
 	}
 	private String country;
 
@@ -45,7 +50,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcountry(String value) { 
-		country = value; 
+		this.country = value; 
 	}
 	private String department;
 
@@ -64,7 +69,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdepartment(String value) { 
-		department = value; 
+		this.department = value; 
 	}
 	private Boolean dirSyncEnabled;
 
@@ -83,7 +88,7 @@ public class Contact extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setdirSyncEnabled(Boolean value) { 
-		dirSyncEnabled = value; 
+		this.dirSyncEnabled = value; 
 	}
 	private String displayName;
 
@@ -102,7 +107,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private String facsimileTelephoneNumber;
 
@@ -121,7 +126,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setfacsimileTelephoneNumber(String value) { 
-		facsimileTelephoneNumber = value; 
+		this.facsimileTelephoneNumber = value; 
 	}
 	private String givenName;
 
@@ -140,7 +145,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setgivenName(String value) { 
-		givenName = value; 
+		this.givenName = value; 
 	}
 	private String jobTitle;
 
@@ -159,7 +164,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setjobTitle(String value) { 
-		jobTitle = value; 
+		this.jobTitle = value; 
 	}
 	private java.util.Calendar lastDirSyncTime;
 
@@ -178,7 +183,7 @@ public class Contact extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setlastDirSyncTime(java.util.Calendar value) { 
-		lastDirSyncTime = value; 
+		this.lastDirSyncTime = value; 
 	}
 	private String mail;
 
@@ -197,7 +202,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmail(String value) { 
-		mail = value; 
+		this.mail = value; 
 	}
 	private String mailNickname;
 
@@ -216,7 +221,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmailNickname(String value) { 
-		mailNickname = value; 
+		this.mailNickname = value; 
 	}
 	private String mobile;
 
@@ -235,7 +240,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmobile(String value) { 
-		mobile = value; 
+		this.mobile = value; 
 	}
 	private String physicalDeliveryOfficeName;
 
@@ -254,7 +259,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setphysicalDeliveryOfficeName(String value) { 
-		physicalDeliveryOfficeName = value; 
+		this.physicalDeliveryOfficeName = value; 
 	}
 	private String postalCode;
 
@@ -273,7 +278,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpostalCode(String value) { 
-		postalCode = value; 
+		this.postalCode = value; 
 	}
 	private java.util.List<ProvisioningError> provisioningErrors;
 
@@ -292,7 +297,7 @@ public class Contact extends DirectoryObject {
 	* @param value the java.util.List<ProvisioningError>
 	*/
 	public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
-		provisioningErrors = value; 
+		this.provisioningErrors = value; 
 	}
 	private java.util.List<String> proxyAddresses;
 
@@ -311,7 +316,7 @@ public class Contact extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setproxyAddresses(java.util.List<String> value) { 
-		proxyAddresses = value; 
+		this.proxyAddresses = value; 
 	}
 	private String sipProxyAddress;
 
@@ -330,7 +335,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsipProxyAddress(String value) { 
-		sipProxyAddress = value; 
+		this.sipProxyAddress = value; 
 	}
 	private String state;
 
@@ -349,7 +354,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setstate(String value) { 
-		state = value; 
+		this.state = value; 
 	}
 	private String streetAddress;
 
@@ -368,7 +373,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setstreetAddress(String value) { 
-		streetAddress = value; 
+		this.streetAddress = value; 
 	}
 	private String surname;
 
@@ -387,7 +392,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsurname(String value) { 
-		surname = value; 
+		this.surname = value; 
 	}
 	private String telephoneNumber;
 
@@ -406,7 +411,7 @@ public class Contact extends DirectoryObject {
 	* @param value the String
 	*/
 	public void settelephoneNumber(String value) { 
-		telephoneNumber = value; 
+		this.telephoneNumber = value; 
 	}
 	private byte[] thumbnailPhoto;
 
@@ -425,6 +430,6 @@ public class Contact extends DirectoryObject {
 	* @param value the byte[]
 	*/
 	public void setthumbnailPhoto(byte[] value) { 
-		thumbnailPhoto = value; 
+		this.thumbnailPhoto = value; 
 	}
 }

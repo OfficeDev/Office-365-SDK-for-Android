@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Directory Role Template.
 */
 public class DirectoryRoleTemplate extends DirectoryObject {
+
+	public DirectoryRoleTemplate(){
+		setODataType("#Microsoft.DirectoryServices.DirectoryRoleTemplate");
+	}
+
 	private String description;
 
 	/**
@@ -26,7 +31,7 @@ public class DirectoryRoleTemplate extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdescription(String value) { 
-		description = value; 
+		this.description = value; 
 	}
 	private String displayName;
 
@@ -45,6 +50,6 @@ public class DirectoryRoleTemplate extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 }

@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type App Role.
 */
-public class AppRole {
+public class AppRole extends ODataBaseEntity {
+
+	public AppRole(){
+		setODataType("#Microsoft.DirectoryServices.AppRole");
+	}
+
 
 	private java.util.List<String> allowedMemberTypes;
 
@@ -27,7 +32,7 @@ public class AppRole {
 	* @param value the java.util.List<String>
 	*/
 	public void setallowedMemberTypes(java.util.List<String> value) { 
-		allowedMemberTypes = value; 
+		this.allowedMemberTypes = value; 
 	}
 
 	private String description;
@@ -47,7 +52,7 @@ public class AppRole {
 	* @param value the String
 	*/
 	public void setdescription(String value) { 
-		description = value; 
+		this.description = value; 
 	}
 
 	private String displayName;
@@ -67,7 +72,7 @@ public class AppRole {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 
 	private java.util.UUID id;
@@ -87,7 +92,7 @@ public class AppRole {
 	* @param value the java.util.UUID
 	*/
 	public void setid(java.util.UUID value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private Boolean isEnabled;
@@ -107,7 +112,7 @@ public class AppRole {
 	* @param value the Boolean
 	*/
 	public void setisEnabled(Boolean value) { 
-		isEnabled = value; 
+		this.isEnabled = value; 
 	}
 
 	private String value;
@@ -127,6 +132,6 @@ public class AppRole {
 	* @param value the String
 	*/
 	public void setvalue(String value) { 
-		value = value; 
+		this.value = value; 
 	}
 }

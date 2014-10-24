@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Key Credential.
 */
-public class KeyCredential {
+public class KeyCredential extends ODataBaseEntity {
+
+	public KeyCredential(){
+		setODataType("#Microsoft.DirectoryServices.KeyCredential");
+	}
+
 
 	private byte[] customKeyIdentifier;
 
@@ -27,7 +32,7 @@ public class KeyCredential {
 	* @param value the byte[]
 	*/
 	public void setcustomKeyIdentifier(byte[] value) { 
-		customKeyIdentifier = value; 
+		this.customKeyIdentifier = value; 
 	}
 
 	private java.util.Calendar endDate;
@@ -47,7 +52,7 @@ public class KeyCredential {
 	* @param value the java.util.Calendar
 	*/
 	public void setendDate(java.util.Calendar value) { 
-		endDate = value; 
+		this.endDate = value; 
 	}
 
 	private java.util.UUID keyId;
@@ -67,7 +72,7 @@ public class KeyCredential {
 	* @param value the java.util.UUID
 	*/
 	public void setkeyId(java.util.UUID value) { 
-		keyId = value; 
+		this.keyId = value; 
 	}
 
 	private java.util.Calendar startDate;
@@ -87,7 +92,7 @@ public class KeyCredential {
 	* @param value the java.util.Calendar
 	*/
 	public void setstartDate(java.util.Calendar value) { 
-		startDate = value; 
+		this.startDate = value; 
 	}
 
 	private String type;
@@ -107,7 +112,7 @@ public class KeyCredential {
 	* @param value the String
 	*/
 	public void settype(String value) { 
-		type = value; 
+		this.type = value; 
 	}
 
 	private String usage;
@@ -127,7 +132,7 @@ public class KeyCredential {
 	* @param value the String
 	*/
 	public void setusage(String value) { 
-		usage = value; 
+		this.usage = value; 
 	}
 
 	private byte[] value;
@@ -147,6 +152,6 @@ public class KeyCredential {
 	* @param value the byte[]
 	*/
 	public void setvalue(byte[] value) { 
-		value = value; 
+		this.value = value; 
 	}
 }

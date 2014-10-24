@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Service Plan Info.
 */
-public class ServicePlanInfo {
+public class ServicePlanInfo extends ODataBaseEntity {
+
+	public ServicePlanInfo(){
+		setODataType("#Microsoft.DirectoryServices.ServicePlanInfo");
+	}
+
 
 	private java.util.UUID servicePlanId;
 
@@ -27,7 +32,7 @@ public class ServicePlanInfo {
 	* @param value the java.util.UUID
 	*/
 	public void setservicePlanId(java.util.UUID value) { 
-		servicePlanId = value; 
+		this.servicePlanId = value; 
 	}
 
 	private String servicePlanName;
@@ -47,6 +52,6 @@ public class ServicePlanInfo {
 	* @param value the String
 	*/
 	public void setservicePlanName(String value) { 
-		servicePlanName = value; 
+		this.servicePlanName = value; 
 	}
 }

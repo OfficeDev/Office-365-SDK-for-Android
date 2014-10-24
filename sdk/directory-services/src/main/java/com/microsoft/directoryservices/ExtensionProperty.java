@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Extension Property.
 */
 public class ExtensionProperty extends DirectoryObject {
+
+	public ExtensionProperty(){
+		setODataType("#Microsoft.DirectoryServices.ExtensionProperty");
+	}
+
 	private String appDisplayName;
 
 	/**
@@ -26,7 +31,7 @@ public class ExtensionProperty extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setappDisplayName(String value) { 
-		appDisplayName = value; 
+		this.appDisplayName = value; 
 	}
 	private String name;
 
@@ -45,7 +50,7 @@ public class ExtensionProperty extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setname(String value) { 
-		name = value; 
+		this.name = value; 
 	}
 	private String dataType;
 
@@ -64,7 +69,7 @@ public class ExtensionProperty extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdataType(String value) { 
-		dataType = value; 
+		this.dataType = value; 
 	}
 	private Boolean isSyncedFromOnPremises;
 
@@ -83,7 +88,7 @@ public class ExtensionProperty extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setisSyncedFromOnPremises(Boolean value) { 
-		isSyncedFromOnPremises = value; 
+		this.isSyncedFromOnPremises = value; 
 	}
 	private java.util.List<String> targetObjects;
 
@@ -102,6 +107,6 @@ public class ExtensionProperty extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void settargetObjects(java.util.List<String> value) { 
-		targetObjects = value; 
+		this.targetObjects = value; 
 	}
 }

@@ -10,17 +10,17 @@ import com.microsoft.directoryservices.*;
 import com.microsoft.directoryservices.odata.*;
 
 /**
- * The type DirectoryDataServiceClient.
+ * The type DirectoryClient.
  */
-public class DirectoryDataServiceClient extends BaseODataContainer {
+public class DirectoryClient extends BaseODataContainer {
 
 	 /**
-     * Instantiates a new DirectoryDataServiceClient.
+     * Instantiates a new DirectoryClient.
      *
      * @param url the url
      * @param resolver the resolver
      */
-    public DirectoryDataServiceClient(String url, DependencyResolver resolver) {
+    public DirectoryClient(String url, DependencyResolver resolver) {
         super(url, resolver);
     }
 	 /**

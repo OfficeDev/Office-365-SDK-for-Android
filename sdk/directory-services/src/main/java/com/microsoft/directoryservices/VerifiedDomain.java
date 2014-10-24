@@ -7,126 +7,131 @@ package com.microsoft.directoryservices;
 
 /**
  * The type Verified Domain.
- */
-public class VerifiedDomain {
+*/
+public class VerifiedDomain extends ODataBaseEntity {
 
-    private String capabilities;
+	public VerifiedDomain(){
+		setODataType("#Microsoft.DirectoryServices.VerifiedDomain");
+	}
 
-    /**
-     * Gets the capabilities.
-     *
-     * @return the String
-     */
-    public String getcapabilities() {
-        return this.capabilities;
-    }
 
-    /**
-     * Sets the capabilities.
-     *
-     * @param value the String
-     */
-    public void setcapabilities(String value) {
-        this.capabilities = value;
-    }
+	private String capabilities;
 
-    private Boolean $$__$$default;
+	/**
+	* Gets the capabilities.
+	*
+	* @return the String
+	*/
+	public String getcapabilities() {
+		return this.capabilities; 
+	}
 
-    /**
-     * Gets the default.
-     *
-     * @return the Boolean
-     */
-    public Boolean getdefault() {
-        return this.$$__$$default;
-    }
+	/**
+	* Sets the capabilities.
+	*
+	* @param value the String
+	*/
+	public void setcapabilities(String value) { 
+		this.capabilities = value; 
+	}
 
-    /**
-     * Sets the default.
-     *
-     * @param value the Boolean
-     */
-    public void setdefault(Boolean value) {
-        this.$$__$$default = value;
-    }
+	private Boolean $$__$$default;
 
-    private String id;
+	/**
+	* Gets the default.
+	*
+	* @return the Boolean
+	*/
+	public Boolean getdefault() {
+		return this.$$__$$default; 
+	}
 
-    /**
-     * Gets the id.
-     *
-     * @return the String
-     */
-    public String getid() {
-        return this.id;
-    }
+	/**
+	* Sets the default.
+	*
+	* @param value the Boolean
+	*/
+	public void setdefault(Boolean value) { 
+		this.$$__$$default = value; 
+	}
 
-    /**
-     * Sets the id.
-     *
-     * @param value the String
-     */
-    public void setid(String value) {
-        this.id = value;
-    }
+	private String id;
 
-    private Boolean initial;
+	/**
+	* Gets the id.
+	*
+	* @return the String
+	*/
+	public String getid() {
+		return this.id; 
+	}
 
-    /**
-     * Gets the initial.
-     *
-     * @return the Boolean
-     */
-    public Boolean getinitial() {
-        return this.initial;
-    }
+	/**
+	* Sets the id.
+	*
+	* @param value the String
+	*/
+	public void setid(String value) { 
+		this.id = value; 
+	}
 
-    /**
-     * Sets the initial.
-     *
-     * @param value the Boolean
-     */
-    public void setinitial(Boolean value) {
-        this.initial = value;
-    }
+	private Boolean initial;
 
-    private String name;
+	/**
+	* Gets the initial.
+	*
+	* @return the Boolean
+	*/
+	public Boolean getinitial() {
+		return this.initial; 
+	}
 
-    /**
-     * Gets the name.
-     *
-     * @return the String
-     */
-    public String getname() {
-        return this.name;
-    }
+	/**
+	* Sets the initial.
+	*
+	* @param value the Boolean
+	*/
+	public void setinitial(Boolean value) { 
+		this.initial = value; 
+	}
 
-    /**
-     * Sets the name.
-     *
-     * @param value the String
-     */
-    public void setname(String value) {
-        this.name = value;
-    }
+	private String name;
 
-    private String type;
+	/**
+	* Gets the name.
+	*
+	* @return the String
+	*/
+	public String getname() {
+		return this.name; 
+	}
 
-    /**
-     * Gets the type.
-     *
-     * @return the String
-     */
-    public String gettype() {
-        return this.type;
-    }
+	/**
+	* Sets the name.
+	*
+	* @param value the String
+	*/
+	public void setname(String value) { 
+		this.name = value; 
+	}
 
-    /**
-     * Sets the type.
-     *
-     * @param value the String
-     */
-    public void settype(String value) {
-        this.type = value;
-    }
+	private String type;
+
+	/**
+	* Gets the type.
+	*
+	* @return the String
+	*/
+	public String gettype() {
+		return this.type; 
+	}
+
+	/**
+	* Sets the type.
+	*
+	* @param value the String
+	*/
+	public void settype(String value) { 
+		this.type = value; 
+	}
 }

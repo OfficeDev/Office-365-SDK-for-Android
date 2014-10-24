@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Password Credential.
 */
-public class PasswordCredential {
+public class PasswordCredential extends ODataBaseEntity {
+
+	public PasswordCredential(){
+		setODataType("#Microsoft.DirectoryServices.PasswordCredential");
+	}
+
 
 	private byte[] customKeyIdentifier;
 
@@ -27,7 +32,7 @@ public class PasswordCredential {
 	* @param value the byte[]
 	*/
 	public void setcustomKeyIdentifier(byte[] value) { 
-		customKeyIdentifier = value; 
+		this.customKeyIdentifier = value; 
 	}
 
 	private java.util.Calendar endDate;
@@ -47,7 +52,7 @@ public class PasswordCredential {
 	* @param value the java.util.Calendar
 	*/
 	public void setendDate(java.util.Calendar value) { 
-		endDate = value; 
+		this.endDate = value; 
 	}
 
 	private java.util.UUID keyId;
@@ -67,7 +72,7 @@ public class PasswordCredential {
 	* @param value the java.util.UUID
 	*/
 	public void setkeyId(java.util.UUID value) { 
-		keyId = value; 
+		this.keyId = value; 
 	}
 
 	private java.util.Calendar startDate;
@@ -87,7 +92,7 @@ public class PasswordCredential {
 	* @param value the java.util.Calendar
 	*/
 	public void setstartDate(java.util.Calendar value) { 
-		startDate = value; 
+		this.startDate = value; 
 	}
 
 	private String value;
@@ -107,6 +112,6 @@ public class PasswordCredential {
 	* @param value the String
 	*/
 	public void setvalue(String value) { 
-		value = value; 
+		this.value = value; 
 	}
 }
