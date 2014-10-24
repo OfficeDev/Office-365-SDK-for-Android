@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Physical Address.
 */
-public class PhysicalAddress {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.PhysicalAddress";
+public class PhysicalAddress extends ODataBaseEntity {
+
+	public PhysicalAddress(){
+		setODataType("#Microsoft.OutlookServices.PhysicalAddress");
+	}
 
 
 	private String Street;

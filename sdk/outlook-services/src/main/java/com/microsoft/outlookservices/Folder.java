@@ -10,7 +10,9 @@ package com.microsoft.outlookservices;
 */
 public class Folder extends Entity {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.Folder";
+	public Folder(){
+		setODataType("#Microsoft.OutlookServices.Folder");
+	}
 
 	private String ParentFolderId;
 

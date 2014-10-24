@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Recurrence Pattern.
 */
-public class RecurrencePattern {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.RecurrencePattern";
+public class RecurrencePattern extends ODataBaseEntity {
+
+	public RecurrencePattern(){
+		setODataType("#Microsoft.OutlookServices.RecurrencePattern");
+	}
 
 
 	private RecurrencePatternType Type;

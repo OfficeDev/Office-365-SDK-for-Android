@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Item Body.
 */
-public class ItemBody {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.ItemBody";
+public class ItemBody extends ODataBaseEntity {
+
+	public ItemBody(){
+		setODataType("#Microsoft.OutlookServices.ItemBody");
+	}
 
 
 	private BodyType ContentType;

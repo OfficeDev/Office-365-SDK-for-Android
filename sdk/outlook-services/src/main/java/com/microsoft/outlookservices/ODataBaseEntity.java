@@ -6,12 +6,14 @@
 package com.microsoft.outlookservices;
 
 /**
- * The type Item Attachment.
+ * The type ODataBaseEntity.
 */
-public class ItemAttachment extends Attachment {
+public abstract class ODataBaseEntity {
 
-	public ItemAttachment(){
-		setODataType("#Microsoft.OutlookServices.ItemAttachment");
-	}
+   protected String $$__ODataType;
+
+   protected void setODataType(String value){
+		this.$$__ODataType = value;
+   }
 
 }

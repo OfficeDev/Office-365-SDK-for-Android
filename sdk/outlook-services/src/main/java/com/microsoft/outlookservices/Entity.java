@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Entity.
 */
-public class Entity {
+public class Entity extends ODataBaseEntity {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.Entity";
+	public Entity(){
+		setODataType("#Microsoft.OutlookServices.Entity");
+	}
 
 	private String Id;
 

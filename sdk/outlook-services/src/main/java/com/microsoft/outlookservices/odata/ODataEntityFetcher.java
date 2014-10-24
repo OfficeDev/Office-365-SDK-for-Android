@@ -48,8 +48,9 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
         }
     }
 
-	public void addHeader(String name, String value) {
+	public ODataEntityFetcher<E,V> addHeader(String name, String value) {
         this.addCustomHeader(name, value);
+		return this;
     }
 
     @Override
