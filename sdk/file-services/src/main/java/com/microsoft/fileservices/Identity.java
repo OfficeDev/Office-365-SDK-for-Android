@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type Identity.
 */
 public class Identity {
+	
+	private String $$_ODataType;
+
 
 	private String id;
 
@@ -27,7 +30,7 @@ public class Identity {
 	* @param value the String
 	*/
 	public void setid(String value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private String displayName;
@@ -47,6 +50,6 @@ public class Identity {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 }

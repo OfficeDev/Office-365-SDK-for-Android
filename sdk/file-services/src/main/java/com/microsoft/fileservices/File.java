@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type File.
 */
 public class File extends Item {
+
+	private String $$_ODataType;
+
 	private String contentUrl;
 
 	/**
@@ -26,6 +29,6 @@ public class File extends Item {
 	* @param value the String
 	*/
 	public void setcontentUrl(String value) { 
-		contentUrl = value; 
+		this.contentUrl = value; 
 	}
 }

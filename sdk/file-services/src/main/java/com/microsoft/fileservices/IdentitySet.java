@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type Identity Set.
 */
 public class IdentitySet {
+	
+	private String $$_ODataType;
+
 
 	private Identity application;
 
@@ -27,7 +30,7 @@ public class IdentitySet {
 	* @param value the Identity
 	*/
 	public void setapplication(Identity value) { 
-		application = value; 
+		this.application = value; 
 	}
 
 	private Identity user;
@@ -47,6 +50,6 @@ public class IdentitySet {
 	* @param value the Identity
 	*/
 	public void setuser(Identity value) { 
-		user = value; 
+		this.user = value; 
 	}
 }

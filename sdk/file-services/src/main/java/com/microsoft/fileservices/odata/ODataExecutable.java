@@ -36,7 +36,7 @@ abstract class ODataExecutable {
      */
 	Map<String, Object> customParameters = new HashMap<String, Object>();
 
-    /**
+	/**
      * The Custom headers.
      */
     Map<String, String> customHeaders = new HashMap<String, String>();
@@ -59,6 +59,7 @@ abstract class ODataExecutable {
 	Map<String, Object> getCustomParameters() {
 		return this.customParameters;
 	}
+
 
     /**
      * Add custom headers.

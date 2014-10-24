@@ -17,8 +17,8 @@ allprojects {
     }
 
     apply plugin: 'idea'
-    group = 'org.microsoft.com'
-    version = '0.9'
+    group = 'com.microsoft.services'
+    version = '1.0-SNAPSHOT'
 }
 
 subprojects {
@@ -27,43 +27,8 @@ subprojects {
     apply plugin: 'maven-publish'
     apply plugin: 'com.jfrog.bintray'
 
-    if (project.name == 'list-services' || project.name == 'odata-engine-android-impl'){
-
-        uploadArchives {
-            repositories.mavenDeployer {
-                pom.groupId = 'com.microsoft'
-                pom.artifactId = project.name
-                pom.version = '1.0.0'
-                // Add other pom properties here if you want (developer details / licenses)
-                repository(url: "https://github.com/msopentech/O365-Android'")
-            }
-        }
-
-    }else {
-
-        apply plugin: 'java'
-        sourceSets {
-            main {
-                java {
-                    srcDir 'src/main/java'
-                }
-            }
-        }
-    }
-
     configurations {
         published
-    }
-
-    // custom tasks for creating source/javadoc jars
-    task sourcesJar(type: Jar) {
-        classifier = 'sources'
-        from sourceSets.main.allSource.srcDirs
-    }
-
-    // add javadoc/source jar tasks as artifacts
-    artifacts {
-        published sourcesJar
     }
 
     repositories {
@@ -72,12 +37,8 @@ subprojects {
 
     publishing {
         publications {
-            mavenJava(MavenPublication) {
-                from components.java
+            maven(MavenPublication) {
 
-                artifact sourcesJar {
-                    classifier "sources"
-                }
             }
         }
     }
