@@ -9,12 +9,15 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 /**
  * The type FileAttachmentOperations.
  */
-public class FileAttachmentOperations extends ODataOperations {
+public class FileAttachmentOperations extends AttachmentOperations {
 
      /**
       * Instantiates a new FileAttachmentOperations.

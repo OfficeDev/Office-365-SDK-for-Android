@@ -9,12 +9,15 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 /**
  * The type FolderOperations.
  */
-public class FolderOperations extends ODataOperations {
+public class FolderOperations extends EntityOperations {
 
      /**
       * Instantiates a new FolderOperations.
@@ -46,13 +49,15 @@ public class FolderOperations extends ODataOperations {
      */			
 	public ListenableFuture<Folder> copy(String destinationId) {
 	    final SettableFuture<Folder> result = SettableFuture.create();
-
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("DestinationId", destinationId);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Copy");
+
+				url.appendPathComponent("Copy");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		
 		addEntityResultCallback(result, future, getResolver(), Folder.class);
 		
 		return result;
@@ -66,13 +71,15 @@ public class FolderOperations extends ODataOperations {
      */			
 	public ListenableFuture<Folder> move(String destinationId) {
 	    final SettableFuture<Folder> result = SettableFuture.create();
-
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("DestinationId", destinationId);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Move");
+
+				url.appendPathComponent("Move");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		
 		addEntityResultCallback(result, future, getResolver(), Folder.class);
 		
 		return result;

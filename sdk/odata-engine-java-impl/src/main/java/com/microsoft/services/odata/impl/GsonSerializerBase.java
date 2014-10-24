@@ -17,13 +17,15 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
-import static com.microsoft.services.odata.Helpers.*;
+import static com.microsoft.services.odata.Helpers.getODataTypePrefix;
+import static com.microsoft.services.odata.Helpers.getReservedNames;
+import static com.microsoft.services.odata.Helpers.getReservedODataTypePrefix;
+import static com.microsoft.services.odata.Helpers.getReservedPrefix;
 
 /**
  * The type Gson serializer.
  */
 public abstract class GsonSerializerBase implements JsonSerializer {
-
 
 
     private Gson createGson() {
@@ -52,6 +54,8 @@ public abstract class GsonSerializerBase implements JsonSerializer {
         JsonParser parser = new JsonParser();
         JsonElement json = parser.parse(payload);
         sanitizeForDeserialization(json);
+
+
         return serializer.fromJson(json, clazz);
     }
 
@@ -67,7 +71,7 @@ public abstract class GsonSerializerBase implements JsonSerializer {
         JsonElement jsonArray = json.get("value");
         sanitizeForDeserialization(jsonArray);
 
-        E[] array = (E[])serializer.fromJson(jsonArray, arrayClass);
+        E[] array = (E[]) serializer.fromJson(jsonArray, arrayClass);
 
         ArrayList<E> arrayList = new ArrayList<E>();
 
@@ -92,12 +96,16 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                 JsonElement subElement = entry.getValue();
 
                 String newName = propertyName;
+
                 if (newName.startsWith(getReservedPrefix())) {
                     newName = newName.substring(getReservedPrefix().length());
                     if (getReservedNames().contains(newName)) {
                         jsonObject.remove(newName);
                         jsonObject.add(propertyName, subElement);
                     }
+                } else if (propertyName.equals(getReservedODataTypePrefix())) {
+                    jsonObject.remove(getReservedODataTypePrefix());
+                    jsonObject.add(getODataTypePrefix(), subElement);
                 }
 
                 sanitizePostSerialization(subElement);
@@ -122,6 +130,12 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                 if (getReservedNames().contains(propertyName)) {
                     jsonObject.remove(propertyName);
                     jsonObject.add(newName, subElement);
+                } else {
+                    String oDataTypeName = getReservedODataTypePrefix();
+                    if (propertyName.equals(getODataTypePrefix())) {
+                        jsonObject.remove(propertyName);
+                        jsonObject.add(oDataTypeName, subElement);
+                    }
                 }
 
                 sanitizePostSerialization(subElement);

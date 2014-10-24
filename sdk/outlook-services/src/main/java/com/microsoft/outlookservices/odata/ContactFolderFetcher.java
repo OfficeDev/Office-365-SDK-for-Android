@@ -7,7 +7,8 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.*; 
+import com.microsoft.outlookservices.*;		
 
 /**
  * The type  ContactFolderFetcher.
@@ -23,7 +24,8 @@ public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,Conta
 	 public ContactFolderFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, ContactFolder.class,ContactFolderOperations.class);
     }
-     /**
+
+	     /**
      * Gets contacts.
      *
      * @return the contacts

@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type User.
 */
 public class User extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.User";
+
 	private String DisplayName;
 
 	/**
@@ -26,7 +29,7 @@ public class User extends Entity {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		DisplayName = value; 
+		this.DisplayName = value; 
 	}
 	private String Alias;
 
@@ -45,7 +48,7 @@ public class User extends Entity {
 	* @param value the String
 	*/
 	public void setAlias(String value) { 
-		Alias = value; 
+		this.Alias = value; 
 	}
 	private java.util.UUID MailboxGuid;
 
@@ -64,6 +67,6 @@ public class User extends Entity {
 	* @param value the java.util.UUID
 	*/
 	public void setMailboxGuid(java.util.UUID value) { 
-		MailboxGuid = value; 
+		this.MailboxGuid = value; 
 	}
 }

@@ -7,7 +7,8 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.*; 
+import com.microsoft.outlookservices.*;		
 
 /**
  * The type  CalendarGroupFetcher.
@@ -23,7 +24,8 @@ public class CalendarGroupFetcher extends ODataEntityFetcher<CalendarGroup,Calen
 	 public CalendarGroupFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, CalendarGroup.class,CalendarGroupOperations.class);
     }
-     /**
+
+	     /**
      * Gets calendars.
      *
      * @return the calendars

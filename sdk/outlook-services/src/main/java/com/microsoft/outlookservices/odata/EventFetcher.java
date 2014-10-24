@@ -7,7 +7,8 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.*; 
+import com.microsoft.outlookservices.*;		
 
 /**
  * The type  EventFetcher.
@@ -23,7 +24,8 @@ public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> impl
 	 public EventFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Event.class,EventOperations.class);
     }
-     /**
+
+	     /**
      * Gets attachments.
      *
      * @return the attachments

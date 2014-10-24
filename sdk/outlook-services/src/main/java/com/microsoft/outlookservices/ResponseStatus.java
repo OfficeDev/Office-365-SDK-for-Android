@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Response Status.
 */
 public class ResponseStatus {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.ResponseStatus";
+
 
 	private ResponseType Response;
 
@@ -27,7 +30,7 @@ public class ResponseStatus {
 	* @param value the ResponseType
 	*/
 	public void setResponse(ResponseType value) { 
-		Response = value; 
+		this.Response = value; 
 	}
 
 	private java.util.Calendar Time;
@@ -47,6 +50,6 @@ public class ResponseStatus {
 	* @param value the java.util.Calendar
 	*/
 	public void setTime(java.util.Calendar value) { 
-		Time = value; 
+		this.Time = value; 
 	}
 }

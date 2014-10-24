@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type Drive.
 */
 public class Drive {
+
+	private String $$_ODataType;
+
 	private String id;
 
 	/**
@@ -26,7 +29,7 @@ public class Drive {
 	* @param value the String
 	*/
 	public void setid(String value) { 
-		id = value; 
+		this.id = value; 
 	}
 	private Identity owner;
 
@@ -45,7 +48,7 @@ public class Drive {
 	* @param value the Identity
 	*/
 	public void setowner(Identity value) { 
-		owner = value; 
+		this.owner = value; 
 	}
 	private DriveQuota quota;
 
@@ -64,6 +67,6 @@ public class Drive {
 	* @param value the DriveQuota
 	*/
 	public void setquota(DriveQuota value) { 
-		quota = value; 
+		this.quota = value; 
 	}
 }

@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Calendar.
 */
 public class Calendar extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Calendar";
+
 	private String Name;
 
 	/**
@@ -26,7 +29,7 @@ public class Calendar extends Entity {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		Name = value; 
+		this.Name = value; 
 	}
 	private String ChangeKey;
 
@@ -45,6 +48,6 @@ public class Calendar extends Entity {
 	* @param value the String
 	*/
 	public void setChangeKey(String value) { 
-		ChangeKey = value; 
+		this.ChangeKey = value; 
 	}
 }

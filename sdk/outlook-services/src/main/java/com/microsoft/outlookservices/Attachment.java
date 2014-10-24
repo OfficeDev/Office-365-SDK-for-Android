@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Attachment.
 */
 public class Attachment extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Attachment";
+
 	private String Name;
 
 	/**
@@ -26,7 +29,7 @@ public class Attachment extends Entity {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		Name = value; 
+		this.Name = value; 
 	}
 	private String ContentType;
 
@@ -45,7 +48,7 @@ public class Attachment extends Entity {
 	* @param value the String
 	*/
 	public void setContentType(String value) { 
-		ContentType = value; 
+		this.ContentType = value; 
 	}
 	private Integer Size;
 
@@ -64,7 +67,7 @@ public class Attachment extends Entity {
 	* @param value the Integer
 	*/
 	public void setSize(Integer value) { 
-		Size = value; 
+		this.Size = value; 
 	}
 	private Boolean IsInline;
 
@@ -83,7 +86,7 @@ public class Attachment extends Entity {
 	* @param value the Boolean
 	*/
 	public void setIsInline(Boolean value) { 
-		IsInline = value; 
+		this.IsInline = value; 
 	}
 	private java.util.Calendar DateTimeLastModified;
 
@@ -102,6 +105,6 @@ public class Attachment extends Entity {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeLastModified(java.util.Calendar value) { 
-		DateTimeLastModified = value; 
+		this.DateTimeLastModified = value; 
 	}
 }

@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type Folder.
 */
 public class Folder extends Item {
+
+	private String $$_ODataType;
+
 	private Integer childCount;
 
 	/**
@@ -26,6 +29,6 @@ public class Folder extends Item {
 	* @param value the Integer
 	*/
 	public void setchildCount(Integer value) { 
-		childCount = value; 
+		this.childCount = value; 
 	}
 }

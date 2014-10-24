@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Email Address.
 */
 public class EmailAddress {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.EmailAddress";
+
 
 	private String Name;
 
@@ -27,7 +30,7 @@ public class EmailAddress {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		Name = value; 
+		this.Name = value; 
 	}
 
 	private String Address;
@@ -47,6 +50,6 @@ public class EmailAddress {
 	* @param value the String
 	*/
 	public void setAddress(String value) { 
-		Address = value; 
+		this.Address = value; 
 	}
 }

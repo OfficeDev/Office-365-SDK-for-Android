@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Item Body.
 */
 public class ItemBody {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.ItemBody";
+
 
 	private BodyType ContentType;
 
@@ -27,7 +30,7 @@ public class ItemBody {
 	* @param value the BodyType
 	*/
 	public void setContentType(BodyType value) { 
-		ContentType = value; 
+		this.ContentType = value; 
 	}
 
 	private String Content;
@@ -47,6 +50,6 @@ public class ItemBody {
 	* @param value the String
 	*/
 	public void setContent(String value) { 
-		Content = value; 
+		this.Content = value; 
 	}
 }

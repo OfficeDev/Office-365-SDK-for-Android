@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Item.
 */
 public class Item extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Item";
+
 	private String ChangeKey;
 
 	/**
@@ -26,7 +29,7 @@ public class Item extends Entity {
 	* @param value the String
 	*/
 	public void setChangeKey(String value) { 
-		ChangeKey = value; 
+		this.ChangeKey = value; 
 	}
 	private java.util.List<String> Categories;
 
@@ -45,7 +48,7 @@ public class Item extends Entity {
 	* @param value the java.util.List<String>
 	*/
 	public void setCategories(java.util.List<String> value) { 
-		Categories = value; 
+		this.Categories = value; 
 	}
 	private java.util.Calendar DateTimeCreated;
 
@@ -64,7 +67,7 @@ public class Item extends Entity {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeCreated(java.util.Calendar value) { 
-		DateTimeCreated = value; 
+		this.DateTimeCreated = value; 
 	}
 	private java.util.Calendar DateTimeLastModified;
 
@@ -83,6 +86,6 @@ public class Item extends Entity {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeLastModified(java.util.Calendar value) { 
-		DateTimeLastModified = value; 
+		this.DateTimeLastModified = value; 
 	}
 }

@@ -9,12 +9,15 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 /**
  * The type UserOperations.
  */
-public class UserOperations extends ODataOperations {
+public class UserOperations extends EntityOperations {
 
      /**
       * Instantiates a new UserOperations.
@@ -47,14 +50,16 @@ public class UserOperations extends ODataOperations {
      */			
 	public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) {
 	    final SettableFuture<Integer> result = SettableFuture.create();
-
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("Message", message);
 		map.put("SaveToSentItems", saveToSentItems);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("SendMail");
+
+				url.appendPathComponent("SendMail");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
 		return result;

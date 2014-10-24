@@ -81,6 +81,10 @@ public class Helpers {
         return "$$__$$";
     }
 
+    public static String getReservedODataTypePrefix() {return "$$__ODataType"; }
+
+    public static String getODataTypePrefix() {return "@odata.type";}
+
     /**
      * Add custom parameters to o data uRL.
      *

@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Folder.
 */
 public class Folder extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Folder";
+
 	private String ParentFolderId;
 
 	/**
@@ -26,7 +29,7 @@ public class Folder extends Entity {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		ParentFolderId = value; 
+		this.ParentFolderId = value; 
 	}
 	private String DisplayName;
 
@@ -45,7 +48,7 @@ public class Folder extends Entity {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		DisplayName = value; 
+		this.DisplayName = value; 
 	}
 	private Integer ChildFolderCount;
 
@@ -64,6 +67,6 @@ public class Folder extends Entity {
 	* @param value the Integer
 	*/
 	public void setChildFolderCount(Integer value) { 
-		ChildFolderCount = value; 
+		this.ChildFolderCount = value; 
 	}
 }

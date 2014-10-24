@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Contact Folder.
 */
 public class ContactFolder extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.ContactFolder";
+
 	private String ParentFolderId;
 
 	/**
@@ -26,7 +29,7 @@ public class ContactFolder extends Entity {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		ParentFolderId = value; 
+		this.ParentFolderId = value; 
 	}
 	private String DisplayName;
 
@@ -45,6 +48,6 @@ public class ContactFolder extends Entity {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		DisplayName = value; 
+		this.DisplayName = value; 
 	}
 }

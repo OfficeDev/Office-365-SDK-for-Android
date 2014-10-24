@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type Drive Quota.
 */
 public class DriveQuota {
+	
+	private String $$_ODataType;
+
 
 	private long deleted;
 
@@ -27,7 +30,7 @@ public class DriveQuota {
 	* @param value the long
 	*/
 	public void setdeleted(long value) { 
-		deleted = value; 
+		this.deleted = value; 
 	}
 
 	private long remaining;
@@ -47,7 +50,7 @@ public class DriveQuota {
 	* @param value the long
 	*/
 	public void setremaining(long value) { 
-		remaining = value; 
+		this.remaining = value; 
 	}
 
 	private String state;
@@ -67,7 +70,7 @@ public class DriveQuota {
 	* @param value the String
 	*/
 	public void setstate(String value) { 
-		state = value; 
+		this.state = value; 
 	}
 
 	private long total;
@@ -87,6 +90,6 @@ public class DriveQuota {
 	* @param value the long
 	*/
 	public void settotal(long value) { 
-		total = value; 
+		this.total = value; 
 	}
 }

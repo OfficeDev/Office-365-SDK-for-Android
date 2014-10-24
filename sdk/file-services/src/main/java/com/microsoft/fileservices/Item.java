@@ -9,6 +9,9 @@ package com.microsoft.fileservices;
  * The type Item.
 */
 public class Item {
+
+	private String $$_ODataType;
+
 	private IdentitySet createdBy;
 
 	/**
@@ -26,7 +29,7 @@ public class Item {
 	* @param value the IdentitySet
 	*/
 	public void setcreatedBy(IdentitySet value) { 
-		createdBy = value; 
+		this.createdBy = value; 
 	}
 	private String eTag;
 
@@ -45,7 +48,7 @@ public class Item {
 	* @param value the String
 	*/
 	public void seteTag(String value) { 
-		eTag = value; 
+		this.eTag = value; 
 	}
 	private String id;
 
@@ -64,7 +67,7 @@ public class Item {
 	* @param value the String
 	*/
 	public void setid(String value) { 
-		id = value; 
+		this.id = value; 
 	}
 	private IdentitySet lastModifiedBy;
 
@@ -83,7 +86,7 @@ public class Item {
 	* @param value the IdentitySet
 	*/
 	public void setlastModifiedBy(IdentitySet value) { 
-		lastModifiedBy = value; 
+		this.lastModifiedBy = value; 
 	}
 	private String name;
 
@@ -102,7 +105,7 @@ public class Item {
 	* @param value the String
 	*/
 	public void setname(String value) { 
-		name = value; 
+		this.name = value; 
 	}
 	private ItemReference parentReference;
 
@@ -121,7 +124,7 @@ public class Item {
 	* @param value the ItemReference
 	*/
 	public void setparentReference(ItemReference value) { 
-		parentReference = value; 
+		this.parentReference = value; 
 	}
 	private long size;
 
@@ -140,7 +143,7 @@ public class Item {
 	* @param value the long
 	*/
 	public void setsize(long value) { 
-		size = value; 
+		this.size = value; 
 	}
 	private java.util.Calendar dateTimeCreated;
 
@@ -159,7 +162,7 @@ public class Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setdateTimeCreated(java.util.Calendar value) { 
-		dateTimeCreated = value; 
+		this.dateTimeCreated = value; 
 	}
 	private java.util.Calendar dateTimeLastModified;
 
@@ -178,7 +181,7 @@ public class Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setdateTimeLastModified(java.util.Calendar value) { 
-		dateTimeLastModified = value; 
+		this.dateTimeLastModified = value; 
 	}
 	private String type;
 
@@ -197,7 +200,7 @@ public class Item {
 	* @param value the String
 	*/
 	public void settype(String value) { 
-		type = value; 
+		this.type = value; 
 	}
 	private String webUrl;
 
@@ -216,6 +219,6 @@ public class Item {
 	* @param value the String
 	*/
 	public void setwebUrl(String value) { 
-		webUrl = value; 
+		this.webUrl = value; 
 	}
 }

@@ -10,17 +10,17 @@ import com.microsoft.fileservices.*;
 import com.microsoft.fileservices.odata.*;
 
 /**
- * The type EntityContainerClient.
+ * The type SharePointClient.
  */
-public class EntityContainerClient extends BaseODataContainer {
+public class SharePointClient extends BaseODataContainer {
 
 	 /**
-     * Instantiates a new EntityContainerClient.
+     * Instantiates a new SharePointClient.
      *
      * @param url the url
      * @param resolver the resolver
      */
-    public EntityContainerClient(String url, DependencyResolver resolver) {
+    public SharePointClient(String url, DependencyResolver resolver) {
         super(url, resolver);
     }
 	 /**
@@ -30,14 +30,6 @@ public class EntityContainerClient extends BaseODataContainer {
      */
     public DriveFetcher getdrive() {
         return new DriveFetcher("drive", this);
-    }
-	 /**
-     * Gets me.
-     *
-     * @return the me
-     */
-    public CurrentUserRequestContextFetcher getme() {
-        return new CurrentUserRequestContextFetcher("me", this);
     }
 	 /**
      * Gets Item.
