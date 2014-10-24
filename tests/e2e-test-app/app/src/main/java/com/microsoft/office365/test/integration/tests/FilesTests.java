@@ -20,8 +20,8 @@ public class FilesTests extends TestGroup {
     public FilesTests() {
         super("Files tests");
 
-        this.addTest(canGetFiles("Can get files", false));
-        this.addTest(canGetFilesById("Can get file by Id", false));
+        this.addTest(canGetFiles("Can get files", true));
+        this.addTest(canGetFilesById("Can get file by Id", true));
         this.addTest(canCreateFile("Can create file with content", true));
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
@@ -69,7 +69,7 @@ public class FilesTests extends TestGroup {
 
                     SharePointClient client = ApplicationContext.getFilesClient();
 
-                    File newFile = new File();
+                    Item newFile = new Item();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
@@ -151,7 +151,7 @@ public class FilesTests extends TestGroup {
 
                     SharePointClient client = ApplicationContext.getFilesClient();
 
-                    File newFile = new File();
+                    Item newFile = new Item();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
@@ -195,7 +195,7 @@ public class FilesTests extends TestGroup {
 
                     SharePointClient client = ApplicationContext.getFilesClient();
 
-                    File newFile = new File();
+                    Item newFile = new Item();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
@@ -204,7 +204,7 @@ public class FilesTests extends TestGroup {
 
                     String newFileName = "Updated" + newFile.getname();
                     newFile.setname(newFileName);
-                    client.getfiles().getById(addedFile.getid()).asFile().update(newFile);
+                    client.getfiles().getById(addedFile.getid()).update(newFile);
 
                     //Assert
                     if(addedFile == null)
