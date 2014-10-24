@@ -10,17 +10,17 @@ import com.microsoft.discoveryservices.*;
 import com.microsoft.discoveryservices.odata.*;
 
 /**
- * The type EntityContainerClient.
+ * The type DiscoveryClient.
  */
-public class EntityContainerClient extends BaseODataContainer {
+public class DiscoveryClient extends BaseODataContainer {
 
 	 /**
-     * Instantiates a new EntityContainerClient.
+     * Instantiates a new DiscoveryClient.
      *
      * @param url the url
      * @param resolver the resolver
      */
-    public EntityContainerClient(String url, DependencyResolver resolver) {
+    public DiscoveryClient(String url, DependencyResolver resolver) {
         super(url, resolver);
     }
 	 /**
@@ -28,15 +28,15 @@ public class EntityContainerClient extends BaseODataContainer {
      *
      * @return the ServiceInfo
      */
-	public ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getAllServices() {
-        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher,ServiceInfoCollectionOperations>("AllServices", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
+	public ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getallServices() {
+        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher,ServiceInfoCollectionOperations>("allServices", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
     }
 	 /**
      * Gets ServiceInfo.
      *
      * @return the ServiceInfo
      */
-	public ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getServices() {
-        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher,ServiceInfoCollectionOperations>("Services", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
+	public ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getservices() {
+        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher,ServiceInfoCollectionOperations>("services", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
     }
 }

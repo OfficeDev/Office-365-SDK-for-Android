@@ -17,8 +17,9 @@ allprojects {
     }
 
     apply plugin: 'idea'
+
     group = 'com.microsoft.services'
-    version = '1.0-SNAPSHOT'
+    version = '0.9-SNAPSHOT'
 }
 
 subprojects {
@@ -38,6 +39,7 @@ subprojects {
     publishing {
         publications {
             maven(MavenPublication) {
+                from components.java
             }
         }
     }
@@ -48,7 +50,7 @@ subprojects {
 
         configurations = ['published'] //When uploading configuration files
         apiUrl = "https://api.bintray.com"
-        user =  'bar'
+        user = 'marcote'
         key = 'foo'
         dryRun = false
 
@@ -62,7 +64,7 @@ subprojects {
         pkg {
             repo = 'Maven'
             userOrg = 'msopentech'
-            name = 'o365_sdk'
+            name = 'Office-365-SDK-for-Android'
             publications = ['mavenJava'] // see publications closure
             desc = 'Office 365 Android SDK for Android'
             websiteUrl = 'https://github.com/msopentech/O365-Android'
@@ -70,7 +72,7 @@ subprojects {
             vcsUrl = 'https://github.com/msopentech/O365-Android.git'
             licenses = ['Apache-2.0']
             labels = ['office-365', 'android', 'exchange', 'sharepoint', 'files']
-            attributes= ['plat': ['android', 'java']]
+            attributes = ['plat': ['android', 'java']]
             publicDownloadNumbers = true
 
             version {
