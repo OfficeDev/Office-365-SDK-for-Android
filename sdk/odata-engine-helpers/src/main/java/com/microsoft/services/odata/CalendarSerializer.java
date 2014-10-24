@@ -17,14 +17,16 @@ public class CalendarSerializer {
     public static Calendar deserialize(String strVal) throws ParseException {
         // Change Z to +0000 to adapt the string to a format
         // that can be parsed in Java
-        String s = strVal.replace("Z", "+0000");
+        boolean hasZ = strVal.indexOf('Z') != -1;
+        String s = (hasZ) ? strVal.replace("Z", "+0000") : strVal;
+        String zsuffix = (hasZ) ? "Z" : "";
 
         // Parse the well-formatted date string
         String datePattern;
         if(s.contains(".")){
-            datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ";
+            datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS" + zsuffix;
         } else {
-            datePattern = "yyyy-MM-dd'T'HH:mm:ssZ";
+            datePattern = "yyyy-MM-dd'T'HH:mm:ss" + zsuffix;
         }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
