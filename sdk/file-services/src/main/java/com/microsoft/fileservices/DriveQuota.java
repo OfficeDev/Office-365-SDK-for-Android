@@ -10,7 +10,7 @@ package com.microsoft.fileservices;
 */
 public class DriveQuota {
 	
-	private String $$_ODataType;
+	private String $$_ODataType = "#Microsoft.FileServices.DriveQuota";
 
 
 	private long deleted;

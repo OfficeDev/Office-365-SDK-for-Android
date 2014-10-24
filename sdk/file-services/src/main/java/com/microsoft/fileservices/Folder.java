@@ -10,7 +10,7 @@ package com.microsoft.fileservices;
 */
 public class Folder extends Item {
 
-	private String $$_ODataType;
+	private String $$_ODataType = "#Microsoft.FileServices.Folder";
 
 	private Integer childCount;
 

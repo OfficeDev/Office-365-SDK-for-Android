@@ -10,7 +10,7 @@ package com.microsoft.fileservices;
 */
 public class ItemReference {
 	
-	private String $$_ODataType;
+	private String $$_ODataType = "#Microsoft.FileServices.ItemReference";
 
 
 	private String driveId;
