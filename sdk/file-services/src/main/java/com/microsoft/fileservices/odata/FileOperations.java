@@ -60,7 +60,7 @@ public class FileOperations extends ItemOperations {
 
 				url.appendPathComponent("copy");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), File.class);
 		

@@ -24,4 +24,5 @@ public class TenantDetailFetcher extends ODataEntityFetcher<TenantDetail,TenantD
 	 public TenantDetailFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, TenantDetail.class,TenantDetailOperations.class);
     }
-}
+
+	}

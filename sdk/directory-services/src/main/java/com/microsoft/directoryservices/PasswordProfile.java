@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Password Profile.
 */
-public class PasswordProfile {
+public class PasswordProfile extends ODataBaseEntity {
+
+	public PasswordProfile(){
+		setODataType("#Microsoft.DirectoryServices.PasswordProfile");
+	}
+
 
 	private String password;
 
@@ -27,7 +32,7 @@ public class PasswordProfile {
 	* @param value the String
 	*/
 	public void setpassword(String value) { 
-		password = value; 
+		this.password = value; 
 	}
 
 	private Boolean forceChangePasswordNextLogin;
@@ -47,6 +52,6 @@ public class PasswordProfile {
 	* @param value the Boolean
 	*/
 	public void setforceChangePasswordNextLogin(Boolean value) { 
-		forceChangePasswordNextLogin = value; 
+		this.forceChangePasswordNextLogin = value; 
 	}
 }

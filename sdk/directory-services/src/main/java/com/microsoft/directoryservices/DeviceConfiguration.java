@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Device Configuration.
 */
 public class DeviceConfiguration extends DirectoryObject {
+
+	public DeviceConfiguration(){
+		setODataType("#Microsoft.DirectoryServices.DeviceConfiguration");
+	}
+
 	private java.util.List<byte[]> publicIssuerCertificates;
 
 	/**
@@ -26,7 +31,7 @@ public class DeviceConfiguration extends DirectoryObject {
 	* @param value the java.util.List<byte[]>
 	*/
 	public void setpublicIssuerCertificates(java.util.List<byte[]> value) { 
-		publicIssuerCertificates = value; 
+		this.publicIssuerCertificates = value; 
 	}
 	private java.util.List<byte[]> cloudPublicIssuerCertificates;
 
@@ -45,7 +50,7 @@ public class DeviceConfiguration extends DirectoryObject {
 	* @param value the java.util.List<byte[]>
 	*/
 	public void setcloudPublicIssuerCertificates(java.util.List<byte[]> value) { 
-		cloudPublicIssuerCertificates = value; 
+		this.cloudPublicIssuerCertificates = value; 
 	}
 	private Integer registrationQuota;
 
@@ -64,7 +69,7 @@ public class DeviceConfiguration extends DirectoryObject {
 	* @param value the Integer
 	*/
 	public void setregistrationQuota(Integer value) { 
-		registrationQuota = value; 
+		this.registrationQuota = value; 
 	}
 	private Integer maximumRegistrationInactivityPeriod;
 
@@ -83,6 +88,6 @@ public class DeviceConfiguration extends DirectoryObject {
 	* @param value the Integer
 	*/
 	public void setmaximumRegistrationInactivityPeriod(Integer value) { 
-		maximumRegistrationInactivityPeriod = value; 
+		this.maximumRegistrationInactivityPeriod = value; 
 	}
 }

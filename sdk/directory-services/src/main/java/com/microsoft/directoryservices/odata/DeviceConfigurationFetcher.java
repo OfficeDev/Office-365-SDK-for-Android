@@ -24,4 +24,5 @@ public class DeviceConfigurationFetcher extends ODataEntityFetcher<DeviceConfigu
 	 public DeviceConfigurationFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, DeviceConfiguration.class,DeviceConfigurationOperations.class);
     }
-}
+
+	}

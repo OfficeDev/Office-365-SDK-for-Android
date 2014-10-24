@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Service Principal.
 */
 public class ServicePrincipal extends DirectoryObject {
+
+	public ServicePrincipal(){
+		setODataType("#Microsoft.DirectoryServices.ServicePrincipal");
+	}
+
 	private Boolean accountEnabled;
 
 	/**
@@ -26,7 +31,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setaccountEnabled(Boolean value) { 
-		accountEnabled = value; 
+		this.accountEnabled = value; 
 	}
 	private String appDisplayName;
 
@@ -45,7 +50,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setappDisplayName(String value) { 
-		appDisplayName = value; 
+		this.appDisplayName = value; 
 	}
 	private String appId;
 
@@ -64,7 +69,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setappId(String value) { 
-		appId = value; 
+		this.appId = value; 
 	}
 	private java.util.UUID appOwnerTenantId;
 
@@ -83,7 +88,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.UUID
 	*/
 	public void setappOwnerTenantId(java.util.UUID value) { 
-		appOwnerTenantId = value; 
+		this.appOwnerTenantId = value; 
 	}
 	private Boolean appRoleAssignmentRequired;
 
@@ -102,7 +107,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setappRoleAssignmentRequired(Boolean value) { 
-		appRoleAssignmentRequired = value; 
+		this.appRoleAssignmentRequired = value; 
 	}
 	private java.util.List<AppRole> appRoles;
 
@@ -121,7 +126,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<AppRole>
 	*/
 	public void setappRoles(java.util.List<AppRole> value) { 
-		appRoles = value; 
+		this.appRoles = value; 
 	}
 	private String displayName;
 
@@ -140,7 +145,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private String errorUrl;
 
@@ -159,7 +164,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void seterrorUrl(String value) { 
-		errorUrl = value; 
+		this.errorUrl = value; 
 	}
 	private String homepage;
 
@@ -178,7 +183,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void sethomepage(String value) { 
-		homepage = value; 
+		this.homepage = value; 
 	}
 	private java.util.List<KeyCredential> keyCredentials;
 
@@ -197,7 +202,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<KeyCredential>
 	*/
 	public void setkeyCredentials(java.util.List<KeyCredential> value) { 
-		keyCredentials = value; 
+		this.keyCredentials = value; 
 	}
 	private String logoutUrl;
 
@@ -216,7 +221,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setlogoutUrl(String value) { 
-		logoutUrl = value; 
+		this.logoutUrl = value; 
 	}
 	private java.util.List<OAuth2Permission> oauth2Permissions;
 
@@ -235,7 +240,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<OAuth2Permission>
 	*/
 	public void setoauth2Permissions(java.util.List<OAuth2Permission> value) { 
-		oauth2Permissions = value; 
+		this.oauth2Permissions = value; 
 	}
 	private java.util.List<PasswordCredential> passwordCredentials;
 
@@ -254,7 +259,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<PasswordCredential>
 	*/
 	public void setpasswordCredentials(java.util.List<PasswordCredential> value) { 
-		passwordCredentials = value; 
+		this.passwordCredentials = value; 
 	}
 	private String preferredTokenSigningKeyThumbprint;
 
@@ -273,7 +278,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpreferredTokenSigningKeyThumbprint(String value) { 
-		preferredTokenSigningKeyThumbprint = value; 
+		this.preferredTokenSigningKeyThumbprint = value; 
 	}
 	private String publisherName;
 
@@ -292,7 +297,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpublisherName(String value) { 
-		publisherName = value; 
+		this.publisherName = value; 
 	}
 	private java.util.List<String> replyUrls;
 
@@ -311,7 +316,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setreplyUrls(java.util.List<String> value) { 
-		replyUrls = value; 
+		this.replyUrls = value; 
 	}
 	private String samlMetadataUrl;
 
@@ -330,7 +335,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsamlMetadataUrl(String value) { 
-		samlMetadataUrl = value; 
+		this.samlMetadataUrl = value; 
 	}
 	private java.util.List<String> servicePrincipalNames;
 
@@ -349,7 +354,7 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setservicePrincipalNames(java.util.List<String> value) { 
-		servicePrincipalNames = value; 
+		this.servicePrincipalNames = value; 
 	}
 	private java.util.List<String> tags;
 
@@ -368,6 +373,6 @@ public class ServicePrincipal extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void settags(java.util.List<String> value) { 
-		tags = value; 
+		this.tags = value; 
 	}
 }

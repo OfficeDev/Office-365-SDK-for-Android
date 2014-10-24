@@ -50,6 +50,7 @@ import com.microsoft.office365.test.integration.tests.AllTests;
 import com.microsoft.office365.test.integration.tests.CalendarTests;
 import com.microsoft.office365.test.integration.tests.ContactTests;
 import com.microsoft.office365.test.integration.tests.FilesTests;
+import com.microsoft.office365.test.integration.tests.ListsTests;
 import com.microsoft.office365.test.integration.tests.MailTests;
 
 @SuppressWarnings("deprecation")
@@ -122,6 +123,7 @@ public class MainActivity extends Activity {
         adapter.add(new ContactTests());
         adapter.add(new CalendarTests());
         adapter.add(new FilesTests());
+        adapter.add(new ListsTests());
 		mTestGroupSpinner.setSelection(0);
 		selectTestGroup(0);
 	}

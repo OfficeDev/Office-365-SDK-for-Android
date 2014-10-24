@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Provisioning Error.
 */
-public class ProvisioningError {
+public class ProvisioningError extends ODataBaseEntity {
+
+	public ProvisioningError(){
+		setODataType("#Microsoft.DirectoryServices.ProvisioningError");
+	}
+
 
 	private String errorDetail;
 
@@ -27,7 +32,7 @@ public class ProvisioningError {
 	* @param value the String
 	*/
 	public void seterrorDetail(String value) { 
-		errorDetail = value; 
+		this.errorDetail = value; 
 	}
 
 	private Boolean resolved;
@@ -47,7 +52,7 @@ public class ProvisioningError {
 	* @param value the Boolean
 	*/
 	public void setresolved(Boolean value) { 
-		resolved = value; 
+		this.resolved = value; 
 	}
 
 	private String service;
@@ -67,7 +72,7 @@ public class ProvisioningError {
 	* @param value the String
 	*/
 	public void setservice(String value) { 
-		service = value; 
+		this.service = value; 
 	}
 
 	private java.util.Calendar timestamp;
@@ -87,6 +92,6 @@ public class ProvisioningError {
 	* @param value the java.util.Calendar
 	*/
 	public void settimestamp(java.util.Calendar value) { 
-		timestamp = value; 
+		this.timestamp = value; 
 	}
 }

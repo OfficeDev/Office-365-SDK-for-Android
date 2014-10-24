@@ -5,9 +5,10 @@
  ******************************************************************************/
 package com.microsoft.listservices;
 
-import com.google.gson.JsonObject;
-
 import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * The Class SPList.
@@ -20,14 +21,18 @@ public class SPList extends OfficeEntity {
 	 * @param json
 	 *            the json
 	 * @return the list
+	 * @throws org.json.JSONException
+	 *             the JSON exception
 	 */
-	public static List<SPList> listFromJson(JsonObject json)  {
-		return listFromJson(json, SPList.class);
+	public static List<SPList> listFromJson(JSONObject json) throws JSONException {
+		return OfficeEntity.listFromJson(json, SPList.class);
 	}
 
 	/**
 	 * Instantiates a new SP list.
 	 * 
+	 * @throws org.json.JSONException
+	 *             the JSON exception
 	 */
 	public SPList() {
 		super();

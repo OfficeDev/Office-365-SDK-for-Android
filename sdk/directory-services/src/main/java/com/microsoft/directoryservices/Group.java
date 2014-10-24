@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Group.
 */
 public class Group extends DirectoryObject {
+
+	public Group(){
+		setODataType("#Microsoft.DirectoryServices.Group");
+	}
+
 	private String description;
 
 	/**
@@ -26,7 +31,7 @@ public class Group extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdescription(String value) { 
-		description = value; 
+		this.description = value; 
 	}
 	private Boolean dirSyncEnabled;
 
@@ -45,7 +50,7 @@ public class Group extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setdirSyncEnabled(Boolean value) { 
-		dirSyncEnabled = value; 
+		this.dirSyncEnabled = value; 
 	}
 	private String displayName;
 
@@ -64,7 +69,7 @@ public class Group extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private java.util.Calendar lastDirSyncTime;
 
@@ -83,7 +88,7 @@ public class Group extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setlastDirSyncTime(java.util.Calendar value) { 
-		lastDirSyncTime = value; 
+		this.lastDirSyncTime = value; 
 	}
 	private String mail;
 
@@ -102,7 +107,7 @@ public class Group extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmail(String value) { 
-		mail = value; 
+		this.mail = value; 
 	}
 	private String mailNickname;
 
@@ -121,7 +126,7 @@ public class Group extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmailNickname(String value) { 
-		mailNickname = value; 
+		this.mailNickname = value; 
 	}
 	private Boolean mailEnabled;
 
@@ -140,7 +145,7 @@ public class Group extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setmailEnabled(Boolean value) { 
-		mailEnabled = value; 
+		this.mailEnabled = value; 
 	}
 	private String onPremisesSecurityIdentifier;
 
@@ -159,7 +164,7 @@ public class Group extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setonPremisesSecurityIdentifier(String value) { 
-		onPremisesSecurityIdentifier = value; 
+		this.onPremisesSecurityIdentifier = value; 
 	}
 	private java.util.List<ProvisioningError> provisioningErrors;
 
@@ -178,7 +183,7 @@ public class Group extends DirectoryObject {
 	* @param value the java.util.List<ProvisioningError>
 	*/
 	public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
-		provisioningErrors = value; 
+		this.provisioningErrors = value; 
 	}
 	private java.util.List<String> proxyAddresses;
 
@@ -197,7 +202,7 @@ public class Group extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setproxyAddresses(java.util.List<String> value) { 
-		proxyAddresses = value; 
+		this.proxyAddresses = value; 
 	}
 	private Boolean securityEnabled;
 
@@ -216,6 +221,6 @@ public class Group extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setsecurityEnabled(Boolean value) { 
-		securityEnabled = value; 
+		this.securityEnabled = value; 
 	}
 }

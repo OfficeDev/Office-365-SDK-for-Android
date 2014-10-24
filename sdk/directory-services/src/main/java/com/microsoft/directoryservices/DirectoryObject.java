@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Directory Object.
 */
-public class DirectoryObject {
+public class DirectoryObject extends ODataBaseEntity {
+
+	public DirectoryObject(){
+		setODataType("#Microsoft.DirectoryServices.DirectoryObject");
+	}
+
 	private String objectType;
 
 	/**
@@ -26,7 +31,7 @@ public class DirectoryObject {
 	* @param value the String
 	*/
 	public void setobjectType(String value) { 
-		objectType = value; 
+		this.objectType = value; 
 	}
 	private String objectId;
 
@@ -45,7 +50,7 @@ public class DirectoryObject {
 	* @param value the String
 	*/
 	public void setobjectId(String value) { 
-		objectId = value; 
+		this.objectId = value; 
 	}
 	private java.util.Calendar deletionTimestamp;
 
@@ -64,6 +69,6 @@ public class DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setdeletionTimestamp(java.util.Calendar value) { 
-		deletionTimestamp = value; 
+		this.deletionTimestamp = value; 
 	}
 }

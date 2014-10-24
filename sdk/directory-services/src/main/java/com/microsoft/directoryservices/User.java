@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type User.
 */
 public class User extends DirectoryObject {
+
+	public User(){
+		setODataType("#Microsoft.DirectoryServices.User");
+	}
+
 	private Boolean accountEnabled;
 
 	/**
@@ -26,7 +31,7 @@ public class User extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setaccountEnabled(Boolean value) { 
-		accountEnabled = value; 
+		this.accountEnabled = value; 
 	}
 	private java.util.List<AssignedLicense> assignedLicenses;
 
@@ -45,7 +50,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.List<AssignedLicense>
 	*/
 	public void setassignedLicenses(java.util.List<AssignedLicense> value) { 
-		assignedLicenses = value; 
+		this.assignedLicenses = value; 
 	}
 	private java.util.List<AssignedPlan> assignedPlans;
 
@@ -64,7 +69,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.List<AssignedPlan>
 	*/
 	public void setassignedPlans(java.util.List<AssignedPlan> value) { 
-		assignedPlans = value; 
+		this.assignedPlans = value; 
 	}
 	private String city;
 
@@ -83,7 +88,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcity(String value) { 
-		city = value; 
+		this.city = value; 
 	}
 	private String country;
 
@@ -102,7 +107,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcountry(String value) { 
-		country = value; 
+		this.country = value; 
 	}
 	private String department;
 
@@ -121,7 +126,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdepartment(String value) { 
-		department = value; 
+		this.department = value; 
 	}
 	private Boolean dirSyncEnabled;
 
@@ -140,7 +145,7 @@ public class User extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setdirSyncEnabled(Boolean value) { 
-		dirSyncEnabled = value; 
+		this.dirSyncEnabled = value; 
 	}
 	private String displayName;
 
@@ -159,7 +164,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private String facsimileTelephoneNumber;
 
@@ -178,7 +183,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setfacsimileTelephoneNumber(String value) { 
-		facsimileTelephoneNumber = value; 
+		this.facsimileTelephoneNumber = value; 
 	}
 	private String givenName;
 
@@ -197,7 +202,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setgivenName(String value) { 
-		givenName = value; 
+		this.givenName = value; 
 	}
 	private String immutableId;
 
@@ -216,7 +221,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setimmutableId(String value) { 
-		immutableId = value; 
+		this.immutableId = value; 
 	}
 	private String jobTitle;
 
@@ -235,7 +240,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setjobTitle(String value) { 
-		jobTitle = value; 
+		this.jobTitle = value; 
 	}
 	private java.util.Calendar lastDirSyncTime;
 
@@ -254,7 +259,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setlastDirSyncTime(java.util.Calendar value) { 
-		lastDirSyncTime = value; 
+		this.lastDirSyncTime = value; 
 	}
 	private String mail;
 
@@ -273,7 +278,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmail(String value) { 
-		mail = value; 
+		this.mail = value; 
 	}
 	private String mailNickname;
 
@@ -292,7 +297,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmailNickname(String value) { 
-		mailNickname = value; 
+		this.mailNickname = value; 
 	}
 	private String mobile;
 
@@ -311,7 +316,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setmobile(String value) { 
-		mobile = value; 
+		this.mobile = value; 
 	}
 	private String onPremisesSecurityIdentifier;
 
@@ -330,7 +335,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setonPremisesSecurityIdentifier(String value) { 
-		onPremisesSecurityIdentifier = value; 
+		this.onPremisesSecurityIdentifier = value; 
 	}
 	private java.util.List<String> otherMails;
 
@@ -349,7 +354,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setotherMails(java.util.List<String> value) { 
-		otherMails = value; 
+		this.otherMails = value; 
 	}
 	private String passwordPolicies;
 
@@ -368,7 +373,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpasswordPolicies(String value) { 
-		passwordPolicies = value; 
+		this.passwordPolicies = value; 
 	}
 	private PasswordProfile passwordProfile;
 
@@ -387,7 +392,7 @@ public class User extends DirectoryObject {
 	* @param value the PasswordProfile
 	*/
 	public void setpasswordProfile(PasswordProfile value) { 
-		passwordProfile = value; 
+		this.passwordProfile = value; 
 	}
 	private String physicalDeliveryOfficeName;
 
@@ -406,7 +411,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setphysicalDeliveryOfficeName(String value) { 
-		physicalDeliveryOfficeName = value; 
+		this.physicalDeliveryOfficeName = value; 
 	}
 	private String postalCode;
 
@@ -425,7 +430,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpostalCode(String value) { 
-		postalCode = value; 
+		this.postalCode = value; 
 	}
 	private String preferredLanguage;
 
@@ -444,7 +449,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpreferredLanguage(String value) { 
-		preferredLanguage = value; 
+		this.preferredLanguage = value; 
 	}
 	private java.util.List<ProvisionedPlan> provisionedPlans;
 
@@ -463,7 +468,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.List<ProvisionedPlan>
 	*/
 	public void setprovisionedPlans(java.util.List<ProvisionedPlan> value) { 
-		provisionedPlans = value; 
+		this.provisionedPlans = value; 
 	}
 	private java.util.List<ProvisioningError> provisioningErrors;
 
@@ -482,7 +487,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.List<ProvisioningError>
 	*/
 	public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
-		provisioningErrors = value; 
+		this.provisioningErrors = value; 
 	}
 	private java.util.List<String> proxyAddresses;
 
@@ -501,7 +506,7 @@ public class User extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setproxyAddresses(java.util.List<String> value) { 
-		proxyAddresses = value; 
+		this.proxyAddresses = value; 
 	}
 	private String sipProxyAddress;
 
@@ -520,7 +525,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsipProxyAddress(String value) { 
-		sipProxyAddress = value; 
+		this.sipProxyAddress = value; 
 	}
 	private String state;
 
@@ -539,7 +544,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setstate(String value) { 
-		state = value; 
+		this.state = value; 
 	}
 	private String streetAddress;
 
@@ -558,7 +563,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setstreetAddress(String value) { 
-		streetAddress = value; 
+		this.streetAddress = value; 
 	}
 	private String surname;
 
@@ -577,7 +582,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsurname(String value) { 
-		surname = value; 
+		this.surname = value; 
 	}
 	private String telephoneNumber;
 
@@ -596,7 +601,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void settelephoneNumber(String value) { 
-		telephoneNumber = value; 
+		this.telephoneNumber = value; 
 	}
 	private byte[] thumbnailPhoto;
 
@@ -615,7 +620,7 @@ public class User extends DirectoryObject {
 	* @param value the byte[]
 	*/
 	public void setthumbnailPhoto(byte[] value) { 
-		thumbnailPhoto = value; 
+		this.thumbnailPhoto = value; 
 	}
 	private String usageLocation;
 
@@ -634,7 +639,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setusageLocation(String value) { 
-		usageLocation = value; 
+		this.usageLocation = value; 
 	}
 	private String userPrincipalName;
 
@@ -653,7 +658,7 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setuserPrincipalName(String value) { 
-		userPrincipalName = value; 
+		this.userPrincipalName = value; 
 	}
 	private String userType;
 
@@ -672,6 +677,6 @@ public class User extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setuserType(String value) { 
-		userType = value; 
+		this.userType = value; 
 	}
 }

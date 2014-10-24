@@ -24,4 +24,5 @@ public class AppRoleAssignmentFetcher extends ODataEntityFetcher<AppRoleAssignme
 	 public AppRoleAssignmentFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, AppRoleAssignment.class,AppRoleAssignmentOperations.class);
     }
-}
+
+	}

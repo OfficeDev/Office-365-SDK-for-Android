@@ -24,7 +24,8 @@ public class ApplicationFetcher extends ODataEntityFetcher<Application,Applicati
 	 public ApplicationFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Application.class,ApplicationOperations.class);
     }
-     /**
+
+	     /**
      * Gets extension properties.
      *
      * @return the extension properties

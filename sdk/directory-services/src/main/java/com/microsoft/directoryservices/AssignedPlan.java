@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Assigned Plan.
 */
-public class AssignedPlan {
+public class AssignedPlan extends ODataBaseEntity {
+
+	public AssignedPlan(){
+		setODataType("#Microsoft.DirectoryServices.AssignedPlan");
+	}
+
 
 	private java.util.Calendar assignedTimestamp;
 
@@ -27,7 +32,7 @@ public class AssignedPlan {
 	* @param value the java.util.Calendar
 	*/
 	public void setassignedTimestamp(java.util.Calendar value) { 
-		assignedTimestamp = value; 
+		this.assignedTimestamp = value; 
 	}
 
 	private String capabilityStatus;
@@ -47,7 +52,7 @@ public class AssignedPlan {
 	* @param value the String
 	*/
 	public void setcapabilityStatus(String value) { 
-		capabilityStatus = value; 
+		this.capabilityStatus = value; 
 	}
 
 	private String service;
@@ -67,7 +72,7 @@ public class AssignedPlan {
 	* @param value the String
 	*/
 	public void setservice(String value) { 
-		service = value; 
+		this.service = value; 
 	}
 
 	private java.util.UUID servicePlanId;
@@ -87,6 +92,6 @@ public class AssignedPlan {
 	* @param value the java.util.UUID
 	*/
 	public void setservicePlanId(java.util.UUID value) { 
-		servicePlanId = value; 
+		this.servicePlanId = value; 
 	}
 }

@@ -8,6 +8,9 @@ package com.microsoft.fileservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
 import static com.microsoft.services.odata.EntityFetcherHelper.addNullResultCallback;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
@@ -45,11 +48,18 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
         }
     }
 
+	public ODataEntityFetcher<E,V> addHeader(String name, String value) {
+        this.addCustomHeader(name, value);
+		return this;
+    }
+
     @Override
-    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
+    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, Map<String, String> headers) {
 		path.prependPathComponent(urlComponent);
         addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
-        return parent.oDataExecute(path, content, verb);
+        Map<String, String> newHeaders = new HashMap<String, String>(getCustomHeaders());
+        newHeaders.putAll(headers);
+        return parent.oDataExecute(path, content, verb, newHeaders);
     }
 
     @Override
@@ -66,7 +76,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
     public ListenableFuture<E> update(E updatedEntity) {
 	    final SettableFuture<E> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(updatedEntity, getResolver());
-        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.PATCH);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.PATCH, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
         return result;
     }
@@ -78,7 +88,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      */
     public ListenableFuture delete() {
 	    final SettableFuture<E> result = SettableFuture.create();
-        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.DELETE);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.DELETE, getCustomHeaders());
         addNullResultCallback(result, future);
         return result;
     }
@@ -90,7 +100,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      */
     public ListenableFuture<E> read() {
 	    final SettableFuture<E> result = SettableFuture.create();
-        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
         return result;
     }

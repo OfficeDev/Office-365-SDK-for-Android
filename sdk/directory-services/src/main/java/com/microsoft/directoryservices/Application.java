@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Application.
 */
 public class Application extends DirectoryObject {
+
+	public Application(){
+		setODataType("#Microsoft.DirectoryServices.Application");
+	}
+
 	private String appId;
 
 	/**
@@ -26,7 +31,7 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setappId(String value) { 
-		appId = value; 
+		this.appId = value; 
 	}
 	private java.util.List<AppRole> appRoles;
 
@@ -45,7 +50,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<AppRole>
 	*/
 	public void setappRoles(java.util.List<AppRole> value) { 
-		appRoles = value; 
+		this.appRoles = value; 
 	}
 	private Boolean availableToOtherTenants;
 
@@ -64,7 +69,7 @@ public class Application extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setavailableToOtherTenants(Boolean value) { 
-		availableToOtherTenants = value; 
+		this.availableToOtherTenants = value; 
 	}
 	private String displayName;
 
@@ -83,7 +88,7 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private String errorUrl;
 
@@ -102,7 +107,7 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void seterrorUrl(String value) { 
-		errorUrl = value; 
+		this.errorUrl = value; 
 	}
 	private String groupMembershipClaims;
 
@@ -121,7 +126,7 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setgroupMembershipClaims(String value) { 
-		groupMembershipClaims = value; 
+		this.groupMembershipClaims = value; 
 	}
 	private String homepage;
 
@@ -140,7 +145,7 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void sethomepage(String value) { 
-		homepage = value; 
+		this.homepage = value; 
 	}
 	private java.util.List<String> identifierUris;
 
@@ -159,7 +164,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setidentifierUris(java.util.List<String> value) { 
-		identifierUris = value; 
+		this.identifierUris = value; 
 	}
 	private java.util.List<KeyCredential> keyCredentials;
 
@@ -178,7 +183,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<KeyCredential>
 	*/
 	public void setkeyCredentials(java.util.List<KeyCredential> value) { 
-		keyCredentials = value; 
+		this.keyCredentials = value; 
 	}
 	private java.util.List<java.util.UUID> knownClientApplications;
 
@@ -197,7 +202,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<java.util.UUID>
 	*/
 	public void setknownClientApplications(java.util.List<java.util.UUID> value) { 
-		knownClientApplications = value; 
+		this.knownClientApplications = value; 
 	}
 	private byte[] mainLogo;
 
@@ -216,7 +221,7 @@ public class Application extends DirectoryObject {
 	* @param value the byte[]
 	*/
 	public void setmainLogo(byte[] value) { 
-		mainLogo = value; 
+		this.mainLogo = value; 
 	}
 	private String logoutUrl;
 
@@ -235,7 +240,7 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setlogoutUrl(String value) { 
-		logoutUrl = value; 
+		this.logoutUrl = value; 
 	}
 	private Boolean oauth2AllowImplicitFlow;
 
@@ -254,7 +259,7 @@ public class Application extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setoauth2AllowImplicitFlow(Boolean value) { 
-		oauth2AllowImplicitFlow = value; 
+		this.oauth2AllowImplicitFlow = value; 
 	}
 	private Boolean oauth2AllowUrlPathMatching;
 
@@ -273,7 +278,7 @@ public class Application extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setoauth2AllowUrlPathMatching(Boolean value) { 
-		oauth2AllowUrlPathMatching = value; 
+		this.oauth2AllowUrlPathMatching = value; 
 	}
 	private java.util.List<OAuth2Permission> oauth2Permissions;
 
@@ -292,7 +297,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<OAuth2Permission>
 	*/
 	public void setoauth2Permissions(java.util.List<OAuth2Permission> value) { 
-		oauth2Permissions = value; 
+		this.oauth2Permissions = value; 
 	}
 	private Boolean oauth2RequirePostResponse;
 
@@ -311,7 +316,7 @@ public class Application extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setoauth2RequirePostResponse(Boolean value) { 
-		oauth2RequirePostResponse = value; 
+		this.oauth2RequirePostResponse = value; 
 	}
 	private java.util.List<PasswordCredential> passwordCredentials;
 
@@ -330,7 +335,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<PasswordCredential>
 	*/
 	public void setpasswordCredentials(java.util.List<PasswordCredential> value) { 
-		passwordCredentials = value; 
+		this.passwordCredentials = value; 
 	}
 	private Boolean publicClient;
 
@@ -349,7 +354,7 @@ public class Application extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setpublicClient(Boolean value) { 
-		publicClient = value; 
+		this.publicClient = value; 
 	}
 	private java.util.List<String> replyUrls;
 
@@ -368,7 +373,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setreplyUrls(java.util.List<String> value) { 
-		replyUrls = value; 
+		this.replyUrls = value; 
 	}
 	private java.util.List<RequiredResourceAccess> requiredResourceAccess;
 
@@ -387,7 +392,7 @@ public class Application extends DirectoryObject {
 	* @param value the java.util.List<RequiredResourceAccess>
 	*/
 	public void setrequiredResourceAccess(java.util.List<RequiredResourceAccess> value) { 
-		requiredResourceAccess = value; 
+		this.requiredResourceAccess = value; 
 	}
 	private String samlMetadataUrl;
 
@@ -406,6 +411,6 @@ public class Application extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setsamlMetadataUrl(String value) { 
-		samlMetadataUrl = value; 
+		this.samlMetadataUrl = value; 
 	}
 }

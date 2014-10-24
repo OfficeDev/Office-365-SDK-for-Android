@@ -22,7 +22,7 @@ abstract class ODataExecutable {
      * @param verb the verb
      * @return the listenable future
      */
-    abstract ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb);
+    abstract ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, Map<String, String> headers);
 
 	/**
      * Gets resolver.
@@ -35,6 +35,11 @@ abstract class ODataExecutable {
      * The Custom parameters.
      */
 	Map<String, Object> customParameters = new HashMap<String, Object>();
+
+	/**
+     * The Custom headers.
+     */
+    Map<String, String> customHeaders = new HashMap<String, String>();
 
 	/**
      * Add custom parameter.
@@ -54,4 +59,24 @@ abstract class ODataExecutable {
 	Map<String, Object> getCustomParameters() {
 		return this.customParameters;
 	}
+
+
+    /**
+     * Add custom headers.
+     *
+     * @param name the name
+     * @param value the value
+     */
+    void addCustomHeader(String name, String value) {
+        this.customHeaders.put(name, value);
+    }
+
+    /**
+     * Gets custom headers.
+     *
+     * @return the custom headers
+     */
+    Map<String, String> getCustomHeaders() {
+        return this.customHeaders;
+    }
 }

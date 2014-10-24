@@ -9,6 +9,9 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.services.odata.BaseODataContainerHelper;
 import com.microsoft.services.odata.interfaces.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The type BaseODataContainer.
 */
@@ -23,8 +26,10 @@ public abstract class BaseODataContainer extends ODataExecutable {
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
-		return BaseODataContainerHelper.oDataExecute(path, content, verb, url, getResolver(), this.getClass().getCanonicalName());
+    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, Map<String, String> headers) {
+        Map<String, String> newHeaders = new HashMap<String, String>(getCustomHeaders());
+        newHeaders.putAll(headers);
+		return BaseODataContainerHelper.oDataExecute(path, content, verb, url, newHeaders, getResolver(), this.getClass().getCanonicalName());
     }
 
     @Override

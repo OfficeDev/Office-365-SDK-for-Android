@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type OAuth2Permission Grant.
 */
-public class OAuth2PermissionGrant {
+public class OAuth2PermissionGrant extends ODataBaseEntity {
+
+	public OAuth2PermissionGrant(){
+		setODataType("#Microsoft.DirectoryServices.OAuth2PermissionGrant");
+	}
+
 	private String clientId;
 
 	/**
@@ -26,7 +31,7 @@ public class OAuth2PermissionGrant {
 	* @param value the String
 	*/
 	public void setclientId(String value) { 
-		clientId = value; 
+		this.clientId = value; 
 	}
 	private String consentType;
 
@@ -45,7 +50,7 @@ public class OAuth2PermissionGrant {
 	* @param value the String
 	*/
 	public void setconsentType(String value) { 
-		consentType = value; 
+		this.consentType = value; 
 	}
 	private java.util.Calendar expiryTime;
 
@@ -64,7 +69,7 @@ public class OAuth2PermissionGrant {
 	* @param value the java.util.Calendar
 	*/
 	public void setexpiryTime(java.util.Calendar value) { 
-		expiryTime = value; 
+		this.expiryTime = value; 
 	}
 	private String objectId;
 
@@ -83,7 +88,7 @@ public class OAuth2PermissionGrant {
 	* @param value the String
 	*/
 	public void setobjectId(String value) { 
-		objectId = value; 
+		this.objectId = value; 
 	}
 	private String principalId;
 
@@ -102,7 +107,7 @@ public class OAuth2PermissionGrant {
 	* @param value the String
 	*/
 	public void setprincipalId(String value) { 
-		principalId = value; 
+		this.principalId = value; 
 	}
 	private String resourceId;
 
@@ -121,7 +126,7 @@ public class OAuth2PermissionGrant {
 	* @param value the String
 	*/
 	public void setresourceId(String value) { 
-		resourceId = value; 
+		this.resourceId = value; 
 	}
 	private String scope;
 
@@ -140,7 +145,7 @@ public class OAuth2PermissionGrant {
 	* @param value the String
 	*/
 	public void setscope(String value) { 
-		scope = value; 
+		this.scope = value; 
 	}
 	private java.util.Calendar startTime;
 
@@ -159,6 +164,6 @@ public class OAuth2PermissionGrant {
 	* @param value the java.util.Calendar
 	*/
 	public void setstartTime(java.util.Calendar value) { 
-		startTime = value; 
+		this.startTime = value; 
 	}
 }

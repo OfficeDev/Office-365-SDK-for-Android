@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Device.
 */
 public class Device extends DirectoryObject {
+
+	public Device(){
+		setODataType("#Microsoft.DirectoryServices.Device");
+	}
+
 	private Boolean accountEnabled;
 
 	/**
@@ -26,7 +31,7 @@ public class Device extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setaccountEnabled(Boolean value) { 
-		accountEnabled = value; 
+		this.accountEnabled = value; 
 	}
 	private java.util.List<AlternativeSecurityId> alternativeSecurityIds;
 
@@ -45,7 +50,7 @@ public class Device extends DirectoryObject {
 	* @param value the java.util.List<AlternativeSecurityId>
 	*/
 	public void setalternativeSecurityIds(java.util.List<AlternativeSecurityId> value) { 
-		alternativeSecurityIds = value; 
+		this.alternativeSecurityIds = value; 
 	}
 	private java.util.Calendar approximateLastLogonTimestamp;
 
@@ -64,7 +69,7 @@ public class Device extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setapproximateLastLogonTimestamp(java.util.Calendar value) { 
-		approximateLastLogonTimestamp = value; 
+		this.approximateLastLogonTimestamp = value; 
 	}
 	private java.util.UUID deviceId;
 
@@ -83,7 +88,7 @@ public class Device extends DirectoryObject {
 	* @param value the java.util.UUID
 	*/
 	public void setdeviceId(java.util.UUID value) { 
-		deviceId = value; 
+		this.deviceId = value; 
 	}
 	private String deviceMetadata;
 
@@ -102,7 +107,7 @@ public class Device extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdeviceMetadata(String value) { 
-		deviceMetadata = value; 
+		this.deviceMetadata = value; 
 	}
 	private Integer deviceObjectVersion;
 
@@ -121,7 +126,7 @@ public class Device extends DirectoryObject {
 	* @param value the Integer
 	*/
 	public void setdeviceObjectVersion(Integer value) { 
-		deviceObjectVersion = value; 
+		this.deviceObjectVersion = value; 
 	}
 	private String deviceOSType;
 
@@ -140,7 +145,7 @@ public class Device extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdeviceOSType(String value) { 
-		deviceOSType = value; 
+		this.deviceOSType = value; 
 	}
 	private String deviceOSVersion;
 
@@ -159,7 +164,7 @@ public class Device extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdeviceOSVersion(String value) { 
-		deviceOSVersion = value; 
+		this.deviceOSVersion = value; 
 	}
 	private java.util.List<String> devicePhysicalIds;
 
@@ -178,7 +183,7 @@ public class Device extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setdevicePhysicalIds(java.util.List<String> value) { 
-		devicePhysicalIds = value; 
+		this.devicePhysicalIds = value; 
 	}
 	private String deviceTrustType;
 
@@ -197,7 +202,7 @@ public class Device extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdeviceTrustType(String value) { 
-		deviceTrustType = value; 
+		this.deviceTrustType = value; 
 	}
 	private Boolean dirSyncEnabled;
 
@@ -216,7 +221,7 @@ public class Device extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setdirSyncEnabled(Boolean value) { 
-		dirSyncEnabled = value; 
+		this.dirSyncEnabled = value; 
 	}
 	private String displayName;
 
@@ -235,7 +240,7 @@ public class Device extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private java.util.Calendar lastDirSyncTime;
 
@@ -254,6 +259,6 @@ public class Device extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setlastDirSyncTime(java.util.Calendar value) { 
-		lastDirSyncTime = value; 
+		this.lastDirSyncTime = value; 
 	}
 }

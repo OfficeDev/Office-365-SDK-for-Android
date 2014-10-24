@@ -57,7 +57,7 @@ public class ItemCollectionOperations extends ODataOperations{
 				String parameters = getFunctionParameters(map);
 		url.appendPathComponent("getByPath(" + parameters + ")");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET, getCustomHeaders());
 
 		addEntityResultCallback(result, future, getResolver(), Item.class);
 		

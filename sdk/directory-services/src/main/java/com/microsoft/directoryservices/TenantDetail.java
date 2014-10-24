@@ -9,6 +9,11 @@ package com.microsoft.directoryservices;
  * The type Tenant Detail.
 */
 public class TenantDetail extends DirectoryObject {
+
+	public TenantDetail(){
+		setODataType("#Microsoft.DirectoryServices.TenantDetail");
+	}
+
 	private java.util.List<AssignedPlan> assignedPlans;
 
 	/**
@@ -26,7 +31,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.List<AssignedPlan>
 	*/
 	public void setassignedPlans(java.util.List<AssignedPlan> value) { 
-		assignedPlans = value; 
+		this.assignedPlans = value; 
 	}
 	private String city;
 
@@ -45,7 +50,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcity(String value) { 
-		city = value; 
+		this.city = value; 
 	}
 	private java.util.Calendar companyLastDirSyncTime;
 
@@ -64,7 +69,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.Calendar
 	*/
 	public void setcompanyLastDirSyncTime(java.util.Calendar value) { 
-		companyLastDirSyncTime = value; 
+		this.companyLastDirSyncTime = value; 
 	}
 	private String country;
 
@@ -83,7 +88,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcountry(String value) { 
-		country = value; 
+		this.country = value; 
 	}
 	private String countryLetterCode;
 
@@ -102,7 +107,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setcountryLetterCode(String value) { 
-		countryLetterCode = value; 
+		this.countryLetterCode = value; 
 	}
 	private Boolean dirSyncEnabled;
 
@@ -121,7 +126,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the Boolean
 	*/
 	public void setdirSyncEnabled(Boolean value) { 
-		dirSyncEnabled = value; 
+		this.dirSyncEnabled = value; 
 	}
 	private String displayName;
 
@@ -140,7 +145,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 	private java.util.List<String> marketingNotificationEmails;
 
@@ -159,7 +164,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void setmarketingNotificationEmails(java.util.List<String> value) { 
-		marketingNotificationEmails = value; 
+		this.marketingNotificationEmails = value; 
 	}
 	private String postalCode;
 
@@ -178,7 +183,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpostalCode(String value) { 
-		postalCode = value; 
+		this.postalCode = value; 
 	}
 	private String preferredLanguage;
 
@@ -197,7 +202,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setpreferredLanguage(String value) { 
-		preferredLanguage = value; 
+		this.preferredLanguage = value; 
 	}
 	private java.util.List<ProvisionedPlan> provisionedPlans;
 
@@ -216,7 +221,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.List<ProvisionedPlan>
 	*/
 	public void setprovisionedPlans(java.util.List<ProvisionedPlan> value) { 
-		provisionedPlans = value; 
+		this.provisionedPlans = value; 
 	}
 	private java.util.List<ProvisioningError> provisioningErrors;
 
@@ -235,7 +240,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.List<ProvisioningError>
 	*/
 	public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
-		provisioningErrors = value; 
+		this.provisioningErrors = value; 
 	}
 	private String state;
 
@@ -254,7 +259,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setstate(String value) { 
-		state = value; 
+		this.state = value; 
 	}
 	private String street;
 
@@ -273,7 +278,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void setstreet(String value) { 
-		street = value; 
+		this.street = value; 
 	}
 	private java.util.List<String> technicalNotificationMails;
 
@@ -292,7 +297,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.List<String>
 	*/
 	public void settechnicalNotificationMails(java.util.List<String> value) { 
-		technicalNotificationMails = value; 
+		this.technicalNotificationMails = value; 
 	}
 	private String telephoneNumber;
 
@@ -311,7 +316,7 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the String
 	*/
 	public void settelephoneNumber(String value) { 
-		telephoneNumber = value; 
+		this.telephoneNumber = value; 
 	}
 	private java.util.List<VerifiedDomain> verifiedDomains;
 
@@ -330,6 +335,6 @@ public class TenantDetail extends DirectoryObject {
 	* @param value the java.util.List<VerifiedDomain>
 	*/
 	public void setverifiedDomains(java.util.List<VerifiedDomain> value) { 
-		verifiedDomains = value; 
+		this.verifiedDomains = value; 
 	}
 }

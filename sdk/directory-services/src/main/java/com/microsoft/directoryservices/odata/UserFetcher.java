@@ -24,7 +24,8 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations> impleme
 	 public UserFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, User.class,UserOperations.class);
     }
-     /**
+
+	     /**
      * Gets app role assignments.
      *
      * @return the app role assignments

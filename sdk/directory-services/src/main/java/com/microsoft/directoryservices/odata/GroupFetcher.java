@@ -24,7 +24,8 @@ public class GroupFetcher extends ODataEntityFetcher<Group,GroupOperations> impl
 	 public GroupFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Group.class,GroupOperations.class);
     }
-     /**
+
+	     /**
      * Gets app role assignments.
      *
      * @return the app role assignments

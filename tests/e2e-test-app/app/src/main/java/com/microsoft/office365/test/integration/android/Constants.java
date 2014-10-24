@@ -20,15 +20,20 @@ See the Apache Version 2.0 License for specific language governing permissions a
 package com.microsoft.office365.test.integration.android;
 
 public class Constants {
-	public static final String PREFERENCE_RESOURCE_URL = "prefResourcetUrl";
-
+    public static final String PREFERENCE_SHAREPOINT_URL = "prefSharepointUrl";
+    public static final String PREFERENCE_SITE_URL = "prefSiteRelativeUrl";
+    public static final String PREFERENCE_LIST_NAME = "prefListName";
+    public static final String PREFERENCE_DOCUMENT_LIST_NAME = "prefDocumentListName";
+	public static final String PREFERENCE_EXCHANGE_RESOURCE_URL = "prefExchangeResourcetUrl";
+    public static final String PREFERENCE_FILES_RESOURCE_URL = "prefFilesResourcetUrl";
 	public static final String PREFERENCE_LOG_POST_URL = "pref_log_post_url";
 	public static final String TAG = "Office365-SDK End2EndApp";
 	public static final String PREFERENCE_AUTHENTICATION_METHOD = "prefAuthenticationMethod";
 	public static final String AUTHORITY_URL = "https://login.windows-ppe.net/common";
 	public static final String PREFERENCE_AAD_CLIENT_ID = "prefAADClientId";
 	public static final String PREFERENCE_AAD_Redirect_URL ="prefAADRedirectUrl";
-    public static final String PREFERENCE_ENDPOINT_URL="prefEndpoint";
+    public static final String PREFERENCE_EXCHANGE_ENDPOINT_URL ="prefExchangeEndpoint";
+    public static final String PREFERENCE_FILES_ENDPOINT_URL ="prefFilesEndpoint";
     public static final String PREFERENCE_TEST_MAIL="prefTestMail";
     public static final String PREFERENCE_BASIC_TOKEN="prefBasicToken";
 }

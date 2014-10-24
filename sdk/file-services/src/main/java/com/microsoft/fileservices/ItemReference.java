@@ -8,7 +8,12 @@ package com.microsoft.fileservices;
 /**
  * The type Item Reference.
 */
-public class ItemReference {
+public class ItemReference extends ODataBaseEntity {
+
+	public ItemReference(){
+		setODataType("#Microsoft.FileServices.ItemReference");
+	}
+
 
 	private String driveId;
 
@@ -27,7 +32,7 @@ public class ItemReference {
 	* @param value the String
 	*/
 	public void setdriveId(String value) { 
-		driveId = value; 
+		this.driveId = value; 
 	}
 
 	private String id;
@@ -47,7 +52,7 @@ public class ItemReference {
 	* @param value the String
 	*/
 	public void setid(String value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private String path;
@@ -67,6 +72,6 @@ public class ItemReference {
 	* @param value the String
 	*/
 	public void setpath(String value) { 
-		path = value; 
+		this.path = value; 
 	}
 }

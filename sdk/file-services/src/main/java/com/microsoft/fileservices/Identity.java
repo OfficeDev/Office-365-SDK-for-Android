@@ -8,7 +8,12 @@ package com.microsoft.fileservices;
 /**
  * The type Identity.
 */
-public class Identity {
+public class Identity extends ODataBaseEntity {
+
+	public Identity(){
+		setODataType("#Microsoft.FileServices.Identity");
+	}
+
 
 	private String id;
 
@@ -27,7 +32,7 @@ public class Identity {
 	* @param value the String
 	*/
 	public void setid(String value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private String displayName;
@@ -47,6 +52,6 @@ public class Identity {
 	* @param value the String
 	*/
 	public void setdisplayName(String value) { 
-		displayName = value; 
+		this.displayName = value; 
 	}
 }

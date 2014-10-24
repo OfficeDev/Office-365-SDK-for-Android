@@ -8,6 +8,9 @@ package com.microsoft.directoryservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
 import static com.microsoft.services.odata.EntityFetcherHelper.addNullResultCallback;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
@@ -20,8 +23,8 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
  */
 public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Readable<E> {
 
-    private String urlComponent;
-    private ODataExecutable parent;
+    protected String urlComponent;
+    protected ODataExecutable parent;
     private Class<E> clazz;
     private V operations;
 
@@ -43,6 +46,11 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
                     ODataExecutable.class).newInstance("", this);
         } catch (Throwable ignored) {
         }
+    }
+
+	public ODataEntityFetcher<E,V> addHeader(String name, String value) {
+        this.addCustomHeader(name, value);
+		return this;
     }
 
     @Override

@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type License Units Detail.
 */
-public class LicenseUnitsDetail {
+public class LicenseUnitsDetail extends ODataBaseEntity {
+
+	public LicenseUnitsDetail(){
+		setODataType("#Microsoft.DirectoryServices.LicenseUnitsDetail");
+	}
+
 
 	private Integer enabled;
 
@@ -27,7 +32,7 @@ public class LicenseUnitsDetail {
 	* @param value the Integer
 	*/
 	public void setenabled(Integer value) { 
-		enabled = value; 
+		this.enabled = value; 
 	}
 
 	private Integer suspended;
@@ -47,7 +52,7 @@ public class LicenseUnitsDetail {
 	* @param value the Integer
 	*/
 	public void setsuspended(Integer value) { 
-		suspended = value; 
+		this.suspended = value; 
 	}
 
 	private Integer warning;
@@ -67,6 +72,6 @@ public class LicenseUnitsDetail {
 	* @param value the Integer
 	*/
 	public void setwarning(Integer value) { 
-		warning = value; 
+		this.warning = value; 
 	}
 }

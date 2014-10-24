@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type OAuth2Permission.
 */
-public class OAuth2Permission {
+public class OAuth2Permission extends ODataBaseEntity {
+
+	public OAuth2Permission(){
+		setODataType("#Microsoft.DirectoryServices.OAuth2Permission");
+	}
+
 
 	private String adminConsentDescription;
 
@@ -27,7 +32,7 @@ public class OAuth2Permission {
 	* @param value the String
 	*/
 	public void setadminConsentDescription(String value) { 
-		adminConsentDescription = value; 
+		this.adminConsentDescription = value; 
 	}
 
 	private String adminConsentDisplayName;
@@ -47,7 +52,7 @@ public class OAuth2Permission {
 	* @param value the String
 	*/
 	public void setadminConsentDisplayName(String value) { 
-		adminConsentDisplayName = value; 
+		this.adminConsentDisplayName = value; 
 	}
 
 	private java.util.UUID id;
@@ -67,7 +72,7 @@ public class OAuth2Permission {
 	* @param value the java.util.UUID
 	*/
 	public void setid(java.util.UUID value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private Boolean isEnabled;
@@ -87,7 +92,7 @@ public class OAuth2Permission {
 	* @param value the Boolean
 	*/
 	public void setisEnabled(Boolean value) { 
-		isEnabled = value; 
+		this.isEnabled = value; 
 	}
 
 	private String type;
@@ -107,7 +112,7 @@ public class OAuth2Permission {
 	* @param value the String
 	*/
 	public void settype(String value) { 
-		type = value; 
+		this.type = value; 
 	}
 
 	private String userConsentDescription;
@@ -127,7 +132,7 @@ public class OAuth2Permission {
 	* @param value the String
 	*/
 	public void setuserConsentDescription(String value) { 
-		userConsentDescription = value; 
+		this.userConsentDescription = value; 
 	}
 
 	private String userConsentDisplayName;
@@ -147,7 +152,7 @@ public class OAuth2Permission {
 	* @param value the String
 	*/
 	public void setuserConsentDisplayName(String value) { 
-		userConsentDisplayName = value; 
+		this.userConsentDisplayName = value; 
 	}
 
 	private String value;
@@ -167,6 +172,6 @@ public class OAuth2Permission {
 	* @param value the String
 	*/
 	public void setvalue(String value) { 
-		value = value; 
+		this.value = value; 
 	}
 }

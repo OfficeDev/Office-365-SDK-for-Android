@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Verified Domain.
 */
-public class VerifiedDomain {
+public class VerifiedDomain extends ODataBaseEntity {
+
+	public VerifiedDomain(){
+		setODataType("#Microsoft.DirectoryServices.VerifiedDomain");
+	}
+
 
 	private String capabilities;
 
@@ -27,34 +32,29 @@ public class VerifiedDomain {
 	* @param value the String
 	*/
 	public void setcapabilities(String value) { 
-		capabilities = value; 
+		this.capabilities = value; 
 	}
 
-    /**
-	private Boolean default;
-    */
+	private Boolean $$__$$default;
 
-    /**
+	/**
 	* Gets the default.
 	*
 	* @return the Boolean
 	*/
-	/**
-    public Boolean getdefault() {
-		return this.default; 
+	public Boolean getdefault() {
+		return this.$$__$$default; 
 	}
-    */
 
 	/**
 	* Sets the default.
 	*
 	* @param value the Boolean
 	*/
-	/**
-    public void setdefault(Boolean value) {
-		default = value; 
+	public void setdefault(Boolean value) { 
+		this.$$__$$default = value; 
 	}
-    */
+
 	private String id;
 
 	/**
@@ -72,7 +72,7 @@ public class VerifiedDomain {
 	* @param value the String
 	*/
 	public void setid(String value) { 
-		id = value; 
+		this.id = value; 
 	}
 
 	private Boolean initial;
@@ -92,7 +92,7 @@ public class VerifiedDomain {
 	* @param value the Boolean
 	*/
 	public void setinitial(Boolean value) { 
-		initial = value; 
+		this.initial = value; 
 	}
 
 	private String name;
@@ -112,7 +112,7 @@ public class VerifiedDomain {
 	* @param value the String
 	*/
 	public void setname(String value) { 
-		name = value; 
+		this.name = value; 
 	}
 
 	private String type;
@@ -132,6 +132,6 @@ public class VerifiedDomain {
 	* @param value the String
 	*/
 	public void settype(String value) { 
-		type = value; 
+		this.type = value; 
 	}
 }

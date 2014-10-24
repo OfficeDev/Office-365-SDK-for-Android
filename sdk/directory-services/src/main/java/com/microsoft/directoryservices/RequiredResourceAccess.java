@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Required Resource Access.
 */
-public class RequiredResourceAccess {
+public class RequiredResourceAccess extends ODataBaseEntity {
+
+	public RequiredResourceAccess(){
+		setODataType("#Microsoft.DirectoryServices.RequiredResourceAccess");
+	}
+
 
 	private String resourceAppId;
 
@@ -27,7 +32,7 @@ public class RequiredResourceAccess {
 	* @param value the String
 	*/
 	public void setresourceAppId(String value) { 
-		resourceAppId = value; 
+		this.resourceAppId = value; 
 	}
 
 	private java.util.List<ResourceAccess> resourceAccess;
@@ -47,6 +52,6 @@ public class RequiredResourceAccess {
 	* @param value the java.util.List<ResourceAccess>
 	*/
 	public void setresourceAccess(java.util.List<ResourceAccess> value) { 
-		resourceAccess = value; 
+		this.resourceAccess = value; 
 	}
 }

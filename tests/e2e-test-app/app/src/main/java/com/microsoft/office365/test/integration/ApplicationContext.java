@@ -3,10 +3,12 @@ package com.microsoft.office365.test.integration;
 import java.util.concurrent.Future;
 
 
-
+import com.microsoft.listservices.SharepointClient;
+import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.sharepointservices.odata.SharePointClient;
 
 public class ApplicationContext {
 	
@@ -33,14 +35,24 @@ public class ApplicationContext {
     }
     
     public static String getServerUrl() {
-        return mTestPlatformContext.getServerUrl();
+        return mTestPlatformContext.getExchangeServerUrl();
     }
 
-    public static EntityContainerClient getMailCalendarContactClient(){
+    public static OutlookClient getMailCalendarContactClient(){
         return mTestPlatformContext.getMailCalendarContactClient();
+    }
+
+    public static SharePointClient getFilesClient(){
+        return mTestPlatformContext.getFilesClient();
     }
 
     public static String getTestMail() { return mTestPlatformContext.getTestMail();}
 
-    public static String getBasicAuthToken() { return mTestPlatformContext.getBasicAuthToken();}
+    public static SharepointListsClient getSharePointListClient(){
+        return mTestPlatformContext.getSharePointListClient();
+    }
+
+    public static String getTestListName(){
+        return mTestPlatformContext.getTestListName();
+    }
 }

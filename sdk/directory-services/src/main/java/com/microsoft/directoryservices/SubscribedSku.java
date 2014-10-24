@@ -8,7 +8,12 @@ package com.microsoft.directoryservices;
 /**
  * The type Subscribed Sku.
 */
-public class SubscribedSku {
+public class SubscribedSku extends ODataBaseEntity {
+
+	public SubscribedSku(){
+		setODataType("#Microsoft.DirectoryServices.SubscribedSku");
+	}
+
 	private String capabilityStatus;
 
 	/**
@@ -26,7 +31,7 @@ public class SubscribedSku {
 	* @param value the String
 	*/
 	public void setcapabilityStatus(String value) { 
-		capabilityStatus = value; 
+		this.capabilityStatus = value; 
 	}
 	private Integer consumedUnits;
 
@@ -45,7 +50,7 @@ public class SubscribedSku {
 	* @param value the Integer
 	*/
 	public void setconsumedUnits(Integer value) { 
-		consumedUnits = value; 
+		this.consumedUnits = value; 
 	}
 	private String objectId;
 
@@ -64,7 +69,7 @@ public class SubscribedSku {
 	* @param value the String
 	*/
 	public void setobjectId(String value) { 
-		objectId = value; 
+		this.objectId = value; 
 	}
 	private LicenseUnitsDetail prepaidUnits;
 
@@ -83,7 +88,7 @@ public class SubscribedSku {
 	* @param value the LicenseUnitsDetail
 	*/
 	public void setprepaidUnits(LicenseUnitsDetail value) { 
-		prepaidUnits = value; 
+		this.prepaidUnits = value; 
 	}
 	private java.util.List<ServicePlanInfo> servicePlans;
 
@@ -102,7 +107,7 @@ public class SubscribedSku {
 	* @param value the java.util.List<ServicePlanInfo>
 	*/
 	public void setservicePlans(java.util.List<ServicePlanInfo> value) { 
-		servicePlans = value; 
+		this.servicePlans = value; 
 	}
 	private java.util.UUID skuId;
 
@@ -121,7 +126,7 @@ public class SubscribedSku {
 	* @param value the java.util.UUID
 	*/
 	public void setskuId(java.util.UUID value) { 
-		skuId = value; 
+		this.skuId = value; 
 	}
 	private String skuPartNumber;
 
@@ -140,6 +145,6 @@ public class SubscribedSku {
 	* @param value the String
 	*/
 	public void setskuPartNumber(String value) { 
-		skuPartNumber = value; 
+		this.skuPartNumber = value; 
 	}
 }

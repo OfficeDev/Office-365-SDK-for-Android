@@ -5,15 +5,15 @@
  ******************************************************************************/
 package com.microsoft.listservices;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SPFieldUrlValue {
-	public static JsonObject getJsonForUrl(String url, String description) {
-		JsonObject json = new JsonObject();
+	public static JSONObject getJsonForUrl(String url, String description) throws JSONException {
+		JSONObject json = new JSONObject();
 		
-		json.add("Description", new JsonPrimitive(description));
-		json.add("Url", new JsonPrimitive(url));
+		json.put("Description", description);
+		json.put("Url", url);
 		
 		return json;
 	}

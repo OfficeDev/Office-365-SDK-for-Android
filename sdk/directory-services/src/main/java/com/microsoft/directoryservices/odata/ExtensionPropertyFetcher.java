@@ -24,4 +24,5 @@ public class ExtensionPropertyFetcher extends ODataEntityFetcher<ExtensionProper
 	 public ExtensionPropertyFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, ExtensionProperty.class,ExtensionPropertyOperations.class);
     }
-}
+
+	}

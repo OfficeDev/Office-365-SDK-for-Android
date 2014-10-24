@@ -1,9 +1,0 @@
-com.microsoft.coreservices
-com.microsoft.fileservices
-com.microsoft.fileservices.odata
-com.microsoft.outlookservices
-com.microsoft.outlookservices.odata
-com.microsoft.services.odata
-com.microsoft.services.odata.impl
-com.microsoft.services.odata.impl.http
-com.microsoft.services.odata.interfaces

@@ -24,4 +24,5 @@ public class OAuth2PermissionGrantFetcher extends ODataEntityFetcher<OAuth2Permi
 	 public OAuth2PermissionGrantFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, OAuth2PermissionGrant.class,OAuth2PermissionGrantOperations.class);
     }
-}
+
+	}
