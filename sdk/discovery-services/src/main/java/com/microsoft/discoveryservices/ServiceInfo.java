@@ -8,195 +8,200 @@ package com.microsoft.discoveryservices;
 /**
  * The type Service Info.
 */
-public class ServiceInfo {
-	private String Capability;
+public class ServiceInfo extends ODataBaseEntity {
+
+	public ServiceInfo(){
+		setODataType("#Microsoft.DiscoveryServices.ServiceInfo");
+	}
+
+	private String capability;
 
 	/**
-	* Gets the Capability.
+	* Gets the capability.
 	*
 	* @return the String
 	*/
-	public String getCapability() {
-		return this.Capability; 
+	public String getcapability() {
+		return this.capability; 
 	}
 
 	/**
-	* Sets the Capability.
+	* Sets the capability.
 	*
 	* @param value the String
 	*/
-	public void setCapability(String value) { 
-		this.Capability = value; 
+	public void setcapability(String value) { 
+		this.capability = value; 
 	}
-	private String EntityKey;
+	private String entityKey;
 
 	/**
-	* Gets the Entity Key.
+	* Gets the entity Key.
 	*
 	* @return the String
 	*/
-	public String getEntityKey() {
-		return this.EntityKey; 
+	public String getentityKey() {
+		return this.entityKey; 
 	}
 
 	/**
-	* Sets the Entity Key.
+	* Sets the entity Key.
 	*
 	* @param value the String
 	*/
-	public void setEntityKey(String value) { 
-		this.EntityKey = value; 
+	public void setentityKey(String value) { 
+		this.entityKey = value; 
 	}
-	private String ProviderId;
+	private String providerId;
 
 	/**
-	* Gets the Provider Id.
+	* Gets the provider Id.
 	*
 	* @return the String
 	*/
-	public String getProviderId() {
-		return this.ProviderId; 
+	public String getproviderId() {
+		return this.providerId; 
 	}
 
 	/**
-	* Sets the Provider Id.
+	* Sets the provider Id.
 	*
 	* @param value the String
 	*/
-	public void setProviderId(String value) { 
-		this.ProviderId = value; 
+	public void setproviderId(String value) { 
+		this.providerId = value; 
 	}
-	private String ProviderName;
+	private String providerName;
 
 	/**
-	* Gets the Provider Name.
+	* Gets the provider Name.
 	*
 	* @return the String
 	*/
-	public String getProviderName() {
-		return this.ProviderName; 
+	public String getproviderName() {
+		return this.providerName; 
 	}
 
 	/**
-	* Sets the Provider Name.
+	* Sets the provider Name.
 	*
 	* @param value the String
 	*/
-	public void setProviderName(String value) { 
-		this.ProviderName = value; 
+	public void setproviderName(String value) { 
+		this.providerName = value; 
 	}
-	private Integer ServiceAccountType;
+	private Integer serviceAccountType;
 
 	/**
-	* Gets the Service Account Type.
+	* Gets the service Account Type.
 	*
 	* @return the Integer
 	*/
-	public Integer getServiceAccountType() {
-		return this.ServiceAccountType; 
+	public Integer getserviceAccountType() {
+		return this.serviceAccountType; 
 	}
 
 	/**
-	* Sets the Service Account Type.
+	* Sets the service Account Type.
 	*
 	* @param value the Integer
 	*/
-	public void setServiceAccountType(Integer value) { 
-		this.ServiceAccountType = value; 
+	public void setserviceAccountType(Integer value) { 
+		this.serviceAccountType = value; 
 	}
-	private String ServiceApiVersion;
+	private String serviceApiVersion;
 
 	/**
-	* Gets the Service Api Version.
+	* Gets the service Api Version.
 	*
 	* @return the String
 	*/
-	public String getServiceApiVersion() {
-		return this.ServiceApiVersion; 
+	public String getserviceApiVersion() {
+		return this.serviceApiVersion; 
 	}
 
 	/**
-	* Sets the Service Api Version.
+	* Sets the service Api Version.
 	*
 	* @param value the String
 	*/
-	public void setServiceApiVersion(String value) { 
-		this.ServiceApiVersion = value; 
+	public void setserviceApiVersion(String value) { 
+		this.serviceApiVersion = value; 
 	}
-	private String ServiceEndpointUri;
+	private String serviceEndpointUri;
 
 	/**
-	* Gets the Service Endpoint Uri.
+	* Gets the service Endpoint Uri.
 	*
 	* @return the String
 	*/
-	public String getServiceEndpointUri() {
-		return this.ServiceEndpointUri; 
+	public String getserviceEndpointUri() {
+		return this.serviceEndpointUri; 
 	}
 
 	/**
-	* Sets the Service Endpoint Uri.
+	* Sets the service Endpoint Uri.
 	*
 	* @param value the String
 	*/
-	public void setServiceEndpointUri(String value) { 
-		this.ServiceEndpointUri = value; 
+	public void setserviceEndpointUri(String value) { 
+		this.serviceEndpointUri = value; 
 	}
-	private String ServiceId;
+	private String serviceId;
 
 	/**
-	* Gets the Service Id.
+	* Gets the service Id.
 	*
 	* @return the String
 	*/
-	public String getServiceId() {
-		return this.ServiceId; 
+	public String getserviceId() {
+		return this.serviceId; 
 	}
 
 	/**
-	* Sets the Service Id.
+	* Sets the service Id.
 	*
 	* @param value the String
 	*/
-	public void setServiceId(String value) { 
-		this.ServiceId = value; 
+	public void setserviceId(String value) { 
+		this.serviceId = value; 
 	}
-	private String ServiceName;
+	private String serviceName;
 
 	/**
-	* Gets the Service Name.
+	* Gets the service Name.
 	*
 	* @return the String
 	*/
-	public String getServiceName() {
-		return this.ServiceName; 
+	public String getserviceName() {
+		return this.serviceName; 
 	}
 
 	/**
-	* Sets the Service Name.
+	* Sets the service Name.
 	*
 	* @param value the String
 	*/
-	public void setServiceName(String value) { 
-		this.ServiceName = value; 
+	public void setserviceName(String value) { 
+		this.serviceName = value; 
 	}
-	private String ServiceResourceId;
+	private String serviceResourceId;
 
 	/**
-	* Gets the Service Resource Id.
+	* Gets the service Resource Id.
 	*
 	* @return the String
 	*/
-	public String getServiceResourceId() {
-		return this.ServiceResourceId; 
+	public String getserviceResourceId() {
+		return this.serviceResourceId; 
 	}
 
 	/**
-	* Sets the Service Resource Id.
+	* Sets the service Resource Id.
 	*
 	* @param value the String
 	*/
-	public void setServiceResourceId(String value) { 
-		this.ServiceResourceId = value; 
+	public void setserviceResourceId(String value) { 
+		this.serviceResourceId = value; 
 	}
 }
