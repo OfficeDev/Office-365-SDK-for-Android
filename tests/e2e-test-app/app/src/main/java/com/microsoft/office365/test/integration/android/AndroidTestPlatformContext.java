@@ -13,22 +13,18 @@ import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
-
-
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.TestPlatformContext;
 import com.microsoft.office365.test.integration.framework.OAuthCredentials;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import com.microsoft.services.odata.impl.http.CredentialsFactoryImpl;
-import com.microsoft.services.odata.interfaces.Credentials;
-import com.microsoft.services.odata.interfaces.CredentialsFactory;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
-import com.microsoft.services.odata.interfaces.Request;
+import com.microsoft.sharepointservices.odata.SharePointClient;
 
 public class AndroidTestPlatformContext implements TestPlatformContext {
 
@@ -172,12 +168,12 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public EntityContainerClient getMailCalendarContactClient() {
+    public OutlookClient getMailCalendarContactClient() {
         return  getExchangeEntityContainerClientAAD();
     }
 
     @Override
-    public com.microsoft.sharepointservices.odata.EntityContainerClient getFilesClient() {
+    public SharePointClient getFilesClient() {
         return getFilesEntityContainerClientAAD();
     }
 
@@ -238,8 +234,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         }
     }
 
-    EntityContainerClient getExchangeEntityContainerClientAAD() {
-        final SettableFuture<EntityContainerClient> future = SettableFuture.create();
+    OutlookClient getExchangeEntityContainerClientAAD() {
+        final SettableFuture<OutlookClient> future = SettableFuture.create();
 
         try {
             if (mExchangeAuthenticationResult != null && mExchangeAuthenticationResult.getRefreshToken() != null && !mExchangeAuthenticationResult.getRefreshToken().isEmpty()) {
@@ -254,7 +250,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                             @Override
                             public void onSuccess(AuthenticationResult result) {
                                 mExchangeAuthenticationResult = result;
-                                EntityContainerClient client = new EntityContainerClient(getExchangeEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                OutlookClient client = new OutlookClient(getExchangeEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
                         });
@@ -272,7 +268,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                             @Override
                             public void onSuccess(AuthenticationResult result) {
                                 mExchangeAuthenticationResult = result;
-                                EntityContainerClient client = new EntityContainerClient(getExchangeEndpointUrl(),getDependencyResolver(result.getAccessToken()));
+                                OutlookClient client = new OutlookClient(getExchangeEndpointUrl(),getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
                         });
@@ -301,8 +297,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         return dependencyResolver;
     }
 
-    public com.microsoft.sharepointservices.odata.EntityContainerClient getFilesEntityContainerClientAAD() {
-        final SettableFuture<com.microsoft.sharepointservices.odata.EntityContainerClient> future = SettableFuture.create();
+    public SharePointClient getFilesEntityContainerClientAAD() {
+        final SettableFuture<SharePointClient> future = SettableFuture.create();
 
         try {
             if (mFilesAuthenticationResult != null && mFilesAuthenticationResult.getRefreshToken() != null && !mFilesAuthenticationResult.getRefreshToken().isEmpty()) {
@@ -317,7 +313,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                             @Override
                             public void onSuccess(AuthenticationResult result) {
                                 mExchangeAuthenticationResult = result;
-                                com.microsoft.sharepointservices.odata.EntityContainerClient client = new com.microsoft.sharepointservices.odata.EntityContainerClient(getFilesEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                SharePointClient client = new SharePointClient(getFilesEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
                         });
@@ -335,7 +331,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                             @Override
                             public void onSuccess(AuthenticationResult result) {
                                 mFilesAuthenticationResult = result;
-                                com.microsoft.sharepointservices.odata.EntityContainerClient client = new com.microsoft.sharepointservices.odata.EntityContainerClient(getFilesEndpointUrl(),getDependencyResolver(result.getAccessToken()));
+                                SharePointClient client = new SharePointClient(getFilesEndpointUrl(),getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
                         });

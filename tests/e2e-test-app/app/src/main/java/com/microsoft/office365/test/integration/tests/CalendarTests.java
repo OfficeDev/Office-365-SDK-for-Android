@@ -14,7 +14,7 @@ import com.microsoft.outlookservices.EmailAddress;
 import com.microsoft.outlookservices.Event;
 import com.microsoft.outlookservices.Importance;
 import com.microsoft.outlookservices.ItemBody;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Act
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -97,7 +97,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -140,7 +140,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -184,7 +184,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -230,7 +230,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -277,7 +277,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -321,7 +321,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Act
                     Calendar calendar = client.getMe().getCalendar().read().get();
@@ -352,7 +352,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Act
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -393,7 +393,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -438,7 +438,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -486,7 +486,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -533,7 +533,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -575,7 +575,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -615,7 +615,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -659,7 +659,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -703,7 +703,7 @@ public class CalendarTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     // Prepare
                     Event event = getSampleEvent();

@@ -3,10 +3,12 @@ package com.microsoft.office365.test.integration;
 import java.util.concurrent.Future;
 
 
+import com.microsoft.listservices.SharepointClient;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.sharepointservices.odata.SharePointClient;
 
 
 public interface TestPlatformContext {
@@ -41,9 +43,9 @@ public interface TestPlatformContext {
 
 	String getAuthenticationMethod();
 
-    EntityContainerClient getMailCalendarContactClient();
+    OutlookClient getMailCalendarContactClient();
 
-    com.microsoft.sharepointservices.odata.EntityContainerClient getFilesClient();
+    SharePointClient getFilesClient();
 
     SharepointListsClient getSharePointListClient();
 

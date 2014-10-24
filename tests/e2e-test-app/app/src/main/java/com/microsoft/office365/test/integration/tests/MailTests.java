@@ -14,7 +14,8 @@ import com.microsoft.outlookservices.Folder;
 import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
+
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -40,7 +41,6 @@ public class MailTests extends TestGroup {
         this.addTest(canGetMessages("Can get messages", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
         this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
-        this.addTest(canRetrieveMessageAttachment("Can retrieve message with attachment", true));
         this.addTest(canSendMessage("Can send message", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
@@ -67,7 +67,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     if (client == null)
                         result.setStatus(TestStatus.Failed);
@@ -94,7 +94,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     List<Folder> folders = client.getMe().getFolders().read().get();
                     if (folders == null || folders.size() == 0)
                         result.setStatus(TestStatus.Failed);
@@ -121,7 +121,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder folder = client.getMe().getFolders().getById("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
@@ -152,7 +152,7 @@ public class MailTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Create new folder
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -213,7 +213,7 @@ public class MailTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Prepare for test
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -280,7 +280,7 @@ public class MailTests extends TestGroup {
                     String destinationFolderName = "Drafts";
 
                     //Create new folder
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -350,7 +350,7 @@ public class MailTests extends TestGroup {
                     String destinationFolderName = "Drafts";
 
                     //Create new folder
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -426,7 +426,7 @@ public class MailTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Create new folder
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(folderName);
                     Folder addedFolder = client.getMe()
@@ -487,7 +487,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(3).read().get();
                     if(inboxMessages.size()== 0)
@@ -526,7 +526,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
 
@@ -568,10 +568,10 @@ public class MailTests extends TestGroup {
             public TestResult executeTest() {
                 try {
                     TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
+                    result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
 
@@ -606,48 +606,6 @@ public class MailTests extends TestGroup {
         return test;
     }
 
-    private TestCase canRetrieveMessageAttachment(String name, boolean enabled) {
-        TestCase test = new TestCase() {
-
-            @Override
-            public TestResult executeTest() {
-                try {
-                    TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
-                    result.setTestCase(this);
-
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
-
-                    //Get mail
-                    List<Message> messages = client.getMe()
-                            .getFolders()
-                            .getById("Drafts")
-                            .getMessages()
-                             .filter("HasAttachments eq true").read().get();
-
-                    List<Attachment> attachments= null;
-                    if(messages.size() > 0)
-                    {
-                        attachments = client.getMe().getMessages().getById(messages.get(0).getId()).getAttachments().read().get();
-                        //attachments = client.getMe().getMessages().getById(messages.get(0).getId()).getAttachments().getById("").r
-                    }
-
-                    //Assert
-                    if(attachments != null && attachments.size() > 0)
-                        result.setStatus(TestStatus.Passed);
-
-                    return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
-                }
-            }
-        };
-
-        test.setName(name);
-        test.setEnabled(enabled);
-        return test;
-    }
-
     private TestCase canSendMessage(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -658,7 +616,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     String mailSubject = "Test Send Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -705,7 +663,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     String mailSubject = "Test Update Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -760,7 +718,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     String mailSubject = "Test Delete Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -816,7 +774,7 @@ public class MailTests extends TestGroup {
 
                     String destinationFolderName = "Inbox";
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     String mailSubject = "Test move Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -884,7 +842,7 @@ public class MailTests extends TestGroup {
 
                     String destinationFolderName = "Inbox";
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     String mailSubject = "Test copy Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -957,7 +915,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     if(inboxMessages.size()== 0)
@@ -1026,7 +984,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     if(inboxMessages.size()== 0)
@@ -1095,7 +1053,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     if(inboxMessages.size()== 0)

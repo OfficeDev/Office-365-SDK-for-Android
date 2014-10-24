@@ -4,7 +4,6 @@ package com.microsoft.office365.test.integration.tests;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.microsoft.sharepointservices.odata.EntityContainerClient;
 import com.microsoft.directoryservices.DirectoryObject;
 import com.microsoft.directoryservices.odata.DirectoryDataServiceClient;
 import com.microsoft.office365.test.integration.framework.TestCase;

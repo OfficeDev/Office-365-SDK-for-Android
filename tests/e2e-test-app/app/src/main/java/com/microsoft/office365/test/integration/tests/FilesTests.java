@@ -1,27 +1,15 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import android.util.Log;
-
-import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.aad.adal.AuthenticationCallback;
-import com.microsoft.aad.adal.AuthenticationResult;
-import com.microsoft.aad.adal.PromptBehavior;
 import com.microsoft.fileservices.File;
 import com.microsoft.fileservices.Item;
 import com.microsoft.office365.test.integration.ApplicationContext;
-import com.microsoft.office365.test.integration.android.Constants;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.sharepointservices.odata.EntityContainerClient;
-import com.microsoft.services.odata.impl.DefaultDependencyResolver;
-import com.microsoft.services.odata.impl.http.CredentialsFactoryImpl;
-import com.microsoft.services.odata.interfaces.Credentials;
-import com.microsoft.services.odata.interfaces.LogLevel;
-import com.microsoft.services.odata.interfaces.Request;
-
+import com.microsoft.services.odata.Constants;
+import com.microsoft.sharepointservices.odata.SharePointClient;
 
 import java.util.List;
 import java.util.UUID;
@@ -33,7 +21,7 @@ public class FilesTests extends TestGroup {
         super("Files tests");
 
         this.addTest(canGetFiles("Can get files", false));
-        this.addTest(canGetFiles("Can get file by Id", false));
+        this.addTest(canGetFilesById("Can get file by Id", false));
         this.addTest(canCreateFile("Can create file with content", true));
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
@@ -49,13 +37,52 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getFilesClient();
+                    SharePointClient client = ApplicationContext.getFilesClient();
 
-                    List<Item> files = client.getme().getfiles().read().get();
+                    List<Item> files = client.getfiles().read().get();
 
                     //Assert
                     if(files == null)
                         result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetFilesById(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    File newFile = new File();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+
+                    File storedFile = client.getfiles().getById(addedFile.getid()).asFile().read().get();
+
+                    //Assert
+                    if(storedFile == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -79,16 +106,16 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getFilesClient();
+                    SharePointClient client = ApplicationContext.getFilesClient();
 
                     File newFile = new File();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getme().getfiles().add(newFile).get();
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
+                    Item addedFile = client.getfiles().add(newFile).get();
+                    client.getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
 
-                    byte[] content = client.getme().getfiles().getById(addedFile.getid()).asFile().getContent().get();
+                    byte[] content = client.getfiles().getById(addedFile.getid()).asFile().getContent().get();
 
                     //Assert
                     if(addedFile == null)
@@ -98,7 +125,7 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
+                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -122,27 +149,27 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getFilesClient();
+                    SharePointClient client = ApplicationContext.getFilesClient();
 
                     File newFile = new File();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getme().getfiles().add(newFile).get();
+                    Item addedFile = client.getfiles().add(newFile).get();
                     //Prepare
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
+                    client.getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
 
                     //Act
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My other Content".getBytes()).get();
+                    client.getfiles().getById(addedFile.getid()).asFile().putContent("My other Content".getBytes()).get();
 
                     //Assert
-                    byte[] content = client.getme().getfiles().getById(addedFile.getid()).asFile().getContent().get();
+                    byte[] content = client.getfiles().getById(addedFile.getid()).asFile().getContent().get();
                     String strContent = new String(content);
                     if(addedFile != null && strContent.equals("My other Content"))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
+                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -166,25 +193,25 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getFilesClient();
+                    SharePointClient client = ApplicationContext.getFilesClient();
 
                     File newFile = new File();
                     newFile.settype("File");
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getme().getfiles().add(newFile).get();
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
+                    Item addedFile = client.getfiles().add(newFile).get();
+                    client.getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
 
                     String newFileName = "Updated" + newFile.getname();
                     newFile.setname(newFileName);
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().update(newFile);
+                    client.getfiles().getById(addedFile.getid()).asFile().update(newFile);
 
                     //Assert
                     if(addedFile == null)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
+                    //client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {

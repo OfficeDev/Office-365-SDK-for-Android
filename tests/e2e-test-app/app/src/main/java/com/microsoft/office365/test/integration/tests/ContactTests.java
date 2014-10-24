@@ -8,7 +8,7 @@ import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.outlookservices.Contact;
 import com.microsoft.outlookservices.EmailAddress;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class ContactTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     //Act
                     List<Contact> contacts = client.getMe()
@@ -69,7 +69,7 @@ public class ContactTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
@@ -105,7 +105,7 @@ public class ContactTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
@@ -143,7 +143,7 @@ public class ContactTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
@@ -186,7 +186,7 @@ public class ContactTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    EntityContainerClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     //Prepare
                     Contact contact = getContact();

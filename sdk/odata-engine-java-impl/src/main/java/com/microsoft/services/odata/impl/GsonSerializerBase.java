@@ -14,8 +14,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static com.microsoft.services.odata.Helpers.getODataTypePrefix;
 import static com.microsoft.services.odata.Helpers.getReservedNames;
@@ -91,7 +93,10 @@ public abstract class GsonSerializerBase implements JsonSerializer {
         } else if (json.isJsonObject()) {
             JsonObject jsonObject = json.getAsJsonObject();
 
-            for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+
+            Set<Map.Entry<String, JsonElement>> entries = new HashSet<Map.Entry<String, JsonElement>>(jsonObject.entrySet());
+
+            for (Map.Entry<String, JsonElement> entry : entries) {
                 String propertyName = entry.getKey();
                 JsonElement subElement = entry.getValue();
 
@@ -111,6 +116,7 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                 sanitizePostSerialization(subElement);
             }
         }
+
     }
 
     private void sanitizeForDeserialization(JsonElement json) {
@@ -122,7 +128,9 @@ public abstract class GsonSerializerBase implements JsonSerializer {
         } else if (json.isJsonObject()) {
             JsonObject jsonObject = json.getAsJsonObject();
 
-            for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+            Set<Map.Entry<String, JsonElement>> entries = new HashSet<Map.Entry<String, JsonElement>>(jsonObject.entrySet());
+
+            for (Map.Entry<String, JsonElement> entry : entries) {
                 String propertyName = entry.getKey();
                 JsonElement subElement = entry.getValue();
 
