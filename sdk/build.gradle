@@ -36,6 +36,7 @@ subprojects {
         jcenter()
     }
 
+    /*
     publishing {
         publications {
             mavenJava(MavenPublication) {
@@ -43,6 +44,7 @@ subprojects {
             }
         }
     }
+    */
 
     ext.publish = false
 
@@ -50,8 +52,8 @@ subprojects {
 
         configurations = ['published'] //When uploading configuration files
         apiUrl = "https://api.bintray.com"
-        user = 'marcote'
-        key = 'foo'
+        user = 'user'
+        key = 'key'
         dryRun = false
 
         filesSpec {
