@@ -24,6 +24,7 @@ import com.microsoft.listservices.SPListField;
 import com.microsoft.listservices.SPListItem;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.listservices.http.OAuthCredentials;
+import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.ExpectedValueException;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
@@ -57,9 +58,9 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = getListsClient();
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
 
-                    String listName = "fooListName";
+                    String listName = ApplicationContext.getTestListName();
 
                     List<SPListField> fields = client.getListFields(listName, startsWith("Title", "T")).get();
 
@@ -89,9 +90,9 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = getListsClient();
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
 
-                    String listName = "fooList";
+                    String listName = ApplicationContext.getTestListName();
 
                     List<String> columnNames = client.getColumnsFromDefaultView(listName).get();
 
@@ -121,9 +122,9 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = getListsClient();
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
 
-                    String listName = "fooListName";
+                    String listName = ApplicationContext.getTestListName();
                     SPList list = client.getList(listName).get();
                     SPListItem newItem = new SPListItem();
 
@@ -184,9 +185,9 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = getListsClient();
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
 
-                    String listName = "fooListName";
+                    String listName = ApplicationContext.getTestListName();
                     SPList list = client.getList(listName).get();
 
                     // validations
@@ -217,9 +218,9 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = getListsClient();
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
 
-                    String listName = "fooTestList";
+                    String listName = ApplicationContext.getTestListName();
                     String firstChar = listName.substring(0, 1);
                     List<SPList> lists = client.getLists(startsWith("Title", firstChar)).get();
 
@@ -251,7 +252,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = getListsClient();
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
                     String title = client.getWebTitle().get();
 
                     // validations
@@ -270,12 +271,5 @@ public class ListsTests extends TestGroup {
         test.setName(name);
         test.setEnabled(enabled);
         return test;
-    }
-
-    private SharepointListsClient getListsClient() {
-
-        SharepointListsClient client = new SharepointListsClient("https://msopentech.spoppe.com/_api/v1.0", "/",
-                                       new OAuthCredentials("sometoken"));
-        return client;
     }
 }

@@ -20,6 +20,10 @@ See the Apache Version 2.0 License for specific language governing permissions a
 package com.microsoft.office365.test.integration.android;
 
 public class Constants {
+    public static final String PREFERENCE_SHAREPOINT_URL = "prefSharepointUrl";
+    public static final String PREFERENCE_SITE_URL = "prefSiteRelativeUrl";
+    public static final String PREFERENCE_LIST_NAME = "prefListName";
+    public static final String PREFERENCE_DOCUMENT_LIST_NAME = "prefDocumentListName";
 	public static final String PREFERENCE_EXCHANGE_RESOURCE_URL = "prefExchangeResourcetUrl";
     public static final String PREFERENCE_FILES_RESOURCE_URL = "prefFilesResourcetUrl";
 	public static final String PREFERENCE_LOG_POST_URL = "pref_log_post_url";

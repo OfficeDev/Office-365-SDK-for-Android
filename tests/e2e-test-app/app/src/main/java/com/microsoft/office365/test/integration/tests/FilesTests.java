@@ -32,9 +32,10 @@ public class FilesTests extends TestGroup {
     public FilesTests() {
         super("Files tests");
 
-        this.addTest(canGetFiles("Can get files - WIP", false));
+        this.addTest(canGetFiles("Can get files", false));
+        this.addTest(canGetFiles("Can get file by Id", false));
         this.addTest(canCreateFile("Can create file with content", true));
-        //this.addTest(canUpdateFile("Can update file", true));
+        this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
     }
 
@@ -97,7 +98,7 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    //client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -141,7 +142,49 @@ public class FilesTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
-                    //client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canUpdateFile(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    EntityContainerClient client = ApplicationContext.getFilesClient();
+
+                    File newFile = new File();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item addedFile = client.getme().getfiles().add(newFile).get();
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().putContent("My Content".getBytes()).get();
+
+                    String newFileName = "Updated" + newFile.getname();
+                    newFile.setname(newFileName);
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().update(newFile);
+
+                    //Assert
+                    if(addedFile == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getme().getfiles().getById(addedFile.getid()).asFile().delete().get();
 
                     return result;
                 } catch (Exception e) {

@@ -15,6 +15,7 @@ import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 
 
+import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.TestPlatformContext;
 import com.microsoft.office365.test.integration.framework.OAuthCredentials;
 import com.microsoft.office365.test.integration.framework.TestCase;
@@ -34,6 +35,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     private static Activity mActivity;
     private AuthenticationResult mExchangeAuthenticationResult;
     private AuthenticationResult mFilesAuthenticationResult;
+    private AuthenticationResult mListsAuthenticationResult;
     public AndroidTestPlatformContext(Activity activity) {
         mActivity = activity;
     }
@@ -48,6 +50,27 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     public String getFileServerUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_FILES_RESOURCE_URL,
                 "");
+    }
+
+    @Override
+    public String getSharepointServerUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_SHAREPOINT_URL,
+                "");
+    }
+
+    @Override
+    public String getTestListName() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_LIST_NAME, "");
+    }
+
+    @Override
+    public String getTestDocumentListName() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DOCUMENT_LIST_NAME, "");
+    }
+
+    @Override
+    public String getSiteRelativeUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_SITE_URL, "");
     }
 
     @Override
@@ -84,12 +107,6 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     public String getTestMail() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
                 Constants.PREFERENCE_TEST_MAIL, "");
-    }
-
-    @Override
-    public String getBasicAuthToken() {
-        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                Constants.PREFERENCE_BASIC_TOKEN, "");
     }
 
     public static AuthenticationContext context = null;
@@ -156,20 +173,69 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     @Override
     public EntityContainerClient getMailCalendarContactClient() {
-        EntityContainerClient result;
-
-        if (getAuthenticationMethod().equals("AAD")) {
-            result = getExchangeEntityContainerClientAAD();
-        } else {
-            result = getExchangeEntityContainerClientBasic();
-        }
-
-        return result;
+        return  getExchangeEntityContainerClientAAD();
     }
 
     @Override
     public com.microsoft.sharepointservices.odata.EntityContainerClient getFilesClient() {
         return getFilesEntityContainerClientAAD();
+    }
+
+    @Override
+    public SharepointListsClient getSharePointListClient() {
+        return getSharePointListClientAAD();
+    }
+
+    SharepointListsClient getSharePointListClientAAD(){
+        final SettableFuture<SharepointListsClient> future = SettableFuture.create();
+
+        try {
+            if (mListsAuthenticationResult != null && mListsAuthenticationResult.getRefreshToken() != null && !mListsAuthenticationResult.getRefreshToken().isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(mListsAuthenticationResult.getRefreshToken(), getClientId(), getSharepointServerUrl(),
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mListsAuthenticationResult = result;
+                                com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
+                                SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(),credentials);
+                                future.set(client);
+                            }
+                        });
+            } else {
+                getAuthenticationContext().acquireToken(
+                        mActivity, getSharepointServerUrl(),
+                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mListsAuthenticationResult = result;
+                                com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
+                                SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
+                                future.set(client);
+                            }
+                        });
+            }
+        } catch (Throwable t) {
+            future.setException(t);
+        }
+        try {
+            return future.get();
+        } catch (Throwable t) {
+            Log.e(Constants.TAG, t.getMessage());
+            return null;
+        }
     }
 
     EntityContainerClient getExchangeEntityContainerClientAAD() {
@@ -220,25 +286,6 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
             Log.e(Constants.TAG, t.getMessage());
             return null;
         }
-    }
-
-    EntityContainerClient getExchangeEntityContainerClientBasic() {
-        final String token = this.getBasicAuthToken();
-
-        DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
-        dependencyResolver.setCredentialsFactory(new CredentialsFactory() {
-            @Override
-            public Credentials getCredentials() {
-                return new Credentials() {
-                    @Override
-                    public void prepareRequest(Request request) {
-                        request.addHeader("Authorization", "Basic " + token);
-                    }
-                };
-            }
-        });
-        EntityContainerClient client = new EntityContainerClient(getExchangeEndpointUrl(),dependencyResolver);
-        return client;
     }
 
     private DependencyResolver getDependencyResolver(final String token) {
