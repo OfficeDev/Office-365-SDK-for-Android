@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Message extends Item {
 
-	private String $$_ODataType = "#Microsoft.OutlookServices.Message";
+	private String $$__ODataType = "#Microsoft.OutlookServices.Message";
 
 	private String Subject;
 

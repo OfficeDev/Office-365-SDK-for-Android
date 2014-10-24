@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class ItemBody {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.ItemBody";
+	private String $$__ODataType = "#Microsoft.OutlookServices.ItemBody";
 
 
 	private BodyType ContentType;

@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Attendee extends Recipient {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.Attendee";
+	private String $$__ODataType = "#Microsoft.OutlookServices.Attendee";
 
 
 	private ResponseStatus Status;

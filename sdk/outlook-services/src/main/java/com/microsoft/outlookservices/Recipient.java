@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Recipient {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.Recipient";
+	private String $$__ODataType = "#Microsoft.OutlookServices.Recipient";
 
 
 	private EmailAddress EmailAddress;

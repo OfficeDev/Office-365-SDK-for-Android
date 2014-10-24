@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Location {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.Location";
+	private String $$__ODataType = "#Microsoft.OutlookServices.Location";
 
 
 	private String DisplayName;

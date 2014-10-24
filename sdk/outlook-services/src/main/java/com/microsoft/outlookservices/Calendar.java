@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Calendar extends Entity {
 
-	private String $$_ODataType = "#Microsoft.OutlookServices.Calendar";
+	private String $$__ODataType = "#Microsoft.OutlookServices.Calendar";
 
 	private String Name;
 

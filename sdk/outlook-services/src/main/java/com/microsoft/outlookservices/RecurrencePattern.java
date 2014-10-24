@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class RecurrencePattern {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.RecurrencePattern";
+	private String $$__ODataType = "#Microsoft.OutlookServices.RecurrencePattern";
 
 
 	private RecurrencePatternType Type;
