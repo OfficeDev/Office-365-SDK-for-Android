@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Email Address.
 */
-public class EmailAddress {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.EmailAddress";
+public class EmailAddress extends ODataBaseEntity {
+
+	public EmailAddress(){
+		setODataType("#Microsoft.OutlookServices.EmailAddress");
+	}
 
 
 	private String Name;

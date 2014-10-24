@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Response Status.
 */
-public class ResponseStatus {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.ResponseStatus";
+public class ResponseStatus extends ODataBaseEntity {
+
+	public ResponseStatus(){
+		setODataType("#Microsoft.OutlookServices.ResponseStatus");
+	}
 
 
 	private ResponseType Response;

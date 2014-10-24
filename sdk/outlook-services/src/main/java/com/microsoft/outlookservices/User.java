@@ -10,7 +10,9 @@ package com.microsoft.outlookservices;
 */
 public class User extends Entity {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.User";
+	public User(){
+		setODataType("#Microsoft.OutlookServices.User");
+	}
 
 	private String DisplayName;
 

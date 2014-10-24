@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Location.
 */
-public class Location {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.Location";
+public class Location extends ODataBaseEntity {
+
+	public Location(){
+		setODataType("#Microsoft.OutlookServices.Location");
+	}
 
 
 	private String DisplayName;

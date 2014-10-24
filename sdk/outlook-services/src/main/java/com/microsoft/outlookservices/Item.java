@@ -10,7 +10,9 @@ package com.microsoft.outlookservices;
 */
 public class Item extends Entity {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.Item";
+	public Item(){
+		setODataType("#Microsoft.OutlookServices.Item");
+	}
 
 	private String ChangeKey;
 

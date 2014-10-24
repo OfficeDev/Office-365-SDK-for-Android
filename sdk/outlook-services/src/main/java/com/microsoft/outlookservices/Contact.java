@@ -10,7 +10,9 @@ package com.microsoft.outlookservices;
 */
 public class Contact extends Item {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.Contact";
+	public Contact(){
+		setODataType("#Microsoft.OutlookServices.Contact");
+	}
 
 	private String ParentFolderId;
 

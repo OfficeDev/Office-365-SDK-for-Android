@@ -10,7 +10,9 @@ package com.microsoft.outlookservices;
 */
 public class Attachment extends Entity {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.Attachment";
+	public Attachment(){
+		setODataType("#Microsoft.OutlookServices.Attachment");
+	}
 
 	private String Name;
 

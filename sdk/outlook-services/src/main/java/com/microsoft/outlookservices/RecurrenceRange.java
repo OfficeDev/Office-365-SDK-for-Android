@@ -8,9 +8,11 @@ package com.microsoft.outlookservices;
 /**
  * The type Recurrence Range.
 */
-public class RecurrenceRange {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.RecurrenceRange";
+public class RecurrenceRange extends ODataBaseEntity {
+
+	public RecurrenceRange(){
+		setODataType("#Microsoft.OutlookServices.RecurrenceRange");
+	}
 
 
 	private RecurrenceRangeType Type;

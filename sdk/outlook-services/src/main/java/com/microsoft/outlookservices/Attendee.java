@@ -9,8 +9,10 @@ package com.microsoft.outlookservices;
  * The type Attendee.
 */
 public class Attendee extends Recipient {
-	
-	private String $$__ODataType = "#Microsoft.OutlookServices.Attendee";
+
+	public Attendee(){
+		setODataType("#Microsoft.OutlookServices.Attendee");
+	}
 
 
 	private ResponseStatus Status;

@@ -10,7 +10,9 @@ package com.microsoft.outlookservices;
 */
 public class Event extends Item {
 
-	private String $$__ODataType = "#Microsoft.OutlookServices.Event";
+	public Event(){
+		setODataType("#Microsoft.OutlookServices.Event");
+	}
 
 	private String Subject;
 
