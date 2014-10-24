@@ -10,7 +10,7 @@ package com.microsoft.fileservices;
 */
 public class IdentitySet {
 	
-	private String $$_ODataType;
+	private String $$_ODataType = "#Microsoft.FileServices.IdentitySet";
 
 
 	private Identity application;

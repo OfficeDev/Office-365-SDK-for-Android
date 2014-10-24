@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class ResponseStatus {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.ResponseStatus";
+	private String $$__ODataType = "#Microsoft.OutlookServices.ResponseStatus";
 
 
 	private ResponseType Response;

@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class PhysicalAddress {
 	
-	private String $$_ODataType = "#Microsoft.OutlookServices.PhysicalAddress";
+	private String $$__ODataType = "#Microsoft.OutlookServices.PhysicalAddress";
 
 
 	private String Street;

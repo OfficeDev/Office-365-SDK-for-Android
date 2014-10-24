@@ -10,7 +10,7 @@ package com.microsoft.outlookservices;
 */
 public class Entity {
 
-	private String $$_ODataType = "#Microsoft.OutlookServices.Entity";
+	private String $$__ODataType = "#Microsoft.OutlookServices.Entity";
 
 	private String Id;
 
