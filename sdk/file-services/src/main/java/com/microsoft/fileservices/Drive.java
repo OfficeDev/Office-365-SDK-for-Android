@@ -8,9 +8,11 @@ package com.microsoft.fileservices;
 /**
  * The type Drive.
 */
-public class Drive {
+public class Drive extends ODataBaseEntity {
 
-	private String $$_ODataType = "#Microsoft.FileServices.Drive";
+	public Drive(){
+		setODataType("#Microsoft.FileServices.Drive");
+	}
 
 	private String id;
 

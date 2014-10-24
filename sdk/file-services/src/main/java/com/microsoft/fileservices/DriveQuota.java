@@ -8,9 +8,11 @@ package com.microsoft.fileservices;
 /**
  * The type Drive Quota.
 */
-public class DriveQuota {
-	
-	private String $$_ODataType = "#Microsoft.FileServices.DriveQuota";
+public class DriveQuota extends ODataBaseEntity {
+
+	public DriveQuota(){
+		setODataType("#Microsoft.FileServices.DriveQuota");
+	}
 
 
 	private long deleted;

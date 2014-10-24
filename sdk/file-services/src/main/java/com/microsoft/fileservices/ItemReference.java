@@ -8,9 +8,11 @@ package com.microsoft.fileservices;
 /**
  * The type Item Reference.
 */
-public class ItemReference {
-	
-	private String $$_ODataType = "#Microsoft.FileServices.ItemReference";
+public class ItemReference extends ODataBaseEntity {
+
+	public ItemReference(){
+		setODataType("#Microsoft.FileServices.ItemReference");
+	}
 
 
 	private String driveId;

@@ -8,9 +8,11 @@ package com.microsoft.fileservices;
 /**
  * The type Identity.
 */
-public class Identity {
-	
-	private String $$_ODataType = "#Microsoft.FileServices.Identity";
+public class Identity extends ODataBaseEntity {
+
+	public Identity(){
+		setODataType("#Microsoft.FileServices.Identity");
+	}
 
 
 	private String id;

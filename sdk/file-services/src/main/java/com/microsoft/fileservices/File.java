@@ -10,7 +10,9 @@ package com.microsoft.fileservices;
 */
 public class File extends Item {
 
-	private String $$_ODataType = "#Microsoft.FileServices.File";
+	public File(){
+		setODataType("#Microsoft.FileServices.File");
+	}
 
 	private String contentUrl;
 
