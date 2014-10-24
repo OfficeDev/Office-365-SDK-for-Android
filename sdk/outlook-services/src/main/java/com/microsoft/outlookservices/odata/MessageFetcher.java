@@ -7,7 +7,8 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.*; 
+import com.microsoft.outlookservices.*;		
 
 /**
  * The type  MessageFetcher.
@@ -23,7 +24,8 @@ public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations
 	 public MessageFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Message.class,MessageOperations.class);
     }
-     /**
+
+	     /**
      * Gets attachments.
      *
      * @return the attachments

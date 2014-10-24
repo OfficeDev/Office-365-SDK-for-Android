@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Recurrence Pattern.
 */
 public class RecurrencePattern {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.RecurrencePattern";
+
 
 	private RecurrencePatternType Type;
 
@@ -27,7 +30,7 @@ public class RecurrencePattern {
 	* @param value the RecurrencePatternType
 	*/
 	public void setType(RecurrencePatternType value) { 
-		Type = value; 
+		this.Type = value; 
 	}
 
 	private Integer Interval;
@@ -47,7 +50,7 @@ public class RecurrencePattern {
 	* @param value the Integer
 	*/
 	public void setInterval(Integer value) { 
-		Interval = value; 
+		this.Interval = value; 
 	}
 
 	private Integer DayOfMonth;
@@ -67,7 +70,7 @@ public class RecurrencePattern {
 	* @param value the Integer
 	*/
 	public void setDayOfMonth(Integer value) { 
-		DayOfMonth = value; 
+		this.DayOfMonth = value; 
 	}
 
 	private Integer Month;
@@ -87,7 +90,7 @@ public class RecurrencePattern {
 	* @param value the Integer
 	*/
 	public void setMonth(Integer value) { 
-		Month = value; 
+		this.Month = value; 
 	}
 
 	private java.util.List<DayOfWeek> DaysOfWeek;
@@ -107,7 +110,7 @@ public class RecurrencePattern {
 	* @param value the java.util.List<DayOfWeek>
 	*/
 	public void setDaysOfWeek(java.util.List<DayOfWeek> value) { 
-		DaysOfWeek = value; 
+		this.DaysOfWeek = value; 
 	}
 
 	private DayOfWeek FirstDayOfWeek;
@@ -127,7 +130,7 @@ public class RecurrencePattern {
 	* @param value the DayOfWeek
 	*/
 	public void setFirstDayOfWeek(DayOfWeek value) { 
-		FirstDayOfWeek = value; 
+		this.FirstDayOfWeek = value; 
 	}
 
 	private WeekIndex Index;
@@ -147,6 +150,6 @@ public class RecurrencePattern {
 	* @param value the WeekIndex
 	*/
 	public void setIndex(WeekIndex value) { 
-		Index = value; 
+		this.Index = value; 
 	}
 }

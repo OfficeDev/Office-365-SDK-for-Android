@@ -81,7 +81,7 @@ public class Helpers {
         return "$$__$$";
     }
 
-    public static String getReservedODataTypePrefix() {return "$$_ODataType"; }
+    public static String getReservedODataTypePrefix() {return "$$__ODataType"; }
 
     public static String getODataTypePrefix() {return "@odata.type";}
 

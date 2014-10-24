@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Patterned Recurrence.
 */
 public class PatternedRecurrence {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.PatternedRecurrence";
+
 
 	private RecurrencePattern Pattern;
 
@@ -27,7 +30,7 @@ public class PatternedRecurrence {
 	* @param value the RecurrencePattern
 	*/
 	public void setPattern(RecurrencePattern value) { 
-		Pattern = value; 
+		this.Pattern = value; 
 	}
 
 	private RecurrenceRange Range;
@@ -47,6 +50,6 @@ public class PatternedRecurrence {
 	* @param value the RecurrenceRange
 	*/
 	public void setRange(RecurrenceRange value) { 
-		Range = value; 
+		this.Range = value; 
 	}
 }

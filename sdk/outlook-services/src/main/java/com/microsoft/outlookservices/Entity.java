@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Entity.
 */
 public class Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Entity";
+
 	private String Id;
 
 	/**
@@ -26,6 +29,6 @@ public class Entity {
 	* @param value the String
 	*/
 	public void setId(String value) { 
-		Id = value; 
+		this.Id = value; 
 	}
 }

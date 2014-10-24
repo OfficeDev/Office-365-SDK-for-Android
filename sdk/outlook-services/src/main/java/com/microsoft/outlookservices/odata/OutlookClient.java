@@ -7,19 +7,20 @@ package com.microsoft.outlookservices.odata;
 
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.odata.*;
 
 /**
- * The type EntityContainerClient.
+ * The type OutlookClient.
  */
-public class EntityContainerClient extends BaseODataContainer {
+public class OutlookClient extends BaseODataContainer {
 
 	 /**
-     * Instantiates a new EntityContainerClient.
+     * Instantiates a new OutlookClient.
      *
      * @param url the url
      * @param resolver the resolver
      */
-    public EntityContainerClient(String url, DependencyResolver resolver) {
+    public OutlookClient(String url, DependencyResolver resolver) {
         super(url, resolver);
     }
 	 /**

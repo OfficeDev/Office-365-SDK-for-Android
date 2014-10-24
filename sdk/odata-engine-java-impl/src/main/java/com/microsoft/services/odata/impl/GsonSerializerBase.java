@@ -103,12 +103,9 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                         jsonObject.remove(newName);
                         jsonObject.add(propertyName, subElement);
                     }
-                }
-
-                if (propertyName.startsWith(getReservedODataTypePrefix())) {
+                } else if (propertyName.equals(getReservedODataTypePrefix())) {
                     jsonObject.remove(getReservedODataTypePrefix());
                     jsonObject.add(getODataTypePrefix(), subElement);
-
                 }
 
                 sanitizePostSerialization(subElement);
@@ -133,12 +130,12 @@ public abstract class GsonSerializerBase implements JsonSerializer {
                 if (getReservedNames().contains(propertyName)) {
                     jsonObject.remove(propertyName);
                     jsonObject.add(newName, subElement);
-                }
-
-                String oDataName = getReservedODataTypePrefix();
-                if (propertyName.contains(getODataTypePrefix())) {
-                    jsonObject.remove(propertyName);
-                    jsonObject.add(oDataName, subElement);
+                } else {
+                    String oDataTypeName = getReservedODataTypePrefix();
+                    if (propertyName.equals(getODataTypePrefix())) {
+                        jsonObject.remove(propertyName);
+                        jsonObject.add(oDataTypeName, subElement);
+                    }
                 }
 
                 sanitizePostSerialization(subElement);

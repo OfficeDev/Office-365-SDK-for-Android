@@ -8,11 +8,16 @@ package com.microsoft.outlookservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
+import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
+import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 /**
  * The type ItemCollectionOperations
  */
-public class ItemCollectionOperations extends ODataOperations {
+public class ItemCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new ItemCollectionOperations.

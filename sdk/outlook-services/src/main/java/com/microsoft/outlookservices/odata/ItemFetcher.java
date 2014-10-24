@@ -7,7 +7,8 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.*; 
+import com.microsoft.outlookservices.*;		
 
 /**
  * The type  ItemFetcher.
@@ -23,4 +24,14 @@ public class ItemFetcher extends ODataEntityFetcher<Item,ItemOperations> impleme
 	 public ItemFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, Item.class,ItemOperations.class);
     }
-}
+
+	     public MessageFetcher asMessage(){
+	      return new MessageFetcher(this.urlComponent, this.parent);
+     }	
+	     public EventFetcher asEvent(){
+	      return new EventFetcher(this.urlComponent, this.parent);
+     }	
+	     public ContactFetcher asContact(){
+	      return new ContactFetcher(this.urlComponent, this.parent);
+     }	
+	}

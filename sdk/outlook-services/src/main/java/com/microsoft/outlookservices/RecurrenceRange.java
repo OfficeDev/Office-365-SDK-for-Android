@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Recurrence Range.
 */
 public class RecurrenceRange {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.RecurrenceRange";
+
 
 	private RecurrenceRangeType Type;
 
@@ -27,7 +30,7 @@ public class RecurrenceRange {
 	* @param value the RecurrenceRangeType
 	*/
 	public void setType(RecurrenceRangeType value) { 
-		Type = value; 
+		this.Type = value; 
 	}
 
 	private java.util.Calendar StartDate;
@@ -47,7 +50,7 @@ public class RecurrenceRange {
 	* @param value the java.util.Calendar
 	*/
 	public void setStartDate(java.util.Calendar value) { 
-		StartDate = value; 
+		this.StartDate = value; 
 	}
 
 	private java.util.Calendar EndDate;
@@ -67,7 +70,7 @@ public class RecurrenceRange {
 	* @param value the java.util.Calendar
 	*/
 	public void setEndDate(java.util.Calendar value) { 
-		EndDate = value; 
+		this.EndDate = value; 
 	}
 
 	private Integer NumberOfOccurrences;
@@ -87,6 +90,6 @@ public class RecurrenceRange {
 	* @param value the Integer
 	*/
 	public void setNumberOfOccurrences(Integer value) { 
-		NumberOfOccurrences = value; 
+		this.NumberOfOccurrences = value; 
 	}
 }

@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Calendar Group.
 */
 public class CalendarGroup extends Entity {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.CalendarGroup";
+
 	private String Name;
 
 	/**
@@ -26,7 +29,7 @@ public class CalendarGroup extends Entity {
 	* @param value the String
 	*/
 	public void setName(String value) { 
-		Name = value; 
+		this.Name = value; 
 	}
 	private String ChangeKey;
 
@@ -45,7 +48,7 @@ public class CalendarGroup extends Entity {
 	* @param value the String
 	*/
 	public void setChangeKey(String value) { 
-		ChangeKey = value; 
+		this.ChangeKey = value; 
 	}
 	private java.util.UUID ClassId;
 
@@ -64,6 +67,6 @@ public class CalendarGroup extends Entity {
 	* @param value the java.util.UUID
 	*/
 	public void setClassId(java.util.UUID value) { 
-		ClassId = value; 
+		this.ClassId = value; 
 	}
 }

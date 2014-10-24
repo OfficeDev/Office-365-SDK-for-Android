@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Event.
 */
 public class Event extends Item {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Event";
+
 	private String Subject;
 
 	/**
@@ -26,7 +29,7 @@ public class Event extends Item {
 	* @param value the String
 	*/
 	public void setSubject(String value) { 
-		Subject = value; 
+		this.Subject = value; 
 	}
 	private ItemBody Body;
 
@@ -45,7 +48,7 @@ public class Event extends Item {
 	* @param value the ItemBody
 	*/
 	public void setBody(ItemBody value) { 
-		Body = value; 
+		this.Body = value; 
 	}
 	private String BodyPreview;
 
@@ -64,7 +67,7 @@ public class Event extends Item {
 	* @param value the String
 	*/
 	public void setBodyPreview(String value) { 
-		BodyPreview = value; 
+		this.BodyPreview = value; 
 	}
 	private Importance Importance;
 
@@ -83,7 +86,7 @@ public class Event extends Item {
 	* @param value the Importance
 	*/
 	public void setImportance(Importance value) { 
-		Importance = value; 
+		this.Importance = value; 
 	}
 	private Boolean HasAttachments;
 
@@ -102,7 +105,7 @@ public class Event extends Item {
 	* @param value the Boolean
 	*/
 	public void setHasAttachments(Boolean value) { 
-		HasAttachments = value; 
+		this.HasAttachments = value; 
 	}
 	private java.util.Calendar Start;
 
@@ -121,7 +124,7 @@ public class Event extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setStart(java.util.Calendar value) { 
-		Start = value; 
+		this.Start = value; 
 	}
 	private java.util.Calendar End;
 
@@ -140,7 +143,7 @@ public class Event extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setEnd(java.util.Calendar value) { 
-		End = value; 
+		this.End = value; 
 	}
 	private Location Location;
 
@@ -159,7 +162,7 @@ public class Event extends Item {
 	* @param value the Location
 	*/
 	public void setLocation(Location value) { 
-		Location = value; 
+		this.Location = value; 
 	}
 	private FreeBusyStatus ShowAs;
 
@@ -178,7 +181,7 @@ public class Event extends Item {
 	* @param value the FreeBusyStatus
 	*/
 	public void setShowAs(FreeBusyStatus value) { 
-		ShowAs = value; 
+		this.ShowAs = value; 
 	}
 	private Boolean IsAllDay;
 
@@ -197,7 +200,7 @@ public class Event extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsAllDay(Boolean value) { 
-		IsAllDay = value; 
+		this.IsAllDay = value; 
 	}
 	private Boolean IsCancelled;
 
@@ -216,7 +219,7 @@ public class Event extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsCancelled(Boolean value) { 
-		IsCancelled = value; 
+		this.IsCancelled = value; 
 	}
 	private Boolean IsOrganizer;
 
@@ -235,7 +238,7 @@ public class Event extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsOrganizer(Boolean value) { 
-		IsOrganizer = value; 
+		this.IsOrganizer = value; 
 	}
 	private Boolean ResponseRequested;
 
@@ -254,7 +257,7 @@ public class Event extends Item {
 	* @param value the Boolean
 	*/
 	public void setResponseRequested(Boolean value) { 
-		ResponseRequested = value; 
+		this.ResponseRequested = value; 
 	}
 	private EventType Type;
 
@@ -273,7 +276,7 @@ public class Event extends Item {
 	* @param value the EventType
 	*/
 	public void setType(EventType value) { 
-		Type = value; 
+		this.Type = value; 
 	}
 	private String SeriesMasterId;
 
@@ -292,7 +295,7 @@ public class Event extends Item {
 	* @param value the String
 	*/
 	public void setSeriesMasterId(String value) { 
-		SeriesMasterId = value; 
+		this.SeriesMasterId = value; 
 	}
 	private java.util.List<Attendee> Attendees;
 
@@ -311,7 +314,7 @@ public class Event extends Item {
 	* @param value the java.util.List<Attendee>
 	*/
 	public void setAttendees(java.util.List<Attendee> value) { 
-		Attendees = value; 
+		this.Attendees = value; 
 	}
 	private PatternedRecurrence Recurrence;
 
@@ -330,7 +333,7 @@ public class Event extends Item {
 	* @param value the PatternedRecurrence
 	*/
 	public void setRecurrence(PatternedRecurrence value) { 
-		Recurrence = value; 
+		this.Recurrence = value; 
 	}
 	private Recipient Organizer;
 
@@ -349,6 +352,6 @@ public class Event extends Item {
 	* @param value the Recipient
 	*/
 	public void setOrganizer(Recipient value) { 
-		Organizer = value; 
+		this.Organizer = value; 
 	}
 }

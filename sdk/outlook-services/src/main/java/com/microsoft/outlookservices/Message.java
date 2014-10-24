@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Message.
 */
 public class Message extends Item {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Message";
+
 	private String Subject;
 
 	/**
@@ -26,7 +29,7 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setSubject(String value) { 
-		Subject = value; 
+		this.Subject = value; 
 	}
 	private ItemBody Body;
 
@@ -45,7 +48,7 @@ public class Message extends Item {
 	* @param value the ItemBody
 	*/
 	public void setBody(ItemBody value) { 
-		Body = value; 
+		this.Body = value; 
 	}
 	private String BodyPreview;
 
@@ -64,7 +67,7 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setBodyPreview(String value) { 
-		BodyPreview = value; 
+		this.BodyPreview = value; 
 	}
 	private Importance Importance;
 
@@ -83,7 +86,7 @@ public class Message extends Item {
 	* @param value the Importance
 	*/
 	public void setImportance(Importance value) { 
-		Importance = value; 
+		this.Importance = value; 
 	}
 	private Boolean HasAttachments;
 
@@ -102,7 +105,7 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setHasAttachments(Boolean value) { 
-		HasAttachments = value; 
+		this.HasAttachments = value; 
 	}
 	private String ParentFolderId;
 
@@ -121,7 +124,7 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		ParentFolderId = value; 
+		this.ParentFolderId = value; 
 	}
 	private Recipient From;
 
@@ -140,7 +143,7 @@ public class Message extends Item {
 	* @param value the Recipient
 	*/
 	public void setFrom(Recipient value) { 
-		From = value; 
+		this.From = value; 
 	}
 	private Recipient Sender;
 
@@ -159,7 +162,7 @@ public class Message extends Item {
 	* @param value the Recipient
 	*/
 	public void setSender(Recipient value) { 
-		Sender = value; 
+		this.Sender = value; 
 	}
 	private java.util.List<Recipient> ToRecipients;
 
@@ -178,7 +181,7 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setToRecipients(java.util.List<Recipient> value) { 
-		ToRecipients = value; 
+		this.ToRecipients = value; 
 	}
 	private java.util.List<Recipient> CcRecipients;
 
@@ -197,7 +200,7 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setCcRecipients(java.util.List<Recipient> value) { 
-		CcRecipients = value; 
+		this.CcRecipients = value; 
 	}
 	private java.util.List<Recipient> BccRecipients;
 
@@ -216,7 +219,7 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setBccRecipients(java.util.List<Recipient> value) { 
-		BccRecipients = value; 
+		this.BccRecipients = value; 
 	}
 	private java.util.List<Recipient> ReplyTo;
 
@@ -235,7 +238,7 @@ public class Message extends Item {
 	* @param value the java.util.List<Recipient>
 	*/
 	public void setReplyTo(java.util.List<Recipient> value) { 
-		ReplyTo = value; 
+		this.ReplyTo = value; 
 	}
 	private String ConversationId;
 
@@ -254,7 +257,7 @@ public class Message extends Item {
 	* @param value the String
 	*/
 	public void setConversationId(String value) { 
-		ConversationId = value; 
+		this.ConversationId = value; 
 	}
 	private ItemBody UniqueBody;
 
@@ -273,7 +276,7 @@ public class Message extends Item {
 	* @param value the ItemBody
 	*/
 	public void setUniqueBody(ItemBody value) { 
-		UniqueBody = value; 
+		this.UniqueBody = value; 
 	}
 	private java.util.Calendar DateTimeReceived;
 
@@ -292,7 +295,7 @@ public class Message extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeReceived(java.util.Calendar value) { 
-		DateTimeReceived = value; 
+		this.DateTimeReceived = value; 
 	}
 	private java.util.Calendar DateTimeSent;
 
@@ -311,7 +314,7 @@ public class Message extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setDateTimeSent(java.util.Calendar value) { 
-		DateTimeSent = value; 
+		this.DateTimeSent = value; 
 	}
 	private Boolean IsDeliveryReceiptRequested;
 
@@ -330,7 +333,7 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsDeliveryReceiptRequested(Boolean value) { 
-		IsDeliveryReceiptRequested = value; 
+		this.IsDeliveryReceiptRequested = value; 
 	}
 	private Boolean IsReadReceiptRequested;
 
@@ -349,7 +352,7 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsReadReceiptRequested(Boolean value) { 
-		IsReadReceiptRequested = value; 
+		this.IsReadReceiptRequested = value; 
 	}
 	private Boolean IsDraft;
 
@@ -368,7 +371,7 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsDraft(Boolean value) { 
-		IsDraft = value; 
+		this.IsDraft = value; 
 	}
 	private Boolean IsRead;
 
@@ -387,6 +390,6 @@ public class Message extends Item {
 	* @param value the Boolean
 	*/
 	public void setIsRead(Boolean value) { 
-		IsRead = value; 
+		this.IsRead = value; 
 	}
 }

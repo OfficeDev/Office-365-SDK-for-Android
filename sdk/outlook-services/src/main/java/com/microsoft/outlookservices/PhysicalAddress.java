@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Physical Address.
 */
 public class PhysicalAddress {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.PhysicalAddress";
+
 
 	private String Street;
 
@@ -27,7 +30,7 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setStreet(String value) { 
-		Street = value; 
+		this.Street = value; 
 	}
 
 	private String City;
@@ -47,7 +50,7 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setCity(String value) { 
-		City = value; 
+		this.City = value; 
 	}
 
 	private String State;
@@ -67,7 +70,7 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setState(String value) { 
-		State = value; 
+		this.State = value; 
 	}
 
 	private String CountryOrRegion;
@@ -87,7 +90,7 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setCountryOrRegion(String value) { 
-		CountryOrRegion = value; 
+		this.CountryOrRegion = value; 
 	}
 
 	private String PostalCode;
@@ -107,6 +110,6 @@ public class PhysicalAddress {
 	* @param value the String
 	*/
 	public void setPostalCode(String value) { 
-		PostalCode = value; 
+		this.PostalCode = value; 
 	}
 }

@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Contact.
 */
 public class Contact extends Item {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.Contact";
+
 	private String ParentFolderId;
 
 	/**
@@ -26,7 +29,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setParentFolderId(String value) { 
-		ParentFolderId = value; 
+		this.ParentFolderId = value; 
 	}
 	private java.util.Calendar Birthday;
 
@@ -45,7 +48,7 @@ public class Contact extends Item {
 	* @param value the java.util.Calendar
 	*/
 	public void setBirthday(java.util.Calendar value) { 
-		Birthday = value; 
+		this.Birthday = value; 
 	}
 	private String FileAs;
 
@@ -64,7 +67,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setFileAs(String value) { 
-		FileAs = value; 
+		this.FileAs = value; 
 	}
 	private String DisplayName;
 
@@ -83,7 +86,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		DisplayName = value; 
+		this.DisplayName = value; 
 	}
 	private String GivenName;
 
@@ -102,7 +105,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setGivenName(String value) { 
-		GivenName = value; 
+		this.GivenName = value; 
 	}
 	private String Initials;
 
@@ -121,7 +124,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setInitials(String value) { 
-		Initials = value; 
+		this.Initials = value; 
 	}
 	private String MiddleName;
 
@@ -140,7 +143,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setMiddleName(String value) { 
-		MiddleName = value; 
+		this.MiddleName = value; 
 	}
 	private String NickName;
 
@@ -159,7 +162,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setNickName(String value) { 
-		NickName = value; 
+		this.NickName = value; 
 	}
 	private String Surname;
 
@@ -178,7 +181,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setSurname(String value) { 
-		Surname = value; 
+		this.Surname = value; 
 	}
 	private String Title;
 
@@ -197,7 +200,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setTitle(String value) { 
-		Title = value; 
+		this.Title = value; 
 	}
 	private String Generation;
 
@@ -216,7 +219,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setGeneration(String value) { 
-		Generation = value; 
+		this.Generation = value; 
 	}
 	private java.util.List<EmailAddress> EmailAddresses;
 
@@ -235,7 +238,7 @@ public class Contact extends Item {
 	* @param value the java.util.List<EmailAddress>
 	*/
 	public void setEmailAddresses(java.util.List<EmailAddress> value) { 
-		EmailAddresses = value; 
+		this.EmailAddresses = value; 
 	}
 	private java.util.List<String> ImAddresses;
 
@@ -254,7 +257,7 @@ public class Contact extends Item {
 	* @param value the java.util.List<String>
 	*/
 	public void setImAddresses(java.util.List<String> value) { 
-		ImAddresses = value; 
+		this.ImAddresses = value; 
 	}
 	private String JobTitle;
 
@@ -273,7 +276,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setJobTitle(String value) { 
-		JobTitle = value; 
+		this.JobTitle = value; 
 	}
 	private String CompanyName;
 
@@ -292,7 +295,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setCompanyName(String value) { 
-		CompanyName = value; 
+		this.CompanyName = value; 
 	}
 	private String Department;
 
@@ -311,7 +314,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setDepartment(String value) { 
-		Department = value; 
+		this.Department = value; 
 	}
 	private String OfficeLocation;
 
@@ -330,7 +333,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setOfficeLocation(String value) { 
-		OfficeLocation = value; 
+		this.OfficeLocation = value; 
 	}
 	private String Profession;
 
@@ -349,7 +352,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setProfession(String value) { 
-		Profession = value; 
+		this.Profession = value; 
 	}
 	private String BusinessHomePage;
 
@@ -368,7 +371,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setBusinessHomePage(String value) { 
-		BusinessHomePage = value; 
+		this.BusinessHomePage = value; 
 	}
 	private String AssistantName;
 
@@ -387,7 +390,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setAssistantName(String value) { 
-		AssistantName = value; 
+		this.AssistantName = value; 
 	}
 	private String Manager;
 
@@ -406,7 +409,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setManager(String value) { 
-		Manager = value; 
+		this.Manager = value; 
 	}
 	private java.util.List<String> HomePhones;
 
@@ -425,7 +428,7 @@ public class Contact extends Item {
 	* @param value the java.util.List<String>
 	*/
 	public void setHomePhones(java.util.List<String> value) { 
-		HomePhones = value; 
+		this.HomePhones = value; 
 	}
 	private java.util.List<String> BusinessPhones;
 
@@ -444,7 +447,7 @@ public class Contact extends Item {
 	* @param value the java.util.List<String>
 	*/
 	public void setBusinessPhones(java.util.List<String> value) { 
-		BusinessPhones = value; 
+		this.BusinessPhones = value; 
 	}
 	private String MobilePhone1;
 
@@ -463,7 +466,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setMobilePhone1(String value) { 
-		MobilePhone1 = value; 
+		this.MobilePhone1 = value; 
 	}
 	private PhysicalAddress HomeAddress;
 
@@ -482,7 +485,7 @@ public class Contact extends Item {
 	* @param value the PhysicalAddress
 	*/
 	public void setHomeAddress(PhysicalAddress value) { 
-		HomeAddress = value; 
+		this.HomeAddress = value; 
 	}
 	private PhysicalAddress BusinessAddress;
 
@@ -501,7 +504,7 @@ public class Contact extends Item {
 	* @param value the PhysicalAddress
 	*/
 	public void setBusinessAddress(PhysicalAddress value) { 
-		BusinessAddress = value; 
+		this.BusinessAddress = value; 
 	}
 	private PhysicalAddress OtherAddress;
 
@@ -520,7 +523,7 @@ public class Contact extends Item {
 	* @param value the PhysicalAddress
 	*/
 	public void setOtherAddress(PhysicalAddress value) { 
-		OtherAddress = value; 
+		this.OtherAddress = value; 
 	}
 	private String YomiCompanyName;
 
@@ -539,7 +542,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setYomiCompanyName(String value) { 
-		YomiCompanyName = value; 
+		this.YomiCompanyName = value; 
 	}
 	private String YomiGivenName;
 
@@ -558,7 +561,7 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setYomiGivenName(String value) { 
-		YomiGivenName = value; 
+		this.YomiGivenName = value; 
 	}
 	private String YomiSurname;
 
@@ -577,6 +580,6 @@ public class Contact extends Item {
 	* @param value the String
 	*/
 	public void setYomiSurname(String value) { 
-		YomiSurname = value; 
+		this.YomiSurname = value; 
 	}
 }

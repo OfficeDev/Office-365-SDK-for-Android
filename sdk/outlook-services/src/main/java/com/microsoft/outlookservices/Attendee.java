@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Attendee.
 */
 public class Attendee extends Recipient {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.Attendee";
+
 
 	private ResponseStatus Status;
 
@@ -27,7 +30,7 @@ public class Attendee extends Recipient {
 	* @param value the ResponseStatus
 	*/
 	public void setStatus(ResponseStatus value) { 
-		Status = value; 
+		this.Status = value; 
 	}
 
 	private AttendeeType Type;
@@ -47,6 +50,6 @@ public class Attendee extends Recipient {
 	* @param value the AttendeeType
 	*/
 	public void setType(AttendeeType value) { 
-		Type = value; 
+		this.Type = value; 
 	}
 }

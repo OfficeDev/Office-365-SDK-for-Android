@@ -38,7 +38,6 @@ subprojects {
     publishing {
         publications {
             maven(MavenPublication) {
-
             }
         }
     }

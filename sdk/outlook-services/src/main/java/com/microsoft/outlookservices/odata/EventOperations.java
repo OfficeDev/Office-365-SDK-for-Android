@@ -9,12 +9,15 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.getFunctionParameters;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
+import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 /**
  * The type EventOperations.
  */
-public class EventOperations extends ODataOperations {
+public class EventOperations extends ItemOperations {
 
      /**
       * Instantiates a new EventOperations.
@@ -46,13 +49,15 @@ public class EventOperations extends ODataOperations {
      */			
 	public ListenableFuture<Integer> accept(String comment) {
 	    final SettableFuture<Integer> result = SettableFuture.create();
-
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("Comment", comment);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Accept");
+
+				url.appendPathComponent("Accept");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
 		return result;
@@ -66,13 +71,15 @@ public class EventOperations extends ODataOperations {
      */			
 	public ListenableFuture<Integer> decline(String comment) {
 	    final SettableFuture<Integer> result = SettableFuture.create();
-
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("Comment", comment);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("Decline");
+
+				url.appendPathComponent("Decline");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
 		return result;
@@ -86,13 +93,15 @@ public class EventOperations extends ODataOperations {
      */			
 	public ListenableFuture<Integer> tentativelyAccept(String comment) {
 	    final SettableFuture<Integer> result = SettableFuture.create();
-
 		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
 		map.put("Comment", comment);
 		
 		ODataURL url = getResolver().createODataURL();
-		url.appendPathComponent("TentativelyAccept");
+
+				url.appendPathComponent("TentativelyAccept");
+		
 		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
 		return result;

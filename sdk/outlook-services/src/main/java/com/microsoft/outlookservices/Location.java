@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type Location.
 */
 public class Location {
+	
+	private String $$_ODataType = "#Microsoft.OutlookServices.Location";
+
 
 	private String DisplayName;
 
@@ -27,6 +30,6 @@ public class Location {
 	* @param value the String
 	*/
 	public void setDisplayName(String value) { 
-		DisplayName = value; 
+		this.DisplayName = value; 
 	}
 }

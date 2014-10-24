@@ -9,6 +9,9 @@ package com.microsoft.outlookservices;
  * The type File Attachment.
 */
 public class FileAttachment extends Attachment {
+
+	private String $$_ODataType = "#Microsoft.OutlookServices.FileAttachment";
+
 	private String ContentId;
 
 	/**
@@ -26,7 +29,7 @@ public class FileAttachment extends Attachment {
 	* @param value the String
 	*/
 	public void setContentId(String value) { 
-		ContentId = value; 
+		this.ContentId = value; 
 	}
 	private String ContentLocation;
 
@@ -45,7 +48,7 @@ public class FileAttachment extends Attachment {
 	* @param value the String
 	*/
 	public void setContentLocation(String value) { 
-		ContentLocation = value; 
+		this.ContentLocation = value; 
 	}
 	private Boolean IsContactPhoto;
 
@@ -64,7 +67,7 @@ public class FileAttachment extends Attachment {
 	* @param value the Boolean
 	*/
 	public void setIsContactPhoto(Boolean value) { 
-		IsContactPhoto = value; 
+		this.IsContactPhoto = value; 
 	}
 	private byte[] ContentBytes;
 
@@ -83,6 +86,6 @@ public class FileAttachment extends Attachment {
 	* @param value the byte[]
 	*/
 	public void setContentBytes(byte[] value) { 
-		ContentBytes = value; 
+		this.ContentBytes = value; 
 	}
 }

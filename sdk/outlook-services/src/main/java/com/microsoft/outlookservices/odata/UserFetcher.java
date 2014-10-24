@@ -7,7 +7,8 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
+import com.microsoft.outlookservices.*; 
+import com.microsoft.outlookservices.*;		
 
 /**
  * The type  UserFetcher.
@@ -23,7 +24,8 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations> impleme
 	 public UserFetcher(String urlComponent, ODataExecutable parent) {
 		super(urlComponent, parent, User.class,UserOperations.class);
     }
-     /**
+
+	     /**
      * Gets folders.
      *
      * @return the folders
