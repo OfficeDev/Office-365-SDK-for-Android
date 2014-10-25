@@ -32,8 +32,6 @@ import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  *  Displays email messages in a ListView
@@ -95,7 +93,6 @@ public class MailActivity extends Activity implements View.OnClickListener {
 
     MessagesAdapter adapter;
     int messageCounter = 0;
-    ExecutorService executor = Executors.newFixedThreadPool(2);
 
     /**
      * creates the view for this activity and initializes all state
@@ -140,7 +137,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
             input.setText(
                     PreferenceManager
                             .getDefaultSharedPreferences(this)
-                            .getString(Constants.EMAIL_TARGET_KEY, Constants.EMAIL_TARGET)
+                            .getString(SettingsConstants.EMAIL_TARGET_KEY, SettingsConstants.EMAIL_TARGET)
             );
 
             new AlertDialog.Builder(this)
@@ -181,7 +178,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.button_check_email:
             {
-                this.executor.submit(new Callable<Void>() {
+                Controller.getInstance().postASyncTask(new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         return retrieveMails();
@@ -191,7 +188,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
             }
             case R.id.button_send_to_self:
             {
-                this.executor.submit(new Callable<Void>() {
+                Controller.getInstance().postASyncTask(new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         return sendToSelf();
@@ -201,7 +198,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
             }
             case R.id.button_clear_all:
             {
-                this.executor.submit(new Callable<Void>() {
+                Controller.getInstance().postASyncTask(new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         return clearAll();
@@ -222,7 +219,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
     private Void retrieveMails() {
 
         //create a client object
-        EntityContainerClient client = new EntityContainerClient(Constants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
+        EntityContainerClient client = new EntityContainerClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
         // retrieve Inbox folder content asynchronously
         ListenableFuture<List<Message>> messages = client   .getMe()
@@ -266,10 +263,10 @@ public class MailActivity extends Activity implements View.OnClickListener {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        final String email = preferences.getString(Constants.EMAIL_TARGET_KEY, Constants.EMAIL_TARGET);
+        final String email = preferences.getString(SettingsConstants.EMAIL_TARGET_KEY, SettingsConstants.EMAIL_TARGET);
 
         if (email.isEmpty()) {
-            Controller.handleError(MailActivity.this, "Please set email address in Settings or edit Constants");
+            Controller.handleError(MailActivity.this, "Please set email address in Settings or edit ServiceConstants");
             return null;
         }
 
@@ -278,7 +275,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
             // create a client object
             EntityContainerClient client =
                     new EntityContainerClient(
-                            Constants.ENDPOINT_ID,
+                            ServiceConstants.ENDPOINT_ID,
                             (DefaultDependencyResolver) Controller.getInstance().getDependencyResolver()
                     );
 
@@ -346,7 +343,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
     private Void clearAll() {
 
         // create one client object
-        EntityContainerClient client = new EntityContainerClient(Constants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
+        EntityContainerClient client = new EntityContainerClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
         try {
 
@@ -383,7 +380,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
     private void setEmail(String email) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(Constants.EMAIL_TARGET_KEY, email);
+        editor.putString(SettingsConstants.EMAIL_TARGET_KEY, email);
         editor.commit();
     }
 }

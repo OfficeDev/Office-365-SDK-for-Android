@@ -12,38 +12,125 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:weightSum="1">
+        android:layout_gravity="center_horizontal">
+        android:layout_alignParentTop="true">
 
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Subject"
-            android:id="@+id/tv_calendar_subject"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="left">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Attendees"
-            android:id="@+id/tv_calendar_attendees"
-            android:layout_gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Subject: "
+                android:id="@+id/tv_calendar_subject_label" />
 
-        <TextView
-            android:layout_width="match_parent"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="&lt;event subject here&gt;"
+                android:id="@+id/tv_calendar_subject" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Location"
-            android:id="@+id/tv_calendar_location"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="left">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Time: "
+                android:id="@+id/tv_calendar_time_label" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="&lt;event time here&gt;"
+                android:id="@+id/tv_calendar_time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Location: "
+                android:id="@+id/tv_calendar_location_label" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="&lt;event location here&gt;"
+                android:id="@+id/tv_calendar_location" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25pt"
+            android:layout_gravity="center_vertical">
+
+            <Button
+                android:layout_width="50pt"
+                android:layout_height="wrap_content"
+                android:text="Previous"
+                android:textSize="8pt"
+                android:layout_gravity="left"
+                android:id="@+id/button_calendar_previous" />
+
+            <!-- pushes the button below to teh right -->
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" " android:id="@+id/dummy"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="50pt"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:textSize="8pt"
+                android:layout_gravity="end"
+                android:id="@+id/button_calendar_next" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/sv_calendar_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_height="fill_parent"
+            android:id="@+id/sv_calendar_content_view"
+            android:layout_gravity="left"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tv_calendar_event_body"
+                android:text="&lt;event body here&gt;" />
+        </ScrollView>
+
     </LinearLayout>
 </RelativeLayout>

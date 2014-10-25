@@ -10,6 +10,11 @@ import android.widget.Toast;
 
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 /**
  * holds the context of execution across activities
@@ -20,7 +25,10 @@ public class Controller {
 
     private static Controller INSTANCE;
 
+    ExecutorService executor;
+
     private Controller() {
+        this.executor = Executors.newFixedThreadPool(2);
     }
 
     public static synchronized Controller getInstance() {
@@ -40,6 +48,9 @@ public class Controller {
         return this.dependencyResolver;
     }
 
+    public <V> void postASyncTask(Callable<V> callable) {
+        this.executor.submit(callable);
+    }
 
     /**
      * notifies about the exception on executing the Future

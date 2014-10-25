@@ -37,8 +37,8 @@ public class Authentication {
 
         final SettableFuture<Void> result = SettableFuture.create();
 
-        getAuthenticationContext(rootActivity).acquireToken(rootActivity, Constants.RESOURCE_ID,
-                Constants.CLIENT_ID, Constants.REDIRECT_URL, "",
+        getAuthenticationContext(rootActivity).acquireToken(rootActivity, ServiceConstants.RESOURCE_ID,
+                ServiceConstants.CLIENT_ID, ServiceConstants.REDIRECT_URL, "",
                 new AuthenticationCallback<AuthenticationResult>() {
 
                     @Override
@@ -95,7 +95,7 @@ public class Authentication {
     public static AuthenticationContext getAuthenticationContext(Activity activity) {
 
         try {
-            context = new AuthenticationContext(activity, Constants.AUTHORITY_URL, false);
+            context = new AuthenticationContext(activity, ServiceConstants.AUTHORITY_URL, false);
         } catch (Throwable t) {
             Log.e("SampleApp", t.toString());
         }
@@ -110,7 +110,7 @@ public class Authentication {
     static void createEncryptionKey(Context applicationContext) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext);
 
-        if (!preferences.contains(Constants.ENCRYPTION_KEY)) {
+        if (!preferences.contains(ServiceConstants.ENCRYPTION_KEY)) {
             Random r = new Random();
             byte[] bytes = new byte[32];
             r.nextBytes(bytes);
@@ -118,7 +118,7 @@ public class Authentication {
             String key = Base64.encodeToString(bytes, Base64.DEFAULT);
 
             Editor editor = preferences.edit();
-            editor.putString(Constants.ENCRYPTION_KEY, key);
+            editor.putString(ServiceConstants.ENCRYPTION_KEY, key);
             editor.commit();
         }
 
@@ -127,7 +127,7 @@ public class Authentication {
 
     static byte[] getEncryptionKey(Context applicationContext) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext);
-        String key = preferences.getString(Constants.ENCRYPTION_KEY, null);
+        String key = preferences.getString(ServiceConstants.ENCRYPTION_KEY, null);
 
         if (key != null) {
             byte[] bytes = Base64.decode(key, Base64.DEFAULT);

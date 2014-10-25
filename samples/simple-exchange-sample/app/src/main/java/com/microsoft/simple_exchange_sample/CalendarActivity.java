@@ -2,29 +2,33 @@ package com.microsoft.simple_exchange_sample;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.MotionEventCompat;
-import android.view.MotionEvent;
+import android.text.Html;
 import android.view.View;
-import android.widget.ScrollView;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.microsoft.outlookservices.Attendee;
 import com.microsoft.outlookservices.Event;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import com.microsoft.outlookservices.odata.EntityContainerClient;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 
-public class CalendarActivity extends Activity implements View.OnTouchListener {
+public class CalendarActivity extends Activity implements View.OnClickListener {
+
 
     TextView subject;
-    TextView attendees;
+    TextView time;
     TextView location;
-    ScrollView content;
+    TextView body;
+    int eventIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,39 +36,56 @@ public class CalendarActivity extends Activity implements View.OnTouchListener {
         setContentView(R.layout.activity_calendar);
 
         this.subject = (TextView)findViewById(R.id.tv_calendar_subject);
-        this.attendees = (TextView)findViewById(R.id.tv_calendar_attendees);
+        this.time = (TextView)findViewById(R.id.tv_calendar_time);
         this.location = (TextView)findViewById(R.id.tv_calendar_location);
-        this.content = (ScrollView)findViewById(R.id.sv_calendar_content);
-        this.content.setOnTouchListener(this);
+        this.body = (TextView)findViewById(R.id.tv_calendar_event_body);
 
-        getNextEvent();
+        Button previous = (Button)findViewById(R.id.button_calendar_previous);
+        previous.setOnClickListener(this);
+        Button next = (Button)findViewById(R.id.button_calendar_next);
+        next.setOnClickListener(this);
+
+        getEvent(true);
     }
 
+    /**
+     * handles actions for buttons on the view
+     * @param view
+     */
     @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        int action = MotionEventCompat.getActionMasked(motionEvent);
+    public void onClick(View view) {
 
-        switch(action) {
-            case (MotionEvent.ACTION_UP) :
-                getNextEvent();
-                return true;
-            case (MotionEvent.ACTION_DOWN) :
-                getPreviousEvent();
-                return true;
-            default :
-                return super.onTouchEvent(motionEvent);
+        Boolean choice = true;
+        switch (view.getId()) {
+            case R.id.button_calendar_previous:
+            {
+                choice = false;
+                break;
+            }
+            default:
+                break;
         }
+
+        final Boolean next = choice;
+        Controller.getInstance().postASyncTask(new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                getEvent(next);
+                return null;
+            }
+        });
     }
 
-    private Event getNextEvent() {
+    private void getEvent(final Boolean next) {
 
-        EntityContainerClient client = new EntityContainerClient(Constants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
+        // create a client object
+        EntityContainerClient client = new EntityContainerClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
+        // fetch next batch of events and select the first only
         ListenableFuture<List<Event>> events = client
                 .getMe()
-                .getCalendars().getById("Calendar")
+                .getCalendar()
                 .getEvents()
-                .top(1)
                 .read();
 
         // handle success and failure cases
@@ -72,8 +93,25 @@ public class CalendarActivity extends Activity implements View.OnTouchListener {
 
             @Override
             public void onSuccess(final List<Event> result) {
+                if (result.isEmpty()) {
+                    displayEmptyCalendarMessage(next);
+                }
 
-               update(result.get(0));
+                Collections.sort(result, new Comparator<Event>() {
+                    @Override
+                    public int compare(Event event, Event event2) {
+                        if (event.getStart().getTime().getTime() < event2.getStart().getTime().getTime()) {
+                            return -1;
+                        }
+                        else if (event.getStart().getTime().getTime() > event2.getStart().getTime().getTime()) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                });
+
+                update(result, next);
             }
 
             @Override
@@ -81,33 +119,69 @@ public class CalendarActivity extends Activity implements View.OnTouchListener {
                 Controller.handleError(CalendarActivity.this, t.getMessage());
             }
         });
-
-        return null;
     }
 
-    private Event getPreviousEvent() {
+    void update(final List<Event> events, boolean next) {
 
-        return null;
-    }
-
-    private void update(final Event event) {
-        final StringBuilder sb = new StringBuilder();
-        for (Attendee a : event.getAttendees()) {
-            sb.append(a.getEmailAddress().getName() + ", ");
+        if (next) {
+            ++this.eventIndex;
+            if (this.eventIndex >= events.size()) {
+                this.eventIndex = events.size() - 1;
+            }
         }
-        // remove last comma
-        sb.deleteCharAt(sb.length() - 2);
+        else {
+            this.eventIndex--;
+            if (this.eventIndex < 0) {
+                this.eventIndex = 0;
+            }
+        }
 
+        final Event event = events.get(this.eventIndex);
         final TextView subject = this.subject;
-        final TextView attendees = this.attendees;
+        final TextView time = this.time;
         final TextView location = this.location;
+        final TextView body = this.body;
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 subject.setText(event.getSubject());
-                attendees.setText(sb.toString());
+                time.setText(event.getStart().getTime().toString());
                 location.setText(event.getLocation().getDisplayName());
+                body.setText(Html.fromHtml(event.getBody().getContent()));
+            }
+        });
+    }
+
+    void displayHelp() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(
+                        CalendarActivity.this,
+                        "Scroll up & down to get to the next and previous events",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    void displayEmptyCalendarMessage(Boolean lookingAtNext) {
+
+        final String next = "further";
+        final String previous = "previous";
+
+        final String message =
+                String.format(
+                        "There are no %s events on your calendar",
+                        lookingAtNext ? next : previous);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(
+                        CalendarActivity.this,
+                        message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
