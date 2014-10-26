@@ -116,7 +116,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onFailure(final Throwable t) {
-                Controller.handleError(CalendarActivity.this, t.getMessage());
+                Controller.getInstance().handleError(CalendarActivity.this, t.getMessage());
             }
         });
     }
@@ -149,18 +149,6 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
                 time.setText(event.getStart().getTime().toString());
                 location.setText(event.getLocation().getDisplayName());
                 body.setText(Html.fromHtml(event.getBody().getContent()));
-            }
-        });
-    }
-
-    void displayHelp() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(
-                        CalendarActivity.this,
-                        "Scroll up & down to get to the next and previous events",
-                        Toast.LENGTH_SHORT).show();
             }
         });
     }

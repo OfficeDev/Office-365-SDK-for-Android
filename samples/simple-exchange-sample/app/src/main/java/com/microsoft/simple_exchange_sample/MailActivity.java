@@ -248,7 +248,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onFailure(final Throwable t) {
-                Controller.handleError(MailActivity.this, t.getMessage());
+                Controller.getInstance().handleError(MailActivity.this, t.getMessage());
             }
         });
 
@@ -266,7 +266,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
         final String email = preferences.getString(SettingsConstants.EMAIL_TARGET_KEY, SettingsConstants.EMAIL_TARGET);
 
         if (email.isEmpty()) {
-            Controller.handleError(MailActivity.this, "Please set email address in Settings or edit ServiceConstants");
+            Controller.getInstance().handleError(MailActivity.this, "Please set email address in Settings or edit ServiceConstants");
             return null;
         }
 
@@ -325,12 +325,12 @@ public class MailActivity extends Activity implements View.OnClickListener {
 
                 @Override
                 public void onFailure(final Throwable t) {
-                    Controller.handleError(MailActivity.this, t.getMessage());
+                    Controller.getInstance().handleError(MailActivity.this, t.getMessage());
                 }
             });
 
         } catch (final Throwable t) {
-            Controller.handleError(MailActivity.this, t.getMessage());
+            Controller.getInstance().handleError(MailActivity.this, t.getMessage());
         }
 
         return null;
@@ -367,7 +367,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
             }
         }
         catch (Throwable t) {
-            Controller.handleError(MailActivity.this, t.getMessage());
+            Controller.getInstance().handleError(MailActivity.this, t.getMessage());
         }
 
         return null;

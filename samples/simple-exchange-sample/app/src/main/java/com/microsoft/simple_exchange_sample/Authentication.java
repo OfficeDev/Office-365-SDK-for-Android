@@ -19,7 +19,6 @@ import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.AuthenticationSettings;
-import com.microsoft.aad.adal.UserInfo;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import com.microsoft.services.odata.interfaces.Credentials;
 import com.microsoft.services.odata.interfaces.CredentialsFactory;
@@ -31,14 +30,16 @@ import java.util.Random;
 public class Authentication {
 
     public static AuthenticationContext context = null;
-    private static String mLoggedInUser;
 
     public static SettableFuture<Void> authenticate(final Activity rootActivity, final DefaultDependencyResolver resolver) {
 
         final SettableFuture<Void> result = SettableFuture.create();
 
-        getAuthenticationContext(rootActivity).acquireToken(rootActivity, ServiceConstants.RESOURCE_ID,
-                ServiceConstants.CLIENT_ID, ServiceConstants.REDIRECT_URL, "",
+        getAuthenticationContext(rootActivity).acquireToken(
+                rootActivity,
+                ServiceConstants.RESOURCE_ID,
+                ServiceConstants.CLIENT_ID,
+                ServiceConstants.REDIRECT_URL, "",
                 new AuthenticationCallback<AuthenticationResult>() {
 
                     @Override
@@ -47,43 +48,31 @@ public class Authentication {
                         if (authenticationResult != null && !TextUtils.isEmpty(authenticationResult.getAccessToken())) {
 
                             resolver.setCredentialsFactory(new CredentialsFactory() {
+
                                 @Override
                                 public Credentials getCredentials() {
                                     return new Credentials() {
                                         @Override
                                         public void prepareRequest(Request request) {
-                                            request.addHeader("Authorization", "Bearer " + authenticationResult.getAccessToken());
+                                            request.addHeader("Authorization", "Bearer " + Controller.getInstance().getAuthenticationResult().getAccessToken());
                                         }
                                     };
                                 }
                             });
 
-                            storeUserId(rootActivity, authenticationResult);
+                            Controller.getInstance().setAuthenticationResult( rootActivity, authenticationResult );
+
                             result.set(null);
                         }
                     }
 
-                    private void storeUserId(final Activity rootActivity,
-                                             final AuthenticationResult authenticationResult) {
-
-                        UserInfo ui = authenticationResult.getUserInfo();
-                        SharedPreferences sharedPref = rootActivity.getPreferences(Context.MODE_PRIVATE);
-
-                        if (ui != null) {
-                            mLoggedInUser = ui.getUserId();
-                            Editor editor = sharedPref.edit();
-                            editor.putString("UserId", mLoggedInUser);
-                            editor.commit();
-                        } else {
-                            mLoggedInUser = sharedPref.getString("UserId", "");
-                        }
-                    }
 
                     @Override
-                    public void onError(Exception exc) {
-                        result.setException(exc);
+                    public void onError(Exception t) {
+                        result.setException(t);
                     }
                 });
+
         return result;
     }
 

@@ -6,12 +6,19 @@
 package com.microsoft.simple_exchange_sample;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.aad.adal.AuthenticationCallback;
+import com.microsoft.aad.adal.AuthenticationResult;
+import com.microsoft.services.odata.impl.DefaultDependencyResolver;
+import com.microsoft.services.odata.interfaces.Credentials;
+import com.microsoft.services.odata.interfaces.CredentialsFactory;
+import com.microsoft.services.odata.interfaces.Request;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,7 +28,10 @@ import java.util.concurrent.Executors;
  */
 public class Controller {
 
-    private DependencyResolver dependencyResolver;
+    private DefaultDependencyResolver dependencyResolver;
+    private AuthenticationResult authenticationResult;
+    private Activity rootActivity;
+    private Timer timer;
 
     private static Controller INSTANCE;
 
@@ -40,11 +50,11 @@ public class Controller {
         return INSTANCE;
     }
 
-    public void setDependencyResolver(DependencyResolver resolver) {
+    public void setDependencyResolver(DefaultDependencyResolver resolver) {
         this.dependencyResolver = resolver;
     }
 
-    public DependencyResolver getDependencyResolver() {
+    public DefaultDependencyResolver getDependencyResolver() {
         return this.dependencyResolver;
     }
 
@@ -52,11 +62,39 @@ public class Controller {
         this.executor.submit(callable);
     }
 
+    public AuthenticationResult getAuthenticationResult() {
+        return this.authenticationResult;
+    }
+
+    public void setAuthenticationResult(Activity activity, final AuthenticationResult authenticationResult) {
+        // save root activity and authentication result in order to use the refresh token later
+        this.rootActivity = activity;
+        this.authenticationResult = authenticationResult;
+
+        // set a timer to refresh the authentication token
+        if (this.timer != null) {
+            this.timer.cancel();
+        }
+        this.timer = new Timer();
+        this.timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                acquireTokenByRefreshToken();
+            }
+        }, authenticationResult.getExpiresOn());
+    }
+
     /**
      * notifies about the exception on executing the Future
+     *
      * @param msg error message to be displayed
      */
-    public static void handleError(final Activity activity, final String msg) {
+    public void handleError(final Activity activity, final String msg) {
+
+        if (msg.contains("Authentication_ExpiredToken")) {
+            acquireTokenByRefreshToken();
+        }
+
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -64,4 +102,43 @@ public class Controller {
             }
         });
     }
+
+    private void acquireTokenByRefreshToken() {
+        Authentication.getAuthenticationContext(this.rootActivity).acquireTokenByRefreshToken(
+                this.authenticationResult.getRefreshToken(),
+                ServiceConstants.CLIENT_ID,
+                ServiceConstants.RESOURCE_ID,
+                new AuthenticationCallback<AuthenticationResult>() {
+
+                    @Override
+                    public void onSuccess(final AuthenticationResult authenticationResult) {
+
+                        if (authenticationResult != null && !TextUtils.isEmpty(authenticationResult.getAccessToken())) {
+
+                            dependencyResolver.setCredentialsFactory(new CredentialsFactory() {
+
+                                @Override
+                                public Credentials getCredentials() {
+                                    return new Credentials() {
+                                        @Override
+                                        public void prepareRequest(Request request) {
+                                            request.addHeader("Authorization", "Bearer " + authenticationResult.getAccessToken());
+                                        }
+                                    };
+                                }
+                            });
+
+                            setAuthenticationResult(rootActivity, authenticationResult);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Exception t) {
+                        Authentication.resetToken(rootActivity);
+                        handleError(rootActivity, t.getMessage());
+                    }
+                }
+        );
+    }
 }
+
