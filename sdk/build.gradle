@@ -22,38 +22,20 @@ allprojects {
     version = '0.9.0'
 }
 
+/*
 subprojects {
+
 
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
     apply plugin: 'com.jfrog.bintray'
-    apply plugin: 'java'
-
-    sourceSets {
-        main {
-            java {
-                srcDir 'src/main/java'
-            }
-        }
-    }
-
-    configurations {
-        published
-    }
 
     repositories {
         jcenter()
     }
 
-    // custom tasks for creating source/javadoc jars
-    task sourcesJar(type: Jar) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
-
-    task javadocJar(type: Jar) {
-        classifier = 'javadoc'
-        from javadoc.destinationDir
+    configurations {
+        published
     }
 
     // add javadoc/source jar tasks as artifacts
@@ -117,6 +99,8 @@ subprojects {
     }
 
 }
+
+*/
 
 configurations {
     published

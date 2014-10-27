@@ -19,6 +19,45 @@ android {
     }
 }
 
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        pom.groupId = 'com.microsoft.services'
+        pom.artifactId = 'list-services'
+        pom.version = '0.9.0'
+        // Add other pom properties here if you want (developer details / licenses)
+        repository (
+                url: 'https://api.bintray.com' + '/maven/' + 'msopentech' + '/' + 'Maven' + '/' + 'Office-365-SDK-for-Android'
+        ) {
+            authentication(
+                    userName: 'marcote',
+                    password: '2eeb2b23992c66d07ea08d48e1be74171cf2e0f8'
+            )
+        }
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile group: 'com.google.guava', name: 'guava', version: '18.0'

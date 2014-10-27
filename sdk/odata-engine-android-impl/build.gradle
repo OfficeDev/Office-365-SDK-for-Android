@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
-apply plugin: 'eclipse'
 
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.microsoft.office365.odata.impl"
+        applicationId "com.microsoft.services.odata.impl"
         minSdkVersion 15
         targetSdkVersion 15
         versionCode 1
@@ -18,6 +17,45 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        pom.groupId = 'com.microsoft.services'
+        pom.artifactId = 'odata-engine-android-impl'
+        pom.version = '0.9.0'
+        // Add other pom properties here if you want (developer details / licenses)
+        repository (
+                url: 'https://api.bintray.com' + '/maven/' + 'msopentech' + '/' + 'Maven' + '/' + 'Office-365-SDK-for-Android'
+        ) {
+            authentication(
+                    userName: 'marcote',
+                    password: '2eeb2b23992c66d07ea08d48e1be74171cf2e0f8'
+            )
+        }
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
 }
 
 dependencies {
