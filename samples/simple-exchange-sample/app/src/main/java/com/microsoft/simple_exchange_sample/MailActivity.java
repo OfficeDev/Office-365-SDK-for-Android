@@ -26,7 +26,7 @@ import com.microsoft.outlookservices.EmailAddress;
 import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
+import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 
 import java.util.ArrayList;
@@ -219,7 +219,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
     private Void retrieveMails() {
 
         //create a client object
-        EntityContainerClient client = new EntityContainerClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
+        OutlookClient client = new OutlookClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
         // retrieve Inbox folder content asynchronously
         ListenableFuture<List<Message>> messages = client   .getMe()
@@ -273,8 +273,8 @@ public class MailActivity extends Activity implements View.OnClickListener {
         try {
 
             // create a client object
-            EntityContainerClient client =
-                    new EntityContainerClient(
+            OutlookClient client =
+                    new OutlookClient(
                             ServiceConstants.ENDPOINT_ID,
                             (DefaultDependencyResolver) Controller.getInstance().getDependencyResolver()
                     );
@@ -343,7 +343,7 @@ public class MailActivity extends Activity implements View.OnClickListener {
     private Void clearAll() {
 
         // create one client object
-        EntityContainerClient client = new EntityContainerClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
+        OutlookClient client = new OutlookClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
         try {
 

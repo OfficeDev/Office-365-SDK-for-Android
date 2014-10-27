@@ -6,15 +6,10 @@
 package com.microsoft.simple_exchange_sample;
 
 import android.app.Activity;
-import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
-import com.microsoft.services.odata.interfaces.Credentials;
-import com.microsoft.services.odata.interfaces.CredentialsFactory;
-import com.microsoft.services.odata.interfaces.Request;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,7 +26,7 @@ public class Controller {
     private DefaultDependencyResolver dependencyResolver;
     private AuthenticationResult authenticationResult;
     private Activity rootActivity;
-    private Timer timer;
+    private Timer tokenRefreshTimer;
 
     private static Controller INSTANCE;
 
@@ -41,6 +36,10 @@ public class Controller {
         this.executor = Executors.newFixedThreadPool(2);
     }
 
+    /**
+     * Creates a singleton instance of the Controller
+     * @return an instance of Controller class
+     */
     public static synchronized Controller getInstance() {
         Controller controller = null;
         if (INSTANCE == null) {
@@ -50,38 +49,60 @@ public class Controller {
         return INSTANCE;
     }
 
+    /**
+     * sets the dependency resolver
+     * @param resolver the resolver object
+     */
     public void setDependencyResolver(DefaultDependencyResolver resolver) {
         this.dependencyResolver = resolver;
     }
 
+    /**
+     * gets the dependency resolver object
+     * @return the instance of the resolver
+     */
     public DefaultDependencyResolver getDependencyResolver() {
         return this.dependencyResolver;
     }
 
+    /**
+     * post an async task to the executor thread pool
+     * @param callable the task to be executed
+     * @param <V> the type of the task to be executed
+     */
     public <V> void postASyncTask(Callable<V> callable) {
         this.executor.submit(callable);
     }
 
-    public AuthenticationResult getAuthenticationResult() {
-        return this.authenticationResult;
-    }
-
+    /**
+     * set the authentication result for the activity
+     * @param activity the activity
+     * @param authenticationResult the authentication result
+     */
     public void setAuthenticationResult(Activity activity, final AuthenticationResult authenticationResult) {
         // save root activity and authentication result in order to use the refresh token later
         this.rootActivity = activity;
         this.authenticationResult = authenticationResult;
 
         // set a timer to refresh the authentication token
-        if (this.timer != null) {
-            this.timer.cancel();
+        if (this.tokenRefreshTimer != null) {
+            this.tokenRefreshTimer.cancel();
         }
-        this.timer = new Timer();
-        this.timer.schedule(new TimerTask() {
+        this.tokenRefreshTimer = new Timer();
+        this.tokenRefreshTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                acquireTokenByRefreshToken();
+                Authentication.acquireTokenByRefreshToken(rootActivity, dependencyResolver);
             }
         }, authenticationResult.getExpiresOn());
+    }
+
+    /**
+     * gets the authentication result for the authentication process
+     * @return an instance of the authentication result object
+     */
+    public AuthenticationResult getAuthenticationResult() {
+        return this.authenticationResult;
     }
 
     /**
@@ -92,7 +113,7 @@ public class Controller {
     public void handleError(final Activity activity, final String msg) {
 
         if (msg.contains("Authentication_ExpiredToken")) {
-            acquireTokenByRefreshToken();
+            Authentication.acquireTokenByRefreshToken(this.rootActivity, this.dependencyResolver);
         }
 
         activity.runOnUiThread(new Runnable() {
@@ -101,44 +122,6 @@ public class Controller {
                 Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    private void acquireTokenByRefreshToken() {
-        Authentication.getAuthenticationContext(this.rootActivity).acquireTokenByRefreshToken(
-                this.authenticationResult.getRefreshToken(),
-                ServiceConstants.CLIENT_ID,
-                ServiceConstants.RESOURCE_ID,
-                new AuthenticationCallback<AuthenticationResult>() {
-
-                    @Override
-                    public void onSuccess(final AuthenticationResult authenticationResult) {
-
-                        if (authenticationResult != null && !TextUtils.isEmpty(authenticationResult.getAccessToken())) {
-
-                            dependencyResolver.setCredentialsFactory(new CredentialsFactory() {
-
-                                @Override
-                                public Credentials getCredentials() {
-                                    return new Credentials() {
-                                        @Override
-                                        public void prepareRequest(Request request) {
-                                            request.addHeader("Authorization", "Bearer " + authenticationResult.getAccessToken());
-                                        }
-                                    };
-                                }
-                            });
-
-                            setAuthenticationResult(rootActivity, authenticationResult);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Exception t) {
-                        Authentication.resetToken(rootActivity);
-                        handleError(rootActivity, t.getMessage());
-                    }
-                }
-        );
     }
 }
 

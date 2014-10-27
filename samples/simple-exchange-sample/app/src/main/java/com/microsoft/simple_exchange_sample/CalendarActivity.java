@@ -12,8 +12,8 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.outlookservices.Event;
+import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
-import com.microsoft.outlookservices.odata.EntityContainerClient;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -79,7 +79,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
     private void getEvent(final Boolean next) {
 
         // create a client object
-        EntityContainerClient client = new EntityContainerClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
+        OutlookClient client = new OutlookClient(ServiceConstants.ENDPOINT_ID, (DefaultDependencyResolver)Controller.getInstance().getDependencyResolver());
 
         // fetch next batch of events and select the first only
         ListenableFuture<List<Event>> events = client
@@ -121,7 +121,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
         });
     }
 
-    void update(final List<Event> events, boolean next) {
+    private void update(final List<Event> events, boolean next) {
 
         if (next) {
             ++this.eventIndex;
@@ -153,7 +153,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
         });
     }
 
-    void displayEmptyCalendarMessage(Boolean lookingAtNext) {
+    private void displayEmptyCalendarMessage(Boolean lookingAtNext) {
 
         final String next = "further";
         final String previous = "previous";
