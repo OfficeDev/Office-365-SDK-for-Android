@@ -4,6 +4,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':odata-engine-interfaces')
     compile project(':odata-engine-helpers')
+
 }
 
 apply plugin: 'maven'
@@ -23,6 +24,14 @@ task javadocJar(type: Jar) {
 
 repositories {
     jcenter()
+
+    maven {
+        url "https://dl.bintray.com/msopentech/Maven"
+        credentials {
+            username "marcote"  //your bintray username
+            password "foo"  //find at https://bintray.com/profile/edit -> API Key
+        }
+    }
 }
 
 configurations {
