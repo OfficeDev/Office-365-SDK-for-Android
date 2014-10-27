@@ -4,8 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6"
-        classpath 'com.android.tools.build:gradle:0.13+'
+        classpath 'com.android.tools.build:gradle:0.12.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,82 +14,6 @@ allprojects {
     repositories {
         jcenter()
     }
-
-    apply plugin: 'idea'
-
-    group = 'com.microsoft.services'
-    version = '0.9-SNAPSHOT'
 }
 
-subprojects {
-
-    apply plugin: 'maven'
-    apply plugin: 'maven-publish'
-    apply plugin: 'com.jfrog.bintray'
-
-    configurations {
-        published
-    }
-
-    repositories {
-        jcenter()
-    }
-
-    /*
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                from components.java
-            }
-        }
-    }
-    */
-
-    ext.publish = false
-
-    bintray {
-
-        configurations = ['published'] //When uploading configuration files
-        apiUrl = "https://api.bintray.com"
-        user = 'user'
-        key = 'key'
-        dryRun = false
-
-        filesSpec {
-            from 'files'
-            into 'standalone_files/level1'
-            rename '(.+)\\.(.+)', '$1-suffix.$2'
-        }
-        publish = project.publish
-
-        pkg {
-            repo = 'Maven'
-            userOrg = 'msopentech'
-            name = 'Office-365-SDK-for-Android'
-            publications = ['mavenJava'] // see publications closure
-            desc = 'Office 365 Android SDK for Android'
-            websiteUrl = 'https://github.com/msopentech/O365-Android'
-            issueTrackerUrl = 'https://github.com/msopentech/O365-Android/issues'
-            vcsUrl = 'https://github.com/msopentech/O365-Android.git'
-            licenses = ['Apache-2.0']
-            labels = ['office-365', 'android', 'exchange', 'sharepoint', 'files']
-            attributes = ['plat': ['android', 'java']]
-            publicDownloadNumbers = true
-
-            version {
-                name = '0.9' //Optional logical version name
-                desc = 'Office 365 Android SDK'
-                vcsTag = '0.9'
-            }
-        }
-    }
-}
-
-configurations {
-    published
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
-}
 
