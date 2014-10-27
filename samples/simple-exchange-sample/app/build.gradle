@@ -27,7 +27,7 @@ dependencies {
     compile files('libs/directory-services-0.9-SNAPSHOT.jar')
     compile files('libs/file-services-0.9-SNAPSHOT.jar')
     compile files('libs/outlook-services-0.9-SNAPSHOT.jar')
-    compile files('libs/odata-engine-helpers.jar')
+    compile files('libs/odata-engine-helpers-0.9-SNAPSHOT.jar')
     compile files('libs/odata-engine-interfaces-0.9-SNAPSHOT.jar')
     compile files('libs/odata-engine-java-impl-0.9-SNAPSHOT.jar')
     compile(name: 'odata-engine-android-impl', ext: 'aar')
