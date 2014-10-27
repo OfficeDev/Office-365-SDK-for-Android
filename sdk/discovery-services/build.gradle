@@ -5,11 +5,3 @@ dependencies {
     compile project(':odata-engine-interfaces')
     compile project(':odata-engine-helpers')
 }
-
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-    }
-}
