@@ -1,9 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item
-        android:id="@+id/menu_new_contact"
-        android:icon="@drawable/ic_action_add_person"
-        android:orderInCategory="101"
-        android:showAsAction="always"
-        android:title="New Contact"/>
-</menu>

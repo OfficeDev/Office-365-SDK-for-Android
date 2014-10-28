@@ -31,7 +31,7 @@ public class Authentication {
 
     public static AuthenticationContext context = null;
 
-    public static SettableFuture<Void> authenticate(final Activity rootActivity, final DefaultDependencyResolver resolver) {
+    public static SettableFuture<Void> acquireToken(final Activity rootActivity, final DefaultDependencyResolver resolver) {
 
         final SettableFuture<Void> result = SettableFuture.create();
 
@@ -74,6 +74,48 @@ public class Authentication {
                 });
 
         return result;
+    }
+
+
+    /**
+     * acquires the authentication token using the refresh token
+     */
+    public static void acquireTokenByRefreshToken(final Activity rootActivity, final DefaultDependencyResolver resolver) {
+        Authentication.getAuthenticationContext(rootActivity).acquireTokenByRefreshToken(
+                Controller.getInstance().getAuthenticationResult().getRefreshToken(),
+                ServiceConstants.CLIENT_ID,
+                ServiceConstants.RESOURCE_ID,
+                new AuthenticationCallback<AuthenticationResult>() {
+
+                    @Override
+                    public void onSuccess(final AuthenticationResult authenticationResult) {
+
+                        if (authenticationResult != null && !TextUtils.isEmpty(authenticationResult.getAccessToken())) {
+
+                            resolver.setCredentialsFactory(new CredentialsFactory() {
+
+                                @Override
+                                public Credentials getCredentials() {
+                                    return new Credentials() {
+                                        @Override
+                                        public void prepareRequest(Request request) {
+                                            request.addHeader("Authorization", "Bearer " + authenticationResult.getAccessToken());
+                                        }
+                                    };
+                                }
+                            });
+
+                            Controller.getInstance().setAuthenticationResult(rootActivity, authenticationResult);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Exception t) {
+                        Authentication.resetToken(rootActivity);
+                        Controller.getInstance().handleError(rootActivity, t.getMessage());
+                    }
+                }
+        );
     }
 
     /**

@@ -1,13 +1,5 @@
 apply plugin: 'java'
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-    }
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':odata-engine-interfaces')

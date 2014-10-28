@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -25,13 +24,32 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
         Controller.getInstance().setDependencyResolver(new DefaultDependencyResolver());
 
-        findViewById(R.id.button_start_email).setOnClickListener(this);
-        findViewById(R.id.button_start_calendar).setOnClickListener(this);
+        final Button email = (Button)findViewById(R.id.button_start_email);
+        email.setOnClickListener(this);
+        email.setEnabled(false);
+        final Button calendar = (Button)findViewById(R.id.button_start_calendar);
+        calendar.setOnClickListener(this);
+        calendar.setEnabled(false);
 
+        // check that the sample has been properly customized
+        if (ServiceConstants.AUTHORITY_URL.isEmpty() ||
+            ServiceConstants.RESOURCE_ID.isEmpty()   ||
+            ServiceConstants.REDIRECT_URL.isEmpty()  ||
+            ServiceConstants.CLIENT_ID.isEmpty()) {
+            Controller.getInstance().handleError(MyActivity.this, "Please edit the " +
+                    "ServiceConstants.java file according to you application and subscription, " +
+                    "and re-deploy the application");
+
+            // do not move forward
+            return;
+        }
+
+        //
         // run authentication
+        //
         Authentication.createEncryptionKey(getApplicationContext());
         SettableFuture<Void> authenticated =
-                Authentication.authenticate(
+                Authentication.acquireToken(
                         MyActivity.this,
                         (DefaultDependencyResolver) Controller.getInstance().getDependencyResolver()
                 );
@@ -51,8 +69,13 @@ public class MyActivity extends Activity implements View.OnClickListener {
                                         MyActivity.this,
                                         "Authentication successful",
                                         Toast.LENGTH_SHORT).show();
+
+                                // enable scenarios
+                                email.setEnabled(true);
+                                calendar.setEnabled(true);
                             }
                         });
+
                         return null;
                     }
                 });
@@ -86,24 +109,5 @@ public class MyActivity extends Activity implements View.OnClickListener {
         if (intent != null) {
             startActivity(intent);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
