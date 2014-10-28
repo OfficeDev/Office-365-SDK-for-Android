@@ -5,3 +5,5 @@ dependencies {
     compile project(':odata-engine-interfaces')
     compile project(':odata-engine-helpers')
 }
+
+apply from :'../java-libraries.gradle'
