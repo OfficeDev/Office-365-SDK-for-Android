@@ -24,13 +24,18 @@ android {
 }
 
 dependencies {
-    compile files('libs/directory-services-0.9-SNAPSHOT.jar')
-    compile files('libs/file-services-0.9-SNAPSHOT.jar')
-    compile files('libs/outlook-services-0.9-SNAPSHOT.jar')
-    compile files('libs/odata-engine-helpers-0.9-SNAPSHOT.jar')
-    compile files('libs/odata-engine-interfaces-0.9-SNAPSHOT.jar')
-    compile files('libs/odata-engine-java-impl-0.9-SNAPSHOT.jar')
-    compile(name: 'odata-engine-android-impl', ext: 'aar')
+    // Base OData stuff
+    compile 'com.microsoft.services:odata-engine-interfaces:0.9.0'
+    compile 'com.microsoft.services:odata-engine-java-impl:0.9.0'
+    compile 'com.microsoft.services:odata-engine-android-impl:0.9.0@aar'
+    compile 'com.microsoft.services:odata-engine-helpers:0.9.0'
+
+    // Service libraries
+    compile 'com.microsoft.services:directory-services:0.9.0'
+    compile 'com.microsoft.services:file-services:0.9.0'
+    compile 'com.microsoft.services:outlook-services:0.9.0'
+    compile 'com.microsoft.services:discovery-services:0.9.0'
+
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.google.guava:guava:18.0'
