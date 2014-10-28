@@ -1,4 +1,4 @@
-#Office 365 Android SDK
+#Office 365 SDK for Android
 
 *Readme in progress - After samples section is not up to date*
 
