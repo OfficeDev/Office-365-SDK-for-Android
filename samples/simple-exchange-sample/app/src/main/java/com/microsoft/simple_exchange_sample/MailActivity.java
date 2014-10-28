@@ -84,7 +84,15 @@ public class MailActivity extends Activity implements View.OnClickListener {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            viewHolder.from.setText("From: " + m.getFrom().getEmailAddress().getName());
+            String name = "Unknown";
+            Recipient recipient = m.getFrom();
+            if (recipient != null) {
+                EmailAddress address = recipient.getEmailAddress();
+                if (address != null) {
+                    name = address.getName();
+                }
+            }
+            viewHolder.from.setText("From: " + name);
             viewHolder.subject.setText("Subject: " + m.getSubject());
 
             return convertView;

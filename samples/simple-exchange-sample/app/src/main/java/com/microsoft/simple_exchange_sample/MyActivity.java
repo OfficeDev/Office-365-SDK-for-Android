@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -23,10 +24,29 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
         Controller.getInstance().setDependencyResolver(new DefaultDependencyResolver());
 
-        findViewById(R.id.button_start_email).setOnClickListener(this);
-        findViewById(R.id.button_start_calendar).setOnClickListener(this);
+        final Button email = (Button)findViewById(R.id.button_start_email);
+        email.setOnClickListener(this);
+        email.setEnabled(false);
+        final Button calendar = (Button)findViewById(R.id.button_start_calendar);
+        calendar.setOnClickListener(this);
+        calendar.setEnabled(false);
 
+        // check that the sample has been properly customized
+        if (ServiceConstants.AUTHORITY_URL.isEmpty() ||
+            ServiceConstants.RESOURCE_ID.isEmpty()   ||
+            ServiceConstants.REDIRECT_URL.isEmpty()  ||
+            ServiceConstants.CLIENT_ID.isEmpty()) {
+            Controller.getInstance().handleError(MyActivity.this, "Please edit the " +
+                    "ServiceConstants.java file according to you application and subscription, " +
+                    "and re-deploy the application");
+
+            // do not move forward
+            return;
+        }
+
+        //
         // run authentication
+        //
         Authentication.createEncryptionKey(getApplicationContext());
         SettableFuture<Void> authenticated =
                 Authentication.acquireToken(
@@ -49,8 +69,13 @@ public class MyActivity extends Activity implements View.OnClickListener {
                                         MyActivity.this,
                                         "Authentication successful",
                                         Toast.LENGTH_SHORT).show();
+
+                                // enable scenarios
+                                email.setEnabled(true);
+                                calendar.setEnabled(true);
                             }
                         });
+
                         return null;
                     }
                 });
