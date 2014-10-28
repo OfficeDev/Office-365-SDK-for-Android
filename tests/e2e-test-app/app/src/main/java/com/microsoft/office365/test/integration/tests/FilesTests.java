@@ -1,6 +1,7 @@
 package com.microsoft.office365.test.integration.tests;
 
 
+import com.microsoft.fileservices.Drive;
 import com.microsoft.fileservices.File;
 import com.microsoft.fileservices.Item;
 import com.microsoft.office365.test.integration.ApplicationContext;
@@ -25,6 +26,7 @@ public class FilesTests extends TestGroup {
         this.addTest(canCreateFile("Can create file with content", true));
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
+        this.addTest(canGetDrive("Can get drive", false));
     }
 
     private TestCase canGetFiles(String name, boolean enabled) {
@@ -212,6 +214,36 @@ public class FilesTests extends TestGroup {
 
                     //Cleanup
                     client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetDrive(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    Drive drive = client.getdrive().read().get();
+
+                    //Assert
+                    if(drive == null || drive.getquota() == null || drive.getquota().gettotal() == 0 || drive.getid().equals(""))
+                        result.setStatus(TestStatus.Failed);
 
                     return result;
                 } catch (Exception e) {

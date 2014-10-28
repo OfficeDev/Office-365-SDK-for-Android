@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MailTests extends TestGroup {
 
@@ -148,7 +149,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder";
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
                     String parentFolderName = "Inbox";
 
                     //Create new folder
@@ -209,7 +210,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder";
+                    String newFolderName = "TestFolder"  + UUID.randomUUID();;
                     String parentFolderName = "Inbox";
 
                     //Prepare for test
@@ -275,7 +276,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder";
+                    String newFolderName = "TestFolder"  + UUID.randomUUID();;
                     String parentFolderName = "Inbox";
                     String destinationFolderName = "Drafts";
 
@@ -345,7 +346,7 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder";
+                    String newFolderName = "TestFolder"  + UUID.randomUUID();;
                     String parentFolderName = "Inbox";
                     String destinationFolderName = "Drafts";
 
@@ -421,8 +422,8 @@ public class MailTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    String folderName = "TestFolder";
-                    String updatedFolderName = "UpdatedTestFolder";
+                    String folderName = "TestFolder"  + UUID.randomUUID();;
+                    String updatedFolderName = "UpdatedTestFolder"  + UUID.randomUUID();;
                     String parentFolderName = "Inbox";
 
                     //Create new folder
