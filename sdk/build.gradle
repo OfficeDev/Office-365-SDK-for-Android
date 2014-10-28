@@ -15,7 +15,4 @@ allprojects {
     repositories {
         jcenter()
     }
-	apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.9.1'
 }
