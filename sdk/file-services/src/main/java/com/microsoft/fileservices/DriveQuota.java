@@ -15,14 +15,14 @@ public class DriveQuota extends ODataBaseEntity {
 	}
 
 
-	private long deleted;
+	private Long deleted;
 
 	/**
 	* Gets the deleted.
 	*
 	* @return the long
 	*/
-	public long getdeleted() {
+	public Long getdeleted() {
 		return this.deleted; 
 	}
 
@@ -31,18 +31,18 @@ public class DriveQuota extends ODataBaseEntity {
 	*
 	* @param value the long
 	*/
-	public void setdeleted(long value) { 
+	public void setdeleted(Long value) {
 		this.deleted = value; 
 	}
 
-	private long remaining;
+	private Long remaining;
 
 	/**
 	* Gets the remaining.
 	*
 	* @return the long
 	*/
-	public long getremaining() {
+	public Long getremaining() {
 		return this.remaining; 
 	}
 
@@ -51,7 +51,7 @@ public class DriveQuota extends ODataBaseEntity {
 	*
 	* @param value the long
 	*/
-	public void setremaining(long value) { 
+	public void setremaining(Long value) {
 		this.remaining = value; 
 	}
 
@@ -75,14 +75,14 @@ public class DriveQuota extends ODataBaseEntity {
 		this.state = value; 
 	}
 
-	private long total;
+	private Long total;
 
 	/**
 	* Gets the total.
 	*
 	* @return the long
 	*/
-	public long gettotal() {
+	public Long gettotal() {
 		return this.total; 
 	}
 
@@ -91,7 +91,7 @@ public class DriveQuota extends ODataBaseEntity {
 	*
 	* @param value the long
 	*/
-	public void settotal(long value) { 
+	public void settotal(Long value) {
 		this.total = value; 
 	}
 }

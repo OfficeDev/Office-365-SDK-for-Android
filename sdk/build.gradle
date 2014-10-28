@@ -4,6 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6"
         classpath 'com.android.tools.build:gradle:0.12.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -14,6 +15,7 @@ allprojects {
     repositories {
         jcenter()
     }
+	apply plugin: 'idea'
+    group = 'com.microsoft.services'
+    version = '0.9.1'
 }
-
-

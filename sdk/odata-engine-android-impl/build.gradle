@@ -1,12 +1,17 @@
 apply plugin: 'com.android.library'
-apply plugin: 'eclipse'
+
+ext {
+    PUBLISH_GROUP_ID = 'com.microsoft.services'
+    PUBLISH_ARTIFACT_ID = 'odata-engine-android-impl'
+    PUBLISH_VERSION = '0.9.1'
+}
 
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.microsoft.office365.odata.impl"
+        applicationId "com.microsoft.services.odata.impl"
         minSdkVersion 15
         targetSdkVersion 15
         versionCode 1
@@ -26,3 +31,5 @@ dependencies {
     compile project(':odata-engine-interfaces')
     compile project(':odata-engine-java-impl')
 }
+
+apply from : '../android-libraries.gradle'

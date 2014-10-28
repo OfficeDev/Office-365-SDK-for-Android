@@ -128,14 +128,14 @@ public class Item extends ODataBaseEntity {
 	public void setparentReference(ItemReference value) { 
 		this.parentReference = value; 
 	}
-	private long size;
+	private Long size;
 
 	/**
 	* Gets the size.
 	*
 	* @return the long
 	*/
-	public long getsize() {
+	public Long getsize() {
 		return this.size; 
 	}
 
@@ -144,7 +144,7 @@ public class Item extends ODataBaseEntity {
 	*
 	* @param value the long
 	*/
-	public void setsize(long value) { 
+	public void setsize(Long value) {
 		this.size = value; 
 	}
 	private java.util.Calendar dateTimeCreated;
