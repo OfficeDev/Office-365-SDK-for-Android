@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 
+ext {
+    PUBLISH_GROUP_ID = 'com.microsoft.services'
+    PUBLISH_ARTIFACT_ID = 'odata-engine-android-impl'
+    PUBLISH_VERSION = '0.9.1'
+}
+
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
@@ -19,48 +25,11 @@ android {
     }
 }
 
-apply plugin: 'maven'
-
-uploadArchives {
-    repositories.mavenDeployer {
-        pom.groupId = 'com.microsoft.services'
-        pom.artifactId = 'odata-engine-android-impl'
-        pom.version = '0.9.0'
-        // Add other pom properties here if you want (developer details / licenses)
-        repository (
-                url: 'https://api.bintray.com' + '/maven/' + 'msopentech' + '/' + 'Maven' + '/' + 'Office-365-SDK-for-Android'
-        ) {
-            authentication(
-                    userName: 'marcote',
-                    password: 'foo'
-            )
-        }
-    }
-}
-
-task androidJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
-    from androidJavadocs.destinationDir
-}
-
-task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-artifacts {
-    archives androidSourcesJar
-    archives androidJavadocsJar
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
     compile project(':odata-engine-interfaces')
     compile project(':odata-engine-java-impl')
 }
+
+apply from : '../android-libraries.gradle'
