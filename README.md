@@ -18,6 +18,8 @@ This SDK provides access to:
 
 The Office 365 SDK for Android takes advantage of [Android Studio](https://developer.android.com/sdk/installing/studio.html)'s support for [Gradle](http://www.gradle.org/) to manage dependencies. To use the SDK in your projects, just add the libraries to your list of dependencies in gradle.build. See the [wiki page on Gradle and dependencies](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Include-Dependencies-using-Gradle) for more info.
 
+> **IMPORTANT** Before opening issues, please make sure you're on the latest version of Android Studio in the beta channel. Currently that is v0.8.14.
+
 ## Quick start
 Now we'll create a simple application that retrieves messages using this SDK and the [Azure AD Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
