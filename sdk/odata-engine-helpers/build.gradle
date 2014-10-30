@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -7,3 +6,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile project(':odata-engine-interfaces')
 }
+
+apply from :'../java-libraries.gradle'
