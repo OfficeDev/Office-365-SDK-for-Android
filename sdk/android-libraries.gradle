@@ -16,6 +16,18 @@ uploadArchives {
     }
 }
 
+android.libraryVariants.all { variant ->
+    def task = project.tasks.create "jar${name.capitalize()}", Jar
+    task.dependsOn variant.javaCompile
+    task.from variant.javaCompile.destinationDir
+    task.from configurations.compile.findAll {
+        it.getName() != 'android.jar' && !it.getName().startsWith('junit') && !it.getName().startsWith('hamcrest')
+    }.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+    artifacts.add('archives', task);
+}
+
 task androidJavadocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
