@@ -1,14 +1,14 @@
 package com.microsoft.office365.test.integration;
 
-import java.util.concurrent.Future;
-
-
-import com.microsoft.listservices.SharepointClient;
+import com.microsoft.directoryservices.odata.DirectoryClient;
+import com.microsoft.discoveryservices.odata.DiscoveryClient;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.sharepointservices.odata.SharePointClient;
+
+import java.util.concurrent.Future;
 
 public class ApplicationContext {
 	
@@ -54,5 +54,13 @@ public class ApplicationContext {
 
     public static String getTestListName(){
         return mTestPlatformContext.getTestListName();
+    }
+
+    public static DiscoveryClient getDiscoveryClient(){
+        return mTestPlatformContext.getDiscoveryClient();
+    }
+
+    public static DirectoryClient getDirectoryClient(){
+        return mTestPlatformContext.getDirectoryClient();
     }
 }

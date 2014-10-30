@@ -43,4 +43,5 @@ dependencies {
     compile project(':odata-engine-android-impl')
     compile project(':directory-services')
     compile project(':list-services')
+    compile project(':discovery-services')
 }

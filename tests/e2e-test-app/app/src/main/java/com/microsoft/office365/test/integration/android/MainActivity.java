@@ -27,6 +27,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -49,6 +50,8 @@ import com.microsoft.office365.test.integration.framework.TestResultsPostManager
 import com.microsoft.office365.test.integration.tests.AllTests;
 import com.microsoft.office365.test.integration.tests.CalendarTests;
 import com.microsoft.office365.test.integration.tests.ContactTests;
+import com.microsoft.office365.test.integration.tests.DirectoryTests;
+import com.microsoft.office365.test.integration.tests.DiscoveryTests;
 import com.microsoft.office365.test.integration.tests.FilesTests;
 import com.microsoft.office365.test.integration.tests.ListsTests;
 import com.microsoft.office365.test.integration.tests.MailTests;
@@ -72,7 +75,8 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+        PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
+        PreferenceManager.setDefaultValues(this, R.xml.aad_settings, false);
 		AndroidTestPlatformContext testPlatformContext = new AndroidTestPlatformContext(this);
 		ApplicationContext.setTestPlatformContext(testPlatformContext);
 
@@ -124,6 +128,8 @@ public class MainActivity extends Activity {
         adapter.add(new CalendarTests());
         adapter.add(new FilesTests());
         adapter.add(new ListsTests());
+        adapter.add(new DiscoveryTests());
+        adapter.add(new DirectoryTests());
 		mTestGroupSpinner.setSelection(0);
 		selectTestGroup(0);
 	}

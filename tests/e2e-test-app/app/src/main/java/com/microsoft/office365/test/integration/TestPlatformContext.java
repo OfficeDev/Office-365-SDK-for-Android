@@ -3,6 +3,8 @@ package com.microsoft.office365.test.integration;
 import java.util.concurrent.Future;
 
 
+import com.microsoft.directoryservices.odata.DirectoryClient;
+import com.microsoft.discoveryservices.odata.DiscoveryClient;
 import com.microsoft.listservices.SharepointClient;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
@@ -18,12 +20,16 @@ public interface TestPlatformContext {
     String getFileServerUrl();
 
 	String getClientId();
-	
+
 	String getRedirectUrl();
 
     String getExchangeEndpointUrl();
 
     String getFilesEndpointUrl();
+
+    String getDiscoveryEndpointUrl();
+
+    String getDirectoryEndpointUrl();
 
     String getTestMail();
 
@@ -34,6 +40,10 @@ public interface TestPlatformContext {
     String getTestDocumentListName();
 
     String getSiteRelativeUrl();
+
+    String getDiscoveryServerUrl();
+
+    String getDirectoryServerUrl();
 
 	Future<Void> showMessage(String message);
 
@@ -49,6 +59,7 @@ public interface TestPlatformContext {
 
     SharepointListsClient getSharePointListClient();
 
+    DiscoveryClient getDiscoveryClient();
 
-
+    DirectoryClient getDirectoryClient();
 }

@@ -13,6 +13,8 @@ import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
+import com.microsoft.directoryservices.odata.DirectoryClient;
+import com.microsoft.discoveryservices.odata.DiscoveryClient;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.TestPlatformContext;
 import com.microsoft.office365.test.integration.framework.OAuthCredentials;
@@ -32,6 +34,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     private AuthenticationResult mExchangeAuthenticationResult;
     private AuthenticationResult mFilesAuthenticationResult;
     private AuthenticationResult mListsAuthenticationResult;
+    private AuthenticationResult mDiscoveryAuthenticationResult;
+    private AuthenticationResult mDirectoryAuthenticationResult;
     public AndroidTestPlatformContext(Activity activity) {
         mActivity = activity;
     }
@@ -51,6 +55,18 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     @Override
     public String getSharepointServerUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_SHAREPOINT_URL,
+                "");
+    }
+
+    @Override
+    public String getDiscoveryServerUrl(){
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DISCOVERY_RESOURCE_URL,
+                "");
+    }
+
+    @Override
+    public String getDirectoryServerUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DIRECTORY_RESOURCE_URL,
                 "");
     }
 
@@ -97,6 +113,18 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     public String getFilesEndpointUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
                 Constants.PREFERENCE_FILES_ENDPOINT_URL, "");
+    }
+
+    @Override
+    public String getDiscoveryEndpointUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_DISCOVERY_ENDPOINT_URL, "");
+    }
+
+    @Override
+    public String getDirectoryEndpointUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_DIRECTORY_ENDPOINT_URL, "");
     }
 
     @Override
@@ -182,7 +210,115 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         return getSharePointListClientAAD();
     }
 
-    SharepointListsClient getSharePointListClientAAD(){
+    @Override
+    public DiscoveryClient getDiscoveryClient() { return getDiscoveryClientAAD(); }
+
+    @Override
+    public DirectoryClient getDirectoryClient() {
+        return getDirectoryClientAAD();
+    }
+
+    private DirectoryClient getDirectoryClientAAD() {
+        final SettableFuture<DirectoryClient> future = SettableFuture.create();
+
+        try {
+            if (mDirectoryAuthenticationResult != null && mDirectoryAuthenticationResult.getRefreshToken() != null && !mDirectoryAuthenticationResult.getRefreshToken().isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(mDirectoryAuthenticationResult.getRefreshToken(), getClientId(), getDirectoryServerUrl(),
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mDirectoryAuthenticationResult = result;
+                                DirectoryClient client = new DirectoryClient(getDirectoryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            } else {
+                getAuthenticationContext().acquireToken(
+                        mActivity, getDirectoryServerUrl(),
+                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mDirectoryAuthenticationResult = result;
+                                DirectoryClient client = new DirectoryClient(getDirectoryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            }
+        } catch (Throwable t) {
+            future.setException(t);
+        }
+        try {
+            return future.get();
+        } catch (Throwable t) {
+            Log.e(Constants.TAG, t.getMessage());
+            return null;
+        }
+    }
+
+    private DiscoveryClient getDiscoveryClientAAD() {
+        final SettableFuture<DiscoveryClient> future = SettableFuture.create();
+
+        try {
+            if (mDiscoveryAuthenticationResult != null && mDiscoveryAuthenticationResult.getRefreshToken() != null && !mDiscoveryAuthenticationResult.getRefreshToken().isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(mDiscoveryAuthenticationResult.getRefreshToken(), getClientId(), getDiscoveryServerUrl(),
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mDiscoveryAuthenticationResult = result;
+                                DiscoveryClient client = new DiscoveryClient(getDiscoveryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            } else {
+                getAuthenticationContext().acquireToken(
+                        mActivity, getDiscoveryServerUrl(),
+                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                        new AuthenticationCallback<AuthenticationResult>() {
+
+                            @Override
+                            public void onError(Exception exc) {
+                                future.setException(exc);
+                            }
+
+                            @Override
+                            public void onSuccess(AuthenticationResult result) {
+                                mDiscoveryAuthenticationResult = result;
+                                DiscoveryClient client = new DiscoveryClient(getDiscoveryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                                future.set(client);
+                            }
+                        });
+            }
+        } catch (Throwable t) {
+            future.setException(t);
+        }
+        try {
+            return future.get();
+        } catch (Throwable t) {
+            Log.e(Constants.TAG, t.getMessage());
+            return null;
+        }
+    }
+
+    private SharepointListsClient getSharePointListClientAAD(){
         final SettableFuture<SharepointListsClient> future = SettableFuture.create();
 
         try {
@@ -234,7 +370,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         }
     }
 
-    OutlookClient getExchangeEntityContainerClientAAD() {
+    private OutlookClient getExchangeEntityContainerClientAAD() {
+
         final SettableFuture<OutlookClient> future = SettableFuture.create();
 
         try {

@@ -6,13 +6,15 @@
             android:name="redirect_url"
             android:key="prefAADRedirectUrl"
             android:summary="Enter the Redirect URL"
-            android:title="Redirect URL" >
+            android:title="Redirect URL"
+            android:defaultValue="@string/prefAADRedirectUrl">
         </EditTextPreference>
         <EditTextPreference
             android:name="clientId"
             android:key="prefAADClientId"
             android:summary="Enter the client ID"
-            android:title="Client ID" >
+            android:title="Client ID"
+            android:defaultValue="@string/prefAADClientId">
         </EditTextPreference>
     </PreferenceCategory>
 
