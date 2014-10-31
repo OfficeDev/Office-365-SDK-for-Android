@@ -15,6 +15,7 @@ import static com.microsoft.services.odata.EntityFetcherHelper.setPathForCollect
 import static com.microsoft.services.odata.EntityFetcherHelper.setSelectorUrl;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL;
+import java.util.*;
 
 /**
  * The type ODataCollectionFetcher.
@@ -152,14 +153,16 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     }
 
     @Override
-    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb) {
+    ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, Map<String, String> headers) {
 		if (selectedId == null) {
 			setPathForCollections(path, urlComponent, top, skip, select, expand, filter);
         } else {
             setSelectorUrl(path, urlComponent, selectedId);
         }
 		addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
-		return parent.oDataExecute(path, content, verb);
+        Map<String, String> newHeaders = new HashMap<String, String>(getCustomHeaders());
+        newHeaders.putAll(headers);
+		return parent.oDataExecute(path, content, verb, newHeaders);
     }
 
     @Override
@@ -170,7 +173,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     @Override
     public ListenableFuture<List<T>> read() {
 		final SettableFuture<List<T>> result = SettableFuture.create();
-        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET, getCustomHeaders());
         addListResultCallback(result, future, getResolver(), clazz);
 
         return result;
@@ -185,7 +188,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     public ListenableFuture<T> add(T entity) {
 		final SettableFuture<T> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(entity, getResolver());
-        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.POST);
+        ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.POST, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
 
         return result;
