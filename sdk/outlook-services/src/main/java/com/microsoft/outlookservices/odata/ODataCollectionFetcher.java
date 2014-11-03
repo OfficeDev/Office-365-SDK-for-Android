@@ -22,7 +22,7 @@ import java.util.*;
  * @param <TFetcher>  the type parameter
  * @param <TOperation>  the type parameter
  */
-public class ODataCollectionFetcher<TEntity, TFetcher, TOperation> extends ODataExecutable implements Readable<List<TEntity>> {
+public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher, TOperation extends ODataOperations> extends ODataExecutable implements Readable<List<TEntity>> {
 
     private int top = -1;
     private int skip = -1;

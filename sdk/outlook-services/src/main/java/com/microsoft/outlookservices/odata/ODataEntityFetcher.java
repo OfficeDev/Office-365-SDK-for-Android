@@ -21,7 +21,7 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
  * @param <TEntity>  the type parameter
  * @param <TOperation>  the type parameter
  */
-public abstract class ODataEntityFetcher<TEntity, TOperation> extends ODataExecutable implements Readable<TEntity> {
+public abstract class ODataEntityFetcher<TEntity, TOperation extends ODataOperations> extends ODataExecutable implements Readable<TEntity> {
 
     protected String urlComponent;
     protected ODataExecutable parent;

@@ -18,7 +18,7 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
  * @param <TEntity>  the type parameter
  * @param <TOperation>  the type parameter
  */
-public abstract class ODataMediaEntityFetcher<TEntity, TOperation> extends ODataEntityFetcher<TEntity, TOperation> implements Readable<TEntity> {
+public abstract class ODataMediaEntityFetcher<TEntity, TOperation extends ODataOperations> extends ODataEntityFetcher<TEntity, TOperation> implements Readable<TEntity> {
 
    /**
      * Instantiates a new ODataMediaEntityFetcher.
