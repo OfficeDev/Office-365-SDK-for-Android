@@ -15,10 +15,10 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
 
 /**
  * The type ODataMediaEntityFetcher.
- * @param <E>  the type parameter
- * @param <V>  the type parameter
+ * @param <TEntity>  the type parameter
+ * @param <TOperation>  the type parameter
  */
-public abstract class ODataMediaEntityFetcher<E, V> extends ODataEntityFetcher<E, V> implements Readable<E> {
+public abstract class ODataMediaEntityFetcher<TEntity, TOperation> extends ODataEntityFetcher<TEntity, TOperation> implements Readable<TEntity> {
 
    /**
      * Instantiates a new ODataMediaEntityFetcher.
@@ -29,7 +29,7 @@ public abstract class ODataMediaEntityFetcher<E, V> extends ODataEntityFetcher<E
      * @param operationClazz the operation clazz
      */
 
-    public ODataMediaEntityFetcher(String urlComponent, ODataExecutable parent, Class<E> clazz, Class<V> operationClazz) {
+    public ODataMediaEntityFetcher(String urlComponent, ODataExecutable parent, Class<TEntity> clazz, Class<TOperation> operationClazz) {
         super(urlComponent, parent, clazz, operationClazz);
     }
 

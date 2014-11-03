@@ -18,15 +18,15 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
 
 /**
  * The type ODataEntityFetcher.
- * @param <E>  the type parameter
- * @param <V>  the type parameter
+ * @param <TEntity>  the type parameter
+ * @param <TOperation>  the type parameter
  */
-public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implements Readable<E> {
+public abstract class ODataEntityFetcher<TEntity, TOperation> extends ODataExecutable implements Readable<TEntity> {
 
     protected String urlComponent;
     protected ODataExecutable parent;
-    private Class<E> clazz;
-    private V operations;
+    private Class<TEntity> clazz;
+    private TOperation operations;
 
 	 /**
      * Instantiates a new ODataEntityFetcher.
@@ -36,7 +36,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      * @param clazz the clazz
      * @param operationClazz the operation clazz
      */
-    public ODataEntityFetcher(String urlComponent, ODataExecutable parent, Class<E> clazz, Class<V> operationClazz) {
+    public ODataEntityFetcher(String urlComponent, ODataExecutable parent, Class<TEntity> clazz, Class<TOperation> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
@@ -48,7 +48,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
         }
     }
 
-	public ODataEntityFetcher<E,V> addHeader(String name, String value) {
+	public ODataEntityFetcher<TEntity,TOperation> addHeader(String name, String value) {
         this.addCustomHeader(name, value);
 		return this;
     }
@@ -73,8 +73,8 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      * @param updatedEntity the updated entity
      * @return the listenable future
      */
-    public ListenableFuture<E> update(E updatedEntity) {
-	    final SettableFuture<E> result = SettableFuture.create();
+    public ListenableFuture<TEntity> update(TEntity updatedEntity) {
+	    final SettableFuture<TEntity> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(updatedEntity, getResolver());
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.PATCH, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
@@ -87,7 +87,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      * @return the listenable future
      */
     public ListenableFuture delete() {
-	    final SettableFuture<E> result = SettableFuture.create();
+	    final SettableFuture<TEntity> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.DELETE, getCustomHeaders());
         addNullResultCallback(result, future);
         return result;
@@ -98,8 +98,8 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      *
      * @return the listenable future
      */
-    public ListenableFuture<E> read() {
-	    final SettableFuture<E> result = SettableFuture.create();
+    public ListenableFuture<TEntity> read() {
+	    final SettableFuture<TEntity> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
         return result;
@@ -110,7 +110,7 @@ public abstract class ODataEntityFetcher<E, V> extends ODataExecutable implement
      *
      * @return the operations
      */
-    public V getOperations() {
+    public TOperation getOperations() {
         return this.operations;
     }
 }

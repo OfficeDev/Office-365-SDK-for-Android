@@ -7,7 +7,6 @@ package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
-import java.util.List;
 
 import static com.microsoft.services.odata.EntityCollectionFetcherHelper.addListResultCallback;
 import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
@@ -19,19 +18,19 @@ import java.util.*;
 
 /**
  * The type ODataCollectionFetcher.
- * @param <T>  the type parameter
- * @param <U>  the type parameter
- * @param <V>  the type parameter
+ * @param <TEntity>  the type parameter
+ * @param <TFetcher>  the type parameter
+ * @param <TOperation>  the type parameter
  */
-public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements Readable<List<T>> {
+public class ODataCollectionFetcher<TEntity, TFetcher, TOperation> extends ODataExecutable implements Readable<List<TEntity>> {
 
     private int top = -1;
     private int skip = -1;
     private String selectedId = null;
     private String urlComponent;
     private ODataExecutable parent;
-    private Class<T> clazz;
-    private V operations;
+    private Class<TEntity> clazz;
+    private TOperation operations;
     private String select = null;
     private String expand = null;
     private String filter = null;
@@ -45,7 +44,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param operationClazz the operation clazz
      */
     public ODataCollectionFetcher(String urlComponent, ODataExecutable parent,
-                                  Class<T> clazz, Class<V> operationClazz) {
+                                  Class<TEntity> clazz, Class<TOperation> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
@@ -77,7 +76,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param top the top
      * @return the o data collection fetcher
      */
-    public ODataCollectionFetcher<T, U, V> top(int top) {
+    public ODataCollectionFetcher<TEntity, TFetcher, TOperation> top(int top) {
         this.top = top;
         return this;
     }
@@ -88,7 +87,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param skip the skip
      * @return the o data collection fetcher
      */
-    public ODataCollectionFetcher<T, U, V> skip(int skip) {
+    public ODataCollectionFetcher<TEntity, TFetcher, TOperation> skip(int skip) {
         this.skip = skip;
         return this;
     }
@@ -99,7 +98,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param select the select
      * @return the o data collection fetcher
      */
-    public ODataCollectionFetcher<T, U, V> select(String select) {
+    public ODataCollectionFetcher<TEntity, TFetcher, TOperation> select(String select) {
         this.select = select;
         return this;
     }
@@ -110,7 +109,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param expand the expand
      * @return the o data collection fetcher
      */
-    public ODataCollectionFetcher<T, U, V> expand(String expand) {
+    public ODataCollectionFetcher<TEntity, TFetcher, TOperation> expand(String expand) {
         this.expand = expand;
         return this;
     }
@@ -121,7 +120,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param filter the filter
      * @return the o data collection fetcher
      */
-    public ODataCollectionFetcher<T, U, V> filter(String filter) {
+    public ODataCollectionFetcher<TEntity, TFetcher, TOperation> filter(String filter) {
         this.filter = filter;
         return this;
     }
@@ -132,7 +131,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param id the id
      * @return the by id
      */
-    public U getById(String id) {
+    public TFetcher getById(String id) {
         this.selectedId = id;
 	    String packageName = operations.getClass().getPackage().getName();
         String[] classNameParts = (clazz.getCanonicalName() + "Fetcher").split("\\.");
@@ -144,7 +143,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
                     .getConstructor(String.class, ODataExecutable.class)
                     .newInstance("", this);
 
-            return (U) odataEntityQuery;
+            return (TFetcher) odataEntityQuery;
         } catch (Throwable e) {
             // if this happens, we couldn't find the xxxQuery class at runtime.
             // this must NEVER happen
@@ -171,8 +170,8 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
     }
 
     @Override
-    public ListenableFuture<List<T>> read() {
-		final SettableFuture<List<T>> result = SettableFuture.create();
+    public ListenableFuture<List<TEntity>> read() {
+		final SettableFuture<List<TEntity>> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET, getCustomHeaders());
         addListResultCallback(result, future, getResolver(), clazz);
 
@@ -185,8 +184,8 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      * @param entity the entity
      * @return the listenable future
      */
-    public ListenableFuture<T> add(T entity) {
-		final SettableFuture<T> result = SettableFuture.create();
+    public ListenableFuture<TEntity> add(TEntity entity) {
+		final SettableFuture<TEntity> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(entity, getResolver());
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.POST, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
@@ -199,7 +198,7 @@ public class ODataCollectionFetcher<T, U, V> extends ODataExecutable implements 
      *
      * @return the operations
      */
-    public V getOperations() {
+    public TOperation getOperations() {
         return this.operations;
     }
 }
