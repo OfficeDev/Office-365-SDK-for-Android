@@ -131,6 +131,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
      * @param id the id
      * @return the by id
      */
+     @SuppressWarnings("unchecked")
     public TFetcher getById(String id) {
         this.selectedId = id;
 	    String packageName = operations.getClass().getPackage().getName();
