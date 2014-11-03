@@ -25,8 +25,11 @@ import com.microsoft.outlookservices.odata.OutlookClient;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class ExchangeTests extends TestGroup {
@@ -88,6 +91,10 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canDeleteContact("Can delete contacts", true));
         this.addTest(canUpdateContact("Can update contacts", true));
 
+        //Select, top, filter
+        this.addTest(canFilterMessages("Can use filter in messages", true));
+        this.addTest(canSelectMessages("Can use select in messages", true));
+        this.addTest(canTopMessages("Can use top in messages", true));
     }
 
 
@@ -2084,5 +2091,144 @@ public class ExchangeTests extends TestGroup {
         return newContact;
     }
 
+    // Filter, Select, Top, Skip
+    private TestCase canFilterMessages(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String subject = "Test Subject " + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+
+                    //Act
+                    java.util.Calendar dateGt = addedMessage.getDateTimeCreated();
+                    dateGt.add(java.util.Calendar.SECOND, -2);
+
+                    //format date properly
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSSSSSS'Z'", Locale.getDefault());
+                    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    String formatted = dateFormat.format(dateGt.getTime());
+
+                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
+                            .filter("Subject eq '" + addedMessage.getSubject() + "' and DateTimeCreated gt " + formatted)
+                            .read().get();
+
+                    //Assert
+                    if(messages.size() == 1)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSelectMessages(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String subject = "Test Subject " + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+
+                    //Act
+                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
+                            .filter("Subject eq '" + subject + "'")
+                            .select("Subject,DateTimeCreated")
+                            .read().get();
+
+                    //Assert
+                    if(messages.size() > 0 && !messages.get(0).getSubject().equals("") && messages.get(0).getDateTimeReceived() == null)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canTopMessages(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String subject = "Test Subject " + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Message addedMessage1 = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+                    Message addedMessage2 = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+
+                    //Act
+                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
+                            .filter("Subject eq '" + subject + "'")
+                            .top(1)
+                            .read().get();
+
+                    //Assert
+                    if(messages.size() == 1 && messages.get(0).getSubject().equals(subject))
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getMessages().getById(addedMessage1.getId()).delete().get();
+                    client.getMe().getMessages().getById(addedMessage2.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
 
 }
