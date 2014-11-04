@@ -31,10 +31,9 @@ public class FilesTests extends TestGroup {
         this.addTest(canUpdateFileContent("Can update file content", true));
         this.addTest(canGetDrive("Can get drive", false));
 
-        //Select, top, filter
-        this.addTest(canFilterFiles("Can use filter in files", false));
-        this.addTest(canSelectFiles("Can use select in files", false));
-        this.addTest(canTopFiles("Can use top in files", false));
+        //Select, top
+        this.addTest(canSelectFiles("Can use select in files", true));
+        this.addTest(canTopFiles("Can use top in files", true));
     }
 
     private TestCase canGetFiles(String name, boolean enabled) {
@@ -265,61 +264,7 @@ public class FilesTests extends TestGroup {
         return test;
     }
 
-    // Filter, Select, Top, Skip
-    private TestCase canFilterFiles(String name, boolean enabled) {
-        TestCase test = new TestCase() {
-
-            @Override
-            public TestResult executeTest() {
-                try {
-                    TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
-                    result.setTestCase(this);
-
-                    String fileName = "TestFile" + UUID.randomUUID().toString();
-
-
-                    SharePointClient client = ApplicationContext.getFilesClient();
-
-                    //Prepare
-                    Item newFile = new Item();
-                    newFile.settype("File");
-                    newFile.setname(fileName + ".txt");
-
-                    Item addedFile = client.getfiles().add(newFile).get();
-
-                    //Act
-                    java.util.Calendar dateGt = addedFile.getdateTimeCreated();
-                    dateGt.add(java.util.Calendar.SECOND, -2);
-
-                    //format date properly
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSSSSSS'Z'", Locale.getDefault());
-                    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-                    String formatted = dateFormat.format(dateGt.getTime());
-
-                    List<Item> files = client.getfiles()
-                            .filter("name eq '" + addedFile.getname() + "' and dateTimeCreated gt " + formatted)
-                            .read().get();
-
-                    //Assert
-                    if(files.size() == 1)
-                        result.setStatus(TestStatus.Passed);
-
-                    //Cleanup
-                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
-
-                    return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
-                }
-            }
-        };
-
-        test.setName(name);
-        test.setEnabled(enabled);
-        return test;
-    }
-
+    // Select, Top
     private TestCase canSelectFiles(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
