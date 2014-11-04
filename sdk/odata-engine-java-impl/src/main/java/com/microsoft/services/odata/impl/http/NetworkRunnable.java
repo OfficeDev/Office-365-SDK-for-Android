@@ -18,18 +18,33 @@ import java.net.HttpURLConnection;
  */
 public abstract class NetworkRunnable implements Runnable {
 
+    /**
+     * The connection.
+     */
     protected HttpURLConnection mConnection = null;
+    /**
+     * The response stream.
+     */
     protected InputStream mResponseStream = null;
+    /**
+     * The request.
+     */
     protected Request mRequest;
+    /**
+     * The future.
+     */
     protected SettableFuture<Response> mFuture;
 
-    protected Object mCloseLock = new Object();
+    /**
+     * The  close lock.
+     */
+    protected final Object mCloseLock = new Object();
 
     /**
      * Initializes the network runnable
      *
      * @param request The request to execute
-     * @param future  Future for the operation
+     * @param future Future for the operation
      */
     public NetworkRunnable(Request request, SettableFuture<Response> future) {
         mRequest = request;

@@ -51,7 +51,7 @@ public class ResponseImpl implements Response {
     }
 
     @Override
-    public InputStream getStream() throws IOException {
+    public InputStream getStream() {
         return mStream;
     }
 

@@ -31,7 +31,6 @@ public class SPList extends OfficeEntity {
 	/**
 	 * Instantiates a new SP list.
 	 * 
-	 * @throws org.json.JSONException
 	 *             the JSON exception
 	 */
 	public SPList() {

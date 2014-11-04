@@ -48,9 +48,6 @@ public class CalendarSerializer {
     public static String serialize(Calendar src) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSSSSSS'Z'", Locale.getDefault());
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-        String formatted = dateFormat.format(src.getTime());
-
-        return formatted;
+        return dateFormat.format(src.getTime());
     }
 }

@@ -23,7 +23,7 @@ class NetworkRunnable implements Runnable {
 	InputStream mResponseStream = null;
 	Request mRequest;
 	SettableFuture<Response> mFuture;
-	Object mCloseLock = new Object();
+	final Object mCloseLock = new Object();
 
 	/**
 	 * Initializes the network runnable

@@ -31,10 +31,8 @@ public class SPListField extends OfficeEntity {
 	/**
 	 * Instantiates a new SP list field.
 	 * 
-	 * @throws org.json.JSONException
-	 *             the JSON exception
 	 */
-	public SPListField() throws JSONException {
+	public SPListField() {
 		super();
 	}
 	

@@ -49,12 +49,11 @@ public class DefaultDependencyResolver implements DependencyResolver {
 
     @Override
     public String getPlatformUserAgent(String productName) {
-        String userAgent = String.format(
+
+        return String.format(
                 "%s/1.0 (lang=%s; os=%s; os_version=%s; arch=%s; version=%s)",
                 productName, "Java", "Android", Build.VERSION.RELEASE,
                 Build.CPU_ABI, Constants.SDK_VERSION);
-
-        return userAgent;
 
     }
 

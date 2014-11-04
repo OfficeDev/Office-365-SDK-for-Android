@@ -43,12 +43,7 @@ public class Platform {
 		if (!mPlatformVerified) {
 			String runtime = System.getProperty("java.runtime.name").toLowerCase(Locale.getDefault());
 
-			if (runtime.contains("android")) {
-				mIsAndroid = true;
-			} else {
-				mIsAndroid = false;
-			}
-
+            mIsAndroid = runtime.contains("android");
 			mPlatformVerified = true;
 		}
 
@@ -66,8 +61,7 @@ public class Platform {
 		} else {
 			osName = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 		}
-		String userAgent = String.format("Office (lang=Java; os=%s; version=1.0)", osName);
 
-		return userAgent;
+        return String.format("Office (lang=Java; os=%s; version=1.0)", osName);
 	}
 }

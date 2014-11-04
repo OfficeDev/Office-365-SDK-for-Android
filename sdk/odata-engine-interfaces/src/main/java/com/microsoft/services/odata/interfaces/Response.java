@@ -35,9 +35,8 @@ public interface Response {
      * Gets stream.
      *
      * @return the stream
-     * @throws IOException the iO exception
      */
-    public InputStream getStream() throws IOException;
+    public InputStream getStream();
 
     /**
      * Close void.

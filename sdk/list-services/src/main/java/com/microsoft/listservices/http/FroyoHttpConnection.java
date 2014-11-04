@@ -61,7 +61,8 @@ public class FroyoHttpConnection implements HttpConnection {
 
 				try {
 					HttpRequest realRequest = createRealRequest(request);
-					uri = new URI(request.getUrl());
+                    assert request != null;
+                    uri = new URI(request.getUrl());
 
 					HttpHost host = new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme());
 
@@ -158,10 +159,8 @@ public class FroyoHttpConnection implements HttpConnection {
 	 * 
 	 * @param request
 	 *            The request information
-	 * @throws java.io.UnsupportedEncodingException
 	 */
-	private static BasicHttpEntityEnclosingRequest createRealRequest(Request request)
-			throws UnsupportedEncodingException {
+	private static BasicHttpEntityEnclosingRequest createRealRequest(Request request) {
 		BasicHttpEntityEnclosingRequest realRequest = new BasicHttpEntityEnclosingRequest(request.getVerb(),
 				request.getUrl());
 

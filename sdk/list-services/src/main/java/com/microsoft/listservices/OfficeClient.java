@@ -20,16 +20,36 @@ import com.microsoft.listservices.http.HttpConnection;
 import com.microsoft.listservices.http.Request;
 import com.microsoft.listservices.http.Response;
 
+/**
+ * The type Office client.
+ */
 public class OfficeClient {
 
-	Credentials mCredentials;
-	Logger mLogger;
+    /**
+     * The M credentials.
+     */
+    Credentials mCredentials;
+    /**
+     * The M logger.
+     */
+    Logger mLogger;
 
-	public OfficeClient(Credentials credentials) {
+    /**
+     * Instantiates a new Office client.
+     *
+     * @param credentials the credentials
+     */
+    public OfficeClient(Credentials credentials) {
 		this(credentials, null);
 	}
 
-	public OfficeClient(Credentials credentials, Logger logger) {
+    /**
+     * Instantiates a new Office client.
+     *
+     * @param credentials the credentials
+     * @param logger the logger
+     */
+    public OfficeClient(Credentials credentials, Logger logger) {
 		if (credentials == null) {
 			throw new IllegalArgumentException("credentials must not be null");
 		}
@@ -49,11 +69,22 @@ public class OfficeClient {
 		mCredentials = credentials;
 	}
 
-	protected void log(String message, LogLevel level) {
+    /**
+     * Log void.
+     *
+     * @param message the message
+     * @param level the level
+     */
+    protected void log(String message, LogLevel level) {
 		getLogger().log(message, level);
 	}
 
-	protected void log(Throwable error) {
+    /**
+     * Log void.
+     *
+     * @param error the error
+     */
+    protected void log(Throwable error) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		error.printStackTrace(pw);
@@ -62,15 +93,31 @@ public class OfficeClient {
 		getLogger().log(error.toString() + "\nStack Trace: " + stackTrace, LogLevel.Critical);
 	}
 
-	protected Logger getLogger() {
+    /**
+     * Gets logger.
+     *
+     * @return the logger
+     */
+    protected Logger getLogger() {
 		return mLogger;
 	}
 
-	protected Credentials getCredentials() {
+    /**
+     * Gets credentials.
+     *
+     * @return the credentials
+     */
+    protected Credentials getCredentials() {
 		return mCredentials;
 	}
 
-	protected String generateODataQueryString(Query query) {
+    /**
+     * Generate o data query string.
+     *
+     * @param query the query
+     * @return the string
+     */
+    protected String generateODataQueryString(Query query) {
 		StringBuilder sb = new StringBuilder();
 		if (query != null) {
 			query.ensureIdProperty();
@@ -78,8 +125,7 @@ public class OfficeClient {
 			sb.append(queryEncode(query.toString()));
 
 			String rowSetModifiers = query.getRowSetModifiers().trim();
-			if (rowSetModifiers != "") {
-
+			if (!rowSetModifiers.equals("")) {
 				if (!rowSetModifiers.startsWith("&")) {
 					sb.append("&");
 				}
@@ -90,11 +136,27 @@ public class OfficeClient {
 		return sb.toString();
 	}
 
-	protected ListenableFuture<byte[]> executeRequest(String url, String method) {
+    /**
+     * Execute request.
+     *
+     * @param url the url
+     * @param method the method
+     * @return the listenable future
+     */
+    protected ListenableFuture<byte[]> executeRequest(String url, String method) {
 		return executeRequest(url, method, null, null);
 	}
 
-	protected ListenableFuture<byte[]> executeRequest(String url, String method, Map<String, String> headers,
+    /**
+     * Execute request.
+     *
+     * @param url the url
+     * @param method the method
+     * @param headers the headers
+     * @param payload the payload
+     * @return the listenable future
+     */
+    protected ListenableFuture<byte[]> executeRequest(String url, String method, Map<String, String> headers,
 			byte[] payload) {
 		HttpConnection connection = Platform.createHttpConnection();
 
@@ -141,11 +203,27 @@ public class OfficeClient {
 		return result;
 	}
 
-	protected ListenableFuture<JSONObject> executeRequestJson(String url, String method) {
+    /**
+     * Execute request json.
+     *
+     * @param url the url
+     * @param method the method
+     * @return the listenable future
+     */
+    protected ListenableFuture<JSONObject> executeRequestJson(String url, String method) {
 		return executeRequestJson(url, method, null, null);
 	}
 
-	protected ListenableFuture<JSONObject> executeRequestJson(String url, String method, Map<String, String> headers,
+    /**
+     * Execute request json.
+     *
+     * @param url the url
+     * @param method the method
+     * @param headers the headers
+     * @param payload the payload
+     * @return the listenable future
+     */
+    protected ListenableFuture<JSONObject> executeRequestJson(String url, String method, Map<String, String> headers,
 			byte[] payload) {
 
 		final SettableFuture<JSONObject> result = SettableFuture.create();
@@ -162,7 +240,7 @@ public class OfficeClient {
 				String string;
 				try {
 					string = new String(b, Constants.UTF8_NAME);
-					if (string == null || string.length() == 0) {
+					if (string.length() == 0) {
 						result.set(null);
 					} else {
 						JSONObject json = new JSONObject(string);
@@ -178,11 +256,22 @@ public class OfficeClient {
 		return result;
 	}
 
-	public ListenableFuture<List<DiscoveryInformation>> getDiscoveryInfo() {
+    /**
+     * Gets discovery info.
+     *
+     * @return the discovery info
+     */
+    public ListenableFuture<List<DiscoveryInformation>> getDiscoveryInfo() {
 		return getDiscoveryInfo("https://api.office.com/discovery/me/services");
 	}
 
-	public ListenableFuture<List<DiscoveryInformation>> getDiscoveryInfo(String discoveryEndpoint) {
+    /**
+     * Gets discovery info.
+     *
+     * @param discoveryEndpoint the discovery endpoint
+     * @return the discovery info
+     */
+    public ListenableFuture<List<DiscoveryInformation>> getDiscoveryInfo(String discoveryEndpoint) {
 		final SettableFuture<List<DiscoveryInformation>> result = SettableFuture.create();
 		final ListenableFuture<JSONObject> request = executeRequestJson(discoveryEndpoint, "GET");
 
@@ -206,7 +295,12 @@ public class OfficeClient {
 		return result;
 	}
 
-	protected void prepareRequest(Request request) {
+    /**
+     * Prepare request.
+     *
+     * @param request the request
+     */
+    protected void prepareRequest(Request request) {
 		request.addHeader("Accept", "application/json;odata=verbose");
 		request.addHeader("X-ClientService-ClientTag", "SDK-JAVA");
 		
@@ -218,13 +312,25 @@ public class OfficeClient {
 		mCredentials.prepareRequest(request);
 	}
 
-	protected static boolean isValidStatus(int status) {
+    /**
+     * Is valid status.
+     *
+     * @param status the status
+     * @return the boolean
+     */
+    protected static boolean isValidStatus(int status) {
 		return status >= 200 && status <= 299;
 	}
 
-	protected String queryEncode(String query) {
+    /**
+     * Query encode.
+     *
+     * @param query the query
+     * @return the string
+     */
+    protected String queryEncode(String query) {
 
-		String encoded = null;
+		String encoded;
 
 		try {
 			encoded = query.replaceAll("\\s", "+");
@@ -234,8 +340,14 @@ public class OfficeClient {
 		return encoded;
 	}
 
-	protected String urlEncode(String str) {
-		String encoded = null;
+    /**
+     * Url encode.
+     *
+     * @param str the str
+     * @return the string
+     */
+    protected String urlEncode(String str) {
+		String encoded;
 		try {
 			encoded = URLEncoder.encode(str, Constants.UTF8_NAME);
 		} catch (UnsupportedEncodingException e) {
@@ -247,7 +359,13 @@ public class OfficeClient {
 		return encoded;
 	}
 
-	protected String UUIDtoString(UUID id) {
+    /**
+     * UUI dto string.
+     *
+     * @param id the id
+     * @return the string
+     */
+    protected String UUIDtoString(UUID id) {
 		return id.toString().replace("-", "");
 	}
 }
