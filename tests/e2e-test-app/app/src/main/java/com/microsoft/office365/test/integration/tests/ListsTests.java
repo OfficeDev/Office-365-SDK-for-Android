@@ -23,7 +23,6 @@ import com.microsoft.listservices.SPList;
 import com.microsoft.listservices.SPListField;
 import com.microsoft.listservices.SPListItem;
 import com.microsoft.listservices.SharepointListsClient;
-import com.microsoft.listservices.http.OAuthCredentials;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.ExpectedValueException;
 import com.microsoft.office365.test.integration.framework.TestCase;
@@ -45,6 +44,9 @@ public class ListsTests extends TestGroup {
         this.addTest(createRoundtripListItemTest("Insert, update, delete list item", true));
         this.addTest(createColumnsForDefaultViewTest("Columns for default view", true));
         this.addTest(createListFieldsTest("All list fields", true));
+
+        this.addTest(canFilterListTest("Can filter lists", true));
+        this.addTest(canSelectListTest("Can select lists", true));
 
     }
 
@@ -259,6 +261,82 @@ public class ListsTests extends TestGroup {
 
                     if (title == null || title.length() == 0) {
                         createResultFromException(result, new Exception("Title expected"));
+                    }
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canFilterListTest(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+
+                    String listName = ApplicationContext.getTestListName();
+
+                    List<SPList> lists = client.getLists(field("Title").eq().val(listName)).get();
+
+                    // validations
+
+                    if (lists.size() == 1 && lists.get(0).getTitle().equals(listName)) {
+                        result.setStatus(TestStatus.Passed);
+                    }else
+                    {
+                        createResultFromException(result, new ExpectedValueException(listName, lists.get(0).getTitle()));
+                    }
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canSelectListTest(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+
+                    String listName = ApplicationContext.getTestListName();
+
+                    List<SPList> lists = client.getLists(field("Title").eq().val(listName).select("id")).get();
+
+                    // validations
+                    try {
+                        //Title should be null because of select parameter
+                        String title = lists.get(0).getTitle();
+                        createResultFromException(result, new ExpectedValueException("", title));
+                    }
+                    catch(IllegalArgumentException e){
+                        result.setStatus(TestStatus.Passed);
                     }
 
                     return result;
