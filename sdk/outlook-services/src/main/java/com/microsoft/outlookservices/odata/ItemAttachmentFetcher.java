@@ -8,12 +8,13 @@ package com.microsoft.outlookservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;		
+import com.microsoft.outlookservices.*;       
 
 /**
  * The type  ItemAttachmentFetcher.
  */
-public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,ItemAttachmentOperations> implements Readable<ItemAttachment> {
+public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,ItemAttachmentOperations> 
+                                     implements Readable<ItemAttachment> {
 
      /**
      * Instantiates a new ItemAttachmentFetcher.
@@ -21,16 +22,16 @@ public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,Ite
      * @param urlComponent the url component
      * @param parent the parent
      */
-	 public ItemAttachmentFetcher(String urlComponent, ODataExecutable parent) {
-		super(urlComponent, parent, ItemAttachment.class,ItemAttachmentOperations.class);
+     public ItemAttachmentFetcher(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, ItemAttachment.class,ItemAttachmentOperations.class);
     }
 
-		 /**
+         /**
      * Gets item.
      *
      * @return the item
      */
-	public ItemFetcher getItem() {
-		return new ItemFetcher("Item", this);
+    public ItemFetcher getItem() {
+        return new ItemFetcher("Item", this);
     }
 }

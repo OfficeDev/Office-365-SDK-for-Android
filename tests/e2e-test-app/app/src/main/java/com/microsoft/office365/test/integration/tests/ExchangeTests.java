@@ -41,6 +41,7 @@ public class ExchangeTests extends TestGroup {
         // Folders
         this.addTest(canRetrieveFolders("Can retrieve folders", true));
         this.addTest(canRetrieveFolderById("Can retrieve folder by id", true));
+        this.addTest(canRetrieveFolder("Can Retrieve Folder (overload)", true));
         this.addTest(canCreateFolder("Can create folder", true));
         this.addTest(canDeleteFolder("Can delete folder", true));
         this.addTest(canMoveFolder("Can move folder", true));
@@ -49,6 +50,7 @@ public class ExchangeTests extends TestGroup {
 
         //Messages
         this.addTest(canGetMessages("Can get messages", true));
+        this.addTest(canGetMessage("Can get messages (overload)", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
         this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
         this.addTest(canSendMessage("Can send message", true));
@@ -111,6 +113,33 @@ public class ExchangeTests extends TestGroup {
 
                     OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Folder folder = client.getMe().getFolders().getById("Inbox").read().get();
+                    if (folder == null || !folder.getDisplayName().equals("Inbox"))
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canRetrieveFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    Folder folder = client.getMe().getFolder("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
 
@@ -491,6 +520,48 @@ public class ExchangeTests extends TestGroup {
                     if (inboxMessages == null || inboxMessages.size() == 0 || inboxMessages.size() > 3)
                         result.setStatus(TestStatus.Failed);
 
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    //Test new syntatic collection fetcher overload to avoid calling getByIdXXX methods.
+    private TestCase canGetMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message createdMessage = client.getMe().getMessages().add(message).get();
+
+                    //Assert
+                    Message searchedMessage = client.getMe()
+                            .getFolder("Drafts")
+                            .getMessage(createdMessage.getId()).read().get();
+
+                    if (searchedMessage == null || !searchedMessage.getSubject().equals("Test message"))
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe().getFolder("Drafts")
+                            .getMessage(createdMessage.getId())
+                            .delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);

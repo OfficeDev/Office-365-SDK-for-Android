@@ -39,4 +39,9 @@ public class OutlookClient extends BaseODataContainer {
 	public ODataCollectionFetcher<User, UserFetcher, UserCollectionOperations> getUsers() {
         return new ODataCollectionFetcher<User, UserFetcher,UserCollectionOperations>("Users", this, User.class,UserCollectionOperations.class);
     }
+
+    public UserFetcher getUsers(String id) {
+        return new ODataCollectionFetcher<User, UserFetcher, UserCollectionOperations>("Users",
+                this, User.class, UserCollectionOperations.class).getById(id);
+    }
 }
