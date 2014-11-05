@@ -42,7 +42,7 @@ public class DirectoryTests extends TestGroup {
 
         this.addTest(canGetGroups("Can get groups", true));
 
-        this.addTest(canGetOauth2PermissionGrants("Can get oauth2 permissions", true));
+        this.addTest(canGetOauth2PermissionGrants("Can get oauth2 permissions", false));
 
         this.addTest(canGetRoles("Can get roles", false));
 

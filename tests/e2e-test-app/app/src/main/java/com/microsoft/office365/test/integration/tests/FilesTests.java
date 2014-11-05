@@ -288,7 +288,6 @@ public class FilesTests extends TestGroup {
 
                     //Act
                     List<Item> files = client.getfiles()
-                            .filter("name eq '" + fileName + "'")
                             .select("name,dateTimeCreated")
                             .read().get();
 
@@ -323,7 +322,7 @@ public class FilesTests extends TestGroup {
                     result.setTestCase(this);
 
                     String fileName = "TestFile" + UUID.randomUUID().toString();
-
+                    String fileName2 = "TestFile" + UUID.randomUUID().toString();
                     SharePointClient client = ApplicationContext.getFilesClient();
 
                     //Prepare
@@ -331,17 +330,20 @@ public class FilesTests extends TestGroup {
                     newFile.settype("File");
                     newFile.setname(fileName + ".txt");
 
+                    Item newFile2 = new Item();
+                    newFile2.settype("File");
+                    newFile2.setname(fileName2);
+
                     Item addedFile1 = client.getfiles().add(newFile).get();
-                    Item addedFile2 = client.getfiles().add(newFile).get();
+                    Item addedFile2 = client.getfiles().add(newFile2).get();
 
                     //Act
                     List<Item> files = client.getfiles()
-                            .filter("name eq '" + fileName + "'")
                             .top(1)
                             .read().get();
 
                     //Assert
-                    if(files.size() == 1 && files.get(0).getname().equals(fileName))
+                    if(files.size() == 1)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup

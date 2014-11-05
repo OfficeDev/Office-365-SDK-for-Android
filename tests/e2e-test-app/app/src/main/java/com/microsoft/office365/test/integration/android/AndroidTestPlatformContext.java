@@ -2,7 +2,9 @@ package com.microsoft.office365.test.integration.android;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -31,11 +33,7 @@ import com.microsoft.sharepointservices.odata.SharePointClient;
 public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private static Activity mActivity;
-    private AuthenticationResult mExchangeAuthenticationResult;
-    private AuthenticationResult mFilesAuthenticationResult;
-    private AuthenticationResult mListsAuthenticationResult;
-    private AuthenticationResult mDiscoveryAuthenticationResult;
-    private AuthenticationResult mDirectoryAuthenticationResult;
+
     public AndroidTestPlatformContext(Activity activity) {
         mActivity = activity;
     }
@@ -220,10 +218,14 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private DirectoryClient getDirectoryClientAAD() {
         final SettableFuture<DirectoryClient> future = SettableFuture.create();
+        final String refreshTokenValue = "directoryRefreshToken";
 
         try {
-            if (mDirectoryAuthenticationResult != null && mDirectoryAuthenticationResult.getRefreshToken() != null && !mDirectoryAuthenticationResult.getRefreshToken().isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(mDirectoryAuthenticationResult.getRefreshToken(), getClientId(), getDirectoryServerUrl(),
+            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                    refreshTokenValue, "");
+
+            if (!refreshToken.isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getDirectoryServerUrl(),
                         new AuthenticationCallback<AuthenticationResult>() {
 
                             @Override
@@ -233,7 +235,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mDirectoryAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 DirectoryClient client = new DirectoryClient(getDirectoryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -251,7 +253,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mDirectoryAuthenticationResult = result;
+
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 DirectoryClient client = new DirectoryClient(getDirectoryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -270,10 +273,12 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private DiscoveryClient getDiscoveryClientAAD() {
         final SettableFuture<DiscoveryClient> future = SettableFuture.create();
-
+        final String refreshTokenValue="discoveryRefreshToken";
         try {
-            if (mDiscoveryAuthenticationResult != null && mDiscoveryAuthenticationResult.getRefreshToken() != null && !mDiscoveryAuthenticationResult.getRefreshToken().isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(mDiscoveryAuthenticationResult.getRefreshToken(), getClientId(), getDiscoveryServerUrl(),
+            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                    refreshTokenValue, "");
+            if (!refreshToken.isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getDiscoveryServerUrl(),
                         new AuthenticationCallback<AuthenticationResult>() {
 
                             @Override
@@ -283,7 +288,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mDiscoveryAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 DiscoveryClient client = new DiscoveryClient(getDiscoveryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -301,7 +306,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mDiscoveryAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 DiscoveryClient client = new DiscoveryClient(getDiscoveryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -320,10 +325,12 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private SharepointListsClient getSharePointListClientAAD(){
         final SettableFuture<SharepointListsClient> future = SettableFuture.create();
-
+        final String refreshTokenValue = "listsRefreshToken";
         try {
-            if (mListsAuthenticationResult != null && mListsAuthenticationResult.getRefreshToken() != null && !mListsAuthenticationResult.getRefreshToken().isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(mListsAuthenticationResult.getRefreshToken(), getClientId(), getSharepointServerUrl(),
+            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                    refreshTokenValue, "");
+            if (!refreshToken.isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getSharepointServerUrl(),
                         new AuthenticationCallback<AuthenticationResult>() {
 
                             @Override
@@ -333,7 +340,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mListsAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
                                 SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(),credentials);
                                 future.set(client);
@@ -352,7 +359,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mListsAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
                                 SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
                                 future.set(client);
@@ -371,12 +378,15 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     private OutlookClient getExchangeEntityContainerClientAAD() {
-
+        final String refreshTokenValue ="exchangeRefreshToken";
         final SettableFuture<OutlookClient> future = SettableFuture.create();
 
         try {
-            if (mExchangeAuthenticationResult != null && mExchangeAuthenticationResult.getRefreshToken() != null && !mExchangeAuthenticationResult.getRefreshToken().isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(mExchangeAuthenticationResult.getRefreshToken(), getClientId(), getExchangeServerUrl(),
+            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                    refreshTokenValue, "");
+
+            if (!refreshToken.isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getExchangeServerUrl(),
                         new AuthenticationCallback<AuthenticationResult>() {
 
                             @Override
@@ -386,9 +396,11 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mExchangeAuthenticationResult = result;
-                                OutlookClient client = new OutlookClient(getExchangeEndpointUrl(), getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
+
+                               UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
+
+                               OutlookClient client = new OutlookClient(getExchangeEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                               future.set(client);
                             }
                         });
             } else {
@@ -404,7 +416,9 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mExchangeAuthenticationResult = result;
+                                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
+                                editor.putString(refreshTokenValue, result.getRefreshToken());
+                                editor.commit();
                                 OutlookClient client = new OutlookClient(getExchangeEndpointUrl(),getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -436,10 +450,13 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     public SharePointClient getFilesEntityContainerClientAAD() {
         final SettableFuture<SharePointClient> future = SettableFuture.create();
+        final String refreshTokenValue ="filesRefreshToken";
 
         try {
-            if (mFilesAuthenticationResult != null && mFilesAuthenticationResult.getRefreshToken() != null && !mFilesAuthenticationResult.getRefreshToken().isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(mFilesAuthenticationResult.getRefreshToken(), getClientId(), getFileServerUrl(),
+            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                    refreshTokenValue, "");
+            if (!refreshToken.isEmpty()) {
+                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getFileServerUrl(),
                         new AuthenticationCallback<AuthenticationResult>() {
 
                             @Override
@@ -449,7 +466,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mExchangeAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 SharePointClient client = new SharePointClient(getFilesEndpointUrl(), getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -467,7 +484,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                             @Override
                             public void onSuccess(AuthenticationResult result) {
-                                mFilesAuthenticationResult = result;
+                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
                                 SharePointClient client = new SharePointClient(getFilesEndpointUrl(),getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             }
@@ -482,5 +499,11 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
             Log.e(Constants.TAG, t.getMessage());
             return null;
         }
+    }
+
+    public void UpdateSharedPreferences(String key, String value){
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
+        editor.putString(key, value);
+        editor.commit();
     }
 }

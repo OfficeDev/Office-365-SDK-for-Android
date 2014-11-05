@@ -97,6 +97,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canFilterMessages("Can use filter in messages", true));
         this.addTest(canSelectMessages("Can use select in messages", true));
         this.addTest(canTopMessages("Can use top in messages", true));
+
     }
 
 
@@ -1521,7 +1522,7 @@ public class ExchangeTests extends TestGroup {
                     Calendar calendar = client.getMe().getCalendar().read().get();
 
                     //Assert
-                    if(calendar.getName() == "")
+                    if(calendar.getName().equals(""))
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -2301,5 +2302,4 @@ public class ExchangeTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
-
 }
