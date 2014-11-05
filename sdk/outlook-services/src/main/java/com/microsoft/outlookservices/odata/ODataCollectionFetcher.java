@@ -35,7 +35,9 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     private String expand = null;
     private String filter = null;
 
-	 /**
+    private ODataEntityFetcher fetcher = null;
+
+     /**
      * Instantiates a new ODataCollectionFetcher.
      *
      * @param urlComponent the url component
@@ -43,34 +45,43 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
      * @param clazz the clazz
      * @param operationClazz the operation clazz
      */
+	@SuppressWarnings("unchecked")
     public ODataCollectionFetcher(String urlComponent, ODataExecutable parent,
                                   Class<TEntity> clazz, Class<TOperation> operationClazz) {
         this.urlComponent = urlComponent;
         this.parent = parent;
         this.clazz = clazz;
 
-		this.reset();
+        this.reset();
 
         try {
             this.operations = operationClazz.getConstructor(String.class,
                          ODataExecutable.class).newInstance("", this);
-        } catch (Throwable ignored) {
+
+            String packageName = this.operations.getClass().getPackage().getName();
+            String[] classNameParts = (clazz.getCanonicalName() + "Fetcher").split("\\.");
+            String className =  packageName + "." + classNameParts[classNameParts.length - 1];
+            Class entityQueryClass = Class.forName(className);
+            this.fetcher = (ODataEntityFetcher) entityQueryClass.getConstructor(String.class, ODataExecutable.class)
+                                                           .newInstance("", this);
+        } catch (Throwable t) {
+            throw new RuntimeException(t);
         }
     }
 
-	/**
+    /**
      * Reset void.
      */
-	public void reset() {
-		this.top = -1;
-		this.skip = -1;
-		this.selectedId = null;
-		this.select = null;
-		this.expand = null;
-		this.filter = null;
-	}
+    public void reset() {
+        this.top = -1;
+        this.skip = -1;
+        this.selectedId = null;
+        this.select = null;
+        this.expand = null;
+        this.filter = null;
+    }
 
-	 /**
+     /**
      * Top ODataCollectionFetcher.
      *
      * @param top the top
@@ -81,7 +92,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return this;
     }
 
-	/**
+    /**
      * Skip ODataCollectionFetcher.
      *
      * @param skip the skip
@@ -92,7 +103,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return this;
     }
 
-	/**
+    /**
      * Select ODataCollectionFetcher.
      *
      * @param select the select
@@ -103,7 +114,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return this;
     }
 
-	/**
+    /**
      * Expand ODataCollectionFetcher.
      *
      * @param expand the expand
@@ -114,7 +125,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return this;
     }
 
-	/**
+    /**
      * Filter ODataCollectionFetcher.
      *
      * @param filter the filter
@@ -125,26 +136,17 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return this;
     }
 
-	 /**
+     /**
      * Gets by id.
      *
      * @param id the id
      * @return the by id
      */
-     @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public TFetcher getById(String id) {
         this.selectedId = id;
-	    String packageName = operations.getClass().getPackage().getName();
-        String[] classNameParts = (clazz.getCanonicalName() + "Fetcher").split("\\.");
-        String className = packageName + "." + classNameParts[classNameParts.length - 1];
-
         try {
-            Class entityQueryClass = Class.forName(className);
-            ODataEntityFetcher odataEntityQuery = (ODataEntityFetcher) entityQueryClass
-                    .getConstructor(String.class, ODataExecutable.class)
-                    .newInstance("", this);
-
-            return (TFetcher) odataEntityQuery;
+            return (TFetcher) this.fetcher;
         } catch (Throwable e) {
             // if this happens, we couldn't find the xxxQuery class at runtime.
             // this must NEVER happen
@@ -154,15 +156,15 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
 
     @Override
     ListenableFuture<byte[]> oDataExecute(ODataURL path, byte[] content, HttpVerb verb, Map<String, String> headers) {
-		if (selectedId == null) {
-			setPathForCollections(path, urlComponent, top, skip, select, expand, filter);
+        if (selectedId == null) {
+            setPathForCollections(path, urlComponent, top, skip, select, expand, filter);
         } else {
             setSelectorUrl(path, urlComponent, selectedId);
         }
-		addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
+        addCustomParametersToODataURL(path, getCustomParameters(), getResolver());
         Map<String, String> newHeaders = new HashMap<String, String>(getCustomHeaders());
         newHeaders.putAll(headers);
-		return parent.oDataExecute(path, content, verb, newHeaders);
+        return parent.oDataExecute(path, content, verb, newHeaders);
     }
 
     @Override
@@ -172,21 +174,21 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
 
     @Override
     public ListenableFuture<List<TEntity>> read() {
-		final SettableFuture<List<TEntity>> result = SettableFuture.create();
+        final SettableFuture<List<TEntity>> result = SettableFuture.create();
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), null, HttpVerb.GET, getCustomHeaders());
         addListResultCallback(result, future, getResolver(), clazz);
 
         return result;
     }
 
-	 /**
+     /**
      * Add listenable future.
      *
      * @param entity the entity
      * @return the listenable future
      */
     public ListenableFuture<TEntity> add(TEntity entity) {
-		final SettableFuture<TEntity> result = SettableFuture.create();
+        final SettableFuture<TEntity> result = SettableFuture.create();
         byte[] payloadBytes = serializeToJsonByteArray(entity, getResolver());
         ListenableFuture<byte[]> future = oDataExecute(getResolver().createODataURL(), payloadBytes, HttpVerb.POST, getCustomHeaders());
         addEntityResultCallback(result, future, getResolver(), clazz);
@@ -194,7 +196,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return result;
     }
 
-	 /**
+     /**
      * Gets operations.
      *
      * @return the operations
