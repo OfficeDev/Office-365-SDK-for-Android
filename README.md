@@ -32,14 +32,14 @@ dependencies {
     compile group: 'com.microsoft.services', name: 'odata-engine-interfaces', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'odata-engine-java-impl', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'odata-engine-helpers', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '(,1.0)'
+    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '(,1.0)', ext:'aar'
 
     // choose the services/SDKs you need:
     compile group: 'com.microsoft.services', name: 'outlook-services', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'discovery-services', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'directory-services', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'file-services', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'list-services', version: '(,1.0)'
+    compile group: 'com.microsoft.services', name: 'list-services', version: '(,1.0)', ext:'aar'
     
     // ADAL
     compile group: 'com.microsoft.aad', name: 'adal', version: '1.0.2' {
