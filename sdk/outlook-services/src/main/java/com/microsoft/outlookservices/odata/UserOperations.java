@@ -58,7 +58,7 @@ public class UserOperations extends EntityOperations {
 
 				url.appendPathComponent("SendMail");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		

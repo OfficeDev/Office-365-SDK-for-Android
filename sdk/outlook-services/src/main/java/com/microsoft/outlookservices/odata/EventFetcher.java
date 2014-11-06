@@ -8,12 +8,13 @@ package com.microsoft.outlookservices.odata;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;		
+import com.microsoft.outlookservices.*;       
 
 /**
  * The type  EventFetcher.
  */
-public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> implements Readable<Event> {
+public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> 
+                                     implements Readable<Event> {
 
      /**
      * Instantiates a new EventFetcher.
@@ -21,32 +22,50 @@ public class EventFetcher extends ODataEntityFetcher<Event,EventOperations> impl
      * @param urlComponent the url component
      * @param parent the parent
      */
-	 public EventFetcher(String urlComponent, ODataExecutable parent) {
-		super(urlComponent, parent, Event.class,EventOperations.class);
+     public EventFetcher(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Event.class,EventOperations.class);
     }
 
-	     /**
+         /**
      * Gets attachments.
      *
      * @return the attachments
      */
-	public ODataCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
-		return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
+    public ODataCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
+        return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
     }
-	 /**
+
+    /**
+     * Gets attachment.
+     *
+     * @return the attachment
+     */
+    public AttachmentFetcher getAttachment(String id){
+         return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class).getById(id);
+    }
+     /**
      * Gets calendar.
      *
      * @return the calendar
      */
-	public CalendarFetcher getCalendar() {
-		return new CalendarFetcher("Calendar", this);
+    public CalendarFetcher getCalendar() {
+        return new CalendarFetcher("Calendar", this);
     }
      /**
      * Gets instances.
      *
      * @return the instances
      */
-	public ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getInstances() {
-		return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("Instances", this, Event.class,EventCollectionOperations.class);
+    public ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getInstances() {
+        return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("Instances", this, Event.class,EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
+    public EventFetcher getInstance(String id){
+         return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("Instances", this, Event.class,EventCollectionOperations.class).getById(id);
     }
 }

@@ -46,7 +46,7 @@ public abstract class OfficeEntity {
 			Class<E> clazz) throws JSONException {
 		List<E> list = new ArrayList<E>();
 
-		JSONArray results = null;
+		JSONArray results;
 		if (json.has("d")) {
 			results = json.getJSONObject("d").getJSONArray("results");
 		} else {
@@ -58,7 +58,7 @@ public abstract class OfficeEntity {
 
 			E item = null;
 			try {
-				item = (E) clazz.newInstance();
+				item = clazz.newInstance();
 			} catch (Throwable e) {
 			}
 
@@ -112,7 +112,7 @@ public abstract class OfficeEntity {
 	 */
 	public Object getData(String field) {
 		try {
-			JSONObject innerJson = null;
+			JSONObject innerJson;
 			if (mJsonData.has("d")) {
 				innerJson = mJsonData.getJSONObject("d");
 				return innerJson.get(field);

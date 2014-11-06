@@ -56,7 +56,7 @@ public class FolderOperations extends EntityOperations {
 
 				url.appendPathComponent("Copy");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Folder.class);
 		
@@ -78,7 +78,7 @@ public class FolderOperations extends EntityOperations {
 
 				url.appendPathComponent("Move");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Folder.class);
 		

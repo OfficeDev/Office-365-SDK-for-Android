@@ -25,9 +25,19 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
+/**
+ * The type Sharepoint cookie credentials.
+ */
 public class SharepointCookieCredentials extends CookieCredentials {
 
-	public static ListenableFuture<CookieCredentials> requestCredentials(String sharepointSiteUrl, Activity activity) {
+    /**
+     * Request credentials.
+     *
+     * @param sharepointSiteUrl the sharepoint site url
+     * @param activity the activity
+     * @return the listenable future
+     */
+    public static ListenableFuture<CookieCredentials> requestCredentials(String sharepointSiteUrl, Activity activity) {
 		final SettableFuture<CookieCredentials> future = SettableFuture.create();
 
 		ListenableFuture<String> login = showLoginForCookies(activity, sharepointSiteUrl);
@@ -46,11 +56,19 @@ public class SharepointCookieCredentials extends CookieCredentials {
 		return future;
 	}
 
-	@SuppressLint("SetJavaScriptEnabled")
+
+    /**
+     * Show login for cookies.
+     *
+     * @param activity the activity
+     * @param startUrl the start url
+     * @return the listenable future
+     */
+    @SuppressLint("SetJavaScriptEnabled")
 	protected static ListenableFuture<String> showLoginForCookies(Activity activity, final String startUrl) {
 
 		final SettableFuture<String> codeFuture = SettableFuture.create();
-		if (startUrl == null || startUrl == "") {
+		if (startUrl == null || startUrl.equals("")) {
 			throw new IllegalArgumentException("startUrl can not be null or empty");
 		}
 
@@ -69,7 +87,6 @@ public class SharepointCookieCredentials extends CookieCredentials {
 			}
 		});
 
-		// wv.getSettings().setUserAgentString("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36");
 		wv.getSettings().setJavaScriptEnabled(true);
 
 		wv.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
@@ -117,7 +134,7 @@ public class SharepointCookieCredentials extends CookieCredentials {
 		wv.setWebViewClient(new WebViewClient() {
 
 			boolean mResultReturned = false;
-			Object mSync = new Object();
+			final Object mSync = new Object();
 
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -127,8 +144,6 @@ public class SharepointCookieCredentials extends CookieCredentials {
 					if (cookieWasFound(view) && !mResultReturned) {
 						mResultReturned = true;
 
-						// CookieSyncManager syncManager =
-						// CookieSyncManager.createInstance(view.getContext());
 						CookieManager cookieManager = CookieManager.getInstance();
 						String cookie = cookieManager.getCookie(url);
 						dialog.dismiss();
@@ -142,12 +157,7 @@ public class SharepointCookieCredentials extends CookieCredentials {
 			private boolean cookieWasFound(WebView view) {
 				CookieManager cookieManager = CookieManager.getInstance();
 				String cookie = cookieManager.getCookie(startUrl);
-
-				if (cookie != null && cookie.contains("rtFa")) {
-					return true;
-				} else {
-					return false;
-				}
+                return cookie != null && cookie.contains("rtFa");
 			}
 		});
 

@@ -1,35 +1,63 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <EditTextPreference
         android:name="exchangeResourceUrl"
-        android:defaultValue=""
+        android:defaultValue="@string/prefExchangeResourcetUrl"
         android:key="prefExchangeResourcetUrl"
         android:summary="Enter the Exchange resource url"
         android:title="Exchange Resource URL" >
     </EditTextPreference>
     <EditTextPreference
         android:name="exchangeEndpointUrl"
-        android:defaultValue=""
+        android:defaultValue="@string/prefExchangeEndpoint"
         android:key="prefExchangeEndpoint"
         android:summary="Enter the exchange endpoint url"
         android:title="Exchange Endpoint URL" >
     </EditTextPreference>
     <EditTextPreference
         android:name="filesResourceUrl"
-        android:defaultValue=""
+        android:defaultValue="@string/prefFilesResourcetUrl"
         android:key="prefFilesResourcetUrl"
         android:summary="Enter the Files resource url"
         android:title="Files Resource URL" >
     </EditTextPreference>
     <EditTextPreference
         android:name="filesEndpointUrl"
-        android:defaultValue=""
+        android:defaultValue="@string/prefFilesEndpoint"
         android:key="prefFilesEndpoint"
         android:summary="Enter the files endpoint url"
         android:title="Files Endpoint URL" >
     </EditTextPreference>
     <EditTextPreference
+    android:name="discoveryResourceUrl"
+    android:defaultValue="@string/prefDiscoveryResourcetUrl"
+    android:key="prefDiscoveryResourcetUrl"
+    android:summary="Enter the Discovery resource url"
+    android:title="Discovery Resource URL" >
+</EditTextPreference>
+    <EditTextPreference
+        android:name="discoveryEndpointUrl"
+        android:defaultValue="@string/prefDiscoveryEndpoint"
+        android:key="prefDiscoveryEndpoint"
+        android:summary="Enter the Discovery endpoint url"
+        android:title="Discovery Endpoint URL" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="directoryResourceUrl"
+        android:defaultValue="@string/prefDirectoryResourcetUrl"
+        android:key="prefDirectoryResourcetUrl"
+        android:summary="Enter the Directory resource url"
+        android:title="Directory Resource URL" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="directoryEndpointUrl"
+        android:defaultValue="@string/prefDirectoryEndpoint"
+        android:key="prefDirectoryEndpoint"
+        android:summary="Enter the Directory endpoint url"
+        android:title="Directory Endpoint URL" >
+    </EditTextPreference>
+    <EditTextPreference
         android:name="testMail"
-        android:defaultValue=""
+        android:defaultValue="@string/prefTestMail"
         android:key="prefTestMail"
         android:summary="Enter the email for tests"
         android:title="Test Email" >
@@ -37,28 +65,28 @@
 
     <EditTextPreference
         android:name="sharepointUrl"
-        android:defaultValue=""
+        android:defaultValue="@string/prefSharepointUrl"
         android:key="prefSharepointUrl"
         android:summary="Enter your Sharepoint Server URL"
         android:title="Sharepoint URL" >
     </EditTextPreference>
     <EditTextPreference
         android:name="siteRelativeUrl"
-        android:defaultValue=""
+        android:defaultValue="@string/prefSiteRelativeUrl"
         android:key="prefSiteRelativeUrl"
         android:summary="Enter your site relative URL"
         android:title="Site URL" >
     </EditTextPreference>
     <EditTextPreference
         android:name="listName"
-        android:defaultValue=""
+        android:defaultValue="@string/prefListName"
         android:key="prefListName"
         android:summary="Enter the name of the list"
         android:title="List name" >
     </EditTextPreference>
     <EditTextPreference
         android:name="documentListName"
-        android:defaultValue=""
+        android:defaultValue="@string/prefDocumentListName"
         android:key="prefDocumentListName"
         android:summary="Enter the name of the document list"
         android:title="Document List name" >

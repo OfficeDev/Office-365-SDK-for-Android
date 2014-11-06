@@ -41,7 +41,7 @@ public class StreamResponse implements Response {
 	@Override
 	public String readToEnd() throws IOException {
 		StringBuilder sb = new StringBuilder();
-		String line = null;
+		String line;
 		while ((line = mReader.readLine()) != null) {
 			sb.append(line);
 			sb.append("\n");

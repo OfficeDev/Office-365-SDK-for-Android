@@ -56,7 +56,7 @@ public class EventOperations extends ItemOperations {
 
 				url.appendPathComponent("Accept");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
@@ -78,7 +78,7 @@ public class EventOperations extends ItemOperations {
 
 				url.appendPathComponent("Decline");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
@@ -100,7 +100,7 @@ public class EventOperations extends ItemOperations {
 
 				url.appendPathComponent("TentativelyAccept");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		

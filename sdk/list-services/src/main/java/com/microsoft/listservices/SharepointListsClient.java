@@ -25,36 +25,37 @@ import com.google.common.util.concurrent.SettableFuture;
  */
 public class SharepointListsClient extends SharepointClient {
 
-	/**
-	 * Instantiates a new sharepoint lists client.
-	 * 
-	 * @param credentials
-	 *            the credentials
-	 */
+    /**
+     * Instantiates a new sharepoint lists client.
+     *
+     * @param serverUrl the server url
+     * @param siteRelativeUrl the site relative url
+     * @param credentials the credentials
+     */
 	public SharepointListsClient(String serverUrl, String siteRelativeUrl, Credentials credentials) {
 		super(serverUrl, siteRelativeUrl, credentials);
 	}
 
-	/**
-	 * Instantiates a new sharepoint lists client.
-	 * 
-	 * @param credentials
-	 *            the credentials
-	 * @param logger
-	 *            the logger
-	 */
+    /**
+     * Instantiates a new sharepoint lists client.
+     *
+     * @param serverUrl the server url
+     * @param siteRelativeUrl the site relative url
+     * @param credentials the credentials
+     * @param logger the logger
+     */
 	public SharepointListsClient(String serverUrl, String siteRelativeUrl, Credentials credentials, Logger logger) {
 		super(serverUrl, siteRelativeUrl, credentials, logger);
 	}
 
-	/**
-	 * Gets the lists.
-	 * 
-	 * @param query
-	 *            the query
-	 * @return the lists
-	 */
-	public ListenableFuture<List<SPList>> getLists(Query query) {
+
+    /**
+     * Gets lists.
+     *
+     * @param query the query
+     * @return the lists
+     */
+    public ListenableFuture<List<SPList>> getLists(Query query) {
 		final SettableFuture<List<SPList>> result = SettableFuture.create();
 
 		String queryOData = generateODataQueryString(query);
@@ -82,13 +83,12 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	/**
-	 * Gets the list.
-	 * 
-	 * @param listName
-	 *            the list name
-	 * @return the list
-	 */
+    /**
+     * Gets the list.
+     *
+     * @param listName the list name
+     * @return the list
+     */
 	public ListenableFuture<SPList> getList(String listName) {
 		final SettableFuture<SPList> result = SettableFuture.create();
 		String getListUrl = getSiteUrl() + "_api/web/lists/GetByTitle('%s')";
@@ -112,15 +112,13 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	/**
-	 * Gets the list items.
-	 * 
-	 * @param listName
-	 *            the list name
-	 * @param query
-	 *            the query
-	 * @return the list items
-	 */
+    /**
+     * Gets the list items.
+     *
+     * @param listName the list name
+     * @param query the query
+     * @return the list items
+     */
 	public ListenableFuture<List<SPListItem>> getListItems(String listName, Query query) {
 		final SettableFuture<List<SPListItem>> result = SettableFuture.create();
 
@@ -147,15 +145,13 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	/**
-	 * Gets the list fields.
-	 * 
-	 * @param listName
-	 *            the list name
-	 * @param query
-	 *            the query
-	 * @return the list fields
-	 */
+    /**
+     * Gets the list fields.
+     *
+     * @param listName the list name
+     * @param query the query
+     * @return the list fields
+     */
 	public ListenableFuture<List<SPListField>> getListFields(String listName, Query query) {
 		final SettableFuture<List<SPListField>> result = SettableFuture.create();
 
@@ -182,15 +178,13 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	/**
-	 * Insert list item.
-	 * 
-	 * @param listItem
-	 *            the list item
-	 * @param list
-	 *            the list
-	 * @return the office future
-	 */
+    /**
+     * Insert list item.
+     *
+     * @param listItem the list item
+     * @param list the list
+     * @return the office future
+     */
 	public ListenableFuture<Void> insertListItem(final SPListItem listItem, final SPList list) {
 		final SettableFuture<Void> result = SettableFuture.create();
 
@@ -238,15 +232,13 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	/**
-	 * Update list item.
-	 * 
-	 * @param listItem
-	 *            the list item
-	 * @param list
-	 *            the list
-	 * @return the office future
-	 */
+    /**
+     * Update list item.
+     *
+     * @param listItem the list item
+     * @param list the list
+     * @return the office future
+     */
 	public ListenableFuture<Void> updateListItem(final SPListItem listItem, final SPList list) {
 		final SettableFuture<Void> result = SettableFuture.create();
 
@@ -296,13 +288,13 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	/**
-	 * Delete list item.
-	 * 
-	 * @param listItem
-	 *            the list item
-	 * @return the office future
-	 */
+    /**
+     * Delete list item.
+     *
+     * @param listItem the list item
+     * @param listName the list name
+     * @return the office future
+     */
 	public ListenableFuture<Void> deleteListItem(final SPListItem listItem, final String listName) {
 		final SettableFuture<Void> result = SettableFuture.create();
 
@@ -335,7 +327,14 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	public ListenableFuture<List<String>> getColumnsFromDefaultView(final String listName) {
+
+    /**
+     * Gets columns from default view.
+     *
+     * @param listName the list name
+     * @return the columns from default view
+     */
+    public ListenableFuture<List<String>> getColumnsFromDefaultView(final String listName) {
 		final SettableFuture<List<String>> result = SettableFuture.create();
 		String getViewUrl = getSiteUrl()
 				+ String.format("_api/web/lists/GetByTitle('%s')/defaultView/viewfields", urlEncode(listName));
@@ -366,7 +365,13 @@ public class SharepointListsClient extends SharepointClient {
 		return result;
 	}
 
-	public ListenableFuture<String> getUserProperties() {
+
+    /**
+     * Gets user properties.
+     *
+     * @return the user properties
+     */
+    public ListenableFuture<String> getUserProperties() {
 		final SettableFuture<String> result = SettableFuture.create();
 
 		String url = getSiteUrl() + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties";

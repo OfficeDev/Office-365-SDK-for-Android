@@ -54,11 +54,9 @@ public class DesktopDependencyResolver implements DependencyResolver {
     public String getPlatformUserAgent(String productName) {
 
         String osName = System.getProperty("os.name");
-        String userAgent = String.format(
+        return String.format(
                 "%s/1.0 (lang=%s; os=%s; version=%s)",
                 productName, "Java", osName, Constants.SDK_VERSION);
-
-        return userAgent;
     }
 
     /**

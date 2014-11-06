@@ -9,11 +9,29 @@ uploadArchives {
                 url: 'https://api.bintray.com/maven/msopentech/Maven/Office-365-SDK-for-Android'
         ) {
             authentication(
-                    userName: 'username',
+                    userName: 'user',
                     password: 'password'
             )
         }
     }
+}
+
+android.libraryVariants.all { variant ->
+
+    def task = project.tasks.create "jar${name.capitalize()}", Jar
+    task.dependsOn variant.javaCompile
+    task.from variant.javaCompile.destinationDir
+    task.from configurations.compile.findAll {
+
+        it.getName() != 'android.jar' &&
+        //manually removing dependencies. .jar consumers will need to fulfill these dependencies
+        !it.getName().startsWith('guava') &&
+        !it.getName().startsWith('gson')
+
+    }.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+    artifacts.add('archives', task);
 }
 
 task androidJavadocs(type: Javadoc) {

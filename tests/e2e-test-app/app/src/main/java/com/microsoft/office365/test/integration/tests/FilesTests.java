@@ -12,7 +12,10 @@ import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.odata.Constants;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.UUID;
 
 
@@ -27,6 +30,10 @@ public class FilesTests extends TestGroup {
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
         this.addTest(canGetDrive("Can get drive", false));
+
+        //Select, top
+        this.addTest(canSelectFiles("Can use select in files", true));
+        this.addTest(canTopFiles("Can use top in files", true));
     }
 
     private TestCase canGetFiles(String name, boolean enabled) {
@@ -256,4 +263,103 @@ public class FilesTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
+
+    // Select, Top
+    private TestCase canSelectFiles(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String fileName = "TestFile" + UUID.randomUUID().toString();
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    //Prepare
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(fileName + ".txt");
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+
+                    //Act
+                    List<Item> files = client.getfiles()
+                            .select("name,dateTimeCreated")
+                            .read().get();
+
+                    //Assert
+                    if(files.size() > 0 && !files.get(0).getname().equals("") && files.get(0).getdateTimeLastModified() == null)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canTopFiles(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String fileName = "TestFile" + UUID.randomUUID().toString();
+                    String fileName2 = "TestFile" + UUID.randomUUID().toString();
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    //Prepare
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(fileName + ".txt");
+
+                    Item newFile2 = new Item();
+                    newFile2.settype("File");
+                    newFile2.setname(fileName2);
+
+                    Item addedFile1 = client.getfiles().add(newFile).get();
+                    Item addedFile2 = client.getfiles().add(newFile2).get();
+
+                    //Act
+                    List<Item> files = client.getfiles()
+                            .top(1)
+                            .read().get();
+
+                    //Assert
+                    if(files.size() == 1)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getfiles().getById(addedFile1.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getfiles().getById(addedFile2.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
 }

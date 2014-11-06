@@ -26,6 +26,8 @@ public class Constants {
     public static final String PREFERENCE_DOCUMENT_LIST_NAME = "prefDocumentListName";
 	public static final String PREFERENCE_EXCHANGE_RESOURCE_URL = "prefExchangeResourcetUrl";
     public static final String PREFERENCE_FILES_RESOURCE_URL = "prefFilesResourcetUrl";
+    public static final String PREFERENCE_DISCOVERY_RESOURCE_URL = "prefDiscoveryResourcetUrl";
+    public static final String PREFERENCE_DIRECTORY_RESOURCE_URL = "prefDirectoryResourcetUrl";
 	public static final String PREFERENCE_LOG_POST_URL = "pref_log_post_url";
 	public static final String TAG = "Office365-SDK End2EndApp";
 	public static final String PREFERENCE_AUTHENTICATION_METHOD = "prefAuthenticationMethod";
@@ -34,6 +36,8 @@ public class Constants {
 	public static final String PREFERENCE_AAD_Redirect_URL ="prefAADRedirectUrl";
     public static final String PREFERENCE_EXCHANGE_ENDPOINT_URL ="prefExchangeEndpoint";
     public static final String PREFERENCE_FILES_ENDPOINT_URL ="prefFilesEndpoint";
+    public static final String PREFERENCE_DISCOVERY_ENDPOINT_URL ="prefDiscoveryEndpoint";
+    public static final String PREFERENCE_DIRECTORY_ENDPOINT_URL ="prefDirectoryEndpoint";
     public static final String PREFERENCE_TEST_MAIL="prefTestMail";
     public static final String PREFERENCE_BASIC_TOKEN="prefBasicToken";
 }

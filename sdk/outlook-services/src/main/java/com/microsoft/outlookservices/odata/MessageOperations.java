@@ -56,7 +56,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("Copy");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Message.class);
 		
@@ -78,7 +78,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("Move");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Message.class);
 		
@@ -98,7 +98,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("CreateReply");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Message.class);
 		
@@ -118,7 +118,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("CreateReplyAll");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Message.class);
 		
@@ -138,7 +138,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("CreateForward");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Message.class);
 		
@@ -160,7 +160,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("Reply");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
@@ -182,7 +182,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("ReplyAll");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
@@ -206,7 +206,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("Forward");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		
@@ -226,7 +226,7 @@ public class MessageOperations extends ItemOperations {
 
 				url.appendPathComponent("Send");
 		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST);
+		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.POST, getCustomHeaders());
 		
 		addEntityResultCallback(result, future, getResolver(), Integer.class);
 		

@@ -36,9 +36,7 @@ public abstract class ODataMediaEntityFetcher<E, V> extends ODataEntityFetcher<E
     public ListenableFuture<byte[]> getContent() {
         ODataURL url = getResolver().createODataURL();
         url.appendPathComponent("$value");
-        ListenableFuture<byte[]> future = oDataExecute(url, null, HttpVerb.GET, getCustomHeaders());
-
-        return future;
+        return oDataExecute(url, null, HttpVerb.GET, getCustomHeaders());
     }
 
     public ListenableFuture<Void> putContent(byte[] content) {

@@ -43,7 +43,7 @@ public class EmptyResponse implements Response {
     }
 
     @Override
-    public InputStream getStream() throws IOException {
+    public InputStream getStream() {
         return null;
     }
 

@@ -15,10 +15,10 @@ import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL
 
 /**
  * The type ODataMediaEntityFetcher.
- * @param <E>  the type parameter
- * @param <V>  the type parameter
+ * @param <TEntity>  the type parameter
+ * @param <TOperation>  the type parameter
  */
-public abstract class ODataMediaEntityFetcher<E, V> extends ODataEntityFetcher<E, V> implements Readable<E> {
+public abstract class ODataMediaEntityFetcher<TEntity, TOperation extends ODataOperations> extends ODataEntityFetcher<TEntity, TOperation> implements Readable<TEntity> {
 
    /**
      * Instantiates a new ODataMediaEntityFetcher.
@@ -29,22 +29,20 @@ public abstract class ODataMediaEntityFetcher<E, V> extends ODataEntityFetcher<E
      * @param operationClazz the operation clazz
      */
 
-    public ODataMediaEntityFetcher(String urlComponent, ODataExecutable parent, Class<E> clazz, Class<V> operationClazz) {
+    public ODataMediaEntityFetcher(String urlComponent, ODataExecutable parent, Class<TEntity> clazz, Class<TOperation> operationClazz) {
         super(urlComponent, parent, clazz, operationClazz);
     }
 
     public ListenableFuture<byte[]> getContent() {
         ODataURL url = getResolver().createODataURL();
         url.appendPathComponent("$value");
-        ListenableFuture<byte[]> future = oDataExecute(url, null, HttpVerb.GET);
-
-        return future;
+        return oDataExecute(url, null, HttpVerb.GET, getCustomHeaders());
     }
 
     public ListenableFuture<Void> putContent(byte[] content) {
         ODataURL url = getResolver().createODataURL();
         url.appendPathComponent("$value");
-        ListenableFuture<byte[]> future = oDataExecute(url, content, HttpVerb.PUT);
+        ListenableFuture<byte[]> future = oDataExecute(url, content, HttpVerb.PUT, getCustomHeaders());
 
         SettableFuture<Void> result = SettableFuture.create();
         addNullResultCallback(result, future);
