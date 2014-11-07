@@ -6,4 +6,9 @@ dependencies {
     compile project(':odata-engine-helpers')
 }
 
+ext {
+    PUBLISH_VERSION = '0.9.4'
+    PUBLISH_GROUP_ID = 'com.microsoft.services'
+}
+
 apply from :'../java-libraries.gradle'

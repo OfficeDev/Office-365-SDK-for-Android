@@ -2,7 +2,6 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
-// custom tasks for creating source/javadoc jars
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
@@ -48,8 +47,8 @@ bintray {
 
     configurations = ['published'] //When uploading configuration files
     apiUrl = "https://api.bintray.com"
-    user = 'user'
-    key = 'key'
+    user = bintrayUser
+    key =  bintrayKey
     dryRun = false
 
     filesSpec {
@@ -58,6 +57,7 @@ bintray {
         rename '(.+)\\.(.+)', '$1-suffix.$2'
     }
     publish = project.publish
+    def myProject = project
 
     pkg {
         repo = 'Maven'
@@ -74,9 +74,9 @@ bintray {
         publicDownloadNumbers = true
 
         version {
-            name = '0.9.3' //Optional logical version name
-            desc = 'Office 365 Android SDK'
-            vcsTag = '0.9.3'
+            name = myProject.sdkVersion //Optional logical version name
+            desc = myProject.desc
+            vcsTag = myProject.sdkVersion
         }
     }
 }
