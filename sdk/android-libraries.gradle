@@ -1,16 +1,18 @@
 apply plugin: 'maven'
 
+def myProject = project
+
 uploadArchives {
     repositories.mavenDeployer {
-        pom.groupId = PUBLISH_GROUP_ID
+        pom.groupId = myProject.groupId
         pom.artifactId = PUBLISH_ARTIFACT_ID
-        pom.version = PUBLISH_VERSION
+        pom.version = myProject.sdkVersion
         repository (
                 url: 'https://api.bintray.com/maven/msopentech/Maven/Office-365-SDK-for-Android'
         ) {
             authentication(
-                    userName: 'user',
-                    password: 'password'
+                    userName: bintrayUser,
+                    password: bintrayKey
             )
         }
     }
