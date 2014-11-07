@@ -74,9 +74,9 @@ bintray {
         publicDownloadNumbers = true
 
         version {
-            name = '0.9.2' //Optional logical version name
+            name = '0.9.3' //Optional logical version name
             desc = 'Office 365 Android SDK'
-            vcsTag = '0.9.2'
+            vcsTag = '0.9.3'
         }
     }
 }

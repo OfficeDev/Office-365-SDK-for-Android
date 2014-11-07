@@ -18,6 +18,8 @@ This SDK provides access to:
 
 The Office 365 SDK for Android takes advantage of [Android Studio](https://developer.android.com/sdk/installing/studio.html)'s support for [Gradle](http://www.gradle.org/) to manage dependencies. To use the SDK in your projects, just add the libraries to your list of dependencies in gradle.build. See the [wiki page on Gradle and dependencies](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Include-Dependencies-using-Gradle) for more info.
 
+> **IMPORTANT** Before opening issues, please make sure you're on the latest version of Android Studio in the beta channel. Currently that is v0.8.14.
+
 ## Quick start
 Now we'll create a simple application that retrieves messages using this SDK and the [Azure AD Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
@@ -30,17 +32,17 @@ dependencies {
     compile group: 'com.microsoft.services', name: 'odata-engine-interfaces', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'odata-engine-java-impl', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'odata-engine-helpers', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '(,1.0)'
+    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '(,1.0)', ext:'aar'
 
     // choose the services/SDKs you need:
     compile group: 'com.microsoft.services', name: 'outlook-services', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'discovery-services', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'directory-services', version: '(,1.0)'
     compile group: 'com.microsoft.services', name: 'file-services', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'list-services', version: '(,1.0)'
+    compile group: 'com.microsoft.services', name: 'list-services', version: '(,1.0)', ext:'aar'
     
     // ADAL
-    compile group: 'com.microsoft.aad', name: 'adal', version: '1.0.2' {
+    compile (group: 'com.microsoft.aad', name: 'adal', version: '1.0.2') {
        // exclude group: 'com.android.support'   // this may not be necessary
     }
 }
