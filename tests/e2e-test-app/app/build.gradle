@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "tests.office365.microsoft.e2eTestApp"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,7 @@ dependencies {
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.google.guava:guava:16.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
-    compile('com.microsoft.aad:adal:1.0.0') {
+    compile('com.microsoft.aad:adal:1.0.5') {
         exclude group: 'com.android.support'
     }
     compile project(':outlook-services')

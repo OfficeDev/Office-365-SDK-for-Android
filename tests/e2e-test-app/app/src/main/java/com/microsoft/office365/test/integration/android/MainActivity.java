@@ -72,9 +72,18 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-        PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
-        PreferenceManager.setDefaultValues(this, R.xml.aad_settings, false);
+        super.onCreate(savedInstanceState);
+
+        //As there are multiple preference screens, setDefaultValues with readAgain false won't work for the second view
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString("prefAADClientId", "").isEmpty()) {
+            PreferenceManager.setDefaultValues(this, R.xml.aad_settings, true);
+        }
+
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString("prefExchangeEndpoint", "").isEmpty()){
+            PreferenceManager.setDefaultValues(this, R.xml.pref_general, true);
+        }
+
+
 		AndroidTestPlatformContext testPlatformContext = new AndroidTestPlatformContext(this);
 		ApplicationContext.setTestPlatformContext(testPlatformContext);
 
@@ -228,12 +237,12 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onTestGroupComplete(TestGroup group, List<TestResult> results) {
-				log("TEST GROUP COMPLETED", group.getName() + " - " + group.getStatus().toString());				
+				log("TEST GROUP COMPLETED", group.getName() + " - " + group.getStatus().toString());
 				logSeparator();
 
 				if(mIsAutomatedRun){
 					postResults(results);
-				}					
+				}
 			}
 
 			@Override
@@ -314,7 +323,7 @@ public class MainActivity extends Activity {
 
 	/**
 	 * Creates a dialog and shows it
-	 * 
+	 *
 	 * @param exception
 	 *            The exception to show in the dialog
 	 * @param title
@@ -327,7 +336,7 @@ public class MainActivity extends Activity {
 
 	/**
 	 * Creates a dialog and shows it
-	 * 
+	 *
 	 * @param message
 	 *            The dialog message
 	 * @param title

@@ -2,9 +2,7 @@ package com.microsoft.office365.test.integration.android;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -36,6 +34,11 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     public AndroidTestPlatformContext(Activity activity) {
         mActivity = activity;
+        try {
+            context = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, true);
+        } catch (Throwable e) {
+            Log.e("E2ETestApp", "Error creating AuthenticationContext: " + e.getMessage());
+        }
     }
 
     @Override
@@ -134,12 +137,6 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     public static AuthenticationContext context = null;
 
     public AuthenticationContext getAuthenticationContext() {
-
-        try {
-            context = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, false);
-        } catch (Exception e) {
-        }
-
         return context;
     }
 
@@ -217,101 +214,47 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     private DirectoryClient getDirectoryClientAAD() {
-        final SettableFuture<DirectoryClient> future = SettableFuture.create();
-        final String refreshTokenValue = "directoryRefreshToken";
-
-        try {
-            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                    refreshTokenValue, "");
-
-            if (!refreshToken.isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getDirectoryServerUrl(),
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                DirectoryClient client = new DirectoryClient(getDirectoryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
-                            }
-                        });
-            } else {
-                getAuthenticationContext().acquireToken(
-                        mActivity, getDirectoryServerUrl(),
-                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                DirectoryClient client = new DirectoryClient(getDirectoryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
-                            }
-                        });
-            }
-        } catch (Throwable t) {
-            future.setException(t);
-        }
-        try {
-            return future.get();
-        } catch (Throwable t) {
-            Log.e(Constants.TAG, t.getMessage());
-            return null;
-        }
+        return getTClientAAD(getDirectoryServerUrl(), getDirectoryEndpointUrl(), DirectoryClient.class);
     }
 
     private DiscoveryClient getDiscoveryClientAAD() {
-        final SettableFuture<DiscoveryClient> future = SettableFuture.create();
-        final String refreshTokenValue="discoveryRefreshToken";
+        return getTClientAAD(getDiscoveryServerUrl(), getDiscoveryEndpointUrl(), DiscoveryClient.class);
+    }
+
+    private OutlookClient getExchangeEntityContainerClientAAD() {
+        return getTClientAAD(getExchangeServerUrl(), getExchangeEndpointUrl(), OutlookClient.class);
+    }
+
+    public SharePointClient getFilesEntityContainerClientAAD() {
+        return getTClientAAD(getFileServerUrl(), getFilesEndpointUrl(), SharePointClient.class);
+    }
+
+    private <TClient> TClient getTClientAAD(String serverUrl, final String endpointUrl, final Class<TClient> clientClass) {
+        final SettableFuture<TClient> future = SettableFuture.create();
+
         try {
-            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                    refreshTokenValue, "");
-            if (!refreshToken.isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getDiscoveryServerUrl(),
-                        new AuthenticationCallback<AuthenticationResult>() {
+            getAuthenticationContext().acquireToken(
+                    mActivity, serverUrl,
+                    getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                    new AuthenticationCallback<AuthenticationResult>() {
 
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
+                        @Override
+                        public void onError(Exception exc) {
+                            future.setException(exc);
+                        }
 
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                DiscoveryClient client = new DiscoveryClient(getDiscoveryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
+                        @Override
+                        public void onSuccess(AuthenticationResult result) {
+                            TClient client = null;
+                            try {
+                                client = clientClass.getDeclaredConstructor(String.class, DependencyResolver.class).newInstance(endpointUrl, getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
+                            } catch (Throwable t) {
+                                onError(new Exception(t));
                             }
-                        });
-            } else {
-                getAuthenticationContext().acquireToken(
-                        mActivity, getDiscoveryServerUrl(),
-                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-                        new AuthenticationCallback<AuthenticationResult>() {
+                        }
+                    });
 
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                DiscoveryClient client = new DiscoveryClient(getDiscoveryEndpointUrl(), getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
-                            }
-                        });
-            }
         } catch (Throwable t) {
             future.setException(t);
         }
@@ -325,108 +268,28 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private SharepointListsClient getSharePointListClientAAD(){
         final SettableFuture<SharepointListsClient> future = SettableFuture.create();
-        final String refreshTokenValue = "listsRefreshToken";
         try {
-            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                    refreshTokenValue, "");
-            if (!refreshToken.isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getSharepointServerUrl(),
-                        new AuthenticationCallback<AuthenticationResult>() {
+            getAuthenticationContext().acquireToken(
+                    mActivity, getSharepointServerUrl(),
+                    getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                    new AuthenticationCallback<AuthenticationResult>() {
 
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
+                        @Override
+                        public void onError(Exception exc) {
+                            future.setException(exc);
+                        }
 
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
-                                SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(),credentials);
-                                future.set(client);
-                            }
-                        });
-            } else {
-                getAuthenticationContext().acquireToken(
-                        mActivity, getSharepointServerUrl(),
-                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
-                                SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
-                                future.set(client);
-                            }
-                        });
-            }
+                        @Override
+                        public void onSuccess(AuthenticationResult result) {
+                            com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
+                            SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
+                            future.set(client);
+                        }
+                    });
         } catch (Throwable t) {
             future.setException(t);
         }
-        try {
-            return future.get();
-        } catch (Throwable t) {
-            Log.e(Constants.TAG, t.getMessage());
-            return null;
-        }
-    }
 
-    private OutlookClient getExchangeEntityContainerClientAAD() {
-        final String refreshTokenValue ="exchangeRefreshToken";
-        final SettableFuture<OutlookClient> future = SettableFuture.create();
-
-        try {
-            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                    refreshTokenValue, "");
-
-            if (!refreshToken.isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getExchangeServerUrl(),
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-
-                               UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-
-                               OutlookClient client = new OutlookClient(getExchangeEndpointUrl(), getDependencyResolver(result.getAccessToken()));
-                               future.set(client);
-                            }
-                        });
-            } else {
-                getAuthenticationContext().acquireToken(
-                        mActivity, getExchangeServerUrl(),
-                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
-                                editor.putString(refreshTokenValue, result.getRefreshToken());
-                                editor.commit();
-                                OutlookClient client = new OutlookClient(getExchangeEndpointUrl(),getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
-                            }
-                        });
-            }
-        } catch (Throwable t) {
-            future.setException(t);
-        }
         try {
             return future.get();
         } catch (Throwable t) {
@@ -446,64 +309,5 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         dependencyResolver.getLogger().setEnabled(true);
         dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         return dependencyResolver;
-    }
-
-    public SharePointClient getFilesEntityContainerClientAAD() {
-        final SettableFuture<SharePointClient> future = SettableFuture.create();
-        final String refreshTokenValue ="filesRefreshToken";
-
-        try {
-            String refreshToken = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                    refreshTokenValue, "");
-            if (!refreshToken.isEmpty()) {
-                getAuthenticationContext().acquireTokenByRefreshToken(refreshToken, getClientId(), getFileServerUrl(),
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                SharePointClient client = new SharePointClient(getFilesEndpointUrl(), getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
-                            }
-                        });
-            } else {
-                getAuthenticationContext().acquireToken(
-                        mActivity, getFileServerUrl(),
-                        getClientId(),getRedirectUrl(), PromptBehavior.Auto,
-                        new AuthenticationCallback<AuthenticationResult>() {
-
-                            @Override
-                            public void onError(Exception exc) {
-                                future.setException(exc);
-                            }
-
-                            @Override
-                            public void onSuccess(AuthenticationResult result) {
-                                UpdateSharedPreferences(refreshTokenValue, result.getRefreshToken());
-                                SharePointClient client = new SharePointClient(getFilesEndpointUrl(),getDependencyResolver(result.getAccessToken()));
-                                future.set(client);
-                            }
-                        });
-            }
-        } catch (Throwable t) {
-            future.setException(t);
-        }
-        try {
-            return future.get();
-        } catch (Throwable t) {
-            Log.e(Constants.TAG, t.getMessage());
-            return null;
-        }
-    }
-
-    public void UpdateSharedPreferences(String key, String value){
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
-        editor.putString(key, value);
-        editor.commit();
     }
 }
