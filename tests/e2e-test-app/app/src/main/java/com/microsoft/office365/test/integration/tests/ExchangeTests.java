@@ -22,14 +22,12 @@ import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
 import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.services.odata.CalendarSerializer;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.UUID;
 
 public class ExchangeTests extends TestGroup {
@@ -79,6 +77,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canGetCalendarById("Can get calendar by id", true));
         this.addTest(canUpdateCalendar("Can update calendar", true));
         this.addTest(canDeleteCalendar("Can delete calendar", true));
+        this.addTest(canGetCalendarView("Can get Calendar View", false));
 
         //Events
         this.addTest(canGetEvents("Can get events", true));
@@ -1718,6 +1717,58 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
+    private TestCase canGetCalendarView(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    // Prepare
+                    Event event = getSampleEvent();
+                    Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
+
+                    //format date properly
+                    java.util.Calendar dateStart = addedEvent.getStart();
+                    dateStart.add(java.util.Calendar.HOUR, -2);
+
+                    java.util.Calendar dateEnd = addedEvent.getStart();
+                    dateStart.add(java.util.Calendar.HOUR, 2);
+
+                    // Act
+                    List<Event> calendarView = new ArrayList<Event>();
+                    /*
+                    List<Event> calendarView = client.getMe().getCalendarView()
+                            .getOperations()
+                            .addParameter("startdatetime",CalendarSerializer.serialize(dateStart))
+                            .addParameter("enddatetime", CalendarSerializer.serialize(dateEnd))
+                            .read().get();
+                    */
+
+                    //Assert
+                    if(calendarView.size() == 0)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe().getEvent(addedEvent.getId()).delete();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
     private TestCase canGetEvents(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -2187,9 +2238,7 @@ public class ExchangeTests extends TestGroup {
                     dateGt.add(java.util.Calendar.SECOND, -2);
 
                     //format date properly
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.'SSSSSSS'Z'", Locale.getDefault());
-                    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-                    String formatted = dateFormat.format(dateGt.getTime());
+                    String formatted = CalendarSerializer.serialize(dateGt);
 
                     List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
                             .filter("Subject eq '" + addedMessage.getSubject() + "' and DateTimeCreated gt " + formatted)
