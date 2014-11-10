@@ -42,7 +42,7 @@ dependencies {
     compile group: 'com.microsoft.services', name: 'list-services', version: '(,1.0)', ext:'aar'
     
     // ADAL
-    compile (group: 'com.microsoft.aad', name: 'adal', version: '1.0.2') {
+    compile (group: 'com.microsoft.aad', name: 'adal', version: '(,2.0)') {
        // exclude group: 'com.android.support'   // this may not be necessary
     }
 }
