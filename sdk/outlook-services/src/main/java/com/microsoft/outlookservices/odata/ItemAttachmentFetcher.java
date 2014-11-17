@@ -6,6 +6,8 @@
 package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
 import com.microsoft.outlookservices.*;       
@@ -23,15 +25,39 @@ public class ItemAttachmentFetcher extends ODataEntityFetcher<ItemAttachment,Ite
      * @param parent the parent
      */
      public ItemAttachmentFetcher(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, ItemAttachment.class,ItemAttachmentOperations.class);
+        super(urlComponent, parent, ItemAttachment.class, ItemAttachmentOperations.class);
     }
 
-         /**
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public ItemAttachmentFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public ItemAttachmentFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    	     /**
      * Gets item.
      *
      * @return the item
      */
-    public ItemFetcher getItem() {
+	public ItemFetcher getItem() {
         return new ItemFetcher("Item", this);
     }
 }

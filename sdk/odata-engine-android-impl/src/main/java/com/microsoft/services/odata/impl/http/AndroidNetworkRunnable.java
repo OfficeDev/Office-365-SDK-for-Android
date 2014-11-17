@@ -58,7 +58,8 @@ public class AndroidNetworkRunnable extends NetworkRunnable {
 
             client = AndroidHttpClient.newInstance(userAgent);
 
-            BasicHttpEntityEnclosingRequest realRequest = new BasicHttpEntityEnclosingRequest(mRequest.getVerb().toString(), mRequest.getUrl());
+            BasicHttpEntityEnclosingRequest realRequest = new BasicHttpEntityEnclosingRequest(mRequest.getVerb().toString(),
+                                                                                              mRequest.getUrl().toString());
             EntityEnclosingRequestWrapper wrapper = new EntityEnclosingRequestWrapper(realRequest);
 
             Map<String, String> headers = mRequest.getHeaders();

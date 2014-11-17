@@ -6,6 +6,8 @@
 package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
 import com.microsoft.outlookservices.*;       
@@ -23,16 +25,43 @@ public class ItemFetcher extends ODataEntityFetcher<Item,ItemOperations>
      * @param parent the parent
      */
      public ItemFetcher(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Item.class,ItemOperations.class);
+        super(urlComponent, parent, Item.class, ItemOperations.class);
     }
 
-         public MessageFetcher asMessage(){
-          return new MessageFetcher(this.urlComponent, this.parent);
-     }  
-         public EventFetcher asEvent(){
-          return new EventFetcher(this.urlComponent, this.parent);
-     }  
-         public ContactFetcher asContact(){
-          return new ContactFetcher(this.urlComponent, this.parent);
-     }  
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public ItemFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
     }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public ItemFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    
+    public MessageFetcher asMessage(){
+        return new MessageFetcher(this.urlComponent, this.parent);
+    }	   
+
+    public EventFetcher asEvent(){
+        return new EventFetcher(this.urlComponent, this.parent);
+    }	   
+
+    public ContactFetcher asContact(){
+        return new ContactFetcher(this.urlComponent, this.parent);
+    }	   
+	}

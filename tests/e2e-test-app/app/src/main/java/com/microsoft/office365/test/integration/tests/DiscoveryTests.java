@@ -9,7 +9,6 @@ import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class DiscoveryTests extends TestGroup {
@@ -43,7 +42,7 @@ public class DiscoveryTests extends TestGroup {
                     List<ServiceInfo> allServices = client.getallServices().read().get();
 
                     //Assert
-                    if(allServices != null && allServices.size() > 0)
+                    if (allServices != null && allServices.size() > 0)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -74,7 +73,7 @@ public class DiscoveryTests extends TestGroup {
                     List<ServiceInfo> services = client.getservices().read().get();
 
                     //Assert
-                    if(services != null && services.size() > 0)
+                    if (services != null && services.size() > 0)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -106,11 +105,11 @@ public class DiscoveryTests extends TestGroup {
 
                     //Act
                     ServiceInfo service = null;
-                    if(services.size() > 0)
+                    if (services.size() > 0)
                         service = client.getservices().getById(services.get(0).getentityKey()).read().get();
 
                     //Assert
-                    if(service != null && service.getserviceId() != null)
+                    if (service != null && service.getserviceId() != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -137,7 +136,6 @@ public class DiscoveryTests extends TestGroup {
                     result.setTestCase(this);
 
 
-
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Prepare
@@ -150,7 +148,7 @@ public class DiscoveryTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(filteredServices.size() == 1)
+                    if (filteredServices.size() == 1)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -187,7 +185,7 @@ public class DiscoveryTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(filteredServices.size() > 0 && !filteredServices.get(0).getproviderName().equals("") && filteredServices.get(0).getserviceName() == null)
+                    if (filteredServices.size() > 0 && !filteredServices.get(0).getproviderName().equals("") && filteredServices.get(0).getserviceName() == null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -221,7 +219,7 @@ public class DiscoveryTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(filteredServices.size() == 1)
+                    if (filteredServices.size() == 1)
                         result.setStatus(TestStatus.Passed);
 
                     return result;

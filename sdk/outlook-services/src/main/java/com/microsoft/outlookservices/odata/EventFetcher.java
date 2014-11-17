@@ -6,6 +6,8 @@
 package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
 import com.microsoft.outlookservices.*;       
@@ -23,10 +25,34 @@ public class EventFetcher extends ODataEntityFetcher<Event,EventOperations>
      * @param parent the parent
      */
      public EventFetcher(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Event.class,EventOperations.class);
+        super(urlComponent, parent, Event.class, EventOperations.class);
     }
 
-         /**
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public EventFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public EventFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    	     /**
      * Gets attachments.
      *
      * @return the attachments
@@ -48,7 +74,7 @@ public class EventFetcher extends ODataEntityFetcher<Event,EventOperations>
      *
      * @return the calendar
      */
-    public CalendarFetcher getCalendar() {
+	public CalendarFetcher getCalendar() {
         return new CalendarFetcher("Calendar", this);
     }
      /**

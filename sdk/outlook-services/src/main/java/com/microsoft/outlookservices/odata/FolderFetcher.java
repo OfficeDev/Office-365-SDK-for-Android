@@ -6,6 +6,8 @@
 package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
 import com.microsoft.outlookservices.*;       
@@ -23,10 +25,34 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations>
      * @param parent the parent
      */
      public FolderFetcher(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, Folder.class,FolderOperations.class);
+        super(urlComponent, parent, Folder.class, FolderOperations.class);
     }
 
-         /**
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public FolderFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public FolderFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    	     /**
      * Gets child folders.
      *
      * @return the child folders

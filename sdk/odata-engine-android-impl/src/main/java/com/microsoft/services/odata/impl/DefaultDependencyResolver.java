@@ -3,8 +3,8 @@ package com.microsoft.services.odata.impl;
 import android.os.Build;
 
 import com.microsoft.services.odata.Constants;
-import com.microsoft.services.odata.ODataURLImpl;
 import com.microsoft.services.odata.impl.http.AndroidHttpTransport;
+import com.microsoft.services.odata.impl.http.RequestImpl;
 import com.microsoft.services.odata.interfaces.*;
 
 /**
@@ -45,6 +45,11 @@ public class DefaultDependencyResolver implements DependencyResolver {
     @Override
     public ODataURL createODataURL() {
         return new ODataURLImpl();
+    }
+
+    @Override
+    public Request createRequest() {
+        return new RequestImpl();
     }
 
     @Override

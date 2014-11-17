@@ -6,14 +6,17 @@
 package com.microsoft.directoryservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.directoryservices.*; 
-import com.microsoft.directoryservices.*;		
+import com.microsoft.directoryservices.*;       
 
 /**
  * The type  ContactFetcher.
  */
-public class ContactFetcher extends ODataEntityFetcher<Contact,ContactOperations> implements Readable<Contact> {
+public class ContactFetcher extends ODataEntityFetcher<Contact,ContactOperations> 
+                                     implements Readable<Contact> {
 
      /**
      * Instantiates a new ContactFetcher.
@@ -21,8 +24,32 @@ public class ContactFetcher extends ODataEntityFetcher<Contact,ContactOperations
      * @param urlComponent the url component
      * @param parent the parent
      */
-	 public ContactFetcher(String urlComponent, ODataExecutable parent) {
-		super(urlComponent, parent, Contact.class,ContactOperations.class);
+     public ContactFetcher(String urlComponent, ODataExecutable parent) {
+        super(urlComponent, parent, Contact.class, ContactOperations.class);
     }
 
-	}
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public ContactFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public ContactFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    	}

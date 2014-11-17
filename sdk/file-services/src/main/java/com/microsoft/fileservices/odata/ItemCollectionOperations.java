@@ -6,12 +6,12 @@
 package com.microsoft.fileservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
-import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 
 /**
@@ -34,34 +34,45 @@ public class ItemCollectionOperations extends ODataOperations{
      *
      * @param name the name
      * @param value the value
-     * @return the file attachment collection operations
+     * @return the collection operations
      */
-	public ItemCollectionOperations addParameter(String name, Object value) {
-		addCustomParameter(name, value);
-		return this;
-	}
-	 /**
+    public ItemCollectionOperations addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the collection operations
+     */
+    public ItemCollectionOperations addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+     /**
      * getByPath listenable future.
         * @param path the path
 
-	 * @return the listenable future
-     */		
-	public ListenableFuture<Item> getByPath(String path) {
+     * @return the listenable future
+     */     
+    public ListenableFuture<Item> getByPath(String path) {
         final SettableFuture<Item> result = SettableFuture.create();
 
-		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-		map.put("path", path);
-			
-		ODataURL url = getResolver().createODataURL();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        map.put("path", path);
+		    
+		Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        String parameters = getFunctionParameters(map);
+	request.getUrl().appendPathComponent("getByPath(" + parameters + ")");
+        ListenableFuture<ODataResponse> future = oDataExecute(request);   
+        addEntityResultCallback(result, future, Item.class);
         
-				String parameters = getFunctionParameters(map);
-		url.appendPathComponent("getByPath(" + parameters + ")");
-		
-		ListenableFuture<byte[]> future = oDataExecute(url, serializeToJsonByteArray(map, getResolver()), HttpVerb.GET, getCustomHeaders());
-
-		addEntityResultCallback(result, future, getResolver(), Item.class);
-		
         return result;
     }
-				
+                
 }

@@ -5,16 +5,19 @@
  ******************************************************************************/
 package com.microsoft.sharepointservices.odata;
 
+import com.microsoft.fileservices.odata.DriveFetcher;
+import com.microsoft.fileservices.odata.ItemCollectionOperations;
+import com.microsoft.fileservices.odata.ItemFetcher;
+import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.fileservices.*;
-import com.microsoft.fileservices.odata.*;
 
 /**
  * The type SharePointClient.
  */
 public class SharePointClient extends BaseODataContainer {
 
-	 /**
+     /**
      * Instantiates a new SharePointClient.
      *
      * @param url the url
@@ -23,7 +26,32 @@ public class SharePointClient extends BaseODataContainer {
     public SharePointClient(String url, DependencyResolver resolver) {
         super(url, resolver);
     }
-	 /**
+
+	     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the client
+     */
+    public SharePointClient addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the client
+     */
+    public SharePointClient addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+     /**
      * Gets drive.
      *
      * @return the drive
@@ -31,12 +59,12 @@ public class SharePointClient extends BaseODataContainer {
     public DriveFetcher getdrive() {
         return new DriveFetcher("drive", this);
     }
-	 /**
+     /**
      * Gets Item.
      *
      * @return the Item
      */
-	public ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getfiles() {
+    public ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getfiles() {
         return new ODataCollectionFetcher<Item, ItemFetcher,ItemCollectionOperations>("files", this, Item.class,ItemCollectionOperations.class);
     }
 }

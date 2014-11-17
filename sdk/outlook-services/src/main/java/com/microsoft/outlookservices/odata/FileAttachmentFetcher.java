@@ -6,6 +6,8 @@
 package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
 import com.microsoft.outlookservices.*;       
@@ -23,7 +25,31 @@ public class FileAttachmentFetcher extends ODataEntityFetcher<FileAttachment,Fil
      * @param parent the parent
      */
      public FileAttachmentFetcher(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, FileAttachment.class,FileAttachmentOperations.class);
+        super(urlComponent, parent, FileAttachment.class, FileAttachmentOperations.class);
     }
 
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public FileAttachmentFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
     }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public FileAttachmentFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    	}

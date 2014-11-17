@@ -1,10 +1,10 @@
 include ':list-services',
-        ':odata-engine-android-impl',
-        ':odata-engine-interfaces',
-        ':odata-engine-java-impl',
-        ':odata-engine-helpers',
+        ':outlook-services',
+        ':file-services',
         ':directory-services',
         ':discovery-services',
-        ':odata-engine-java-desktop-impl',
-        ':outlook-services',
-        ':file-services'
+        ':odata-engine-core',
+        ':odata-engine-android-impl',
+        ':odata-engine-jvm-impl'
+
+

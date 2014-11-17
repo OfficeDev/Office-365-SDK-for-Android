@@ -226,7 +226,8 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder"  + UUID.randomUUID();;
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+                    ;
                     String parentFolderName = "Inbox";
 
                     //Prepare for test
@@ -292,7 +293,8 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder"  + UUID.randomUUID();;
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+                    ;
                     String parentFolderName = "Inbox";
                     String destinationFolderName = "Drafts";
 
@@ -361,7 +363,8 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    String newFolderName = "TestFolder"  + UUID.randomUUID();;
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+                    ;
                     String parentFolderName = "Inbox";
                     String destinationFolderName = "Drafts";
 
@@ -438,8 +441,10 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    String folderName = "TestFolder"  + UUID.randomUUID();;
-                    String updatedFolderName = "UpdatedTestFolder"  + UUID.randomUUID();;
+                    String folderName = "TestFolder" + UUID.randomUUID();
+                    ;
+                    String updatedFolderName = "UpdatedTestFolder" + UUID.randomUUID();
+                    ;
                     String parentFolderName = "Inbox";
 
                     //Create new folder
@@ -507,8 +512,7 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(3).read().get();
-                    if(inboxMessages.size()== 0)
-                    {
+                    if (inboxMessages.size() == 0) {
                         String mailSubject = "Test get Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
 
@@ -697,7 +701,7 @@ public class ExchangeTests extends TestGroup {
                     //Assert
                     Message storedMessage = client.getMe().getMessages().getById(added.getId()).read().get();
 
-                    if(!storedMessage.getHasAttachments())
+                    if (!storedMessage.getHasAttachments())
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -1008,8 +1012,7 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
-                    if(inboxMessages.size()== 0)
-                    {
+                    if (inboxMessages.size() == 0) {
                         String mailSubject = "Test reply Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                         client.getMe().getOperations().sendMail(message, true).get();
@@ -1033,12 +1036,12 @@ public class ExchangeTests extends TestGroup {
                             .getMessages().read().get();
 
                     boolean exists = false;
-                    for(Message m : messages){
-                        if(m.getConversationId().equals(messageToReply.getConversationId()))
+                    for (Message m : messages) {
+                        if (m.getConversationId().equals(messageToReply.getConversationId()))
                             exists = true;
                     }
 
-                    if(!exists)
+                    if (!exists)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1076,8 +1079,7 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
-                    if(inboxMessages.size()== 0)
-                    {
+                    if (inboxMessages.size() == 0) {
                         String mailSubject = "Test reply all Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                         client.getMe().getOperations().sendMail(message, true).get();
@@ -1101,12 +1103,12 @@ public class ExchangeTests extends TestGroup {
                             .getMessages().read().get();
 
                     boolean exists = false;
-                    for(Message m : messages){
-                        if(m.getConversationId().equals(messageToReply.getConversationId()))
+                    for (Message m : messages) {
+                        if (m.getConversationId().equals(messageToReply.getConversationId()))
                             exists = true;
                     }
 
-                    if(!exists)
+                    if (!exists)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1144,8 +1146,7 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getMailCalendarContactClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
-                    if(inboxMessages.size()== 0)
-                    {
+                    if (inboxMessages.size() == 0) {
                         String mailSubject = "Test fw Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
 
@@ -1170,12 +1171,12 @@ public class ExchangeTests extends TestGroup {
                             .getMessages().read().get();
 
                     boolean exists = false;
-                    for(Message m : messages){
-                        if(m.getConversationId().equals(messageToReply.getConversationId()))
+                    for (Message m : messages) {
+                        if (m.getConversationId().equals(messageToReply.getConversationId()))
                             exists = true;
                     }
 
-                    if(!exists)
+                    if (!exists)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1200,7 +1201,7 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
-    private Message getSampleMessage(String subject, String to, String cc){
+    private Message getSampleMessage(String subject, String to, String cc) {
         Message m = new Message();
         // To Recipient
         final Recipient toRecipient = new Recipient();
@@ -1212,7 +1213,7 @@ public class ExchangeTests extends TestGroup {
         m.setToRecipients(toRecipients);
 
         // CC recipient
-        if(!cc.isEmpty()){
+        if (!cc.isEmpty()) {
             final Recipient ccRecipient = new Recipient();
             EmailAddress ccEmailAddress = new EmailAddress();
             ccEmailAddress.setAddress(cc);
@@ -1261,7 +1262,7 @@ public class ExchangeTests extends TestGroup {
                             .add(calendarGroup).get();
 
                     //Assert
-                    if(!addedCalendarGroup.getName().equals(calendarGroup.getName()))
+                    if (!addedCalendarGroup.getName().equals(calendarGroup.getName()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1304,7 +1305,7 @@ public class ExchangeTests extends TestGroup {
                     List<CalendarGroup> calendarGroups = client.getMe().getCalendarGroups().read().get();
 
                     //Assert
-                    if(calendarGroups.size() == 0)
+                    if (calendarGroups.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1348,7 +1349,7 @@ public class ExchangeTests extends TestGroup {
                             .getById(addedCalendarGroup.getId()).read().get();
 
                     //Assert
-                    if(!storedCalendarGroup.getName().equals(addedCalendarGroup.getName()))
+                    if (!storedCalendarGroup.getName().equals(addedCalendarGroup.getName()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1394,7 +1395,7 @@ public class ExchangeTests extends TestGroup {
                             .update(calendarGroup).get();
 
                     //Assert
-                    if(!updatedCalendarGroup.getName().equals("Updated Calendar Group"))
+                    if (!updatedCalendarGroup.getName().equals("Updated Calendar Group"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1443,8 +1444,7 @@ public class ExchangeTests extends TestGroup {
                     try {
                         client.getMe().getCalendarGroups()
                                 .getById(addedCalendarGroup.getId()).read().get();
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         //It's supposed to fail
                         result.setStatus(TestStatus.Passed);
                     }
@@ -1485,7 +1485,7 @@ public class ExchangeTests extends TestGroup {
                     List<Calendar> calendars = client.getMe().getCalendars().read().get();
 
                     //Assert
-                    if(calendars.size() == 0)
+                    if (calendars.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1521,7 +1521,7 @@ public class ExchangeTests extends TestGroup {
                     Calendar calendar = client.getMe().getCalendar().read().get();
 
                     //Assert
-                    if(calendar.getName().equals(""))
+                    if (calendar.getName().equals(""))
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -1557,7 +1557,7 @@ public class ExchangeTests extends TestGroup {
                             .add(calendar).get();
 
                     //Assert
-                    if(!addedCalendar.getName().equals(calendar.getName()))
+                    if (!addedCalendar.getName().equals(calendar.getName()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1602,7 +1602,7 @@ public class ExchangeTests extends TestGroup {
                             .getById(addedCalendar.getId()).read().get();
 
                     //Assert
-                    if(!storedCalendar.getName().equals(addedCalendar.getName()))
+                    if (!storedCalendar.getName().equals(addedCalendar.getName()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1650,7 +1650,7 @@ public class ExchangeTests extends TestGroup {
                             .update(calendar).get();
 
                     //Assert
-                    if(!updatedCalendar.getName().equals(updatedCalendarName))
+                    if (!updatedCalendar.getName().equals(updatedCalendarName))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1699,8 +1699,7 @@ public class ExchangeTests extends TestGroup {
                     try {
                         client.getMe().getCalendars()
                                 .getById(addedCalendar.getId()).read().get();
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         //It's supposed to fail
                         result.setStatus(TestStatus.Passed);
                     }
@@ -1789,7 +1788,7 @@ public class ExchangeTests extends TestGroup {
                     List<Event> events = client.getMe().getCalendars().getById("Calendar").getEvents().read().get();
 
                     //Assert
-                    if(events.size() == 0)
+                    if (events.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1830,7 +1829,7 @@ public class ExchangeTests extends TestGroup {
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
                     //Assert
-                    if(!addedEvent.getSubject().equals(event.getSubject()))
+                    if (!addedEvent.getSubject().equals(event.getSubject()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1874,7 +1873,7 @@ public class ExchangeTests extends TestGroup {
                     Event updatedEvent = client.getMe().getEvents().getById(addedEvent.getId()).update(event).get();
 
                     //Assert
-                    if(updatedEvent.getImportance() != Importance.Low || !updatedEvent.getSubject().equals("Updated Subject"))
+                    if (updatedEvent.getImportance() != Importance.Low || !updatedEvent.getSubject().equals("Updated Subject"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1921,8 +1920,7 @@ public class ExchangeTests extends TestGroup {
                     try {
                         client.getMe().getEvents()
                                 .getById(addedEvent.getId()).read().get();
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         //It's supposed to fail
                         result.setStatus(TestStatus.Passed);
                     }
@@ -1962,14 +1960,14 @@ public class ExchangeTests extends TestGroup {
                             .getOperations().accept("Accepted").get();
 
                     //Assert
-                    if(!addedEvent.getSubject().equals(event.getSubject()))
+                    if (!addedEvent.getSubject().equals(event.getSubject()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
                     client.getMe()
-                        .getEvents()
-                        .getById(addedEvent.getId())
-                        .delete().get();
+                            .getEvents()
+                            .getById(addedEvent.getId())
+                            .delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -1983,7 +1981,7 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
-    private Event getSampleEvent(){
+    private Event getSampleEvent() {
         Event event = new Event();
         event.setSubject("Today's appointment");
         event.setStart(java.util.Calendar.getInstance());
@@ -2028,7 +2026,7 @@ public class ExchangeTests extends TestGroup {
                             .getContacts().read().get();
 
                     //Assert
-                    if(contacts == null)
+                    if (contacts == null)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -2062,7 +2060,7 @@ public class ExchangeTests extends TestGroup {
                     List<Contact> contacts = client.getMe().getContacts().top(2).read().get();
 
                     //Assert
-                    if(contacts.size() == 0 || contacts.size() >2)
+                    if (contacts.size() == 0 || contacts.size() > 2)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -2100,7 +2098,7 @@ public class ExchangeTests extends TestGroup {
                             .getById(addedContact.getId()).read().get();
 
                     //Assert
-                    if(!storedContact.getId().equals(addedContact.getId()))
+                    if (!storedContact.getId().equals(addedContact.getId()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -2139,13 +2137,12 @@ public class ExchangeTests extends TestGroup {
                     List<Contact> contacts = client.getMe().getContacts().read().get();
 
                     boolean exists = false;
-                    for(Contact c : contacts)
-                    {
-                        if(c.getId().equals(addedContact.getId()))
+                    for (Contact c : contacts) {
+                        if (c.getId().equals(addedContact.getId()))
                             exists = true;
                     }
 
-                    if(exists)
+                    if (exists)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -2184,7 +2181,7 @@ public class ExchangeTests extends TestGroup {
                             .getById(addedContact.getId()).read().get();
 
                     //Assert
-                    if(!updatedContact.getId().equals(addedContact.getId()) || !updatedContact.getGivenName().equals("Updated given name"))
+                    if (!updatedContact.getId().equals(addedContact.getId()) || !updatedContact.getGivenName().equals("Updated given name"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -2201,7 +2198,7 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
-    private Contact getContact(){
+    private Contact getContact() {
         final Contact newContact = new Contact();
         newContact.setDisplayName("Test Contact");
         newContact.setGivenName("Test Contact Name");
@@ -2245,7 +2242,7 @@ public class ExchangeTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(messages.size() == 1)
+                    if (messages.size() == 1)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -2288,7 +2285,7 @@ public class ExchangeTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(messages.size() > 0 && !messages.get(0).getSubject().equals("") && messages.get(0).getDateTimeReceived() == null)
+                    if (messages.size() > 0 && !messages.get(0).getSubject().equals("") && messages.get(0).getDateTimeReceived() == null)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -2333,7 +2330,7 @@ public class ExchangeTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(messages.size() == 1 && messages.get(0).getSubject().equals(subject))
+                    if (messages.size() == 1 && messages.get(0).getSubject().equals(subject))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup

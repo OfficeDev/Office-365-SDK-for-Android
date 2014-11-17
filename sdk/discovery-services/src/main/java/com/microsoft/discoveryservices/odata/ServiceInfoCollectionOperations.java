@@ -6,12 +6,12 @@
 package com.microsoft.discoveryservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.discoveryservices.*;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-import static com.microsoft.services.odata.EntityFetcherHelper.addEntityResultCallback;
-import static com.microsoft.services.odata.EntityFetcherHelper.addByteArrayResultCallback;
+
 
 
 /**
@@ -34,10 +34,22 @@ public class ServiceInfoCollectionOperations extends ODataOperations{
      *
      * @param name the name
      * @param value the value
-     * @return the file attachment collection operations
+     * @return the collection operations
      */
-	public ServiceInfoCollectionOperations addParameter(String name, Object value) {
-		addCustomParameter(name, value);
-		return this;
-	}
+    public ServiceInfoCollectionOperations addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the collection operations
+     */
+    public ServiceInfoCollectionOperations addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
 }

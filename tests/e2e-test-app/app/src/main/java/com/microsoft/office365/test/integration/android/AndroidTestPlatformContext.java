@@ -28,6 +28,7 @@ import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
+
 public class AndroidTestPlatformContext implements TestPlatformContext {
 
     private static Activity mActivity;
@@ -60,7 +61,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public String getDiscoveryServerUrl(){
+    public String getDiscoveryServerUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DISCOVERY_RESOURCE_URL,
                 "");
     }
@@ -192,7 +193,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     @Override
     public OutlookClient getMailCalendarContactClient() {
-        return  getExchangeEntityContainerClientAAD();
+        return getExchangeEntityContainerClientAAD();
     }
 
     @Override
@@ -206,7 +207,9 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public DiscoveryClient getDiscoveryClient() { return getDiscoveryClientAAD(); }
+    public DiscoveryClient getDiscoveryClient() {
+        return getDiscoveryClientAAD();
+    }
 
     @Override
     public DirectoryClient getDirectoryClient() {
@@ -235,7 +238,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         try {
             getAuthenticationContext().acquireToken(
                     mActivity, serverUrl,
-                    getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                    getClientId(), getRedirectUrl(), PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
                         @Override
@@ -255,6 +258,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                         }
                     });
 
+
         } catch (Throwable t) {
             future.setException(t);
         }
@@ -266,12 +270,12 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         }
     }
 
-    private SharepointListsClient getSharePointListClientAAD(){
+    private SharepointListsClient getSharePointListClientAAD() {
         final SettableFuture<SharepointListsClient> future = SettableFuture.create();
         try {
             getAuthenticationContext().acquireToken(
                     mActivity, getSharepointServerUrl(),
-                    getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                    getClientId(), getRedirectUrl(), PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
                         @Override

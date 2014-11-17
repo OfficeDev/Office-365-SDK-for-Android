@@ -6,6 +6,8 @@
 package com.microsoft.outlookservices.odata;
 
 import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*; 
 import com.microsoft.outlookservices.*;       
@@ -23,10 +25,34 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations>
      * @param parent the parent
      */
      public UserFetcher(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent, User.class,UserOperations.class);
+        super(urlComponent, parent, User.class, UserOperations.class);
     }
 
-         /**
+     /**
+     * Add parameter.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public UserFetcher addParameter(String name, Object value) {
+        addCustomParameter(name, value);
+        return this;
+    }
+
+     /**
+     * Add header.
+     *
+     * @param name the name
+     * @param value the value
+     * @return the fetcher
+     */
+    public UserFetcher addHeader(String name, String value) {
+        addCustomHeader(name, value);
+        return this;
+    }
+
+    	     /**
      * Gets folders.
      *
      * @return the folders
@@ -65,7 +91,7 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations>
      *
      * @return the root folder
      */
-    public FolderFetcher getRootFolder() {
+	public FolderFetcher getRootFolder() {
         return new FolderFetcher("RootFolder", this);
     }
      /**
@@ -90,7 +116,7 @@ public class UserFetcher extends ODataEntityFetcher<User,UserOperations>
      *
      * @return the calendar
      */
-    public CalendarFetcher getCalendar() {
+	public CalendarFetcher getCalendar() {
         return new CalendarFetcher("Calendar", this);
     }
      /**
