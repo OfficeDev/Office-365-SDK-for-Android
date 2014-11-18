@@ -10,84 +10,88 @@ package com.microsoft.outlookservices;
 */
 public class Item extends Entity {
 
-	public Item(){
-		setODataType("#Microsoft.OutlookServices.Item");
-	}
+    public Item(){
+        setODataType("#Microsoft.OutlookServices.Item");
+    }
 
+        
 	private String ChangeKey;
 
-	/**
-	* Gets the Change Key.
-	*
-	* @return the String
-	*/
-	public String getChangeKey() {
-		return this.ChangeKey; 
-	}
+    /**
+    * Gets the Change Key.
+    *
+    * @return the String
+    */
+    public String getChangeKey() {
+        return this.ChangeKey; 
+    }
 
-	/**
-	* Sets the Change Key.
-	*
-	* @param value the String
-	*/
-	public void setChangeKey(String value) { 
-		this.ChangeKey = value; 
-	}
+    /**
+    * Sets the Change Key.
+    *
+    * @param value the String
+    */
+    public void setChangeKey(String value) { 
+        this.ChangeKey = value; 
+    }
+    
 	private java.util.List<String> Categories;
 
-	/**
-	* Gets the Categories.
-	*
-	* @return the java.util.List<String>
-	*/
-	public java.util.List<String> getCategories() {
-		return this.Categories; 
-	}
+    /**
+    * Gets the Categories.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getCategories() {
+        return this.Categories; 
+    }
 
-	/**
-	* Sets the Categories.
-	*
-	* @param value the java.util.List<String>
-	*/
-	public void setCategories(java.util.List<String> value) { 
-		this.Categories = value; 
-	}
+    /**
+    * Sets the Categories.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setCategories(java.util.List<String> value) { 
+        this.Categories = value; 
+    }
+    
 	private java.util.Calendar DateTimeCreated;
 
-	/**
-	* Gets the Date Time Created.
-	*
-	* @return the java.util.Calendar
-	*/
-	public java.util.Calendar getDateTimeCreated() {
-		return this.DateTimeCreated; 
-	}
+    /**
+    * Gets the Date Time Created.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getDateTimeCreated() {
+        return this.DateTimeCreated; 
+    }
 
-	/**
-	* Sets the Date Time Created.
-	*
-	* @param value the java.util.Calendar
-	*/
-	public void setDateTimeCreated(java.util.Calendar value) { 
-		this.DateTimeCreated = value; 
-	}
+    /**
+    * Sets the Date Time Created.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setDateTimeCreated(java.util.Calendar value) { 
+        this.DateTimeCreated = value; 
+    }
+    
 	private java.util.Calendar DateTimeLastModified;
 
-	/**
-	* Gets the Date Time Last Modified.
-	*
-	* @return the java.util.Calendar
-	*/
-	public java.util.Calendar getDateTimeLastModified() {
-		return this.DateTimeLastModified; 
-	}
+    /**
+    * Gets the Date Time Last Modified.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getDateTimeLastModified() {
+        return this.DateTimeLastModified; 
+    }
 
-	/**
-	* Sets the Date Time Last Modified.
-	*
-	* @param value the java.util.Calendar
-	*/
-	public void setDateTimeLastModified(java.util.Calendar value) { 
-		this.DateTimeLastModified = value; 
-	}
+    /**
+    * Sets the Date Time Last Modified.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setDateTimeLastModified(java.util.Calendar value) { 
+        this.DateTimeLastModified = value; 
+    }
 }

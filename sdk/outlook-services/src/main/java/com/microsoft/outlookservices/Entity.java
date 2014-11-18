@@ -10,27 +10,28 @@ package com.microsoft.outlookservices;
 */
 public class Entity extends ODataBaseEntity {
 
-	public Entity(){
-		setODataType("#Microsoft.OutlookServices.Entity");
-	}
+    public Entity(){
+        setODataType("#Microsoft.OutlookServices.Entity");
+    }
 
+        
 	private String Id;
 
-	/**
-	* Gets the Id.
-	*
-	* @return the String
-	*/
-	public String getId() {
-		return this.Id; 
-	}
+    /**
+    * Gets the Id.
+    *
+    * @return the String
+    */
+    public String getId() {
+        return this.Id; 
+    }
 
-	/**
-	* Sets the Id.
-	*
-	* @param value the String
-	*/
-	public void setId(String value) { 
-		this.Id = value; 
-	}
+    /**
+    * Sets the Id.
+    *
+    * @param value the String
+    */
+    public void setId(String value) { 
+        this.Id = value; 
+    }
 }

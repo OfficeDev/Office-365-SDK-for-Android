@@ -10,8 +10,28 @@ package com.microsoft.outlookservices;
 */
 public class ItemAttachment extends Attachment {
 
-	public ItemAttachment(){
-		setODataType("#Microsoft.OutlookServices.ItemAttachment");
-	}
+    public ItemAttachment(){
+        setODataType("#Microsoft.OutlookServices.ItemAttachment");
+    }
 
-}
+    
+    private Item Item = null;
+
+    /**
+    * Gets the Item.
+    *
+    * @return the Item
+    */
+    public Item getItem() {
+        return this.Item; 
+    }
+    
+    /**
+    * Sets the Item.
+    *
+    * @param value the Item
+    */
+    public void setItem(Item value) { 
+        this.Item = value; 
+    }
+        }
