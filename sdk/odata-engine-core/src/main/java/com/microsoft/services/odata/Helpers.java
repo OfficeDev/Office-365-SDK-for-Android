@@ -2,6 +2,7 @@ package com.microsoft.services.odata;
 
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.ODataURL;
+import com.microsoft.services.odata.interfaces.Request;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -88,15 +89,22 @@ public class Helpers {
     /**
      * Add custom parameters to o data uRL.
      *
-     * @param url the url
+     * @param request the request
      * @param parameters the parameters
+     * @param headers the custom headers
      */
-    public static void addCustomParametersToODataURL(ODataURL url, Map<String, Object> parameters) {
-        Set<String> keys = parameters.keySet();
-
-        for (String name : keys) {
+    public static void addCustomParametersToODataRequest(Request request, Map<String, Object> parameters, Map<String, String> headers) {
+        ODataURL url = request.getUrl();
+        Set<String> parameterKeys = parameters.keySet();
+        for (String name : parameterKeys) {
             Object val = parameters.get(name);
             url.addQueryStringParameter(name, toODataURLValue(val));
+        }
+
+        Set<String> headerKeys = headers.keySet();
+        for (String name : headerKeys) {
+            String val = headers.get(name);
+            request.addHeader(name, val);
         }
     }
 

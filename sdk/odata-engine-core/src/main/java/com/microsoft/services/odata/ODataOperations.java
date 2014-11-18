@@ -13,7 +13,7 @@ import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.Request;
 
-import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL;
+import static com.microsoft.services.odata.Helpers.addCustomParametersToODataRequest;
 
 /**
  * The type ODataOperations.
@@ -36,7 +36,7 @@ public abstract class ODataOperations extends ODataExecutable {
     @Override
     protected ListenableFuture<ODataResponse> oDataExecute(Request request) {
         request.getUrl().prependPathComponent(urlComponent);
-        addCustomParametersToODataURL(request.getUrl(), getParameters());
+        addCustomParametersToODataRequest(request, getParameters(), getHeaders());
         return parent.oDataExecute(request);
     }
 

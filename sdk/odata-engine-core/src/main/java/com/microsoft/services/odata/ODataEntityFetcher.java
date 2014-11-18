@@ -12,7 +12,7 @@ import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
 
-import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL;
+import static com.microsoft.services.odata.Helpers.addCustomParametersToODataRequest;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 
 /**
@@ -50,7 +50,7 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
         ODataURL oDataURL = request.getUrl();
         oDataURL.prependPathComponent(urlComponent);
 
-        addCustomParametersToODataURL(oDataURL, getParameters());
+        addCustomParametersToODataRequest(request, getParameters(), getHeaders());
         return parent.oDataExecute(request);
     }
 

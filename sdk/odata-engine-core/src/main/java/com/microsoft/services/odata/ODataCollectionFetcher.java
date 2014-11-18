@@ -16,7 +16,7 @@ import com.microsoft.services.odata.interfaces.Request;
 
 import java.util.List;
 
-import static com.microsoft.services.odata.Helpers.addCustomParametersToODataURL;
+import static com.microsoft.services.odata.Helpers.addCustomParametersToODataRequest;
 import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
 
 /**
@@ -159,7 +159,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         } else {
             setSelectorUrl(request.getUrl(), urlComponent, selectedId);
         }
-        addCustomParametersToODataURL(request.getUrl(), getParameters());
+        addCustomParametersToODataRequest(request, getParameters(), getHeaders());
         return parent.oDataExecute(request);
     }
 
