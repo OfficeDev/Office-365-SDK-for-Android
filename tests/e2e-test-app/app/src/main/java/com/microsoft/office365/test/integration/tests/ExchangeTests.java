@@ -77,7 +77,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canGetCalendarById("Can get calendar by id", true));
         this.addTest(canUpdateCalendar("Can update calendar", true));
         this.addTest(canDeleteCalendar("Can delete calendar", true));
-        this.addTest(canGetCalendarView("Can get Calendar View", false));
+        this.addTest(canGetCalendarView("Can get Calendar View", true));
 
         //Events
         this.addTest(canGetEvents("Can get events", true));
@@ -1742,14 +1742,10 @@ public class ExchangeTests extends TestGroup {
                     dateStart.add(java.util.Calendar.HOUR, 2);
 
                     // Act
-                    List<Event> calendarView = new ArrayList<Event>();
-                    /*
                     List<Event> calendarView = client.getMe().getCalendarView()
-                            .getOperations()
-                            .addParameter("startdatetime",CalendarSerializer.serialize(dateStart))
-                            .addParameter("enddatetime", CalendarSerializer.serialize(dateEnd))
+                            .addParameter("startdatetime",dateStart)
+                            .addParameter("enddatetime", dateEnd)
                             .read().get();
-                    */
 
                     //Assert
                     if(calendarView.size() == 0)

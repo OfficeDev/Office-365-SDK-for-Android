@@ -132,7 +132,7 @@ public class Helpers {
        }
 
        if (o instanceof Calendar) {
-           return "'" + CalendarSerializer.serialize((Calendar)o) + "'";
+           return "" + CalendarSerializer.serialize((Calendar)o) + "";
        }
 
        return o.toString();
