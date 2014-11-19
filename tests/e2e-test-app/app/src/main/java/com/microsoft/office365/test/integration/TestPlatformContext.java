@@ -1,27 +1,31 @@
 package com.microsoft.office365.test.integration;
 
-import java.util.concurrent.Future;
-
-
 import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.discoveryservices.odata.DiscoveryClient;
-import com.microsoft.listservices.SharepointClient;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
+import java.util.concurrent.Future;
+
+//import com.microsoft.directoryservices.odata.DirectoryClient;
+//import com.microsoft.discoveryservices.odata.DiscoveryClient;
+//import com.microsoft.listservices.SharepointClient;
+//import com.microsoft.listservices.SharepointListsClient;
+//import com.microsoft.sharepointservices.odata.SharePointClient;
+
 
 public interface TestPlatformContext {
 
-	String getExchangeServerUrl();
+    String getExchangeServerUrl();
 
     String getFileServerUrl();
 
-	String getClientId();
+    String getClientId();
 
-	String getRedirectUrl();
+    String getRedirectUrl();
 
     String getExchangeEndpointUrl();
 
@@ -45,13 +49,13 @@ public interface TestPlatformContext {
 
     String getDirectoryServerUrl();
 
-	Future<Void> showMessage(String message);
+    Future<Void> showMessage(String message);
 
-	void executeTest(TestCase testCase, TestExecutionCallback callback);
+    void executeTest(TestCase testCase, TestExecutionCallback callback);
 
-	void sleep(int seconds) throws Exception;
+    void sleep(int seconds) throws Exception;
 
-	String getAuthenticationMethod();
+    String getAuthenticationMethod();
 
     OutlookClient getMailCalendarContactClient();
 

@@ -19,8 +19,6 @@ See the Apache Version 2.0 License for specific language governing permissions a
  */
 package com.microsoft.office365.test.integration.android;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -48,27 +46,29 @@ import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestResultsPostManager;
 import com.microsoft.office365.test.integration.tests.AllTests;
-import com.microsoft.office365.test.integration.tests.ExchangeTests;
 import com.microsoft.office365.test.integration.tests.DirectoryTests;
 import com.microsoft.office365.test.integration.tests.DiscoveryTests;
+import com.microsoft.office365.test.integration.tests.ExchangeTests;
 import com.microsoft.office365.test.integration.tests.FilesTests;
 import com.microsoft.office365.test.integration.tests.ListsTests;
 
+import java.util.List;
+
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
-	private String mPostUrl = "";
-	private boolean mIsAutomatedRun = false;
-	private StringBuilder mLog;
+    private String mPostUrl = "";
+    private boolean mIsAutomatedRun = false;
+    private StringBuilder mLog;
 
-	private ListView mTestCaseList;
+    private ListView mTestCaseList;
 
-	private Spinner mTestGroupSpinner;
+    private Spinner mTestGroupSpinner;
 
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		// don't restart the activity. Just process the configuration change
-		super.onConfigurationChanged(newConfig);
-	}
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        // don't restart the activity. Just process the configuration change
+        super.onConfigurationChanged(newConfig);
+    }
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,49 +87,49 @@ public class MainActivity extends Activity {
 		AndroidTestPlatformContext testPlatformContext = new AndroidTestPlatformContext(this);
 		ApplicationContext.setTestPlatformContext(testPlatformContext);
 
-		setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-		mTestCaseList = (ListView) findViewById(R.id.testCaseList);
-		TestCaseAdapter testCaseAdapter = new TestCaseAdapter(this, R.layout.row_list_test_case);
-		mTestCaseList.setAdapter(testCaseAdapter);
+        mTestCaseList = (ListView) findViewById(R.id.testCaseList);
+        TestCaseAdapter testCaseAdapter = new TestCaseAdapter(this, R.layout.row_list_test_case);
+        mTestCaseList.setAdapter(testCaseAdapter);
 
-		mTestGroupSpinner = (Spinner) findViewById(R.id.testGroupSpinner);
+        mTestGroupSpinner = (Spinner) findViewById(R.id.testGroupSpinner);
 
-		ArrayAdapter<TestGroup> testGroupAdapter = new ArrayAdapter<TestGroup>(this,
-				android.R.layout.simple_spinner_item);
-		mTestGroupSpinner.setAdapter(testGroupAdapter);
-		mTestGroupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter<TestGroup> testGroupAdapter = new ArrayAdapter<TestGroup>(this,
+                android.R.layout.simple_spinner_item);
+        mTestGroupSpinner.setAdapter(testGroupAdapter);
+        mTestGroupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-				selectTestGroup(pos);
-			}
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                selectTestGroup(pos);
+            }
 
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// do nothing
-			}
-		});
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // do nothing
+            }
+        });
 
-		refreshTestGroupsAndLog();
+        refreshTestGroupsAndLog();
 
-		checkForCIServer();
-	}
+        checkForCIServer();
+    }
 
-	private void selectTestGroup(int pos) {
-		TestGroup tg = (TestGroup) mTestGroupSpinner.getItemAtPosition(pos);
-		List<TestCase> testCases = tg.getTestCases();
+    private void selectTestGroup(int pos) {
+        TestGroup tg = (TestGroup) mTestGroupSpinner.getItemAtPosition(pos);
+        List<TestCase> testCases = tg.getTestCases();
 
-		fillTestList(testCases);
-	}
+        fillTestList(testCases);
+    }
 
-	@SuppressWarnings("unchecked")
-	private void refreshTestGroupsAndLog() {
-		mLog = new StringBuilder();
+    @SuppressWarnings("unchecked")
+    private void refreshTestGroupsAndLog() {
+        mLog = new StringBuilder();
 
-		ArrayAdapter<TestGroup> adapter = (ArrayAdapter<TestGroup>) mTestGroupSpinner.getAdapter();
-		adapter.clear();
-		adapter.add(new AllTests());
+        ArrayAdapter<TestGroup> adapter = (ArrayAdapter<TestGroup>) mTestGroupSpinner.getAdapter();
+        adapter.clear();
+        adapter.add(new AllTests());
         adapter.add(new ExchangeTests());
         adapter.add(new FilesTests());
         adapter.add(new ListsTests());

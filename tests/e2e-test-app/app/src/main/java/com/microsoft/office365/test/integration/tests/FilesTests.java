@@ -12,10 +12,7 @@ import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.odata.Constants;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.UUID;
 
 
@@ -51,7 +48,7 @@ public class FilesTests extends TestGroup {
                     List<Item> files = client.getfiles().read().get();
 
                     //Assert
-                    if(files == null)
+                    if (files == null)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -87,11 +84,11 @@ public class FilesTests extends TestGroup {
                     File storedFile = client.getfiles().getById(addedFile.getid()).asFile().read().get();
 
                     //Assert
-                    if(storedFile == null)
+                    if (storedFile == null)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -127,14 +124,14 @@ public class FilesTests extends TestGroup {
                     byte[] content = client.getfiles().getById(addedFile.getid()).asFile().getContent().get();
 
                     //Assert
-                    if(addedFile == null)
+                    if (addedFile == null)
                         result.setStatus(TestStatus.Failed);
 
-                    if(content.length == 0)
+                    if (content.length == 0)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER,"*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -174,7 +171,7 @@ public class FilesTests extends TestGroup {
                     //Assert
                     byte[] content = client.getfiles().getById(addedFile.getid()).asFile().getContent().get();
                     String strContent = new String(content);
-                    if(addedFile != null && strContent.equals("My other Content"))
+                    if (addedFile != null && strContent.equals("My other Content"))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -216,11 +213,11 @@ public class FilesTests extends TestGroup {
                     client.getfiles().getById(addedFile.getid()).update(newFile);
 
                     //Assert
-                    if(addedFile == null)
+                    if (addedFile == null)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getfiles().getById(addedFile.getid()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -249,7 +246,7 @@ public class FilesTests extends TestGroup {
                     Drive drive = client.getdrive().read().get();
 
                     //Assert
-                    if(drive == null || drive.getquota() == null || drive.getquota().gettotal() == 0 || drive.getid().equals(""))
+                    if (drive == null || drive.getquota() == null || drive.getquota().gettotal() == 0 || drive.getid().equals(""))
                         result.setStatus(TestStatus.Failed);
 
                     return result;
@@ -292,7 +289,7 @@ public class FilesTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(files.size() > 0 && !files.get(0).getname().equals("") && files.get(0).getdateTimeLastModified() == null)
+                    if (files.size() > 0 && !files.get(0).getname().equals("") && files.get(0).getdateTimeLastModified() == null)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -343,7 +340,7 @@ public class FilesTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(files.size() == 1)
+                    if (files.size() == 1)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup

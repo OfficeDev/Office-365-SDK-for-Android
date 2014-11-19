@@ -17,16 +17,15 @@ import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.discoveryservices.odata.DiscoveryClient;
 import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.TestPlatformContext;
-import com.microsoft.office365.test.integration.framework.OAuthCredentials;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
-import com.microsoft.services.odata.impl.http.CredentialsFactoryImpl;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.sharepointservices.odata.SharePointClient;
+
 
 public class AndroidTestPlatformContext implements TestPlatformContext {
 
@@ -60,7 +59,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public String getDiscoveryServerUrl(){
+    public String getDiscoveryServerUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DISCOVERY_RESOURCE_URL,
                 "");
     }
@@ -192,7 +191,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
     @Override
     public OutlookClient getMailCalendarContactClient() {
-        return  getExchangeEntityContainerClientAAD();
+        return getExchangeEntityContainerClientAAD();
     }
 
     @Override
@@ -206,7 +205,9 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public DiscoveryClient getDiscoveryClient() { return getDiscoveryClientAAD(); }
+    public DiscoveryClient getDiscoveryClient() {
+        return getDiscoveryClientAAD();
+    }
 
     @Override
     public DirectoryClient getDirectoryClient() {
@@ -235,7 +236,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         try {
             getAuthenticationContext().acquireToken(
                     mActivity, serverUrl,
-                    getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                    getClientId(), getRedirectUrl(), PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
                         @Override
@@ -247,13 +248,15 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
                         public void onSuccess(AuthenticationResult result) {
                             TClient client = null;
                             try {
-                                client = clientClass.getDeclaredConstructor(String.class, DependencyResolver.class).newInstance(endpointUrl, getDependencyResolver(result.getAccessToken()));
+                                client = clientClass.getDeclaredConstructor(String.class, DependencyResolver.class)
+                                                    .newInstance(endpointUrl, getDependencyResolver(result.getAccessToken()));
                                 future.set(client);
                             } catch (Throwable t) {
                                 onError(new Exception(t));
                             }
                         }
                     });
+
 
         } catch (Throwable t) {
             future.setException(t);
@@ -266,12 +269,12 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         }
     }
 
-    private SharepointListsClient getSharePointListClientAAD(){
+    private SharepointListsClient getSharePointListClientAAD() {
         final SettableFuture<SharepointListsClient> future = SettableFuture.create();
         try {
             getAuthenticationContext().acquireToken(
                     mActivity, getSharepointServerUrl(),
-                    getClientId(),getRedirectUrl(), PromptBehavior.Auto,
+                    getClientId(), getRedirectUrl(), PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
                         @Override
@@ -299,12 +302,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     private DependencyResolver getDependencyResolver(final String token) {
-        OAuthCredentials credentials = new OAuthCredentials(token);
-        CredentialsFactoryImpl credFactory = new CredentialsFactoryImpl();
-        credFactory.setCredentials(credentials);
 
-        DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
-        dependencyResolver.setCredentialsFactory(credFactory);
+        DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver(token);
 
         dependencyResolver.getLogger().setEnabled(true);
         dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);

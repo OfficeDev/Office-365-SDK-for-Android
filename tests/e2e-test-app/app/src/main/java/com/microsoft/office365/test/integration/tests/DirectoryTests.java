@@ -1,3 +1,4 @@
+
 package com.microsoft.office365.test.integration.tests;
 
 import com.microsoft.directoryservices.Application;
@@ -56,6 +57,7 @@ public class DirectoryTests extends TestGroup {
     }
 
     // ********* Users Tests *************
+
 
     private TestCase canGetUsers(String name, boolean enabled) {
         TestCase test = new TestCase() {
@@ -229,6 +231,8 @@ public class DirectoryTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
+    //*
+
 
     // ********* Application Tests *************
 
@@ -606,3 +610,4 @@ public class DirectoryTests extends TestGroup {
         return user;
     }
 }
+

@@ -38,10 +38,10 @@ dependencies {
     compile('com.microsoft.aad:adal:(,2.0)') {
         exclude group: 'com.android.support'
     }
-    compile project(':outlook-services')
-    compile project(':file-services')
     compile project(':odata-engine-android-impl')
+    compile project(':outlook-services')
     compile project(':directory-services')
-    compile project(':list-services')
     compile project(':discovery-services')
+    compile project(':list-services')
+    compile project(':file-services')
 }
