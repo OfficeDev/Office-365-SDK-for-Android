@@ -25,6 +25,8 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
                                                               extends ODataFetcher<TEntity>
                                                               implements Readable<TEntity> {
     private TOperations operations;
+    private String select;
+    private String expand;
 
     /**
      * Instantiates a new ODataEntityFetcher.
@@ -48,6 +50,15 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
     protected ListenableFuture<ODataResponse> oDataExecute(Request request) {
 
         ODataURL oDataURL = request.getUrl();
+
+        if (select != null) {
+            oDataURL.addQueryStringParameter("$select", select);
+        }
+
+        if (expand != null) {
+            oDataURL.addQueryStringParameter("$expand", expand);
+        }
+
         oDataURL.prependPathComponent(urlComponent);
 
         addCustomParametersToODataRequest(request, getParameters(), getHeaders());
@@ -104,6 +115,28 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         addEntityResultCallback(result, future);
         return result;
+    }
+
+    /**
+     * Select ODataCollectionFetcher.
+     *
+     * @param select the select
+     * @return the o data collection fetcher
+     */
+    public ODataEntityFetcher<TEntity, TOperations> select(String select) {
+        this.select = select;
+        return this;
+    }
+
+    /**
+     * Expand ODataCollectionFetcher.
+     *
+     * @param expand the expand
+     * @return the o data collection fetcher
+     */
+    public ODataEntityFetcher<TEntity, TOperations> expand(String expand) {
+        this.expand = expand;
+        return this;
     }
 
     /**
