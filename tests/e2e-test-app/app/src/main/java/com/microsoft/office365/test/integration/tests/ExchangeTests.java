@@ -93,11 +93,12 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canUpdateContact("Can update contacts", true));
 
         //Select, top, filter
-        this.addTest(canFilterMessages("Can use filter in messages", true));
-        this.addTest(canSelectMessages("Can use select in messages", true));
-        this.addTest(canTopMessages("Can use top in messages", true));
+        this.addTest(canFilterMessages("Can use filter in messages list", true));
+        this.addTest(canSelectMessages("Can use select in messages list", true));
+        this.addTest(canTopMessages("Can use top in messages list", true));
         this.addTest(canExpandMessages("Can use expand in messages list", true));
-        this.addTest(canExpandMessages("Can use expand in message", true));
+        this.addTest(canExpandMessage("Can use expand in message", true));
+        this.addTest(canSelectMessage("Can use select in message", true));
     }
 
 
@@ -2452,6 +2453,49 @@ public class ExchangeTests extends TestGroup {
 
                     //Cleanup
                     client.getMe().getMessage(added.getId()).delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSelectMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String subject = "Test Subject " + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+
+                    //Act
+                    Message messageWithSelect = client.getMe()
+                            .getMessage(addedMessage.getId())
+                            .select("Subject,DateTimeCreated")
+                            .read().get();
+
+                    //Assert
+                    if (messageWithSelect != null && messageWithSelect.getSubject().equals(subject) && messageWithSelect.getDateTimeReceived() == null)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
+
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
