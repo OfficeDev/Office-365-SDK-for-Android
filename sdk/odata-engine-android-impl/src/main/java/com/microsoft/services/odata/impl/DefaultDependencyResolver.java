@@ -2,7 +2,6 @@ package com.microsoft.services.odata.impl;
 
 import android.os.Build;
 
-import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.services.odata.Constants;
 import com.microsoft.services.odata.impl.http.AndroidHttpTransport;
 import com.microsoft.services.odata.impl.http.RequestImpl;
@@ -19,18 +18,13 @@ import com.microsoft.services.odata.interfaces.Request;
 public class DefaultDependencyResolver implements DependencyResolver {
 
     private LoggerImpl logger;
-    private AuthenticationContext authenticationContext;
-    private String resourceId;
-    private String clientId;
+    private String token;
 
     /**
      * Instantiates a new Default dependency resolver.
      */
-    public DefaultDependencyResolver(AuthenticationContext authenticationContext,
-                                     final String resourceId, final String clientId ) {
-        this.authenticationContext = authenticationContext;
-        this.resourceId = resourceId;
-        this.clientId = clientId;
+    public DefaultDependencyResolver(String token) {
+        this.token = token;
         this.logger = new LoggerImpl();
     }
 
@@ -73,7 +67,7 @@ public class DefaultDependencyResolver implements DependencyResolver {
         return new Credentials() {
             @Override
             public void prepareRequest(Request request) {
-                DefaultDependencyResolver.this.authenticationContext.acquireTokenSilentSync(resourceId, clientId, null);
+                request.addHeader("Authorization", "Bearer " + token);
             }
         };
     }
