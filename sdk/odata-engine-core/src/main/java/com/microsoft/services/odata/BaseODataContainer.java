@@ -10,7 +10,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.services.odata.interfaces.Credentials;
-import com.microsoft.services.odata.interfaces.CredentialsFactory;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.HttpTransport;
 import com.microsoft.services.odata.interfaces.LogLevel;
@@ -69,13 +68,10 @@ public abstract class BaseODataContainer extends ODataExecutable {
         }
 
         boolean credentialsSet = false;
-        CredentialsFactory credFactory = resolver.getCredentialsFactory();
-        if (credFactory != null) {
-            Credentials cred = credFactory.getCredentials();
-            if (cred != null) {
-                cred.prepareRequest(request);
-                credentialsSet = true;
-            }
+        Credentials cred = resolver.getCredentials();
+        if (cred != null) {
+            cred.prepareRequest(request);
+            credentialsSet = true;
         }
 
         if (!credentialsSet) {

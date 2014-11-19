@@ -26,13 +26,6 @@ public interface DependencyResolver {
     JsonSerializer getJsonSerializer();
 
     /**
-     * Gets credentials factory.
-     *
-     * @return the credentials factory
-     */
-    CredentialsFactory getCredentialsFactory();
-
-    /**
      * Create o data uRL.
      *
      * @return the o data uRL
@@ -52,4 +45,11 @@ public interface DependencyResolver {
      * @return the user agent
      */
     String getPlatformUserAgent(String productName);
+
+    /**
+     * Gets credentials.
+     *
+     * @return the credentials
+     */
+    Credentials getCredentials();
 }

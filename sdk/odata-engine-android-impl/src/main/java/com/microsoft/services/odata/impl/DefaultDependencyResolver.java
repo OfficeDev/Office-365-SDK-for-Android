@@ -5,20 +5,26 @@ import android.os.Build;
 import com.microsoft.services.odata.Constants;
 import com.microsoft.services.odata.impl.http.AndroidHttpTransport;
 import com.microsoft.services.odata.impl.http.RequestImpl;
-import com.microsoft.services.odata.interfaces.*;
+import com.microsoft.services.odata.interfaces.Credentials;
+import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.HttpTransport;
+import com.microsoft.services.odata.interfaces.JsonSerializer;
+import com.microsoft.services.odata.interfaces.ODataURL;
+import com.microsoft.services.odata.interfaces.Request;
 
 /**
  * The type Default dependency resolver.
  */
 public class DefaultDependencyResolver implements DependencyResolver {
 
-    private CredentialsFactory credentialsFactory;
     private LoggerImpl logger;
+    private String token;
 
     /**
      * Instantiates a new Default dependency resolver.
      */
-    public DefaultDependencyResolver() {
+    public DefaultDependencyResolver(String token) {
+        this.token = token;
         this.logger = new LoggerImpl();
     }
 
@@ -38,11 +44,6 @@ public class DefaultDependencyResolver implements DependencyResolver {
     }
 
     @Override
-    public CredentialsFactory getCredentialsFactory() {
-        return credentialsFactory;
-    }
-
-    @Override
     public ODataURL createODataURL() {
         return new ODataURLImpl();
     }
@@ -59,15 +60,15 @@ public class DefaultDependencyResolver implements DependencyResolver {
                 "%s/1.0 (lang=%s; os=%s; os_version=%s; arch=%s; version=%s)",
                 productName, "Java", "Android", Build.VERSION.RELEASE,
                 Build.CPU_ABI, Constants.SDK_VERSION);
-
     }
 
-    /**
-     * Sets credentials factory.
-     *
-     * @param credentialsFactory the credentials factory
-     */
-    public void setCredentialsFactory(CredentialsFactory credentialsFactory) {
-        this.credentialsFactory = credentialsFactory;
+    @Override
+    public Credentials getCredentials() {
+        return new Credentials() {
+            @Override
+            public void prepareRequest(Request request) {
+                request.addHeader("Authorization", "Bearer " + token);
+            }
+        };
     }
 }
