@@ -96,7 +96,8 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canFilterMessages("Can use filter in messages", true));
         this.addTest(canSelectMessages("Can use select in messages", true));
         this.addTest(canTopMessages("Can use top in messages", true));
-
+        this.addTest(canExpandMessages("Can use expand in messages list", true));
+        this.addTest(canExpandMessages("Can use expand in message", true));
     }
 
 
@@ -1235,7 +1236,7 @@ public class ExchangeTests extends TestGroup {
         FileAttachment att = new FileAttachment();
 
         att.setContentBytes("hello world".getBytes());
-        att.setName("myFile.txt");
+        att.setName(UUID.randomUUID().toString() +  "-myFile.txt");
 
         return att;
     }
@@ -2337,6 +2338,120 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessages().getById(addedMessage1.getId()).delete().get();
                     client.getMe().getMessages().getById(addedMessage2.getId()).delete().get();
 
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canExpandMessages(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String messageSubject = "Test message" + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(messageSubject, ApplicationContext.getTestMail(), "");
+
+                    FileAttachment fileAttachment = getFileAttachment();
+                    //Prepare
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(fileAttachment).get();
+
+                    //Act
+                    List<Message> messagesWithExpand = client.getMe()
+                            .getFolder("Drafts")
+                            .getMessages()
+                            .filter("Subject eq '" + added.getSubject() + "'")
+                            .expand("Attachments").read().get();
+
+                    List<Message> messagesWithoutExpand = client.getMe()
+                            .getFolder("Drafts")
+                            .getMessages()
+                            .filter("Subject eq '" + added.getSubject() + "'")
+                            .read().get();
+
+                    //Assert
+                    if(messagesWithExpand.size() == 1
+                            && messagesWithoutExpand.size() == 1
+                            && messagesWithExpand.get(0).getAttachments().size() == 1
+                            && messagesWithoutExpand.get(0).getAttachments().size() == 0
+                            && messagesWithExpand.get(0).getAttachments().get(0).getName().equals(fileAttachment.getName())){
+                        result.setStatus(TestStatus.Passed);
+                    }
+
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canExpandMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String messageSubject = "Test message" + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(messageSubject, ApplicationContext.getTestMail(), "");
+
+                    FileAttachment fileAttachment = getFileAttachment();
+                    //Prepare
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(fileAttachment).get();
+
+                    //Act
+                    Message messageWithExpand = client.getMe()
+                            .getMessage(added.getId())
+                            .expand("Attachments").read().get();
+
+                    Message messageWithoutExpand = client.getMe()
+                            .getMessage(added.getId())
+                            .read().get();
+
+                    //Assert
+                    if(messageWithExpand != null
+                            && messageWithoutExpand != null
+                            && messageWithExpand.getAttachments().size() == 1
+                            && messageWithoutExpand.getAttachments().size() == 0
+                            && messageWithExpand.getAttachments().get(0).getName().equals(fileAttachment.getName())){
+                        result.setStatus(TestStatus.Passed);
+                    }
+
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
