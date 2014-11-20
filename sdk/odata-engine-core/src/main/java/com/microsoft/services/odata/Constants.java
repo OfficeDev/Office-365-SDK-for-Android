@@ -75,4 +75,24 @@ public class Constants {
      * The constant ODATA_MAXVERSION.
      */
     public static final String ODATA_MAXVERSION = "4.0";
+
+    /**
+     * The constant ODATA_DATA_TYPE_JSON_PROPERTY
+     */
+    public static final String ODATA_TYPE_JSON_PROPERTY = "@odata.type";
+
+    /**
+     * The constant ODATA_TYPE_PROPERTY_NAME
+     */
+    public static final String ODATA_TYPE_PROPERTY_NAME = "$$__ODataType";
+
+    /**
+     * The constant PROPERTY_NAME_RESERVED_PREFIX
+     */
+    public static final String PROPERTY_NAME_RESERVED_PREFIX = "$$__$$";
+
+    /**
+     * The constant ODATA_ENTITY_BASE_CLASS_NAME
+     */
+    public static final String ODATA_ENTITY_BASE_CLASS_NAME = "ODataBaseEntity";
 }
