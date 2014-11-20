@@ -3,6 +3,7 @@ package com.microsoft.office365.test.integration.tests;
 
 import com.microsoft.fileservices.Drive;
 import com.microsoft.fileservices.File;
+import com.microsoft.fileservices.Folder;
 import com.microsoft.fileservices.Item;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
@@ -27,7 +28,8 @@ public class FilesTests extends TestGroup {
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
         this.addTest(canGetDrive("Can get drive", false));
-
+        this.addTest(canGetFilesTyped("Can get files typed with derived classes", true));
+        this.addTest(canGetFilesTyped("Can get file typed with derived class", true));
         //Select, top
         this.addTest(canSelectFiles("Can use select in files", true));
         this.addTest(canTopFiles("Can use top in files", true));
@@ -347,6 +349,106 @@ public class FilesTests extends TestGroup {
                     client.getfiles().getById(addedFile1.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
                     client.getfiles().getById(addedFile2.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetFilesTyped(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    //Prepare
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item newFolder = new Item();
+                    newFolder.settype("Folder");
+                    newFolder.setname(UUID.randomUUID().toString());
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+                    Item addedFolder = client.getfiles().add(newFolder).get();
+
+                    //Act
+                    List<Item> files = client.getfiles().top(15).read().get();
+
+                    //Assert
+                    boolean wellTyped = true;
+
+                    for(Item i : files){
+                        if(!(i instanceof Folder || i instanceof File)) wellTyped = false;
+                    }
+
+                    if (files == null || !wellTyped)
+                        result.setStatus(TestStatus.Failed);
+
+                    //cleanup
+                    client.getfiles().getById(addedFile.getid()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getfiles().getById(addedFolder.getid()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetFileTyped(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    //Prepare
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item newFolder = new Item();
+                    newFolder.settype("Folder");
+                    newFolder.setname(UUID.randomUUID().toString());
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+                    Item addedFolder = client.getfiles().add(newFolder).get();
+
+                    //Act
+                    Item file = client.getfiles().getById(addedFile.getid()).read().get();
+                    Item folder = client.getfiles().getById(addedFolder.getid()).read().get();
+                    //Assert
+
+
+                    if (file instanceof File && folder instanceof Folder)
+                        result.setStatus(TestStatus.Passed);
+
+                    //cleanup
+                    client.getfiles().getById(addedFile.getid()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getfiles().getById(addedFolder.getid()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
