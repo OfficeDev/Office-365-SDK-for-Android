@@ -1,4 +1,4 @@
-include ':list-services',
+include ':list-services', ':odata-engine-unit-tests',
         ':outlook-services',
         ':file-services',
         ':directory-services',
