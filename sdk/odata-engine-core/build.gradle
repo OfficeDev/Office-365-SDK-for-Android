@@ -5,3 +5,5 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'com.google.code.gson:gson:2.3'
 }
+
+apply from :'../java-libraries.gradle'

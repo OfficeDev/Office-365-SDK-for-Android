@@ -12,12 +12,12 @@ buildscript {
 }
 
 allprojects {
-    project.ext{
-        desc = 'Office 365 Android SDK'
-        sdkVersion = '0.9.3'
-        groupId = 'com.microsoft.services'
-    }
+
     repositories {
         jcenter()
     }
+
+    apply plugin: 'idea'
+    group = 'com.microsoft.services'
+    version = '0.9.4'
 }
