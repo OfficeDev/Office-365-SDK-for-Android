@@ -5,6 +5,7 @@
 - [Overview](#overview)
 - [Quick start](#quick-start)
 - [Samples](#samples)
+- [FAQs](#faqs)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -102,6 +103,13 @@ Futures.addCallback(messagesFuture, new FutureCallback<List<Message>>() {
 
 ## Samples
 Currently we have a simple sample in the Samples folder using Outlook Services to retrieve mail and calendar events. Look for more samples soon.
+
+## FAQs
+
+* [How to use CalendarView?](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Using-Calendar-View)
+* [How to build SDK using Eclipse?](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Eclipse-build-instructions)
+* [How to handle ETags and Optimistic Concurrency?](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/ETags-and-Optimistic-Concurrency)
+* [Known Issues](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Known-Issues)
 
 ## Contributing
 You will need to sign a [Contributor License Agreement](https://cla.msopentech.com/) before submitting your pull request. To complete the Contributor License Agreement (CLA), you will need to submit a request via the form and then electronically sign the Contributor License Agreement when you receive the email containing the link to the document. This needs to only be done once for any Microsoft Open Technologies OSS project.
