@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 
 dependencies {
     compile project(':odata-engine-core')

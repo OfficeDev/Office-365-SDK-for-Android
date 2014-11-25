@@ -48,7 +48,7 @@ bintray {
     configurations = ['published'] //When uploading configuration files
     apiUrl = "https://api.bintray.com"
     user = 'user'
-    key =  'key'
+    key =  'foo'
     dryRun = false
 
     filesSpec {
@@ -73,10 +73,12 @@ bintray {
         attributes = ['plat': ['android', 'java']]
         publicDownloadNumbers = true
 
+        def ver = myProject.version
+
         version {
-            name = myProject.sdkVersion //Optional logical version name
-            desc = myProject.desc
-            vcsTag = myProject.sdkVersion
+            name = ver //Optional logical version name
+            desc = 'Office 365 Android SDK for Android'
+            vcsTag = ver
         }
     }
 }

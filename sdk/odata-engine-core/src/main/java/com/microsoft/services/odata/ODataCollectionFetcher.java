@@ -10,6 +10,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.services.odata.interfaces.HttpVerb;
+import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
@@ -236,8 +237,11 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
             public void onSuccess(ODataResponse payload) {
                 List<TEntity> list;
                 try {
+                    log("Entity collection Deserialization Started", LogLevel.VERBOSE);
                     String string = new String(payload.getPayload(), Constants.UTF8_NAME);
                     list = getResolver().getJsonSerializer().deserializeList(string, clazz);
+                    log("Entity collection Deserialization Finished", LogLevel.VERBOSE);
+
                     result.set(list);
                 } catch (Throwable e) {
                     result.setException(e);

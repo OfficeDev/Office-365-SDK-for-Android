@@ -4,9 +4,9 @@ def myProject = project
 
 uploadArchives {
     repositories.mavenDeployer {
-        pom.groupId = myProject.groupId
+        pom.groupId = myProject.group
         pom.artifactId = PUBLISH_ARTIFACT_ID
-        pom.version = myProject.sdkVersion
+        pom.version = myProject.version
         repository (
                 url: 'https://api.bintray.com/maven/msopentech/Maven/Office-365-SDK-for-Android'
         ) {
