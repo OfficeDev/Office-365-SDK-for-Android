@@ -24,20 +24,15 @@ android {
 }
 
 dependencies {
-    // Base OData stuff
-    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.9.4'
-    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.9.4', ext:'aar'
-
     // Service libraries
-    compile 'com.microsoft.services:directory-services:(,1.0)'
-    compile 'com.microsoft.services:file-services:(,1.0)'
-    compile 'com.microsoft.services:outlook-services:(,1.0)'
-    compile 'com.microsoft.services:discovery-services:(,1.0)'
+
+    //compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.9.4', ext:'aar'
+    //compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.9.4'
+
 
     compile 'com.android.support:support-v4:20.0.0'
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.google.guava:guava:18.0'
-    compile('com.microsoft.aad:adal:(,2.0)') {
-        exclude group: 'com.android.support'
-    }
+
+    compile project(':odata-engine-android-impl')
+    compile project(':outlook-services')
+
 }

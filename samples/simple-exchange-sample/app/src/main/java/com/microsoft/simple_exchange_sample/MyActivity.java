@@ -44,7 +44,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
         //
         // run authentication
         //
-        Authentication.createEncryptionKey(getApplicationContext());
         SettableFuture<Void> authenticated =
                 Authentication.acquireToken(
                         MyActivity.this
