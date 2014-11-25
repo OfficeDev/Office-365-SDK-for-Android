@@ -25,10 +25,8 @@ android {
 
 dependencies {
     // Base OData stuff
-    compile 'com.microsoft.services:odata-engine-interfaces:(,1.0)'
-    compile 'com.microsoft.services:odata-engine-java-impl:(,1.0)'
-    compile 'com.microsoft.services:odata-engine-android-impl:(,1.0)@aar'
-    compile 'com.microsoft.services:odata-engine-helpers:(,1.0)'
+    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.9.4'
+    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.9.4', ext:'aar'
 
     // Service libraries
     compile 'com.microsoft.services:directory-services:(,1.0)'

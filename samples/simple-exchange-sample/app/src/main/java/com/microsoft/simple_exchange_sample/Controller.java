@@ -92,7 +92,7 @@ public class Controller {
         this.tokenRefreshTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Authentication.acquireTokenByRefreshToken(rootActivity, dependencyResolver);
+                Authentication.acquireTokenByRefreshToken(rootActivity);
             }
         }, authenticationResult.getExpiresOn());
     }
@@ -113,7 +113,7 @@ public class Controller {
     public void handleError(final Activity activity, final String msg) {
 
         if (msg.contains("Authentication_ExpiredToken")) {
-            Authentication.acquireTokenByRefreshToken(this.rootActivity, this.dependencyResolver);
+            Authentication.acquireTokenByRefreshToken(this.rootActivity);
         }
 
         activity.runOnUiThread(new Runnable() {
