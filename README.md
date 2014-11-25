@@ -29,17 +29,15 @@ Now we'll create a simple application that retrieves messages using this SDK and
 ```Groovy
 dependencies {
     // base OData stuff:
-    compile group: 'com.microsoft.services', name: 'odata-engine-interfaces', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'odata-engine-java-impl', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'odata-engine-helpers', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '(,1.0)', ext:'aar'
+    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.9.4'
+    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.9.4', ext:'aar'
 
     // choose the services/SDKs you need:
-    compile group: 'com.microsoft.services', name: 'outlook-services', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'discovery-services', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'directory-services', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'file-services', version: '(,1.0)'
-    compile group: 'com.microsoft.services', name: 'list-services', version: '(,1.0)', ext:'aar'
+    compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.9.4'
+    compile group: 'com.microsoft.services', name: 'discovery-services', version: '0.9.4'
+    compile group: 'com.microsoft.services', name: 'directory-services', version: '0.9.4'
+    compile group: 'com.microsoft.services', name: 'file-services', version: '0.9.4'
+    compile group: 'com.microsoft.services', name: 'list-services', version: '0.9.4', ext:'aar'
     
     // ADAL
     compile (group: 'com.microsoft.aad', name: 'adal', version: '(,2.0)') {
@@ -51,8 +49,6 @@ dependencies {
 
   > NOTE: To avoid an error related to the Android support library, you might need to ensure it isn't being added redundantly by ADAL. That's why we've added the `exclude` call above.
   
-  > NOTE: The version range will include up to but not including v1.0.
-
 2. Follow the instructions on the [README for ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android) to handle authentication, or use the [Authentication.java](https://github.com/OfficeDev/Office-365-SDK-for-Android/blob/master/samples/simple-exchange-sample/app/src/main/java/com/microsoft/simple_exchange_sample/Authentication.java) implementation in our samples.
 
 3. Once you get the token, add it to the Dependency Resolver so it's added to all future calls.
@@ -60,11 +56,7 @@ dependencies {
 
 ```Java
 String accessToken = "result-from-ADAL";
-DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver();
-CredentialsFactoryImpl credentialsFactory = new CredentialsFactoryImpl();
-OAuthCredentials oauthCredentials = new OAuthCredentials(token);
-credentialsFactory.setCredentials(oauthCredentials);
-dependencyResolver.setCredentialsFactory(credentialsFactory);
+DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver(accessToken);
 ```
 
 4. With your dependencies set up, use the following code to retrieve all messages. Here we're talking to Outlook Services, so we use that URL.

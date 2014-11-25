@@ -20,9 +20,6 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.AuthenticationSettings;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
-import com.microsoft.services.odata.interfaces.Credentials;
-import com.microsoft.services.odata.interfaces.CredentialsFactory;
-import com.microsoft.services.odata.interfaces.Request;
 
 import java.util.Random;
 
@@ -31,7 +28,7 @@ public class Authentication {
 
     public static AuthenticationContext context = null;
 
-    public static SettableFuture<Void> acquireToken(final Activity rootActivity, final DefaultDependencyResolver resolver) {
+    public static SettableFuture<Void> acquireToken(final Activity rootActivity) {
 
         final SettableFuture<Void> result = SettableFuture.create();
 
@@ -46,26 +43,12 @@ public class Authentication {
                     public void onSuccess(final AuthenticationResult authenticationResult) {
 
                         if (authenticationResult != null && !TextUtils.isEmpty(authenticationResult.getAccessToken())) {
-
-                            resolver.setCredentialsFactory(new CredentialsFactory() {
-
-                                @Override
-                                public Credentials getCredentials() {
-                                    return new Credentials() {
-                                        @Override
-                                        public void prepareRequest(Request request) {
-                                            request.addHeader("Authorization", "Bearer " + Controller.getInstance().getAuthenticationResult().getAccessToken());
-                                        }
-                                    };
-                                }
-                            });
-
+                            DefaultDependencyResolver r = new DefaultDependencyResolver(authenticationResult.getAccessToken());
+                            Controller.getInstance().setDependencyResolver(r);
                             Controller.getInstance().setAuthenticationResult( rootActivity, authenticationResult );
-
                             result.set(null);
                         }
                     }
-
 
                     @Override
                     public void onError(Exception t) {
@@ -80,7 +63,7 @@ public class Authentication {
     /**
      * acquires the authentication token using the refresh token
      */
-    public static void acquireTokenByRefreshToken(final Activity rootActivity, final DefaultDependencyResolver resolver) {
+    public static void acquireTokenByRefreshToken(final Activity rootActivity) {
         Authentication.getAuthenticationContext(rootActivity).acquireTokenByRefreshToken(
                 Controller.getInstance().getAuthenticationResult().getRefreshToken(),
                 ServiceConstants.CLIENT_ID,
@@ -91,20 +74,8 @@ public class Authentication {
                     public void onSuccess(final AuthenticationResult authenticationResult) {
 
                         if (authenticationResult != null && !TextUtils.isEmpty(authenticationResult.getAccessToken())) {
-
-                            resolver.setCredentialsFactory(new CredentialsFactory() {
-
-                                @Override
-                                public Credentials getCredentials() {
-                                    return new Credentials() {
-                                        @Override
-                                        public void prepareRequest(Request request) {
-                                            request.addHeader("Authorization", "Bearer " + authenticationResult.getAccessToken());
-                                        }
-                                    };
-                                }
-                            });
-
+                            DefaultDependencyResolver r = new DefaultDependencyResolver(authenticationResult.getAccessToken());
+                            Controller.getInstance().setDependencyResolver(r);
                             Controller.getInstance().setAuthenticationResult(rootActivity, authenticationResult);
                         }
                     }
