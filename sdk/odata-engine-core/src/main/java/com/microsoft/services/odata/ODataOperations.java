@@ -10,6 +10,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.Request;
 
@@ -47,8 +48,11 @@ public abstract class ODataOperations extends ODataExecutable {
             @Override
             public void onSuccess(ODataResponse response) {
                 try {
+                    log("Entity Deserialization Started", LogLevel.VERBOSE);
                     String string = new String(response.getPayload(), Constants.UTF8_NAME);
                     TEntity entity = getResolver().getJsonSerializer().deserialize(string, clazz);
+                    log("Entity Deserialization Finished", LogLevel.VERBOSE);
+
                     result.set(entity);
                 } catch (Throwable e) {
                     result.setException(e);

@@ -8,6 +8,7 @@ package com.microsoft.services.odata;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.HttpVerb;
+import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
@@ -92,5 +93,9 @@ public abstract class ODataExecutable {
      */
     public <T extends ODataExecutable> T as(Class<T> inference) {
         return (T)this;
+    }
+
+    protected void log (String content, LogLevel logLevel) {
+        getResolver().getLogger().log(content, logLevel);
     }
 }
