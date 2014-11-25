@@ -1747,8 +1747,15 @@ public class ExchangeTests extends TestGroup {
                             .addParameter("enddatetime", dateEnd)
                             .read().get();
 
+                    Calendar c = client.getMe().getCalendar().read().get();
+                    List<Event> calendarViewById = client.getMe().getCalendar(c.getId())
+                            .getCalendarView()
+                            .addParameter("startdatetime", dateStart)
+                            .addParameter("enddatetime", dateEnd)
+                            .read().get();
+
                     //Assert
-                    if(calendarView.size() == 0)
+                    if(calendarView.size() == 0 || calendarViewById.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
