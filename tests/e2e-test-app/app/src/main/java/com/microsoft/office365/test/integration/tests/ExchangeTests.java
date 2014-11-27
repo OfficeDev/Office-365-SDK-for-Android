@@ -92,13 +92,15 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canDeleteContact("Can delete contacts", true));
         this.addTest(canUpdateContact("Can update contacts", true));
 
-        //Select, top, filter
+        //Select, top, filter, expand, skip,
         this.addTest(canFilterMessages("Can use filter in messages list", true));
         this.addTest(canSelectMessages("Can use select in messages list", true));
         this.addTest(canTopMessages("Can use top in messages list", true));
         this.addTest(canExpandMessages("Can use expand in messages list", true));
         this.addTest(canExpandMessage("Can use expand in message", true));
         this.addTest(canSelectMessage("Can use select in message", true));
+        this.addTest(canOrderByContacts("Can use orderby in contacts", true));
+        this.addTest(canSkipContacts("Can use skip in contacts", true));
     }
 
 
@@ -2498,6 +2500,110 @@ public class ExchangeTests extends TestGroup {
 
                     //Cleanup
                     client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canOrderByContacts(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String name1 = "AA" + UUID.randomUUID().toString();
+                    String name2 = "BB" + UUID.randomUUID().toString();
+
+                    Contact contact1 = getContact();
+                    contact1.setDisplayName(name1);
+
+                    Contact contact2 = getContact();
+                    contact2.setDisplayName(name2);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Contact addedContact1 = client.getMe().getContacts().add(contact1).get();
+                    Contact addedContact2 = client.getMe().getContacts().add(contact2).get();
+
+                    //Act
+                    String filter =String.format("DisplayName eq '%s' or DisplayName eq '%s'",name1, name2) ;
+                    List<Contact> resultAsc = client.getMe().getContacts().filter(filter).orderBy("DisplayName asc").read().get();
+                    List<Contact> resultDesc = client.getMe().getContacts().filter(filter).orderBy("DisplayName desc").read().get();
+
+                    //Assert
+                    if (resultAsc != null && resultAsc.size() == 2 && resultAsc.get(0).getDisplayName().startsWith("AA")
+                            && resultDesc != null && resultDesc.size() == 2 && resultDesc.get(0).getDisplayName().startsWith("BB"))
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getContact(addedContact1.getId()).delete().get();
+                    client.getMe().getContact(addedContact2.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSkipContacts(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String name1 = "AA" + UUID.randomUUID().toString();
+                    String name2 = "BB" + UUID.randomUUID().toString();
+
+                    Contact contact1 = getContact();
+                    contact1.setDisplayName(name1);
+
+                    Contact contact2 = getContact();
+                    contact2.setDisplayName(name2);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    //Prepare
+                    Contact addedContact1 = client.getMe().getContacts().add(contact1).get();
+                    Contact addedContact2 = client.getMe().getContacts().add(contact2).get();
+
+                    //Act
+                    String filter =String.format("DisplayName eq '%s' or DisplayName eq '%s'",name1, name2) ;
+                    List<Contact> resultDesc = client.getMe().getContacts()
+                            .filter(filter)
+                            .orderBy("DisplayName desc")
+                            .skip(1)
+                            .read().get();
+
+                    //Assert
+                    if (resultDesc != null && resultDesc.size() == 1 && resultDesc.get(0).getDisplayName().startsWith("AA"))
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getContact(addedContact1.getId()).delete().get();
+                    client.getMe().getContact(addedContact2.getId()).delete().get();
 
                     return result;
                 } catch (Exception e) {
