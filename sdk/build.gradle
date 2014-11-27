@@ -19,5 +19,5 @@ allprojects {
 
     apply plugin: 'idea'
     group = 'com.microsoft.services'
-    version = '0.9.4'
+    version = '0.10.0'
 }

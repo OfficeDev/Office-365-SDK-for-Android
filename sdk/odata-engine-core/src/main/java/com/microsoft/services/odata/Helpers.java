@@ -78,14 +78,6 @@ public class Helpers {
         return reservedNames;
     }
 
-    public static String getReservedPrefix() {
-        return "$$__$$";
-    }
-
-    public static String getReservedODataTypePrefix() {return "$$__ODataType"; }
-
-    public static String getODataTypePrefix() {return "@odata.type";}
-
     /**
      * Add custom parameters to o data uRL.
      *
@@ -132,7 +124,7 @@ public class Helpers {
        }
 
        if (o instanceof Calendar) {
-           return "" + CalendarSerializer.serialize((Calendar)o) + "";
+           return CalendarSerializer.serialize((Calendar)o);
        }
 
        return o.toString();

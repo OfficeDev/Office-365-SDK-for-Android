@@ -5,7 +5,7 @@ dependencies {
 }
 
 ext {
-    PUBLISH_VERSION = '0.9.4'
+    PUBLISH_VERSION = '0.10.0'
     PUBLISH_GROUP_ID = 'com.microsoft.services'
 }
 
