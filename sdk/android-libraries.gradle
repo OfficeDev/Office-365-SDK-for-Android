@@ -28,7 +28,8 @@ android.libraryVariants.all { variant ->
         it.getName() != 'android.jar' &&
         //manually removing dependencies. .jar consumers will need to fulfill these dependencies
         !it.getName().startsWith('guava') &&
-        !it.getName().startsWith('gson')
+        !it.getName().startsWith('gson')  &&
+        !it.getName().startsWith('support')
 
     }.collect {
         it.isDirectory() ? it : zipTree(it)
