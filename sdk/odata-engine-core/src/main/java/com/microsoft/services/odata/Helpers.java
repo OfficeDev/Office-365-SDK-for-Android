@@ -1,6 +1,13 @@
 package com.microsoft.services.odata;
 
+import com.google.common.util.concurrent.AsyncFunction;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
 
@@ -197,4 +204,100 @@ public class Helpers {
         String payload = resolver.getJsonSerializer().serialize(entity);
         return payload.getBytes(Constants.UTF8);
     }
+
+    /**
+     * Apply string listenable future.
+     *
+     * @param future the future
+     * @return the listenable future
+     */
+    public static ListenableFuture<String> transformToStringListenableFuture(ListenableFuture<ODataResponse> future) {
+
+        return Futures.transform(future, new AsyncFunction<ODataResponse, String>() {
+            @Override
+            public ListenableFuture<String> apply(ODataResponse response) throws Exception {
+                final SettableFuture<String> result = SettableFuture.create();
+                result.set(new String(response.getPayload(), Constants.UTF8_NAME));
+                return result;
+            }
+        });
+    }
+
+
+    /**
+     * Apply string listenable future.
+     *
+     * @param future the future
+     * @return the listenable future
+     */
+    public static <TEntity> ListenableFuture<TEntity> transformToEntityListenableFuture(
+            ListenableFuture<String> future,
+            final Class<TEntity> clazz,
+            final DependencyResolver resolver) {
+
+        return Futures.transform(future, new AsyncFunction<String, TEntity>() {
+            @Override
+            public ListenableFuture<TEntity> apply(String payload) throws Exception {
+                final SettableFuture<TEntity> result = SettableFuture.create();
+                TEntity entity = null;
+                try {
+                    resolver.getLogger().log("Entity Deserialization Started", LogLevel.VERBOSE);
+                    entity = resolver.getJsonSerializer().deserialize(payload, clazz);
+                    resolver.getLogger().log("Entity Deserialization Finished", LogLevel.VERBOSE);
+
+                } catch (Throwable throwable) {
+                    result.setException(throwable);
+                }
+                result.set(entity);
+                return result;
+            }
+
+            ;
+        });
+    }
+
+    /**
+     * Add list result callback.
+     *
+     * @param future the future
+     */
+    public static <TEntity> ListenableFuture<List<TEntity>> transformToEntityListListenableFuture(
+            ListenableFuture<String> future,
+            final Class<TEntity> clazz,
+            final DependencyResolver resolver) {
+
+        return Futures.transform(future, new AsyncFunction<String, List<TEntity>>() {
+            @Override
+            public ListenableFuture<List<TEntity>> apply(String payload) throws Exception {
+                SettableFuture<List<TEntity>> result = SettableFuture.create();
+                List<TEntity> list;
+                try {
+                    resolver.getLogger().log("Entity collection Deserialization Started", LogLevel.VERBOSE);
+                    list = resolver.getJsonSerializer().deserializeList(payload, clazz);
+                    resolver.getLogger().log("Entity collection Deserialization Finished", LogLevel.VERBOSE);
+
+                    result.set(list);
+                } catch (Throwable t) {
+                    result.setException(t);
+                }
+
+                return result;
+            }
+        });
+    }
+
+    /**
+     * Add null result callback.
+     *
+     * @param future the future
+     */
+    public static ListenableFuture<Void> transformToVoidListenableFuture(ListenableFuture<ODataResponse> future) {
+        return Futures.transform(future, new AsyncFunction<ODataResponse, Void>() {
+            @Override
+            public ListenableFuture<Void> apply(ODataResponse input) throws Exception {
+                return null;
+            }
+        });
+    }
+
 }
