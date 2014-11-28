@@ -9,9 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type CalendarOperations.
@@ -51,5 +49,6 @@ public class CalendarOperations extends EntityOperations {
         addCustomHeader(name, value);
         return this;
     }
+
 
 }

@@ -5,39 +5,31 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
-import com.microsoft.outlookservices.Message;
-import com.microsoft.outlookservices.Recipient;
-import com.microsoft.services.odata.Helpers;
-import com.microsoft.services.odata.ODataExecutable;
-import com.microsoft.services.odata.interfaces.HttpVerb;
-import com.microsoft.services.odata.interfaces.ODataResponse;
-import com.microsoft.services.odata.interfaces.Request;
-
-import static com.microsoft.services.odata.Helpers.transformToEntityListenableFuture;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-
+import com.google.common.util.concurrent.*;
+import com.microsoft.services.odata.*;
+import com.microsoft.services.odata.interfaces.*;
+import com.microsoft.outlookservices.*;
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type MessageOperations.
  */
 public class MessageOperations extends ItemOperations {
 
-    /**
-     * Instantiates a new MessageOperations.
-     *
-     * @param urlComponent the url component
-     * @param parent       the parent
-     */
+     /**
+      * Instantiates a new MessageOperations.
+      *
+      * @param urlComponent the url component
+      * @param parent the parent
+      */
     public MessageOperations(String urlComponent, ODataExecutable parent) {
-        super(urlComponent, parent);
+            super(urlComponent, parent);
     }
 
     /**
      * Add parameter.
      *
-     * @param name  the name
+     * @param name the name
      * @param value the value
      * @return the operations
      */
@@ -46,10 +38,10 @@ public class MessageOperations extends ItemOperations {
         return this;
     }
 
-    /**
+     /**
      * Add header.
      *
-     * @param name  the name
+     * @param name the name
      * @param value the value
      * @return the operations
      */
@@ -58,191 +50,307 @@ public class MessageOperations extends ItemOperations {
         return this;
     }
 
-
+    
+    
     /**
      * Copy listenable future.
-     *
-     * @param destinationId the destinationId
+     * @param destinationId the destinationId 
      * @return the listenable future
-     */
-    public ListenableFuture<Message> copy(String destinationId) {
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("DestinationId", destinationId);
-        String payload = getResolver().getJsonSerializer().serialize(map);
-
-        return transformToEntityListenableFuture(copyRaw(payload), Message.class, getResolver());
+     */         
+    public ListenableFuture<Message> copy(String destinationId) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedDestinationId = serializer.serialize(destinationId);
+		  
+        ListenableFuture<String> future = copyRaw(serializedDestinationId);
+        return transformToEntityListenableFuture(future, Message.class, getResolver());
+        
     }
 
-
-    public ListenableFuture<String> copyRaw(String payload) {
+     /**
+     * CopyRaw listenable future.
+     * @param destinationId the destinationId 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> copyRaw(String destinationId){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        map.put("DestinationId", destinationId);
+		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(payload.getBytes());
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("Copy");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-
-        return Helpers.transformToStringListenableFuture(future);
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * Move listenable future.
-     *
-     * @param destinationId the destinationId
+     * @param destinationId the destinationId 
      * @return the listenable future
-     */
-    public ListenableFuture<Message> move(String destinationId) {
-        final SettableFuture<Message> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("DestinationId", destinationId);
+     */         
+    public ListenableFuture<Message> move(String destinationId) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedDestinationId = serializer.serialize(destinationId);
+		  
+        ListenableFuture<String> future = moveRaw(serializedDestinationId);
+        return transformToEntityListenableFuture(future, Message.class, getResolver());
+        
+    }
 
+     /**
+     * MoveRaw listenable future.
+     * @param destinationId the destinationId 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> moveRaw(String destinationId){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        map.put("DestinationId", destinationId);
+		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("Move");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Message.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * CreateReply listenable future.
-     *
+     * 
      * @return the listenable future
-     */
-    public ListenableFuture<Message> createReply() {
-        final SettableFuture<Message> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+     */         
+    public ListenableFuture<Message> createReply() { 
+              
+          
+        ListenableFuture<String> future = createReplyRaw();
+        return transformToEntityListenableFuture(future, Message.class, getResolver());
+        
+    }
 
+     /**
+     * CreateReplyRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> createReplyRaw(){
+        
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
         request.getUrl().appendPathComponent("CreateReply");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Message.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * CreateReplyAll listenable future.
-     *
+     * 
      * @return the listenable future
-     */
-    public ListenableFuture<Message> createReplyAll() {
-        final SettableFuture<Message> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+     */         
+    public ListenableFuture<Message> createReplyAll() { 
+              
+          
+        ListenableFuture<String> future = createReplyAllRaw();
+        return transformToEntityListenableFuture(future, Message.class, getResolver());
+        
+    }
 
+     /**
+     * CreateReplyAllRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> createReplyAllRaw(){
+        
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
         request.getUrl().appendPathComponent("CreateReplyAll");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Message.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * CreateForward listenable future.
-     *
+     * 
      * @return the listenable future
-     */
-    public ListenableFuture<Message> createForward() {
-        final SettableFuture<Message> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+     */         
+    public ListenableFuture<Message> createForward() { 
+              
+          
+        ListenableFuture<String> future = createForwardRaw();
+        return transformToEntityListenableFuture(future, Message.class, getResolver());
+        
+    }
 
+     /**
+     * CreateForwardRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> createForwardRaw(){
+        
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
         request.getUrl().appendPathComponent("CreateForward");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Message.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * Reply listenable future.
-     *
-     * @param comment the comment
+     * @param comment the comment 
      * @return the listenable future
-     */
-    public ListenableFuture<Integer> reply(String comment) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("Comment", comment);
+     */         
+    public ListenableFuture<Integer> reply(String comment) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedComment = serializer.serialize(comment);
+		  
+        ListenableFuture<String> future = replyRaw(serializedComment);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
 
+     /**
+     * ReplyRaw listenable future.
+     * @param comment the comment 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> replyRaw(String comment){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        map.put("Comment", comment);
+		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("Reply");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Integer.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * ReplyAll listenable future.
-     *
-     * @param comment the comment
+     * @param comment the comment 
      * @return the listenable future
-     */
-    public ListenableFuture<Integer> replyAll(String comment) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("Comment", comment);
+     */         
+    public ListenableFuture<Integer> replyAll(String comment) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedComment = serializer.serialize(comment);
+		  
+        ListenableFuture<String> future = replyAllRaw(serializedComment);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
 
+     /**
+     * ReplyAllRaw listenable future.
+     * @param comment the comment 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> replyAllRaw(String comment){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        map.put("Comment", comment);
+		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("ReplyAll");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Integer.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * Forward listenable future.
-     *
-     * @param comment      the comment
-     * @param toRecipients the toRecipients
+     * @param comment the comment @param toRecipients the toRecipients 
      * @return the listenable future
-     */
-    public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> toRecipients) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("Comment", comment);
-        map.put("ToRecipients", toRecipients);
+     */         
+    public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> toRecipients) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedComment = serializer.serialize(comment);
+		String serializedToRecipients = serializer.serialize(toRecipients);
+		  
+        ListenableFuture<String> future = forwardRaw(serializedComment, serializedToRecipients);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
 
+     /**
+     * ForwardRaw listenable future.
+     * @param comment the comment @param toRecipients the toRecipients 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> forwardRaw(String comment, String toRecipients){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        map.put("Comment", comment);
+		map.put("ToRecipients", toRecipients);
+		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("Forward");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Integer.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
 
+
+    
+    
     /**
      * Send listenable future.
-     *
+     * 
      * @return the listenable future
-     */
-    public ListenableFuture<Integer> send() {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+     */         
+    public ListenableFuture<Integer> send() { 
+              
+          
+        ListenableFuture<String> future = sendRaw();
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
 
+     /**
+     * SendRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> sendRaw(){
+        
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
         request.getUrl().appendPathComponent("Send");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future, Integer.class);
-
-        return result;
+        return transformToStringListenableFuture(future);
     }
+
+
+
 }

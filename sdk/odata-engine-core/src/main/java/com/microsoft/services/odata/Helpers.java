@@ -300,4 +300,24 @@ public class Helpers {
         });
     }
 
+
+    /**
+     * Transform to byte array listenable future.
+     *
+     * @param future the future
+     * @return the listenable future
+     */
+    public static ListenableFuture<byte[]> transformToByteArrayListenableFuture(ListenableFuture<byte[]> future) {
+
+      return  Futures.transform(future, new AsyncFunction<byte[], byte[]>() {
+
+            @Override
+            public ListenableFuture<byte[]> apply(byte[] input) throws Exception {
+                SettableFuture<byte[]> result = SettableFuture.create();
+                result.set(input);
+                return result;
+            }
+        });
+    }
+
 }

@@ -9,9 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.directoryservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type DirectoryObjectOperations.
@@ -53,69 +51,73 @@ public class DirectoryObjectOperations extends ODataOperations {
     }
 
     
+    
      /**
      * checkMemberGroups listenable future.
-     * @param groupIds the groupIds
-
+     * @param groupIds the groupIds 
      * @return the listenable future
      */         
-    public ListenableFuture<String> checkMemberGroups(java.util.List<String> groupIds) {
-        final SettableFuture<String> result = SettableFuture.create();
+    public ListenableFuture<String> checkMemberGroups(java.util.List<String> groupIds) { 
+
+    final SettableFuture<String> result = SettableFuture.create();
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("groupIds", groupIds);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
-                String parameters = getFunctionParameters(map);
-request.getUrl().appendPathComponent("checkMemberGroups(" + parameters + ")");
+        String parameters = getFunctionParameters(map);
+        request.getUrl().appendPathComponent("checkMemberGroups(" + parameters + ")");   
         ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, String.class);
+                return transformToEntityListenableFuture(transformToStringListenableFuture(future), String.class, getResolver());
         
-        return result;
-    }
+   }
+    
+    
     
      /**
      * getMemberGroups listenable future.
-     * @param securityEnabledOnly the securityEnabledOnly
-
+     * @param securityEnabledOnly the securityEnabledOnly 
      * @return the listenable future
      */         
-    public ListenableFuture<String> getMemberGroups(Boolean securityEnabledOnly) {
-        final SettableFuture<String> result = SettableFuture.create();
+    public ListenableFuture<String> getMemberGroups(Boolean securityEnabledOnly) { 
+
+    final SettableFuture<String> result = SettableFuture.create();
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("securityEnabledOnly", securityEnabledOnly);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
-                String parameters = getFunctionParameters(map);
-request.getUrl().appendPathComponent("getMemberGroups(" + parameters + ")");
+        String parameters = getFunctionParameters(map);
+        request.getUrl().appendPathComponent("getMemberGroups(" + parameters + ")");   
         ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, String.class);
+                return transformToEntityListenableFuture(transformToStringListenableFuture(future), String.class, getResolver());
         
-        return result;
-    }
+   }
+    
+    
     
      /**
      * getMemberObjects listenable future.
-     * @param securityEnabledOnly the securityEnabledOnly
-
+     * @param securityEnabledOnly the securityEnabledOnly 
      * @return the listenable future
      */         
-    public ListenableFuture<String> getMemberObjects(Boolean securityEnabledOnly) {
-        final SettableFuture<String> result = SettableFuture.create();
+    public ListenableFuture<String> getMemberObjects(Boolean securityEnabledOnly) { 
+
+    final SettableFuture<String> result = SettableFuture.create();
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("securityEnabledOnly", securityEnabledOnly);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
-                String parameters = getFunctionParameters(map);
-request.getUrl().appendPathComponent("getMemberObjects(" + parameters + ")");
+        String parameters = getFunctionParameters(map);
+        request.getUrl().appendPathComponent("getMemberObjects(" + parameters + ")");   
         ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, String.class);
+                return transformToEntityListenableFuture(transformToStringListenableFuture(future), String.class, getResolver());
         
-        return result;
-    }
+   }
+    
+
 }

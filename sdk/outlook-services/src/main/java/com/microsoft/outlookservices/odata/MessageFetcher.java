@@ -69,8 +69,4 @@ public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations
     public AttachmentFetcher getAttachment(String id){
          return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class).getById(id);
     }
-
-    public ListenableFuture<String> readRaw(){
-        return super.readRaw();
-    }
 }

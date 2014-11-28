@@ -9,9 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.directoryservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type ApplicationOperations.
@@ -53,25 +51,27 @@ public class ApplicationOperations extends DirectoryObjectOperations {
     }
 
     
+    
      /**
      * restore listenable future.
-     * @param identifierUris the identifierUris
-
+     * @param identifierUris the identifierUris 
      * @return the listenable future
      */         
-    public ListenableFuture<Application> restore(java.util.List<String> identifierUris) {
-        final SettableFuture<Application> result = SettableFuture.create();
+    public ListenableFuture<Application> restore(java.util.List<String> identifierUris) { 
+
+    final SettableFuture<Application> result = SettableFuture.create();
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("identifierUris", identifierUris);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
-                String parameters = getFunctionParameters(map);
-request.getUrl().appendPathComponent("restore(" + parameters + ")");
+        String parameters = getFunctionParameters(map);
+        request.getUrl().appendPathComponent("restore(" + parameters + ")");   
         ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, Application.class);
+                return transformToEntityListenableFuture(transformToStringListenableFuture(future), Application.class, getResolver());
         
-        return result;
-    }
+   }
+    
+
 }

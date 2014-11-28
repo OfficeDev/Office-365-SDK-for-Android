@@ -9,9 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type FileOperations.
@@ -53,28 +51,44 @@ public class FileOperations extends ItemOperations {
     }
 
     
-     /**
+    
+    /**
      * copy listenable future.
-     * @param destFolderId the destFolderId
- * @param destFolderPath the destFolderPath
- * @param newName the newName
-
+     * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName 
      * @return the listenable future
      */         
-    public ListenableFuture<File> copy(String destFolderId, String destFolderPath, String newName) {
-        final SettableFuture<File> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+    public ListenableFuture<File> copy(String destFolderId, String destFolderPath, String newName) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializeddestFolderId = serializer.serialize(destFolderId);
+		String serializeddestFolderPath = serializer.serialize(destFolderPath);
+		String serializednewName = serializer.serialize(newName);
+		  
+        ListenableFuture<String> future = copyRaw(serializeddestFolderId, serializeddestFolderPath, serializednewName);
+        return transformToEntityListenableFuture(future, File.class, getResolver());
+        
+    }
+
+     /**
+     * copyRaw listenable future.
+     * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> copyRaw(String destFolderId, String destFolderPath, String newName){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         map.put("destFolderId", destFolderId);
 		map.put("destFolderPath", destFolderPath);
 		map.put("newName", newName);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("copy");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, File.class);
-        
-        return result;
+        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
     }
+
+
+
 }

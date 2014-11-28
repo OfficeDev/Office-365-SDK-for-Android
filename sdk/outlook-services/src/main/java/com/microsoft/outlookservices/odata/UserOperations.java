@@ -9,9 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type UserOperations.
@@ -53,26 +51,42 @@ public class UserOperations extends EntityOperations {
     }
 
     
-     /**
+    
+    /**
      * SendMail listenable future.
-     * @param message the message
- * @param saveToSentItems the saveToSentItems
-
+     * @param message the message @param saveToSentItems the saveToSentItems 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+    public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedMessage = serializer.serialize(message);
+		String serializedSaveToSentItems = serializer.serialize(saveToSentItems);
+		  
+        ListenableFuture<String> future = sendMailRaw(serializedMessage, serializedSaveToSentItems);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * SendMailRaw listenable future.
+     * @param message the message @param saveToSentItems the saveToSentItems 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> sendMailRaw(String message, String saveToSentItems){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         map.put("Message", message);
 		map.put("SaveToSentItems", saveToSentItems);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("SendMail");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, Integer.class);
-        
-        return result;
+        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
     }
+
+
+
 }
