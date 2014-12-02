@@ -1,6 +1,7 @@
 package com.microsoft.services.odata.interfaces;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * The interface Json serializer.
@@ -13,6 +14,14 @@ public interface JsonSerializer {
      * @return the string
      */
     public String serialize(Object objectToSerialize);
+
+    /**
+     * Json object from json map.
+     *
+     * @param map the map
+     * @return the string
+     */
+    public String jsonObjectFromJsonMap(Map<String, String> map);
 
     /**
      * Deserialize e.

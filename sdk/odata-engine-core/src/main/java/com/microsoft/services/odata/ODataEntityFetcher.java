@@ -13,7 +13,9 @@ import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
 
 import static com.microsoft.services.odata.Helpers.addCustomParametersToODataRequest;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.transformToEntityListenableFuture;
+import static com.microsoft.services.odata.Helpers.transformToStringListenableFuture;
+import static com.microsoft.services.odata.Helpers.transformToVoidListenableFuture;
 
 /**
  * The type ODataEntityFetcher.
@@ -22,8 +24,8 @@ import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
  * @param <TOperations> the type parameter
  */
 public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOperations>
-                                                              extends ODataFetcher<TEntity>
-                                                              implements Readable<TEntity> {
+        extends ODataFetcher<TEntity>
+        implements Readable<TEntity> {
     private TOperations operations;
     private String select;
     private String expand;
@@ -73,16 +75,26 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
      * @return the listenable future
      */
     public ListenableFuture<TEntity> update(TEntity updatedEntity) {
-        final SettableFuture<TEntity> result = SettableFuture.create();
-        byte[] payloadBytes = serializeToJsonByteArray(updatedEntity, getResolver());
+        ListenableFuture<String> future = updateRaw(getResolver().getJsonSerializer().serialize(updatedEntity));
+        return transformToEntityListenableFuture(future, this.clazz, getResolver());
+    }
+
+    /**
+     * Updates the given entity.
+     *
+     * @param payload the updated entity
+     * @return the listenable future
+     */
+    public ListenableFuture<String> updateRaw(String payload) {
+        byte[] payloadBytes = payload.getBytes(Constants.UTF8);
 
         Request request = getResolver().createRequest();
         request.setContent(payloadBytes);
         request.setVerb(HttpVerb.PATCH);
 
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future);
-        return result;
+
+        return transformToStringListenableFuture(future);
     }
 
     /**
@@ -91,14 +103,11 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
      * @return the listenable future
      */
     public ListenableFuture delete() {
-        final SettableFuture<TEntity> result = SettableFuture.create();
-
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.DELETE);
 
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addNullResultCallback(result, future);
-        return result;
+        return transformToVoidListenableFuture(future);
     }
 
     /**
@@ -107,15 +116,9 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
      * @return the listenable future
      */
     public ListenableFuture<TEntity> read() {
-        final SettableFuture<TEntity> result = SettableFuture.create();
-
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
-
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future);
-        return result;
+        return transformToEntityListenableFuture(readRaw(), this.clazz, getResolver());
     }
+
 
     /**
      * Select ODataCollectionFetcher.

@@ -38,102 +38,105 @@ public abstract class BaseODataContainer extends ODataExecutable {
 
     @Override
     protected ListenableFuture<ODataResponse> oDataExecute(Request request) {
+        final SettableFuture<ODataResponse> result = SettableFuture.create();
         final Logger logger = resolver.getLogger();
 
-        request.getUrl().setBaseUrl(this.url);
-        String fullUrl = request.getUrl().toString();
+        try {
+            request.getUrl().setBaseUrl(this.url);
+            String fullUrl = request.getUrl().toString();
 
-        String executionInfo = String.format("URL: %s - HTTP VERB: %s", fullUrl, request.getVerb());
-        logger.log("Start preparing OData execution for " + executionInfo, LogLevel.INFO);
+            String executionInfo = String.format("URL: %s - HTTP VERB: %s", fullUrl, request.getVerb());
+            logger.log("Start preparing OData execution for " + executionInfo, LogLevel.INFO);
 
-        if (request.getContent() != null) {
-            logger.log("With " + request.getContent().length + " bytes of payload", LogLevel.INFO);
-            //logger.log("Payload: " + new String(content), LogLevel.VERBOSE);
-        }
-
-        HttpTransport httpTransport = resolver.getHttpTransport();
-
-        String userAgent = resolver.getPlatformUserAgent(this.getClass().getCanonicalName());
-        request.addHeader(Constants.USER_AGENT_HEADER, userAgent);
-        request.addHeader(Constants.TELEMETRY_HEADER, userAgent);
-        request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
-        request.addHeader(Constants.ACCEPT_HEADER, Constants.JSON_CONTENT_TYPE);
-        request.addHeader(Constants.ODATA_VERSION_HEADER, Constants.ODATA_VERSION);
-        request.addHeader(Constants.ODATA_MAXVERSION_HEADER, Constants.ODATA_MAXVERSION);
-
-        if (request.getHeaders() != null) {
-            for (String key : request.getHeaders().keySet()) {
-                request.addHeader(key, request.getHeaders().get(key));
+            if (request.getContent() != null) {
+                logger.log("With " + request.getContent().length + " bytes of payload", LogLevel.INFO);
             }
-        }
 
-        boolean credentialsSet = false;
-        Credentials cred = resolver.getCredentials();
-        if (cred != null) {
-            cred.prepareRequest(request);
-            credentialsSet = true;
-        }
+            HttpTransport httpTransport = resolver.getHttpTransport();
 
-        if (!credentialsSet) {
-            logger.log("Executing request without setting credentials", LogLevel.WARNING);
-        }
+            String userAgent = resolver.getPlatformUserAgent(this.getClass().getCanonicalName());
+            request.addHeader(Constants.USER_AGENT_HEADER, userAgent);
+            request.addHeader(Constants.TELEMETRY_HEADER, userAgent);
+            request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
+            request.addHeader(Constants.ACCEPT_HEADER, Constants.JSON_CONTENT_TYPE);
+            request.addHeader(Constants.ODATA_VERSION_HEADER, Constants.ODATA_VERSION);
+            request.addHeader(Constants.ODATA_MAXVERSION_HEADER, Constants.ODATA_MAXVERSION);
 
-
-        logger.log("Request Headers: ", LogLevel.VERBOSE);
-        for (String key : request.getHeaders().keySet()) {
-            logger.log(key + " : " + request.getHeaders().get(key), LogLevel.VERBOSE);
-        }
-
-        final ListenableFuture<Response> future = httpTransport.execute(request);
-        logger.log("OData request executed", LogLevel.INFO);
-
-        final SettableFuture<ODataResponse> result = SettableFuture.create();
-
-        Futures.addCallback(future, new FutureCallback<Response>() {
-
-            @Override
-            public void onSuccess(Response response) {
-                try {
-                    logger.log("OData response received", LogLevel.INFO);
-
-                    logger.log("Reading response data...", LogLevel.VERBOSE);
-                    byte[] data = readAllBytes(response.getStream());
-                    logger.log(data.length + " bytes read from response", LogLevel.VERBOSE);
-
-                    int status = response.getStatus();
-                    logger.log("Response Status Code: " + status, LogLevel.INFO);
-
-                    try {
-                        logger.log("Closing response", LogLevel.VERBOSE);
-                        response.close();
-                    } catch (Throwable t) {
-                        logger.log("Error closing response: " + t.toString(), LogLevel.ERROR);
-                        result.setException(t);
-                        return;
-                    }
-
-                    ODataResponse odataResponse = new ODataResponseImpl(data, response);
-                    if (status < 200 || status > 299) {
-                        logger.log("Invalid status code. Processing response content as String", LogLevel.VERBOSE);
-                        String responseData = new String(data, Constants.UTF8_NAME);
-                        String message = "Response status: " + response.getStatus() + "\n" + "Response content: " + responseData;
-                        logger.log(message, LogLevel.ERROR);
-                        result.setException(new ODataException(odataResponse, message));
-                        return;
-                    }
-                    result.set(odataResponse);
-                } catch (Throwable t) {
-                    logger.log("Unexpected error: " + t.toString(), LogLevel.ERROR);
-                    ODataResponse odataResponse = new ODataResponseImpl(null, response);
-                    result.setException(new ODataException(odataResponse, t));
+            if (request.getHeaders() != null) {
+                for (String key : request.getHeaders().keySet()) {
+                    request.addHeader(key, request.getHeaders().get(key));
                 }
             }
 
-            @Override
-            public void onFailure(Throwable throwable) {
-                result.setException(throwable);
+            boolean credentialsSet = false;
+
+            Credentials cred = resolver.getCredentials();
+            if (cred != null) {
+                cred.prepareRequest(request);
+                credentialsSet = true;
             }
-        });
+
+            if (!credentialsSet) {
+                logger.log("Executing request without setting credentials", LogLevel.WARNING);
+            }
+
+
+            logger.log("Request Headers: ", LogLevel.VERBOSE);
+            for (String key : request.getHeaders().keySet()) {
+                logger.log(key + " : " + request.getHeaders().get(key), LogLevel.VERBOSE);
+            }
+
+            final ListenableFuture<Response> future = httpTransport.execute(request);
+            logger.log("OData request executed", LogLevel.INFO);
+
+            Futures.addCallback(future, new FutureCallback<Response>() {
+
+                @Override
+                public void onSuccess(Response response) {
+                    try {
+                        logger.log("OData response received", LogLevel.INFO);
+
+                        logger.log("Reading response data...", LogLevel.VERBOSE);
+                        byte[] data = readAllBytes(response.getStream());
+                        logger.log(data.length + " bytes read from response", LogLevel.VERBOSE);
+
+                        int status = response.getStatus();
+                        logger.log("Response Status Code: " + status, LogLevel.INFO);
+
+                        try {
+                            logger.log("Closing response", LogLevel.VERBOSE);
+                            response.close();
+                        } catch (Throwable t) {
+                            logger.log("Error closing response: " + t.toString(), LogLevel.ERROR);
+                            result.setException(t);
+                            return;
+                        }
+
+                        ODataResponse odataResponse = new ODataResponseImpl(data, response);
+                        if (status < 200 || status > 299) {
+                            logger.log("Invalid status code. Processing response content as String", LogLevel.VERBOSE);
+                            String responseData = new String(data, Constants.UTF8_NAME);
+                            String message = "Response status: " + response.getStatus() + "\n" + "Response content: " + responseData;
+                            logger.log(message, LogLevel.ERROR);
+                            result.setException(new ODataException(odataResponse, message));
+                            return;
+                        }
+                        result.set(odataResponse);
+                    } catch (Throwable t) {
+                        logger.log("Unexpected error: " + t.toString(), LogLevel.ERROR);
+                        ODataResponse odataResponse = new ODataResponseImpl(null, response);
+                        result.setException(new ODataException(odataResponse, t));
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable throwable) {
+                    result.setException(throwable);
+                }
+            });
+        } catch (Throwable t) {
+            result.setException(t);
+        }
         return result;
 
     }

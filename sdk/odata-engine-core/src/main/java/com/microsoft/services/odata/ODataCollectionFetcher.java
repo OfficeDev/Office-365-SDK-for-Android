@@ -18,14 +18,15 @@ import com.microsoft.services.odata.interfaces.Request;
 import java.util.List;
 
 import static com.microsoft.services.odata.Helpers.addCustomParametersToODataRequest;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.odata.Helpers.transformToEntityListenableFuture;
+import static com.microsoft.services.odata.Helpers.transformToStringListenableFuture;
 
 /**
  * The type ODataCollectionFetcher.
  *
- * @param <TEntity>     the type parameter
- * @param <TFetcher>    the type parameter
- * @param <TOperations> the type parameter
+ * @param <TEntity>      the type parameter
+ * @param <TFetcher>     the type parameter
+ * @param <TOperations>  the type parameter
  */
 public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher, TOperations extends ODataOperations>
         extends ODataFetcher<TEntity>
@@ -43,9 +44,9 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     /**
      * Instantiates a new ODataCollectionFetcher.
      *
-     * @param urlComponent   the url component
-     * @param parent         the parent
-     * @param clazz          the clazz
+     * @param urlComponent the url component
+     * @param parent the parent
+     * @param clazz the clazz
      * @param operationClazz the operation clazz
      */
     public ODataCollectionFetcher(String urlComponent, ODataExecutable parent,
@@ -180,15 +181,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
 
     @Override
     public ListenableFuture<List<TEntity>> read() {
-        final SettableFuture<List<TEntity>> result = SettableFuture.create();
-
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
-
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addListResultCallback(result, future);
-
-        return result;
+        return Helpers.transformToEntityListListenableFuture(readRaw(), this.clazz, getResolver());
     }
 
     /**
@@ -198,17 +191,26 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
      * @return the listenable future
      */
     public ListenableFuture<TEntity> add(TEntity entity) {
-        final SettableFuture<TEntity> result = SettableFuture.create();
-        byte[] payloadBytes = serializeToJsonByteArray(entity, getResolver());
+        ListenableFuture<String> future = addRaw(getResolver().getJsonSerializer().serialize(entity));
+        return transformToEntityListenableFuture(future, this.clazz, getResolver());
+    }
+
+    /**
+     * Add raw.
+     *
+     * @param payload the payload
+     * @return the listenable future
+     */
+    public ListenableFuture<String> addRaw(String payload) {
+        byte[] payloadBytes = payload.getBytes(Constants.UTF8);
 
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
         request.setContent(payloadBytes);
+        request.setVerb(HttpVerb.POST);
 
         ListenableFuture<ODataResponse> future = oDataExecute(request);
-        addEntityResultCallback(result, future);
+        return transformToStringListenableFuture(future);
 
-        return result;
     }
 
     /**
@@ -223,7 +225,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     /**
      * Add parameter.
      *
-     * @param name  the name
+     * @param name the name
      * @param value the value
      * @return the ODataCollectionFetcher
      */
@@ -235,7 +237,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     /**
      * Add header.
      *
-     * @param name  the name
+     * @param name the name
      * @param value the value
      * @return the ODataCollectionFetcher
      */
@@ -244,40 +246,18 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return this;
     }
 
-    public void addListResultCallback(final SettableFuture<List<TEntity>> result, ListenableFuture<ODataResponse> future) {
-        Futures.addCallback(future, new FutureCallback<ODataResponse>() {
-            @Override
-            public void onSuccess(ODataResponse payload) {
-                List<TEntity> list;
-                try {
-                    log("Entity collection Deserialization Started", LogLevel.VERBOSE);
-                    String string = new String(payload.getPayload(), Constants.UTF8_NAME);
-                    list = getResolver().getJsonSerializer().deserializeList(string, clazz);
-                    log("Entity collection Deserialization Finished", LogLevel.VERBOSE);
-
-                    result.set(list);
-                } catch (Throwable e) {
-                    result.setException(e);
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                result.setException(throwable);
-            }
-        });
-    }
 
     /**
      * Sets path for collections.
      *
-     * @param url          the url
+     * @param url the url
      * @param urlComponent the url component
-     * @param top          the top
-     * @param skip         the skip
-     * @param select       the select
-     * @param expand       the expand
-     * @param filter       the filter
+     * @param top the top
+     * @param skip the skip
+     * @param select the select
+     * @param expand the expand
+     * @param filter the filter
+     * @param orderBy the order by
      */
     protected void setPathForCollections(ODataURL url, String urlComponent, int top, int skip, String select, String expand, String filter, String orderBy) {
         if (top > -1) {

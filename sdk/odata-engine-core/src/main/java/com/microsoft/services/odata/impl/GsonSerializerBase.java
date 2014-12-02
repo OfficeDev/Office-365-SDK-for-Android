@@ -200,4 +200,18 @@ public abstract class GsonSerializerBase implements JsonSerializer {
             }
         }
     }
+
+    @Override
+    public String jsonObjectFromJsonMap(Map<String, String> map) {
+        JsonObject object = new JsonObject();
+        JsonParser parser = new JsonParser();
+
+        for (String key : map.keySet()) {
+            String jsonString = map.get(key);
+            JsonElement element = parser.parse(jsonString);
+            object.add(key, element);
+        }
+
+        return object.toString();
+    }
 }

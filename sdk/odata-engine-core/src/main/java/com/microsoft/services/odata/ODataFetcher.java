@@ -1,21 +1,45 @@
 package com.microsoft.services.odata;
 
+import com.google.common.util.concurrent.AsyncFunction;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.odata.interfaces.HttpVerb;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.ODataURL;
+import com.microsoft.services.odata.interfaces.Request;
 
+/**
+ * The type O data fetcher.
+ *
+ * @param <TEntity> the type parameter
+ */
 public abstract class ODataFetcher<TEntity> extends ODataExecutable {
 
+    /**
+     * The Clazz.
+     */
     protected Class<TEntity> clazz;
+    /**
+     * The Url component.
+     */
     protected String urlComponent;
+    /**
+     * The Parent.
+     */
     protected ODataExecutable parent;
 
 
+    /**
+     * Instantiates a new O data fetcher.
+     *
+     * @param urlComponent the url component
+     * @param parent       the parent
+     * @param clazz        the clazz
+     */
     public ODataFetcher(String urlComponent, ODataExecutable parent, Class<TEntity> clazz) {
         this.clazz = clazz;
         this.urlComponent = urlComponent;
@@ -27,38 +51,30 @@ public abstract class ODataFetcher<TEntity> extends ODataExecutable {
         return parent.getResolver();
     }
 
-    protected void addEntityResultCallback(final SettableFuture<TEntity> result,
-                                            ListenableFuture<ODataResponse> future) {
-        Futures.addCallback(future, new FutureCallback<ODataResponse>() {
-            @Override
-            public void onSuccess(ODataResponse response) {
-                try {
-                    log("Entity Deserialization Started", LogLevel.VERBOSE);
-                    String string = new String(response.getPayload(), Constants.UTF8_NAME);
-                    TEntity entity = getResolver().getJsonSerializer().deserialize(string, clazz);
-                    log("Entity Deserialization Finished", LogLevel.VERBOSE);
-
-                    result.set(entity);
-                } catch (Throwable e) {
-                    result.setException(e);
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                result.setException(throwable);
-            }
-        });
+    /**
+     * Read raw.
+     *
+     * @return the listenable future
+     */
+    protected ListenableFuture<String> readRaw() {
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.GET);
+        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        return Helpers.transformToStringListenableFuture(future);
     }
+
 
     /**
      * Add byte array result callback.
      *
-     * @param result   the result
-     * @param future   the future
+     * @param result the result
+     * @param future the future
      */
     protected void addByteArrayResultCallback(final SettableFuture<byte[]> result,
                                               ListenableFuture<byte[]> future) {
+
+        // TODO: Review usage
+
         Futures.addCallback(future, new FutureCallback<byte[]>() {
             @Override
             public void onSuccess(byte[] payload) {
@@ -75,28 +91,6 @@ public abstract class ODataFetcher<TEntity> extends ODataExecutable {
             }
         });
     }
-
-    /**
-     * Add null result callback.
-     *
-     * @param result the result
-     * @param future the future
-     */
-    protected void addNullResultCallback(final SettableFuture<?> result, ListenableFuture<ODataResponse> future) {
-        Futures.addCallback(future, new FutureCallback<ODataResponse>() {
-            @Override
-            public void onSuccess(ODataResponse response) {
-                result.set(null);
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                result.setException(throwable);
-            }
-        });
-    }
-
-
 
     /**
      * Sets selector url.

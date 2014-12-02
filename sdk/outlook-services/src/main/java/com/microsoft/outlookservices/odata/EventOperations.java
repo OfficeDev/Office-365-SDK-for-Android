@@ -9,9 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.outlookservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type EventOperations.
@@ -53,66 +51,112 @@ public class EventOperations extends ItemOperations {
     }
 
     
-     /**
+    
+    /**
      * Accept listenable future.
-     * @param comment the comment
-
+     * @param comment the comment 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> accept(String comment) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+    public ListenableFuture<Integer> accept(String comment) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedComment = serializer.serialize(comment);
+		  
+        ListenableFuture<String> future = acceptRaw(serializedComment);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * AcceptRaw listenable future.
+     * @param comment the comment 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> acceptRaw(String comment){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         map.put("Comment", comment);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         request.getUrl().appendPathComponent("Accept");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, Integer.class);
-        
-        return result;
+        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
     }
+
+
     
-     /**
+    
+    /**
      * Decline listenable future.
-     * @param comment the comment
-
+     * @param comment the comment 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> decline(String comment) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("Comment", comment);
-		
-		Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
-        request.getUrl().appendPathComponent("Decline");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, Integer.class);
+    public ListenableFuture<Integer> decline(String comment) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedComment = serializer.serialize(comment);
+		  
+        ListenableFuture<String> future = declineRaw(serializedComment);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
-        return result;
     }
-    
+
      /**
-     * TentativelyAccept listenable future.
-     * @param comment the comment
-
+     * DeclineRaw listenable future.
+     * @param comment the comment 
      * @return the listenable future
-     */         
-    public ListenableFuture<Integer> tentativelyAccept(String comment) {
-        final SettableFuture<Integer> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+     */ 
+    public ListenableFuture<String> declineRaw(String comment){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         map.put("Comment", comment);
 		
-		Request request = getResolver().createRequest();
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
-        request.getUrl().appendPathComponent("TentativelyAccept");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, Integer.class);
-        
-        return result;
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
+        request.getUrl().appendPathComponent("Decline");
+        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
     }
+
+
+    
+    
+    /**
+     * TentativelyAccept listenable future.
+     * @param comment the comment 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> tentativelyAccept(String comment) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedComment = serializer.serialize(comment);
+		  
+        ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * TentativelyAcceptRaw listenable future.
+     * @param comment the comment 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> tentativelyAcceptRaw(String comment){
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        map.put("Comment", comment);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
+        request.getUrl().appendPathComponent("TentativelyAccept");
+        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+
 }

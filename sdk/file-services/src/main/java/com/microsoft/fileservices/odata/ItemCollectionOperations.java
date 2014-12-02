@@ -9,8 +9,7 @@ import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
 import com.microsoft.fileservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
+import static com.microsoft.services.odata.Helpers.*;
 
 
 
@@ -52,27 +51,27 @@ public class ItemCollectionOperations extends ODataOperations{
         addCustomHeader(name, value);
         return this;
     }
+ 
+     
      /**
      * getByPath listenable future.
-        * @param path the path
-
+     * @param path the path 
      * @return the listenable future
-     */     
-    public ListenableFuture<Item> getByPath(String path) {
-        final SettableFuture<Item> result = SettableFuture.create();
+     */         
+    public ListenableFuture<Item> getByPath(String path) { 
 
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("path", path);
-		    
-		Request request = getResolver().createRequest();
+		
+        Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
+
         String parameters = getFunctionParameters(map);
-	request.getUrl().appendPathComponent("getByPath(" + parameters + ")");
+        request.getUrl().appendPathComponent("getByPath(" + parameters + ")");
         ListenableFuture<ODataResponse> future = oDataExecute(request);   
-        addEntityResultCallback(result, future, Item.class);
+        return transformToEntityListenableFuture(transformToStringListenableFuture(future), Item.class, getResolver());
         
-        return result;
-    }
-                
+   }
+
 }

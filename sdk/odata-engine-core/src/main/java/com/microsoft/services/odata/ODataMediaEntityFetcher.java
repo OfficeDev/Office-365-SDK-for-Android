@@ -14,6 +14,8 @@ import com.microsoft.services.odata.interfaces.ODataResponse;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
 
+import static com.microsoft.services.odata.Helpers.transformToVoidListenableFuture;
+
 
 /**
  * The type ODataMediaEntityFetcher.
@@ -48,6 +50,7 @@ public abstract class ODataMediaEntityFetcher<TEntity, TOperations extends OData
         url.appendPathComponent("$value");
 
         ListenableFuture<ODataResponse> future = oDataExecute(request);
+
         Futures.addCallback(future, new FutureCallback<ODataResponse>() {
                 @Override
                 public void onSuccess(ODataResponse response) {
@@ -73,9 +76,6 @@ public abstract class ODataMediaEntityFetcher<TEntity, TOperations extends OData
 
         ListenableFuture<ODataResponse> future = oDataExecute(request);
 
-        SettableFuture<Void> result = SettableFuture.create();
-        addNullResultCallback(result, future);
-
-        return result;
+        return transformToVoidListenableFuture(future);
     }
 }

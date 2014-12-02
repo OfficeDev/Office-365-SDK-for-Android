@@ -41,31 +41,6 @@ public abstract class ODataOperations extends ODataExecutable {
         return parent.oDataExecute(request);
     }
 
-    public <TEntity> void addEntityResultCallback(final SettableFuture<TEntity> result,
-                                            ListenableFuture<ODataResponse> future,
-                                            final Class<TEntity> clazz) {
-        Futures.addCallback(future, new FutureCallback<ODataResponse>() {
-            @Override
-            public void onSuccess(ODataResponse response) {
-                try {
-                    log("Entity Deserialization Started", LogLevel.VERBOSE);
-                    String string = new String(response.getPayload(), Constants.UTF8_NAME);
-                    TEntity entity = getResolver().getJsonSerializer().deserialize(string, clazz);
-                    log("Entity Deserialization Finished", LogLevel.VERBOSE);
-
-                    result.set(entity);
-                } catch (Throwable e) {
-                    result.setException(e);
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                result.setException(throwable);
-            }
-        });
-    }
-
     @Override
     protected  DependencyResolver getResolver() {
         return parent.getResolver();
