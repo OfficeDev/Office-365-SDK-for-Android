@@ -1,7 +1,6 @@
 package com.microsoft.services.odata;
 
 import com.google.common.util.concurrent.AsyncFunction;
-import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
@@ -88,9 +87,9 @@ public class Helpers {
     /**
      * Add custom parameters to o data uRL.
      *
-     * @param request the request
+     * @param request    the request
      * @param parameters the parameters
-     * @param headers the custom headers
+     * @param headers    the custom headers
      */
     public static void addCustomParametersToODataRequest(Request request, Map<String, Object> parameters, Map<String, String> headers) {
         ODataURL url = request.getUrl();
@@ -126,15 +125,15 @@ public class Helpers {
     }
 
     private static String toODataURLValue(Object o) {
-       if (o instanceof String) {
-           return "'" + o + "'";
-       }
+        if (o instanceof String) {
+            return "'" + o + "'";
+        }
 
-       if (o instanceof Calendar) {
-           return CalendarSerializer.serialize((Calendar)o);
-       }
+        if (o instanceof Calendar) {
+            return CalendarSerializer.serialize((Calendar) o);
+        }
 
-       return o.toString();
+        return o.toString();
     }
 
     /**
@@ -196,7 +195,7 @@ public class Helpers {
     /**
      * Serialize to json byte array.
      *
-     * @param entity the entity
+     * @param entity   the entity
      * @param resolver the resolver
      * @return the byte [ ]
      */
@@ -293,9 +292,12 @@ public class Helpers {
      */
     public static ListenableFuture<Void> transformToVoidListenableFuture(ListenableFuture<ODataResponse> future) {
         return Futures.transform(future, new AsyncFunction<ODataResponse, Void>() {
+
             @Override
             public ListenableFuture<Void> apply(ODataResponse input) throws Exception {
-                return null;
+                SettableFuture<Void> result = SettableFuture.create();
+                result.set(null);
+                return result;
             }
         });
     }
@@ -309,7 +311,7 @@ public class Helpers {
      */
     public static ListenableFuture<byte[]> transformToByteArrayListenableFuture(ListenableFuture<byte[]> future) {
 
-      return  Futures.transform(future, new AsyncFunction<byte[], byte[]>() {
+        return Futures.transform(future, new AsyncFunction<byte[], byte[]>() {
 
             @Override
             public ListenableFuture<byte[]> apply(byte[] input) throws Exception {
