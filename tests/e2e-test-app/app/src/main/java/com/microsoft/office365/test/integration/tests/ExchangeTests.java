@@ -8,6 +8,7 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.outlookservices.Attachment;
 import com.microsoft.outlookservices.Attendee;
 import com.microsoft.outlookservices.BodyType;
 import com.microsoft.outlookservices.Calendar;
@@ -51,7 +52,9 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canGetMessage("Can get messages (overload)", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
         this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
+        this.addTest(canGetMessageAttachments("Can get message attachment", true));
         this.addTest(canSendMessage("Can send message", true));
+        this.addTest(canSendWithMessageOperations("Can send with message operations", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
         this.addTest(canMoveMessage("Can move message", true));
@@ -59,9 +62,6 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canCreateReplyMessage("Can create reply", true));
         this.addTest(canCreateReplyAllMessage("Can create reply all", true));
         this.addTest(canCreateForwardMessage("Can create forward", true));
-        //TODO:reply action
-        //TODO:reply all
-        //TODO:forward action
 
         //Calendar groups
         this.addTest(canCreateCalendarGroup("Can create calendar group", true));
@@ -708,6 +708,52 @@ public class ExchangeTests extends TestGroup {
                     if (!storedMessage.getHasAttachments())
                         result.setStatus(TestStatus.Failed);
 
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetMessageAttachments(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
+
+                    //Prepare
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(getFileAttachment()).get();
+
+                    //Act
+                    List<Attachment> attachments = client.getMe().getMessage(added.getId()).getAttachments().read().get();
+                    
+                    //Assert
+                    if (attachments != null && attachments.size() > 0)
+                        result.setStatus(TestStatus.Passed);
+
+
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
@@ -738,6 +784,37 @@ public class ExchangeTests extends TestGroup {
                     //Act
                     client
                             .getMe().getOperations().sendMail(message, true).get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSendWithMessageOperations(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String mailSubject = "Test Send Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessage(addedMessage.getId()).getOperations().send();
 
                     return result;
                 } catch (Exception e) {
