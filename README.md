@@ -30,15 +30,15 @@ Now we'll create a simple application that retrieves messages using this SDK and
 ```Groovy
 dependencies {
     // base OData stuff:
-    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.10.0'
+    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.10.1'
     compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.10.0', ext:'aar'
 
     // choose the services/SDKs you need:
-    compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.10.0'
-    compile group: 'com.microsoft.services', name: 'discovery-services', version: '0.10.0'
-    compile group: 'com.microsoft.services', name: 'directory-services', version: '0.10.0'
-    compile group: 'com.microsoft.services', name: 'file-services', version: '0.10.0'
-    compile group: 'com.microsoft.services', name: 'list-services', version: '0.10.0', ext:'aar'
+    compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.10.1'
+    compile group: 'com.microsoft.services', name: 'discovery-services', version: '0.10.1'
+    compile group: 'com.microsoft.services', name: 'directory-services', version: '0.10.1'
+    compile group: 'com.microsoft.services', name: 'file-services', version: '0.10.1'
+    compile group: 'com.microsoft.services', name: 'list-services', version: '0.10.1', ext:'aar'
     
     // ADAL
     compile (group: 'com.microsoft.aad', name: 'adal', version: '(,2.0)') {
