@@ -2,12 +2,10 @@ package com.microsoft.services.odata.unittests;
 
 import com.microsoft.outlookservices.Folder;
 import com.microsoft.outlookservices.odata.OutlookClient;
-import com.microsoft.outlookservices.odata.UserFetcher;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.unittests.testsupport.WireMockResponse;
 import com.microsoft.services.odata.unittests.testsupport.WireMockTestClient;
 
-import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +15,6 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -54,33 +51,7 @@ public class OutlookServicesTest extends WireMockTestBase {
         final DependencyResolver resolver = context.mock(DependencyResolver.class);
         OutlookClient client = new OutlookClient(mockServer, resolver);
 
-        context.checking(new Expectations() {
-            {
-                oneOf(resolver).getJsonSerializer();
-                oneOf(resolver).getHttpTransport();
-                oneOf(resolver).createRequest();
-            }
-        });
-
         assertNotNull(client);
-
-    }
-
-    @Test
-    public void canCallFetcherOnOutlookClient() {
-        final DependencyResolver resolver = context.mock(DependencyResolver.class);
-        OutlookClient client = new OutlookClient(mockServer, resolver);
-
-        context.checking(new Expectations() {
-            {
-                oneOf(resolver).getJsonSerializer();
-                oneOf(resolver).getHttpTransport();
-                oneOf(resolver).createRequest();
-            }
-        });
-
-        UserFetcher fetcher = client.getMe();
-        assertThat(fetcher, is(notNullValue()));
     }
 
     @Test
@@ -88,13 +59,6 @@ public class OutlookServicesTest extends WireMockTestBase {
         final DependencyResolver resolver = context.mock(DependencyResolver.class);
         final OutlookClient client = new OutlookClient(mockServer, resolver);
 
-        context.checking(new Expectations() {
-            {
-                oneOf(resolver).getJsonSerializer();
-                oneOf(resolver).getHttpTransport();
-                oneOf(resolver).createRequest();
-            }
-        });
         List<Folder> folders = client.getMe().getFolders().read().get();
         assertNotNull(folders);
     }
