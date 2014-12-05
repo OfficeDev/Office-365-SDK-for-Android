@@ -6,9 +6,9 @@ import com.microsoft.services.odata.impl.http.NetworkRunnable;
 import com.microsoft.services.odata.interfaces.Request;
 import com.microsoft.services.odata.interfaces.Response;
 
-public class DesktopHttpTransport extends BaseHttpTransport {
+public class JvmHttpTransport extends BaseHttpTransport {
     @Override
     protected NetworkRunnable createNetworkRunnable(Request request, SettableFuture<Response> future) {
-        return new DesktopNetworkRunnable(request, future);
+        return new JvmNetworkRunnable(request, future);
     }
 }

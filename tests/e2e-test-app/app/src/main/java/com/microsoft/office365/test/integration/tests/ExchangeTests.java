@@ -3,11 +3,13 @@ package com.microsoft.office365.test.integration.tests;
 
 import android.util.Log;
 
+import com.microsoft.fileservices.Item;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.outlookservices.Attachment;
 import com.microsoft.outlookservices.Attendee;
 import com.microsoft.outlookservices.BodyType;
 import com.microsoft.outlookservices.Calendar;
@@ -21,6 +23,7 @@ import com.microsoft.outlookservices.Importance;
 import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
+import com.microsoft.outlookservices.User;
 import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.CalendarSerializer;
 
@@ -36,6 +39,7 @@ public class ExchangeTests extends TestGroup {
         super("Exchange tests");
 
         this.addTest(canCreateClient("Can create client", true));
+        this.addTest(canGetMe("Can get me", true));
         // Folders
         this.addTest(canRetrieveFolders("Can retrieve folders", true));
         this.addTest(canRetrieveFolderById("Can retrieve folder by id", true));
@@ -51,7 +55,11 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canGetMessage("Can get messages (overload)", true));
         this.addTest(canCreateMessage("Can create message in drafts", true));
         this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
+        this.addTest(canGetMessageAttachments("Can get message attachment", true));
         this.addTest(canSendMessage("Can send message", true));
+        this.addTest(canSendWithMessageOperations("Can send with message operations", true));
+        this.addTest(canSendHtmlMessage("Can send html message", true));
+        this.addTest(canReplyHtmlMessage("Can reply html message", true));
         this.addTest(canUpdateMessage("Can update message", true));
         this.addTest(canDeleteMessage("Can delete message", true));
         this.addTest(canMoveMessage("Can move message", true));
@@ -59,9 +67,6 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canCreateReplyMessage("Can create reply", true));
         this.addTest(canCreateReplyAllMessage("Can create reply all", true));
         this.addTest(canCreateForwardMessage("Can create forward", true));
-        //TODO:reply action
-        //TODO:reply all
-        //TODO:forward action
 
         //Calendar groups
         this.addTest(canCreateCalendarGroup("Can create calendar group", true));
@@ -298,7 +303,7 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     String newFolderName = "TestFolder" + UUID.randomUUID();
-                    ;
+
                     String parentFolderName = "Inbox";
                     String destinationFolderName = "Drafts";
 
@@ -609,6 +614,34 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
+    private TestCase canGetMe(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    User me = client.getMe().read().get();
+                    if (client != null && me != null)
+                        result.setStatus(TestStatus.Passed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
     private TestCase canRetrieveFolders(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -708,6 +741,52 @@ public class ExchangeTests extends TestGroup {
                     if (!storedMessage.getHasAttachments())
                         result.setStatus(TestStatus.Failed);
 
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetMessageAttachments(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
+
+                    //Prepare
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(getFileAttachment()).get();
+
+                    //Act
+                    List<Attachment> attachments = client.getMe().getMessage(added.getId()).getAttachments().read().get();
+                    
+                    //Assert
+                    if (attachments != null && attachments.size() > 0)
+                        result.setStatus(TestStatus.Passed);
+
+
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
@@ -739,6 +818,133 @@ public class ExchangeTests extends TestGroup {
                     client
                             .getMe().getOperations().sendMail(message, true).get();
 
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSendWithMessageOperations(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String mailSubject = "Test Send Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessage(addedMessage.getId()).getOperations().send();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSendHtmlMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+                    ItemBody itemBody = message.getBody();
+                    itemBody.setContentType(BodyType.HTML);
+                    itemBody.setContent("<h1>This is an Html body.</h1><a href='#'>With Link!</a>");
+                    message.setBody(itemBody);
+
+                    //Act
+                    client.getMe().getOperations().sendMail(message, true).get();
+
+                    //Assert
+                    List<Folder> sentFolder = client.getMe().getFolders().filter("DisplayName eq 'Sent Items'").read().get();
+                    List<Message> messages = client.getMe()
+                            .getFolder(sentFolder.get(0).getId())
+                            .getMessages()
+                            .filter("Subject eq '" + mailSubject + "'")
+                            .read().get();
+
+                    if(messages.size() > 0 && messages.get(0).getBody().getContentType() == BodyType.HTML)
+                        result.setStatus(TestStatus.Passed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canReplyHtmlMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+                    ItemBody itemBody = message.getBody();
+                    itemBody.setContentType(BodyType.HTML);
+                    itemBody.setContent("<h1>This is an Html body.</h1><a href='#'>With Link!</a>");
+                    message.setBody(itemBody);
+
+                    //Prepare
+                    client.getMe().getOperations().sendMail(message, true).get();
+
+                    List<Folder> sentFolder = client.getMe().getFolders().filter("DisplayName eq 'Sent Items'").read().get();
+                    List<Message> messages = client.getMe()
+                            .getFolder(sentFolder.get(0).getId())
+                            .getMessages()
+                            .filter("Subject eq '" + mailSubject + "'")
+                            .read().get();
+
+                    //Act
+                    Message messageToReply = client.getMe().getFolder(sentFolder.get(0).getId())
+                            .getMessage(messages.get(0).getId()).getOperations().createReply().get();
+
+                    //Assert
+                    if(messageToReply.getBody().getContentType() == BodyType.HTML)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getMessage(messageToReply.getId()).delete().get();
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);

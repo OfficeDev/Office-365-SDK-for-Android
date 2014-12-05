@@ -19,14 +19,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DesktopNetworkRunnable extends NetworkRunnable {
+public class JvmNetworkRunnable extends NetworkRunnable {
     /**
      * Initializes the network runnable
      *
      * @param request The request to execute
      * @param future  Future for the operation
      */
-    public DesktopNetworkRunnable(Request request, SettableFuture<Response> future) {
+    public JvmNetworkRunnable(Request request, SettableFuture<Response> future) {
         super(request, future);
     }
 
