@@ -29,7 +29,8 @@ public class FilesTests extends TestGroup {
         this.addTest(canUpdateFileContent("Can update file content", true));
         this.addTest(canGetDrive("Can get drive", false));
         this.addTest(canGetFilesTyped("Can get files typed with derived classes", true));
-        this.addTest(canGetFilesTyped("Can get file typed with derived class", true));
+        this.addTest(canGetFileTyped("Can get file typed with derived class", true));
+        this.addTest(canDeleteFiles("Can delete files", true));
         //Select, top
         this.addTest(canSelectFiles("Can use select in files", true));
         this.addTest(canTopFiles("Can use top in files", true));
@@ -404,6 +405,40 @@ public class FilesTests extends TestGroup {
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canDeleteFiles(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    //Prepare
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+
+                    //Act
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };

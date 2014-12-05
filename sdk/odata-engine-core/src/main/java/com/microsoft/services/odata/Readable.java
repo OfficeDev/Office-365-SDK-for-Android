@@ -13,4 +13,5 @@ import com.google.common.util.concurrent.ListenableFuture;
  */
 public interface Readable<T> {
     public ListenableFuture<T> read();
+    public ListenableFuture<String> readRaw();
 }

@@ -119,6 +119,15 @@ public abstract class ODataEntityFetcher<TEntity, TOperations extends ODataOpera
         return transformToEntityListenableFuture(readRaw(), this.clazz, getResolver());
     }
 
+    /**
+     * Reads raw
+     *
+     * @return the listenable future
+     */
+    public ListenableFuture<String> readRaw() {
+        return super.readRaw();
+    }
+
 
     /**
      * Select ODataCollectionFetcher.
