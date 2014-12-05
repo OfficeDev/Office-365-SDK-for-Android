@@ -28,6 +28,7 @@ public class WireMockTestBase {
                 new SingleRootFileSource("src/test/resources/mappings")));
     }
 
+
     @AfterClass
     public static void serverShutdown() {
         wireMockServer.stop();

@@ -7,7 +7,6 @@ import com.microsoft.services.odata.unittests.testsupport.WireMockResponse;
 import com.microsoft.services.odata.unittests.testsupport.WireMockTestClient;
 
 import org.jmock.integration.junit4.JUnitRuleMockery;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,7 +19,7 @@ import static org.junit.Assert.assertThat;
 
 public class OutlookServicesTest extends WireMockTestBase {
 
-    private String mockServer = "http://127.0.0.0:8080";
+    private String mockServer = "http://localhost:8080";
 
     @Rule
     public JUnitRuleMockery context = new JUnitRuleMockery();
@@ -28,11 +27,6 @@ public class OutlookServicesTest extends WireMockTestBase {
     @Before
     public void init() {
         testClient = new WireMockTestClient();
-    }
-
-    @After
-    public void stopWireMock() {
-        wireMockServer.stop();
     }
 
     @Test
@@ -43,6 +37,9 @@ public class OutlookServicesTest extends WireMockTestBase {
 
         response = testClient.get("/canned/resource/1");
         assertThat(response.statusCode(), is(200));
+
+        response = testClient.get("/Me/TwoParamsActionsFirstIsEntityType/");
+        assertThat(response.statusCode(), is(200));
     }
 
     @Test
@@ -50,16 +47,6 @@ public class OutlookServicesTest extends WireMockTestBase {
 
         final DependencyResolver resolver = context.mock(DependencyResolver.class);
         OutlookClient client = new OutlookClient(mockServer, resolver);
-
         assertNotNull(client);
-    }
-
-    @Test
-    public void canListFoldersWithOutlookClient() throws Throwable {
-        final DependencyResolver resolver = context.mock(DependencyResolver.class);
-        final OutlookClient client = new OutlookClient(mockServer, resolver);
-
-        List<Folder> folders = client.getMe().getFolders().read().get();
-        assertNotNull(folders);
     }
 }

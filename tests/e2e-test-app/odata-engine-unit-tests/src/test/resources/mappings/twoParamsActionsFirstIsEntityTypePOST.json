@@ -1,0 +1,10 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/Me/TwoParamsActionsFirstIsEntityType/"
+    },
+    "response": {
+        "status": 200,
+        "body": "1"
+    }
+}
