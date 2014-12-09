@@ -9,7 +9,6 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.microsoft.services.odata.impl"
         minSdkVersion 15
         targetSdkVersion 15
         versionCode 1
@@ -17,7 +16,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

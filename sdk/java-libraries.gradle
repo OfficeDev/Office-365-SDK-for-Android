@@ -2,6 +2,10 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
+apply plugin: 'java'
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
