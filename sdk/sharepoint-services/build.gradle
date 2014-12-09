@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 ext {
-    PUBLISH_ARTIFACT_ID = 'list-services'
+    PUBLISH_ARTIFACT_ID = 'sharepoint-services'
 }
 
 android {
