@@ -1,0 +1,31 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/services/?$top=99",
+        "headers": {
+                    "User-Agent": {
+                        "matches": ".*"
+                    },
+                    "X-ClientService-ClientTag": {
+                        "matches": ".*"
+                    },
+                    "Content-Type": {
+                        "equalTo": "application/json"
+                    },
+                    "Accept": {
+                        "matches": ".*"
+                    },
+                    "OData-Version": {
+                        "equalTo": "4.0"
+                    },
+                    "OData-MaxVersion": {
+                        "equalTo": "4.0"
+                    }
+                }
+
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"value\" : [{\"Navigations\":[],\"DisplayName\":\"Some Display Name\",\"entityKey\":\"Some Entity Key\",\"Id\":\"5C338D75-CB90-4785-8667-CED25B3695BF\",\"@odata.type\":\"#Microsoft.SampleService.SampleEntity\"}]}"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "request": {
+        "method": "DELETE",
+        "url": "/Me/Navigations('SomeId')/"
+
+    },
+    "response": {
+        "status": 200
+    }
+}
