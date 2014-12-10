@@ -20,17 +20,17 @@ See the Apache Version 2.0 License for specific language governing permissions a
 
 package com.microsoft.office365.test.integration.tests;
 
-import com.microsoft.listservices.SPList;
-import com.microsoft.listservices.SPListField;
-import com.microsoft.listservices.SPListItem;
-import com.microsoft.listservices.SharepointListsClient;
+import com.microsoft.sharepointservices.SPList;
+import com.microsoft.sharepointservices.SPListField;
+import com.microsoft.sharepointservices.SPListItem;
+import com.microsoft.sharepointservices.ListClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.ExpectedValueException;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import static com.microsoft.listservices.QueryOperations.*;
+import static com.microsoft.sharepointservices.QueryOperations.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,7 +61,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
 
@@ -93,7 +93,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
 
@@ -125,7 +125,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
                     SPList list = client.getList(listName).get();
@@ -188,7 +188,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
                     SPList list = client.getList(listName).get();
@@ -221,7 +221,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
                     String firstChar = listName.substring(0, 1);
@@ -255,7 +255,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
                     String title = client.getWebTitle().get();
 
                     // validations
@@ -286,7 +286,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
 
@@ -324,7 +324,7 @@ public class ListsTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    SharepointListsClient client = ApplicationContext.getSharePointListClient();
+                    ListClient client = ApplicationContext.getSharePointListClient();
 
                     String listName = ApplicationContext.getTestListName();
 

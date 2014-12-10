@@ -2,10 +2,10 @@ package com.microsoft.office365.test.integration;
 
 import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.discoveryservices.odata.DiscoveryClient;
-import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.sharepointservices.ListClient;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
 import java.util.concurrent.Future;
@@ -48,7 +48,7 @@ public class ApplicationContext {
 
     public static String getTestMail() { return mTestPlatformContext.getTestMail();}
 
-    public static SharepointListsClient getSharePointListClient(){
+    public static ListClient getSharePointListClient(){
         return mTestPlatformContext.getSharePointListClient();
     }
 

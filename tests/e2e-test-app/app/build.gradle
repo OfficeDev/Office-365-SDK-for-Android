@@ -41,6 +41,6 @@ dependencies {
     compile project(':outlook-services')
     compile project(':directory-services')
     compile project(':discovery-services')
-    compile project(':list-services')
+    compile project(':sharepoint-services')
     compile project(':file-services')
 }

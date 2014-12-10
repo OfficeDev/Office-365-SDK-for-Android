@@ -1,4 +1,4 @@
-include ':list-services',
+include ':sharepoint-services',
         ':outlook-services',
         ':file-services',
         ':directory-services',
