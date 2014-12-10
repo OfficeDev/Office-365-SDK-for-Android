@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/OfficeDev/Office-365-SDK-for-Android.svg?branch=master)](https://travis-ci.org/OfficeDev/Office-365-SDK-for-Android)
+
 #Office 365 SDK for Android
 
 **Table of Contents**
