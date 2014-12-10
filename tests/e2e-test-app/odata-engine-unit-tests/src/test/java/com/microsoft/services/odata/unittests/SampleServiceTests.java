@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -157,6 +158,60 @@ public class SampleServiceTests extends WireMockTestBase {
         try{
             result = client.getMe()
                     .getNavigations()
+                    .read()
+                    .get();
+
+        }catch(Throwable t){
+            resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
+        }
+
+        assertThat(result, is(notNullValue()));
+        assertThat(result.size(), is(equalTo(1)));
+    }
+
+    @Test
+    public void testGetNavigationItem() throws ExecutionException, InterruptedException {
+        AnotherEntity result = null;
+        try{
+            result = client.getMe()
+                    .getNavigation("SomeId")
+                    .read()
+                    .get();
+
+        }catch(Throwable t){
+            resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
+        }
+
+        assertThat(result, is(notNullValue()));
+        assertThat(result.getSomeString(), is(equalToIgnoringCase(getAnotherEntity().getSomeString())));
+    }
+
+    @Test
+    public void testGetNavigationItemWithSelect() throws ExecutionException, InterruptedException {
+        AnotherEntity result = null;
+        try{
+            result = client.getMe()
+                    .getNavigation("SomeId")
+                    .select("SomeProp, AnotherProp")
+                    .read()
+                    .get();
+
+        }catch(Throwable t){
+            resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
+        }
+
+        assertThat(result, is(notNullValue()));
+        assertThat(result.getSomeString(), is(equalToIgnoringCase(getAnotherEntity().getSomeString())));
+    }
+
+    @Test
+    public void testGetNavigationListWithSelectAndTop() throws ExecutionException, InterruptedException {
+        List<AnotherEntity> result = null;
+        try{
+            result = client.getMe()
+                    .getNavigations()
+                    .select("SomeProp, AnotherProp")
+                    .top(1)
                     .read()
                     .get();
 
