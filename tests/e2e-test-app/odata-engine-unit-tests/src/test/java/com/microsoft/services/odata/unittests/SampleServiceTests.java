@@ -1,5 +1,6 @@
 package com.microsoft.services.odata.unittests;
 
+import com.microsoft.outlookservices.Calendar;
 import com.microsoft.sampleservice.AnotherEntity;
 import com.microsoft.sampleservice.SampleComplexType;
 import com.microsoft.sampleservice.SampleContainerClient;
@@ -10,7 +11,9 @@ import com.microsoft.services.odata.interfaces.LogLevel;
 
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -372,6 +375,27 @@ public class SampleServiceTests extends WireMockTestBase {
                     .getById(existingEntity.getId())
                     .addHeader("IsPatch", "yes")
                     .update(existingEntity)
+                    .get();
+
+        }catch(Throwable t){
+            resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
+        }
+
+        assertThat(result, is(notNullValue()));
+    }
+
+
+    @Test
+    public void testGetNavigationsWithParameters() throws ExecutionException, InterruptedException {
+        //getNavigationsWithParameters.json
+        List<AnotherEntity> result = null;
+        String param1 = "SomeValue";
+
+        try{
+            result = client.getMe()
+                    .getNavigations()
+                    .addParameter("StringParam", param1)
+                    .read()
                     .get();
 
         }catch(Throwable t){
