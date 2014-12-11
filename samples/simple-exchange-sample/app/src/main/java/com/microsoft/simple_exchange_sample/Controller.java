@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.widget.Toast;
 
 import com.microsoft.services.odata.impl.ADALDependencyResolver;
+import com.microsoft.services.odata.interfaces.LogLevel;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -55,6 +56,8 @@ public class Controller {
      * @return the instance of the resolver
      */
     public ADALDependencyResolver getDependencyResolver() {
+        this.dependencyResolver.getLogger().setEnabled(true);
+        this.dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         return this.dependencyResolver;
     }
 

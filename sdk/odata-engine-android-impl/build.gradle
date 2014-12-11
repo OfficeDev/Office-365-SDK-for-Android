@@ -9,7 +9,6 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.microsoft.services.odata.impl"
         minSdkVersion 15
         targetSdkVersion 15
         versionCode 1
@@ -17,7 +16,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,7 +26,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
     compile project(':odata-engine-core')
-    compile('com.microsoft.aad:adal:(,2.0)')
+    compile('com.microsoft.aad:adal:1.0.5')
 }
 
 apply from : '../android-libraries.gradle'

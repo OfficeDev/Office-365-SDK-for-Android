@@ -2,20 +2,13 @@ package com.microsoft.office365.test.integration;
 
 import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.discoveryservices.odata.DiscoveryClient;
-import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.sharepointservices.ListClient;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
 import java.util.concurrent.Future;
-
-//import com.microsoft.directoryservices.odata.DirectoryClient;
-//import com.microsoft.discoveryservices.odata.DiscoveryClient;
-//import com.microsoft.listservices.SharepointClient;
-//import com.microsoft.listservices.SharepointListsClient;
-//import com.microsoft.sharepointservices.odata.SharePointClient;
-
 
 public interface TestPlatformContext {
 
@@ -61,7 +54,7 @@ public interface TestPlatformContext {
 
     SharePointClient getFilesClient();
 
-    SharepointListsClient getSharePointListClient();
+    ListClient getSharePointListClient();
 
     DiscoveryClient getDiscoveryClient();
 

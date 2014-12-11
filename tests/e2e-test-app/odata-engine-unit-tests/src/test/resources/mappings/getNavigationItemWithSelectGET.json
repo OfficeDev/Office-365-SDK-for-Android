@@ -1,0 +1,10 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/Me/Navigations('SomeId')/?$select=SomeProp,%20AnotherProp"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"SomeString\":\"Some String\",\"Id\":\"3281EC0B-1AEB-49A4-A345-E64D732DA6D3\",\"@odata.type\":\"#Microsoft.SampleService.AnotherEntity\"}"
+    }
+}
