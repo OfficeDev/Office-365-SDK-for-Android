@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="prefExchangeResourcetUrl">https://outlook.office365.com/</string>
-    <string name="prefExchangeEndpoint">https://outlook.office365.com/api/v1.0</string>
-    <string name="prefFilesResourcetUrl">https://teeudev1-my.sharepoint.com/</string>
-    <string name="prefFilesEndpoint">https://teeudev1-my.sharepoint.com/_api/v1.0/me</string>
-    <string name="prefDiscoveryResourcetUrl">https://api.office.com/discovery/</string>
-    <string name="prefDiscoveryEndpoint">https://api.office.com/discovery/v1.0/me/</string>
-    <string name="prefDirectoryResourcetUrl">https://graph.windows.net/</string>
-    <string name="prefDirectoryEndpoint">https://graph.windows.net/TEEUdev1.onmicrosoft.com/?api-version=1.5</string>
-    <string name="prefTestMail">v-anhojn@msopentech.ccsctp.net</string>
-    <string name="prefSharepointUrl">https://teeudev1.sharepoint.com/</string>
-    <string name="prefSiteRelativeUrl">/test/</string>
-    <string name="prefListName">TestEnd2End</string>
+    <string name="prefExchangeResourcetUrl">https://sample-exchange-resource.com/</string>
+    <string name="prefExchangeEndpoint">https://sample-exchange-resource.com/endpoint/</string>
+    <string name="prefFilesResourcetUrl">https://sample-files-resource.com/</string>
+    <string name="prefFilesEndpoint">https://sample-files-resource.com/endpoint/</string>
+    <string name="prefDiscoveryResourcetUrl">https://sample-discovery-resource.com/</string>
+    <string name="prefDiscoveryEndpoint">https://sample-discovery-resource.com/endpoint/</string>
+    <string name="prefDirectoryResourcetUrl">https://sample-directory-resource.com/</string>
+    <string name="prefDirectoryEndpoint">https://sample-directory-resource.com/endpoint/</string>
+    <string name="prefTestMail">testmail@microsoft.com</string>
+    <string name="prefSharepointUrl">https://sample-sharepoint-resource.com/</string>
+    <string name="prefSiteRelativeUrl">/</string>
+    <string name="prefListName">TestEnd2EndLib</string>
     <string name="prefDocumentListName">TestEnd2EndDocLib</string>
-    <string name="prefAADClientId">a69d48a4-4335-4e83-aaf3-7ab834e949fb</string>
-    <string name="prefAADRedirectUrl">https://junction.onmicrosoft.com/getO365AccessToken</string>
+    <string name="prefAADClientId">00000000-0000-0000-0000-000000000000</string>
+    <string name="prefAADRedirectUrl">https://redirecturi.com</string>
 </resources>
