@@ -1,0 +1,10 @@
+language: android
+android:
+  components:
+    - build-tools-20.0.0
+    - android-20
+    - sys-img-armeabi-v7a-android-19
+    #- sys-img-x86-android-20
+
+
+script: cd tests/e2e-test-app && ./gradlew clean build :odata-engine-unit-tests:test -i
