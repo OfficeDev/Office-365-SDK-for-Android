@@ -1,6 +1,5 @@
 package com.microsoft.services.odata.unittests;
 
-import com.microsoft.outlookservices.Calendar;
 import com.microsoft.sampleservice.AnotherEntity;
 import com.microsoft.sampleservice.SampleComplexType;
 import com.microsoft.sampleservice.SampleContainerClient;
@@ -11,9 +10,7 @@ import com.microsoft.services.odata.interfaces.LogLevel;
 
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
