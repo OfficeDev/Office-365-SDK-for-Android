@@ -386,7 +386,6 @@ public class SampleServiceTests extends WireMockTestBase {
         sampleEntity.setDisplayName("Some Display Name");
         sampleEntity.setentityKey("Some Entity Key");
         sampleEntity.setId("5C338D75-CB90-4785-8667-CED25B3695BF");
-
         return sampleEntity;
     }
 
@@ -394,7 +393,6 @@ public class SampleServiceTests extends WireMockTestBase {
         AnotherEntity anotherEntity = new AnotherEntity();
         anotherEntity.setId("3281EC0B-1AEB-49A4-A345-E64D732DA6D3");
         anotherEntity.setSomeString("Some String");
-
         return anotherEntity;
     }
 
