@@ -1,6 +1,5 @@
 package com.microsoft.services.odata.unittests;
 
-import com.microsoft.outlookservices.Calendar;
 import com.microsoft.sampleservice.AnotherEntity;
 import com.microsoft.sampleservice.SampleComplexType;
 import com.microsoft.sampleservice.SampleContainerClient;
@@ -11,9 +10,7 @@ import com.microsoft.services.odata.interfaces.LogLevel;
 
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -52,7 +49,7 @@ public class SampleServiceTests extends WireMockTestBase {
     public void testTwoParamsActionsFirstIsComplexTypeUri() throws ExecutionException, InterruptedException {
         //twoParamsActionsFirstIsCollectionComplexTypePOST.json
         Integer result = null;
-        SampleComplexType sampleComplexEntity = new SampleComplexType();
+        SampleComplexType sampleComplexEntity = getSampleComplexType();
         try{
          result = client.getMe()
                 .getOperations()
@@ -69,7 +66,7 @@ public class SampleServiceTests extends WireMockTestBase {
     public void testTwoParamsActionsFirstIsComplexTypeRawUri() throws ExecutionException, InterruptedException {
         //twoParamsActionsFirstIsCollectionComplexTypePOST.json
         String result = null;
-        SampleComplexType sampleComplexEntity = new SampleComplexType();
+        SampleComplexType sampleComplexEntity = getSampleComplexType();
         String serializedEntity = new String(Helpers.serializeToJsonByteArray(sampleComplexEntity, resolver));
         try{
             result = client.getMe()
@@ -124,7 +121,7 @@ public class SampleServiceTests extends WireMockTestBase {
     public void testTwoParamsActionsFirstIsCollectionComplexTypeUri() throws ExecutionException, InterruptedException {
         //twoParamsActionsFirstIsCollectionComplexTypePOST.json
         List<SampleComplexType> complexTypes = new ArrayList<SampleComplexType>();
-        SampleComplexType complexType = new SampleComplexType();
+        SampleComplexType complexType = getSampleComplexType();
         complexTypes.add(complexType);
         Integer result = null;
         try{
@@ -142,7 +139,7 @@ public class SampleServiceTests extends WireMockTestBase {
     public void testTwoParamsActionsFirstIsCollectionComplexTypeRawUri() throws ExecutionException, InterruptedException {
         //twoParamsActionsFirstIsCollectionComplexTypePOST.json
         List<SampleComplexType> complexTypes = new ArrayList<SampleComplexType>();
-        SampleComplexType complexType = new SampleComplexType();
+        SampleComplexType complexType = getSampleComplexType();
         complexTypes.add(complexType);
 
         String serializedEntity = new String(Helpers.serializeToJsonByteArray(complexTypes, resolver));
@@ -368,6 +365,7 @@ public class SampleServiceTests extends WireMockTestBase {
     public void testUpdateNavigationItem() throws ExecutionException, InterruptedException {
         //updateNavigationItemPOST.json
         AnotherEntity existingEntity = getAnotherEntity();
+        existingEntity.setSomeString("Some Updated String");
         AnotherEntity result = null;
         try{
             result = client.getMe()
@@ -418,6 +416,13 @@ public class SampleServiceTests extends WireMockTestBase {
         anotherEntity.setId("3281EC0B-1AEB-49A4-A345-E64D732DA6D3");
         anotherEntity.setSomeString("Some String");
         return anotherEntity;
+    }
+
+    private SampleComplexType getSampleComplexType(){
+        SampleComplexType complexType = new SampleComplexType();
+        complexType.setName("Some Name");
+        complexType.setAnotherProperty("AnotherProperty");
+        return complexType;
     }
 
 }
