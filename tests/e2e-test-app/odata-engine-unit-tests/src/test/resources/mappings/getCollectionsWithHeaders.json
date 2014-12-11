@@ -1,0 +1,19 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/services/",
+        "headers": {
+                    "Header1": {
+                        "equalTo": "Value1"
+                    },
+                    "Header2": {
+                        "equalTo": "Value2"
+                    }
+                }
+
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"value\" : [{\"Navigations\":[],\"DisplayName\":\"Some Display Name\",\"entityKey\":\"Some Entity Key\",\"Id\":\"5C338D75-CB90-4785-8667-CED25B3695BF\",\"@odata.type\":\"#Microsoft.SampleService.SampleEntity\"}]}"
+    }
+}

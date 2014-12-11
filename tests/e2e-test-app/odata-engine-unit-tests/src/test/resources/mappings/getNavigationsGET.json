@@ -1,0 +1,11 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/Me/Navigations/"
+
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"value\" : [{\"SomeString\":\"Some String\",\"Id\":\"3281EC0B-1AEB-49A4-A345-E64D732DA6D3\",\"@odata.type\":\"#Microsoft.SampleService.AnotherEntity\"}]}"
+    }
+}

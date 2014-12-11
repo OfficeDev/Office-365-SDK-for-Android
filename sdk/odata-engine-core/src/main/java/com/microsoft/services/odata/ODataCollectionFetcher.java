@@ -178,10 +178,24 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         return parent.oDataExecute(request);
     }
 
-
+    /**
+     * Reads
+     *
+     * @return the listenable future
+     */
     @Override
     public ListenableFuture<List<TEntity>> read() {
         return Helpers.transformToEntityListListenableFuture(readRaw(), this.clazz, getResolver());
+    }
+
+    /**
+     * Reads raw
+     *
+     * @return the listenable future
+     */
+    @Override
+    public ListenableFuture<String> readRaw() {
+        return super.readRaw();
     }
 
     /**

@@ -5,7 +5,6 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "tests.office365.microsoft.e2eTestApp"
         minSdkVersion 19
         targetSdkVersion 20
         versionCode 1
@@ -13,7 +12,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,13 +34,13 @@ dependencies {
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.google.guava:guava:16.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
-    compile('com.microsoft.aad:adal:(,2.0)') {
+    compile('com.microsoft.aad:adal:1.0.5') {
         exclude group: 'com.android.support'
     }
     compile project(':odata-engine-android-impl')
     compile project(':outlook-services')
     compile project(':directory-services')
     compile project(':discovery-services')
-    compile project(':list-services')
+    compile project(':sharepoint-services')
     compile project(':file-services')
 }

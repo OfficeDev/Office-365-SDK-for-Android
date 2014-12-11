@@ -15,7 +15,6 @@ import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.discoveryservices.odata.DiscoveryClient;
-import com.microsoft.listservices.SharepointListsClient;
 import com.microsoft.office365.test.integration.TestPlatformContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
@@ -24,6 +23,7 @@ import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.sharepointservices.ListClient;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
 
@@ -200,7 +200,7 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
     }
 
     @Override
-    public SharepointListsClient getSharePointListClient() {
+    public ListClient getSharePointListClient() {
         return getSharePointListClientAAD();
     }
 
@@ -269,8 +269,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
         }
     }
 
-    private SharepointListsClient getSharePointListClientAAD() {
-        final SettableFuture<SharepointListsClient> future = SettableFuture.create();
+    private ListClient getSharePointListClientAAD() {
+        final SettableFuture<ListClient> future = SettableFuture.create();
         try {
             getAuthenticationContext().acquireToken(
                     mActivity, getSharepointServerUrl(),
@@ -284,8 +284,8 @@ public class AndroidTestPlatformContext implements TestPlatformContext {
 
                         @Override
                         public void onSuccess(AuthenticationResult result) {
-                            com.microsoft.listservices.http.OAuthCredentials credentials = new com.microsoft.listservices.http.OAuthCredentials(result.getAccessToken());
-                            SharepointListsClient client = new SharepointListsClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
+                            com.microsoft.sharepointservices.http.OAuthCredentials credentials = new com.microsoft.sharepointservices.http.OAuthCredentials(result.getAccessToken());
+                            ListClient client = new ListClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
                             future.set(client);
                         }
                     });

@@ -1,9 +1,10 @@
-include ':app',
+include ':app', 
+		':sample-service',
         ':outlook-services',
         ':directory-services',
         ':discovery-services',
         ':file-services',
-        ':list-services',
+        ':sharepoint-services',
         ':odata-engine-android-impl',
         ':odata-engine-jvm-impl',
         ':odata-engine-core',
@@ -13,9 +14,8 @@ project (':outlook-services').projectDir = file('../../sdk/outlook-services')
 project (':directory-services').projectDir = file('../../sdk/directory-services')
 project (':discovery-services').projectDir = file('../../sdk/discovery-services')
 project (':file-services').projectDir = file('../../sdk/file-services')
-project (':list-services').projectDir = file('../../sdk/list-services')
+project (':sharepoint-services').projectDir = file('../../sdk/sharepoint-services')
 project (':odata-engine-android-impl').projectDir = file('../../sdk/odata-engine-android-impl')
 project (':odata-engine-jvm-impl').projectDir = file('../../sdk/odata-engine-jvm-impl')
 project (':odata-engine-core').projectDir = file('../../sdk/odata-engine-core')
-project (':odata-engine-unit-tests').projectDir = file('../../sdk/odata-engine-unit-tests')
 
