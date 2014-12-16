@@ -10,6 +10,7 @@ import com.microsoft.services.odata.Helpers;
 import com.microsoft.services.odata.impl.desktop.JvmDependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
@@ -317,6 +318,7 @@ public class SampleServiceTests extends WireMockTestBase {
         assertThat(result.size(), is(equalTo(1)));
     }
 
+    @Ignore
     @Test
     public void testDefaultHeaders() throws ExecutionException, InterruptedException {
         //testDefaultHeaders.json
