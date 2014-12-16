@@ -1,5 +1,23 @@
 # Office 365 SDK for Android  #
 
+ ### Version 0.11.0 ###
+
+*  Cleaned imports
+*  Improved tests for sample service comparing request's payloads too
+*  Updated tests for Sample Service
+*  adding travis script into integration branch
+*  adding travis scrip into dev
+*  Added new tests for sample service
+*  adding verbose log level to sample app
+*  Added tests for sample service
+*  adding DocLibClient
+*  Added integration tests for mocked service
+*  updating test app to gradle gradle 2.1
+*  upgrading test project
+*  adding source compatibility 1.6 issue #55
+*  updating gradle files to android 1.0 release
+
+
 ### Version 0.10.0 ###
 
 *	Support for deserialization of entity subclasses	a650fb1

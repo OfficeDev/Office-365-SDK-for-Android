@@ -1,5 +1,7 @@
 #Office 365 SDK for Android
 
+[![Build Status](https://travis-ci.org/OfficeDev/Office-365-SDK-for-Android.svg?branch=master)](https://travis-ci.org/OfficeDev/Office-365-SDK-for-Android)
+
 **Table of Contents**
 
 - [Overview](#overview)
@@ -17,9 +19,9 @@ This SDK provides access to:
   * Exchange Online Mail, Calendars, and Contacts
   * Azure AD Directory (Graph)
 
-The Office 365 SDK for Android takes advantage of [Android Studio](https://developer.android.com/sdk/installing/studio.html)'s support for [Gradle](http://www.gradle.org/) to manage dependencies. To use the SDK in your projects, just add the libraries to your list of dependencies in gradle.build. See the [wiki page on Gradle and dependencies](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Include-Dependencies-using-Gradle) for more info.
+The Office 365 SDK for Android takes advantage of [Android Studio](https://developer.android.com/sdk/index.html)'s support for [Gradle](http://www.gradle.org/) to manage dependencies. To use the SDK in your projects, just add the libraries to your list of dependencies in gradle.build. See the [wiki page on Gradle and dependencies](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Include-Dependencies-using-Gradle) for more info.
 
-> **IMPORTANT** Before opening issues, please make sure you're on the latest version of Android Studio in the beta channel. Currently that is v0.8.14.
+> **IMPORTANT** Before opening issues, please make sure you're on the latest version of Android Studio. Currently that is v1.0!
 
 ## Quick start
 Now we'll create a simple application that retrieves messages using this SDK and the [Azure AD Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-android).
@@ -30,18 +32,18 @@ Now we'll create a simple application that retrieves messages using this SDK and
 ```Groovy
 dependencies {
     // base OData stuff:
-    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.10.1'
-    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.10.1', ext:'aar'
+    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.11.0'
+    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.11.0', ext:'aar'
 
     // choose the services/SDKs you need:
-    compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.10.1'
-    compile group: 'com.microsoft.services', name: 'discovery-services', version: '0.10.1'
-    compile group: 'com.microsoft.services', name: 'directory-services', version: '0.10.1'
-    compile group: 'com.microsoft.services', name: 'file-services', version: '0.10.1'
-    compile group: 'com.microsoft.services', name: 'list-services', version: '0.10.1', ext:'aar'
+    compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.11.0'
+    compile group: 'com.microsoft.services', name: 'discovery-services', version: '0.11.0'
+    compile group: 'com.microsoft.services', name: 'directory-services', version: '0.11.0'
+    compile group: 'com.microsoft.services', name: 'file-services', version: '0.11.0'
+    compile group: 'com.microsoft.services', name: 'sharepoint-services', version: '0.11.0', ext:'aar'
     
     // ADAL
-    compile (group: 'com.microsoft.aad', name: 'adal', version: '(,2.0)') {
+    compile (group: 'com.microsoft.aad', name: 'adal', version: '1.0.5') {
        // exclude group: 'com.android.support'   // this may not be necessary
     }
 }
