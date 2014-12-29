@@ -19,7 +19,7 @@ uploadArchives {
 }
 
 task clearJar(type: Delete) {
-    delete 'build/libs/' + PUBLISH_ARTIFACT_ID + '-' + myProject.version + '.jar'
+    delete 'build/release/' + PUBLISH_ARTIFACT_ID + '-' + myProject.version + '.jar'
 }
 
 task makeJar(type: Copy) {
