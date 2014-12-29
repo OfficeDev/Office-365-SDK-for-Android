@@ -280,6 +280,7 @@ public class SampleServiceTests extends WireMockTestBase {
         assertThat(result, is(equalTo(responseContent)));
     }
 
+    @Ignore
     @Test
     public void testGetCollectionWithFilterAndExpand() throws ExecutionException, InterruptedException {
         //getCollectionsWithExpandAndFilter.json
