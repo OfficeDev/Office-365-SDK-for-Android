@@ -11,31 +11,25 @@ uploadArchives {
                 url: 'https://api.bintray.com/maven/msopentech/Maven/Office-365-SDK-for-Android'
         ) {
             authentication(
-                    userName: 'user',
-                    password: 'foo'
+                    userName: 'marcote',
+                    password: '09fc4a5cf6bb657d149fa39fcac51a2b11aada14'
             )
         }
     }
 }
 
-android.libraryVariants.all { variant ->
-
-    def task = project.tasks.create "jar${name.capitalize()}", Jar
-    task.dependsOn variant.javaCompile
-    task.from variant.javaCompile.destinationDir
-    task.from configurations.compile.findAll {
-
-        it.getName() != 'android.jar' &&
-        //manually removing dependencies. .jar consumers will need to fulfill these dependencies
-        !it.getName().startsWith('guava') &&
-        !it.getName().startsWith('gson')  &&
-        !it.getName().startsWith('support')
-
-    }.collect {
-        it.isDirectory() ? it : zipTree(it)
-    }
-    artifacts.add('archives', task);
+task clearJar(type: Delete) {
+    delete 'build/libs/' + PUBLISH_ARTIFACT_ID + '-' + myProject.version + '.jar'
 }
+
+task makeJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('build/release/')
+    include('classes.jar')
+    rename ('classes.jar', PUBLISH_ARTIFACT_ID + '-' +  myProject.version + '.jar')
+}
+
+makeJar.dependsOn(clearJar, build)
 
 task androidJavadocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
@@ -55,4 +49,5 @@ task androidSourcesJar(type: Jar) {
 artifacts {
     archives androidSourcesJar
     archives androidJavadocsJar
+    archives file : file('build/release/' + PUBLISH_ARTIFACT_ID + '-' + myProject.version + '.jar')
 }
