@@ -426,4 +426,5 @@ public class SampleServiceTests extends WireMockTestBase {
         complexType.setAnotherProperty("AnotherProperty");
         return complexType;
     }
+    // dummy comment for testing travis
 }
