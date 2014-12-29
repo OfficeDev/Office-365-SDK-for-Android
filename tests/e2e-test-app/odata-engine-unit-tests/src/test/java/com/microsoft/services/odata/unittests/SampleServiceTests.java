@@ -308,7 +308,6 @@ public class SampleServiceTests extends WireMockTestBase {
         try {
             result = client.getservices()
                     .addHeader("Header1", "Value1")
-                    .addHeader("Header2", "Value2")
                     .read()
                     .get();
         } catch (Throwable t) {
