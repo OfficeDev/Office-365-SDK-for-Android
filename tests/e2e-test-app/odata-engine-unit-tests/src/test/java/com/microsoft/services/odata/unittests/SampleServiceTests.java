@@ -334,6 +334,7 @@ public class SampleServiceTests extends WireMockTestBase {
             result = client.getMe()
                     .getNavigations()
                     .getById("SomeId")
+                    .addHeader("If-Match", "*")
                     .delete()
                     .get();
 
