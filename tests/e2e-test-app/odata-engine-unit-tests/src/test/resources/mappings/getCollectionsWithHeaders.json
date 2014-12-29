@@ -5,9 +5,6 @@
         "headers": {
                     "Header1": {
                         "equalTo": "Value1"
-                    },
-                    "Header2": {
-                        "equalTo": "Value2"
                     }
                 }
 
