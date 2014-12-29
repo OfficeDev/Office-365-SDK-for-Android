@@ -11,8 +11,8 @@ uploadArchives {
                 url: 'https://api.bintray.com/maven/msopentech/Maven/Office-365-SDK-for-Android'
         ) {
             authentication(
-                    userName: 'marcote',
-                    password: '09fc4a5cf6bb657d149fa39fcac51a2b11aada14'
+                    userName: 'user',
+                    password: 'password'
             )
         }
     }
