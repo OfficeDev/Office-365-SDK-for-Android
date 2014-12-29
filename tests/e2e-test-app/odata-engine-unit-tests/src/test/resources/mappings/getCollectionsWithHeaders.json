@@ -3,6 +3,9 @@
         "method": "GET",
         "url": "/services/",
         "headers": {
+                    "Header2": {
+                                "equalTo": "Value2"
+                            },
                     "Header1": {
                         "equalTo": "Value1"
                     }
