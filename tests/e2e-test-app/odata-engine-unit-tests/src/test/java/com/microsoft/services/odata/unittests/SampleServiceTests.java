@@ -1,7 +1,5 @@
 package com.microsoft.services.odata.unittests;
 
-import com.github.tomakehurst.wiremock.client.ValueMatchingStrategy;
-import com.microsoft.outlookservices.Calendar;
 import com.microsoft.sampleservice.AnotherEntity;
 import com.microsoft.sampleservice.SampleComplexType;
 import com.microsoft.sampleservice.SampleContainerClient;
@@ -10,20 +8,12 @@ import com.microsoft.services.odata.Helpers;
 import com.microsoft.services.odata.impl.desktop.JvmDependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.is;
@@ -318,7 +308,6 @@ public class SampleServiceTests extends WireMockTestBase {
         assertThat(result.size(), is(equalTo(1)));
     }
 
-    @Ignore
     @Test
     public void testDefaultHeaders() throws ExecutionException, InterruptedException {
         //testDefaultHeaders.json
