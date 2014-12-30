@@ -271,6 +271,7 @@ public class SampleServiceTests extends WireMockTestBase {
         assertThat(result, is(equalTo(responseContent)));
     }
 
+    @Ignore
     @Test
     public void testGetCollectionWithFilterAndExpand() throws ExecutionException, InterruptedException {
         //getCollectionsWithExpandAndFilter.json
@@ -298,6 +299,7 @@ public class SampleServiceTests extends WireMockTestBase {
         try {
             result = client.getservices()
                     .addHeader("Header1", "Value1")
+                    .addHeader("Header2", "Value2")
                     .read()
                     .get();
         } catch (Throwable t) {
@@ -308,7 +310,6 @@ public class SampleServiceTests extends WireMockTestBase {
         assertThat(result.size(), is(equalTo(1)));
     }
 
-    @Ignore
     @Test
     public void testDefaultHeaders() throws ExecutionException, InterruptedException {
         //testDefaultHeaders.json
