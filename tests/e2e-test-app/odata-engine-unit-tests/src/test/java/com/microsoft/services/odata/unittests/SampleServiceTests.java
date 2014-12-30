@@ -316,7 +316,7 @@ public class SampleServiceTests extends WireMockTestBase {
         }
 
         assertThat(result, is(notNullValue()));
-        //assertThat(result.size(), is(equalTo(1)));
+        assertThat(result.size(), is(equalTo(1)));
     }
 
     @Test
