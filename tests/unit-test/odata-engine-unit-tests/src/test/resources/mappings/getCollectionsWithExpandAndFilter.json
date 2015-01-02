@@ -1,7 +1,16 @@
 {
     "request": {
         "method": "GET",
-        "urlPattern": "/services/FAIL.*"
+        "urlPattern": "/services/.*",
+        "queryParameters": {
+            "$filter": {
+                "equalTo": "SomeProp%20eq%20'SomeString'"
+            },
+            "$expand": {
+                "equalTo": "SomeProp"
+            }
+        }
+
     },
     "response": {
         "status": 200,
