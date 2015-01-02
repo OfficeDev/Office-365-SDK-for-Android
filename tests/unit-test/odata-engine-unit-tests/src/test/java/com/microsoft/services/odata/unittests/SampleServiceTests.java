@@ -281,6 +281,25 @@ public class SampleServiceTests extends WireMockTestBase {
     }
 
     @Test
+    public void testGetCollectionWithFilterAndExpand() throws ExecutionException, InterruptedException {
+        //getCollectionsWithExpandAndFilter.json
+        List<SampleEntity> result = null;
+
+        try {
+            result = client.getservices()
+                    .expand("SomeProp")
+                    .filter("SomeProp eq 'SomeString'")
+                    .read()
+                    .get();
+        } catch (Throwable t) {
+            resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
+        }
+
+        assertThat(result, is(notNullValue()));
+        assertThat(result.size(), is(equalTo(1)));
+    }
+
+    @Test
     public void testGetCollectionWithHeaders() throws ExecutionException, InterruptedException {
         //getCollectionsWithHeaders.json
         List<SampleEntity> result = null;
@@ -393,25 +412,6 @@ public class SampleServiceTests extends WireMockTestBase {
         }
 
         assertThat(result, is(notNullValue()));
-    }
-
-    @Test
-    public void testGetCollectionWithFilterAndExpand() throws ExecutionException, InterruptedException {
-        //getCollectionsWithExpandAndFilter.json
-        List<SampleEntity> result = null;
-
-        try {
-            result = client.getservices()
-                    .expand("SomeProp")
-                    .filter("SomeProp eq 'SomeString'")
-                    .read()
-                    .get();
-        } catch (Throwable t) {
-            resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
-        }
-
-        assertThat(result, is(notNullValue()));
-        assertThat(result.size(), is(equalTo(1)));
     }
 
     private SampleEntity getSampleEntity(){
