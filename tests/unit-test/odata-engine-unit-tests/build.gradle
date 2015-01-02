@@ -7,7 +7,7 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.github.tomakehurst:wiremock:1.52'
-    compile project(':outlook-services')
+    compile project(':sample-service')
     compile project(':odata-engine-core')
     compile project(':odata-engine-jvm-impl')
     testCompile 'junit:junit:4.8.+'
@@ -22,5 +22,4 @@ dependencies {
         exclude group: "org.hamcrest", module: "hamcrest-core"
         exclude group: "org.hamcrest", module: "hamcrest-library"
     }
-    compile project(':sample-service')
 }
