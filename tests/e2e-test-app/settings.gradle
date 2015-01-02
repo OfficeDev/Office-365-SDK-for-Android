@@ -1,5 +1,4 @@
 include ':app', 
-		':sample-service',
         ':outlook-services',
         ':directory-services',
         ':discovery-services',
@@ -7,8 +6,7 @@ include ':app',
         ':sharepoint-services',
         ':odata-engine-android-impl',
         ':odata-engine-jvm-impl',
-        ':odata-engine-core',
-        ':odata-engine-unit-tests'
+        ':odata-engine-core'
 
 project (':outlook-services').projectDir = file('../../sdk/outlook-services')
 project (':directory-services').projectDir = file('../../sdk/directory-services')
