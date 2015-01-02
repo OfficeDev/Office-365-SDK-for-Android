@@ -314,7 +314,7 @@ public class SampleServiceTests extends WireMockTestBase {
         } catch (Throwable t) {
             resolver.getLogger().log(t.getLocalizedMessage(), LogLevel.ERROR);
         }
-
+        //dummy comment for testing travis
         assertThat(result, is(notNullValue()));
         assertThat(result.size(), is(equalTo(1)));
     }
