@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.microsoft.sharepointservices;
 
+import java.lang.Override;
+import java.lang.Throwable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -197,4 +199,22 @@ public class SharepointClient extends OfficeClient {
 
 		return result;
 	}
+
+    public ListenableFuture<JSONObject> getUserByID(String id){
+        final SettableFuture<JSONObject> result = SettableFuture.create();
+
+        ListenableFuture<JSONObject> request = executeRequestJson(mServerUrl
+         + "_api/web/getuserbyid("+id+")", "GET");
+
+        Futures.addCallback(request, new FutureCallback<JSONObject>() {
+            @Override
+            public void onFailure(Throwable t) { result.setException(t);}
+
+            @Override
+            public void onSuccess(JSONObject json) {
+                result.set(json);
+            }
+        });
+        return result;
+    }
 }
