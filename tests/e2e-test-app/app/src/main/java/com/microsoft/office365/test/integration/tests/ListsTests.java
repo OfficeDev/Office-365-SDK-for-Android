@@ -30,7 +30,17 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+
+import junit.framework.TestCase;
+import junit.framework.TestResult;
+
+import org.json.JSONObject;
+
 import static com.microsoft.sharepointservices.QueryOperations.*;
+
+import java.lang.Exception;
+import java.lang.Override;
+import java.lang.String;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,6 +58,7 @@ public class ListsTests extends TestGroup {
 
         this.addTest(canFilterListTest("Can filter lists", true));
         this.addTest(canSelectListTest("Can select lists", true));
+        this.addTest(createUserInfoTest("Get UserInfo from an ID",true));
 
     }
 
@@ -342,6 +353,42 @@ public class ListsTests extends TestGroup {
 
                     return result;
                 } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase createUserInfoTest(String name, boolean enabled){
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest(){
+                try{
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    ListClient client = ApplicationContext.getSharepointListClient();
+
+                    String id = ApplicationContext.getTestId();
+
+                    JSONObject userInfo = client.getUserByID(id).get();
+
+                    //Validations
+                    //UserInfo object should not be null or it should have a value to the title field
+                    if(userInfo.getString("Title") != null || userInfo != null){
+                        result.setStatus(TestStatus.Passed);
+                    }else{
+                        creatResultFromException(result, new Exception("User JsonObject Expected"));
+                    }
+                    return result;
+                }catch (Exception e){
                     return createResultFromException(e);
                 }
             }
