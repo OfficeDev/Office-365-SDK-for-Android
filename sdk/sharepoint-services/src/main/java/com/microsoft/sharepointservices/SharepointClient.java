@@ -203,7 +203,7 @@ public class SharepointClient extends OfficeClient {
     public ListenableFuture<JSONObject> getUserByID(String id){
         final SettableFuture<JSONObject> result = SettableFuture.create();
 
-        ListenableFuture<JSONObject> request = executeRequestJsonWithDigest(mServerUrl
+        ListenableFuture<JSONObject> request = executeRequestJson(mServerUrl
          + "_api/web/getuserbyid("+id+")", "GET");
 
         Futures.addCallback(request, new FutureCallback<JSONObject>() {
