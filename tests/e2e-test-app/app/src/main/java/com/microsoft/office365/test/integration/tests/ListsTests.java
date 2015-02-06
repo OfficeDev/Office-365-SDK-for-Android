@@ -31,8 +31,6 @@ import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 
-import junit.framework.TestCase;
-import junit.framework.TestResult;
 
 import org.json.JSONObject;
 
