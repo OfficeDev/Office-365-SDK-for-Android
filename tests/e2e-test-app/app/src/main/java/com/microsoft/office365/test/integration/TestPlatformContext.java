@@ -42,6 +42,8 @@ public interface TestPlatformContext {
 
     String getDirectoryServerUrl();
 
+    String getTestId();
+
     Future<Void> showMessage(String message);
 
     void executeTest(TestCase testCase, TestExecutionCallback callback);
