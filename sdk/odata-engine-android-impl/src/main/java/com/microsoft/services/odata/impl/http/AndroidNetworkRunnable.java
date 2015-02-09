@@ -18,6 +18,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.impl.client.EntityEnclosingRequestWrapper;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 
@@ -69,6 +70,10 @@ public class AndroidNetworkRunnable extends NetworkRunnable {
 
             if (mRequest.getContent() != null) {
                 ByteArrayEntity entity = new ByteArrayEntity(mRequest.getContent());
+                wrapper.setEntity(entity);
+            } else if (mRequest.getStreamedContent() != null) {
+                InputStream stream = mRequest.getStreamedContent();
+                InputStreamEntity entity = new InputStreamEntity(stream, mRequest.getStreamedContentSize());
                 wrapper.setEntity(entity);
             }
 

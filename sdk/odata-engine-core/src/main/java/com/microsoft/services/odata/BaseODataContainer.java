@@ -37,7 +37,7 @@ public abstract class BaseODataContainer extends ODataExecutable {
     }
 
     @Override
-    protected ListenableFuture<ODataResponse> oDataExecute(Request request) {
+    protected ListenableFuture<ODataResponse> oDataExecute(final Request request) {
         final SettableFuture<ODataResponse> result = SettableFuture.create();
         final Logger logger = resolver.getLogger();
 
@@ -50,6 +50,8 @@ public abstract class BaseODataContainer extends ODataExecutable {
 
             if (request.getContent() != null) {
                 logger.log("With " + request.getContent().length + " bytes of payload", LogLevel.INFO);
+            } else if (request.getStreamedContent() != null) {
+                logger.log("With stream of bytes for payload", LogLevel.INFO);
             }
 
             HttpTransport httpTransport = resolver.getHttpTransport();
@@ -93,29 +95,38 @@ public abstract class BaseODataContainer extends ODataExecutable {
 
                 @Override
                 public void onSuccess(Response response) {
+                    boolean readBytes = true;
+                    if (request.getOptions().get(Request.MUST_STREAM_RESPONSE_CONTENT) != null) {
+                        readBytes = false;
+                    }
+
+                    ODataResponse odataResponse = new ODataResponseImpl(response);
+
                     try {
                         logger.log("OData response received", LogLevel.INFO);
-
-                        logger.log("Reading response data...", LogLevel.VERBOSE);
-                        byte[] data = readAllBytes(response.getStream());
-                        logger.log(data.length + " bytes read from response", LogLevel.VERBOSE);
 
                         int status = response.getStatus();
                         logger.log("Response Status Code: " + status, LogLevel.INFO);
 
-                        try {
-                            logger.log("Closing response", LogLevel.VERBOSE);
-                            response.close();
-                        } catch (Throwable t) {
-                            logger.log("Error closing response: " + t.toString(), LogLevel.ERROR);
-                            result.setException(t);
-                            return;
+                        if (readBytes) {
+                            logger.log("Reading response data...", LogLevel.VERBOSE);
+                            byte[] data = odataResponse.getPayload();
+                            logger.log(data.length + " bytes read from response", LogLevel.VERBOSE);
+
+                            try {
+                                logger.log("Closing response", LogLevel.VERBOSE);
+                                response.close();
+                            } catch (Throwable t) {
+                                logger.log("Error closing response: " + t.toString(), LogLevel.ERROR);
+                                result.setException(t);
+                                return;
+                            }
+
                         }
 
-                        ODataResponse odataResponse = new ODataResponseImpl(data, response);
                         if (status < 200 || status > 299) {
                             logger.log("Invalid status code. Processing response content as String", LogLevel.VERBOSE);
-                            String responseData = new String(data, Constants.UTF8_NAME);
+                            String responseData = new String(odataResponse.getPayload(), Constants.UTF8_NAME);
                             String message = "Response status: " + response.getStatus() + "\n" + "Response content: " + responseData;
                             logger.log(message, LogLevel.ERROR);
                             result.setException(new ODataException(odataResponse, message));
@@ -124,7 +135,6 @@ public abstract class BaseODataContainer extends ODataExecutable {
                         result.set(odataResponse);
                     } catch (Throwable t) {
                         logger.log("Unexpected error: " + t.toString(), LogLevel.ERROR);
-                        ODataResponse odataResponse = new ODataResponseImpl(null, response);
                         result.setException(new ODataException(odataResponse, t));
                     }
                 }
@@ -139,28 +149,6 @@ public abstract class BaseODataContainer extends ODataExecutable {
         }
         return result;
 
-    }
-
-    /**
-     * Read all bytes.
-     *
-     * @param stream the stream
-     * @return the byte [ ]
-     * @throws java.io.IOException the iO exception
-     */
-    public static byte[] readAllBytes(InputStream stream) throws IOException {
-        if (stream == null) {
-            return new byte[0];
-        }
-
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        int nRead;
-        byte[] data = new byte[1024];
-
-        while ((nRead = stream.read(data, 0, data.length)) != -1) {
-            os.write(data, 0, nRead);
-        }
-        return os.toByteArray();
     }
 
     /**

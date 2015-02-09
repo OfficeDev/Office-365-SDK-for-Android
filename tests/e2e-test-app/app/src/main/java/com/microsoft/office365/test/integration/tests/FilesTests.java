@@ -1,11 +1,13 @@
 package com.microsoft.office365.test.integration.tests;
 
 
+import com.microsoft.directoryservices.Application;
 import com.microsoft.fileservices.Drive;
 import com.microsoft.fileservices.File;
 import com.microsoft.fileservices.Folder;
 import com.microsoft.fileservices.Item;
 import com.microsoft.office365.test.integration.ApplicationContext;
+import com.microsoft.office365.test.integration.R;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
@@ -13,6 +15,10 @@ import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.odata.Constants;
 import com.microsoft.sharepointservices.odata.SharePointClient;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,9 +28,11 @@ public class FilesTests extends TestGroup {
     public FilesTests() {
         super("Files tests");
 
+        this.addTest(canCreateLargeFileFromStream("Can create large file with content from stream", true));
         this.addTest(canGetFiles("Can get files", true));
         this.addTest(canGetFilesById("Can get file by Id", true));
         this.addTest(canCreateFile("Can create file with content", true));
+        this.addTest(canCreateFileFromStream("Can create file with content from stream", true));
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
         this.addTest(canGetDrive("Can get drive", false));
@@ -132,6 +140,107 @@ public class FilesTests extends TestGroup {
 
                     if (content.length == 0)
                         result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateFileFromStream(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+
+                    InputStream stream = ApplicationContext.getResource(R.drawable.ic_launcher);
+                    long size = ApplicationContext.getResourceSize(R.drawable.ic_launcher);
+                    client.getfiles().getById(addedFile.getid()).asFile().putContent(stream, size).get();
+
+                    byte[] content = client.getfiles().getById(addedFile.getid()).asFile().getContent().get();
+
+                    //Assert
+                    if (addedFile == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    if (content.length == 0)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateLargeFileFromStream(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    SharePointClient client = ApplicationContext.getFilesClient();
+
+                    Item newFile = new Item();
+                    newFile.settype("File");
+                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+
+                    Item addedFile = client.getfiles().add(newFile).get();
+
+                    long newFileSize = 1 * 1024;
+                    java.io.File file = ApplicationContext.createTempFile(1 * 1024);
+
+                    InputStream stream = new FileInputStream(file);
+                    long size = file.length();
+                    client.getfiles().getById(addedFile.getid()).asFile().putContent(stream, size).get();
+
+                    InputStream contentStream = client.getfiles().getById(addedFile.getid()).asFile().getStreamedContent().get();
+
+
+                    //Assert
+                    if (addedFile == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    if (!addedFile.getsize().equals(newFileSize * 1024))
+                        result.setStatus(TestStatus.Failed);
+
+                    if (contentStream == null)
+                        result.setStatus(TestStatus.Failed);
+
+                    contentStream.close();
 
                     //Cleanup
                     client.getfiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();

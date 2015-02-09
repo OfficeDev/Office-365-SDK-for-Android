@@ -65,14 +65,14 @@ public class OfficePreferenceActivity extends PreferenceActivity {
 //		myPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 //			public boolean onPreferenceClick(Preference preference) {
 //
-//				Context context = preference.getContext();
+//				Context mAuthContext = preference.getContext();
 //
-//				if (context != null) {
-//					CookieSyncManager syncManager = CookieSyncManager.createInstance(context);
+//				if (mAuthContext != null) {
+//					CookieSyncManager syncManager = CookieSyncManager.createInstance(mAuthContext);
 //					if (syncManager != null) {
 //						CookieManager cookieManager = CookieManager.getInstance();
 //						cookieManager.removeAllCookie();
-//						Toast.makeText(context, "Cookies cleared!", Toast.LENGTH_SHORT).show();
+//						Toast.makeText(mAuthContext, "Cookies cleared!", Toast.LENGTH_SHORT).show();
 //					}
 //				}
 //				return true;

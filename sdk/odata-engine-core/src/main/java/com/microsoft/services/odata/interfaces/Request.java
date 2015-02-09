@@ -1,17 +1,40 @@
 package com.microsoft.services.odata.interfaces;
 
+import java.io.InputStream;
 import java.util.Map;
 
 /**
  * The interface Request.
  */
 public interface Request {
+
+    public static final String MUST_STREAM_RESPONSE_CONTENT = "MUST_STREAM_RESPONSE_CONTENT";
+
     /**
      * Sets content.
      *
      * @param content the content
      */
     public void setContent(byte[] content);
+
+
+    /**
+     * Sets content that comes from a stream
+     * @param stream the stream
+     */
+    public void setStreamedContent(InputStream stream, long streamSize);
+
+    /**
+     * Get the streamed content
+     * @return the stream
+     */
+    public InputStream getStreamedContent();
+
+    /**
+     * Get the streamed content size
+     * @return the size
+     */
+    public long getStreamedContentSize();
 
     /**
      * Get content.
@@ -76,4 +99,8 @@ public interface Request {
      * @return the url
      */
     public ODataURL getUrl();
+
+    public Map<String, String> getOptions();
+
+    public void addOption(String option, String value);
 }

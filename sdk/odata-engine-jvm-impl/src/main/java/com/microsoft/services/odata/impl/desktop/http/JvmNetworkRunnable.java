@@ -48,6 +48,10 @@ public class JvmNetworkRunnable extends NetworkRunnable {
             if (mRequest.getContent() != null) {
                 ByteArrayEntity entity = new ByteArrayEntity(mRequest.getContent());
                 wrapper.setEntity(entity);
+            } else if (mRequest.getStreamedContent() != null) {
+                InputStream stream = mRequest.getStreamedContent();
+                InputStreamEntity entity = new InputStreamEntity(stream, mRequest.getStreamedContentSize());
+                wrapper.setEntity(entity);
             }
 
             HttpResponse realResponse = client.execute(wrapper);
