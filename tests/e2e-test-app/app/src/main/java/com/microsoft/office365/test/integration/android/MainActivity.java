@@ -84,8 +84,7 @@ public class MainActivity extends Activity {
         }
 
 
-		AndroidTestPlatformContext testPlatformContext = new AndroidTestPlatformContext(this);
-		ApplicationContext.setTestPlatformContext(testPlatformContext);
+		ApplicationContext.initialize(this);
 
         setContentView(R.layout.activity_main);
 
@@ -154,7 +153,7 @@ public class MainActivity extends Activity {
 			return true;
 
 		case R.id.menu_run_tests:
-			if (ApplicationContext.getServerUrl().trim().equals("")) {
+			if (ApplicationContext.getExchangeEndpointUrl().trim().equals("")) {
 				startActivity(new Intent(this, OfficePreferenceActivity.class));
 			} else {
 				runTests();
@@ -353,8 +352,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (AndroidTestPlatformContext.context != null) {
-            AndroidTestPlatformContext.context.onActivityResult(requestCode, resultCode, data);
+        if (ApplicationContext.mAuthContext != null) {
+            ApplicationContext.mAuthContext.onActivityResult(requestCode, resultCode, data);
         }
     }
 

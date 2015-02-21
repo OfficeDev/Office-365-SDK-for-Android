@@ -10,6 +10,7 @@ import com.microsoft.services.odata.interfaces.HttpVerb;
 import com.microsoft.services.odata.interfaces.ODataURL;
 import com.microsoft.services.odata.interfaces.Request;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,22 +20,44 @@ import java.util.Map;
  */
 public class RequestImpl implements Request {
 
-	private HttpVerb mVerb = HttpVerb.GET;
+    private HttpVerb mVerb = HttpVerb.GET;
 
 	private byte[] mContent = null;
 
-	private HashMap<String, String> mHeaders = new HashMap<String, String>();
+    private HashMap<String, String> mHeaders = new HashMap<String, String>();
+
+    private HashMap<String, String> mOptions = new HashMap<String, String>();
 
 	private ODataURL mUrl = new ODataURLImpl();
 
-	/**
+    private InputStream mStream = null;
+
+    private long mStreamSize = 0;
+
+    /**
 	 * Sets the request content
 	 */
 	public void setContent(byte[] content) {
 		mContent = content;
 	}
 
-	/**
+    @Override
+    public void setStreamedContent(InputStream stream, long streamSize) {
+        mStream = stream;
+        mStreamSize = streamSize;
+    }
+
+    @Override
+    public InputStream getStreamedContent() {
+        return mStream;
+    }
+
+    @Override
+    public long getStreamedContentSize() {
+        return mStreamSize;
+    }
+
+    /**
 	 * Returns the request content
 	 */
 	public byte[] getContent() {
@@ -107,4 +130,14 @@ public class RequestImpl implements Request {
 	public ODataURL getUrl() {
 		return mUrl;
 	}
+
+    @Override
+    public Map<String, String> getOptions() {
+        return new HashMap<String, String>(mOptions);
+    }
+
+    @Override
+    public void addOption(String option, String value) {
+        this.mOptions.put(option, value);
+    }
 }

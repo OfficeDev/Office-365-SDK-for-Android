@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import static com.microsoft.services.odata.Helpers.urlEncode;
 
@@ -26,7 +27,7 @@ public class ODataURLImpl implements ODataURL {
     /**
      * The Query string parameters.
      */
-    Map<String, String> queryStringParameters = new HashMap<String, String>();
+    Map<String, String> queryStringParameters = new TreeMap<String, String>();
 
     @Override
     public void setBaseUrl(String baseUrl) {

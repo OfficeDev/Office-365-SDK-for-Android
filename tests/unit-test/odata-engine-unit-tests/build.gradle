@@ -6,7 +6,7 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.github.tomakehurst:wiremock:1.52'
+    compile 'com.github.tomakehurst:wiremock:1.53'
     compile project(':sample-service')
     compile project(':odata-engine-core')
     compile project(':odata-engine-jvm-impl')

@@ -1,7 +1,7 @@
 {
     "request": {
         "method": "GET",
-        "urlPattern": "/services/FAIL.*"
+        "url": "/services/?$expand=SomeProp&$filter=SomeProp%20eq%20'SomeString'"
     },
     "response": {
         "status": 200,

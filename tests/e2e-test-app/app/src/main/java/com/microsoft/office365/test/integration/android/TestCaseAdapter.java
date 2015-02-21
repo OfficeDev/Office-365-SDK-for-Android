@@ -38,7 +38,7 @@ import android.widget.CheckBox;
 public class TestCaseAdapter extends ArrayAdapter<TestCase> {
 
 	/**
-	 * Adapter context
+	 * Adapter mAuthContext
 	 */
 	Context mContext;
 
