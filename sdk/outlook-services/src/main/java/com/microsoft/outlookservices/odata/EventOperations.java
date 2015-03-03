@@ -5,10 +5,10 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.*;
 
 /**
@@ -61,6 +61,7 @@ public class EventOperations extends ItemOperations {
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
 		  
+        
         ListenableFuture<String> future = acceptRaw(serializedComment);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
@@ -72,14 +73,18 @@ public class EventOperations extends ItemOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> acceptRaw(String comment){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("Comment", comment);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("Accept");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -97,6 +102,7 @@ public class EventOperations extends ItemOperations {
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
 		  
+        
         ListenableFuture<String> future = declineRaw(serializedComment);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
@@ -108,14 +114,18 @@ public class EventOperations extends ItemOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> declineRaw(String comment){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("Comment", comment);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("Decline");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -133,6 +143,7 @@ public class EventOperations extends ItemOperations {
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
 		  
+        
         ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
@@ -144,19 +155,22 @@ public class EventOperations extends ItemOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> tentativelyAcceptRaw(String comment){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("Comment", comment);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("TentativelyAccept");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
-
 
 
 }

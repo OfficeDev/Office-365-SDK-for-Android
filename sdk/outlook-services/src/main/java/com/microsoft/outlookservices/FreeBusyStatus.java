@@ -11,27 +11,27 @@ package com.microsoft.outlookservices;
 public enum FreeBusyStatus	
 {
     /**
-	* Free
-	*/
-	Free,
+    * Free
+    */
+    Free,
     /**
-	* Tentative
-	*/
-	Tentative,
+    * Tentative
+    */
+    Tentative,
     /**
-	* Busy
-	*/
-	Busy,
+    * Busy
+    */
+    Busy,
     /**
-	* Oof
-	*/
-	Oof,
+    * Oof
+    */
+    Oof,
     /**
-	* Working Elsewhere
-	*/
-	WorkingElsewhere,
+    * Working Elsewhere
+    */
+    WorkingElsewhere,
     /**
-	* Unknown
-	*/
-	Unknown,
+    * Unknown
+    */
+    Unknown,
 }

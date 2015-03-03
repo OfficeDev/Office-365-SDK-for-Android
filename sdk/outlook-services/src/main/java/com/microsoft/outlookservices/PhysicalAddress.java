@@ -10,108 +10,107 @@ package com.microsoft.outlookservices;
 */
 public class PhysicalAddress extends ODataBaseEntity {
 
-	public PhysicalAddress(){
-		setODataType("#Microsoft.OutlookServices.PhysicalAddress");
-	}
+    public PhysicalAddress(){
+        setODataType("#Microsoft.OutlookServices.PhysicalAddress");
+    }
 
+    private String Street;
 
-	private String Street;
+    /**
+    * Gets the Street.
+    *
+    * @return the String
+    */
+    public String getStreet() {
+        return this.Street; 
+    }
 
-	/**
-	* Gets the Street.
-	*
-	* @return the String
-	*/
-	public String getStreet() {
-		return this.Street; 
-	}
+    /**
+    * Sets the Street.
+    *
+    * @param value the String
+    */
+    public void setStreet(String value) { 
+        this.Street = value; 
+    }
 
-	/**
-	* Sets the Street.
-	*
-	* @param value the String
-	*/
-	public void setStreet(String value) { 
-		this.Street = value; 
-	}
+    private String City;
 
-	private String City;
+    /**
+    * Gets the City.
+    *
+    * @return the String
+    */
+    public String getCity() {
+        return this.City; 
+    }
 
-	/**
-	* Gets the City.
-	*
-	* @return the String
-	*/
-	public String getCity() {
-		return this.City; 
-	}
+    /**
+    * Sets the City.
+    *
+    * @param value the String
+    */
+    public void setCity(String value) { 
+        this.City = value; 
+    }
 
-	/**
-	* Sets the City.
-	*
-	* @param value the String
-	*/
-	public void setCity(String value) { 
-		this.City = value; 
-	}
+    private String State;
 
-	private String State;
+    /**
+    * Gets the State.
+    *
+    * @return the String
+    */
+    public String getState() {
+        return this.State; 
+    }
 
-	/**
-	* Gets the State.
-	*
-	* @return the String
-	*/
-	public String getState() {
-		return this.State; 
-	}
+    /**
+    * Sets the State.
+    *
+    * @param value the String
+    */
+    public void setState(String value) { 
+        this.State = value; 
+    }
 
-	/**
-	* Sets the State.
-	*
-	* @param value the String
-	*/
-	public void setState(String value) { 
-		this.State = value; 
-	}
+    private String CountryOrRegion;
 
-	private String CountryOrRegion;
+    /**
+    * Gets the Country Or Region.
+    *
+    * @return the String
+    */
+    public String getCountryOrRegion() {
+        return this.CountryOrRegion; 
+    }
 
-	/**
-	* Gets the Country Or Region.
-	*
-	* @return the String
-	*/
-	public String getCountryOrRegion() {
-		return this.CountryOrRegion; 
-	}
+    /**
+    * Sets the Country Or Region.
+    *
+    * @param value the String
+    */
+    public void setCountryOrRegion(String value) { 
+        this.CountryOrRegion = value; 
+    }
 
-	/**
-	* Sets the Country Or Region.
-	*
-	* @param value the String
-	*/
-	public void setCountryOrRegion(String value) { 
-		this.CountryOrRegion = value; 
-	}
+    private String PostalCode;
 
-	private String PostalCode;
+    /**
+    * Gets the Postal Code.
+    *
+    * @return the String
+    */
+    public String getPostalCode() {
+        return this.PostalCode; 
+    }
 
-	/**
-	* Gets the Postal Code.
-	*
-	* @return the String
-	*/
-	public String getPostalCode() {
-		return this.PostalCode; 
-	}
-
-	/**
-	* Sets the Postal Code.
-	*
-	* @param value the String
-	*/
-	public void setPostalCode(String value) { 
-		this.PostalCode = value; 
-	}
+    /**
+    * Sets the Postal Code.
+    *
+    * @param value the String
+    */
+    public void setPostalCode(String value) { 
+        this.PostalCode = value; 
+    }
 }

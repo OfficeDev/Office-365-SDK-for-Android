@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;       
 
 /**
  * The type  FolderFetcher.
@@ -52,13 +51,14 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations>
         return this;
     }
 
-    	     /**
+        
+     /**
      * Gets child folders.
      *
      * @return the child folders
      */
     public ODataCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getChildFolders() {
-        return new ODataCollectionFetcher<Folder, FolderFetcher,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class);
+        return new ODataCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class);
     }
 
     /**
@@ -67,15 +67,16 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations>
      * @return the child folder
      */
     public FolderFetcher getChildFolder(String id){
-         return new ODataCollectionFetcher<Folder, FolderFetcher,FolderCollectionOperations>("ChildFolders", this, Folder.class,FolderCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class).getById(id);
     }
+
      /**
      * Gets messages.
      *
      * @return the messages
      */
     public ODataCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations> getMessages() {
-        return new ODataCollectionFetcher<Message, MessageFetcher,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class);
+        return new ODataCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class);
     }
 
     /**
@@ -84,6 +85,7 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations>
      * @return the message
      */
     public MessageFetcher getMessage(String id){
-         return new ODataCollectionFetcher<Message, MessageFetcher,MessageCollectionOperations>("Messages", this, Message.class,MessageCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
     }
+
 }

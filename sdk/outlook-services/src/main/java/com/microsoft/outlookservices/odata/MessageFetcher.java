@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;       
 
 /**
  * The type  MessageFetcher.
@@ -52,13 +51,14 @@ public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations
         return this;
     }
 
-    	     /**
+        
+     /**
      * Gets attachments.
      *
      * @return the attachments
      */
     public ODataCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
-        return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class);
+        return new ODataCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
     }
 
     /**
@@ -67,6 +67,7 @@ public class MessageFetcher extends ODataEntityFetcher<Message,MessageOperations
      * @return the attachment
      */
     public AttachmentFetcher getAttachment(String id){
-         return new ODataCollectionFetcher<Attachment, AttachmentFetcher,AttachmentCollectionOperations>("Attachments", this, Attachment.class,AttachmentCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
     }
+
 }

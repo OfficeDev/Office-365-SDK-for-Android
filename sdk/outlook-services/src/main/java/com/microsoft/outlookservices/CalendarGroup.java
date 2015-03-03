@@ -13,21 +13,9 @@ public class CalendarGroup extends Entity {
     public CalendarGroup(){
         setODataType("#Microsoft.OutlookServices.CalendarGroup");
     }
-
-    
-    private java.util.List<Calendar> Calendars = new java.util.ArrayList<Calendar>();
-
-    /**
-    * Gets the Calendars.
-    *
-    * @return the Calendars
-    */
-    public java.util.List<Calendar> getCalendars() {
-        return this.Calendars; 
-    }
             
-	private String Name;
-
+    private String Name;
+     
     /**
     * Gets the Name.
     *
@@ -45,9 +33,9 @@ public class CalendarGroup extends Entity {
     public void setName(String value) { 
         this.Name = value; 
     }
-    
-	private String ChangeKey;
-
+            
+    private String ChangeKey;
+     
     /**
     * Gets the Change Key.
     *
@@ -65,9 +53,9 @@ public class CalendarGroup extends Entity {
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
     }
-    
-	private java.util.UUID ClassId;
-
+            
+    private java.util.UUID ClassId;
+     
     /**
     * Gets the Class Id.
     *
@@ -85,4 +73,25 @@ public class CalendarGroup extends Entity {
     public void setClassId(java.util.UUID value) { 
         this.ClassId = value; 
     }
+    
+    private java.util.List<Calendar> Calendars = new java.util.ArrayList<Calendar>();
+     
+    /**
+    * Gets the Calendars.
+    *
+    * @return the java.util.List<Calendar>
+    */
+    public java.util.List<Calendar> getCalendars() {
+        return this.Calendars; 
+    }
+
+    /**
+    * Sets the Calendars.
+    *
+    * @param value the java.util.List<Calendar>
+    */
+    public void setCalendars(java.util.List<Calendar> value) { 
+        this.Calendars = value; 
+    }
 }
+

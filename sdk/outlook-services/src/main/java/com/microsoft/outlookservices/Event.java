@@ -13,52 +13,9 @@ public class Event extends Item {
     public Event(){
         setODataType("#Microsoft.OutlookServices.Event");
     }
-
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
-
-    /**
-    * Gets the Attachments.
-    *
-    * @return the Attachments
-    */
-    public java.util.List<Attachment> getAttachments() {
-        return this.Attachments; 
-    }
-        
-    private Calendar Calendar = null;
-
-    /**
-    * Gets the Calendar.
-    *
-    * @return the Calendar
-    */
-    public Calendar getCalendar() {
-        return this.Calendar; 
-    }
-    
-    /**
-    * Sets the Calendar.
-    *
-    * @param value the Calendar
-    */
-    public void setCalendar(Calendar value) { 
-        this.Calendar = value; 
-    }
-        
-    private java.util.List<Event> Instances = new java.util.ArrayList<Event>();
-
-    /**
-    * Gets the Instances.
-    *
-    * @return the Instances
-    */
-    public java.util.List<Event> getInstances() {
-        return this.Instances; 
-    }
             
-	private String Subject;
-
+    private String Subject;
+     
     /**
     * Gets the Subject.
     *
@@ -76,9 +33,9 @@ public class Event extends Item {
     public void setSubject(String value) { 
         this.Subject = value; 
     }
-    
-	private ItemBody Body;
-
+            
+    private ItemBody Body;
+     
     /**
     * Gets the Body.
     *
@@ -96,9 +53,9 @@ public class Event extends Item {
     public void setBody(ItemBody value) { 
         this.Body = value; 
     }
-    
-	private String BodyPreview;
-
+            
+    private String BodyPreview;
+     
     /**
     * Gets the Body Preview.
     *
@@ -116,9 +73,9 @@ public class Event extends Item {
     public void setBodyPreview(String value) { 
         this.BodyPreview = value; 
     }
-    
-	private Importance Importance;
-
+            
+    private Importance Importance;
+     
     /**
     * Gets the Importance.
     *
@@ -136,9 +93,9 @@ public class Event extends Item {
     public void setImportance(Importance value) { 
         this.Importance = value; 
     }
-    
-	private Boolean HasAttachments;
-
+            
+    private Boolean HasAttachments;
+     
     /**
     * Gets the Has Attachments.
     *
@@ -156,9 +113,9 @@ public class Event extends Item {
     public void setHasAttachments(Boolean value) { 
         this.HasAttachments = value; 
     }
-    
-	private java.util.Calendar Start;
-
+            
+    private java.util.Calendar Start;
+     
     /**
     * Gets the Start.
     *
@@ -176,9 +133,9 @@ public class Event extends Item {
     public void setStart(java.util.Calendar value) { 
         this.Start = value; 
     }
-    
-	private java.util.Calendar End;
-
+            
+    private java.util.Calendar End;
+     
     /**
     * Gets the End.
     *
@@ -196,9 +153,9 @@ public class Event extends Item {
     public void setEnd(java.util.Calendar value) { 
         this.End = value; 
     }
-    
-	private Location Location;
-
+            
+    private Location Location;
+     
     /**
     * Gets the Location.
     *
@@ -216,9 +173,9 @@ public class Event extends Item {
     public void setLocation(Location value) { 
         this.Location = value; 
     }
-    
-	private FreeBusyStatus ShowAs;
-
+            
+    private FreeBusyStatus ShowAs;
+     
     /**
     * Gets the Show As.
     *
@@ -236,9 +193,9 @@ public class Event extends Item {
     public void setShowAs(FreeBusyStatus value) { 
         this.ShowAs = value; 
     }
-    
-	private Boolean IsAllDay;
-
+            
+    private Boolean IsAllDay;
+     
     /**
     * Gets the Is All Day.
     *
@@ -256,9 +213,9 @@ public class Event extends Item {
     public void setIsAllDay(Boolean value) { 
         this.IsAllDay = value; 
     }
-    
-	private Boolean IsCancelled;
-
+            
+    private Boolean IsCancelled;
+     
     /**
     * Gets the Is Cancelled.
     *
@@ -276,9 +233,9 @@ public class Event extends Item {
     public void setIsCancelled(Boolean value) { 
         this.IsCancelled = value; 
     }
-    
-	private Boolean IsOrganizer;
-
+            
+    private Boolean IsOrganizer;
+     
     /**
     * Gets the Is Organizer.
     *
@@ -296,9 +253,9 @@ public class Event extends Item {
     public void setIsOrganizer(Boolean value) { 
         this.IsOrganizer = value; 
     }
-    
-	private Boolean ResponseRequested;
-
+            
+    private Boolean ResponseRequested;
+     
     /**
     * Gets the Response Requested.
     *
@@ -316,9 +273,9 @@ public class Event extends Item {
     public void setResponseRequested(Boolean value) { 
         this.ResponseRequested = value; 
     }
-    
-	private EventType Type;
-
+            
+    private EventType Type;
+     
     /**
     * Gets the Type.
     *
@@ -336,9 +293,9 @@ public class Event extends Item {
     public void setType(EventType value) { 
         this.Type = value; 
     }
-    
-	private String SeriesMasterId;
-
+            
+    private String SeriesMasterId;
+     
     /**
     * Gets the Series Master Id.
     *
@@ -357,8 +314,8 @@ public class Event extends Item {
         this.SeriesMasterId = value; 
     }
     
-	private java.util.List<Attendee> Attendees;
-
+    private java.util.List<Attendee> Attendees = new java.util.ArrayList<Attendee>();
+     
     /**
     * Gets the Attendees.
     *
@@ -376,9 +333,9 @@ public class Event extends Item {
     public void setAttendees(java.util.List<Attendee> value) { 
         this.Attendees = value; 
     }
-    
-	private PatternedRecurrence Recurrence;
-
+            
+    private PatternedRecurrence Recurrence;
+     
     /**
     * Gets the Recurrence.
     *
@@ -396,9 +353,9 @@ public class Event extends Item {
     public void setRecurrence(PatternedRecurrence value) { 
         this.Recurrence = value; 
     }
-    
-	private Recipient Organizer;
-
+            
+    private Recipient Organizer;
+     
     /**
     * Gets the Organizer.
     *
@@ -416,4 +373,65 @@ public class Event extends Item {
     public void setOrganizer(Recipient value) { 
         this.Organizer = value; 
     }
+    
+    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
+     
+    /**
+    * Gets the Attachments.
+    *
+    * @return the java.util.List<Attachment>
+    */
+    public java.util.List<Attachment> getAttachments() {
+        return this.Attachments; 
+    }
+
+    /**
+    * Sets the Attachments.
+    *
+    * @param value the java.util.List<Attachment>
+    */
+    public void setAttachments(java.util.List<Attachment> value) { 
+        this.Attachments = value; 
+    }
+            
+    private Calendar Calendar;
+     
+    /**
+    * Gets the Calendar.
+    *
+    * @return the Calendar
+    */
+    public Calendar getCalendar() {
+        return this.Calendar; 
+    }
+
+    /**
+    * Sets the Calendar.
+    *
+    * @param value the Calendar
+    */
+    public void setCalendar(Calendar value) { 
+        this.Calendar = value; 
+    }
+    
+    private java.util.List<Event> Instances = new java.util.ArrayList<Event>();
+     
+    /**
+    * Gets the Instances.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getInstances() {
+        return this.Instances; 
+    }
+
+    /**
+    * Sets the Instances.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setInstances(java.util.List<Event> value) { 
+        this.Instances = value; 
+    }
 }
+

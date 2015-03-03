@@ -1,3 +1,4 @@
+
 /*******************************************************************************
  * Copyright (c) Microsoft Open Technologies, Inc.
  * All Rights Reserved
@@ -13,7 +14,6 @@ public abstract class ODataBaseEntity {
    protected String $$__ODataType;
 
    protected void setODataType(String value){
-		this.$$__ODataType = value;
+        this.$$__ODataType = value;
    }
-
 }

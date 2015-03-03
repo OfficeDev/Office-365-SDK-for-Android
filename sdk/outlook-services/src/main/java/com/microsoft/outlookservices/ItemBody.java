@@ -10,48 +10,47 @@ package com.microsoft.outlookservices;
 */
 public class ItemBody extends ODataBaseEntity {
 
-	public ItemBody(){
-		setODataType("#Microsoft.OutlookServices.ItemBody");
-	}
+    public ItemBody(){
+        setODataType("#Microsoft.OutlookServices.ItemBody");
+    }
 
+    private BodyType ContentType;
 
-	private BodyType ContentType;
+    /**
+    * Gets the Content Type.
+    *
+    * @return the BodyType
+    */
+    public BodyType getContentType() {
+        return this.ContentType; 
+    }
 
-	/**
-	* Gets the Content Type.
-	*
-	* @return the BodyType
-	*/
-	public BodyType getContentType() {
-		return this.ContentType; 
-	}
+    /**
+    * Sets the Content Type.
+    *
+    * @param value the BodyType
+    */
+    public void setContentType(BodyType value) { 
+        this.ContentType = value; 
+    }
 
-	/**
-	* Sets the Content Type.
-	*
-	* @param value the BodyType
-	*/
-	public void setContentType(BodyType value) { 
-		this.ContentType = value; 
-	}
+    private String Content;
 
-	private String Content;
+    /**
+    * Gets the Content.
+    *
+    * @return the String
+    */
+    public String getContent() {
+        return this.Content; 
+    }
 
-	/**
-	* Gets the Content.
-	*
-	* @return the String
-	*/
-	public String getContent() {
-		return this.Content; 
-	}
-
-	/**
-	* Sets the Content.
-	*
-	* @param value the String
-	*/
-	public void setContent(String value) { 
-		this.Content = value; 
-	}
+    /**
+    * Sets the Content.
+    *
+    * @param value the String
+    */
+    public void setContent(String value) { 
+        this.Content = value; 
+    }
 }

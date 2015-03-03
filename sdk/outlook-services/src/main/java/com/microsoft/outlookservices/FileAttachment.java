@@ -13,10 +13,9 @@ public class FileAttachment extends Attachment {
     public FileAttachment(){
         setODataType("#Microsoft.OutlookServices.FileAttachment");
     }
-
-        
-	private String ContentId;
-
+            
+    private String ContentId;
+     
     /**
     * Gets the Content Id.
     *
@@ -34,9 +33,9 @@ public class FileAttachment extends Attachment {
     public void setContentId(String value) { 
         this.ContentId = value; 
     }
-    
-	private String ContentLocation;
-
+            
+    private String ContentLocation;
+     
     /**
     * Gets the Content Location.
     *
@@ -54,9 +53,9 @@ public class FileAttachment extends Attachment {
     public void setContentLocation(String value) { 
         this.ContentLocation = value; 
     }
-    
-	private Boolean IsContactPhoto;
-
+            
+    private Boolean IsContactPhoto;
+     
     /**
     * Gets the Is Contact Photo.
     *
@@ -74,9 +73,9 @@ public class FileAttachment extends Attachment {
     public void setIsContactPhoto(Boolean value) { 
         this.IsContactPhoto = value; 
     }
-    
-	private byte[] ContentBytes;
-
+            
+    private byte[] ContentBytes;
+     
     /**
     * Gets the Content Bytes.
     *
@@ -95,3 +94,4 @@ public class FileAttachment extends Attachment {
         this.ContentBytes = value; 
     }
 }
+

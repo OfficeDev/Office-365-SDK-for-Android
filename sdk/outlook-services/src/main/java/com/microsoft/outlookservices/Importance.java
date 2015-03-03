@@ -11,15 +11,15 @@ package com.microsoft.outlookservices;
 public enum Importance	
 {
     /**
-	* Low
-	*/
-	Low,
+    * Low
+    */
+    Low,
     /**
-	* Normal
-	*/
-	Normal,
+    * Normal
+    */
+    Normal,
     /**
-	* High
-	*/
-	High,
+    * High
+    */
+    High,
 }

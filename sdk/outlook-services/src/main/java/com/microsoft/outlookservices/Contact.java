@@ -13,10 +13,9 @@ public class Contact extends Item {
     public Contact(){
         setODataType("#Microsoft.OutlookServices.Contact");
     }
-
-        
-	private String ParentFolderId;
-
+            
+    private String ParentFolderId;
+     
     /**
     * Gets the Parent Folder Id.
     *
@@ -34,9 +33,9 @@ public class Contact extends Item {
     public void setParentFolderId(String value) { 
         this.ParentFolderId = value; 
     }
-    
-	private java.util.Calendar Birthday;
-
+            
+    private java.util.Calendar Birthday;
+     
     /**
     * Gets the Birthday.
     *
@@ -54,9 +53,9 @@ public class Contact extends Item {
     public void setBirthday(java.util.Calendar value) { 
         this.Birthday = value; 
     }
-    
-	private String FileAs;
-
+            
+    private String FileAs;
+     
     /**
     * Gets the File As.
     *
@@ -74,9 +73,9 @@ public class Contact extends Item {
     public void setFileAs(String value) { 
         this.FileAs = value; 
     }
-    
-	private String DisplayName;
-
+            
+    private String DisplayName;
+     
     /**
     * Gets the Display Name.
     *
@@ -94,9 +93,9 @@ public class Contact extends Item {
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
     }
-    
-	private String GivenName;
-
+            
+    private String GivenName;
+     
     /**
     * Gets the Given Name.
     *
@@ -114,9 +113,9 @@ public class Contact extends Item {
     public void setGivenName(String value) { 
         this.GivenName = value; 
     }
-    
-	private String Initials;
-
+            
+    private String Initials;
+     
     /**
     * Gets the Initials.
     *
@@ -134,9 +133,9 @@ public class Contact extends Item {
     public void setInitials(String value) { 
         this.Initials = value; 
     }
-    
-	private String MiddleName;
-
+            
+    private String MiddleName;
+     
     /**
     * Gets the Middle Name.
     *
@@ -154,9 +153,9 @@ public class Contact extends Item {
     public void setMiddleName(String value) { 
         this.MiddleName = value; 
     }
-    
-	private String NickName;
-
+            
+    private String NickName;
+     
     /**
     * Gets the Nick Name.
     *
@@ -174,9 +173,9 @@ public class Contact extends Item {
     public void setNickName(String value) { 
         this.NickName = value; 
     }
-    
-	private String Surname;
-
+            
+    private String Surname;
+     
     /**
     * Gets the Surname.
     *
@@ -194,9 +193,9 @@ public class Contact extends Item {
     public void setSurname(String value) { 
         this.Surname = value; 
     }
-    
-	private String Title;
-
+            
+    private String Title;
+     
     /**
     * Gets the Title.
     *
@@ -214,9 +213,9 @@ public class Contact extends Item {
     public void setTitle(String value) { 
         this.Title = value; 
     }
-    
-	private String Generation;
-
+            
+    private String Generation;
+     
     /**
     * Gets the Generation.
     *
@@ -235,8 +234,8 @@ public class Contact extends Item {
         this.Generation = value; 
     }
     
-	private java.util.List<EmailAddress> EmailAddresses;
-
+    private java.util.List<EmailAddress> EmailAddresses = new java.util.ArrayList<EmailAddress>();
+     
     /**
     * Gets the Email Addresses.
     *
@@ -255,8 +254,8 @@ public class Contact extends Item {
         this.EmailAddresses = value; 
     }
     
-	private java.util.List<String> ImAddresses;
-
+    private java.util.List<String> ImAddresses = new java.util.ArrayList<String>();
+     
     /**
     * Gets the Im Addresses.
     *
@@ -274,9 +273,9 @@ public class Contact extends Item {
     public void setImAddresses(java.util.List<String> value) { 
         this.ImAddresses = value; 
     }
-    
-	private String JobTitle;
-
+            
+    private String JobTitle;
+     
     /**
     * Gets the Job Title.
     *
@@ -294,9 +293,9 @@ public class Contact extends Item {
     public void setJobTitle(String value) { 
         this.JobTitle = value; 
     }
-    
-	private String CompanyName;
-
+            
+    private String CompanyName;
+     
     /**
     * Gets the Company Name.
     *
@@ -314,9 +313,9 @@ public class Contact extends Item {
     public void setCompanyName(String value) { 
         this.CompanyName = value; 
     }
-    
-	private String Department;
-
+            
+    private String Department;
+     
     /**
     * Gets the Department.
     *
@@ -334,9 +333,9 @@ public class Contact extends Item {
     public void setDepartment(String value) { 
         this.Department = value; 
     }
-    
-	private String OfficeLocation;
-
+            
+    private String OfficeLocation;
+     
     /**
     * Gets the Office Location.
     *
@@ -354,9 +353,9 @@ public class Contact extends Item {
     public void setOfficeLocation(String value) { 
         this.OfficeLocation = value; 
     }
-    
-	private String Profession;
-
+            
+    private String Profession;
+     
     /**
     * Gets the Profession.
     *
@@ -374,9 +373,9 @@ public class Contact extends Item {
     public void setProfession(String value) { 
         this.Profession = value; 
     }
-    
-	private String BusinessHomePage;
-
+            
+    private String BusinessHomePage;
+     
     /**
     * Gets the Business Home Page.
     *
@@ -394,9 +393,9 @@ public class Contact extends Item {
     public void setBusinessHomePage(String value) { 
         this.BusinessHomePage = value; 
     }
-    
-	private String AssistantName;
-
+            
+    private String AssistantName;
+     
     /**
     * Gets the Assistant Name.
     *
@@ -414,9 +413,9 @@ public class Contact extends Item {
     public void setAssistantName(String value) { 
         this.AssistantName = value; 
     }
-    
-	private String Manager;
-
+            
+    private String Manager;
+     
     /**
     * Gets the Manager.
     *
@@ -435,8 +434,8 @@ public class Contact extends Item {
         this.Manager = value; 
     }
     
-	private java.util.List<String> HomePhones;
-
+    private java.util.List<String> HomePhones = new java.util.ArrayList<String>();
+     
     /**
     * Gets the Home Phones.
     *
@@ -455,8 +454,8 @@ public class Contact extends Item {
         this.HomePhones = value; 
     }
     
-	private java.util.List<String> BusinessPhones;
-
+    private java.util.List<String> BusinessPhones = new java.util.ArrayList<String>();
+     
     /**
     * Gets the Business Phones.
     *
@@ -474,9 +473,9 @@ public class Contact extends Item {
     public void setBusinessPhones(java.util.List<String> value) { 
         this.BusinessPhones = value; 
     }
-    
-	private String MobilePhone1;
-
+            
+    private String MobilePhone1;
+     
     /**
     * Gets the Mobile Phone1.
     *
@@ -494,9 +493,9 @@ public class Contact extends Item {
     public void setMobilePhone1(String value) { 
         this.MobilePhone1 = value; 
     }
-    
-	private PhysicalAddress HomeAddress;
-
+            
+    private PhysicalAddress HomeAddress;
+     
     /**
     * Gets the Home Address.
     *
@@ -514,9 +513,9 @@ public class Contact extends Item {
     public void setHomeAddress(PhysicalAddress value) { 
         this.HomeAddress = value; 
     }
-    
-	private PhysicalAddress BusinessAddress;
-
+            
+    private PhysicalAddress BusinessAddress;
+     
     /**
     * Gets the Business Address.
     *
@@ -534,9 +533,9 @@ public class Contact extends Item {
     public void setBusinessAddress(PhysicalAddress value) { 
         this.BusinessAddress = value; 
     }
-    
-	private PhysicalAddress OtherAddress;
-
+            
+    private PhysicalAddress OtherAddress;
+     
     /**
     * Gets the Other Address.
     *
@@ -554,9 +553,9 @@ public class Contact extends Item {
     public void setOtherAddress(PhysicalAddress value) { 
         this.OtherAddress = value; 
     }
-    
-	private String YomiCompanyName;
-
+            
+    private String YomiCompanyName;
+     
     /**
     * Gets the Yomi Company Name.
     *
@@ -574,9 +573,9 @@ public class Contact extends Item {
     public void setYomiCompanyName(String value) { 
         this.YomiCompanyName = value; 
     }
-    
-	private String YomiGivenName;
-
+            
+    private String YomiGivenName;
+     
     /**
     * Gets the Yomi Given Name.
     *
@@ -594,9 +593,9 @@ public class Contact extends Item {
     public void setYomiGivenName(String value) { 
         this.YomiGivenName = value; 
     }
-    
-	private String YomiSurname;
-
+            
+    private String YomiSurname;
+     
     /**
     * Gets the Yomi Surname.
     *
@@ -615,3 +614,4 @@ public class Contact extends Item {
         this.YomiSurname = value; 
     }
 }
+

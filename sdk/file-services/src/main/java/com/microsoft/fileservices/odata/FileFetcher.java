@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.fileservices.odata;
 
+import com.microsoft.fileservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.fileservices.*; 
-import com.microsoft.fileservices.*;       
 
 /**
  * The type  FileFetcher.
@@ -52,4 +51,5 @@ public class FileFetcher extends ODataMediaEntityFetcher<File,FileOperations>
         return this;
     }
 
-    	}
+        
+}

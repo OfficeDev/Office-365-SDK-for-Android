@@ -10,27 +10,29 @@ package com.microsoft.fileservices;
 */
 public class File extends Item {
 
-	public File(){
-		setODataType("#Microsoft.FileServices.File");
-	}
+    public File(){
+        setODataType("#Microsoft.FileServices.File");
+    }
 
-	private String contentUrl;
+        
+    private String contentUrl;
 
-	/**
-	* Gets the content Url.
-	*
-	* @return the String
-	*/
-	public String getcontentUrl() {
-		return this.contentUrl; 
-	}
+    /**
+    * Gets the content Url.
+    *
+    * @return the String
+    */
+    public String getcontentUrl() {
+        return this.contentUrl; 
+    }
 
-	/**
-	* Sets the content Url.
-	*
-	* @param value the String
-	*/
-	public void setcontentUrl(String value) { 
-		this.contentUrl = value; 
-	}
+    /**
+    * Sets the content Url.
+    *
+    * @param value the String
+    */
+    public void setcontentUrl(String value) { 
+        this.contentUrl = value; 
+    }
 }
+

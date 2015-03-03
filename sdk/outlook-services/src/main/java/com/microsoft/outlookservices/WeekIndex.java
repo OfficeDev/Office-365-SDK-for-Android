@@ -11,23 +11,23 @@ package com.microsoft.outlookservices;
 public enum WeekIndex	
 {
     /**
-	* First
-	*/
-	First,
+    * First
+    */
+    First,
     /**
-	* Second
-	*/
-	Second,
+    * Second
+    */
+    Second,
     /**
-	* Third
-	*/
-	Third,
+    * Third
+    */
+    Third,
     /**
-	* Fourth
-	*/
-	Fourth,
+    * Fourth
+    */
+    Fourth,
     /**
-	* Last
-	*/
-	Last,
+    * Last
+    */
+    Last,
 }

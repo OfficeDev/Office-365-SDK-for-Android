@@ -11,27 +11,27 @@ package com.microsoft.outlookservices;
 public enum ResponseType	
 {
     /**
-	* None
-	*/
-	None,
+    * None
+    */
+    None,
     /**
-	* Organizer
-	*/
-	Organizer,
+    * Organizer
+    */
+    Organizer,
     /**
-	* Tentatively Accepted
-	*/
-	TentativelyAccepted,
+    * Tentatively Accepted
+    */
+    TentativelyAccepted,
     /**
-	* Accepted
-	*/
-	Accepted,
+    * Accepted
+    */
+    Accepted,
     /**
-	* Declined
-	*/
-	Declined,
+    * Declined
+    */
+    Declined,
     /**
-	* Not Responded
-	*/
-	NotResponded,
+    * Not Responded
+    */
+    NotResponded,
 }

@@ -10,28 +10,27 @@ package com.microsoft.outlookservices;
 */
 public class Recipient extends ODataBaseEntity {
 
-	public Recipient(){
-		setODataType("#Microsoft.OutlookServices.Recipient");
-	}
+    public Recipient(){
+        setODataType("#Microsoft.OutlookServices.Recipient");
+    }
 
+    private EmailAddress EmailAddress;
 
-	private EmailAddress EmailAddress;
+    /**
+    * Gets the Email Address.
+    *
+    * @return the EmailAddress
+    */
+    public EmailAddress getEmailAddress() {
+        return this.EmailAddress; 
+    }
 
-	/**
-	* Gets the Email Address.
-	*
-	* @return the EmailAddress
-	*/
-	public EmailAddress getEmailAddress() {
-		return this.EmailAddress; 
-	}
-
-	/**
-	* Sets the Email Address.
-	*
-	* @param value the EmailAddress
-	*/
-	public void setEmailAddress(EmailAddress value) { 
-		this.EmailAddress = value; 
-	}
+    /**
+    * Sets the Email Address.
+    *
+    * @param value the EmailAddress
+    */
+    public void setEmailAddress(EmailAddress value) { 
+        this.EmailAddress = value; 
+    }
 }

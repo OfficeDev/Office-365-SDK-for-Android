@@ -5,10 +5,10 @@
  ******************************************************************************/
 package com.microsoft.fileservices.odata;
 
+import com.microsoft.fileservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.fileservices.*;
 import static com.microsoft.services.odata.Helpers.*;
 
 /**
@@ -63,6 +63,7 @@ public class FileOperations extends ItemOperations {
 		String serializeddestFolderPath = serializer.serialize(destFolderPath);
 		String serializednewName = serializer.serialize(newName);
 		  
+        
         ListenableFuture<String> future = copyRaw(serializeddestFolderId, serializeddestFolderPath, serializednewName);
         return transformToEntityListenableFuture(future, File.class, getResolver());
         
@@ -74,21 +75,24 @@ public class FileOperations extends ItemOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> copyRaw(String destFolderId, String destFolderPath, String newName){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("destFolderId", destFolderId);
 		map.put("destFolderPath", destFolderPath);
 		map.put("newName", newName);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("copy");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
-
 
 
 }

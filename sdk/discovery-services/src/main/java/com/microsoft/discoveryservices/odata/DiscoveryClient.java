@@ -5,9 +5,9 @@
  ******************************************************************************/
 package com.microsoft.discoveryservices.odata;
 
+import com.microsoft.discoveryservices.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
-import com.microsoft.discoveryservices.*;
 
 /**
  * The type DiscoveryClient.
@@ -24,7 +24,7 @@ public class DiscoveryClient extends BaseODataContainer {
         super(url, resolver);
     }
 
-	     /**
+    /**
      * Add parameter.
      *
      * @param name the name
@@ -54,7 +54,7 @@ public class DiscoveryClient extends BaseODataContainer {
      * @return the ServiceInfo
      */
     public ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getallServices() {
-        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher,ServiceInfoCollectionOperations>("allServices", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
+        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations>("allServices", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
     }
      /**
      * Gets ServiceInfo.
@@ -62,6 +62,6 @@ public class DiscoveryClient extends BaseODataContainer {
      * @return the ServiceInfo
      */
     public ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getservices() {
-        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher,ServiceInfoCollectionOperations>("services", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
+        return new ODataCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations>("services", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
     }
 }

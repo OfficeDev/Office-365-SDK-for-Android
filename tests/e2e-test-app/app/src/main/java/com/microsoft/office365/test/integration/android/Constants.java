@@ -29,7 +29,7 @@ public class Constants {
     public static final String PREFERENCE_DISCOVERY_RESOURCE_URL = "prefDiscoveryResourcetUrl";
     public static final String PREFERENCE_DIRECTORY_RESOURCE_URL = "prefDirectoryResourcetUrl";
 	public static final String PREFERENCE_LOG_POST_URL = "pref_log_post_url";
-	public static final String TAG = "Office365-SDK End2EndApp";
+	public static final String TAG = "Office365SDKEnd2EndApp";
 	public static final String PREFERENCE_AUTHENTICATION_METHOD = "prefAuthenticationMethod";
 	public static final String AUTHORITY_URL = "https://login.windows.net/common";
 	public static final String PREFERENCE_AAD_CLIENT_ID = "prefAADClientId";

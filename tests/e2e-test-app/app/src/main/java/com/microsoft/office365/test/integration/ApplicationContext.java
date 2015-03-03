@@ -6,7 +6,7 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.sharepointservices.ListClient;
-import com.microsoft.sharepointservices.odata.SharePointClient;
+import com.microsoft.fileservices.odata.SharePointClient;
 
 import java.util.concurrent.Future;
 
