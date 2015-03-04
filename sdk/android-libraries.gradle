@@ -34,6 +34,7 @@ makeJar.dependsOn(clearJar, build)
 task androidJavadocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
 }
 
 task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {

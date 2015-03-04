@@ -6,12 +6,17 @@ apply plugin: 'java'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
+task androidJavadocs(type: Javadoc) {
+    source = sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+}
+
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
 
-task javadocJar(type: Jar) {
+task javadocJar(type: Jar, dependsOn: androidJavadocs) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
