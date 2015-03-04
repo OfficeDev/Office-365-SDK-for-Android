@@ -20,19 +20,22 @@ See the Apache Version 2.0 License for specific language governing permissions a
 
 package com.microsoft.office365.test.integration.tests;
 
-import com.microsoft.sharepointservices.SPList;
-import com.microsoft.sharepointservices.SPListField;
-import com.microsoft.sharepointservices.SPListItem;
-import com.microsoft.sharepointservices.ListClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.ExpectedValueException;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import static com.microsoft.sharepointservices.QueryOperations.*;
+import com.microsoft.sharepointservices.ListClient;
+import com.microsoft.sharepointservices.SPList;
+import com.microsoft.sharepointservices.SPListField;
+import com.microsoft.sharepointservices.SPListItem;
+
 import java.util.List;
 import java.util.UUID;
+
+import static com.microsoft.sharepointservices.QueryOperations.field;
+import static com.microsoft.sharepointservices.QueryOperations.startsWith;
 
 public class ListsTests extends TestGroup {
 
@@ -48,7 +51,6 @@ public class ListsTests extends TestGroup {
 
         this.addTest(canFilterListTest("Can filter lists", true));
         this.addTest(canSelectListTest("Can select lists", true));
-
     }
 
     private TestCase createListFieldsTest(String name, boolean enabled) {
