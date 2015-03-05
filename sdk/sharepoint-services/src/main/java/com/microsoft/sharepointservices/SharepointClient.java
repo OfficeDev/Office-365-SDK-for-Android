@@ -5,8 +5,6 @@
  ******************************************************************************/
 package com.microsoft.sharepointservices;
 
-import java.lang.Override;
-import java.lang.Throwable;
 import java.util.HashMap;
 import java.util.Map;
 
