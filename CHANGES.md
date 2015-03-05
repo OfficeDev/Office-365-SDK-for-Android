@@ -1,5 +1,12 @@
 # Office 365 SDK for Android  #
 
+ ### Version 0.12.0 ### 
+
+* Fixing classpath for javadoc generation
+* SDK and test app updated with vipr
+* Merge PR #67
+* Support for Streamed media entities
+
  ### Version 0.11.0 ###
 
 *  Cleaned imports
