@@ -3,14 +3,11 @@
  * All Rights Reserved
  * See License.txt in the project root for license information.
  ******************************************************************************/
-package com.microsoft.sharepointservices.odata;
+package com.microsoft.fileservices.odata;
 
-import com.microsoft.fileservices.odata.DriveFetcher;
-import com.microsoft.fileservices.odata.ItemCollectionOperations;
-import com.microsoft.fileservices.odata.ItemFetcher;
+import com.microsoft.fileservices.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
-import com.microsoft.fileservices.*;
 
 /**
  * The type SharePointClient.
@@ -27,7 +24,7 @@ public class SharePointClient extends BaseODataContainer {
         super(url, resolver);
     }
 
-	     /**
+    /**
      * Add parameter.
      *
      * @param name the name
@@ -52,19 +49,19 @@ public class SharePointClient extends BaseODataContainer {
     }
 
      /**
+     * Gets Item.
+     *
+     * @return the Item
+     */
+    public ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getfiles() {
+        return new ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class,ItemCollectionOperations.class);
+    }
+     /**
      * Gets drive.
      *
      * @return the drive
      */
     public DriveFetcher getdrive() {
         return new DriveFetcher("drive", this);
-    }
-     /**
-     * Gets Item.
-     *
-     * @return the Item
-     */
-    public ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getfiles() {
-        return new ODataCollectionFetcher<Item, ItemFetcher,ItemCollectionOperations>("files", this, Item.class,ItemCollectionOperations.class);
     }
 }

@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;       
 
 /**
  * The type  ContactFolderFetcher.
@@ -52,13 +51,14 @@ public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,Conta
         return this;
     }
 
-    	     /**
+        
+     /**
      * Gets contacts.
      *
      * @return the contacts
      */
     public ODataCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getContacts() {
-        return new ODataCollectionFetcher<Contact, ContactFetcher,ContactCollectionOperations>("Contacts", this, Contact.class,ContactCollectionOperations.class);
+        return new ODataCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations>("Contacts", this, Contact.class, ContactCollectionOperations.class);
     }
 
     /**
@@ -67,15 +67,16 @@ public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,Conta
      * @return the contact
      */
     public ContactFetcher getContact(String id){
-         return new ODataCollectionFetcher<Contact, ContactFetcher,ContactCollectionOperations>("Contacts", this, Contact.class,ContactCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations>("Contacts", this, Contact.class, ContactCollectionOperations.class).getById(id);
     }
+
      /**
      * Gets child folders.
      *
      * @return the child folders
      */
     public ODataCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations> getChildFolders() {
-        return new ODataCollectionFetcher<ContactFolder, ContactFolderFetcher,ContactFolderCollectionOperations>("ChildFolders", this, ContactFolder.class,ContactFolderCollectionOperations.class);
+        return new ODataCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ChildFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class);
     }
 
     /**
@@ -84,6 +85,7 @@ public class ContactFolderFetcher extends ODataEntityFetcher<ContactFolder,Conta
      * @return the child folder
      */
     public ContactFolderFetcher getChildFolder(String id){
-         return new ODataCollectionFetcher<ContactFolder, ContactFolderFetcher,ContactFolderCollectionOperations>("ChildFolders", this, ContactFolder.class,ContactFolderCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ChildFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
     }
+
 }

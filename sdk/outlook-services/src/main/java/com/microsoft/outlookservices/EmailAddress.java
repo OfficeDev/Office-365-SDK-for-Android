@@ -10,48 +10,47 @@ package com.microsoft.outlookservices;
 */
 public class EmailAddress extends ODataBaseEntity {
 
-	public EmailAddress(){
-		setODataType("#Microsoft.OutlookServices.EmailAddress");
-	}
+    public EmailAddress(){
+        setODataType("#Microsoft.OutlookServices.EmailAddress");
+    }
 
+    private String Name;
 
-	private String Name;
+    /**
+    * Gets the Name.
+    *
+    * @return the String
+    */
+    public String getName() {
+        return this.Name; 
+    }
 
-	/**
-	* Gets the Name.
-	*
-	* @return the String
-	*/
-	public String getName() {
-		return this.Name; 
-	}
+    /**
+    * Sets the Name.
+    *
+    * @param value the String
+    */
+    public void setName(String value) { 
+        this.Name = value; 
+    }
 
-	/**
-	* Sets the Name.
-	*
-	* @param value the String
-	*/
-	public void setName(String value) { 
-		this.Name = value; 
-	}
+    private String Address;
 
-	private String Address;
+    /**
+    * Gets the Address.
+    *
+    * @return the String
+    */
+    public String getAddress() {
+        return this.Address; 
+    }
 
-	/**
-	* Gets the Address.
-	*
-	* @return the String
-	*/
-	public String getAddress() {
-		return this.Address; 
-	}
-
-	/**
-	* Sets the Address.
-	*
-	* @param value the String
-	*/
-	public void setAddress(String value) { 
-		this.Address = value; 
-	}
+    /**
+    * Sets the Address.
+    *
+    * @param value the String
+    */
+    public void setAddress(String value) { 
+        this.Address = value; 
+    }
 }

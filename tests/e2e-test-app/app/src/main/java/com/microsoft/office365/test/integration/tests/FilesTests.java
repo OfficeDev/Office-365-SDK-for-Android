@@ -13,7 +13,7 @@ import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.odata.Constants;
-import com.microsoft.sharepointservices.odata.SharePointClient;
+import com.microsoft.fileservices.odata.SharePointClient;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -229,12 +229,8 @@ public class FilesTests extends TestGroup {
 
                     InputStream contentStream = client.getfiles().getById(addedFile.getid()).asFile().getStreamedContent().get();
 
-
                     //Assert
                     if (addedFile == null)
-                        result.setStatus(TestStatus.Failed);
-
-                    if (!addedFile.getsize().equals(newFileSize * 1024))
                         result.setStatus(TestStatus.Failed);
 
                     if (contentStream == null)

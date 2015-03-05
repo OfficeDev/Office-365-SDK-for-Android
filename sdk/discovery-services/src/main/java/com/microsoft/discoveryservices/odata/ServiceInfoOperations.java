@@ -5,13 +5,11 @@
  ******************************************************************************/
 package com.microsoft.discoveryservices.odata;
 
+import com.microsoft.discoveryservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.discoveryservices.*;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-
+import static com.microsoft.services.odata.Helpers.*;
 
 /**
  * The type ServiceInfoOperations.

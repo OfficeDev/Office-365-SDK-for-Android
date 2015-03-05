@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;       
 
 /**
  * The type  EntityFetcher.
@@ -55,29 +54,30 @@ public class EntityFetcher extends ODataEntityFetcher<Entity,EntityOperations>
     
     public UserFetcher asUser(){
         return new UserFetcher(this.urlComponent, this.parent);
-    }	   
+    }   
 
     public FolderFetcher asFolder(){
         return new FolderFetcher(this.urlComponent, this.parent);
-    }	   
+    }   
 
     public ItemFetcher asItem(){
         return new ItemFetcher(this.urlComponent, this.parent);
-    }	   
+    }   
 
     public AttachmentFetcher asAttachment(){
         return new AttachmentFetcher(this.urlComponent, this.parent);
-    }	   
+    }   
 
     public CalendarFetcher asCalendar(){
         return new CalendarFetcher(this.urlComponent, this.parent);
-    }	   
+    }   
 
     public CalendarGroupFetcher asCalendarGroup(){
         return new CalendarGroupFetcher(this.urlComponent, this.parent);
-    }	   
+    }   
 
     public ContactFolderFetcher asContactFolder(){
         return new ContactFolderFetcher(this.urlComponent, this.parent);
-    }	   
-	}
+    }   
+    
+}

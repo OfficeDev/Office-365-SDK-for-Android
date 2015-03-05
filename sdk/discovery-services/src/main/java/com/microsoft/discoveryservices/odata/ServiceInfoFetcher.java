@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.discoveryservices.odata;
 
+import com.microsoft.discoveryservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.discoveryservices.*; 
-import com.microsoft.discoveryservices.*;       
 
 /**
  * The type  ServiceInfoFetcher.
@@ -52,4 +51,5 @@ public class ServiceInfoFetcher extends ODataEntityFetcher<ServiceInfo,ServiceIn
         return this;
     }
 
-    	}
+        
+}

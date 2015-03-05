@@ -25,7 +25,7 @@ import com.microsoft.services.odata.impl.DefaultDependencyResolver;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.sharepointservices.ListClient;
-import com.microsoft.sharepointservices.odata.SharePointClient;
+import com.microsoft.fileservices.odata.SharePointClient;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -10,48 +10,47 @@ package com.microsoft.fileservices;
 */
 public class IdentitySet extends ODataBaseEntity {
 
-	public IdentitySet(){
-		setODataType("#Microsoft.FileServices.IdentitySet");
-	}
+    public IdentitySet(){
+        setODataType("#Microsoft.FileServices.IdentitySet");
+    }
 
+    private Identity application;
 
-	private Identity application;
+    /**
+    * Gets the application.
+    *
+    * @return the Identity
+    */
+    public Identity getapplication() {
+        return this.application; 
+    }
 
-	/**
-	* Gets the application.
-	*
-	* @return the Identity
-	*/
-	public Identity getapplication() {
-		return this.application; 
-	}
+    /**
+    * Sets the application.
+    *
+    * @param value the Identity
+    */
+    public void setapplication(Identity value) { 
+        this.application = value; 
+    }
 
-	/**
-	* Sets the application.
-	*
-	* @param value the Identity
-	*/
-	public void setapplication(Identity value) { 
-		this.application = value; 
-	}
+    private Identity user;
 
-	private Identity user;
+    /**
+    * Gets the user.
+    *
+    * @return the Identity
+    */
+    public Identity getuser() {
+        return this.user; 
+    }
 
-	/**
-	* Gets the user.
-	*
-	* @return the Identity
-	*/
-	public Identity getuser() {
-		return this.user; 
-	}
-
-	/**
-	* Sets the user.
-	*
-	* @param value the Identity
-	*/
-	public void setuser(Identity value) { 
-		this.user = value; 
-	}
+    /**
+    * Sets the user.
+    *
+    * @param value the Identity
+    */
+    public void setuser(Identity value) { 
+        this.user = value; 
+    }
 }

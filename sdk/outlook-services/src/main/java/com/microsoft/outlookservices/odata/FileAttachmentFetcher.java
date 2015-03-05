@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;       
 
 /**
  * The type  FileAttachmentFetcher.
@@ -52,4 +51,5 @@ public class FileAttachmentFetcher extends ODataEntityFetcher<FileAttachment,Fil
         return this;
     }
 
-    	}
+        
+}

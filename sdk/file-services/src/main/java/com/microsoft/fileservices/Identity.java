@@ -10,48 +10,47 @@ package com.microsoft.fileservices;
 */
 public class Identity extends ODataBaseEntity {
 
-	public Identity(){
-		setODataType("#Microsoft.FileServices.Identity");
-	}
+    public Identity(){
+        setODataType("#Microsoft.FileServices.Identity");
+    }
 
+    private String id;
 
-	private String id;
+    /**
+    * Gets the id.
+    *
+    * @return the String
+    */
+    public String getid() {
+        return this.id; 
+    }
 
-	/**
-	* Gets the id.
-	*
-	* @return the String
-	*/
-	public String getid() {
-		return this.id; 
-	}
+    /**
+    * Sets the id.
+    *
+    * @param value the String
+    */
+    public void setid(String value) { 
+        this.id = value; 
+    }
 
-	/**
-	* Sets the id.
-	*
-	* @param value the String
-	*/
-	public void setid(String value) { 
-		this.id = value; 
-	}
+    private String displayName;
 
-	private String displayName;
+    /**
+    * Gets the display Name.
+    *
+    * @return the String
+    */
+    public String getdisplayName() {
+        return this.displayName; 
+    }
 
-	/**
-	* Gets the display Name.
-	*
-	* @return the String
-	*/
-	public String getdisplayName() {
-		return this.displayName; 
-	}
-
-	/**
-	* Sets the display Name.
-	*
-	* @param value the String
-	*/
-	public void setdisplayName(String value) { 
-		this.displayName = value; 
-	}
+    /**
+    * Sets the display Name.
+    *
+    * @param value the String
+    */
+    public void setdisplayName(String value) { 
+        this.displayName = value; 
+    }
 }

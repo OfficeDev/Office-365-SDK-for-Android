@@ -5,10 +5,10 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.*;
 
 /**
@@ -61,6 +61,7 @@ public class FolderOperations extends EntityOperations {
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedDestinationId = serializer.serialize(destinationId);
 		  
+        
         ListenableFuture<String> future = copyRaw(serializedDestinationId);
         return transformToEntityListenableFuture(future, Folder.class, getResolver());
         
@@ -72,14 +73,18 @@ public class FolderOperations extends EntityOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> copyRaw(String destinationId){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("DestinationId", destinationId);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("Copy");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -97,6 +102,7 @@ public class FolderOperations extends EntityOperations {
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedDestinationId = serializer.serialize(destinationId);
 		  
+        
         ListenableFuture<String> future = moveRaw(serializedDestinationId);
         return transformToEntityListenableFuture(future, Folder.class, getResolver());
         
@@ -108,19 +114,22 @@ public class FolderOperations extends EntityOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> moveRaw(String destinationId){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("DestinationId", destinationId);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("Move");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
-
 
 
 }

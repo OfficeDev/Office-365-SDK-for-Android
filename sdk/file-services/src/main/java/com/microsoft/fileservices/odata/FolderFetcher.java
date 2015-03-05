@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.fileservices.odata;
 
+import com.microsoft.fileservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.fileservices.*; 
-import com.microsoft.fileservices.*;       
 
 /**
  * The type  FolderFetcher.
@@ -52,13 +51,14 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations>
         return this;
     }
 
-    	     /**
+        
+     /**
      * Gets children.
      *
      * @return the children
      */
     public ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getchildren() {
-        return new ODataCollectionFetcher<Item, ItemFetcher,ItemCollectionOperations>("children", this, Item.class,ItemCollectionOperations.class);
+        return new ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("children", this, Item.class, ItemCollectionOperations.class);
     }
 
     /**
@@ -67,6 +67,7 @@ public class FolderFetcher extends ODataEntityFetcher<Folder,FolderOperations>
      * @return the child
      */
     public ItemFetcher getchild(String id){
-         return new ODataCollectionFetcher<Item, ItemFetcher,ItemCollectionOperations>("children", this, Item.class,ItemCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("children", this, Item.class, ItemCollectionOperations.class).getById(id);
     }
+
 }

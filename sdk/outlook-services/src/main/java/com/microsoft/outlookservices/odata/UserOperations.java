@@ -5,10 +5,10 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.*;
 
 /**
@@ -62,6 +62,7 @@ public class UserOperations extends EntityOperations {
         String serializedMessage = serializer.serialize(message);
 		String serializedSaveToSentItems = serializer.serialize(saveToSentItems);
 		  
+        
         ListenableFuture<String> future = sendMailRaw(serializedMessage, serializedSaveToSentItems);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
@@ -73,20 +74,23 @@ public class UserOperations extends EntityOperations {
      * @return the listenable future
      */ 
     public ListenableFuture<String> sendMailRaw(String message, String saveToSentItems){
+        
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
         map.put("Message", message);
 		map.put("SaveToSentItems", saveToSentItems);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
+        
         request.setContent(getResolver().getJsonSerializer()
-                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
+        
         request.getUrl().appendPathComponent("SendMail");
         ListenableFuture<ODataResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
-
 
 
 }

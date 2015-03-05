@@ -5,12 +5,11 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.Readable;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*; 
-import com.microsoft.outlookservices.*;       
 
 /**
  * The type  CalendarFetcher.
@@ -52,13 +51,14 @@ public class CalendarFetcher extends ODataEntityFetcher<Calendar,CalendarOperati
         return this;
     }
 
-    	     /**
+        
+     /**
      * Gets calendar view.
      *
      * @return the calendar view
      */
     public ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getCalendarView() {
-        return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("CalendarView", this, Event.class,EventCollectionOperations.class);
+        return new ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class);
     }
 
     /**
@@ -67,15 +67,16 @@ public class CalendarFetcher extends ODataEntityFetcher<Calendar,CalendarOperati
      * @return the calendar view
      */
     public EventFetcher getCalendarView(String id){
-         return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("CalendarView", this, Event.class,EventCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
     }
+
      /**
      * Gets events.
      *
      * @return the events
      */
     public ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getEvents() {
-        return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class);
+        return new ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class);
     }
 
     /**
@@ -84,6 +85,7 @@ public class CalendarFetcher extends ODataEntityFetcher<Calendar,CalendarOperati
      * @return the event
      */
     public EventFetcher getEvent(String id){
-         return new ODataCollectionFetcher<Event, EventFetcher,EventCollectionOperations>("Events", this, Event.class,EventCollectionOperations.class).getById(id);
+         return new ODataCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
     }
+
 }

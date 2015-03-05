@@ -13,10 +13,9 @@ public class ItemAttachment extends Attachment {
     public ItemAttachment(){
         setODataType("#Microsoft.OutlookServices.ItemAttachment");
     }
-
-    
-    private Item Item = null;
-
+            
+    private Item Item;
+     
     /**
     * Gets the Item.
     *
@@ -25,7 +24,7 @@ public class ItemAttachment extends Attachment {
     public Item getItem() {
         return this.Item; 
     }
-    
+
     /**
     * Sets the Item.
     *
@@ -34,4 +33,5 @@ public class ItemAttachment extends Attachment {
     public void setItem(Item value) { 
         this.Item = value; 
     }
-        }
+}
+

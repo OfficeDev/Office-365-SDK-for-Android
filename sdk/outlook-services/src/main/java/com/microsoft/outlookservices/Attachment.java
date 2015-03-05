@@ -13,10 +13,9 @@ public class Attachment extends Entity {
     public Attachment(){
         setODataType("#Microsoft.OutlookServices.Attachment");
     }
-
-        
-	private String Name;
-
+            
+    private String Name;
+     
     /**
     * Gets the Name.
     *
@@ -34,9 +33,9 @@ public class Attachment extends Entity {
     public void setName(String value) { 
         this.Name = value; 
     }
-    
-	private String ContentType;
-
+            
+    private String ContentType;
+     
     /**
     * Gets the Content Type.
     *
@@ -54,9 +53,9 @@ public class Attachment extends Entity {
     public void setContentType(String value) { 
         this.ContentType = value; 
     }
-    
-	private Integer Size;
-
+            
+    private Integer Size;
+     
     /**
     * Gets the Size.
     *
@@ -74,9 +73,9 @@ public class Attachment extends Entity {
     public void setSize(Integer value) { 
         this.Size = value; 
     }
-    
-	private Boolean IsInline;
-
+            
+    private Boolean IsInline;
+     
     /**
     * Gets the Is Inline.
     *
@@ -94,9 +93,9 @@ public class Attachment extends Entity {
     public void setIsInline(Boolean value) { 
         this.IsInline = value; 
     }
-    
-	private java.util.Calendar DateTimeLastModified;
-
+            
+    private java.util.Calendar DateTimeLastModified;
+     
     /**
     * Gets the Date Time Last Modified.
     *
@@ -115,3 +114,4 @@ public class Attachment extends Entity {
         this.DateTimeLastModified = value; 
     }
 }
+

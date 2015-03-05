@@ -13,32 +13,9 @@ public class Calendar extends Entity {
     public Calendar(){
         setODataType("#Microsoft.OutlookServices.Calendar");
     }
-
-    
-    private java.util.List<Event> CalendarView = new java.util.ArrayList<Event>();
-
-    /**
-    * Gets the Calendar View.
-    *
-    * @return the CalendarView
-    */
-    public java.util.List<Event> getCalendarView() {
-        return this.CalendarView; 
-    }
-        
-    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
-
-    /**
-    * Gets the Events.
-    *
-    * @return the Events
-    */
-    public java.util.List<Event> getEvents() {
-        return this.Events; 
-    }
             
-	private String Name;
-
+    private String Name;
+     
     /**
     * Gets the Name.
     *
@@ -56,9 +33,9 @@ public class Calendar extends Entity {
     public void setName(String value) { 
         this.Name = value; 
     }
-    
-	private String ChangeKey;
-
+            
+    private String ChangeKey;
+     
     /**
     * Gets the Change Key.
     *
@@ -76,4 +53,45 @@ public class Calendar extends Entity {
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
     }
+    
+    private java.util.List<Event> CalendarView = new java.util.ArrayList<Event>();
+     
+    /**
+    * Gets the Calendar View.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getCalendarView() {
+        return this.CalendarView; 
+    }
+
+    /**
+    * Sets the Calendar View.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setCalendarView(java.util.List<Event> value) { 
+        this.CalendarView = value; 
+    }
+    
+    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
+     
+    /**
+    * Gets the Events.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getEvents() {
+        return this.Events; 
+    }
+
+    /**
+    * Sets the Events.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setEvents(java.util.List<Event> value) { 
+        this.Events = value; 
+    }
 }
+

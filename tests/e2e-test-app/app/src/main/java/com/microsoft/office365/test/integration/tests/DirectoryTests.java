@@ -29,9 +29,9 @@ public class DirectoryTests extends TestGroup {
         super("Directory tests");
 
         this.addTest(canGetUsers("Can get users", true));
-        this.addTest(canGetUsersById("Can get users by id", true));
-        this.addTest(canCreateUser("Can create users", true));
-        this.addTest(canUpdateUser("Can update users", true));
+        this.addTest(canGetUsersById("Can get users by id", false));
+        this.addTest(canCreateUser("Can create users", false));
+        this.addTest(canUpdateUser("Can update users", false));
         this.addTest(canDeleteUser("Can delete users", false));
 
         this.addTest(canGetApplications("Can get applications", true));

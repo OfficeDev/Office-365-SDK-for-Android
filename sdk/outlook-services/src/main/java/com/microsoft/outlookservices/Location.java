@@ -10,28 +10,27 @@ package com.microsoft.outlookservices;
 */
 public class Location extends ODataBaseEntity {
 
-	public Location(){
-		setODataType("#Microsoft.OutlookServices.Location");
-	}
+    public Location(){
+        setODataType("#Microsoft.OutlookServices.Location");
+    }
 
+    private String DisplayName;
 
-	private String DisplayName;
+    /**
+    * Gets the Display Name.
+    *
+    * @return the String
+    */
+    public String getDisplayName() {
+        return this.DisplayName; 
+    }
 
-	/**
-	* Gets the Display Name.
-	*
-	* @return the String
-	*/
-	public String getDisplayName() {
-		return this.DisplayName; 
-	}
-
-	/**
-	* Sets the Display Name.
-	*
-	* @param value the String
-	*/
-	public void setDisplayName(String value) { 
-		this.DisplayName = value; 
-	}
+    /**
+    * Sets the Display Name.
+    *
+    * @param value the String
+    */
+    public void setDisplayName(String value) { 
+        this.DisplayName = value; 
+    }
 }

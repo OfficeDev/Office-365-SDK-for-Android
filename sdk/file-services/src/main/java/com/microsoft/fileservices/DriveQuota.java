@@ -10,88 +10,87 @@ package com.microsoft.fileservices;
 */
 public class DriveQuota extends ODataBaseEntity {
 
-	public DriveQuota(){
-		setODataType("#Microsoft.FileServices.DriveQuota");
-	}
+    public DriveQuota(){
+        setODataType("#Microsoft.FileServices.DriveQuota");
+    }
 
+    private Long deleted;
 
-	private Long deleted;
+    /**
+    * Gets the deleted.
+    *
+    * @return the Long
+    */
+    public Long getdeleted() {
+        return this.deleted; 
+    }
 
-	/**
-	* Gets the deleted.
-	*
-	* @return the long
-	*/
-	public Long getdeleted() {
-		return this.deleted; 
-	}
+    /**
+    * Sets the deleted.
+    *
+    * @param value the Long
+    */
+    public void setdeleted(Long value) { 
+        this.deleted = value; 
+    }
 
-	/**
-	* Sets the deleted.
-	*
-	* @param value the long
-	*/
-	public void setdeleted(Long value) {
-		this.deleted = value; 
-	}
+    private Long remaining;
 
-	private Long remaining;
+    /**
+    * Gets the remaining.
+    *
+    * @return the Long
+    */
+    public Long getremaining() {
+        return this.remaining; 
+    }
 
-	/**
-	* Gets the remaining.
-	*
-	* @return the long
-	*/
-	public Long getremaining() {
-		return this.remaining; 
-	}
+    /**
+    * Sets the remaining.
+    *
+    * @param value the Long
+    */
+    public void setremaining(Long value) { 
+        this.remaining = value; 
+    }
 
-	/**
-	* Sets the remaining.
-	*
-	* @param value the long
-	*/
-	public void setremaining(Long value) {
-		this.remaining = value; 
-	}
+    private String state;
 
-	private String state;
+    /**
+    * Gets the state.
+    *
+    * @return the String
+    */
+    public String getstate() {
+        return this.state; 
+    }
 
-	/**
-	* Gets the state.
-	*
-	* @return the String
-	*/
-	public String getstate() {
-		return this.state; 
-	}
+    /**
+    * Sets the state.
+    *
+    * @param value the String
+    */
+    public void setstate(String value) { 
+        this.state = value; 
+    }
 
-	/**
-	* Sets the state.
-	*
-	* @param value the String
-	*/
-	public void setstate(String value) { 
-		this.state = value; 
-	}
+    private Long total;
 
-	private Long total;
+    /**
+    * Gets the total.
+    *
+    * @return the Long
+    */
+    public Long gettotal() {
+        return this.total; 
+    }
 
-	/**
-	* Gets the total.
-	*
-	* @return the long
-	*/
-	public Long gettotal() {
-		return this.total; 
-	}
-
-	/**
-	* Sets the total.
-	*
-	* @param value the long
-	*/
-	public void settotal(Long value) {
-		this.total = value; 
-	}
+    /**
+    * Sets the total.
+    *
+    * @param value the Long
+    */
+    public void settotal(Long value) { 
+        this.total = value; 
+    }
 }

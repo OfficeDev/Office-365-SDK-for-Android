@@ -13,10 +13,9 @@ public class Item extends Entity {
     public Item(){
         setODataType("#Microsoft.OutlookServices.Item");
     }
-
-        
-	private String ChangeKey;
-
+            
+    private String ChangeKey;
+     
     /**
     * Gets the Change Key.
     *
@@ -35,8 +34,8 @@ public class Item extends Entity {
         this.ChangeKey = value; 
     }
     
-	private java.util.List<String> Categories;
-
+    private java.util.List<String> Categories = new java.util.ArrayList<String>();
+     
     /**
     * Gets the Categories.
     *
@@ -54,9 +53,9 @@ public class Item extends Entity {
     public void setCategories(java.util.List<String> value) { 
         this.Categories = value; 
     }
-    
-	private java.util.Calendar DateTimeCreated;
-
+            
+    private java.util.Calendar DateTimeCreated;
+     
     /**
     * Gets the Date Time Created.
     *
@@ -74,9 +73,9 @@ public class Item extends Entity {
     public void setDateTimeCreated(java.util.Calendar value) { 
         this.DateTimeCreated = value; 
     }
-    
-	private java.util.Calendar DateTimeLastModified;
-
+            
+    private java.util.Calendar DateTimeLastModified;
+     
     /**
     * Gets the Date Time Last Modified.
     *
@@ -95,3 +94,4 @@ public class Item extends Entity {
         this.DateTimeLastModified = value; 
     }
 }
+

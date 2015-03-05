@@ -5,13 +5,11 @@
  ******************************************************************************/
 package com.microsoft.fileservices.odata;
 
+import com.microsoft.fileservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.fileservices.*;
 import static com.microsoft.services.odata.Helpers.*;
-
-
 
 /**
  * The type ItemCollectionOperations
@@ -70,8 +68,11 @@ public class ItemCollectionOperations extends ODataOperations{
         String parameters = getFunctionParameters(map);
         request.getUrl().appendPathComponent("getByPath(" + parameters + ")");
         ListenableFuture<ODataResponse> future = oDataExecute(request);   
+        
         return transformToEntityListenableFuture(transformToStringListenableFuture(future), Item.class, getResolver());
         
+        
    }
-
+    
+                
 }

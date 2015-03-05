@@ -13,21 +13,9 @@ public class Message extends Item {
     public Message(){
         setODataType("#Microsoft.OutlookServices.Message");
     }
-
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
-
-    /**
-    * Gets the Attachments.
-    *
-    * @return the Attachments
-    */
-    public java.util.List<Attachment> getAttachments() {
-        return this.Attachments; 
-    }
             
-	private String Subject;
-
+    private String Subject;
+     
     /**
     * Gets the Subject.
     *
@@ -45,9 +33,9 @@ public class Message extends Item {
     public void setSubject(String value) { 
         this.Subject = value; 
     }
-    
-	private ItemBody Body;
-
+            
+    private ItemBody Body;
+     
     /**
     * Gets the Body.
     *
@@ -65,9 +53,9 @@ public class Message extends Item {
     public void setBody(ItemBody value) { 
         this.Body = value; 
     }
-    
-	private String BodyPreview;
-
+            
+    private String BodyPreview;
+     
     /**
     * Gets the Body Preview.
     *
@@ -85,9 +73,9 @@ public class Message extends Item {
     public void setBodyPreview(String value) { 
         this.BodyPreview = value; 
     }
-    
-	private Importance Importance;
-
+            
+    private Importance Importance;
+     
     /**
     * Gets the Importance.
     *
@@ -105,9 +93,9 @@ public class Message extends Item {
     public void setImportance(Importance value) { 
         this.Importance = value; 
     }
-    
-	private Boolean HasAttachments;
-
+            
+    private Boolean HasAttachments;
+     
     /**
     * Gets the Has Attachments.
     *
@@ -125,9 +113,9 @@ public class Message extends Item {
     public void setHasAttachments(Boolean value) { 
         this.HasAttachments = value; 
     }
-    
-	private String ParentFolderId;
-
+            
+    private String ParentFolderId;
+     
     /**
     * Gets the Parent Folder Id.
     *
@@ -145,9 +133,9 @@ public class Message extends Item {
     public void setParentFolderId(String value) { 
         this.ParentFolderId = value; 
     }
-    
-	private Recipient From;
-
+            
+    private Recipient From;
+     
     /**
     * Gets the From.
     *
@@ -165,9 +153,9 @@ public class Message extends Item {
     public void setFrom(Recipient value) { 
         this.From = value; 
     }
-    
-	private Recipient Sender;
-
+            
+    private Recipient Sender;
+     
     /**
     * Gets the Sender.
     *
@@ -186,8 +174,8 @@ public class Message extends Item {
         this.Sender = value; 
     }
     
-	private java.util.List<Recipient> ToRecipients;
-
+    private java.util.List<Recipient> ToRecipients = new java.util.ArrayList<Recipient>();
+     
     /**
     * Gets the To Recipients.
     *
@@ -206,8 +194,8 @@ public class Message extends Item {
         this.ToRecipients = value; 
     }
     
-	private java.util.List<Recipient> CcRecipients;
-
+    private java.util.List<Recipient> CcRecipients = new java.util.ArrayList<Recipient>();
+     
     /**
     * Gets the Cc Recipients.
     *
@@ -226,8 +214,8 @@ public class Message extends Item {
         this.CcRecipients = value; 
     }
     
-	private java.util.List<Recipient> BccRecipients;
-
+    private java.util.List<Recipient> BccRecipients = new java.util.ArrayList<Recipient>();
+     
     /**
     * Gets the Bcc Recipients.
     *
@@ -246,8 +234,8 @@ public class Message extends Item {
         this.BccRecipients = value; 
     }
     
-	private java.util.List<Recipient> ReplyTo;
-
+    private java.util.List<Recipient> ReplyTo = new java.util.ArrayList<Recipient>();
+     
     /**
     * Gets the Reply To.
     *
@@ -265,9 +253,9 @@ public class Message extends Item {
     public void setReplyTo(java.util.List<Recipient> value) { 
         this.ReplyTo = value; 
     }
-    
-	private String ConversationId;
-
+            
+    private String ConversationId;
+     
     /**
     * Gets the Conversation Id.
     *
@@ -285,9 +273,9 @@ public class Message extends Item {
     public void setConversationId(String value) { 
         this.ConversationId = value; 
     }
-    
-	private ItemBody UniqueBody;
-
+            
+    private ItemBody UniqueBody;
+     
     /**
     * Gets the Unique Body.
     *
@@ -305,9 +293,9 @@ public class Message extends Item {
     public void setUniqueBody(ItemBody value) { 
         this.UniqueBody = value; 
     }
-    
-	private java.util.Calendar DateTimeReceived;
-
+            
+    private java.util.Calendar DateTimeReceived;
+     
     /**
     * Gets the Date Time Received.
     *
@@ -325,9 +313,9 @@ public class Message extends Item {
     public void setDateTimeReceived(java.util.Calendar value) { 
         this.DateTimeReceived = value; 
     }
-    
-	private java.util.Calendar DateTimeSent;
-
+            
+    private java.util.Calendar DateTimeSent;
+     
     /**
     * Gets the Date Time Sent.
     *
@@ -345,9 +333,9 @@ public class Message extends Item {
     public void setDateTimeSent(java.util.Calendar value) { 
         this.DateTimeSent = value; 
     }
-    
-	private Boolean IsDeliveryReceiptRequested;
-
+            
+    private Boolean IsDeliveryReceiptRequested;
+     
     /**
     * Gets the Is Delivery Receipt Requested.
     *
@@ -365,9 +353,9 @@ public class Message extends Item {
     public void setIsDeliveryReceiptRequested(Boolean value) { 
         this.IsDeliveryReceiptRequested = value; 
     }
-    
-	private Boolean IsReadReceiptRequested;
-
+            
+    private Boolean IsReadReceiptRequested;
+     
     /**
     * Gets the Is Read Receipt Requested.
     *
@@ -385,9 +373,9 @@ public class Message extends Item {
     public void setIsReadReceiptRequested(Boolean value) { 
         this.IsReadReceiptRequested = value; 
     }
-    
-	private Boolean IsDraft;
-
+            
+    private Boolean IsDraft;
+     
     /**
     * Gets the Is Draft.
     *
@@ -405,9 +393,9 @@ public class Message extends Item {
     public void setIsDraft(Boolean value) { 
         this.IsDraft = value; 
     }
-    
-	private Boolean IsRead;
-
+            
+    private Boolean IsRead;
+     
     /**
     * Gets the Is Read.
     *
@@ -425,4 +413,25 @@ public class Message extends Item {
     public void setIsRead(Boolean value) { 
         this.IsRead = value; 
     }
+    
+    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
+     
+    /**
+    * Gets the Attachments.
+    *
+    * @return the java.util.List<Attachment>
+    */
+    public java.util.List<Attachment> getAttachments() {
+        return this.Attachments; 
+    }
+
+    /**
+    * Sets the Attachments.
+    *
+    * @param value the java.util.List<Attachment>
+    */
+    public void setAttachments(java.util.List<Attachment> value) { 
+        this.Attachments = value; 
+    }
 }
+

@@ -5,10 +5,10 @@
  ******************************************************************************/
 package com.microsoft.outlookservices.odata;
 
+import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.odata.*;
 import com.microsoft.services.odata.interfaces.*;
-import com.microsoft.outlookservices.*;
 import static com.microsoft.services.odata.Helpers.*;
 
 /**
@@ -49,6 +49,5 @@ public class ContactFolderOperations extends EntityOperations {
         addCustomHeader(name, value);
         return this;
     }
-
 
 }

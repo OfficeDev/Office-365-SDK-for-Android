@@ -13,10 +13,9 @@ public class Entity extends ODataBaseEntity {
     public Entity(){
         setODataType("#Microsoft.OutlookServices.Entity");
     }
-
-        
-	private String Id;
-
+            
+    private String Id;
+     
     /**
     * Gets the Id.
     *
@@ -35,3 +34,4 @@ public class Entity extends ODataBaseEntity {
         this.Id = value; 
     }
 }
+

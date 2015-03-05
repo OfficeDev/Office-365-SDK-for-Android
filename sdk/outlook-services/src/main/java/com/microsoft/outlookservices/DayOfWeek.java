@@ -11,31 +11,31 @@ package com.microsoft.outlookservices;
 public enum DayOfWeek	
 {
     /**
-	* Sunday
-	*/
-	Sunday,
+    * Sunday
+    */
+    Sunday,
     /**
-	* Monday
-	*/
-	Monday,
+    * Monday
+    */
+    Monday,
     /**
-	* Tuesday
-	*/
-	Tuesday,
+    * Tuesday
+    */
+    Tuesday,
     /**
-	* Wednesday
-	*/
-	Wednesday,
+    * Wednesday
+    */
+    Wednesday,
     /**
-	* Thursday
-	*/
-	Thursday,
+    * Thursday
+    */
+    Thursday,
     /**
-	* Friday
-	*/
-	Friday,
+    * Friday
+    */
+    Friday,
     /**
-	* Saturday
-	*/
-	Saturday,
+    * Saturday
+    */
+    Saturday,
 }
