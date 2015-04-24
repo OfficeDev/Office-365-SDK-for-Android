@@ -1,7 +1,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <EditTextPreference
         android:name="exchangeResourceUrl"
-        android:defaultValue="@string/prefExchangeResourcetUrl"
+        android:defaultValue="@string/prefExchangeResourceUrl"
         android:key="prefExchangeResourcetUrl"
         android:summary="Enter the Exchange resource url"
         android:title="Exchange Resource URL" >
@@ -15,7 +15,7 @@
     </EditTextPreference>
     <EditTextPreference
         android:name="filesResourceUrl"
-        android:defaultValue="@string/prefFilesResourcetUrl"
+        android:defaultValue="@string/prefFilesResourceUrl"
         android:key="prefFilesResourcetUrl"
         android:summary="Enter the Files resource url"
         android:title="Files Resource URL" >
@@ -29,7 +29,7 @@
     </EditTextPreference>
     <EditTextPreference
     android:name="discoveryResourceUrl"
-    android:defaultValue="@string/prefDiscoveryResourcetUrl"
+    android:defaultValue="@string/prefDiscoveryResourceUrl"
     android:key="prefDiscoveryResourcetUrl"
     android:summary="Enter the Discovery resource url"
     android:title="Discovery Resource URL" >
@@ -43,7 +43,7 @@
     </EditTextPreference>
     <EditTextPreference
         android:name="directoryResourceUrl"
-        android:defaultValue="@string/prefDirectoryResourcetUrl"
+        android:defaultValue="@string/prefDirectoryResourceUrl"
         android:key="prefDirectoryResourcetUrl"
         android:summary="Enter the Directory resource url"
         android:title="Directory Resource URL" >
@@ -65,7 +65,7 @@
 
     <EditTextPreference
         android:name="sharepointUrl"
-        android:defaultValue="@string/prefSharepointUrl"
+        android:defaultValue="@string/prefSharePointUrl"
         android:key="prefSharepointUrl"
         android:summary="Enter your Sharepoint Server URL"
         android:title="Sharepoint URL" >
@@ -91,7 +91,41 @@
         android:summary="Enter the name of the document list"
         android:title="Document List name" >
     </EditTextPreference>
-
+    <EditTextPreference
+        android:name="oneNoteEndpointUrl"
+        android:defaultValue="@string/prefOneNoteEndpoint"
+        android:key="prefOneNoteEndpoint"
+        android:summary="Enter the OneNote endpoint url"
+        android:title="OneNote Endpoint URL" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="oneDriveEndpointUrl"
+        android:defaultValue="@string/prefOneDriveEndpoint"
+        android:key="prefOneDriveEndpoint"
+        android:summary="Enter the OneDrive endpoint url"
+        android:title="OneDrive Endpoint URL" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="liveSDkClientId"
+        android:defaultValue="@string/prefLiveSDKClientId"
+        android:key="prefLiveSDKClientId"
+        android:summary="Enter the LiveSDK client id"
+        android:title="LiveSDK Client Id" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="graphResourceUrl"
+        android:defaultValue="@string/prefGraphResourceUrl"
+        android:key="prefGraphResourcetUrl"
+        android:summary="Enter the Graph resource url"
+        android:title="Graph Resource URL" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:name="graphEndpointUrl"
+        android:defaultValue="@string/prefGraphEndpoint"
+        android:key="prefGraphEndpoint"
+        android:summary="Enter the Graph endpoint url"
+        android:title="Graph Endpoint URL" >
+    </EditTextPreference>
     <ListPreference
         android:defaultValue="AAD"
         android:entries="@array/authOptions"

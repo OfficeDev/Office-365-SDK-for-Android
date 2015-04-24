@@ -47,6 +47,21 @@ public class Constants {
     public static final String JSON_CONTENT_TYPE = "application/json";
 
     /**
+     * The constant MULTIPART_BOUNDARY_NAME.
+     */
+    public static final String MULTIPART_BOUNDARY_NAME = "MultiPartBoundary";
+
+    /**
+     * The constant HTTP_NEW_LINE.
+     */
+    public static final String HTTP_NEW_LINE = "\r\n";
+
+    /**
+     * The constant MULTIPART_CONTENT_TYPE.
+     */
+    public static final String MULTIPART_CONTENT_TYPE = "multipart/form-data; boundary=" + MULTIPART_BOUNDARY_NAME;
+
+    /**
      * The constant ACCEPT_HEADER.
      */
     public static final String ACCEPT_HEADER = "Accept";

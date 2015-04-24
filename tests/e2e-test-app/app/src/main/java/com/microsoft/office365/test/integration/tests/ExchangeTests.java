@@ -2602,7 +2602,7 @@ public class ExchangeTests extends TestGroup {
                     if(messagesWithExpand.size() == 1
                             && messagesWithoutExpand.size() == 1
                             && messagesWithExpand.get(0).getAttachments().size() == 1
-                            && messagesWithoutExpand.get(0).getAttachments().size() == 0
+                            && messagesWithoutExpand.get(0).getAttachments() == null
                             && messagesWithExpand.get(0).getAttachments().get(0).getName().equals(fileAttachment.getName())){
                         result.setStatus(TestStatus.Passed);
                     }
@@ -2657,7 +2657,7 @@ public class ExchangeTests extends TestGroup {
                     if(messageWithExpand != null
                             && messageWithoutExpand != null
                             && messageWithExpand.getAttachments().size() == 1
-                            && messageWithoutExpand.getAttachments().size() == 0
+                            && messageWithoutExpand.getAttachments() == null
                             && messageWithExpand.getAttachments().get(0).getName().equals(fileAttachment.getName())){
                         result.setStatus(TestStatus.Passed);
                     }

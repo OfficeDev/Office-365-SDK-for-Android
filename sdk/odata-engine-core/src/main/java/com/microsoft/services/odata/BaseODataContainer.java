@@ -59,7 +59,9 @@ public abstract class BaseODataContainer extends ODataExecutable {
             String userAgent = resolver.getPlatformUserAgent(this.getClass().getCanonicalName());
             request.addHeader(Constants.USER_AGENT_HEADER, userAgent);
             request.addHeader(Constants.TELEMETRY_HEADER, userAgent);
-            request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
+            if (!request.getHeaders().containsKey(Constants.CONTENT_TYPE_HEADER)) {
+                request.addHeader(Constants.CONTENT_TYPE_HEADER, Constants.JSON_CONTENT_TYPE);
+            }
             request.addHeader(Constants.ACCEPT_HEADER, Constants.JSON_CONTENT_TYPE);
             request.addHeader(Constants.ODATA_VERSION_HEADER, Constants.ODATA_VERSION);
             request.addHeader(Constants.ODATA_MAXVERSION_HEADER, Constants.ODATA_MAXVERSION);

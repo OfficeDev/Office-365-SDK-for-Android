@@ -1,0 +1,33 @@
+apply plugin:'com.android.library'
+
+ext {
+    PUBLISH_ARTIFACT_ID = 'live-auth'
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java', 'src/main/internal']
+        }
+        androidTest {
+            java.srcDirs = ['../unittest/src', '../utilities/src']
+        }
+    }
+}
+
+apply from : '../android-libraries.gradle'

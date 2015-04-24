@@ -1,5 +1,13 @@
 # Office 365 SDK for Android  #
 
+ ### Version 0.13.0 ### 
+
+* Added OneNote SDK 
+* Added Graph Services (Preview)
+* Added Live Auth SDK
+* Added LiveDependencyResolver
+* Updated the Exchange SDK to use TimeZone, CalendarColor, GeoCoordinates
+ 
  ### Version 0.12.0 ### 
 
 * Fixing classpath for javadoc generation

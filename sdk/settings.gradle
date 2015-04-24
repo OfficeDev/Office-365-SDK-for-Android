@@ -1,10 +1,13 @@
 include ':sharepoint-services',
+        ':onenote-services',
+	    ':graph-services',
         ':outlook-services',
         ':file-services',
         ':directory-services',
         ':discovery-services',
         ':odata-engine-core',
         ':odata-engine-android-impl',
-        ':odata-engine-jvm-impl'
+        ':odata-engine-jvm-impl',
+        ':live-auth'
 
 

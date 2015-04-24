@@ -16,31 +16,49 @@ import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.discoveryservices.odata.DiscoveryClient;
+import com.microsoft.graph.odata.GraphServiceClient;
+import com.microsoft.live.LiveAuthClient;
 import com.microsoft.office365.test.integration.android.Constants;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.outlookservices.odata.OutlookClient;
 import com.microsoft.services.odata.impl.DefaultDependencyResolver;
+import com.microsoft.services.odata.impl.LiveAuthDependencyResolver;
 import com.microsoft.services.odata.interfaces.DependencyResolver;
 import com.microsoft.services.odata.interfaces.LogLevel;
 import com.microsoft.sharepointservices.ListClient;
 import com.microsoft.fileservices.odata.SharePointClient;
+import com.microsoft.onenote.api.odata.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
+
 
 public class ApplicationContext {
 
     private static Activity mActivity;
-    public static AuthenticationContext mAuthContext = null;
+    public static AuthenticationContext mAADAuthContext = null;
+    public static LiveAuthClient mLiveAuthContext = null;
+
+     final static String[] scopes = {
+             // https://msdn.microsoft.com/en-us/library/hh243646.aspx
+            "wl.signin",
+            "wl.basic",
+            "wl.offline_access",
+            "wl.skydrive_update",
+            "wl.contacts_create",
+             "office.onenote_create"
+    };
 
     public static void initialize(Activity activity) {
         mActivity = activity;
         try {
-            mAuthContext = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, true);
+            mAADAuthContext = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, true);
         } catch (Throwable e) {
             Log.e("E2ETestApp", "Error creating AuthenticationContext: " + e.getMessage());
         }
@@ -76,6 +94,10 @@ public class ApplicationContext {
                 "");
     }
 
+    public static String getGraphServerUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_GRAPH_RESOURCE_URL,
+                "");
+    }
 
     public static String getTestListName() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_LIST_NAME, "");
@@ -96,10 +118,19 @@ public class ApplicationContext {
                 "");
     }
 
+    public static String getOneDriveConsumerEndpoint() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_ONEDRIVE_ENDPOINT_URL,
+                "");
+    }
+
+    public static String getOneNoteEndpoint() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_ONENOTE_ENDPOINT_URL,
+                "");
+    }
 
     public static String getRedirectUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
-                Constants.PREFERENCE_AAD_Redirect_URL, "");
+                Constants.PREFERENCE_AAD_REDIRECT_URL, "");
     }
 
     public static String getExchangeEndpointUrl() {
@@ -125,6 +156,11 @@ public class ApplicationContext {
                 Constants.PREFERENCE_DIRECTORY_ENDPOINT_URL, "");
     }
 
+    public static String getGraphEndpointUrl() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_GRAPH_ENDPOINT_URL, "");
+    }
+
 
     public static String getTestMail() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
@@ -133,7 +169,7 @@ public class ApplicationContext {
 
 
     public static AuthenticationContext getAuthenticationContext() {
-        return mAuthContext;
+        return mAADAuthContext;
     }
 
 
@@ -188,12 +224,12 @@ public class ApplicationContext {
 
 
     public static OutlookClient getMailCalendarContactClient() {
-        return getExchangeEntityContainerClientAAD();
+        return getTClientAAD(getExchangeServerUrl(), getExchangeEndpointUrl(), OutlookClient.class);
     }
 
 
     public static SharePointClient getFilesClient() {
-        return getFilesEntityContainerClientAAD();
+        return getTClientAAD(getFileServerUrl(), getFilesEndpointUrl(), SharePointClient.class);
     }
 
 
@@ -203,12 +239,12 @@ public class ApplicationContext {
 
 
     public static DiscoveryClient getDiscoveryClient() {
-        return getDiscoveryClientAAD();
+        return getTClientAAD(getDiscoveryServerUrl(), getDiscoveryEndpointUrl(), DiscoveryClient.class);
     }
 
 
     public static DirectoryClient getDirectoryClient() {
-        return getDirectoryClientAAD();
+        return getTClientAAD(getDirectoryServerUrl(), getDirectoryEndpointUrl(), DirectoryClient.class);
     }
 
 
@@ -225,22 +261,6 @@ public class ApplicationContext {
         } catch (IOException e) {
             return 0;
         }
-    }
-
-    private static DirectoryClient getDirectoryClientAAD() {
-        return getTClientAAD(getDirectoryServerUrl(), getDirectoryEndpointUrl(), DirectoryClient.class);
-    }
-
-    private static DiscoveryClient getDiscoveryClientAAD() {
-        return getTClientAAD(getDiscoveryServerUrl(), getDiscoveryEndpointUrl(), DiscoveryClient.class);
-    }
-
-    private static OutlookClient getExchangeEntityContainerClientAAD() {
-        return getTClientAAD(getExchangeServerUrl(), getExchangeEndpointUrl(), OutlookClient.class);
-    }
-
-    public static SharePointClient getFilesEntityContainerClientAAD() {
-        return getTClientAAD(getFileServerUrl(), getFilesEndpointUrl(), SharePointClient.class);
     }
 
     private static <TClient> TClient getTClientAAD(String serverUrl, final String endpointUrl, final Class<TClient> clientClass) {
@@ -323,6 +343,28 @@ public class ApplicationContext {
         return dependencyResolver;
     }
 
+    private static LiveAuthDependencyResolver liveAuthDependencyResolver;
+
+    private static LiveAuthDependencyResolver getLiveAuthDependencyResolver() {
+        if (liveAuthDependencyResolver == null) {
+            LiveAuthClient theAuthClient = new LiveAuthClient(mActivity.getApplicationContext(), getLiveSDKClientId(), Arrays.asList(scopes));
+            liveAuthDependencyResolver = new LiveAuthDependencyResolver(theAuthClient);
+
+            try {
+                liveAuthDependencyResolver.interactiveInitialize(mActivity).get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            liveAuthDependencyResolver.getLogger().setEnabled(true);
+            liveAuthDependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
+        }
+
+        return liveAuthDependencyResolver;
+    }
+
     public static File createTempFile(long sizeInKb) throws IOException {
 
         File tempFile = File.createTempFile("Office", "Test");
@@ -339,4 +381,39 @@ public class ApplicationContext {
 
         return tempFile;
     }
+
+    public static OneNoteApiClient getOneNoteApiClient(){
+        return getTClientLiveSDK(getOneNoteEndpoint(), com.microsoft.onenote.api.odata.OneNoteApiClient.class);
+    }
+
+    public static GraphServiceClient getGraphServiceClient(){
+        return getTClientAAD(getGraphServerUrl(), getGraphEndpointUrl(), GraphServiceClient.class);
+}
+
+    private static <TClient> TClient getTClientLiveSDK(final String endpointUrl, final Class<TClient> clientClass) {
+
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getLiveAuthDependencyResolver();
+            }
+        });
+
+        TClient client = null;
+        try {
+            client = clientClass.getDeclaredConstructor(String.class, DependencyResolver.class)
+                                    .newInstance(endpointUrl, getLiveAuthDependencyResolver());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return client;
+    }
+
+
+    public static String getLiveSDKClientId() {
+        return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(
+                Constants.PREFERENCE_LIVESDK_CLIENT_ID, "");
+    }
+
 }

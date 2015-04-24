@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="prefExchangeResourcetUrl">https://sample-exchange-resource.com/</string>
+    <string name="prefExchangeResourceUrl">https://sample-exchange-resource.com/</string>
     <string name="prefExchangeEndpoint">https://sample-exchange-resource.com/endpoint/</string>
-    <string name="prefFilesResourcetUrl">https://sample-files-resource.com/</string>
+    <string name="prefFilesResourceUrl">https://sample-files-resource.com/</string>
     <string name="prefFilesEndpoint">https://sample-files-resource.com/endpoint/</string>
-    <string name="prefDiscoveryResourcetUrl">https://sample-discovery-resource.com/</string>
+    <string name="prefDiscoveryResourceUrl">https://sample-discovery-resource.com/</string>
     <string name="prefDiscoveryEndpoint">https://sample-discovery-resource.com/endpoint/</string>
-    <string name="prefDirectoryResourcetUrl">https://sample-directory-resource.com/</string>
+    <string name="prefDirectoryResourceUrl">https://sample-directory-resource.com/</string>
     <string name="prefDirectoryEndpoint">https://sample-directory-resource.com/endpoint/</string>
     <string name="prefTestMail">testmail@microsoft.com</string>
-    <string name="prefSharepointUrl">https://sample-sharepoint-resource.com/</string>
+    <string name="prefSharePointUrl">https://sample-sharepoint-resource.com/</string>
     <string name="prefSiteRelativeUrl">/</string>
     <string name="prefListName">TestEnd2EndLib</string>
     <string name="prefDocumentListName">TestEnd2EndDocLib</string>
     <string name="prefAADClientId">00000000-0000-0000-0000-000000000000</string>
     <string name="prefAADRedirectUrl">https://redirecturi.com</string>
+    <string name="prefOneNoteEndpoint">https://www.onenote.com/api/v1.0</string>
+    <string name="prefOneDriveEndpoint">https://sample-one-drive/endpoint</string>
+    <string name="prefLiveSDKClientId">0000000000000</string>
+    <string name="prefGraphResourceUrl">https://sample-graph-resource.com/</string>
+    <string name="prefGraphEndpoint">https://sample-graph-resource.com/endpoint</string>
 </resources>
