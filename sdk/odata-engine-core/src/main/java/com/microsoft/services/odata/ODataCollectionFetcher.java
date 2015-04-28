@@ -40,6 +40,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     private String expand = null;
     private String filter = null;
     private String orderBy = null;
+    private String search = null;
 
     /**
      * Instantiates a new ODataCollectionFetcher.
@@ -73,6 +74,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
         this.expand = null;
         this.filter = null;
         this.orderBy = null;
+        this.search = null;
     }
 
     /**
@@ -131,6 +133,17 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     }
 
     /**
+     * Filter ODataCollectionFetcher.
+     *
+     * @param search the search
+     * @return the o data collection fetcher
+     */
+    public ODataCollectionFetcher<TEntity, TFetcher, TOperations> search(String search) {
+        this.search = search;
+        return this;
+    }
+
+    /**
      * Order ODataCollectionFetcher.
      *
      * @param orderBy the orderBy
@@ -170,7 +183,7 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
     @Override
     protected ListenableFuture<ODataResponse> oDataExecute(Request request) {
         if (selectedId == null) {
-            setPathForCollections(request.getUrl(), urlComponent, top, skip, select, expand, filter, orderBy);
+            setPathForCollections(request.getUrl(), urlComponent, top, skip, select, expand, filter, orderBy, search);
         } else {
             setSelectorUrl(request.getUrl(), urlComponent, selectedId);
         }
@@ -272,8 +285,9 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
      * @param expand the expand
      * @param filter the filter
      * @param orderBy the order by
+     * @param search the order by
      */
-    protected void setPathForCollections(ODataURL url, String urlComponent, int top, int skip, String select, String expand, String filter, String orderBy) {
+    protected void setPathForCollections(ODataURL url, String urlComponent, int top, int skip, String select, String expand, String filter, String orderBy, String search) {
         if (top > -1) {
             url.addQueryStringParameter("$top", Integer.valueOf(top).toString());
         }
@@ -296,6 +310,10 @@ public class ODataCollectionFetcher<TEntity, TFetcher extends ODataEntityFetcher
 
         if (orderBy != null) {
             url.addQueryStringParameter("$orderby", orderBy);
+        }
+
+        if (search != null) {
+            url.addQueryStringParameter("$search", search);
         }
 
         url.prependPathComponent(urlComponent);
