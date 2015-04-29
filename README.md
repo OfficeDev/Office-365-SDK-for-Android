@@ -1,112 +1,249 @@
-#Office 365 SDK for Android
+# Office 365 SDKs for Android
+
+Easily integrate services and data from Office 365 into native Android apps using these Android/Java libraries.
 
 [![Build Status](https://travis-ci.org/OfficeDev/Office-365-SDK-for-Android.svg?branch=master)](https://travis-ci.org/OfficeDev/Office-365-SDK-for-Android)
+[![Download](https://api.bintray.com/packages/msopentech/Maven/Office-365-SDK-for-Android/images/download.svg)](https://bintray.com/msopentech/Maven/Office-365-SDK-for-Android/_latestVersion)
 
-[ ![Download](https://api.bintray.com/packages/msopentech/Maven/Office-365-SDK-for-Android/images/download.svg) ](https://bintray.com/msopentech/Maven/Office-365-SDK-for-Android/_latestVersion)
+---
 
-**Table of Contents**
+:exclamation:**NOTE**: You are free to use this code and library according to the terms of its included [LICENSE](/LICENSE) and to open issues in this repo for unofficial support.
 
-- [Overview](#overview)
-- [Quick Start](#quick-start)
-- [Samples](#samples)
-- [FAQ](#faq)
-- [Contributing](#contributing)
-- [License](#license)
+Information about official Microsoft support is available [here][support-placeholder].
 
-## Overview
-With this SDK from [MS Open Tech](https://msopentech.com) you can access all of Office 365's services and stored data from Android apps.
+[support-placeholder]: https://support.microsoft.com/
 
-This SDK provides access to:
-  * SharePoint Online Files and Lists
-  * Exchange Online Mail, Calendars, and Contacts
-  * Azure AD Directory (Graph)
+---
 
-The Office 365 SDK for Android takes advantage of [Android Studio](https://developer.android.com/sdk/index.html)'s support for [Gradle](http://www.gradle.org/) to manage dependencies. To use the SDK in your projects, just add the libraries to your list of dependencies in gradle.build. See the [wiki page on Gradle and dependencies](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Include-Dependencies-using-Gradle) for more info.
+These libraries are generated from API metadata using [Vipr] and [Vipr-T4TemplateWriter] and use a [shared client stack][odata-engine-android-impl].
 
-> **IMPORTANT** Before opening issues, please make sure you're on the latest version of Android Studio. Currently that is v1.0!
+Current services, service versions, and SDK versions:
 
-## Quick start
-Now we'll create a simple application that retrieves messages using this SDK and the [Azure AD Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-android).
+|API|Service Version|SDK Version|Artifact Id|
+|---|---------------|-----------|-----------|
+|Mail/Calendar/Contacts|1.0|0.13.0|outlook-services|
+|Files|1.0|0.13.0|file-services|
+|Discovery|1.0|0.13.0|discovery-services|
+|AAD Graph|1.5|0.13.0|directory-services|
+|OneNote|1.0|0.13.0|onenote-services|
+|Unified API|beta|0.1.0|graph-services|
+|SharePoint Lists|1.0|0.13.0|sharepoint-services|
 
-1. Create a new Android application in Android Studio.
-2. Locate app/build.gradle in your app module and add the following dependencies. In this walkthrough we'll only use "outlook-services", they're all listed here for reference.
-	```Groovy
-	dependencies {
-	    // base OData stuff:
-	    compile group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.13.0'
-	    compile group: 'com.microsoft.services', name: 'odata-engine-android-impl', version: '0.13.0', ext:'aar'
-	
-	    // choose the services/SDKs you need:
-	    compile group: 'com.microsoft.services', name: 'graph-services', version: '0.1.0'
-	    compile group: 'com.microsoft.services', name: 'onenote-services', version: '0.13.0'
-	    compile group: 'com.microsoft.services', name: 'outlook-services', version: '0.13.0'
-	    compile group: 'com.microsoft.services', name: 'discovery-services', version: '0.13.0'
-	    compile group: 'com.microsoft.services', name: 'directory-services', version: '0.13.0'
-	    compile group: 'com.microsoft.services', name: 'file-services', version: '0.13.0'
-	    compile group: 'com.microsoft.services', name: 'sharepoint-services', version: '0.13.0', ext:'aar'
-	    
-	    // ADAL
-	    compile (group: 'com.microsoft.aad', name: 'adal', version: '1.0.5') {
-	       // exclude group: 'com.android.support'   // this may not be necessary
-	    }
-	}
-	
+[Vipr]: https://github.com/microsoft/vipr
+[Vipr-T4TemplateWriter]: https://github.com/msopentech/vipr-t4templatewriter
+[orc-for-android]: https://github.com/msopentech/orc-for-android
+[odata-engine-android-impl]: /sdk/odata-engine-android-impl
+
+## Quick Start
+
+To use these libraries in your project, follow these general steps, as described further below:
+
+1. Configure dependencies in build.gradle.
+2. Set up authentication.
+3. Construct an API client.
+4. Call methods to make REST calls and receive results.
+
+### Setup
+
+1. From the Android Studio splash screen, click "Start a new Android Studio project". Name your application as you wish; we'll assume the name *O365QuickStart* here.
+
+2. Select "Phone and Tablet" and set Minimum SDK as API 15, then click Next. Choose "Blank Activity", then click Next. The defaults are fine for the activity name, so click Finish.
+
+3. Open the Project view in the left-hand column if it's not open. From the list of Gradle Scripts, find the one title "build.gradle (Module: app)" and double-click to open it.
+
+4. In the `dependencies` closure, add the following dependencies to the `compile` configuration:
+
+    ```groovy
+    compile 'com.microsoft.services:outlook-services:0.13.0'
+    compile 'com.microsoft.services:odata-engine-android-impl:0.13.0@aar'
+    compile 'com.microsoft.aad:adal:1.1.2@aar'
+    ```
+
+    > **NOTE**: All three dependencies must be explicitly specified, because there are alternate odata-engine implementations (e.g. JVM) and alternate authentication libraries (e.g. MSA) which can be used.
+
+    You may want to click the "Sync Project with Gradle Files" button in the toolbar. This will download the dependencies so Android Studio can assist in coding with them.
+
+5. Find AndroidManifest.xml and add the following line within the manifest section:
+
+     ```xml
+     <uses-permission android:name="android.permission.INTERNET" />
+     ```
+
+### Authenticate and construct client
+With your project prepared, the next step is to initialize the dependency manager and an API client.
+
+:exclamation: If you haven't yet registered your app in Azure AD, you'll need to do so before completing this step by following [these instructions][MSDN Add Common Consent].
+
+[MSDN Add Common Consent]: https://msdn.microsoft.com/en-us/office/office365/howto/add-common-consent-manually
+
+1. From the Project view in Android Studio, find app/src/main/res/values, right-click it, and choose *New* > *Values resource file*. Name your file adal_settings.
+
+2. Fill in the file with values from your app registration, as in the following example. **The Client ID and Redirect URL are just examples; be sure to use your own values.**
+
+    ```xml
+    <string name="AADAuthority">https://login.microsoftonline.com/common</string>
+    <string name="AADClientId">4a63455a-cfa1-4ac6-bd2e-0d046ce2c3f7</string>
+    <string name="AADResourceId">https://outlook.office365.com</string>
+    <string name="AADRedirectUrl">https://client.test.app</string>
+
+    ```
+
+
+3. Set up the ADALDependencyResolver
+
+    First, add a bunch of imports:
+
+    ```java
+    import com.google.common.util.concurrent.FutureCallback;
+    import com.google.common.util.concurrent.Futures;
+    import com.google.common.util.concurrent.SettableFuture;
+    import com.microsoft.aad.adal.AuthenticationCallback;
+    import com.microsoft.aad.adal.AuthenticationContext;
+    import com.microsoft.aad.adal.AuthenticationResult;
+    import com.microsoft.aad.adal.PromptBehavior;
+
+    import com.microsoft.services.odata.impl.ADALDependencyResolver;
+    import com.microsoft.outlookservices.odata.OutlookClient;
+    import com.microsoft.outlookservices.Message;
+    ```
+
+    Then, add these instance fields to the MainActivity class:
+
+    ```java
+    private AuthenticationContext _authContext;
+    private ADALDependencyResolver _resolver;
+    ```
+
+    Add the following method to the MainActivity class. This method constructs and initializes ADAL's AuthenticationContext, carries out interactive logon, and constructs the ADALDependencyResolver using the ready-to-use AuthenticationContext.
+
+    ```java
+    public SettableFuture<Boolean> logon() {
+
+        final SettableFuture<Boolean> result = SettableFuture.create();
+
+        try {
+            _authContext = new AuthenticationContext(this, getResources().getString(R.string.AADAuthority), true);
+        } catch (Exception e) {
+            _authContext = null;
+            result.setException(e);
+        }
+
+        if (_authContext != null) {
+            _authContext.acquireToken(
+                    this,
+                    getResources().getString(R.string.AADResourceId),
+                    getResources().getString(R.string.AADClientId),
+                    getResources().getString(R.string.AADRedirectUrl),
+                    PromptBehavior.Auto,
+                    new AuthenticationCallback<AuthenticationResult>() {
+
+                        @Override
+                        public void onSuccess(final AuthenticationResult authenticationResult) {
+
+                            if (authenticationResult != null && authenticationResult.getStatus() == AuthenticationResult.AuthenticationStatus.Succeeded) {
+                                _resolver = new ADALDependencyResolver(
+                                        _authContext,
+                                        getResources().getString(R.string.AADResourceId),
+                                        getResources().getString(R.string.AADClientId));
+                                result.set(true);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            result.setException(e);
+                        }
+                    }
+            );
+        }
+
+        return result;
+    }
+    ```
+
+    You also must configure MainActivity to pass the result of authentication back to the AuthenticationContext by adding this method to its class:
+
+    ```java
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        _authContext.onActivityResult(requestCode, resultCode, data);
+    }
+    ```
+
+    From MainActivity.onCreate, call logon and hook up to its completion like this:
+
+    ```java
+    Futures.addCallback(logon(), new FutureCallback<Boolean>() {
+        @Override
+        public void onSuccess(Boolean result) {
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+        }
+    });
+    ```
+
+4. Now fill in the onSuccess method of the FutureCallback to create an API client.
+
+    Add a private static variable with the Outlook base URL:
+
+    ```java
+    private static final String outlookBaseUrl = "https://outlook.office365.com/api/v1.0";
+    ```
+
+    Add a private instance variable for the client:
+
+    ```java
+    private OutlookClient _client;
+    ```
+
+    And finally complete the onSuccess method by constructing a client and using it. We'll define the getMessages() method in the next step.
+
+    ```java
+    @Override
+    public void onSuccess(Boolean result) {
+        _client = new OutlookClient(outlookBaseUrl, _resolver);
+        getMessages();
+    }
+    ```
+
+
+5. Create a new method to use the client to get all messages from your inbox.
+
+	```java
+    public void getMessages() {
+        Futures.addCallback(_client.getMe().getFolders().getById("Inbox").getMessages().read(), new FutureCallback<List<Message>>() {
+            @Override
+            public void onSuccess(final List<Message> result) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,
+                                "Items: " + Integer.valueOf(result.size()).toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(final Throwable t) {
+                // handle error
+            }
+        });
+    }
 	```
-  > NOTE: To avoid an error related to the Android support library, you might need to ensure it isn't being added redundantly by ADAL. That's why we've added the `exclude` call above.
 
-3. Follow the instructions on the [README for ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android) to handle authentication. Alternatively, use [AuthenticationController.java](https://github.com/OfficeDev/Office-365-SDK-for-Android/blob/dev/samples/outlook/app/src/main/java/com/microsoft/services/controllers/AuthenticationController.java) from the samples. AuthenticationController.java uses ADALDependencyResolver to handle cached access and refresh tokens automatically.
-
-4. Set up one of the two available dependency resolvers:
-
-  - DefaultDependencyResolver - Add the access token to the resolver. You are responsible for knowing when the token expires and replacing it.
-
-	```Java
-	String accessToken = "base64 JWT from ADAL";
-	DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver(accessToken);
-	```
-
-  - ADALDependencyResolver - Add the initialized ADAL AuthenticationContext to the resolver. The dependency resolver will handle caching of access and refresh tokens and use the refresh token when necessary. You are responsible for initiating an interactive logon if the refresh token also expires.
-
-	```Java
-	AuthenticationContext authContext = new AuthenticationContext(activity, authorityUrl, false /* verifyAuthority */ );
-	ADALDependencyResolver dependencyResolver = new ADALDependencyResolver(authContext, resourceId, clientId);
-	```
-
-5. Now create the API client and use code like the following to retrieve all messages. Here we're talking to Outlook Services, so we use that URL.
-
-	```Java
-	String baseUrl = "https://outlook.office365.com/api/v1.0";
-	OutlookClient client = new OutlookClient(baseUrl, dependencyResolver);
-	ListenableFuture<List<Message>> messagesFuture = client
-							   .getMe()
-							   .getFolders()
-							   .getById("Inbox")
-							   .getMessages()
-							   .read();
-	Futures.addCallback(messagesFuture, new FutureCallback<List<Message>>() {
-		@Override
-		public void onSuccess(final List<Message> result) {
-		runOnUiThread(new Runnable() {
-		    @Override
-		    public void run() {
-		        Toast.makeText(MainActivity.this,
-						"Items: " + Integer.valueOf(result.size()).toString(),
-						Toast.LENGTH_LONG).show();
-			// do more with the 'result' messages
-		    }
-		});
-		}
-	
-		@Override
-		public void onFailure(final Throwable t) {
-			// handle error
-		});
-	}
-	});
-	```
+If successful, a toast will pop up with the number of messages in your inbox. :)
 
 ## Samples
-A simple sample in the Samples folder uses Outlook Services to retrieve mail and events. Look for more samples soon.
+- [O365-Android-Connect] - Getting started and authentication <br />
+- [O365-Android-Snippets] - API requests and responses
+
+[O365-Android-Connect]: https://github.com/OfficeDev/O365-Android-Connect
+[O365-Android-Snippets]: https://github.com/OfficeDev/O365-Android-Snippets
 
 ## FAQ
 
