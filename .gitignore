@@ -32,6 +32,11 @@
 *~
 *.swp
 
+# Gradle wrapper
+gradle/
+gradlew
+gradlew.bat
+
 # generated files
 bin/
 gen/
