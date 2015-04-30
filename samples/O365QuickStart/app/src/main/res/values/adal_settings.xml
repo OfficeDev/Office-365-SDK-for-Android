@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="AADAuthority">https://login.microsoftonline.com/common</string>
+    <string name="AADClientId"></string>
+    <string name="AADResourceId">https://outlook.office365.com/</string>
+    <string name="AADRedirectUrl">https://client.test.app</string>
+</resources>
