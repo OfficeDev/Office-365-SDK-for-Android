@@ -20,8 +20,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.0.0'
-    compile project(':odata-engine-android-impl')
-    compile project(':onenote-services')
-    compile project(':live-auth')
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.microsoft.services:onenote-services:0.13.0'
+    compile 'com.microsoft.services:odata-engine-android-impl:0.13.0@aar'
+    compile 'com.microsoft.services:live-auth:0.13.0@aar'
 }

@@ -1,11 +1,1 @@
-include ':app',
-        ':onenote-services',
-        ':live-auth',
-        ':odata-engine-android-impl',
-        ':odata-engine-core'
-
-
-project (':onenote-services').projectDir = file('../../sdk/onenote-services')
-project (':live-auth').projectDir = file('../../sdk/live-auth')
-project (':odata-engine-android-impl').projectDir = file('../../sdk/odata-engine-android-impl')
-project (':odata-engine-core').projectDir = file('../../sdk/odata-engine-core')
+include ':app'
