@@ -47,7 +47,7 @@ To use these libraries in your project, follow these general steps, as described
 
 1. From the Android Studio splash screen, click "Start a new Android Studio project". Name your application as you wish; we'll assume the name *O365QuickStart* here.
 
-2. Select "Phone and Tablet" and set Minimum SDK as API 15, then click Next. Choose "Blank Activity", then click Next. The defaults are fine for the activity name, so click Finish.
+2. Select "Phone and Tablet" and set Minimum SDK as API 18, then click Next. Choose "Blank Activity", then click Next. The defaults are fine for the activity name, so click Finish.
 
 3. Open the Project view in the left-hand column if it's not open. From the list of Gradle Scripts, find the one title "build.gradle (Module: app)" and double-click to open it.
 
@@ -78,20 +78,26 @@ With your project prepared, the next step is to initialize the dependency manage
 
 1. From the Project view in Android Studio, find app/src/main/res/values, right-click it, and choose *New* > *Values resource file*. Name your file adal_settings.
 
-2. Fill in the file with values from your app registration, as in the following example. **The Client ID and Redirect URL are just examples; be sure to use your own values.**
+2. Fill in the file with values from your app registration, as in the following example. **Be sure to paste in your app registration values for the Client ID and Redirect URL.**
 
     ```xml
     <string name="AADAuthority">https://login.microsoftonline.com/common</string>
-    <string name="AADClientId">4a63455a-cfa1-4ac6-bd2e-0d046ce2c3f7</string>
     <string name="AADResourceId">https://outlook.office365.com</string>
-    <string name="AADRedirectUrl">https://client.test.app</string>
-
+	<string name="AADClientId">Paste your Client ID HERE</string>
+    <string name="AADRedirectUrl">Paste your Redirect URI HERE</string>
     ```
 
 
-3. Set up the ADALDependencyResolver
+3. Add an id to the "Hello World" TextView. Open app/src/main/res/layout/activity_main.xml.
+4. Add the following id tag to the TextView element for "Hello World".
 
-    First, add a bunch of imports:
+    ```xml
+	android:id="@+id/messages"
+    ```
+
+4. Set up the ADALDependencyResolver
+
+    Open the MainActivity class and add the following imports:
 
     ```java
     import com.google.common.util.concurrent.FutureCallback;
@@ -101,50 +107,44 @@ With your project prepared, the next step is to initialize the dependency manage
     import com.microsoft.aad.adal.AuthenticationContext;
     import com.microsoft.aad.adal.AuthenticationResult;
     import com.microsoft.aad.adal.PromptBehavior;
-
-    import com.microsoft.services.odata.impl.ADALDependencyResolver;
-    import com.microsoft.outlookservices.odata.OutlookClient;
     import com.microsoft.outlookservices.Message;
+    import com.microsoft.outlookservices.odata.OutlookClient;
+    import com.microsoft.services.odata.impl.ADALDependencyResolver;
+    import static com.microsoft.aad.adal.AuthenticationResult.AuthenticationStatus;
     ```
 
     Then, add these instance fields to the MainActivity class:
 
     ```java
-    private AuthenticationContext _authContext;
-    private ADALDependencyResolver _resolver;
+    private AuthenticationContext mAuthContext;
+    private ADALDependencyResolver mResolver;
+    private TextView messagesTextView;
     ```
 
-    Add the following method to the MainActivity class. This method constructs and initializes ADAL's AuthenticationContext, carries out interactive logon, and constructs the ADALDependencyResolver using the ready-to-use AuthenticationContext.
+    Add the following method to the MainActivity class. The logon() method constructs and initializes ADAL's AuthenticationContext, carries out interactive logon, and constructs the ADALDependencyResolver using the ready-to-use AuthenticationContext.
 
     ```java
-    public SettableFuture<Boolean> logon() {
-
+    protected SettableFuture<Boolean> logon() {
         final SettableFuture<Boolean> result = SettableFuture.create();
 
         try {
-            _authContext = new AuthenticationContext(this, getResources().getString(R.string.AADAuthority), true);
-        } catch (Exception e) {
-            _authContext = null;
-            result.setException(e);
-        }
-
-        if (_authContext != null) {
-            _authContext.acquireToken(
+            mAuthContext = new AuthenticationContext(this, getString(R.string.AADAuthority), true);
+            mAuthContext.acquireToken(
                     this,
-                    getResources().getString(R.string.AADResourceId),
-                    getResources().getString(R.string.AADClientId),
-                    getResources().getString(R.string.AADRedirectUrl),
+                    getString(R.string.AADResourceId),
+                    getString(R.string.AADClientId),
+                    getString(R.string.AADRedirectUrl),
                     PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
                         @Override
                         public void onSuccess(final AuthenticationResult authenticationResult) {
-
-                            if (authenticationResult != null && authenticationResult.getStatus() == AuthenticationResult.AuthenticationStatus.Succeeded) {
-                                _resolver = new ADALDependencyResolver(
-                                        _authContext,
-                                        getResources().getString(R.string.AADResourceId),
-                                        getResources().getString(R.string.AADClientId));
+                            if (authenticationResult != null
+                                    && authenticationResult.getStatus() == AuthenticationStatus.Succeeded) {
+                                mResolver = new ADALDependencyResolver(
+                                        mAuthContext,
+                                        getString(R.string.AADResourceId),
+                                        getString(R.string.AADClientId));
                                 result.set(true);
                             }
                         }
@@ -153,10 +153,12 @@ With your project prepared, the next step is to initialize the dependency manage
                         public void onError(Exception e) {
                             result.setException(e);
                         }
-                    }
-            );
-        }
 
+                    });
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+            e.printStackTrace();
+            result.setException(e);
+        }
         return result;
     }
     ```
@@ -166,24 +168,25 @@ With your project prepared, the next step is to initialize the dependency manage
     ```java
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        _authContext.onActivityResult(requestCode, resultCode, data);
+        mAuthContext.onActivityResult(requestCode, resultCode, data);
     }
     ```
 
-    From MainActivity.onCreate, call logon and hook up to its completion like this:
+    From MainActivity.onCreate, cache the messages TextView, then call logon() and hook up to its completion using the following code:
 
     ```java
-    Futures.addCallback(logon(), new FutureCallback<Boolean>() {
-        @Override
-        public void onSuccess(Boolean result) {
+       messagesTextView = (TextView) findViewById(R.id.messages);
+       Futures.addCallback(logon(), new FutureCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
 
-        }
+            }
 
-        @Override
-        public void onFailure(Throwable t) {
-
-        }
-    });
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("logon", t.getMessage());
+            }
+        });
     ```
 
 4. Now fill in the onSuccess method of the FutureCallback to create an API client.
@@ -197,7 +200,7 @@ With your project prepared, the next step is to initialize the dependency manage
     Add a private instance variable for the client:
 
     ```java
-    private OutlookClient _client;
+    private OutlookClient mClient;
     ```
 
     And finally complete the onSuccess method by constructing a client and using it. We'll define the getMessages() method in the next step.
@@ -205,7 +208,7 @@ With your project prepared, the next step is to initialize the dependency manage
     ```java
     @Override
     public void onSuccess(Boolean result) {
-        _client = new OutlookClient(outlookBaseUrl, _resolver);
+        mClient = new OutlookClient(outlookBaseUrl, mResolver);
         getMessages();
     }
     ```
@@ -214,29 +217,33 @@ With your project prepared, the next step is to initialize the dependency manage
 5. Create a new method to use the client to get all messages from your inbox.
 
 	```java
-    public void getMessages() {
-        Futures.addCallback(_client.getMe().getFolders().getById("Inbox").getMessages().read(), new FutureCallback<List<Message>>() {
-            @Override
-            public void onSuccess(final List<Message> result) {
-                runOnUiThread(new Runnable() {
+    protected void getMessages() {
+        Futures.addCallback(
+                mClient.getMe()
+                        .getFolders()
+                        .getById("Inbox")
+                        .getMessages()
+                        .read(),
+                new FutureCallback<List<Message>>() {
                     @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this,
-                                "Items: " + Integer.valueOf(result.size()).toString(),
-                                Toast.LENGTH_LONG).show();
+                    public void onSuccess(final List<Message> result) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                messagesTextView.setText("Messages: " + result.size());
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(final Throwable t) {
+                        Log.e("getMessages", t.getMessage());
                     }
                 });
-            }
-
-            @Override
-            public void onFailure(final Throwable t) {
-                // handle error
-            }
-        });
     }
 	```
 
-If successful, a toast will pop up with the number of messages in your inbox. :)
+If successful, the number of messages in your inbox will be displayed in the TextView. :)
 
 ## Samples
 - [O365-Android-Connect] - Getting started and authentication <br />
