@@ -82,8 +82,8 @@ public class CalendarGroup extends Entity {
         this.ClassId = value; 
     }
     
-        
-    private java.util.List<Calendar> Calendars = null;
+    
+    private java.util.List<Calendar> Calendars = new java.util.ArrayList<Calendar>();
     
     
      

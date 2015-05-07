@@ -42,8 +42,8 @@ public class Item extends Entity {
         this.ChangeKey = value; 
     }
     
-        
-    private java.util.List<String> Categories = null;
+    
+    private java.util.List<String> Categories = new java.util.ArrayList<String>();
     
     
      

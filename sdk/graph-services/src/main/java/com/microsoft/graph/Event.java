@@ -16,30 +16,30 @@ package com.microsoft.graph;
 /**
  * The type Event.
 */
-public class Event extends OutlookItem {
+public class Event extends ODataBaseEntity {
 
     public Event(){
         setODataType("#Microsoft.Graph.Event");
     }
             
-    private String Subject;
+    private String Id;
      
     /**
-    * Gets the Subject.
+    * Gets the Id.
     *
     * @return the String
     */
-    public String getSubject() {
-        return this.Subject; 
+    public String getId() {
+        return this.Id; 
     }
 
     /**
-    * Sets the Subject.
+    * Sets the Id.
     *
     * @param value the String
     */
-    public void setSubject(String value) { 
-        this.Subject = value; 
+    public void setId(String value) { 
+        this.Id = value; 
     }
             
     private ItemBody Body;
@@ -82,24 +82,44 @@ public class Event extends OutlookItem {
         this.BodyPreview = value; 
     }
             
-    private Importance Importance;
+    private String Importance;
      
     /**
     * Gets the Importance.
     *
-    * @return the Importance
+    * @return the String
     */
-    public Importance getImportance() {
+    public String getImportance() {
         return this.Importance; 
     }
 
     /**
     * Sets the Importance.
     *
-    * @param value the Importance
+    * @param value the String
     */
-    public void setImportance(Importance value) { 
+    public void setImportance(String value) { 
         this.Importance = value; 
+    }
+            
+    private String Subject;
+     
+    /**
+    * Gets the Subject.
+    *
+    * @return the String
+    */
+    public String getSubject() {
+        return this.Subject; 
+    }
+
+    /**
+    * Sets the Subject.
+    *
+    * @param value the String
+    */
+    public void setSubject(String value) { 
+        this.Subject = value; 
     }
             
     private Boolean HasAttachments;
@@ -120,6 +140,46 @@ public class Event extends OutlookItem {
     */
     public void setHasAttachments(Boolean value) { 
         this.HasAttachments = value; 
+    }
+            
+    private Location Location;
+     
+    /**
+    * Gets the Location.
+    *
+    * @return the Location
+    */
+    public Location getLocation() {
+        return this.Location; 
+    }
+
+    /**
+    * Sets the Location.
+    *
+    * @param value the Location
+    */
+    public void setLocation(Location value) { 
+        this.Location = value; 
+    }
+            
+    private String ShowAs;
+     
+    /**
+    * Gets the Show As.
+    *
+    * @return the String
+    */
+    public String getShowAs() {
+        return this.ShowAs; 
+    }
+
+    /**
+    * Sets the Show As.
+    *
+    * @param value the String
+    */
+    public void setShowAs(String value) { 
+        this.ShowAs = value; 
     }
             
     private java.util.Calendar Start;
@@ -160,46 +220,6 @@ public class Event extends OutlookItem {
     */
     public void setEnd(java.util.Calendar value) { 
         this.End = value; 
-    }
-            
-    private Location Location;
-     
-    /**
-    * Gets the Location.
-    *
-    * @return the Location
-    */
-    public Location getLocation() {
-        return this.Location; 
-    }
-
-    /**
-    * Sets the Location.
-    *
-    * @param value the Location
-    */
-    public void setLocation(Location value) { 
-        this.Location = value; 
-    }
-            
-    private FreeBusyStatus ShowAs;
-     
-    /**
-    * Gets the Show As.
-    *
-    * @return the FreeBusyStatus
-    */
-    public FreeBusyStatus getShowAs() {
-        return this.ShowAs; 
-    }
-
-    /**
-    * Sets the Show As.
-    *
-    * @param value the FreeBusyStatus
-    */
-    public void setShowAs(FreeBusyStatus value) { 
-        this.ShowAs = value; 
     }
             
     private Boolean IsAllDay;
@@ -282,23 +302,23 @@ public class Event extends OutlookItem {
         this.ResponseRequested = value; 
     }
             
-    private EventType Type;
+    private String Type;
      
     /**
     * Gets the Type.
     *
-    * @return the EventType
+    * @return the String
     */
-    public EventType getType() {
+    public String getType() {
         return this.Type; 
     }
 
     /**
     * Sets the Type.
     *
-    * @param value the EventType
+    * @param value the String
     */
-    public void setType(EventType value) { 
+    public void setType(String value) { 
         this.Type = value; 
     }
             
@@ -323,25 +343,25 @@ public class Event extends OutlookItem {
     }
     
     
-    private java.util.List<Attendee> Attendees = new java.util.ArrayList<Attendee>();
+    private java.util.List<Attendees> Attendees = new java.util.ArrayList<Attendees>();
     
     
      
     /**
     * Gets the Attendees.
     *
-    * @return the java.util.List<Attendee>
+    * @return the java.util.List<Attendees>
     */
-    public java.util.List<Attendee> getAttendees() {
+    public java.util.List<Attendees> getAttendees() {
         return this.Attendees; 
     }
 
     /**
     * Sets the Attendees.
     *
-    * @param value the java.util.List<Attendee>
+    * @param value the java.util.List<Attendees>
     */
-    public void setAttendees(java.util.List<Attendee> value) { 
+    public void setAttendees(java.util.List<Attendees> value) { 
         this.Attendees = value; 
     }
             
@@ -383,89 +403,6 @@ public class Event extends OutlookItem {
     */
     public void setOrganizer(Recipient value) { 
         this.Organizer = value; 
-    }
-            
-    private String StartTimeZone;
-     
-    /**
-    * Gets the Start Time Zone.
-    *
-    * @return the String
-    */
-    public String getStartTimeZone() {
-        return this.StartTimeZone; 
-    }
-
-    /**
-    * Sets the Start Time Zone.
-    *
-    * @param value the String
-    */
-    public void setStartTimeZone(String value) { 
-        this.StartTimeZone = value; 
-    }
-            
-    private String EndTimeZone;
-     
-    /**
-    * Gets the End Time Zone.
-    *
-    * @return the String
-    */
-    public String getEndTimeZone() {
-        return this.EndTimeZone; 
-    }
-
-    /**
-    * Sets the End Time Zone.
-    *
-    * @param value the String
-    */
-    public void setEndTimeZone(String value) { 
-        this.EndTimeZone = value; 
-    }
-            
-    private String WebLink;
-     
-    /**
-    * Gets the Web Link.
-    *
-    * @return the String
-    */
-    public String getWebLink() {
-        return this.WebLink; 
-    }
-
-    /**
-    * Sets the Web Link.
-    *
-    * @param value the String
-    */
-    public void setWebLink(String value) { 
-        this.WebLink = value; 
-    }
-    
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
-    
-    
-     
-    /**
-    * Gets the Attachments.
-    *
-    * @return the java.util.List<Attachment>
-    */
-    public java.util.List<Attachment> getAttachments() {
-        return this.Attachments; 
-    }
-
-    /**
-    * Sets the Attachments.
-    *
-    * @param value the java.util.List<Attachment>
-    */
-    public void setAttachments(java.util.List<Attachment> value) { 
-        this.Attachments = value; 
     }
             
     private Calendar Calendar;

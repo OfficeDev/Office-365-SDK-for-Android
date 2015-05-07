@@ -22,23 +22,23 @@ public class RecurrencePattern extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.RecurrencePattern");
     }
 
-    private RecurrencePatternType Type;
+    private String Type;
 
     /**
     * Gets the Type.
     *
-    * @return the RecurrencePatternType
+    * @return the String
     */
-    public RecurrencePatternType getType() {
+    public String getType() {
         return this.Type; 
     }
 
     /**
     * Sets the Type.
     *
-    * @param value the RecurrencePatternType
+    * @param value the String
     */
-    public void setType(RecurrencePatternType value) { 
+    public void setType(String value) { 
         this.Type = value; 
     }
 
@@ -62,26 +62,6 @@ public class RecurrencePattern extends ODataBaseEntity {
         this.Interval = value; 
     }
 
-    private Integer Month;
-
-    /**
-    * Gets the Month.
-    *
-    * @return the Integer
-    */
-    public Integer getMonth() {
-        return this.Month; 
-    }
-
-    /**
-    * Sets the Month.
-    *
-    * @param value the Integer
-    */
-    public void setMonth(Integer value) { 
-        this.Month = value; 
-    }
-
     private Integer DayOfMonth;
 
     /**
@@ -102,63 +82,83 @@ public class RecurrencePattern extends ODataBaseEntity {
         this.DayOfMonth = value; 
     }
 
-    private java.util.List<DayOfWeek> DaysOfWeek;
+    private Integer Month;
+
+    /**
+    * Gets the Month.
+    *
+    * @return the Integer
+    */
+    public Integer getMonth() {
+        return this.Month; 
+    }
+
+    /**
+    * Sets the Month.
+    *
+    * @param value the Integer
+    */
+    public void setMonth(Integer value) { 
+        this.Month = value; 
+    }
+
+    private java.util.List<String> DaysOfWeek;
 
     /**
     * Gets the Days Of Week.
     *
-    * @return the java.util.List<DayOfWeek>
+    * @return the java.util.List<String>
     */
-    public java.util.List<DayOfWeek> getDaysOfWeek() {
+    public java.util.List<String> getDaysOfWeek() {
         return this.DaysOfWeek; 
     }
 
     /**
     * Sets the Days Of Week.
     *
-    * @param value the java.util.List<DayOfWeek>
+    * @param value the java.util.List<String>
     */
-    public void setDaysOfWeek(java.util.List<DayOfWeek> value) { 
+    public void setDaysOfWeek(java.util.List<String> value) { 
         this.DaysOfWeek = value; 
     }
 
-    private DayOfWeek FirstDayOfWeek;
+    private String FirstDayOfWeek;
 
     /**
     * Gets the First Day Of Week.
     *
-    * @return the DayOfWeek
+    * @return the String
     */
-    public DayOfWeek getFirstDayOfWeek() {
+    public String getFirstDayOfWeek() {
         return this.FirstDayOfWeek; 
     }
 
     /**
     * Sets the First Day Of Week.
     *
-    * @param value the DayOfWeek
+    * @param value the String
     */
-    public void setFirstDayOfWeek(DayOfWeek value) { 
+    public void setFirstDayOfWeek(String value) { 
         this.FirstDayOfWeek = value; 
     }
 
-    private WeekIndex Index;
+    private String Index;
 
     /**
     * Gets the Index.
     *
-    * @return the WeekIndex
+    * @return the String
     */
-    public WeekIndex getIndex() {
+    public String getIndex() {
         return this.Index; 
     }
 
     /**
     * Sets the Index.
     *
-    * @param value the WeekIndex
+    * @param value the String
     */
-    public void setIndex(WeekIndex value) { 
+    public void setIndex(String value) { 
         this.Index = value; 
     }
 }

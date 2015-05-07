@@ -182,8 +182,8 @@ public class Message extends Item {
         this.Sender = value; 
     }
     
-        
-    private java.util.List<Recipient> ToRecipients = null;
+    
+    private java.util.List<Recipient> ToRecipients = new java.util.ArrayList<Recipient>();
     
     
      
@@ -205,8 +205,8 @@ public class Message extends Item {
         this.ToRecipients = value; 
     }
     
-        
-    private java.util.List<Recipient> CcRecipients = null;
+    
+    private java.util.List<Recipient> CcRecipients = new java.util.ArrayList<Recipient>();
     
     
      
@@ -228,8 +228,8 @@ public class Message extends Item {
         this.CcRecipients = value; 
     }
     
-        
-    private java.util.List<Recipient> BccRecipients = null;
+    
+    private java.util.List<Recipient> BccRecipients = new java.util.ArrayList<Recipient>();
     
     
      
@@ -251,8 +251,8 @@ public class Message extends Item {
         this.BccRecipients = value; 
     }
     
-        
-    private java.util.List<Recipient> ReplyTo = null;
+    
+    private java.util.List<Recipient> ReplyTo = new java.util.ArrayList<Recipient>();
     
     
      
@@ -433,29 +433,9 @@ public class Message extends Item {
     public void setIsRead(Boolean value) { 
         this.IsRead = value; 
     }
-            
-    private String WebLink;
-     
-    /**
-    * Gets the Web Link.
-    *
-    * @return the String
-    */
-    public String getWebLink() {
-        return this.WebLink; 
-    }
-
-    /**
-    * Sets the Web Link.
-    *
-    * @param value the String
-    */
-    public void setWebLink(String value) { 
-        this.WebLink = value; 
-    }
     
-        
-    private java.util.List<Attachment> Attachments = null;
+    
+    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
     
     
      

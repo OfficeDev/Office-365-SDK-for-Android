@@ -61,29 +61,9 @@ public class Calendar extends Entity {
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
     }
-            
-    private CalendarColor Color;
-     
-    /**
-    * Gets the Color.
-    *
-    * @return the CalendarColor
-    */
-    public CalendarColor getColor() {
-        return this.Color; 
-    }
-
-    /**
-    * Sets the Color.
-    *
-    * @param value the CalendarColor
-    */
-    public void setColor(CalendarColor value) { 
-        this.Color = value; 
-    }
     
-        
-    private java.util.List<Event> CalendarView = null;
+    
+    private java.util.List<Event> CalendarView = new java.util.ArrayList<Event>();
     
     
      
@@ -105,8 +85,8 @@ public class Calendar extends Entity {
         this.CalendarView = value; 
     }
     
-        
-    private java.util.List<Event> Events = null;
+    
+    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
     
     
      

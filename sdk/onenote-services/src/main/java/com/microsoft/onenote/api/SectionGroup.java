@@ -242,8 +242,8 @@ public class SectionGroup extends ODataBaseEntity {
         this.parentSectionGroup = value; 
     }
     
-        
-    private java.util.List<Section> sections = null;
+    
+    private java.util.List<Section> sections = new java.util.ArrayList<Section>();
     
     
      
@@ -265,8 +265,8 @@ public class SectionGroup extends ODataBaseEntity {
         this.sections = value; 
     }
     
-        
-    private java.util.List<SectionGroup> sectionGroups = null;
+    
+    private java.util.List<SectionGroup> sectionGroups = new java.util.ArrayList<SectionGroup>();
     
     
      

@@ -82,8 +82,8 @@ public class Folder extends Entity {
         this.ChildFolderCount = value; 
     }
     
-        
-    private java.util.List<Folder> ChildFolders = null;
+    
+    private java.util.List<Folder> ChildFolders = new java.util.ArrayList<Folder>();
     
     
      
@@ -105,8 +105,8 @@ public class Folder extends Entity {
         this.ChildFolders = value; 
     }
     
-        
-    private java.util.List<Message> Messages = null;
+    
+    private java.util.List<Message> Messages = new java.util.ArrayList<Message>();
     
     
      

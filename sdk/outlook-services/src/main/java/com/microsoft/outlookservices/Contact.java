@@ -242,8 +242,8 @@ public class Contact extends Item {
         this.Generation = value; 
     }
     
-        
-    private java.util.List<EmailAddress> EmailAddresses = null;
+    
+    private java.util.List<EmailAddress> EmailAddresses = new java.util.ArrayList<EmailAddress>();
     
     
      
@@ -265,8 +265,8 @@ public class Contact extends Item {
         this.EmailAddresses = value; 
     }
     
-        
-    private java.util.List<String> ImAddresses = null;
+    
+    private java.util.List<String> ImAddresses = new java.util.ArrayList<String>();
     
     
      
@@ -448,8 +448,8 @@ public class Contact extends Item {
         this.Manager = value; 
     }
     
-        
-    private java.util.List<String> HomePhones = null;
+    
+    private java.util.List<String> HomePhones = new java.util.ArrayList<String>();
     
     
      
@@ -471,8 +471,8 @@ public class Contact extends Item {
         this.HomePhones = value; 
     }
     
-        
-    private java.util.List<String> BusinessPhones = null;
+    
+    private java.util.List<String> BusinessPhones = new java.util.ArrayList<String>();
     
     
      

@@ -42,8 +42,8 @@ public class Folder extends Item {
         this.childCount = value; 
     }
     
-        
-    private java.util.List<Item> children = null;
+    
+    private java.util.List<Item> children = new java.util.ArrayList<Item>();
     
     
      

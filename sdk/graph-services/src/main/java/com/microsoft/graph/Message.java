@@ -16,10 +16,30 @@ package com.microsoft.graph;
 /**
  * The type Message.
 */
-public class Message extends OutlookItem {
+public class Message extends ODataBaseEntity {
 
     public Message(){
         setODataType("#Microsoft.Graph.Message");
+    }
+            
+    private String Id;
+     
+    /**
+    * Gets the Id.
+    *
+    * @return the String
+    */
+    public String getId() {
+        return this.Id; 
+    }
+
+    /**
+    * Sets the Id.
+    *
+    * @param value the String
+    */
+    public void setId(String value) { 
+        this.Id = value; 
     }
             
     private String Subject;
@@ -82,23 +102,23 @@ public class Message extends OutlookItem {
         this.BodyPreview = value; 
     }
             
-    private Importance Importance;
+    private String Importance;
      
     /**
     * Gets the Importance.
     *
-    * @return the Importance
+    * @return the String
     */
-    public Importance getImportance() {
+    public String getImportance() {
         return this.Importance; 
     }
 
     /**
     * Sets the Importance.
     *
-    * @param value the Importance
+    * @param value the String
     */
-    public void setImportance(Importance value) { 
+    public void setImportance(String value) { 
         this.Importance = value; 
     }
             
@@ -432,49 +452,6 @@ public class Message extends OutlookItem {
     */
     public void setIsRead(Boolean value) { 
         this.IsRead = value; 
-    }
-            
-    private String WebLink;
-     
-    /**
-    * Gets the Web Link.
-    *
-    * @return the String
-    */
-    public String getWebLink() {
-        return this.WebLink; 
-    }
-
-    /**
-    * Sets the Web Link.
-    *
-    * @param value the String
-    */
-    public void setWebLink(String value) { 
-        this.WebLink = value; 
-    }
-    
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
-    
-    
-     
-    /**
-    * Gets the Attachments.
-    *
-    * @return the java.util.List<Attachment>
-    */
-    public java.util.List<Attachment> getAttachments() {
-        return this.Attachments; 
-    }
-
-    /**
-    * Sets the Attachments.
-    *
-    * @param value the java.util.List<Attachment>
-    */
-    public void setAttachments(java.util.List<Attachment> value) { 
-        this.Attachments = value; 
     }
 }
 

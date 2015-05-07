@@ -1243,6 +1243,29 @@ public class User extends DirectoryObject {
     }
     
     
+    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
+    
+    
+     
+    /**
+    * Gets the Events.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getEvents() {
+        return this.Events; 
+    }
+
+    /**
+    * Sets the Events.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setEvents(java.util.List<Event> value) { 
+        this.Events = value; 
+    }
+    
+    
     private java.util.List<Message> Messages = new java.util.ArrayList<Message>();
     
     
@@ -1263,6 +1286,29 @@ public class User extends DirectoryObject {
     */
     public void setMessages(java.util.List<Message> value) { 
         this.Messages = value; 
+    }
+    
+    
+    private java.util.List<CalendarView> CalendarView = new java.util.ArrayList<CalendarView>();
+    
+    
+     
+    /**
+    * Gets the Calendar View.
+    *
+    * @return the java.util.List<CalendarView>
+    */
+    public java.util.List<CalendarView> getCalendarView() {
+        return this.CalendarView; 
+    }
+
+    /**
+    * Sets the Calendar View.
+    *
+    * @param value the java.util.List<CalendarView>
+    */
+    public void setCalendarView(java.util.List<CalendarView> value) { 
+        this.CalendarView = value; 
     }
     
     
@@ -1329,95 +1375,6 @@ public class User extends DirectoryObject {
     */
     public void setCalendarGroups(java.util.List<CalendarGroup> value) { 
         this.CalendarGroups = value; 
-    }
-    
-    
-    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
-    
-    
-     
-    /**
-    * Gets the Events.
-    *
-    * @return the java.util.List<Event>
-    */
-    public java.util.List<Event> getEvents() {
-        return this.Events; 
-    }
-
-    /**
-    * Sets the Events.
-    *
-    * @param value the java.util.List<Event>
-    */
-    public void setEvents(java.util.List<Event> value) { 
-        this.Events = value; 
-    }
-    
-    
-    private java.util.List<Event> CalendarView = new java.util.ArrayList<Event>();
-    
-    
-     
-    /**
-    * Gets the Calendar View.
-    *
-    * @return the java.util.List<Event>
-    */
-    public java.util.List<Event> getCalendarView() {
-        return this.CalendarView; 
-    }
-
-    /**
-    * Sets the Calendar View.
-    *
-    * @param value the java.util.List<Event>
-    */
-    public void setCalendarView(java.util.List<Event> value) { 
-        this.CalendarView = value; 
-    }
-            
-    private Photo UserPhoto;
-     
-    /**
-    * Gets the User Photo.
-    *
-    * @return the Photo
-    */
-    public Photo getUserPhoto() {
-        return this.UserPhoto; 
-    }
-
-    /**
-    * Sets the User Photo.
-    *
-    * @param value the Photo
-    */
-    public void setUserPhoto(Photo value) { 
-        this.UserPhoto = value; 
-    }
-    
-    
-    private java.util.List<Photo> UserPhotos = new java.util.ArrayList<Photo>();
-    
-    
-     
-    /**
-    * Gets the User Photos.
-    *
-    * @return the java.util.List<Photo>
-    */
-    public java.util.List<Photo> getUserPhotos() {
-        return this.UserPhotos; 
-    }
-
-    /**
-    * Sets the User Photos.
-    *
-    * @param value the java.util.List<Photo>
-    */
-    public void setUserPhotos(java.util.List<Photo> value) { 
-        this.UserPhotos = value; 
     }
             
     private Drive drive;

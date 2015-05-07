@@ -22,23 +22,23 @@ public class RecurrenceRange extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.RecurrenceRange");
     }
 
-    private RecurrenceRangeType Type;
+    private String Type;
 
     /**
     * Gets the Type.
     *
-    * @return the RecurrenceRangeType
+    * @return the String
     */
-    public RecurrenceRangeType getType() {
+    public String getType() {
         return this.Type; 
     }
 
     /**
     * Sets the Type.
     *
-    * @param value the RecurrenceRangeType
+    * @param value the String
     */
-    public void setType(RecurrenceRangeType value) { 
+    public void setType(String value) { 
         this.Type = value; 
     }
 
