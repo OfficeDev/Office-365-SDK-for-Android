@@ -11,6 +11,10 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        mavenCentral()
+        //mavenCentral()
+
+        maven {
+            url 'https://dl.bintray.com/msopentech/Maven'
+        }
     }
 }

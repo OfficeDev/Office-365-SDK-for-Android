@@ -17,7 +17,7 @@ import com.microsoft.onenote.api.PatchContentCommand;
 import com.microsoft.onenote.api.PatchInsertPosition;
 import com.microsoft.onenote.api.Section;
 import com.microsoft.onenote.api.SectionGroup;
-import com.microsoft.onenote.api.odata.OneNoteApiClient;
+import com.microsoft.onenote.api.orc.OneNoteApiClient;
 import com.microsoft.services.odata.CalendarSerializer;
 import com.microsoft.services.odata.MultiPartElement;
 
@@ -481,7 +481,7 @@ public class OneNoteTests extends TestGroup {
                     MultiPartElement m1 = new MultiPartElement("Presentation", simpleHtml);
 
                     multipartElements.add(m1);
-                    client.getpages().add(multipartElements).get();
+                    //client.getpages().add(multipartElements).get();
 
                     return result;
                 } catch (Exception e) {
@@ -526,10 +526,10 @@ public class OneNoteTests extends TestGroup {
 
                     List<Section> sections = client.getsections().top(1).read().get();
                     if(sections != null && !sections.isEmpty()){
-                        client.getsections()
-                                .getById(sections.get(0).getid())
-                                .getPages()
-                                .add(multipartElements).get();
+//                        client.getsections()
+//                                .getById(sections.get(0).getid())
+//                                .getPages()
+//                                .add(multipartElements).get();
 
                     }else{
                         result.setStatus(TestStatus.Failed);
@@ -597,7 +597,7 @@ public class OneNoteTests extends TestGroup {
 
                     multipartElements.add(m1);
                     multipartElements.add(m2);
-                    client.getpages().add(multipartElements);
+                    //client.getpages().add(multipartElements);
 
                     return result;
                 } catch (Exception e) {
@@ -647,7 +647,7 @@ public class OneNoteTests extends TestGroup {
 
                     multipartElements.add(m1);
                     multipartElements.add(m2);
-                    client.getpages().add(multipartElements);
+                    //client.getpages().add(multipartElements);
 
                     return result;
                 } catch (Exception e) {
@@ -732,7 +732,7 @@ public class OneNoteTests extends TestGroup {
                     MultiPartElement m1 = new MultiPartElement("Presentation", simpleHtml);
 
                     multipartElements.add(m1);
-                    client.getpages().add(multipartElements);
+                    //client.getpages().add(multipartElements);
 
                     return result;
                 } catch (Exception e) {
@@ -782,7 +782,7 @@ public class OneNoteTests extends TestGroup {
 
                     multipartElements.add(m1);
                     multipartElements.add(m2);
-                    client.getpages().add(multipartElements);
+                    //client.getpages().add(multipartElements);
 
                     return result;
                 } catch (Exception e) {
@@ -861,7 +861,7 @@ public class OneNoteTests extends TestGroup {
 
         multipartElements.add(m1);
         try {
-            client.getpages().add(multipartElements).get();
+            //client.getpages().add(multipartElements).get();
             return true;
         } catch (Throwable t){
             return false;

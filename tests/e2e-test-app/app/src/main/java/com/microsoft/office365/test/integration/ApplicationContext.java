@@ -15,21 +15,20 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 import com.microsoft.directoryservices.odata.DirectoryClient;
-import com.microsoft.discoveryservices.odata.DiscoveryClient;
-import com.microsoft.graph.odata.GraphServiceClient;
+import com.microsoft.discoveryservices.orc.DiscoveryClient;
+import com.microsoft.graph.orc.GraphServiceClient;
 import com.microsoft.live.LiveAuthClient;
 import com.microsoft.office365.test.integration.android.Constants;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
-import com.microsoft.outlookservices.odata.OutlookClient;
-import com.microsoft.services.odata.impl.DefaultDependencyResolver;
-import com.microsoft.services.odata.impl.LiveAuthDependencyResolver;
-import com.microsoft.services.odata.interfaces.DependencyResolver;
-import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.outlookservices.orc.OutlookClient;
+import com.microsoft.services.android.impl.DefaultDependencyResolver;
+import com.microsoft.services.orc.interfaces.*;
+import com.microsoft.services.android.impl.LiveAuthDependencyResolver;
 import com.microsoft.sharepointservices.ListClient;
-import com.microsoft.fileservices.odata.SharePointClient;
-import com.microsoft.onenote.api.odata.*;
+import com.microsoft.fileservices.orc.SharePointClient;
+import com.microsoft.onenote.api.orc.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -383,7 +382,7 @@ public class ApplicationContext {
     }
 
     public static OneNoteApiClient getOneNoteApiClient(){
-        return getTClientLiveSDK(getOneNoteEndpoint(), com.microsoft.onenote.api.odata.OneNoteApiClient.class);
+        return getTClientLiveSDK(getOneNoteEndpoint(), com.microsoft.onenote.api.orc.OneNoteApiClient.class);
     }
 
     public static GraphServiceClient getGraphServiceClient(){
