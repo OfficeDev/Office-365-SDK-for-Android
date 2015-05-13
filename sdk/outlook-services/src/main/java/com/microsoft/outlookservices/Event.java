@@ -142,6 +142,26 @@ public class Event extends Item {
         this.Start = value; 
     }
             
+    private String StartTimeZone;
+     
+    /**
+    * Gets the Start Time Zone.
+    *
+    * @return the String
+    */
+    public String getStartTimeZone() {
+        return this.StartTimeZone; 
+    }
+
+    /**
+    * Sets the Start Time Zone.
+    *
+    * @param value the String
+    */
+    public void setStartTimeZone(String value) { 
+        this.StartTimeZone = value; 
+    }
+            
     private java.util.Calendar End;
      
     /**
@@ -160,6 +180,46 @@ public class Event extends Item {
     */
     public void setEnd(java.util.Calendar value) { 
         this.End = value; 
+    }
+            
+    private String EndTimeZone;
+     
+    /**
+    * Gets the End Time Zone.
+    *
+    * @return the String
+    */
+    public String getEndTimeZone() {
+        return this.EndTimeZone; 
+    }
+
+    /**
+    * Sets the End Time Zone.
+    *
+    * @param value the String
+    */
+    public void setEndTimeZone(String value) { 
+        this.EndTimeZone = value; 
+    }
+            
+    private Integer Reminder;
+     
+    /**
+    * Gets the Reminder.
+    *
+    * @return the Integer
+    */
+    public Integer getReminder() {
+        return this.Reminder; 
+    }
+
+    /**
+    * Sets the Reminder.
+    *
+    * @param value the Integer
+    */
+    public void setReminder(Integer value) { 
+        this.Reminder = value; 
     }
             
     private Location Location;
@@ -200,6 +260,26 @@ public class Event extends Item {
     */
     public void setShowAs(FreeBusyStatus value) { 
         this.ShowAs = value; 
+    }
+            
+    private ResponseStatus ResponseStatus;
+     
+    /**
+    * Gets the Response Status.
+    *
+    * @return the ResponseStatus
+    */
+    public ResponseStatus getResponseStatus() {
+        return this.ResponseStatus; 
+    }
+
+    /**
+    * Sets the Response Status.
+    *
+    * @param value the ResponseStatus
+    */
+    public void setResponseStatus(ResponseStatus value) { 
+        this.ResponseStatus = value; 
     }
             
     private Boolean IsAllDay;
@@ -322,8 +402,8 @@ public class Event extends Item {
         this.SeriesMasterId = value; 
     }
     
-    
-    private java.util.List<Attendee> Attendees = new java.util.ArrayList<Attendee>();
+        
+    private java.util.List<Attendee> Attendees = null;
     
     
      
@@ -384,9 +464,49 @@ public class Event extends Item {
     public void setOrganizer(Recipient value) { 
         this.Organizer = value; 
     }
+            
+    private String iCalUId;
+     
+    /**
+    * Gets the i Cal UId.
+    *
+    * @return the String
+    */
+    public String getiCalUId() {
+        return this.iCalUId; 
+    }
+
+    /**
+    * Sets the i Cal UId.
+    *
+    * @param value the String
+    */
+    public void setiCalUId(String value) { 
+        this.iCalUId = value; 
+    }
+            
+    private String WebLink;
+     
+    /**
+    * Gets the Web Link.
+    *
+    * @return the String
+    */
+    public String getWebLink() {
+        return this.WebLink; 
+    }
+
+    /**
+    * Sets the Web Link.
+    *
+    * @param value the String
+    */
+    public void setWebLink(String value) { 
+        this.WebLink = value; 
+    }
     
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
+        
+    private java.util.List<Attachment> Attachments = null;
     
     
      
@@ -428,8 +548,8 @@ public class Event extends Item {
         this.Calendar = value; 
     }
     
-    
-    private java.util.List<Event> Instances = new java.util.ArrayList<Event>();
+        
+    private java.util.List<Event> Instances = null;
     
     
      

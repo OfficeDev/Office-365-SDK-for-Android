@@ -82,8 +82,8 @@ public class User extends Entity {
         this.MailboxGuid = value; 
     }
     
-    
-    private java.util.List<Folder> Folders = new java.util.ArrayList<Folder>();
+        
+    private java.util.List<Folder> Folders = null;
     
     
      
@@ -105,8 +105,8 @@ public class User extends Entity {
         this.Folders = value; 
     }
     
-    
-    private java.util.List<Message> Messages = new java.util.ArrayList<Message>();
+        
+    private java.util.List<Message> Messages = null;
     
     
      
@@ -148,8 +148,8 @@ public class User extends Entity {
         this.RootFolder = value; 
     }
     
-    
-    private java.util.List<Calendar> Calendars = new java.util.ArrayList<Calendar>();
+        
+    private java.util.List<Calendar> Calendars = null;
     
     
      
@@ -191,8 +191,8 @@ public class User extends Entity {
         this.Calendar = value; 
     }
     
-    
-    private java.util.List<CalendarGroup> CalendarGroups = new java.util.ArrayList<CalendarGroup>();
+        
+    private java.util.List<CalendarGroup> CalendarGroups = null;
     
     
      
@@ -214,8 +214,8 @@ public class User extends Entity {
         this.CalendarGroups = value; 
     }
     
-    
-    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
+        
+    private java.util.List<Event> Events = null;
     
     
      
@@ -237,8 +237,8 @@ public class User extends Entity {
         this.Events = value; 
     }
     
-    
-    private java.util.List<Event> CalendarView = new java.util.ArrayList<Event>();
+        
+    private java.util.List<Event> CalendarView = null;
     
     
      
@@ -260,8 +260,8 @@ public class User extends Entity {
         this.CalendarView = value; 
     }
     
-    
-    private java.util.List<Contact> Contacts = new java.util.ArrayList<Contact>();
+        
+    private java.util.List<Contact> Contacts = null;
     
     
      
@@ -283,8 +283,8 @@ public class User extends Entity {
         this.Contacts = value; 
     }
     
-    
-    private java.util.List<ContactFolder> ContactFolders = new java.util.ArrayList<ContactFolder>();
+        
+    private java.util.List<ContactFolder> ContactFolders = null;
     
     
      

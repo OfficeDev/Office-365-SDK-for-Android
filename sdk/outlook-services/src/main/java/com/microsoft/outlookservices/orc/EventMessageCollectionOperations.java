@@ -16,23 +16,22 @@ package com.microsoft.outlookservices.orc;
 import com.microsoft.outlookservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
-import com.microsoft.services.orc.Readable;
 import com.microsoft.services.orc.interfaces.*;
+import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type  EntityFetcher.
+ * The type EventMessageCollectionOperations
  */
-public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations> 
-                                     implements Readable<Entity> {
+public class EventMessageCollectionOperations extends MessageCollectionOperations{
 
-     /**
-     * Instantiates a new EntityFetcher.
+    /**
+     * Instantiates a new EventMessageCollectionOperations.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public EntityFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, Entity.class, EntityOperations.class);
+    public EventMessageCollectionOperations(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent);
     }
 
      /**
@@ -40,9 +39,9 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the collection operations
      */
-    public EntityFetcher addParameter(String name, Object value) {
+    public EventMessageCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -52,40 +51,10 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the collection operations
      */
-    public EntityFetcher addHeader(String name, String value) {
+    public EventMessageCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
-
-    
-    public AttachmentFetcher asAttachment(){
-        return new AttachmentFetcher(this.urlComponent, this.parent);
-    }   
-
-    public ItemFetcher asItem(){
-        return new ItemFetcher(this.urlComponent, this.parent);
-    }   
-
-    public UserFetcher asUser(){
-        return new UserFetcher(this.urlComponent, this.parent);
-    }   
-
-    public FolderFetcher asFolder(){
-        return new FolderFetcher(this.urlComponent, this.parent);
-    }   
-
-    public CalendarFetcher asCalendar(){
-        return new CalendarFetcher(this.urlComponent, this.parent);
-    }   
-
-    public CalendarGroupFetcher asCalendarGroup(){
-        return new CalendarGroupFetcher(this.urlComponent, this.parent);
-    }   
-
-    public ContactFolderFetcher asContactFolder(){
-        return new ContactFolderFetcher(this.urlComponent, this.parent);
-    }   
-    
 }

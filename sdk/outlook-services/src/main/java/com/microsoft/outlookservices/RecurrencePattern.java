@@ -62,26 +62,6 @@ public class RecurrencePattern extends ODataBaseEntity {
         this.Interval = value; 
     }
 
-    private Integer DayOfMonth;
-
-    /**
-    * Gets the Day Of Month.
-    *
-    * @return the Integer
-    */
-    public Integer getDayOfMonth() {
-        return this.DayOfMonth; 
-    }
-
-    /**
-    * Sets the Day Of Month.
-    *
-    * @param value the Integer
-    */
-    public void setDayOfMonth(Integer value) { 
-        this.DayOfMonth = value; 
-    }
-
     private Integer Month;
 
     /**
@@ -100,6 +80,26 @@ public class RecurrencePattern extends ODataBaseEntity {
     */
     public void setMonth(Integer value) { 
         this.Month = value; 
+    }
+
+    private Integer DayOfMonth;
+
+    /**
+    * Gets the Day Of Month.
+    *
+    * @return the Integer
+    */
+    public Integer getDayOfMonth() {
+        return this.DayOfMonth; 
+    }
+
+    /**
+    * Sets the Day Of Month.
+    *
+    * @param value the Integer
+    */
+    public void setDayOfMonth(Integer value) { 
+        this.DayOfMonth = value; 
     }
 
     private java.util.List<DayOfWeek> DaysOfWeek;

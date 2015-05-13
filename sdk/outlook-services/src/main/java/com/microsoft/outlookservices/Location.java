@@ -41,4 +41,44 @@ public class Location extends ODataBaseEntity {
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
     }
+
+    private PhysicalAddress Address;
+
+    /**
+    * Gets the Address.
+    *
+    * @return the PhysicalAddress
+    */
+    public PhysicalAddress getAddress() {
+        return this.Address; 
+    }
+
+    /**
+    * Sets the Address.
+    *
+    * @param value the PhysicalAddress
+    */
+    public void setAddress(PhysicalAddress value) { 
+        this.Address = value; 
+    }
+
+    private GeoCoordinates Coordinates;
+
+    /**
+    * Gets the Coordinates.
+    *
+    * @return the GeoCoordinates
+    */
+    public GeoCoordinates getCoordinates() {
+        return this.Coordinates; 
+    }
+
+    /**
+    * Sets the Coordinates.
+    *
+    * @param value the GeoCoordinates
+    */
+    public void setCoordinates(GeoCoordinates value) { 
+        this.Coordinates = value; 
+    }
 }

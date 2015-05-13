@@ -62,8 +62,8 @@ public class ContactFolder extends Entity {
         this.DisplayName = value; 
     }
     
-    
-    private java.util.List<Contact> Contacts = new java.util.ArrayList<Contact>();
+        
+    private java.util.List<Contact> Contacts = null;
     
     
      
@@ -85,8 +85,8 @@ public class ContactFolder extends Entity {
         this.Contacts = value; 
     }
     
-    
-    private java.util.List<ContactFolder> ChildFolders = new java.util.ArrayList<ContactFolder>();
+        
+    private java.util.List<ContactFolder> ChildFolders = null;
     
     
      

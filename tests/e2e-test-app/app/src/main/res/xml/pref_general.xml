@@ -2,7 +2,7 @@
     <EditTextPreference
         android:name="exchangeResourceUrl"
         android:defaultValue="@string/prefExchangeResourceUrl"
-        android:key="prefExchangeResourcetUrl"
+        android:key="prefExchangeResourceUrl"
         android:summary="Enter the Exchange resource url"
         android:title="Exchange Resource URL" >
     </EditTextPreference>
@@ -16,7 +16,7 @@
     <EditTextPreference
         android:name="filesResourceUrl"
         android:defaultValue="@string/prefFilesResourceUrl"
-        android:key="prefFilesResourcetUrl"
+        android:key="prefFilesResourceUrl"
         android:summary="Enter the Files resource url"
         android:title="Files Resource URL" >
     </EditTextPreference>
@@ -30,7 +30,7 @@
     <EditTextPreference
     android:name="discoveryResourceUrl"
     android:defaultValue="@string/prefDiscoveryResourceUrl"
-    android:key="prefDiscoveryResourcetUrl"
+    android:key="prefDiscoveryResourceUrl"
     android:summary="Enter the Discovery resource url"
     android:title="Discovery Resource URL" >
 </EditTextPreference>
@@ -44,7 +44,7 @@
     <EditTextPreference
         android:name="directoryResourceUrl"
         android:defaultValue="@string/prefDirectoryResourceUrl"
-        android:key="prefDirectoryResourcetUrl"
+        android:key="prefDirectoryResourceUrl"
         android:summary="Enter the Directory resource url"
         android:title="Directory Resource URL" >
     </EditTextPreference>
@@ -115,7 +115,7 @@
     <EditTextPreference
         android:name="graphResourceUrl"
         android:defaultValue="@string/prefGraphResourceUrl"
-        android:key="prefGraphResourcetUrl"
+        android:key="prefGraphResourceUrl"
         android:summary="Enter the Graph resource url"
         android:title="Graph Resource URL" >
     </EditTextPreference>

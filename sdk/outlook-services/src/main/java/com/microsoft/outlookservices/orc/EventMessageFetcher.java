@@ -20,19 +20,19 @@ import com.microsoft.services.orc.Readable;
 import com.microsoft.services.orc.interfaces.*;
 
 /**
- * The type  MessageFetcher.
+ * The type  EventMessageFetcher.
  */
-public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations> 
-                                     implements Readable<Message> {
+public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMessageOperations> 
+                                     implements Readable<EventMessage> {
 
      /**
-     * Instantiates a new MessageFetcher.
+     * Instantiates a new EventMessageFetcher.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public MessageFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, Message.class, MessageOperations.class);
+     public EventMessageFetcher(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent, EventMessage.class, EventMessageOperations.class);
     }
 
      /**
@@ -42,7 +42,7 @@ public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
      * @param value the value
      * @return the fetcher
      */
-    public MessageFetcher addParameter(String name, Object value) {
+    public EventMessageFetcher addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -54,32 +54,18 @@ public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
      * @param value the value
      * @return the fetcher
      */
-    public MessageFetcher addHeader(String name, String value) {
+    public EventMessageFetcher addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
 
-    
-    public EventMessageFetcher asEventMessage(){
-        return new EventMessageFetcher(this.urlComponent, this.parent);
-    }   
-    
-     /**
-     * Gets attachments.
+             /**
+     * Gets event.
      *
-     * @return the attachments
+     * @return the event
      */
-    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
-        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
-    }
-
-    /**
-     * Gets attachment.
-     *
-     * @return the attachment
-     */
-    public AttachmentFetcher getAttachment(String id){
-         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
+    public EventFetcher getEvent() {
+        return new EventFetcher("Event", this);
     }
 
 }

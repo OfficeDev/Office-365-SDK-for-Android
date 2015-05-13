@@ -14,22 +14,24 @@
 package com.microsoft.outlookservices.orc;
 
 import com.microsoft.outlookservices.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
-import com.microsoft.services.orc.interfaces.DependencyResolver;
+import com.microsoft.services.orc.interfaces.*;
+import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type EntityContainerClient.
+ * The type EventMessageOperations.
  */
-public class OutlookClient extends BaseOrcContainer {
+public class EventMessageOperations extends MessageOperations {
 
      /**
-     * Instantiates a new EntityContainerClient.
-     *
-     * @param url the url
-     * @param resolver the resolver
-     */
-    public OutlookClient(String url, DependencyResolver resolver) {
-        super(url, resolver);
+      * Instantiates a new EventMessageOperations.
+      *
+      * @param urlComponent the url component
+      * @param parent the parent
+      */
+    public EventMessageOperations(String urlComponent, OrcExecutable parent) {
+            super(urlComponent, parent);
     }
 
     /**
@@ -37,9 +39,9 @@ public class OutlookClient extends BaseOrcContainer {
      *
      * @param name the name
      * @param value the value
-     * @return the client
+     * @return the operations
      */
-    public OutlookClient addParameter(String name, Object value) {
+    public EventMessageOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -49,27 +51,11 @@ public class OutlookClient extends BaseOrcContainer {
      *
      * @param name the name
      * @param value the value
-     * @return the client
+     * @return the operations
      */
-    public OutlookClient addHeader(String name, String value) {
+    public EventMessageOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
 
-     /**
-     * Gets User.
-     *
-     * @return the User
-     */
-    public OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations> getUsers() {
-        return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("Users", this, User.class,UserCollectionOperations.class);
-    }
-     /**
-     * Gets Me.
-     *
-     * @return the Me
-     */
-    public UserFetcher getMe() {
-        return new UserFetcher("Me", this);
-    }
 }
