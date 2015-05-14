@@ -59,6 +59,55 @@ public class ItemCollectionOperations extends OrcOperations{
     }
  
      
+    /**
+     * add listenable future.
+     * @param path the path @param nameConflict the nameConflict @param type the type @param content the content 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Item> add(String path, String nameConflict, String type, byte[] content) { 
+        
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedpath = serializer.serialize(path);
+		String serializednameConflict = serializer.serialize(nameConflict);
+		String serializedtype = serializer.serialize(type);
+		String serializedcontent = serializer.serialize(content);
+		  
+        
+        ListenableFuture<String> future = addRaw(serializedpath, serializednameConflict, serializedtype, serializedcontent);
+        return transformToEntityListenableFuture(future, Item.class, getResolver());
+        
+    }
+
+     /**
+     * addRaw listenable future.
+     * @param path the path @param nameConflict the nameConflict @param type the type @param content the content 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> addRaw(String path, String nameConflict, String type, String content){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("path", path);
+		map.put("nameConflict", nameConflict);
+		map.put("type", type);
+		map.put("content", content);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+            
+        request.setContent(getResolver().getJsonSerializer()
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
+        
+        request.getUrl().appendPathComponent("add");
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+                
+ 
+     
      /**
      * getByPath listenable future.
      * @param path the path 

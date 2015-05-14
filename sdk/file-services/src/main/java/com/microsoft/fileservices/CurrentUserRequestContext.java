@@ -14,55 +14,75 @@
 package com.microsoft.fileservices;
 
 /**
- * The type Folder.
+ * The type Current User Request Context.
 */
-public class Folder extends Item {
+public class CurrentUserRequestContext extends ODataBaseEntity {
 
-    public Folder(){
-        setODataType("#Microsoft.FileServices.Folder");
+    public CurrentUserRequestContext(){
+        setODataType("#Microsoft.CoreServices.CurrentUserRequestContext");
     }
             
-    private Integer childCount;
+    private String id;
      
     /**
-    * Gets the child Count.
+    * Gets the id.
     *
-    * @return the Integer
+    * @return the String
     */
-    public Integer getchildCount() {
-        return this.childCount; 
+    public String getid() {
+        return this.id; 
     }
 
     /**
-    * Sets the child Count.
+    * Sets the id.
     *
-    * @param value the Integer
+    * @param value the String
     */
-    public void setchildCount(Integer value) { 
-        this.childCount = value; 
+    public void setid(String value) { 
+        this.id = value; 
+    }
+            
+    private Drive drive;
+     
+    /**
+    * Gets the drive.
+    *
+    * @return the Drive
+    */
+    public Drive getdrive() {
+        return this.drive; 
+    }
+
+    /**
+    * Sets the drive.
+    *
+    * @param value the Drive
+    */
+    public void setdrive(Drive value) { 
+        this.drive = value; 
     }
     
         
-    private java.util.List<Item> children = null;
+    private java.util.List<Item> files = null;
     
     
      
     /**
-    * Gets the children.
+    * Gets the files.
     *
     * @return the java.util.List<Item>
     */
-    public java.util.List<Item> getchildren() {
-        return this.children; 
+    public java.util.List<Item> getfiles() {
+        return this.files; 
     }
 
     /**
-    * Sets the children.
+    * Sets the files.
     *
     * @param value the java.util.List<Item>
     */
-    public void setchildren(java.util.List<Item> value) { 
-        this.children = value; 
+    public void setfiles(java.util.List<Item> value) { 
+        this.files = value; 
     }
 }
 

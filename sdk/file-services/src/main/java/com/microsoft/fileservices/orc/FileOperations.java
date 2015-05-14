@@ -103,4 +103,70 @@ public class FileOperations extends ItemOperations {
     }
 
 
+    
+    
+    /**
+     * uploadContent listenable future.
+     * @param contentStream the contentStream 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> uploadContent(byte[] contentStream) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedcontentStream = serializer.serialize(contentStream);
+		  
+        
+        ListenableFuture<String> future = uploadContentRaw(serializedcontentStream);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * uploadContentRaw listenable future.
+     * @param contentStream the contentStream 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> uploadContentRaw(String contentStream){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("contentStream", contentStream);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.FileServices.uploadContent");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+     /**
+     * content listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<byte[]> content() { 
+
+    final SettableFuture<byte[]> result = SettableFuture.create();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        request.setContent(serializeToJsonByteArray(map, getResolver()));
+        String parameters = getFunctionParameters(map);
+                 request.getUrl().appendPathComponent("Microsoft.FileServices.content(" + parameters + ")");   
+                request.getUrl().appendPathComponent("content(" + parameters + ")");   
+        ListenableFuture<OrcResponse> future = oDataExecute(request);   
+
+        //return transformToByteArrayListenableFuture(future);
+return null;
+        
+   }
+    
 }

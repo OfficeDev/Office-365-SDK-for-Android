@@ -18,12 +18,12 @@ import com.microsoft.services.orc.*;
 import com.microsoft.services.orc.interfaces.DependencyResolver;
 
 /**
- * The type SharePointClient.
+ * The type EntityContainerClient.
  */
 public class SharePointClient extends BaseOrcContainer {
 
      /**
-     * Instantiates a new SharePointClient.
+     * Instantiates a new EntityContainerClient.
      *
      * @param url the url
      * @param resolver the resolver
@@ -57,6 +57,14 @@ public class SharePointClient extends BaseOrcContainer {
     }
 
      /**
+     * Gets Drive.
+     *
+     * @return the Drive
+     */
+    public OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations> getdrives() {
+        return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("drives", this, Drive.class,DriveCollectionOperations.class);
+    }
+     /**
      * Gets Item.
      *
      * @return the Item
@@ -71,5 +79,13 @@ public class SharePointClient extends BaseOrcContainer {
      */
     public DriveFetcher getdrive() {
         return new DriveFetcher("drive", this);
+    }
+     /**
+     * Gets me.
+     *
+     * @return the me
+     */
+    public CurrentUserRequestContextFetcher getme() {
+        return new CurrentUserRequestContextFetcher("me", this);
     }
 }

@@ -14,25 +14,26 @@
 package com.microsoft.fileservices.orc;
 
 import com.microsoft.fileservices.*;
+import com.microsoft.fileservices.orc.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
 import com.microsoft.services.orc.Readable;
 import com.microsoft.services.orc.interfaces.*;
 
 /**
- * The type  DriveFetcher.
+ * The type  CurrentUserRequestContextFetcher.
  */
-public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations> 
-                                     implements Readable<Drive> {
+public class CurrentUserRequestContextFetcher extends OrcEntityFetcher<CurrentUserRequestContext,CurrentUserRequestContextOperations>
+                                     implements Readable<CurrentUserRequestContext> {
 
      /**
-     * Instantiates a new DriveFetcher.
+     * Instantiates a new CurrentUserRequestContextFetcher.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public DriveFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, Drive.class, DriveOperations.class);
+     public CurrentUserRequestContextFetcher(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent, CurrentUserRequestContext.class, CurrentUserRequestContextOperations.class);
     }
 
      /**
@@ -42,7 +43,7 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
      * @param value the value
      * @return the fetcher
      */
-    public DriveFetcher addParameter(String name, Object value) {
+    public CurrentUserRequestContextFetcher addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -54,12 +55,20 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
      * @param value the value
      * @return the fetcher
      */
-    public DriveFetcher addHeader(String name, String value) {
+    public CurrentUserRequestContextFetcher addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
 
-        
+             /**
+     * Gets drive.
+     *
+     * @return the drive
+     */
+    public DriveFetcher getDrive() {
+        return new DriveFetcher("drive", this);
+    }
+
      /**
      * Gets files.
      *

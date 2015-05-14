@@ -14,52 +14,31 @@
 package com.microsoft.fileservices;
 
 /**
- * The type File.
+ * The type Image Facet.
 */
-public class File extends Item {
+public class ImageFacet extends ODataBaseEntity {
 
-    public File(){
-        setODataType("#Microsoft.FileServices.File");
-    }
-            
-    private String contentUrl;
-     
-    /**
-    * Gets the content Url.
-    *
-    * @return the String
-    */
-    public String getcontentUrl() {
-        return this.contentUrl; 
+    public ImageFacet(){
+        setODataType("#Microsoft.FileServices.ImageFacet");
     }
 
+    private java.util.Calendar dateTimeTaken;
+
     /**
-    * Sets the content Url.
+    * Gets the date Time Taken.
     *
-    * @param value the String
+    * @return the java.util.Calendar
     */
-    public void setcontentUrl(String value) { 
-        this.contentUrl = value; 
-    }
-            
-    private ImageFacet image;
-     
-    /**
-    * Gets the image.
-    *
-    * @return the ImageFacet
-    */
-    public ImageFacet getimage() {
-        return this.image; 
+    public java.util.Calendar getdateTimeTaken() {
+        return this.dateTimeTaken; 
     }
 
     /**
-    * Sets the image.
+    * Sets the date Time Taken.
     *
-    * @param value the ImageFacet
+    * @param value the java.util.Calendar
     */
-    public void setimage(ImageFacet value) { 
-        this.image = value; 
+    public void setdateTimeTaken(java.util.Calendar value) { 
+        this.dateTimeTaken = value; 
     }
 }
-

@@ -16,23 +16,22 @@ package com.microsoft.fileservices.orc;
 import com.microsoft.fileservices.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
-import com.microsoft.services.orc.Readable;
 import com.microsoft.services.orc.interfaces.*;
+import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type  DriveFetcher.
+ * The type CurrentUserRequestContextCollectionOperations
  */
-public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations> 
-                                     implements Readable<Drive> {
+public class CurrentUserRequestContextCollectionOperations extends OrcOperations{
 
-     /**
-     * Instantiates a new DriveFetcher.
+    /**
+     * Instantiates a new CurrentUserRequestContextCollectionOperations.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public DriveFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, Drive.class, DriveOperations.class);
+    public CurrentUserRequestContextCollectionOperations(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent);
     }
 
      /**
@@ -40,9 +39,9 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the collection operations
      */
-    public DriveFetcher addParameter(String name, Object value) {
+    public CurrentUserRequestContextCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -52,30 +51,10 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the collection operations
      */
-    public DriveFetcher addHeader(String name, String value) {
+    public CurrentUserRequestContextCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
-
-        
-     /**
-     * Gets files.
-     *
-     * @return the files
-     */
-    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getFiles() {
-        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class);
-    }
-
-    /**
-     * Gets file.
-     *
-     * @return the file
-     */
-    public ItemFetcher getFile(String id){
-         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class).getById(id);
-    }
-
 }

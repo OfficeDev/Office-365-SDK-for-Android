@@ -861,7 +861,7 @@ public class OneNoteTests extends TestGroup {
 
         multipartElements.add(m1);
         try {
-            //client.getpages().add(multipartElements).get();
+            //client.getme().getNote().getPages().add(multipartElements).get();
             return true;
         } catch (Throwable t){
             return false;

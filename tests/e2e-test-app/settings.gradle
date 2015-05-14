@@ -4,7 +4,6 @@ include ':app',
         ':discovery-services',
         ':file-services',
         ':sharepoint-services',
-        ':odata-engine-core',
         ':onenote-services',
         ':graph-services'
 
@@ -13,6 +12,5 @@ project (':directory-services').projectDir = file('../../sdk/directory-services'
 project (':discovery-services').projectDir = file('../../sdk/discovery-services')
 project (':file-services').projectDir = file('../../sdk/file-services')
 project (':sharepoint-services').projectDir = file('../../sdk/sharepoint-services')
-project (':odata-engine-core').projectDir = file('../../sdk/odata-engine-core')
 project (':onenote-services').projectDir = file('../../sdk/onenote-services')
 project (':graph-services').projectDir = file('../../sdk/graph-services')
