@@ -282,8 +282,8 @@ public class Notebook extends ODataBaseEntity {
         this.createdTime = value; 
     }
     
-    
-    private java.util.List<Section> sections = new java.util.ArrayList<Section>();
+        
+    private java.util.List<Section> sections = null;
     
     
      
@@ -305,8 +305,8 @@ public class Notebook extends ODataBaseEntity {
         this.sections = value; 
     }
     
-    
-    private java.util.List<SectionGroup> sectionGroups = new java.util.ArrayList<SectionGroup>();
+        
+    private java.util.List<SectionGroup> sectionGroups = null;
     
     
      

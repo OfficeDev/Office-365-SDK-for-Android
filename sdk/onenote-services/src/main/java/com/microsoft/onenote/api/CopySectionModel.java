@@ -14,56 +14,56 @@
 package com.microsoft.onenote.api;
 
 /**
- * The type Section Group.
+ * The type Copy Section Model.
 */
-public class SectionGroup extends ODataBaseEntity {
+public class CopySectionModel extends ODataBaseEntity {
 
-    public SectionGroup(){
-        setODataType("#Microsoft.OneNote.Api.SectionGroup");
+    public CopySectionModel(){
+        setODataType("#Microsoft.OneNote.Api.CopySectionModel");
     }
-            
-    private String sectionsUrl;
-     
+
+    private Boolean isDefault;
+
     /**
-    * Gets the sections Url.
+    * Gets the is Default.
+    *
+    * @return the Boolean
+    */
+    public Boolean getisDefault() {
+        return this.isDefault; 
+    }
+
+    /**
+    * Sets the is Default.
+    *
+    * @param value the Boolean
+    */
+    public void setisDefault(Boolean value) { 
+        this.isDefault = value; 
+    }
+
+    private String pagesUrl;
+
+    /**
+    * Gets the pages Url.
     *
     * @return the String
     */
-    public String getsectionsUrl() {
-        return this.sectionsUrl; 
+    public String getpagesUrl() {
+        return this.pagesUrl; 
     }
 
     /**
-    * Sets the sections Url.
+    * Sets the pages Url.
     *
     * @param value the String
     */
-    public void setsectionsUrl(String value) { 
-        this.sectionsUrl = value; 
-    }
-            
-    private String sectionGroupsUrl;
-     
-    /**
-    * Gets the section Groups Url.
-    *
-    * @return the String
-    */
-    public String getsectionGroupsUrl() {
-        return this.sectionGroupsUrl; 
+    public void setpagesUrl(String value) { 
+        this.pagesUrl = value; 
     }
 
-    /**
-    * Sets the section Groups Url.
-    *
-    * @param value the String
-    */
-    public void setsectionGroupsUrl(String value) { 
-        this.sectionGroupsUrl = value; 
-    }
-            
     private String name;
-     
+
     /**
     * Gets the name.
     *
@@ -81,9 +81,9 @@ public class SectionGroup extends ODataBaseEntity {
     public void setname(String value) { 
         this.name = value; 
     }
-            
+
     private String createdBy;
-     
+
     /**
     * Gets the created By.
     *
@@ -101,9 +101,9 @@ public class SectionGroup extends ODataBaseEntity {
     public void setcreatedBy(String value) { 
         this.createdBy = value; 
     }
-            
+
     private String lastModifiedBy;
-     
+
     /**
     * Gets the last Modified By.
     *
@@ -121,9 +121,9 @@ public class SectionGroup extends ODataBaseEntity {
     public void setlastModifiedBy(String value) { 
         this.lastModifiedBy = value; 
     }
-            
+
     private java.util.Calendar lastModifiedTime;
-     
+
     /**
     * Gets the last Modified Time.
     *
@@ -141,9 +141,9 @@ public class SectionGroup extends ODataBaseEntity {
     public void setlastModifiedTime(java.util.Calendar value) { 
         this.lastModifiedTime = value; 
     }
-            
+
     private String id;
-     
+
     /**
     * Gets the id.
     *
@@ -161,9 +161,9 @@ public class SectionGroup extends ODataBaseEntity {
     public void setid(String value) { 
         this.id = value; 
     }
-            
+
     private String self;
-     
+
     /**
     * Gets the self.
     *
@@ -181,9 +181,9 @@ public class SectionGroup extends ODataBaseEntity {
     public void setself(String value) { 
         this.self = value; 
     }
-            
+
     private java.util.Calendar createdTime;
-     
+
     /**
     * Gets the created Time.
     *
@@ -201,91 +201,4 @@ public class SectionGroup extends ODataBaseEntity {
     public void setcreatedTime(java.util.Calendar value) { 
         this.createdTime = value; 
     }
-            
-    private Notebook parentNotebook;
-     
-    /**
-    * Gets the parent Notebook.
-    *
-    * @return the Notebook
-    */
-    public Notebook getparentNotebook() {
-        return this.parentNotebook; 
-    }
-
-    /**
-    * Sets the parent Notebook.
-    *
-    * @param value the Notebook
-    */
-    public void setparentNotebook(Notebook value) { 
-        this.parentNotebook = value; 
-    }
-            
-    private SectionGroup parentSectionGroup;
-     
-    /**
-    * Gets the parent Section Group.
-    *
-    * @return the SectionGroup
-    */
-    public SectionGroup getparentSectionGroup() {
-        return this.parentSectionGroup; 
-    }
-
-    /**
-    * Sets the parent Section Group.
-    *
-    * @param value the SectionGroup
-    */
-    public void setparentSectionGroup(SectionGroup value) { 
-        this.parentSectionGroup = value; 
-    }
-    
-        
-    private java.util.List<Section> sections = null;
-    
-    
-     
-    /**
-    * Gets the sections.
-    *
-    * @return the java.util.List<Section>
-    */
-    public java.util.List<Section> getsections() {
-        return this.sections; 
-    }
-
-    /**
-    * Sets the sections.
-    *
-    * @param value the java.util.List<Section>
-    */
-    public void setsections(java.util.List<Section> value) { 
-        this.sections = value; 
-    }
-    
-        
-    private java.util.List<SectionGroup> sectionGroups = null;
-    
-    
-     
-    /**
-    * Gets the section Groups.
-    *
-    * @return the java.util.List<SectionGroup>
-    */
-    public java.util.List<SectionGroup> getsectionGroups() {
-        return this.sectionGroups; 
-    }
-
-    /**
-    * Sets the section Groups.
-    *
-    * @param value the java.util.List<SectionGroup>
-    */
-    public void setsectionGroups(java.util.List<SectionGroup> value) { 
-        this.sectionGroups = value; 
-    }
 }
-

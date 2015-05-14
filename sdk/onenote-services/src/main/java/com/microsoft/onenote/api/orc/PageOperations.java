@@ -99,4 +99,49 @@ public class PageOperations extends OrcOperations {
     }
 
 
+    
+    
+    /**
+     * CopyToSection listenable future.
+     * @param id the id @param siteCollectionId the siteCollectionId @param siteId the siteId 
+     * @return the listenable future
+     */         
+    public ListenableFuture<CopyPageModel> copyToSection(String id, String siteCollectionId, String siteId) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedid = serializer.serialize(id);
+		String serializedsiteCollectionId = serializer.serialize(siteCollectionId);
+		String serializedsiteId = serializer.serialize(siteId);
+		  
+        
+        ListenableFuture<String> future = copyToSectionRaw(serializedid, serializedsiteCollectionId, serializedsiteId);
+        return transformToEntityListenableFuture(future, CopyPageModel.class, getResolver());
+        
+    }
+
+     /**
+     * CopyToSectionRaw listenable future.
+     * @param id the id @param siteCollectionId the siteCollectionId @param siteId the siteId 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> copyToSectionRaw(String id, String siteCollectionId, String siteId){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("id", id);
+		map.put("siteCollectionId", siteCollectionId);
+		map.put("siteId", siteId);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.OneNote.Api.CopyToSection");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }

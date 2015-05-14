@@ -20,28 +20,28 @@ import com.microsoft.services.orc.interfaces.*;
 import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type NotebookOperations.
+ * The type SiteCollectionCollectionOperations
  */
-public class NotebookOperations extends OrcOperations {
-
-     /**
-      * Instantiates a new NotebookOperations.
-      *
-      * @param urlComponent the url component
-      * @param parent the parent
-      */
-    public NotebookOperations(String urlComponent, OrcExecutable parent) {
-            super(urlComponent, parent);
-    }
+public class SiteCollectionCollectionOperations extends OrcOperations{
 
     /**
+     * Instantiates a new SiteCollectionCollectionOperations.
+     *
+     * @param urlComponent the url component
+     * @param parent the parent
+     */
+    public SiteCollectionCollectionOperations(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent);
+    }
+
+     /**
      * Add parameter.
      *
      * @param name the name
      * @param value the value
-     * @return the operations
+     * @return the collection operations
      */
-    public NotebookOperations addParameter(String name, Object value) {
+    public SiteCollectionCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -51,54 +51,53 @@ public class NotebookOperations extends OrcOperations {
      *
      * @param name the name
      * @param value the value
-     * @return the operations
+     * @return the collection operations
      */
-    public NotebookOperations addHeader(String name, String value) {
+    public SiteCollectionCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
-
-    
-    
+ 
+     
     /**
-     * CopyNotebook listenable future.
-     * @param siteCollectionId the siteCollectionId @param siteId the siteId 
+     * FromUrl listenable future.
+     * @param url the url 
      * @return the listenable future
      */         
-    public ListenableFuture<CopyNotebookModel> copyNotebook(String siteCollectionId, String siteId) { 
+    public ListenableFuture<SiteMetadata> fromUrl(String url) { 
+        
         JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedsiteCollectionId = serializer.serialize(siteCollectionId);
-		String serializedsiteId = serializer.serialize(siteId);
+        String serializedurl = serializer.serialize(url);
 		  
         
-        ListenableFuture<String> future = copyNotebookRaw(serializedsiteCollectionId, serializedsiteId);
-        return transformToEntityListenableFuture(future, CopyNotebookModel.class, getResolver());
+        ListenableFuture<String> future = fromUrlRaw(serializedurl);
+        return transformToEntityListenableFuture(future, SiteMetadata.class, getResolver());
         
     }
 
      /**
-     * CopyNotebookRaw listenable future.
-     * @param siteCollectionId the siteCollectionId @param siteId the siteId 
+     * FromUrlRaw listenable future.
+     * @param url the url 
      * @return the listenable future
      */ 
-    public ListenableFuture<String> copyNotebookRaw(String siteCollectionId, String siteId){
+    public ListenableFuture<String> fromUrlRaw(String url){
         
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         
-        map.put("siteCollectionId", siteCollectionId);
-		map.put("siteId", siteId);
+        map.put("url", url);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        
+            
         request.setContent(getResolver().getJsonSerializer()
-               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
-        request.getUrl().appendPathComponent("Microsoft.OneNote.Api.CopyNotebook");
+                                        .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+
         
+        request.getUrl().appendPathComponent("FromUrl");
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
 
+                
 }

@@ -70,7 +70,7 @@ public class OneNoteTests extends TestGroup {
 
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
                     //Act
-                    List<Notebook> notebooks = client.getnotebooks().read().get();
+                    List<Notebook> notebooks = client.getme().getNote().getNotebooks().read().get();
 
                     //Assert
                     if (notebooks != null && notebooks.size() > 0)
@@ -100,11 +100,11 @@ public class OneNoteTests extends TestGroup {
 
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
                     //Act
-                    List<Notebook> notebooks = client.getnotebooks().read().get();
+                    List<Notebook> notebooks = client.getme().getNote().getNotebooks().read().get();
 
                     //Assert
                     if (notebooks != null && notebooks.size() > 0){
-                        Notebook notebook = client.getnotebooks().getById(notebooks.get(0).getid()).read().get();
+                        Notebook notebook = client.getme().getNote().getNotebooks().getById(notebooks.get(0).getid()).read().get();
                         if(notebook != null && notebook.getname().equals(notebooks.get(0).getname())) {
                             result.setStatus(TestStatus.Passed);
                         }
@@ -136,7 +136,7 @@ public class OneNoteTests extends TestGroup {
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
 
                     Log.d("ApplicationContext", "About to use client");
-                    List<Notebook> notebooks = client.getnotebooks().filter("name eq 'Test notebook'").read().get();
+                    List<Notebook> notebooks = client.getme().getNote().getNotebooks().filter("name eq 'Test notebook'").read().get();
 
                     if(notebooks.isEmpty()){
                         //Prepare
@@ -144,7 +144,7 @@ public class OneNoteTests extends TestGroup {
                         newNotebook.setname("Test notebook");
 
                         //Act
-                        Notebook added = client.getnotebooks().add(newNotebook).get();
+                        Notebook added = client.getme().getNote().getNotebooks().add(newNotebook).get();
 
                         //Assert
                         if (added != null && added.getname().equals(newNotebook.getname()))
@@ -178,7 +178,7 @@ public class OneNoteTests extends TestGroup {
 
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
                     //Act
-                    List<Section> sections = client.getsections().read().get();
+                    List<Section> sections = client.getme().getNote().getSections().read().get();
 
                     //Assert
                     if (sections != null)
@@ -208,14 +208,14 @@ public class OneNoteTests extends TestGroup {
 
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
                     //Prepare
-                    List<Section> sections = client.getsections().read().get();
+                    List<Section> sections = client.getme().getNote().getSections().read().get();
 
                     if(sections.isEmpty()) {
                         return result;
                     }
 
                     //Act
-                    Section section = client.getsections().getById(sections.get(0).getid()).read().get();
+                    Section section = client.getme().getNote().getSections().getById(sections.get(0).getid()).read().get();
 
                     //Assert
                     if (section != null)
@@ -249,14 +249,14 @@ public class OneNoteTests extends TestGroup {
                     Section newSection = new Section();
                     newSection.setname(UUID.randomUUID().toString());
 
-                    List<Notebook> notebooks = client.getnotebooks().filter("name eq 'Test notebook'").read().get();
+                    List<Notebook> notebooks = client.getme().getNote().getNotebooks().filter("name eq 'Test notebook'").read().get();
                     if(notebooks.isEmpty())
                     {
                         return result;
                     }
 
                     //Act
-                    Section addedSection = client.getnotebooks()
+                    Section addedSection = client.getme().getNote().getNotebooks()
                             .getById(notebooks.get(0).getid())
                             .getSections().add(newSection).get();
 
@@ -288,7 +288,7 @@ public class OneNoteTests extends TestGroup {
 
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
                     //Act
-                    List<SectionGroup> sectionGroups = client.getsectionGroups().read().get();
+                    List<SectionGroup> sectionGroups = client.getme().getNote().getSectionGroups().read().get();
 
                     //Assert
                     if (sectionGroups != null)
@@ -319,7 +319,7 @@ public class OneNoteTests extends TestGroup {
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
 
                     //Act
-                    List<Page> pages = client.getpages().top(3).read().get();
+                    List<Page> pages = client.getme().getNote().getPages().top(3).read().get();
 
 
                     //Assert
@@ -352,11 +352,11 @@ public class OneNoteTests extends TestGroup {
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
 
                     //Prepare
-                    List<Section> sections = client.getsections().top(1).read().get();
+                    List<Section> sections = client.getme().getNote().getSections().top(1).read().get();
 
                     if(sections!= null && sections.size() >0) {
                         //Act
-                        List<Page> pages = client.getsections()
+                        List<Page> pages = client.getme().getNote().getSections()
                                 .getById(sections.get(0).getid())
                                 .getPages()
                                 .top(3)
@@ -395,12 +395,12 @@ public class OneNoteTests extends TestGroup {
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
 
                     //Prepare
-                    List<Page> pages = client.getpages().top(1).read().get();
+                    List<Page> pages = client.getme().getNote().getPages().top(1).read().get();
 
                     if(pages != null && !pages.isEmpty()) {
 
                         //Act
-                        Page singlePage = client.getpages().getById(pages.get(0).getid()).read().get();
+                        Page singlePage = client.getme().getNote().getPages().getById(pages.get(0).getid()).read().get();
 
                         //Assert
                         if (singlePage != null && singlePage.getid().equals(pages.get(0).getid()))
@@ -431,10 +431,10 @@ public class OneNoteTests extends TestGroup {
                     OneNoteApiClient client = ApplicationContext.getOneNoteApiClient();
 
                     //Prepare
-                    List<Page> pages = client.getpages().top(1).read().get();
+                    List<Page> pages = client.getme().getNote().getPages().top(1).read().get();
 
                     //Act
-                    byte[] content = client.getpages().getById(pages.get(0).getid()).getContent().get();
+                    byte[] content = client.getme().getNote().getPages().getById(pages.get(0).getid()).getContent().get();
 
                     //Assert
                     if (content != null && content.length > 0)
@@ -524,7 +524,7 @@ public class OneNoteTests extends TestGroup {
 
                     multipartElements.add(m1);
 
-                    List<Section> sections = client.getsections().top(1).read().get();
+                    List<Section> sections = client.getme().getNote().getSections().top(1).read().get();
                     if(sections != null && !sections.isEmpty()){
 //                        client.getsections()
 //                                .getById(sections.get(0).getid())
@@ -813,7 +813,7 @@ public class OneNoteTests extends TestGroup {
                     String pageTitle = "Page " + UUID.randomUUID().toString();
                     createPageWithTitle(pageTitle);
 
-                    List<Page> pages = client.getpages().filter("title eq '" + pageTitle + "'").read().get();
+                    List<Page> pages = client.getme().getNote().getPages().filter("title eq '" + pageTitle + "'").read().get();
 
                     if(pages != null && !pages.isEmpty()){
                         ArrayList<PatchContentCommand> commands = new ArrayList<PatchContentCommand>();
@@ -825,7 +825,7 @@ public class OneNoteTests extends TestGroup {
                         c1.setcontent("<p>New trailing content</p>");
 
                         commands.add(c1);
-                        client.getpages().getById(pages.get(0).getid()).getOperations().patchContent(commands).get();
+                        client.getme().getNote().getPages().getById(pages.get(0).getid()).getOperations().patchContent(commands).get();
                     }
 
 

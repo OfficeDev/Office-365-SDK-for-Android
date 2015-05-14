@@ -14,32 +14,35 @@
 package com.microsoft.onenote.api.orc;
 
 import com.microsoft.onenote.api.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
-import com.microsoft.services.orc.interfaces.DependencyResolver;
+import com.microsoft.services.orc.Readable;
+import com.microsoft.services.orc.interfaces.*;
 
 /**
- * The type OneNoteApiClient.
+ * The type  MeFetcher.
  */
-public class OneNoteApiClient extends BaseOrcContainer {
+public class MeFetcher extends OrcEntityFetcher<Me,MeOperations> 
+                                     implements Readable<Me> {
 
      /**
-     * Instantiates a new OneNoteApiClient.
+     * Instantiates a new MeFetcher.
      *
-     * @param url the url
-     * @param resolver the resolver
+     * @param urlComponent the url component
+     * @param parent the parent
      */
-    public OneNoteApiClient(String url, DependencyResolver resolver) {
-        super(url, resolver);
+     public MeFetcher(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent, Me.class, MeOperations.class);
     }
 
-    /**
+     /**
      * Add parameter.
      *
      * @param name the name
      * @param value the value
-     * @return the client
+     * @return the fetcher
      */
-    public OneNoteApiClient addParameter(String name, Object value) {
+    public MeFetcher addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -49,27 +52,20 @@ public class OneNoteApiClient extends BaseOrcContainer {
      *
      * @param name the name
      * @param value the value
-     * @return the client
+     * @return the fetcher
      */
-    public OneNoteApiClient addHeader(String name, String value) {
+    public MeFetcher addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
 
-     /**
-     * Gets me.
+             /**
+     * Gets notes.
      *
-     * @return the me
+     * @return the notes
      */
-    public MeFetcher getme() {
-        return new MeFetcher("me", this);
+    public NotesFetcher getNote() {
+        return new NotesFetcher("notes", this);
     }
-     /**
-     * Gets myOrganization.
-     *
-     * @return the myOrganization
-     */
-    public MyOrganizationFetcher getmyOrganization() {
-        return new MyOrganizationFetcher("myOrganization", this);
-    }
+
 }

@@ -14,32 +14,34 @@
 package com.microsoft.onenote.api.orc;
 
 import com.microsoft.onenote.api.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
-import com.microsoft.services.orc.interfaces.DependencyResolver;
+import com.microsoft.services.orc.interfaces.*;
+import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type OneNoteApiClient.
+ * The type NotesCollectionOperations
  */
-public class OneNoteApiClient extends BaseOrcContainer {
-
-     /**
-     * Instantiates a new OneNoteApiClient.
-     *
-     * @param url the url
-     * @param resolver the resolver
-     */
-    public OneNoteApiClient(String url, DependencyResolver resolver) {
-        super(url, resolver);
-    }
+public class NotesCollectionOperations extends OrcOperations{
 
     /**
+     * Instantiates a new NotesCollectionOperations.
+     *
+     * @param urlComponent the url component
+     * @param parent the parent
+     */
+    public NotesCollectionOperations(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent);
+    }
+
+     /**
      * Add parameter.
      *
      * @param name the name
      * @param value the value
-     * @return the client
+     * @return the collection operations
      */
-    public OneNoteApiClient addParameter(String name, Object value) {
+    public NotesCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -49,27 +51,10 @@ public class OneNoteApiClient extends BaseOrcContainer {
      *
      * @param name the name
      * @param value the value
-     * @return the client
+     * @return the collection operations
      */
-    public OneNoteApiClient addHeader(String name, String value) {
+    public NotesCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
-    }
-
-     /**
-     * Gets me.
-     *
-     * @return the me
-     */
-    public MeFetcher getme() {
-        return new MeFetcher("me", this);
-    }
-     /**
-     * Gets myOrganization.
-     *
-     * @return the myOrganization
-     */
-    public MyOrganizationFetcher getmyOrganization() {
-        return new MyOrganizationFetcher("myOrganization", this);
     }
 }
