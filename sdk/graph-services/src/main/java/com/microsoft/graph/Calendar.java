@@ -82,8 +82,8 @@ public class Calendar extends ODataBaseEntity {
         this.ChangeKey = value; 
     }
     
-    
-    private java.util.List<Event> CalendarView = new java.util.ArrayList<Event>();
+        
+    private java.util.List<Event> CalendarView = null;
     
     
      
@@ -105,8 +105,8 @@ public class Calendar extends ODataBaseEntity {
         this.CalendarView = value; 
     }
     
-    
-    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
+        
+    private java.util.List<Event> Events = null;
     
     
      

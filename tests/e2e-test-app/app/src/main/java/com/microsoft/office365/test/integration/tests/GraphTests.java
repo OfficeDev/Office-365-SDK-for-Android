@@ -1,38 +1,13 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import com.microsoft.graph.AppRoleAssignment;
-import com.microsoft.graph.Application;
-import com.microsoft.graph.Calendar;
-import com.microsoft.graph.CalendarGroup;
-import com.microsoft.graph.Contact;
-import com.microsoft.graph.Device;
-import com.microsoft.graph.DeviceConfiguration;
-import com.microsoft.graph.DirectoryObject;
-import com.microsoft.graph.DirectoryRole;
-import com.microsoft.graph.DirectoryRoleTemplate;
-import com.microsoft.graph.Drive;
-import com.microsoft.graph.EmailAddress;
-import com.microsoft.graph.Event;
-import com.microsoft.graph.Group;
-import com.microsoft.graph.Item;
-import com.microsoft.graph.ItemBody;
-import com.microsoft.graph.Message;
-import com.microsoft.graph.OAuth2PermissionGrant;
-import com.microsoft.graph.Recipient;
-import com.microsoft.graph.ServicePrincipal;
-import com.microsoft.graph.SubscribedSku;
-import com.microsoft.graph.TenantDetail;
-import com.microsoft.graph.User;
+import com.microsoft.graph.*;
 import com.microsoft.graph.orc.GraphServiceClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.outlookservices.Attendee;
-import com.microsoft.outlookservices.BodyType;
-import com.microsoft.outlookservices.Importance;
 import com.microsoft.services.odata.Constants;
 
 import java.util.ArrayList;
@@ -868,7 +843,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     Message message = getSampleMessage("Mail sent using graph", ApplicationContext.getTestMail(), "");
                     //Act
-                    //client.getusers().getById(ApplicationContext.getTestMail()).getOperations().sendMail(message, true).get();
+                    client.getusers().getById(ApplicationContext.getTestMail()).getOperations().sendMail(message, true).get();
 
                     return result;
                 } catch (Exception e) {
@@ -1168,7 +1143,7 @@ public class GraphTests extends TestGroup {
 
                     // Act
                     event.setSubject("Updated Subject");
-                    //event.setImportance(Importance.Low);
+                    event.setImportance(Importance.Low);
 
                     Event updatedEvent = client.getusers()
                             .getById(ApplicationContext.getTestMail())
@@ -1177,8 +1152,8 @@ public class GraphTests extends TestGroup {
                             .update(event).get();
 
                     //Assert
-                    //if (updatedEvent.getImportance() != Importance.Low || !updatedEvent.getSubject().equals("Updated Subject"))
-                    //    result.setStatus(TestStatus.Failed);
+                    if (updatedEvent.getImportance() != Importance.Low || !updatedEvent.getSubject().equals("Updated Subject"))
+                        result.setStatus(TestStatus.Failed);
 
                     //Cleanup
                     client.getusers()
@@ -1266,14 +1241,14 @@ public class GraphTests extends TestGroup {
                     dateStart.add(java.util.Calendar.HOUR, 2);
 
                     //Act
-                    //List<Event> calendarView = client.getusers().getById(ApplicationContext.getTestMail()).getCalendarView()
-                    //        .addParameter("startdatetime",dateStart)
-                    //        .addParameter("enddatetime", dateEnd)
-                    //        .read().get();
+                    List<Event> calendarView = client.getusers().getById(ApplicationContext.getTestMail()).getCalendarView()
+                            .addParameter("startdatetime",dateStart)
+                            .addParameter("enddatetime", dateEnd)
+                            .read().get();
 
                     //Assert
-                    //if (calendarView != null)
-                    //    result.setStatus(TestStatus.Passed);
+                    if (calendarView != null)
+                        result.setStatus(TestStatus.Passed);
 
                     return result;
                 } catch (Exception e) {
@@ -1299,11 +1274,11 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    //Photo userPhoto = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhoto().read().get();
+                    Photo userPhoto = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhoto().read().get();
 
                     //Assert
-                    //if (userPhoto != null)
-                    //    result.setStatus(TestStatus.Passed);
+                    if (userPhoto != null)
+                        result.setStatus(TestStatus.Passed);
 
                     return result;
                 } catch (Exception e) {
@@ -1329,12 +1304,12 @@ public class GraphTests extends TestGroup {
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
-//                    //Act
-//                    List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().read().get();
-//
-//                    //Assert
-//                    if (userPhotos != null)
-//                        result.setStatus(TestStatus.Passed);
+                    //Act
+                    List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().read().get();
+
+                    //Assert
+                    if (userPhotos != null)
+                        result.setStatus(TestStatus.Passed);
 
                     return result;
                 } catch (Exception e) {
@@ -1359,21 +1334,21 @@ public class GraphTests extends TestGroup {
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
-//Prepare
-//                    List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
-//                    String userPhotoId;
-//                    if (userPhotos != null && userPhotos.size() > 0) {
-//                        userPhotoId = userPhotos.get(0).getId().toString();
-//                        //Act
-//                        Photo userPhoto = client.getusers().getById(ApplicationContext.getTestMail())
-//                                .getUserPhoto(userPhotoId).read().get();
-//                        //Assert
-//                        if (userPhoto != null)
-//                            result.setStatus(TestStatus.Passed);
-//
-//                    } else {
-//                        result.setException(new Exception("No available UserPhotos"));
-//                    }
+                      //Prepare
+                    List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
+                    String userPhotoId;
+                    if (userPhotos != null && userPhotos.size() > 0) {
+                        userPhotoId = userPhotos.get(0).getId().toString();
+                        //Act
+                        Photo userPhoto = client.getusers().getById(ApplicationContext.getTestMail())
+                                .getUserPhoto(userPhotoId).read().get();
+                        //Assert
+                        if (userPhoto != null)
+                            result.setStatus(TestStatus.Passed);
+
+                    } else {
+                        result.setException(new Exception("No available UserPhotos"));
+                    }
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
@@ -1500,19 +1475,19 @@ public class GraphTests extends TestGroup {
                     newFile.setname(UUID.randomUUID().toString() + ".txt");
 
                     Item addedFile = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
-//                    client.getusers().getById(ApplicationContext.getTestMail())
-//                            .getFiles().getById(addedFile.getid())
-//                            .asFile().getOperations().uploadContent("My Content".getBytes()).get();
+                    client.getusers().getById(ApplicationContext.getTestMail())
+                            .getFiles().getById(addedFile.getid())
+                            .asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
                     //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
-                    //byte[] content = new byte[0];
+                    byte[] content = new byte[0];
 
                     //Assert
                     if (addedFile == null)
                         result.setStatus(TestStatus.Failed);
 
-                    //if (content.length == 0)
-                    //    result.setStatus(TestStatus.Failed);
+                    if (content.length == 0)
+                        result.setStatus(TestStatus.Failed);
 
                     //Cleanup
                     client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
@@ -1548,13 +1523,13 @@ public class GraphTests extends TestGroup {
 
                     Item addedFile = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
                     //Prepare
-                    //client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
+                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
                     //Act
-                    //client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
+                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
 
                     //Assert
-                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getContent().get();
+                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
                     byte[] content = new byte[0];
                     String strContent = new String(content);
 
@@ -1644,12 +1619,12 @@ public class GraphTests extends TestGroup {
         Event event = new Event();
         event.setSubject("Today's appointment");
         event.setStart(java.util.Calendar.getInstance());
-        //event.setImportance(Importance.High);
+        event.setImportance(Importance.High);
 
         //Event body
         ItemBody itemBody = new ItemBody();
         itemBody.setContent("This is the appointment info");
-        //itemBody.setContentType(BodyType.Text);
+        itemBody.setContentType(BodyType.Text);
 
         event.setBody(itemBody);
 
@@ -1657,10 +1632,10 @@ public class GraphTests extends TestGroup {
         Attendee attendee1 = new Attendee();
         EmailAddress email = new EmailAddress();
         email.setAddress(ApplicationContext.getTestMail());
-        //attendee1.setEmailAddress(email);
+        attendee1.setEmailAddress(email);
         List<Attendee> listAttendees = new ArrayList<Attendee>();
         listAttendees.add(attendee1);
-        //event.setAttendees(listAttendees);
+        event.setAttendees(listAttendees);
 
         return event;
     }

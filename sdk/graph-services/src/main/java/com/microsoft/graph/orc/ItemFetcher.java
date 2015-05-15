@@ -84,4 +84,22 @@ public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
         return new UserFetcher("lastModifiedByUser", this);
     }
 
+     /**
+     * Gets children.
+     *
+     * @return the children
+     */
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getChildren() {
+        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("children", this, Item.class, ItemCollectionOperations.class);
+    }
+
+    /**
+     * Gets child.
+     *
+     * @return the child
+     */
+    public ItemFetcher getChild(String id){
+         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("children", this, Item.class, ItemCollectionOperations.class).getById(id);
+    }
+
 }

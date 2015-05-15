@@ -59,5 +59,27 @@ public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
         return this;
     }
 
-        
+    
+    public EventMessageFetcher asEventMessage(){
+        return new EventMessageFetcher(this.urlComponent, this.parent);
+    }   
+    
+     /**
+     * Gets attachments.
+     *
+     * @return the attachments
+     */
+    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
+        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
+    }
+
+    /**
+     * Gets attachment.
+     *
+     * @return the attachment
+     */
+    public AttachmentFetcher getAttachment(String id){
+         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
+    }
+
 }

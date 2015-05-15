@@ -140,4 +140,22 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
          return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("owners", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class).getById(id);
     }
 
+     /**
+     * Gets files.
+     *
+     * @return the files
+     */
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getFiles() {
+        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class);
+    }
+
+    /**
+     * Gets file.
+     *
+     * @return the file
+     */
+    public ItemFetcher getFile(String id){
+         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class).getById(id);
+    }
+
 }

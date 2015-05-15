@@ -16,32 +16,33 @@ package com.microsoft.graph.orc;
 import com.microsoft.graph.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
+import com.microsoft.services.orc.Readable;
 import com.microsoft.services.orc.interfaces.*;
-import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type CalendarViewOperations.
+ * The type  EventMessageFetcher.
  */
-public class CalendarViewOperations extends EventOperations {
+public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMessageOperations> 
+                                     implements Readable<EventMessage> {
 
      /**
-      * Instantiates a new CalendarViewOperations.
-      *
-      * @param urlComponent the url component
-      * @param parent the parent
-      */
-    public CalendarViewOperations(String urlComponent, OrcExecutable parent) {
-            super(urlComponent, parent);
+     * Instantiates a new EventMessageFetcher.
+     *
+     * @param urlComponent the url component
+     * @param parent the parent
+     */
+     public EventMessageFetcher(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent, EventMessage.class, EventMessageOperations.class);
     }
 
-    /**
+     /**
      * Add parameter.
      *
      * @param name the name
      * @param value the value
-     * @return the operations
+     * @return the fetcher
      */
-    public CalendarViewOperations addParameter(String name, Object value) {
+    public EventMessageFetcher addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -51,11 +52,20 @@ public class CalendarViewOperations extends EventOperations {
      *
      * @param name the name
      * @param value the value
-     * @return the operations
+     * @return the fetcher
      */
-    public CalendarViewOperations addHeader(String name, String value) {
+    public EventMessageFetcher addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
+    }
+
+             /**
+     * Gets event.
+     *
+     * @return the event
+     */
+    public EventFetcher getEvent() {
+        return new EventFetcher("Event", this);
     }
 
 }

@@ -16,30 +16,10 @@ package com.microsoft.graph;
 /**
  * The type Message.
 */
-public class Message extends ODataBaseEntity {
+public class Message extends OutlookItem {
 
     public Message(){
         setODataType("#Microsoft.Graph.Message");
-    }
-            
-    private String Id;
-     
-    /**
-    * Gets the Id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.Id; 
-    }
-
-    /**
-    * Sets the Id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.Id = value; 
     }
             
     private String Subject;
@@ -102,23 +82,23 @@ public class Message extends ODataBaseEntity {
         this.BodyPreview = value; 
     }
             
-    private String Importance;
+    private Importance Importance;
      
     /**
     * Gets the Importance.
     *
-    * @return the String
+    * @return the Importance
     */
-    public String getImportance() {
+    public Importance getImportance() {
         return this.Importance; 
     }
 
     /**
     * Sets the Importance.
     *
-    * @param value the String
+    * @param value the Importance
     */
-    public void setImportance(String value) { 
+    public void setImportance(Importance value) { 
         this.Importance = value; 
     }
             
@@ -202,8 +182,8 @@ public class Message extends ODataBaseEntity {
         this.Sender = value; 
     }
     
-    
-    private java.util.List<Recipient> ToRecipients = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> ToRecipients = null;
     
     
      
@@ -225,8 +205,8 @@ public class Message extends ODataBaseEntity {
         this.ToRecipients = value; 
     }
     
-    
-    private java.util.List<Recipient> CcRecipients = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> CcRecipients = null;
     
     
      
@@ -248,8 +228,8 @@ public class Message extends ODataBaseEntity {
         this.CcRecipients = value; 
     }
     
-    
-    private java.util.List<Recipient> BccRecipients = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> BccRecipients = null;
     
     
      
@@ -271,8 +251,8 @@ public class Message extends ODataBaseEntity {
         this.BccRecipients = value; 
     }
     
-    
-    private java.util.List<Recipient> ReplyTo = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> ReplyTo = null;
     
     
      
@@ -452,6 +432,49 @@ public class Message extends ODataBaseEntity {
     */
     public void setIsRead(Boolean value) { 
         this.IsRead = value; 
+    }
+            
+    private String WebLink;
+     
+    /**
+    * Gets the Web Link.
+    *
+    * @return the String
+    */
+    public String getWebLink() {
+        return this.WebLink; 
+    }
+
+    /**
+    * Sets the Web Link.
+    *
+    * @param value the String
+    */
+    public void setWebLink(String value) { 
+        this.WebLink = value; 
+    }
+    
+        
+    private java.util.List<Attachment> Attachments = null;
+    
+    
+     
+    /**
+    * Gets the Attachments.
+    *
+    * @return the java.util.List<Attachment>
+    */
+    public java.util.List<Attachment> getAttachments() {
+        return this.Attachments; 
+    }
+
+    /**
+    * Sets the Attachments.
+    *
+    * @param value the java.util.List<Attachment>
+    */
+    public void setAttachments(java.util.List<Attachment> value) { 
+        this.Attachments = value; 
     }
 }
 

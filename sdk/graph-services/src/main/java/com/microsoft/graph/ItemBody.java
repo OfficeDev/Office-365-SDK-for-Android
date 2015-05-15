@@ -22,23 +22,23 @@ public class ItemBody extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.ItemBody");
     }
 
-    private String ContentType;
+    private BodyType ContentType;
 
     /**
     * Gets the Content Type.
     *
-    * @return the String
+    * @return the BodyType
     */
-    public String getContentType() {
+    public BodyType getContentType() {
         return this.ContentType; 
     }
 
     /**
     * Sets the Content Type.
     *
-    * @param value the String
+    * @param value the BodyType
     */
-    public void setContentType(String value) { 
+    public void setContentType(BodyType value) { 
         this.ContentType = value; 
     }
 

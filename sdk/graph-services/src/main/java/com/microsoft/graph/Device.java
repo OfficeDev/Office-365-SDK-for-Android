@@ -42,8 +42,8 @@ public class Device extends DirectoryObject {
         this.accountEnabled = value; 
     }
     
-    
-    private java.util.List<AlternativeSecurityId> alternativeSecurityIds = new java.util.ArrayList<AlternativeSecurityId>();
+        
+    private java.util.List<AlternativeSecurityId> alternativeSecurityIds = null;
     
     
      
@@ -185,8 +185,8 @@ public class Device extends DirectoryObject {
         this.deviceOSVersion = value; 
     }
     
-    
-    private java.util.List<String> devicePhysicalIds = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> devicePhysicalIds = null;
     
     
      
@@ -288,8 +288,8 @@ public class Device extends DirectoryObject {
         this.lastDirSyncTime = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> registeredOwners = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> registeredOwners = null;
     
     
      
@@ -311,8 +311,8 @@ public class Device extends DirectoryObject {
         this.registeredOwners = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> registeredUsers = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> registeredUsers = null;
     
     
      

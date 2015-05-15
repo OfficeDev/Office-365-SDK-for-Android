@@ -22,7 +22,7 @@ import static com.microsoft.services.orc.Helpers.*;
 /**
  * The type MessageCollectionOperations
  */
-public class MessageCollectionOperations extends OrcOperations{
+public class MessageCollectionOperations extends OutlookItemCollectionOperations{
 
     /**
      * Instantiates a new MessageCollectionOperations.

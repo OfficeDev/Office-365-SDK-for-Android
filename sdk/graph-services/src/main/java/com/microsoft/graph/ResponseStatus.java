@@ -14,31 +14,31 @@
 package com.microsoft.graph;
 
 /**
- * The type Status.
+ * The type Response Status.
 */
-public class Status extends ODataBaseEntity {
+public class ResponseStatus extends ODataBaseEntity {
 
-    public Status(){
-        setODataType("#Microsoft.Graph.Status");
+    public ResponseStatus(){
+        setODataType("#Microsoft.Graph.ResponseStatus");
     }
 
-    private String Response;
+    private ResponseType Response;
 
     /**
     * Gets the Response.
     *
-    * @return the String
+    * @return the ResponseType
     */
-    public String getResponse() {
+    public ResponseType getResponse() {
         return this.Response; 
     }
 
     /**
     * Sets the Response.
     *
-    * @param value the String
+    * @param value the ResponseType
     */
-    public void setResponse(String value) { 
+    public void setResponse(ResponseType value) { 
         this.Response = value; 
     }
 

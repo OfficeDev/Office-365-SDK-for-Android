@@ -22,7 +22,7 @@ import com.microsoft.services.orc.interfaces.*;
 /**
  * The type  FileFetcher.
  */
-public class FileFetcher extends OrcEntityFetcher<File,FileOperations> 
+public class FileFetcher extends OrcEntityFetcher<File,FileOperations>
                                      implements Readable<File> {
 
      /**

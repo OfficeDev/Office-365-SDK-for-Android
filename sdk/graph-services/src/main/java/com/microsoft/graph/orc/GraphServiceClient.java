@@ -57,6 +57,14 @@ public class GraphServiceClient extends BaseOrcContainer {
     }
 
      /**
+     * Gets DirectoryObject.
+     *
+     * @return the DirectoryObject
+     */
+    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getdirectoryObjects() {
+        return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("directoryObjects", this, DirectoryObject.class,DirectoryObjectCollectionOperations.class);
+    }
+     /**
      * Gets Application.
      *
      * @return the Application

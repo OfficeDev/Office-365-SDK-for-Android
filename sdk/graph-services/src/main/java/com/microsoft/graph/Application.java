@@ -42,8 +42,8 @@ public class Application extends DirectoryObject {
         this.appId = value; 
     }
     
-    
-    private java.util.List<AppRole> appRoles = new java.util.ArrayList<AppRole>();
+        
+    private java.util.List<AppRole> appRoles = null;
     
     
      
@@ -165,8 +165,8 @@ public class Application extends DirectoryObject {
         this.homepage = value; 
     }
     
-    
-    private java.util.List<String> identifierUris = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> identifierUris = null;
     
     
      
@@ -188,8 +188,8 @@ public class Application extends DirectoryObject {
         this.identifierUris = value; 
     }
     
-    
-    private java.util.List<KeyCredential> keyCredentials = new java.util.ArrayList<KeyCredential>();
+        
+    private java.util.List<KeyCredential> keyCredentials = null;
     
     
      
@@ -211,8 +211,8 @@ public class Application extends DirectoryObject {
         this.keyCredentials = value; 
     }
     
-    
-    private java.util.List<String> knownClientApplications = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> knownClientApplications = null;
     
     
      
@@ -314,8 +314,8 @@ public class Application extends DirectoryObject {
         this.oauth2AllowUrlPathMatching = value; 
     }
     
-    
-    private java.util.List<OAuth2Permission> oauth2Permissions = new java.util.ArrayList<OAuth2Permission>();
+        
+    private java.util.List<OAuth2Permission> oauth2Permissions = null;
     
     
      
@@ -357,8 +357,8 @@ public class Application extends DirectoryObject {
         this.oauth2RequirePostResponse = value; 
     }
     
-    
-    private java.util.List<PasswordCredential> passwordCredentials = new java.util.ArrayList<PasswordCredential>();
+        
+    private java.util.List<PasswordCredential> passwordCredentials = null;
     
     
      
@@ -400,8 +400,8 @@ public class Application extends DirectoryObject {
         this.publicClient = value; 
     }
     
-    
-    private java.util.List<String> replyUrls = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> replyUrls = null;
     
     
      
@@ -423,8 +423,8 @@ public class Application extends DirectoryObject {
         this.replyUrls = value; 
     }
     
-    
-    private java.util.List<RequiredResourceAccess> requiredResourceAccess = new java.util.ArrayList<RequiredResourceAccess>();
+        
+    private java.util.List<RequiredResourceAccess> requiredResourceAccess = null;
     
     
      
@@ -466,8 +466,8 @@ public class Application extends DirectoryObject {
         this.samlMetadataUrl = value; 
     }
     
-    
-    private java.util.List<ExtensionProperty> extensionProperties = new java.util.ArrayList<ExtensionProperty>();
+        
+    private java.util.List<ExtensionProperty> extensionProperties = null;
     
     
      
@@ -509,8 +509,8 @@ public class Application extends DirectoryObject {
         this.createdOnBehalfOf = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> owners = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> owners = null;
     
     
      

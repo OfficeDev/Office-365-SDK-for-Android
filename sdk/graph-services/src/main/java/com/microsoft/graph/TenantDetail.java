@@ -22,8 +22,8 @@ public class TenantDetail extends DirectoryObject {
         setODataType("#Microsoft.Graph.TenantDetail");
     }
     
-    
-    private java.util.List<AssignedPlan> assignedPlans = new java.util.ArrayList<AssignedPlan>();
+        
+    private java.util.List<AssignedPlan> assignedPlans = null;
     
     
      
@@ -165,8 +165,8 @@ public class TenantDetail extends DirectoryObject {
         this.displayName = value; 
     }
     
-    
-    private java.util.List<String> marketingNotificationEmails = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> marketingNotificationEmails = null;
     
     
      
@@ -228,8 +228,8 @@ public class TenantDetail extends DirectoryObject {
         this.preferredLanguage = value; 
     }
     
-    
-    private java.util.List<ProvisionedPlan> provisionedPlans = new java.util.ArrayList<ProvisionedPlan>();
+        
+    private java.util.List<ProvisionedPlan> provisionedPlans = null;
     
     
      
@@ -251,8 +251,8 @@ public class TenantDetail extends DirectoryObject {
         this.provisionedPlans = value; 
     }
     
-    
-    private java.util.List<ProvisioningError> provisioningErrors = new java.util.ArrayList<ProvisioningError>();
+        
+    private java.util.List<ProvisioningError> provisioningErrors = null;
     
     
      
@@ -274,8 +274,8 @@ public class TenantDetail extends DirectoryObject {
         this.provisioningErrors = value; 
     }
     
-    
-    private java.util.List<String> securityComplianceNotificationMails = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> securityComplianceNotificationMails = null;
     
     
      
@@ -297,8 +297,8 @@ public class TenantDetail extends DirectoryObject {
         this.securityComplianceNotificationMails = value; 
     }
     
-    
-    private java.util.List<String> securityComplianceNotificationPhones = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> securityComplianceNotificationPhones = null;
     
     
      
@@ -360,8 +360,8 @@ public class TenantDetail extends DirectoryObject {
         this.street = value; 
     }
     
-    
-    private java.util.List<String> technicalNotificationMails = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> technicalNotificationMails = null;
     
     
      
@@ -403,8 +403,8 @@ public class TenantDetail extends DirectoryObject {
         this.telephoneNumber = value; 
     }
     
-    
-    private java.util.List<VerifiedDomain> verifiedDomains = new java.util.ArrayList<VerifiedDomain>();
+        
+    private java.util.List<VerifiedDomain> verifiedDomains = null;
     
     
      

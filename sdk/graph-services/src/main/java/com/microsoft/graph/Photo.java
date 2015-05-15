@@ -14,71 +14,72 @@
 package com.microsoft.graph;
 
 /**
- * The type Attendees.
+ * The type Photo.
 */
-public class Attendees extends ODataBaseEntity {
+public class Photo extends ODataBaseEntity {
 
-    public Attendees(){
-        setODataType("#Microsoft.Graph.Attendees");
+    public Photo(){
+        setODataType("#Microsoft.Graph.Photo");
     }
-
-    private EmailAddress EmailAddress;
-
+            
+    private String Id;
+     
     /**
-    * Gets the Email Address.
-    *
-    * @return the EmailAddress
-    */
-    public EmailAddress getEmailAddress() {
-        return this.EmailAddress; 
-    }
-
-    /**
-    * Sets the Email Address.
-    *
-    * @param value the EmailAddress
-    */
-    public void setEmailAddress(EmailAddress value) { 
-        this.EmailAddress = value; 
-    }
-
-    private Status Status;
-
-    /**
-    * Gets the Status.
-    *
-    * @return the Status
-    */
-    public Status getStatus() {
-        return this.Status; 
-    }
-
-    /**
-    * Sets the Status.
-    *
-    * @param value the Status
-    */
-    public void setStatus(Status value) { 
-        this.Status = value; 
-    }
-
-    private String Type;
-
-    /**
-    * Gets the Type.
+    * Gets the Id.
     *
     * @return the String
     */
-    public String getType() {
-        return this.Type; 
+    public String getId() {
+        return this.Id; 
     }
 
     /**
-    * Sets the Type.
+    * Sets the Id.
     *
     * @param value the String
     */
-    public void setType(String value) { 
-        this.Type = value; 
+    public void setId(String value) { 
+        this.Id = value; 
+    }
+            
+    private Integer Width;
+     
+    /**
+    * Gets the Width.
+    *
+    * @return the Integer
+    */
+    public Integer getWidth() {
+        return this.Width; 
+    }
+
+    /**
+    * Sets the Width.
+    *
+    * @param value the Integer
+    */
+    public void setWidth(Integer value) { 
+        this.Width = value; 
+    }
+            
+    private Integer Height;
+     
+    /**
+    * Gets the Height.
+    *
+    * @return the Integer
+    */
+    public Integer getHeight() {
+        return this.Height; 
+    }
+
+    /**
+    * Sets the Height.
+    *
+    * @param value the Integer
+    */
+    public void setHeight(Integer value) { 
+        this.Height = value; 
     }
 }
+

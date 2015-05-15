@@ -22,8 +22,8 @@ public class DeviceConfiguration extends DirectoryObject {
         setODataType("#Microsoft.Graph.DeviceConfiguration");
     }
     
-    
-    private java.util.List<byte[]> publicIssuerCertificates = new java.util.ArrayList<byte[]>();
+        
+    private java.util.List<byte[]> publicIssuerCertificates = null;
     
     
      
@@ -45,8 +45,8 @@ public class DeviceConfiguration extends DirectoryObject {
         this.publicIssuerCertificates = value; 
     }
     
-    
-    private java.util.List<byte[]> cloudPublicIssuerCertificates = new java.util.ArrayList<byte[]>();
+        
+    private java.util.List<byte[]> cloudPublicIssuerCertificates = null;
     
     
      

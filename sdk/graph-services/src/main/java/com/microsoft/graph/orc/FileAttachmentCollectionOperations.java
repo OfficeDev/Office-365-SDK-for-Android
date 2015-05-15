@@ -16,23 +16,22 @@ package com.microsoft.graph.orc;
 import com.microsoft.graph.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
-import com.microsoft.services.orc.Readable;
 import com.microsoft.services.orc.interfaces.*;
+import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type  CalendarViewFetcher.
+ * The type FileAttachmentCollectionOperations
  */
-public class CalendarViewFetcher extends OrcEntityFetcher<CalendarView,CalendarViewOperations> 
-                                     implements Readable<CalendarView> {
+public class FileAttachmentCollectionOperations extends AttachmentCollectionOperations{
 
-     /**
-     * Instantiates a new CalendarViewFetcher.
+    /**
+     * Instantiates a new FileAttachmentCollectionOperations.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public CalendarViewFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, CalendarView.class, CalendarViewOperations.class);
+    public FileAttachmentCollectionOperations(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent);
     }
 
      /**
@@ -40,9 +39,9 @@ public class CalendarViewFetcher extends OrcEntityFetcher<CalendarView,CalendarV
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the collection operations
      */
-    public CalendarViewFetcher addParameter(String name, Object value) {
+    public FileAttachmentCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -52,12 +51,10 @@ public class CalendarViewFetcher extends OrcEntityFetcher<CalendarView,CalendarV
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the collection operations
      */
-    public CalendarViewFetcher addHeader(String name, String value) {
+    public FileAttachmentCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
-
-        
 }
