@@ -6,10 +6,12 @@
 package com.microsoft.sampleservice.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.odata.*;
-import com.microsoft.services.odata.interfaces.*;
+import com.microsoft.services.orc.*;
+import com.microsoft.services.orc.interfaces.*;
 import com.microsoft.sampleservice.*;
-import static com.microsoft.services.odata.Helpers.*;
+import com.microsoft.services.orc.OrcExecutable;
+
+import static com.microsoft.services.orc.Helpers.*;
 
 
 
@@ -24,7 +26,7 @@ public class AnotherEntityCollectionOperations extends EntityCollectionOperation
      * @param urlComponent the url component
      * @param parent the parent
      */
-    public AnotherEntityCollectionOperations(String urlComponent, ODataExecutable parent) {
+    public AnotherEntityCollectionOperations(String urlComponent, OrcExecutable parent) {
         super(urlComponent, parent);
     }
 

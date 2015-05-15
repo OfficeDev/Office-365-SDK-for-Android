@@ -7,15 +7,15 @@ package com.microsoft.sampleservice.odata;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.sampleservice.SampleComplexType;
-import com.microsoft.services.odata.ODataExecutable;
-import com.microsoft.services.odata.interfaces.HttpVerb;
-import com.microsoft.services.odata.interfaces.ODataResponse;
-import com.microsoft.services.odata.interfaces.Request;
+import com.microsoft.services.orc.OrcExecutable;
+import com.microsoft.services.orc.interfaces.HttpVerb;
+import com.microsoft.services.orc.interfaces.OrcResponse;
+import com.microsoft.services.orc.interfaces.Request;
 
-import static com.microsoft.services.odata.Helpers.getFunctionParameters;
-import static com.microsoft.services.odata.Helpers.serializeToJsonByteArray;
-import static com.microsoft.services.odata.Helpers.transformToEntityListenableFuture;
-import static com.microsoft.services.odata.Helpers.transformToStringListenableFuture;
+import static com.microsoft.services.orc.Helpers.getFunctionParameters;
+import static com.microsoft.services.orc.Helpers.serializeToJsonByteArray;
+import static com.microsoft.services.orc.Helpers.transformToEntityListenableFuture;
+import static com.microsoft.services.orc.Helpers.transformToStringListenableFuture;
 
 
 /**
@@ -29,7 +29,7 @@ public class SampleEntityCollectionOperations extends EntityCollectionOperations
      * @param urlComponent the url component
      * @param parent       the parent
      */
-    public SampleEntityCollectionOperations(String urlComponent, ODataExecutable parent) {
+    public SampleEntityCollectionOperations(String urlComponent, OrcExecutable parent) {
         super(urlComponent, parent);
     }
 
@@ -75,7 +75,7 @@ public class SampleEntityCollectionOperations extends EntityCollectionOperations
 
         String parameters = getFunctionParameters(map);
         request.getUrl().appendPathComponent("SomeFunction(" + parameters + ")");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToEntityListenableFuture(transformToStringListenableFuture(future), SampleComplexType.class, getResolver());
 
     }

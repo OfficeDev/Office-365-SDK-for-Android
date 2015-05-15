@@ -6,16 +6,16 @@
 package com.microsoft.sampleservice.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.odata.*;
-import com.microsoft.services.odata.Readable;
-import com.microsoft.services.odata.interfaces.*;
+import com.microsoft.services.orc.*;
+import com.microsoft.services.orc.Readable;
+import com.microsoft.services.orc.interfaces.*;
 import com.microsoft.sampleservice.*; 
 import com.microsoft.sampleservice.*;       
 
 /**
  * The type  AnotherEntityFetcher.
  */
-public class AnotherEntityFetcher extends ODataEntityFetcher<AnotherEntity,AnotherEntityOperations> 
+public class AnotherEntityFetcher extends OrcEntityFetcher<AnotherEntity,AnotherEntityOperations>
                                      implements Readable<AnotherEntity> {
 
      /**
@@ -24,7 +24,7 @@ public class AnotherEntityFetcher extends ODataEntityFetcher<AnotherEntity,Anoth
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public AnotherEntityFetcher(String urlComponent, ODataExecutable parent) {
+     public AnotherEntityFetcher(String urlComponent, OrcExecutable parent) {
         super(urlComponent, parent, AnotherEntity.class, AnotherEntityOperations.class);
     }
 

@@ -4,9 +4,10 @@ import com.microsoft.sampleservice.AnotherEntity;
 import com.microsoft.sampleservice.SampleComplexType;
 import com.microsoft.sampleservice.SampleContainerClient;
 import com.microsoft.sampleservice.SampleEntity;
-import com.microsoft.services.odata.Helpers;
-import com.microsoft.services.odata.impl.desktop.JvmDependencyResolver;
-import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.services.orc.interfaces.LogLevel;
+import com.microsoft.services.orc.jvm.impl.JvmDependencyResolver;
+import com.microsoft.services.orc.Helpers;
+
 
 import org.junit.Ignore;
 import org.junit.Test;

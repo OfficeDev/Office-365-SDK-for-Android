@@ -7,14 +7,14 @@ package com.microsoft.sampleservice;
 
 import com.microsoft.sampleservice.odata.SampleEntityCollectionOperations;
 import com.microsoft.sampleservice.odata.SampleEntityFetcher;
-import com.microsoft.services.odata.*;
-import com.microsoft.services.odata.interfaces.DependencyResolver;
+import com.microsoft.services.orc.*;
+import com.microsoft.services.orc.interfaces.DependencyResolver;
 import com.microsoft.sampleservice.*;
 
 /**
  * The type SampleContainerClient.
  */
-public class SampleContainerClient extends BaseODataContainer {
+public class SampleContainerClient extends BaseOrcContainer {
 
      /**
      * Instantiates a new SampleContainerClient.
@@ -63,7 +63,7 @@ public class SampleContainerClient extends BaseODataContainer {
      *
      * @return the SampleEntity
      */
-    public ODataCollectionFetcher<SampleEntity, SampleEntityFetcher, SampleEntityCollectionOperations> getservices() {
-        return new ODataCollectionFetcher<SampleEntity, SampleEntityFetcher,SampleEntityCollectionOperations>("services", this, SampleEntity.class,SampleEntityCollectionOperations.class);
+    public OrcCollectionFetcher<SampleEntity, SampleEntityFetcher, SampleEntityCollectionOperations> getservices() {
+        return new OrcCollectionFetcher<SampleEntity, SampleEntityFetcher,SampleEntityCollectionOperations>("services", this, SampleEntity.class,SampleEntityCollectionOperations.class);
     }
 }
