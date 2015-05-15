@@ -82,6 +82,46 @@ public class Group extends DirectoryObject {
         this.displayName = value; 
     }
             
+    private String groupType;
+     
+    /**
+    * Gets the group Type.
+    *
+    * @return the String
+    */
+    public String getgroupType() {
+        return this.groupType; 
+    }
+
+    /**
+    * Sets the group Type.
+    *
+    * @param value the String
+    */
+    public void setgroupType(String value) { 
+        this.groupType = value; 
+    }
+            
+    private Boolean isPublic;
+     
+    /**
+    * Gets the is Public.
+    *
+    * @return the Boolean
+    */
+    public Boolean getisPublic() {
+        return this.isPublic; 
+    }
+
+    /**
+    * Sets the is Public.
+    *
+    * @param value the Boolean
+    */
+    public void setisPublic(Boolean value) { 
+        this.isPublic = value; 
+    }
+            
     private java.util.Calendar lastDirSyncTime;
      
     /**
@@ -182,8 +222,8 @@ public class Group extends DirectoryObject {
         this.onPremisesSecurityIdentifier = value; 
     }
     
-    
-    private java.util.List<ProvisioningError> provisioningErrors = new java.util.ArrayList<ProvisioningError>();
+        
+    private java.util.List<ProvisioningError> provisioningErrors = null;
     
     
      
@@ -205,8 +245,8 @@ public class Group extends DirectoryObject {
         this.provisioningErrors = value; 
     }
     
-    
-    private java.util.List<String> proxyAddresses = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> proxyAddresses = null;
     
     
      
@@ -248,8 +288,8 @@ public class Group extends DirectoryObject {
         this.securityEnabled = value; 
     }
     
-    
-    private java.util.List<AppRoleAssignment> appRoleAssignments = new java.util.ArrayList<AppRoleAssignment>();
+        
+    private java.util.List<AppRoleAssignment> appRoleAssignments = null;
     
     
      
@@ -271,8 +311,8 @@ public class Group extends DirectoryObject {
         this.appRoleAssignments = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> members = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> members = null;
     
     
      
@@ -294,8 +334,8 @@ public class Group extends DirectoryObject {
         this.members = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> memberOf = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> memberOf = null;
     
     
      
@@ -337,8 +377,8 @@ public class Group extends DirectoryObject {
         this.createdOnBehalfOf = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> owners = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> owners = null;
     
     
      
@@ -358,6 +398,29 @@ public class Group extends DirectoryObject {
     */
     public void setowners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
+    }
+    
+        
+    private java.util.List<Item> files = null;
+    
+    
+     
+    /**
+    * Gets the files.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getfiles() {
+        return this.files; 
+    }
+
+    /**
+    * Sets the files.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setfiles(java.util.List<Item> value) { 
+        this.files = value; 
     }
 }
 

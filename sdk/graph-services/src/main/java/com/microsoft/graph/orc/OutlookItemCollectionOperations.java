@@ -20,17 +20,17 @@ import com.microsoft.services.orc.interfaces.*;
 import static com.microsoft.services.orc.Helpers.*;
 
 /**
- * The type CalendarViewCollectionOperations
+ * The type OutlookItemCollectionOperations
  */
-public class CalendarViewCollectionOperations extends EventCollectionOperations{
+public class OutlookItemCollectionOperations extends OrcOperations{
 
     /**
-     * Instantiates a new CalendarViewCollectionOperations.
+     * Instantiates a new OutlookItemCollectionOperations.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-    public CalendarViewCollectionOperations(String urlComponent, OrcExecutable parent) {
+    public OutlookItemCollectionOperations(String urlComponent, OrcExecutable parent) {
         super(urlComponent, parent);
     }
 
@@ -41,7 +41,7 @@ public class CalendarViewCollectionOperations extends EventCollectionOperations{
      * @param value the value
      * @return the collection operations
      */
-    public CalendarViewCollectionOperations addParameter(String name, Object value) {
+    public OutlookItemCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -53,7 +53,7 @@ public class CalendarViewCollectionOperations extends EventCollectionOperations{
      * @param value the value
      * @return the collection operations
      */
-    public CalendarViewCollectionOperations addHeader(String name, String value) {
+    public OutlookItemCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }

@@ -213,24 +213,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
-     * Gets events.
-     *
-     * @return the events
-     */
-    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getEvents() {
-        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class);
-    }
-
-    /**
-     * Gets event.
-     *
-     * @return the event
-     */
-    public EventFetcher getEvent(String id){
-         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets messages.
      *
      * @return the messages
@@ -246,24 +228,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public MessageFetcher getMessage(String id){
          return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets calendar view.
-     *
-     * @return the calendar view
-     */
-    public OrcCollectionFetcher<CalendarView, CalendarViewFetcher, CalendarViewCollectionOperations> getCalendarView() {
-        return new OrcCollectionFetcher<CalendarView, CalendarViewFetcher, CalendarViewCollectionOperations>("CalendarView", this, CalendarView.class, CalendarViewCollectionOperations.class);
-    }
-
-    /**
-     * Gets calendar view.
-     *
-     * @return the calendar view
-     */
-    public CalendarViewFetcher getCalendarView(String id){
-         return new OrcCollectionFetcher<CalendarView, CalendarViewFetcher, CalendarViewCollectionOperations>("CalendarView", this, CalendarView.class, CalendarViewCollectionOperations.class).getById(id);
     }
 
      /**
@@ -308,6 +272,68 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public CalendarGroupFetcher getCalendarGroup(String id){
          return new OrcCollectionFetcher<CalendarGroup, CalendarGroupFetcher, CalendarGroupCollectionOperations>("CalendarGroups", this, CalendarGroup.class, CalendarGroupCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets events.
+     *
+     * @return the events
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getEvents() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets event.
+     *
+     * @return the event
+     */
+    public EventFetcher getEvent(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets calendar view.
+     *
+     * @return the calendar view
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getCalendarView() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets calendar view.
+     *
+     * @return the calendar view
+     */
+    public EventFetcher getCalendarView(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets userphoto.
+     *
+     * @return the user photo
+     */
+    public PhotoFetcher getUserPhoto() {
+        return new PhotoFetcher("UserPhoto", this);
+    }
+
+     /**
+     * Gets user photos.
+     *
+     * @return the user photos
+     */
+    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getUserPhotos() {
+        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class);
+    }
+
+    /**
+     * Gets user photo.
+     *
+     * @return the user photo
+     */
+    public PhotoFetcher getUserPhoto(String id){
+         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
     }
      /**
      * Gets drive.

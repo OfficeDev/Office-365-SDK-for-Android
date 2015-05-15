@@ -122,8 +122,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.appRoleAssignmentRequired = value; 
     }
     
-    
-    private java.util.List<AppRole> appRoles = new java.util.ArrayList<AppRole>();
+        
+    private java.util.List<AppRole> appRoles = null;
     
     
      
@@ -205,8 +205,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.homepage = value; 
     }
     
-    
-    private java.util.List<KeyCredential> keyCredentials = new java.util.ArrayList<KeyCredential>();
+        
+    private java.util.List<KeyCredential> keyCredentials = null;
     
     
      
@@ -248,8 +248,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.logoutUrl = value; 
     }
     
-    
-    private java.util.List<OAuth2Permission> oauth2Permissions = new java.util.ArrayList<OAuth2Permission>();
+        
+    private java.util.List<OAuth2Permission> oauth2Permissions = null;
     
     
      
@@ -271,8 +271,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.oauth2Permissions = value; 
     }
     
-    
-    private java.util.List<PasswordCredential> passwordCredentials = new java.util.ArrayList<PasswordCredential>();
+        
+    private java.util.List<PasswordCredential> passwordCredentials = null;
     
     
      
@@ -334,8 +334,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.publisherName = value; 
     }
     
-    
-    private java.util.List<String> replyUrls = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> replyUrls = null;
     
     
      
@@ -377,8 +377,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.samlMetadataUrl = value; 
     }
     
-    
-    private java.util.List<String> servicePrincipalNames = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> servicePrincipalNames = null;
     
     
      
@@ -400,8 +400,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.servicePrincipalNames = value; 
     }
     
-    
-    private java.util.List<String> tags = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> tags = null;
     
     
      
@@ -443,8 +443,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.appRoleAssignedTo = value; 
     }
     
-    
-    private java.util.List<AppRoleAssignment> appRoleAssignments = new java.util.ArrayList<AppRoleAssignment>();
+        
+    private java.util.List<AppRoleAssignment> appRoleAssignments = null;
     
     
      
@@ -466,8 +466,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.appRoleAssignments = value; 
     }
     
-    
-    private java.util.List<OAuth2PermissionGrant> oauth2PermissionGrants = new java.util.ArrayList<OAuth2PermissionGrant>();
+        
+    private java.util.List<OAuth2PermissionGrant> oauth2PermissionGrants = null;
     
     
      
@@ -489,8 +489,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.oauth2PermissionGrants = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> memberOf = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> memberOf = null;
     
     
      
@@ -532,8 +532,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.createdOnBehalfOf = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> createdObjects = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> createdObjects = null;
     
     
      
@@ -555,8 +555,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.createdObjects = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> owners = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> owners = null;
     
     
      
@@ -578,8 +578,8 @@ public class ServicePrincipal extends DirectoryObject {
         this.owners = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> ownedObjects = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> ownedObjects = null;
     
     
      

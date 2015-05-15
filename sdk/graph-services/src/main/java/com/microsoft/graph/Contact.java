@@ -302,8 +302,8 @@ public class Contact extends DirectoryObject {
         this.postalCode = value; 
     }
     
-    
-    private java.util.List<ProvisioningError> provisioningErrors = new java.util.ArrayList<ProvisioningError>();
+        
+    private java.util.List<ProvisioningError> provisioningErrors = null;
     
     
      
@@ -325,8 +325,8 @@ public class Contact extends DirectoryObject {
         this.provisioningErrors = value; 
     }
     
-    
-    private java.util.List<String> proxyAddresses = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> proxyAddresses = null;
     
     
      
@@ -488,8 +488,8 @@ public class Contact extends DirectoryObject {
         this.manager = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> directReports = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> directReports = null;
     
     
      
@@ -511,8 +511,8 @@ public class Contact extends DirectoryObject {
         this.directReports = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> memberOf = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> memberOf = null;
     
     
      

@@ -165,7 +165,6 @@ public class FileOperations extends ItemOperations {
         ListenableFuture<OrcResponse> future = oDataExecute(request);   
 
         return transformToByteArrayListenableFuture(future);
-
    }
     
 }

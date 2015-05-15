@@ -58,4 +58,90 @@ public class UserOperations extends DirectoryObjectOperations {
         return this;
     }
 
+    
+    
+    /**
+     * assignLicense listenable future.
+     * @param addLicenses the addLicenses @param removeLicenses the removeLicenses 
+     * @return the listenable future
+     */         
+    public ListenableFuture<User> assignLicense(java.util.List<AssignedLicense> addLicenses, java.util.List<java.util.UUID> removeLicenses) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedaddLicenses = serializer.serialize(addLicenses);
+		String serializedremoveLicenses = serializer.serialize(removeLicenses);
+		  
+        
+        ListenableFuture<String> future = assignLicenseRaw(serializedaddLicenses, serializedremoveLicenses);
+        return transformToEntityListenableFuture(future, User.class, getResolver());
+        
+    }
+
+     /**
+     * assignLicenseRaw listenable future.
+     * @param addLicenses the addLicenses @param removeLicenses the removeLicenses 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> assignLicenseRaw(String addLicenses, String removeLicenses){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("addLicenses", addLicenses);
+		map.put("removeLicenses", removeLicenses);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.assignLicense");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * SendMail listenable future.
+     * @param message the message @param saveToSentItems the saveToSentItems 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedMessage = serializer.serialize(message);
+		String serializedSaveToSentItems = serializer.serialize(saveToSentItems);
+		  
+        
+        ListenableFuture<String> future = sendMailRaw(serializedMessage, serializedSaveToSentItems);
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * SendMailRaw listenable future.
+     * @param message the message @param saveToSentItems the saveToSentItems 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> sendMailRaw(String message, String saveToSentItems){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("Message", message);
+		map.put("SaveToSentItems", saveToSentItems);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.SendMail");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }

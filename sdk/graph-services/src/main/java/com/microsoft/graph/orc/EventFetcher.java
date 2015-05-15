@@ -59,11 +59,25 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
         return this;
     }
 
-    
-    public CalendarViewFetcher asCalendarView(){
-        return new CalendarViewFetcher(this.urlComponent, this.parent);
-    }   
-         /**
+        
+     /**
+     * Gets attachments.
+     *
+     * @return the attachments
+     */
+    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
+        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
+    }
+
+    /**
+     * Gets attachment.
+     *
+     * @return the attachment
+     */
+    public AttachmentFetcher getAttachment(String id){
+         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
+    }
+     /**
      * Gets calendar.
      *
      * @return the calendar

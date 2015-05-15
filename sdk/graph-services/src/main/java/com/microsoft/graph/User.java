@@ -42,8 +42,8 @@ public class User extends DirectoryObject {
         this.accountEnabled = value; 
     }
     
-    
-    private java.util.List<AssignedLicense> assignedLicenses = new java.util.ArrayList<AssignedLicense>();
+        
+    private java.util.List<AssignedLicense> assignedLicenses = null;
     
     
      
@@ -65,8 +65,8 @@ public class User extends DirectoryObject {
         this.assignedLicenses = value; 
     }
     
-    
-    private java.util.List<AssignedPlan> assignedPlans = new java.util.ArrayList<AssignedPlan>();
+        
+    private java.util.List<AssignedPlan> assignedPlans = null;
     
     
      
@@ -368,8 +368,8 @@ public class User extends DirectoryObject {
         this.onPremisesSecurityIdentifier = value; 
     }
     
-    
-    private java.util.List<String> otherMails = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> otherMails = null;
     
     
      
@@ -491,8 +491,8 @@ public class User extends DirectoryObject {
         this.preferredLanguage = value; 
     }
     
-    
-    private java.util.List<ProvisionedPlan> provisionedPlans = new java.util.ArrayList<ProvisionedPlan>();
+        
+    private java.util.List<ProvisionedPlan> provisionedPlans = null;
     
     
      
@@ -514,8 +514,8 @@ public class User extends DirectoryObject {
         this.provisionedPlans = value; 
     }
     
-    
-    private java.util.List<ProvisioningError> provisioningErrors = new java.util.ArrayList<ProvisioningError>();
+        
+    private java.util.List<ProvisioningError> provisioningErrors = null;
     
     
      
@@ -537,8 +537,8 @@ public class User extends DirectoryObject {
         this.provisioningErrors = value; 
     }
     
-    
-    private java.util.List<String> proxyAddresses = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> proxyAddresses = null;
     
     
      
@@ -840,8 +840,8 @@ public class User extends DirectoryObject {
         this.HireDate = value; 
     }
     
-    
-    private java.util.List<String> Interests = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> Interests = null;
     
     
      
@@ -883,8 +883,8 @@ public class User extends DirectoryObject {
         this.MySite = value; 
     }
     
-    
-    private java.util.List<String> PastProjects = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> PastProjects = null;
     
     
      
@@ -946,8 +946,8 @@ public class User extends DirectoryObject {
         this.PrincipalName = value; 
     }
     
-    
-    private java.util.List<String> Responsibilities = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> Responsibilities = null;
     
     
      
@@ -969,8 +969,8 @@ public class User extends DirectoryObject {
         this.Responsibilities = value; 
     }
     
-    
-    private java.util.List<String> Schools = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> Schools = null;
     
     
      
@@ -992,8 +992,8 @@ public class User extends DirectoryObject {
         this.Schools = value; 
     }
     
-    
-    private java.util.List<String> Skills = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> Skills = null;
     
     
      
@@ -1015,8 +1015,8 @@ public class User extends DirectoryObject {
         this.Skills = value; 
     }
     
-    
-    private java.util.List<String> Tags = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> Tags = null;
     
     
      
@@ -1038,8 +1038,8 @@ public class User extends DirectoryObject {
         this.Tags = value; 
     }
     
-    
-    private java.util.List<AppRoleAssignment> appRoleAssignments = new java.util.ArrayList<AppRoleAssignment>();
+        
+    private java.util.List<AppRoleAssignment> appRoleAssignments = null;
     
     
      
@@ -1061,8 +1061,8 @@ public class User extends DirectoryObject {
         this.appRoleAssignments = value; 
     }
     
-    
-    private java.util.List<OAuth2PermissionGrant> oauth2PermissionGrants = new java.util.ArrayList<OAuth2PermissionGrant>();
+        
+    private java.util.List<OAuth2PermissionGrant> oauth2PermissionGrants = null;
     
     
      
@@ -1084,8 +1084,8 @@ public class User extends DirectoryObject {
         this.oauth2PermissionGrants = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> ownedDevices = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> ownedDevices = null;
     
     
      
@@ -1107,8 +1107,8 @@ public class User extends DirectoryObject {
         this.ownedDevices = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> registeredDevices = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> registeredDevices = null;
     
     
      
@@ -1150,8 +1150,8 @@ public class User extends DirectoryObject {
         this.manager = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> directReports = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> directReports = null;
     
     
      
@@ -1173,8 +1173,8 @@ public class User extends DirectoryObject {
         this.directReports = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> memberOf = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> memberOf = null;
     
     
      
@@ -1196,8 +1196,8 @@ public class User extends DirectoryObject {
         this.memberOf = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> createdObjects = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> createdObjects = null;
     
     
      
@@ -1219,8 +1219,8 @@ public class User extends DirectoryObject {
         this.createdObjects = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> ownedObjects = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> ownedObjects = null;
     
     
      
@@ -1242,31 +1242,8 @@ public class User extends DirectoryObject {
         this.ownedObjects = value; 
     }
     
-    
-    private java.util.List<Event> Events = new java.util.ArrayList<Event>();
-    
-    
-     
-    /**
-    * Gets the Events.
-    *
-    * @return the java.util.List<Event>
-    */
-    public java.util.List<Event> getEvents() {
-        return this.Events; 
-    }
-
-    /**
-    * Sets the Events.
-    *
-    * @param value the java.util.List<Event>
-    */
-    public void setEvents(java.util.List<Event> value) { 
-        this.Events = value; 
-    }
-    
-    
-    private java.util.List<Message> Messages = new java.util.ArrayList<Message>();
+        
+    private java.util.List<Message> Messages = null;
     
     
      
@@ -1288,31 +1265,8 @@ public class User extends DirectoryObject {
         this.Messages = value; 
     }
     
-    
-    private java.util.List<CalendarView> CalendarView = new java.util.ArrayList<CalendarView>();
-    
-    
-     
-    /**
-    * Gets the Calendar View.
-    *
-    * @return the java.util.List<CalendarView>
-    */
-    public java.util.List<CalendarView> getCalendarView() {
-        return this.CalendarView; 
-    }
-
-    /**
-    * Sets the Calendar View.
-    *
-    * @param value the java.util.List<CalendarView>
-    */
-    public void setCalendarView(java.util.List<CalendarView> value) { 
-        this.CalendarView = value; 
-    }
-    
-    
-    private java.util.List<Calendar> Calendars = new java.util.ArrayList<Calendar>();
+        
+    private java.util.List<Calendar> Calendars = null;
     
     
      
@@ -1354,8 +1308,8 @@ public class User extends DirectoryObject {
         this.Calendar = value; 
     }
     
-    
-    private java.util.List<CalendarGroup> CalendarGroups = new java.util.ArrayList<CalendarGroup>();
+        
+    private java.util.List<CalendarGroup> CalendarGroups = null;
     
     
      
@@ -1375,6 +1329,95 @@ public class User extends DirectoryObject {
     */
     public void setCalendarGroups(java.util.List<CalendarGroup> value) { 
         this.CalendarGroups = value; 
+    }
+    
+        
+    private java.util.List<Event> Events = null;
+    
+    
+     
+    /**
+    * Gets the Events.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getEvents() {
+        return this.Events; 
+    }
+
+    /**
+    * Sets the Events.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setEvents(java.util.List<Event> value) { 
+        this.Events = value; 
+    }
+    
+        
+    private java.util.List<Event> CalendarView = null;
+    
+    
+     
+    /**
+    * Gets the Calendar View.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getCalendarView() {
+        return this.CalendarView; 
+    }
+
+    /**
+    * Sets the Calendar View.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setCalendarView(java.util.List<Event> value) { 
+        this.CalendarView = value; 
+    }
+            
+    private Photo UserPhoto;
+     
+    /**
+    * Gets the User Photo.
+    *
+    * @return the Photo
+    */
+    public Photo getUserPhoto() {
+        return this.UserPhoto; 
+    }
+
+    /**
+    * Sets the User Photo.
+    *
+    * @param value the Photo
+    */
+    public void setUserPhoto(Photo value) { 
+        this.UserPhoto = value; 
+    }
+    
+        
+    private java.util.List<Photo> UserPhotos = null;
+    
+    
+     
+    /**
+    * Gets the User Photos.
+    *
+    * @return the java.util.List<Photo>
+    */
+    public java.util.List<Photo> getUserPhotos() {
+        return this.UserPhotos; 
+    }
+
+    /**
+    * Sets the User Photos.
+    *
+    * @param value the java.util.List<Photo>
+    */
+    public void setUserPhotos(java.util.List<Photo> value) { 
+        this.UserPhotos = value; 
     }
             
     private Drive drive;
@@ -1397,8 +1440,8 @@ public class User extends DirectoryObject {
         this.drive = value; 
     }
     
-    
-    private java.util.List<Item> files = new java.util.ArrayList<Item>();
+        
+    private java.util.List<Item> files = null;
     
     
      

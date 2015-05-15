@@ -102,8 +102,8 @@ public class SubscribedSku extends ODataBaseEntity {
         this.prepaidUnits = value; 
     }
     
-    
-    private java.util.List<ServicePlanInfo> servicePlans = new java.util.ArrayList<ServicePlanInfo>();
+        
+    private java.util.List<ServicePlanInfo> servicePlans = null;
     
     
      

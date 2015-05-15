@@ -14,12 +14,20 @@
 package com.microsoft.graph;
 
 /**
- * The type Calendar View.
+ * The Enum Recurrence Range Type.
 */
-public class CalendarView extends Event {
-
-    public CalendarView(){
-        setODataType("#Microsoft.Graph.CalendarView");
-    }
+public enum RecurrenceRangeType	
+{
+    /**
+    * End Date
+    */
+    EndDate,
+    /**
+    * No End
+    */
+    NoEnd,
+    /**
+    * Numbered
+    */
+    Numbered,
 }
-

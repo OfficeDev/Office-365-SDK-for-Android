@@ -58,4 +58,45 @@ public class ApplicationOperations extends DirectoryObjectOperations {
         return this;
     }
 
+    
+    
+    /**
+     * restore listenable future.
+     * @param identifierUris the identifierUris 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Application> restore(java.util.List<String> identifierUris) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedidentifierUris = serializer.serialize(identifierUris);
+		  
+        
+        ListenableFuture<String> future = restoreRaw(serializedidentifierUris);
+        return transformToEntityListenableFuture(future, Application.class, getResolver());
+        
+    }
+
+     /**
+     * restoreRaw listenable future.
+     * @param identifierUris the identifierUris 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> restoreRaw(String identifierUris){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("identifierUris", identifierUris);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.restore");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }
