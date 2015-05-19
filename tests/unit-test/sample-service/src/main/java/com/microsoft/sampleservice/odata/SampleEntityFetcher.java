@@ -6,16 +6,16 @@
 package com.microsoft.sampleservice.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.odata.*;
-import com.microsoft.services.odata.Readable;
-import com.microsoft.services.odata.interfaces.*;
+import com.microsoft.services.orc.*;
+import com.microsoft.services.orc.Readable;
+import com.microsoft.services.orc.interfaces.*;
 import com.microsoft.sampleservice.*; 
 import com.microsoft.sampleservice.*;       
 
 /**
  * The type  SampleEntityFetcher.
  */
-public class SampleEntityFetcher extends ODataEntityFetcher<SampleEntity,SampleEntityOperations> 
+public class SampleEntityFetcher extends OrcEntityFetcher<SampleEntity,SampleEntityOperations>
                                      implements Readable<SampleEntity> {
 
      /**
@@ -24,7 +24,7 @@ public class SampleEntityFetcher extends ODataEntityFetcher<SampleEntity,SampleE
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public SampleEntityFetcher(String urlComponent, ODataExecutable parent) {
+     public SampleEntityFetcher(String urlComponent, OrcExecutable parent) {
         super(urlComponent, parent, SampleEntity.class, SampleEntityOperations.class);
     }
 
@@ -57,8 +57,8 @@ public class SampleEntityFetcher extends ODataEntityFetcher<SampleEntity,SampleE
      *
      * @return the navigations
      */
-    public ODataCollectionFetcher<AnotherEntity, AnotherEntityFetcher, AnotherEntityCollectionOperations> getNavigations() {
-        return new ODataCollectionFetcher<AnotherEntity, AnotherEntityFetcher,AnotherEntityCollectionOperations>("Navigations", this, AnotherEntity.class,AnotherEntityCollectionOperations.class);
+    public OrcCollectionFetcher<AnotherEntity, AnotherEntityFetcher, AnotherEntityCollectionOperations> getNavigations() {
+        return new OrcCollectionFetcher<AnotherEntity, AnotherEntityFetcher,AnotherEntityCollectionOperations>("Navigations", this, AnotherEntity.class,AnotherEntityCollectionOperations.class);
     }
 
     /**
@@ -67,6 +67,6 @@ public class SampleEntityFetcher extends ODataEntityFetcher<SampleEntity,SampleE
      * @return the navigation
      */
     public AnotherEntityFetcher getNavigation(String id){
-         return new ODataCollectionFetcher<AnotherEntity, AnotherEntityFetcher,AnotherEntityCollectionOperations>("Navigations", this, AnotherEntity.class,AnotherEntityCollectionOperations.class).getById(id);
+         return new OrcCollectionFetcher<AnotherEntity, AnotherEntityFetcher,AnotherEntityCollectionOperations>("Navigations", this, AnotherEntity.class,AnotherEntityCollectionOperations.class).getById(id);
     }
 }

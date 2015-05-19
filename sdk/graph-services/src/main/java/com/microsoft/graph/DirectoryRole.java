@@ -122,8 +122,8 @@ public class DirectoryRole extends DirectoryObject {
         this.roleTemplateId = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> members = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> members = null;
     
     
      
@@ -145,8 +145,8 @@ public class DirectoryRole extends DirectoryObject {
         this.members = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> memberOf = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> memberOf = null;
     
     
      
@@ -168,8 +168,8 @@ public class DirectoryRole extends DirectoryObject {
         this.memberOf = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> owners = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> owners = null;
     
     
      
@@ -191,8 +191,8 @@ public class DirectoryRole extends DirectoryObject {
         this.owners = value; 
     }
     
-    
-    private java.util.List<DirectoryObject> ownedObjects = new java.util.ArrayList<DirectoryObject>();
+        
+    private java.util.List<DirectoryObject> ownedObjects = null;
     
     
      

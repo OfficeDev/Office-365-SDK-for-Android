@@ -102,8 +102,8 @@ public class ExtensionProperty extends DirectoryObject {
         this.isSyncedFromOnPremises = value; 
     }
     
-    
-    private java.util.List<String> targetObjects = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> targetObjects = null;
     
     
      

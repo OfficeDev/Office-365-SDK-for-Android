@@ -62,8 +62,8 @@ public class OutlookItem extends ODataBaseEntity {
         this.ChangeKey = value; 
     }
     
-    
-    private java.util.List<String> Categories = new java.util.ArrayList<String>();
+        
+    private java.util.List<String> Categories = null;
     
     
      

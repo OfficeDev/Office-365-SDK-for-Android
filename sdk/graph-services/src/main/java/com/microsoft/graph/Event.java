@@ -322,8 +322,8 @@ public class Event extends OutlookItem {
         this.SeriesMasterId = value; 
     }
     
-    
-    private java.util.List<Attendee> Attendees = new java.util.ArrayList<Attendee>();
+        
+    private java.util.List<Attendee> Attendees = null;
     
     
      
@@ -445,8 +445,8 @@ public class Event extends OutlookItem {
         this.WebLink = value; 
     }
     
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
+        
+    private java.util.List<Attachment> Attachments = null;
     
     
      
@@ -488,8 +488,8 @@ public class Event extends OutlookItem {
         this.Calendar = value; 
     }
     
-    
-    private java.util.List<Event> Instances = new java.util.ArrayList<Event>();
+        
+    private java.util.List<Event> Instances = null;
     
     
      

@@ -102,8 +102,8 @@ public class CalendarGroup extends ODataBaseEntity {
         this.ClassId = value; 
     }
     
-    
-    private java.util.List<Calendar> Calendars = new java.util.ArrayList<Calendar>();
+        
+    private java.util.List<Calendar> Calendars = null;
     
     
      

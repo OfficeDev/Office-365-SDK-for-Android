@@ -35,7 +35,11 @@ dependencies {
     compile('com.microsoft.aad:adal:1.1.2') {
         exclude group: 'com.android.support'
     }
-    compile project(':odata-engine-android-impl')
+
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.0', ext: 'jar', changing: true)
+    compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.0', ext: 'aar', changing: true)
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-android', version: '0.14.0', ext: 'aar', changing: true)
+
     compile project(':outlook-services')
     compile project(':directory-services')
     compile project(':discovery-services')
@@ -43,5 +47,4 @@ dependencies {
     compile project(':file-services')
     compile project(':onenote-services')
     compile project(':graph-services')
-    compile project(':live-auth')
 }

@@ -13,7 +13,7 @@ import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.odata.Constants;
-import com.microsoft.fileservices.odata.SharePointClient;
+import com.microsoft.fileservices.orc.SharePointClient;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

@@ -6,10 +6,12 @@
 package com.microsoft.sampleservice.odata;
 
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.odata.*;
-import com.microsoft.services.odata.interfaces.*;
+import com.microsoft.services.orc.*;
+import com.microsoft.services.orc.interfaces.*;
 import com.microsoft.sampleservice.*;
-import static com.microsoft.services.odata.Helpers.*;
+import com.microsoft.services.orc.OrcExecutable;
+
+import static com.microsoft.services.orc.Helpers.*;
 
 /**
  * The type SampleEntityOperations.
@@ -22,7 +24,7 @@ public class SampleEntityOperations extends EntityOperations {
       * @param urlComponent the url component
       * @param parent the parent
       */
-    public SampleEntityOperations(String urlComponent, ODataExecutable parent) {
+    public SampleEntityOperations(String urlComponent, OrcExecutable parent) {
             super(urlComponent, parent);
     }
 
@@ -83,7 +85,7 @@ public class SampleEntityOperations extends EntityOperations {
                                         .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
         request.getUrl().appendPathComponent("TwoParamsActionsFirstIsEntityType");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
@@ -121,7 +123,7 @@ public class SampleEntityOperations extends EntityOperations {
                                         .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
         request.getUrl().appendPathComponent("TwoParamsActionsFirstIsComplexType");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
@@ -159,7 +161,7 @@ public class SampleEntityOperations extends EntityOperations {
                                         .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
         request.getUrl().appendPathComponent("TwoParamsActionsFirstIsCollectionEntityType");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
@@ -197,7 +199,7 @@ public class SampleEntityOperations extends EntityOperations {
                                         .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
 
         request.getUrl().appendPathComponent("TwoParamsActionsFirstIsCollectionComplexType");
-        ListenableFuture<ODataResponse> future = oDataExecute(request);
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 

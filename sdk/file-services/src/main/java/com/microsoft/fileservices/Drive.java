@@ -81,5 +81,28 @@ public class Drive extends ODataBaseEntity {
     public void setquota(DriveQuota value) { 
         this.quota = value; 
     }
+    
+        
+    private java.util.List<Item> files = null;
+    
+    
+     
+    /**
+    * Gets the files.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getfiles() {
+        return this.files; 
+    }
+
+    /**
+    * Sets the files.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setfiles(java.util.List<Item> value) { 
+        this.files = value; 
+    }
 }
 

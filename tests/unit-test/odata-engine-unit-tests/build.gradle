@@ -2,14 +2,21 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
+
+    maven {
+        url 'https://dl.bintray.com/msopentech/Maven/'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.github.tomakehurst:wiremock:1.53'
     compile project(':sample-service')
-    compile project(':odata-engine-core')
-    compile project(':odata-engine-jvm-impl')
+
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-jvm', version: '0.14.0', ext: 'jar')
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.0', ext: 'jar')
+    compile 'com.google.code.gson:gson:2.3'
+
     testCompile 'junit:junit:4.8.+'
     testCompile 'org.hamcrest:hamcrest-all:1.3'
     testCompile('org.jmock:jmock:2.6.0') {

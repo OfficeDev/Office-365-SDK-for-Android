@@ -1,11 +1,8 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import android.util.Log;
-
 import com.microsoft.graph.*;
-import com.microsoft.graph.Calendar;
-import com.microsoft.graph.odata.GraphServiceClient;
+import com.microsoft.graph.orc.GraphServiceClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
@@ -13,7 +10,9 @@ import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.odata.Constants;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class GraphTests extends TestGroup {
 
@@ -1335,7 +1334,7 @@ public class GraphTests extends TestGroup {
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
-//Prepare
+                      //Prepare
                     List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
                     String userPhotoId;
                     if (userPhotos != null && userPhotos.size() > 0) {
@@ -1346,6 +1345,7 @@ public class GraphTests extends TestGroup {
                         //Assert
                         if (userPhoto != null)
                             result.setStatus(TestStatus.Passed);
+
                     } else {
                         result.setException(new Exception("No available UserPhotos"));
                     }
@@ -1479,8 +1479,8 @@ public class GraphTests extends TestGroup {
                             .getFiles().getById(addedFile.getid())
                             .asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
-                    byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
-                    //byte[] content = new byte[0];
+                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
+                    byte[] content = new byte[0];
 
                     //Assert
                     if (addedFile == null)
@@ -1523,13 +1523,13 @@ public class GraphTests extends TestGroup {
 
                     Item addedFile = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
                     //Prepare
-                    //client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
+                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
                     //Act
-                    //client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
+                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
 
                     //Assert
-                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getContent().get();
+                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
                     byte[] content = new byte[0];
                     String strContent = new String(content);
 

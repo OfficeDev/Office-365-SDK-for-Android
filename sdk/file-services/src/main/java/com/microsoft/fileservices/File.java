@@ -41,5 +41,25 @@ public class File extends Item {
     public void setcontentUrl(String value) { 
         this.contentUrl = value; 
     }
+            
+    private ImageFacet image;
+     
+    /**
+    * Gets the image.
+    *
+    * @return the ImageFacet
+    */
+    public ImageFacet getimage() {
+        return this.image; 
+    }
+
+    /**
+    * Sets the image.
+    *
+    * @param value the ImageFacet
+    */
+    public void setimage(ImageFacet value) { 
+        this.image = value; 
+    }
 }
 

@@ -282,8 +282,8 @@ public class Item extends ODataBaseEntity {
         this.lastModifiedByUser = value; 
     }
     
-    
-    private java.util.List<Item> children = new java.util.ArrayList<Item>();
+        
+    private java.util.List<Item> children = null;
     
     
      

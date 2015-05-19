@@ -182,8 +182,8 @@ public class Message extends OutlookItem {
         this.Sender = value; 
     }
     
-    
-    private java.util.List<Recipient> ToRecipients = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> ToRecipients = null;
     
     
      
@@ -205,8 +205,8 @@ public class Message extends OutlookItem {
         this.ToRecipients = value; 
     }
     
-    
-    private java.util.List<Recipient> CcRecipients = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> CcRecipients = null;
     
     
      
@@ -228,8 +228,8 @@ public class Message extends OutlookItem {
         this.CcRecipients = value; 
     }
     
-    
-    private java.util.List<Recipient> BccRecipients = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> BccRecipients = null;
     
     
      
@@ -251,8 +251,8 @@ public class Message extends OutlookItem {
         this.BccRecipients = value; 
     }
     
-    
-    private java.util.List<Recipient> ReplyTo = new java.util.ArrayList<Recipient>();
+        
+    private java.util.List<Recipient> ReplyTo = null;
     
     
      
@@ -454,8 +454,8 @@ public class Message extends OutlookItem {
         this.WebLink = value; 
     }
     
-    
-    private java.util.List<Attachment> Attachments = new java.util.ArrayList<Attachment>();
+        
+    private java.util.List<Attachment> Attachments = null;
     
     
      
