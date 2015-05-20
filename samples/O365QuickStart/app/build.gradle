@@ -21,7 +21,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.microsoft.services:outlook-services:0.13.0'
-    compile 'com.microsoft.services:odata-engine-android-impl:0.13.0@aar'
-    compile 'com.microsoft.aad:adal:1.1.2@aar'
+    compile project(':outlook-services')  // referring to local version, see settings.gradle
+    compile 'com.microsoft.orc:orc-engine-android:0.14.0@aar'
+    compile 'com.microsoft.aad:adal:1.1.3@aar'
 }

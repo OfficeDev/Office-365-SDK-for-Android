@@ -1,1 +1,10 @@
-include ':app'
+include     ':app'
+
+// This is needed to refer to the local copy
+// of outlook-services. If referring to the JCenter
+// distribution this isn't needed.
+include ':outlook-services'
+
+def repo_root = './../..'
+project(':outlook-services').
+    projectDir = file("${repo_root}/sdk/outlook-services")

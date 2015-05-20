@@ -18,10 +18,10 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 
-import com.microsoft.services.odata.impl.ADALDependencyResolver;
-import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.services.android.impl.ADALDependencyResolver;
+import com.microsoft.outlookservices.orc.OutlookClient;
 import com.microsoft.outlookservices.Message;
-import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.services.orc.interfaces.LogLevel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
