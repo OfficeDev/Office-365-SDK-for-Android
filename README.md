@@ -15,24 +15,25 @@ Information about official Microsoft support is available [here][support-placeho
 
 ---
 
-These libraries are generated from API metadata using [Vipr] and [Vipr-T4TemplateWriter] and use a [shared client stack][odata-engine-android-impl].
+These libraries are generated from API metadata using [Vipr] and [Vipr-T4TemplateWriter] and use a shared client stack provided by [orc-for-android].
+
+For information on release cadence and how to access built binaries before release, see [Releases](https://github.com/OfficeDev/Office-365-SDK-for-Android/wiki/Releases).
 
 Current services, service versions, and SDK versions:
 
 |API|Service Version|SDK Version|Artifact Id|
 |---|---------------|-----------|-----------|
-|Mail/Calendar/Contacts|1.0|0.13.0|outlook-services|
-|Files|1.0|0.13.0|file-services|
-|Discovery|1.0|0.13.0|discovery-services|
-|AAD Graph|1.5|0.13.0|directory-services|
-|OneNote|1.0|0.13.0|onenote-services|
-|Unified API|beta|0.1.0|graph-services|
-|SharePoint Lists|1.0|0.13.0|sharepoint-services|
+|Mail/Calendar/Contacts|1.0|0.14.0|outlook-services|
+|Files|1.0|0.14.0|file-services|
+|Discovery|1.0|0.14.0|discovery-services|
+|AAD Graph|1.5|0.14.0|directory-services|
+|OneNote|1.0|0.14.0|onenote-services|
+|Unified API|beta|0.2.0|graph-services|
+|SharePoint Lists|1.0|0.14.0|sharepoint-services|
 
 [Vipr]: https://github.com/microsoft/vipr
 [Vipr-T4TemplateWriter]: https://github.com/msopentech/vipr-t4templatewriter
 [orc-for-android]: https://github.com/msopentech/orc-for-android
-[odata-engine-android-impl]: /sdk/odata-engine-android-impl
 
 ## Quick Start
 
@@ -54,12 +55,12 @@ To use these libraries in your project, follow these general steps, as described
 4. In the `dependencies` closure, add the following dependencies to the `compile` configuration:
 
     ```groovy
-    compile 'com.microsoft.services:outlook-services:0.13.0'
-    compile 'com.microsoft.services:odata-engine-android-impl:0.13.0@aar'
-    compile 'com.microsoft.aad:adal:1.1.2@aar'
+    compile 'com.microsoft.services:outlook-services:0.14.0'
+    compile 'com.microsoft.services:orc-engine-android:0.14.0@aar'
+    compile 'com.microsoft.aad:adal:1.1.3@aar'
     ```
 
-    > **NOTE**: All three dependencies must be explicitly specified, because there are alternate odata-engine implementations (e.g. JVM) and alternate authentication libraries (e.g. MSA) which can be used.
+    > **NOTE**: All three dependencies must be explicitly specified, because there are alternate ORC implementations (e.g. for JVM) and alternate authentication libraries (e.g. MSA) which can be used.
 
     You may want to click the "Sync Project with Gradle Files" button in the toolbar. This will download the dependencies so Android Studio can assist in coding with them.
 
@@ -83,7 +84,7 @@ With your project prepared, the next step is to initialize the dependency manage
     ```xml
     <string name="AADAuthority">https://login.microsoftonline.com/common</string>
     <string name="AADResourceId">https://outlook.office365.com</string>
-	<string name="AADClientId">Paste your Client ID HERE</string>
+	  <string name="AADClientId">Paste your Client ID HERE</string>
     <string name="AADRedirectUrl">Paste your Redirect URI HERE</string>
     ```
 
@@ -108,8 +109,8 @@ With your project prepared, the next step is to initialize the dependency manage
     import com.microsoft.aad.adal.AuthenticationResult;
     import com.microsoft.aad.adal.PromptBehavior;
     import com.microsoft.outlookservices.Message;
-    import com.microsoft.outlookservices.odata.OutlookClient;
-    import com.microsoft.services.odata.impl.ADALDependencyResolver;
+    import com.microsoft.outlookservices.orc.OutlookClient;
+    import com.microsoft.services.android.impl.ADALDependencyResolver;
     import static com.microsoft.aad.adal.AuthenticationResult.AuthenticationStatus;
     ```
 
