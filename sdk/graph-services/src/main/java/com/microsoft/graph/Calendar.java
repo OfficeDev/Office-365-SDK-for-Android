@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Calendar.
 */
@@ -40,6 +43,8 @@ public class Calendar extends ODataBaseEntity {
     */
     public void setId(String value) { 
         this.Id = value; 
+        valueChanged("Id", value);
+
     }
             
     private String Name;
@@ -60,6 +65,8 @@ public class Calendar extends ODataBaseEntity {
     */
     public void setName(String value) { 
         this.Name = value; 
+        valueChanged("Name", value);
+
     }
             
     private String ChangeKey;
@@ -80,6 +87,8 @@ public class Calendar extends ODataBaseEntity {
     */
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
+        valueChanged("ChangeKey", value);
+
     }
     
         
@@ -103,6 +112,8 @@ public class Calendar extends ODataBaseEntity {
     */
     public void setCalendarView(java.util.List<Event> value) { 
         this.CalendarView = value; 
+        valueChanged("CalendarView", value);
+
     }
     
         
@@ -126,6 +137,8 @@ public class Calendar extends ODataBaseEntity {
     */
     public void setEvents(java.util.List<Event> value) { 
         this.Events = value; 
+        valueChanged("Events", value);
+
     }
 }
 

@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Assigned Plan.
 */
@@ -39,7 +42,9 @@ public class AssignedPlan extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setassignedTimestamp(java.util.Calendar value) { 
-        this.assignedTimestamp = value; 
+        this.assignedTimestamp = value;
+        valueChanged("assignedTimestamp", value);
+
     }
 
     private String capabilityStatus;
@@ -59,7 +64,9 @@ public class AssignedPlan extends ODataBaseEntity {
     * @param value the String
     */
     public void setcapabilityStatus(String value) { 
-        this.capabilityStatus = value; 
+        this.capabilityStatus = value;
+        valueChanged("capabilityStatus", value);
+
     }
 
     private String service;
@@ -79,7 +86,9 @@ public class AssignedPlan extends ODataBaseEntity {
     * @param value the String
     */
     public void setservice(String value) { 
-        this.service = value; 
+        this.service = value;
+        valueChanged("service", value);
+
     }
 
     private java.util.UUID servicePlanId;
@@ -99,6 +108,8 @@ public class AssignedPlan extends ODataBaseEntity {
     * @param value the java.util.UUID
     */
     public void setservicePlanId(java.util.UUID value) { 
-        this.servicePlanId = value; 
+        this.servicePlanId = value;
+        valueChanged("servicePlanId", value);
+
     }
 }

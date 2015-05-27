@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Directory Object.
 */
@@ -40,6 +43,8 @@ public class DirectoryObject extends ODataBaseEntity {
     */
     public void setobjectType(String value) { 
         this.objectType = value; 
+        valueChanged("objectType", value);
+
     }
             
     private String objectId;
@@ -60,6 +65,8 @@ public class DirectoryObject extends ODataBaseEntity {
     */
     public void setobjectId(String value) { 
         this.objectId = value; 
+        valueChanged("objectId", value);
+
     }
             
     private java.util.Calendar deletionTimestamp;
@@ -80,6 +87,8 @@ public class DirectoryObject extends ODataBaseEntity {
     */
     public void setdeletionTimestamp(java.util.Calendar value) { 
         this.deletionTimestamp = value; 
+        valueChanged("deletionTimestamp", value);
+
     }
 }
 

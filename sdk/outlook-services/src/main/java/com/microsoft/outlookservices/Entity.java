@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Entity.
 */
@@ -40,6 +43,8 @@ public class Entity extends ODataBaseEntity {
     */
     public void setId(String value) { 
         this.Id = value; 
+        valueChanged("Id", value);
+
     }
 }
 

@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Notebook Links.
 */
@@ -39,7 +42,9 @@ public class NotebookLinks extends ODataBaseEntity {
     * @param value the ExternalLink
     */
     public void setoneNoteClientUrl(ExternalLink value) { 
-        this.oneNoteClientUrl = value; 
+        this.oneNoteClientUrl = value;
+        valueChanged("oneNoteClientUrl", value);
+
     }
 
     private ExternalLink oneNoteWebUrl;
@@ -59,6 +64,8 @@ public class NotebookLinks extends ODataBaseEntity {
     * @param value the ExternalLink
     */
     public void setoneNoteWebUrl(ExternalLink value) { 
-        this.oneNoteWebUrl = value; 
+        this.oneNoteWebUrl = value;
+        valueChanged("oneNoteWebUrl", value);
+
     }
 }

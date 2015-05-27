@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Location.
 */
@@ -39,6 +42,8 @@ public class Location extends ODataBaseEntity {
     * @param value the String
     */
     public void setDisplayName(String value) { 
-        this.DisplayName = value; 
+        this.DisplayName = value;
+        valueChanged("DisplayName", value);
+
     }
 }

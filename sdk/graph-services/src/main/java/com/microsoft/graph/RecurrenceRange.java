@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Recurrence Range.
 */
@@ -39,7 +42,9 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @param value the RecurrenceRangeType
     */
     public void setType(RecurrenceRangeType value) { 
-        this.Type = value; 
+        this.Type = value;
+        valueChanged("Type", value);
+
     }
 
     private java.util.Calendar StartDate;
@@ -59,7 +64,9 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setStartDate(java.util.Calendar value) { 
-        this.StartDate = value; 
+        this.StartDate = value;
+        valueChanged("StartDate", value);
+
     }
 
     private java.util.Calendar EndDate;
@@ -79,7 +86,9 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setEndDate(java.util.Calendar value) { 
-        this.EndDate = value; 
+        this.EndDate = value;
+        valueChanged("EndDate", value);
+
     }
 
     private Integer NumberOfOccurrences;
@@ -99,6 +108,8 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setNumberOfOccurrences(Integer value) { 
-        this.NumberOfOccurrences = value; 
+        this.NumberOfOccurrences = value;
+        valueChanged("NumberOfOccurrences", value);
+
     }
 }

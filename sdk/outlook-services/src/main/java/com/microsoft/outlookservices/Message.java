@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Message.
 */
@@ -40,6 +42,8 @@ public class Message extends Item {
     */
     public void setSubject(String value) { 
         this.Subject = value; 
+        valueChanged("Subject", value);
+
     }
             
     private ItemBody Body;
@@ -60,6 +64,8 @@ public class Message extends Item {
     */
     public void setBody(ItemBody value) { 
         this.Body = value; 
+        valueChanged("Body", value);
+
     }
             
     private String BodyPreview;
@@ -80,6 +86,8 @@ public class Message extends Item {
     */
     public void setBodyPreview(String value) { 
         this.BodyPreview = value; 
+        valueChanged("BodyPreview", value);
+
     }
             
     private Importance Importance;
@@ -100,6 +108,8 @@ public class Message extends Item {
     */
     public void setImportance(Importance value) { 
         this.Importance = value; 
+        valueChanged("Importance", value);
+
     }
             
     private Boolean HasAttachments;
@@ -120,6 +130,8 @@ public class Message extends Item {
     */
     public void setHasAttachments(Boolean value) { 
         this.HasAttachments = value; 
+        valueChanged("HasAttachments", value);
+
     }
             
     private String ParentFolderId;
@@ -140,6 +152,8 @@ public class Message extends Item {
     */
     public void setParentFolderId(String value) { 
         this.ParentFolderId = value; 
+        valueChanged("ParentFolderId", value);
+
     }
             
     private Recipient From;
@@ -160,6 +174,8 @@ public class Message extends Item {
     */
     public void setFrom(Recipient value) { 
         this.From = value; 
+        valueChanged("From", value);
+
     }
             
     private Recipient Sender;
@@ -180,6 +196,8 @@ public class Message extends Item {
     */
     public void setSender(Recipient value) { 
         this.Sender = value; 
+        valueChanged("Sender", value);
+
     }
     
         
@@ -203,6 +221,8 @@ public class Message extends Item {
     */
     public void setToRecipients(java.util.List<Recipient> value) { 
         this.ToRecipients = value; 
+        valueChanged("ToRecipients", value);
+
     }
     
         
@@ -226,6 +246,8 @@ public class Message extends Item {
     */
     public void setCcRecipients(java.util.List<Recipient> value) { 
         this.CcRecipients = value; 
+        valueChanged("CcRecipients", value);
+
     }
     
         
@@ -249,6 +271,8 @@ public class Message extends Item {
     */
     public void setBccRecipients(java.util.List<Recipient> value) { 
         this.BccRecipients = value; 
+        valueChanged("BccRecipients", value);
+
     }
     
         
@@ -272,6 +296,8 @@ public class Message extends Item {
     */
     public void setReplyTo(java.util.List<Recipient> value) { 
         this.ReplyTo = value; 
+        valueChanged("ReplyTo", value);
+
     }
             
     private String ConversationId;
@@ -292,6 +318,8 @@ public class Message extends Item {
     */
     public void setConversationId(String value) { 
         this.ConversationId = value; 
+        valueChanged("ConversationId", value);
+
     }
             
     private ItemBody UniqueBody;
@@ -312,6 +340,8 @@ public class Message extends Item {
     */
     public void setUniqueBody(ItemBody value) { 
         this.UniqueBody = value; 
+        valueChanged("UniqueBody", value);
+
     }
             
     private java.util.Calendar DateTimeReceived;
@@ -332,6 +362,8 @@ public class Message extends Item {
     */
     public void setDateTimeReceived(java.util.Calendar value) { 
         this.DateTimeReceived = value; 
+        valueChanged("DateTimeReceived", value);
+
     }
             
     private java.util.Calendar DateTimeSent;
@@ -352,6 +384,8 @@ public class Message extends Item {
     */
     public void setDateTimeSent(java.util.Calendar value) { 
         this.DateTimeSent = value; 
+        valueChanged("DateTimeSent", value);
+
     }
             
     private Boolean IsDeliveryReceiptRequested;
@@ -372,6 +406,8 @@ public class Message extends Item {
     */
     public void setIsDeliveryReceiptRequested(Boolean value) { 
         this.IsDeliveryReceiptRequested = value; 
+        valueChanged("IsDeliveryReceiptRequested", value);
+
     }
             
     private Boolean IsReadReceiptRequested;
@@ -392,6 +428,8 @@ public class Message extends Item {
     */
     public void setIsReadReceiptRequested(Boolean value) { 
         this.IsReadReceiptRequested = value; 
+        valueChanged("IsReadReceiptRequested", value);
+
     }
             
     private Boolean IsDraft;
@@ -412,6 +450,8 @@ public class Message extends Item {
     */
     public void setIsDraft(Boolean value) { 
         this.IsDraft = value; 
+        valueChanged("IsDraft", value);
+
     }
             
     private Boolean IsRead;
@@ -432,6 +472,8 @@ public class Message extends Item {
     */
     public void setIsRead(Boolean value) { 
         this.IsRead = value; 
+        valueChanged("IsRead", value);
+
     }
             
     private String WebLink;
@@ -452,6 +494,8 @@ public class Message extends Item {
     */
     public void setWebLink(String value) { 
         this.WebLink = value; 
+        valueChanged("WebLink", value);
+
     }
     
         
@@ -475,6 +519,8 @@ public class Message extends Item {
     */
     public void setAttachments(java.util.List<Attachment> value) { 
         this.Attachments = value; 
+        valueChanged("Attachments", value);
+
     }
 }
 

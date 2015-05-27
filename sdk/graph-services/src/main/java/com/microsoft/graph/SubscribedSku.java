@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Subscribed Sku.
 */
@@ -40,6 +43,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setcapabilityStatus(String value) { 
         this.capabilityStatus = value; 
+        valueChanged("capabilityStatus", value);
+
     }
             
     private Integer consumedUnits;
@@ -60,6 +65,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setconsumedUnits(Integer value) { 
         this.consumedUnits = value; 
+        valueChanged("consumedUnits", value);
+
     }
             
     private String objectId;
@@ -80,6 +87,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setobjectId(String value) { 
         this.objectId = value; 
+        valueChanged("objectId", value);
+
     }
             
     private LicenseUnitsDetail prepaidUnits;
@@ -100,6 +109,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setprepaidUnits(LicenseUnitsDetail value) { 
         this.prepaidUnits = value; 
+        valueChanged("prepaidUnits", value);
+
     }
     
         
@@ -123,6 +134,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setservicePlans(java.util.List<ServicePlanInfo> value) { 
         this.servicePlans = value; 
+        valueChanged("servicePlans", value);
+
     }
             
     private java.util.UUID skuId;
@@ -143,6 +156,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setskuId(java.util.UUID value) { 
         this.skuId = value; 
+        valueChanged("skuId", value);
+
     }
             
     private String skuPartNumber;
@@ -163,6 +178,8 @@ public class SubscribedSku extends ODataBaseEntity {
     */
     public void setskuPartNumber(String value) { 
         this.skuPartNumber = value; 
+        valueChanged("skuPartNumber", value);
+
     }
 }
 

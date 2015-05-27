@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type File Attachment.
 */
@@ -40,6 +42,8 @@ public class FileAttachment extends Attachment {
     */
     public void setContentId(String value) { 
         this.ContentId = value; 
+        valueChanged("ContentId", value);
+
     }
             
     private String ContentLocation;
@@ -60,6 +64,8 @@ public class FileAttachment extends Attachment {
     */
     public void setContentLocation(String value) { 
         this.ContentLocation = value; 
+        valueChanged("ContentLocation", value);
+
     }
             
     private Boolean IsContactPhoto;
@@ -80,6 +86,8 @@ public class FileAttachment extends Attachment {
     */
     public void setIsContactPhoto(Boolean value) { 
         this.IsContactPhoto = value; 
+        valueChanged("IsContactPhoto", value);
+
     }
             
     private byte[] ContentBytes;
@@ -100,6 +108,8 @@ public class FileAttachment extends Attachment {
     */
     public void setContentBytes(byte[] value) { 
         this.ContentBytes = value; 
+        valueChanged("ContentBytes", value);
+
     }
 }
 

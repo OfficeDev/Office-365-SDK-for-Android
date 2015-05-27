@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Password Profile.
 */
@@ -39,7 +42,9 @@ public class PasswordProfile extends ODataBaseEntity {
     * @param value the String
     */
     public void setpassword(String value) { 
-        this.password = value; 
+        this.password = value;
+        valueChanged("password", value);
+
     }
 
     private Boolean forceChangePasswordNextLogin;
@@ -59,6 +64,8 @@ public class PasswordProfile extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setforceChangePasswordNextLogin(Boolean value) { 
-        this.forceChangePasswordNextLogin = value; 
+        this.forceChangePasswordNextLogin = value;
+        valueChanged("forceChangePasswordNextLogin", value);
+
     }
 }

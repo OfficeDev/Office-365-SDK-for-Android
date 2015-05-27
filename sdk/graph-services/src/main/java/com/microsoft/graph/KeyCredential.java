@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Key Credential.
 */
@@ -39,7 +42,9 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the byte[]
     */
     public void setcustomKeyIdentifier(byte[] value) { 
-        this.customKeyIdentifier = value; 
+        this.customKeyIdentifier = value;
+        valueChanged("customKeyIdentifier", value);
+
     }
 
     private java.util.Calendar endDate;
@@ -59,7 +64,9 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setendDate(java.util.Calendar value) { 
-        this.endDate = value; 
+        this.endDate = value;
+        valueChanged("endDate", value);
+
     }
 
     private java.util.UUID keyId;
@@ -79,7 +86,9 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the java.util.UUID
     */
     public void setkeyId(java.util.UUID value) { 
-        this.keyId = value; 
+        this.keyId = value;
+        valueChanged("keyId", value);
+
     }
 
     private java.util.Calendar startDate;
@@ -99,7 +108,9 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setstartDate(java.util.Calendar value) { 
-        this.startDate = value; 
+        this.startDate = value;
+        valueChanged("startDate", value);
+
     }
 
     private String type;
@@ -119,7 +130,9 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the String
     */
     public void settype(String value) { 
-        this.type = value; 
+        this.type = value;
+        valueChanged("type", value);
+
     }
 
     private String usage;
@@ -139,7 +152,9 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the String
     */
     public void setusage(String value) { 
-        this.usage = value; 
+        this.usage = value;
+        valueChanged("usage", value);
+
     }
 
     private byte[] value;
@@ -159,6 +174,8 @@ public class KeyCredential extends ODataBaseEntity {
     * @param value the byte[]
     */
     public void setvalue(byte[] value) { 
-        this.value = value; 
+        this.value = value;
+        valueChanged("value", value);
+
     }
 }

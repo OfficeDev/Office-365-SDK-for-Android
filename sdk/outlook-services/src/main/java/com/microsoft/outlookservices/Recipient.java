@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Recipient.
 */
@@ -39,6 +42,8 @@ public class Recipient extends ODataBaseEntity {
     * @param value the EmailAddress
     */
     public void setEmailAddress(EmailAddress value) { 
-        this.EmailAddress = value; 
+        this.EmailAddress = value;
+        valueChanged("EmailAddress", value);
+
     }
 }

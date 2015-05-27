@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Site Metadata.
 */
@@ -39,7 +42,9 @@ public class SiteMetadata extends ODataBaseEntity {
     * @param value the String
     */
     public void setsiteCollectionId(String value) { 
-        this.siteCollectionId = value; 
+        this.siteCollectionId = value;
+        valueChanged("siteCollectionId", value);
+
     }
 
     private String siteId;
@@ -59,6 +64,8 @@ public class SiteMetadata extends ODataBaseEntity {
     * @param value the String
     */
     public void setsiteId(String value) { 
-        this.siteId = value; 
+        this.siteId = value;
+        valueChanged("siteId", value);
+
     }
 }

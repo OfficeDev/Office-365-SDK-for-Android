@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Service Plan Info.
 */
@@ -39,7 +42,9 @@ public class ServicePlanInfo extends ODataBaseEntity {
     * @param value the java.util.UUID
     */
     public void setservicePlanId(java.util.UUID value) { 
-        this.servicePlanId = value; 
+        this.servicePlanId = value;
+        valueChanged("servicePlanId", value);
+
     }
 
     private String servicePlanName;
@@ -59,6 +64,8 @@ public class ServicePlanInfo extends ODataBaseEntity {
     * @param value the String
     */
     public void setservicePlanName(String value) { 
-        this.servicePlanName = value; 
+        this.servicePlanName = value;
+        valueChanged("servicePlanName", value);
+
     }
 }

@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.fileservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Identity Set.
 */
@@ -39,7 +42,9 @@ public class IdentitySet extends ODataBaseEntity {
     * @param value the Identity
     */
     public void setapplication(Identity value) { 
-        this.application = value; 
+        this.application = value;
+        valueChanged("application", value);
+
     }
 
     private Identity user;
@@ -59,6 +64,8 @@ public class IdentitySet extends ODataBaseEntity {
     * @param value the Identity
     */
     public void setuser(Identity value) { 
-        this.user = value; 
+        this.user = value;
+        valueChanged("user", value);
+
     }
 }

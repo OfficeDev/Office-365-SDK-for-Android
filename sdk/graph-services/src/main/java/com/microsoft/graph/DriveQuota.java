@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Drive Quota.
 */
@@ -39,7 +42,9 @@ public class DriveQuota extends ODataBaseEntity {
     * @param value the Long
     */
     public void setdeleted(Long value) { 
-        this.deleted = value; 
+        this.deleted = value;
+        valueChanged("deleted", value);
+
     }
 
     private Long remaining;
@@ -59,7 +64,9 @@ public class DriveQuota extends ODataBaseEntity {
     * @param value the Long
     */
     public void setremaining(Long value) { 
-        this.remaining = value; 
+        this.remaining = value;
+        valueChanged("remaining", value);
+
     }
 
     private String state;
@@ -79,7 +86,9 @@ public class DriveQuota extends ODataBaseEntity {
     * @param value the String
     */
     public void setstate(String value) { 
-        this.state = value; 
+        this.state = value;
+        valueChanged("state", value);
+
     }
 
     private Long total;
@@ -99,6 +108,8 @@ public class DriveQuota extends ODataBaseEntity {
     * @param value the Long
     */
     public void settotal(Long value) { 
-        this.total = value; 
+        this.total = value;
+        valueChanged("total", value);
+
     }
 }

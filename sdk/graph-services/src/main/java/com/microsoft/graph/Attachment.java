@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Attachment.
 */
@@ -40,6 +43,8 @@ public class Attachment extends ODataBaseEntity {
     */
     public void setId(String value) { 
         this.Id = value; 
+        valueChanged("Id", value);
+
     }
             
     private String Name;
@@ -60,6 +65,8 @@ public class Attachment extends ODataBaseEntity {
     */
     public void setName(String value) { 
         this.Name = value; 
+        valueChanged("Name", value);
+
     }
             
     private String ContentType;
@@ -80,6 +87,8 @@ public class Attachment extends ODataBaseEntity {
     */
     public void setContentType(String value) { 
         this.ContentType = value; 
+        valueChanged("ContentType", value);
+
     }
             
     private Integer Size;
@@ -100,6 +109,8 @@ public class Attachment extends ODataBaseEntity {
     */
     public void setSize(Integer value) { 
         this.Size = value; 
+        valueChanged("Size", value);
+
     }
             
     private Boolean IsInline;
@@ -120,6 +131,8 @@ public class Attachment extends ODataBaseEntity {
     */
     public void setIsInline(Boolean value) { 
         this.IsInline = value; 
+        valueChanged("IsInline", value);
+
     }
             
     private java.util.Calendar DateTimeLastModified;
@@ -140,6 +153,8 @@ public class Attachment extends ODataBaseEntity {
     */
     public void setDateTimeLastModified(java.util.Calendar value) { 
         this.DateTimeLastModified = value; 
+        valueChanged("DateTimeLastModified", value);
+
     }
 }
 

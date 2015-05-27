@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Attendee.
 */
@@ -39,7 +41,9 @@ public class Attendee extends Recipient {
     * @param value the ResponseStatus
     */
     public void setStatus(ResponseStatus value) { 
-        this.Status = value; 
+        this.Status = value;
+        valueChanged("Status", value);
+
     }
 
     private AttendeeType Type;
@@ -59,6 +63,8 @@ public class Attendee extends Recipient {
     * @param value the AttendeeType
     */
     public void setType(AttendeeType value) { 
-        this.Type = value; 
+        this.Type = value;
+        valueChanged("Type", value);
+
     }
 }

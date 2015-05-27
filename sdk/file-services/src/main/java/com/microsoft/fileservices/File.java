@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.fileservices;
 
+
+
 /**
  * The type File.
 */
@@ -40,6 +42,8 @@ public class File extends Item {
     */
     public void setcontentUrl(String value) { 
         this.contentUrl = value; 
+        valueChanged("contentUrl", value);
+
     }
             
     private ImageFacet image;
@@ -60,6 +64,8 @@ public class File extends Item {
     */
     public void setimage(ImageFacet value) { 
         this.image = value; 
+        valueChanged("image", value);
+
     }
 }
 

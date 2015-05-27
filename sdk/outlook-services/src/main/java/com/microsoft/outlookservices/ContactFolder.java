@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Contact Folder.
 */
@@ -40,6 +42,8 @@ public class ContactFolder extends Entity {
     */
     public void setParentFolderId(String value) { 
         this.ParentFolderId = value; 
+        valueChanged("ParentFolderId", value);
+
     }
             
     private String DisplayName;
@@ -60,6 +64,8 @@ public class ContactFolder extends Entity {
     */
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
+        valueChanged("DisplayName", value);
+
     }
     
         
@@ -83,6 +89,8 @@ public class ContactFolder extends Entity {
     */
     public void setContacts(java.util.List<Contact> value) { 
         this.Contacts = value; 
+        valueChanged("Contacts", value);
+
     }
     
         
@@ -106,6 +114,8 @@ public class ContactFolder extends Entity {
     */
     public void setChildFolders(java.util.List<ContactFolder> value) { 
         this.ChildFolders = value; 
+        valueChanged("ChildFolders", value);
+
     }
 }
 

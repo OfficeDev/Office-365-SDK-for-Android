@@ -18,12 +18,12 @@ import com.microsoft.services.orc.*;
 import com.microsoft.services.orc.interfaces.DependencyResolver;
 
 /**
- * The type EntityContainerClient.
+ * The type OutlookClient.
  */
 public class OutlookClient extends BaseOrcContainer {
 
      /**
-     * Instantiates a new EntityContainerClient.
+     * Instantiates a new OutlookClient.
      *
      * @param url the url
      * @param resolver the resolver

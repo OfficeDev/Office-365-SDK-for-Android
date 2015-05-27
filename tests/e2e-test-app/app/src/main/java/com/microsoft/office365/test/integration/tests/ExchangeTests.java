@@ -67,6 +67,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canCreateReplyMessage("Can create reply", true));
         this.addTest(canCreateReplyAllMessage("Can create reply all", true));
         this.addTest(canCreateForwardMessage("Can create forward", true));
+        this.addTest(canUpdateSendingOnlyUpdatedValues("Can update sending only updated values", true));
 
         //Calendar groups
         this.addTest(canCreateCalendarGroup("Can create calendar group", true));
@@ -107,6 +108,39 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canOrderByContacts("Can use orderby in contacts", true));
         this.addTest(canSkipContacts("Can use skip in contacts", true));
     }
+
+    private TestCase canUpdateSendingOnlyUpdatedValues(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    Message message = client.getMe().getFolders().getById("Inbox").getMessages()
+                                            .top(1).read().get().get(0);
+                    message.setIsRead(false);
+                    message.setIsRead(true);
+
+                    Message updatedMessage = client.getMe().getMessage(message.getId()).update(message).get();
+
+                    if (updatedMessage == null || !updatedMessage.getIsRead()){
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;    }
 
 
     //Messages

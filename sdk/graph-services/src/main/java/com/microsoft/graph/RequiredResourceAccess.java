@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Required Resource Access.
 */
@@ -39,7 +42,9 @@ public class RequiredResourceAccess extends ODataBaseEntity {
     * @param value the String
     */
     public void setresourceAppId(String value) { 
-        this.resourceAppId = value; 
+        this.resourceAppId = value;
+        valueChanged("resourceAppId", value);
+
     }
 
     private java.util.List<ResourceAccess> resourceAccess;
@@ -59,6 +64,8 @@ public class RequiredResourceAccess extends ODataBaseEntity {
     * @param value the java.util.List<ResourceAccess>
     */
     public void setresourceAccess(java.util.List<ResourceAccess> value) { 
-        this.resourceAccess = value; 
+        this.resourceAccess = value;
+        valueChanged("resourceAccess", value);
+
     }
 }

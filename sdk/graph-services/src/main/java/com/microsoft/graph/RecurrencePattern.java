@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Recurrence Pattern.
 */
@@ -39,7 +42,9 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the RecurrencePatternType
     */
     public void setType(RecurrencePatternType value) { 
-        this.Type = value; 
+        this.Type = value;
+        valueChanged("Type", value);
+
     }
 
     private Integer Interval;
@@ -59,7 +64,9 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setInterval(Integer value) { 
-        this.Interval = value; 
+        this.Interval = value;
+        valueChanged("Interval", value);
+
     }
 
     private Integer Month;
@@ -79,7 +86,9 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setMonth(Integer value) { 
-        this.Month = value; 
+        this.Month = value;
+        valueChanged("Month", value);
+
     }
 
     private Integer DayOfMonth;
@@ -99,7 +108,9 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setDayOfMonth(Integer value) { 
-        this.DayOfMonth = value; 
+        this.DayOfMonth = value;
+        valueChanged("DayOfMonth", value);
+
     }
 
     private java.util.List<DayOfWeek> DaysOfWeek;
@@ -119,7 +130,9 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the java.util.List<DayOfWeek>
     */
     public void setDaysOfWeek(java.util.List<DayOfWeek> value) { 
-        this.DaysOfWeek = value; 
+        this.DaysOfWeek = value;
+        valueChanged("DaysOfWeek", value);
+
     }
 
     private DayOfWeek FirstDayOfWeek;
@@ -139,7 +152,9 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the DayOfWeek
     */
     public void setFirstDayOfWeek(DayOfWeek value) { 
-        this.FirstDayOfWeek = value; 
+        this.FirstDayOfWeek = value;
+        valueChanged("FirstDayOfWeek", value);
+
     }
 
     private WeekIndex Index;
@@ -159,6 +174,8 @@ public class RecurrencePattern extends ODataBaseEntity {
     * @param value the WeekIndex
     */
     public void setIndex(WeekIndex value) { 
-        this.Index = value; 
+        this.Index = value;
+        valueChanged("Index", value);
+
     }
 }

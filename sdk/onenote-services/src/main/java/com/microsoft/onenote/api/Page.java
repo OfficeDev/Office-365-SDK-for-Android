@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Page.
 */
@@ -40,6 +43,8 @@ public class Page extends ODataBaseEntity {
     */
     public void settitle(String value) { 
         this.title = value; 
+        valueChanged("title", value);
+
     }
             
     private String createdByAppId;
@@ -60,6 +65,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setcreatedByAppId(String value) { 
         this.createdByAppId = value; 
+        valueChanged("createdByAppId", value);
+
     }
             
     private PageLinks links;
@@ -80,6 +87,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setlinks(PageLinks value) { 
         this.links = value; 
+        valueChanged("links", value);
+
     }
             
     private String contentUrl;
@@ -100,6 +109,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setcontentUrl(String value) { 
         this.contentUrl = value; 
+        valueChanged("contentUrl", value);
+
     }
             
     private byte[] content;
@@ -120,6 +131,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setcontent(byte[] value) { 
         this.content = value; 
+        valueChanged("content", value);
+
     }
             
     private java.util.Calendar lastModifiedTime;
@@ -140,6 +153,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setlastModifiedTime(java.util.Calendar value) { 
         this.lastModifiedTime = value; 
+        valueChanged("lastModifiedTime", value);
+
     }
             
     private String id;
@@ -160,6 +175,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
             
     private String self;
@@ -180,6 +197,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setself(String value) { 
         this.self = value; 
+        valueChanged("self", value);
+
     }
             
     private java.util.Calendar createdTime;
@@ -200,6 +219,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setcreatedTime(java.util.Calendar value) { 
         this.createdTime = value; 
+        valueChanged("createdTime", value);
+
     }
             
     private Section parentSection;
@@ -220,6 +241,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setparentSection(Section value) { 
         this.parentSection = value; 
+        valueChanged("parentSection", value);
+
     }
             
     private Notebook parentNotebook;
@@ -240,6 +263,8 @@ public class Page extends ODataBaseEntity {
     */
     public void setparentNotebook(Notebook value) { 
         this.parentNotebook = value; 
+        valueChanged("parentNotebook", value);
+
     }
 }
 

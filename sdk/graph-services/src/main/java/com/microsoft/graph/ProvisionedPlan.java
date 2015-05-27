@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Provisioned Plan.
 */
@@ -39,7 +42,9 @@ public class ProvisionedPlan extends ODataBaseEntity {
     * @param value the String
     */
     public void setcapabilityStatus(String value) { 
-        this.capabilityStatus = value; 
+        this.capabilityStatus = value;
+        valueChanged("capabilityStatus", value);
+
     }
 
     private String provisioningStatus;
@@ -59,7 +64,9 @@ public class ProvisionedPlan extends ODataBaseEntity {
     * @param value the String
     */
     public void setprovisioningStatus(String value) { 
-        this.provisioningStatus = value; 
+        this.provisioningStatus = value;
+        valueChanged("provisioningStatus", value);
+
     }
 
     private String service;
@@ -79,6 +86,8 @@ public class ProvisionedPlan extends ODataBaseEntity {
     * @param value the String
     */
     public void setservice(String value) { 
-        this.service = value; 
+        this.service = value;
+        valueChanged("service", value);
+
     }
 }

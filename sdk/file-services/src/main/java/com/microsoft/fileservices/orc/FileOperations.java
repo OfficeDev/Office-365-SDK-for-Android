@@ -163,8 +163,10 @@ public class FileOperations extends ItemOperations {
                  request.getUrl().appendPathComponent("Microsoft.FileServices.content(" + parameters + ")");   
                 request.getUrl().appendPathComponent("content(" + parameters + ")");   
         ListenableFuture<OrcResponse> future = oDataExecute(request);   
-
+        
         return transformToByteArrayListenableFuture(future);
+
+        
    }
     
 }

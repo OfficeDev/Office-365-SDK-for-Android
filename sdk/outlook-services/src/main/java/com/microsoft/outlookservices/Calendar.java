@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Calendar.
 */
@@ -40,6 +42,8 @@ public class Calendar extends Entity {
     */
     public void setName(String value) { 
         this.Name = value; 
+        valueChanged("Name", value);
+
     }
             
     private String ChangeKey;
@@ -60,6 +64,8 @@ public class Calendar extends Entity {
     */
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
+        valueChanged("ChangeKey", value);
+
     }
             
     private CalendarColor Color;
@@ -80,6 +86,8 @@ public class Calendar extends Entity {
     */
     public void setColor(CalendarColor value) { 
         this.Color = value; 
+        valueChanged("Color", value);
+
     }
     
         
@@ -103,6 +111,8 @@ public class Calendar extends Entity {
     */
     public void setCalendarView(java.util.List<Event> value) { 
         this.CalendarView = value; 
+        valueChanged("CalendarView", value);
+
     }
     
         
@@ -126,6 +136,8 @@ public class Calendar extends Entity {
     */
     public void setEvents(java.util.List<Event> value) { 
         this.Events = value; 
+        valueChanged("Events", value);
+
     }
 }
 

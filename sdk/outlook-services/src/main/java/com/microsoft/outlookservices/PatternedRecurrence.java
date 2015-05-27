@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Patterned Recurrence.
 */
@@ -39,7 +42,9 @@ public class PatternedRecurrence extends ODataBaseEntity {
     * @param value the RecurrencePattern
     */
     public void setPattern(RecurrencePattern value) { 
-        this.Pattern = value; 
+        this.Pattern = value;
+        valueChanged("Pattern", value);
+
     }
 
     private RecurrenceRange Range;
@@ -59,6 +64,8 @@ public class PatternedRecurrence extends ODataBaseEntity {
     * @param value the RecurrenceRange
     */
     public void setRange(RecurrenceRange value) { 
-        this.Range = value; 
+        this.Range = value;
+        valueChanged("Range", value);
+
     }
 }

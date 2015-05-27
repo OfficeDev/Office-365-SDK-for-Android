@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Event Message.
 */
@@ -40,6 +42,8 @@ public class EventMessage extends Message {
     */
     public void setMeetingMessageType(MeetingMessageType value) { 
         this.MeetingMessageType = value; 
+        valueChanged("MeetingMessageType", value);
+
     }
             
     private Event Event;
@@ -60,6 +64,8 @@ public class EventMessage extends Message {
     */
     public void setEvent(Event value) { 
         this.Event = value; 
+        valueChanged("Event", value);
+
     }
 }
 

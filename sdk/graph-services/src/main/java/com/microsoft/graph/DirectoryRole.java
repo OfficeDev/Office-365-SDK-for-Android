@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Directory Role.
 */
@@ -40,6 +42,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setdescription(String value) { 
         this.description = value; 
+        valueChanged("description", value);
+
     }
             
     private String displayName;
@@ -60,6 +64,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
             
     private Boolean isSystem;
@@ -80,6 +86,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setisSystem(Boolean value) { 
         this.isSystem = value; 
+        valueChanged("isSystem", value);
+
     }
             
     private Boolean roleDisabled;
@@ -100,6 +108,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setroleDisabled(Boolean value) { 
         this.roleDisabled = value; 
+        valueChanged("roleDisabled", value);
+
     }
             
     private String roleTemplateId;
@@ -120,6 +130,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setroleTemplateId(String value) { 
         this.roleTemplateId = value; 
+        valueChanged("roleTemplateId", value);
+
     }
     
         
@@ -143,6 +155,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setmembers(java.util.List<DirectoryObject> value) { 
         this.members = value; 
+        valueChanged("members", value);
+
     }
     
         
@@ -166,6 +180,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setmemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
+        valueChanged("memberOf", value);
+
     }
     
         
@@ -189,6 +205,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setowners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
+        valueChanged("owners", value);
+
     }
     
         
@@ -212,6 +230,8 @@ public class DirectoryRole extends DirectoryObject {
     */
     public void setownedObjects(java.util.List<DirectoryObject> value) { 
         this.ownedObjects = value; 
+        valueChanged("ownedObjects", value);
+
     }
 }
 

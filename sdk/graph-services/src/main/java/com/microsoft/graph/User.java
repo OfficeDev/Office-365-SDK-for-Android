@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type User.
 */
@@ -40,6 +42,8 @@ public class User extends DirectoryObject {
     */
     public void setaccountEnabled(Boolean value) { 
         this.accountEnabled = value; 
+        valueChanged("accountEnabled", value);
+
     }
     
         
@@ -63,6 +67,8 @@ public class User extends DirectoryObject {
     */
     public void setassignedLicenses(java.util.List<AssignedLicense> value) { 
         this.assignedLicenses = value; 
+        valueChanged("assignedLicenses", value);
+
     }
     
         
@@ -86,6 +92,8 @@ public class User extends DirectoryObject {
     */
     public void setassignedPlans(java.util.List<AssignedPlan> value) { 
         this.assignedPlans = value; 
+        valueChanged("assignedPlans", value);
+
     }
             
     private String city;
@@ -106,6 +114,8 @@ public class User extends DirectoryObject {
     */
     public void setcity(String value) { 
         this.city = value; 
+        valueChanged("city", value);
+
     }
             
     private String country;
@@ -126,6 +136,8 @@ public class User extends DirectoryObject {
     */
     public void setcountry(String value) { 
         this.country = value; 
+        valueChanged("country", value);
+
     }
             
     private String department;
@@ -146,6 +158,8 @@ public class User extends DirectoryObject {
     */
     public void setdepartment(String value) { 
         this.department = value; 
+        valueChanged("department", value);
+
     }
             
     private Boolean dirSyncEnabled;
@@ -166,6 +180,8 @@ public class User extends DirectoryObject {
     */
     public void setdirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
+        valueChanged("dirSyncEnabled", value);
+
     }
             
     private String displayName;
@@ -186,6 +202,8 @@ public class User extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
             
     private String facsimileTelephoneNumber;
@@ -206,6 +224,8 @@ public class User extends DirectoryObject {
     */
     public void setfacsimileTelephoneNumber(String value) { 
         this.facsimileTelephoneNumber = value; 
+        valueChanged("facsimileTelephoneNumber", value);
+
     }
             
     private String givenName;
@@ -226,6 +246,8 @@ public class User extends DirectoryObject {
     */
     public void setgivenName(String value) { 
         this.givenName = value; 
+        valueChanged("givenName", value);
+
     }
             
     private String immutableId;
@@ -246,6 +268,8 @@ public class User extends DirectoryObject {
     */
     public void setimmutableId(String value) { 
         this.immutableId = value; 
+        valueChanged("immutableId", value);
+
     }
             
     private String jobTitle;
@@ -266,6 +290,8 @@ public class User extends DirectoryObject {
     */
     public void setjobTitle(String value) { 
         this.jobTitle = value; 
+        valueChanged("jobTitle", value);
+
     }
             
     private java.util.Calendar lastDirSyncTime;
@@ -286,6 +312,8 @@ public class User extends DirectoryObject {
     */
     public void setlastDirSyncTime(java.util.Calendar value) { 
         this.lastDirSyncTime = value; 
+        valueChanged("lastDirSyncTime", value);
+
     }
             
     private String mail;
@@ -306,6 +334,8 @@ public class User extends DirectoryObject {
     */
     public void setmail(String value) { 
         this.mail = value; 
+        valueChanged("mail", value);
+
     }
             
     private String mailNickname;
@@ -326,6 +356,8 @@ public class User extends DirectoryObject {
     */
     public void setmailNickname(String value) { 
         this.mailNickname = value; 
+        valueChanged("mailNickname", value);
+
     }
             
     private String mobile;
@@ -346,6 +378,8 @@ public class User extends DirectoryObject {
     */
     public void setmobile(String value) { 
         this.mobile = value; 
+        valueChanged("mobile", value);
+
     }
             
     private String onPremisesSecurityIdentifier;
@@ -366,6 +400,8 @@ public class User extends DirectoryObject {
     */
     public void setonPremisesSecurityIdentifier(String value) { 
         this.onPremisesSecurityIdentifier = value; 
+        valueChanged("onPremisesSecurityIdentifier", value);
+
     }
     
         
@@ -389,6 +425,8 @@ public class User extends DirectoryObject {
     */
     public void setotherMails(java.util.List<String> value) { 
         this.otherMails = value; 
+        valueChanged("otherMails", value);
+
     }
             
     private String passwordPolicies;
@@ -409,6 +447,8 @@ public class User extends DirectoryObject {
     */
     public void setpasswordPolicies(String value) { 
         this.passwordPolicies = value; 
+        valueChanged("passwordPolicies", value);
+
     }
             
     private PasswordProfile passwordProfile;
@@ -429,6 +469,8 @@ public class User extends DirectoryObject {
     */
     public void setpasswordProfile(PasswordProfile value) { 
         this.passwordProfile = value; 
+        valueChanged("passwordProfile", value);
+
     }
             
     private String physicalDeliveryOfficeName;
@@ -449,6 +491,8 @@ public class User extends DirectoryObject {
     */
     public void setphysicalDeliveryOfficeName(String value) { 
         this.physicalDeliveryOfficeName = value; 
+        valueChanged("physicalDeliveryOfficeName", value);
+
     }
             
     private String postalCode;
@@ -469,6 +513,8 @@ public class User extends DirectoryObject {
     */
     public void setpostalCode(String value) { 
         this.postalCode = value; 
+        valueChanged("postalCode", value);
+
     }
             
     private String preferredLanguage;
@@ -489,6 +535,8 @@ public class User extends DirectoryObject {
     */
     public void setpreferredLanguage(String value) { 
         this.preferredLanguage = value; 
+        valueChanged("preferredLanguage", value);
+
     }
     
         
@@ -512,6 +560,8 @@ public class User extends DirectoryObject {
     */
     public void setprovisionedPlans(java.util.List<ProvisionedPlan> value) { 
         this.provisionedPlans = value; 
+        valueChanged("provisionedPlans", value);
+
     }
     
         
@@ -535,6 +585,8 @@ public class User extends DirectoryObject {
     */
     public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
+        valueChanged("provisioningErrors", value);
+
     }
     
         
@@ -558,6 +610,8 @@ public class User extends DirectoryObject {
     */
     public void setproxyAddresses(java.util.List<String> value) { 
         this.proxyAddresses = value; 
+        valueChanged("proxyAddresses", value);
+
     }
             
     private String sipProxyAddress;
@@ -578,6 +632,8 @@ public class User extends DirectoryObject {
     */
     public void setsipProxyAddress(String value) { 
         this.sipProxyAddress = value; 
+        valueChanged("sipProxyAddress", value);
+
     }
             
     private String state;
@@ -598,6 +654,8 @@ public class User extends DirectoryObject {
     */
     public void setstate(String value) { 
         this.state = value; 
+        valueChanged("state", value);
+
     }
             
     private String streetAddress;
@@ -618,6 +676,8 @@ public class User extends DirectoryObject {
     */
     public void setstreetAddress(String value) { 
         this.streetAddress = value; 
+        valueChanged("streetAddress", value);
+
     }
             
     private String surname;
@@ -638,6 +698,8 @@ public class User extends DirectoryObject {
     */
     public void setsurname(String value) { 
         this.surname = value; 
+        valueChanged("surname", value);
+
     }
             
     private String telephoneNumber;
@@ -658,6 +720,8 @@ public class User extends DirectoryObject {
     */
     public void settelephoneNumber(String value) { 
         this.telephoneNumber = value; 
+        valueChanged("telephoneNumber", value);
+
     }
             
     private byte[] thumbnailPhoto;
@@ -678,6 +742,8 @@ public class User extends DirectoryObject {
     */
     public void setthumbnailPhoto(byte[] value) { 
         this.thumbnailPhoto = value; 
+        valueChanged("thumbnailPhoto", value);
+
     }
             
     private String usageLocation;
@@ -698,6 +764,8 @@ public class User extends DirectoryObject {
     */
     public void setusageLocation(String value) { 
         this.usageLocation = value; 
+        valueChanged("usageLocation", value);
+
     }
             
     private String userPrincipalName;
@@ -718,6 +786,8 @@ public class User extends DirectoryObject {
     */
     public void setuserPrincipalName(String value) { 
         this.userPrincipalName = value; 
+        valueChanged("userPrincipalName", value);
+
     }
             
     private String userType;
@@ -738,6 +808,8 @@ public class User extends DirectoryObject {
     */
     public void setuserType(String value) { 
         this.userType = value; 
+        valueChanged("userType", value);
+
     }
             
     private java.util.UUID MailboxGuid;
@@ -758,6 +830,8 @@ public class User extends DirectoryObject {
     */
     public void setMailboxGuid(java.util.UUID value) { 
         this.MailboxGuid = value; 
+        valueChanged("MailboxGuid", value);
+
     }
             
     private String AboutMe;
@@ -778,6 +852,8 @@ public class User extends DirectoryObject {
     */
     public void setAboutMe(String value) { 
         this.AboutMe = value; 
+        valueChanged("AboutMe", value);
+
     }
             
     private String Alias;
@@ -798,6 +874,8 @@ public class User extends DirectoryObject {
     */
     public void setAlias(String value) { 
         this.Alias = value; 
+        valueChanged("Alias", value);
+
     }
             
     private java.util.Calendar Birthday;
@@ -818,6 +896,8 @@ public class User extends DirectoryObject {
     */
     public void setBirthday(java.util.Calendar value) { 
         this.Birthday = value; 
+        valueChanged("Birthday", value);
+
     }
             
     private java.util.Calendar HireDate;
@@ -838,6 +918,8 @@ public class User extends DirectoryObject {
     */
     public void setHireDate(java.util.Calendar value) { 
         this.HireDate = value; 
+        valueChanged("HireDate", value);
+
     }
     
         
@@ -861,6 +943,8 @@ public class User extends DirectoryObject {
     */
     public void setInterests(java.util.List<String> value) { 
         this.Interests = value; 
+        valueChanged("Interests", value);
+
     }
             
     private String MySite;
@@ -881,6 +965,8 @@ public class User extends DirectoryObject {
     */
     public void setMySite(String value) { 
         this.MySite = value; 
+        valueChanged("MySite", value);
+
     }
     
         
@@ -904,6 +990,8 @@ public class User extends DirectoryObject {
     */
     public void setPastProjects(java.util.List<String> value) { 
         this.PastProjects = value; 
+        valueChanged("PastProjects", value);
+
     }
             
     private String PreferredName;
@@ -924,6 +1012,8 @@ public class User extends DirectoryObject {
     */
     public void setPreferredName(String value) { 
         this.PreferredName = value; 
+        valueChanged("PreferredName", value);
+
     }
             
     private String PrincipalName;
@@ -944,6 +1034,8 @@ public class User extends DirectoryObject {
     */
     public void setPrincipalName(String value) { 
         this.PrincipalName = value; 
+        valueChanged("PrincipalName", value);
+
     }
     
         
@@ -967,6 +1059,8 @@ public class User extends DirectoryObject {
     */
     public void setResponsibilities(java.util.List<String> value) { 
         this.Responsibilities = value; 
+        valueChanged("Responsibilities", value);
+
     }
     
         
@@ -990,6 +1084,8 @@ public class User extends DirectoryObject {
     */
     public void setSchools(java.util.List<String> value) { 
         this.Schools = value; 
+        valueChanged("Schools", value);
+
     }
     
         
@@ -1013,6 +1109,8 @@ public class User extends DirectoryObject {
     */
     public void setSkills(java.util.List<String> value) { 
         this.Skills = value; 
+        valueChanged("Skills", value);
+
     }
     
         
@@ -1036,6 +1134,8 @@ public class User extends DirectoryObject {
     */
     public void setTags(java.util.List<String> value) { 
         this.Tags = value; 
+        valueChanged("Tags", value);
+
     }
     
         
@@ -1059,6 +1159,8 @@ public class User extends DirectoryObject {
     */
     public void setappRoleAssignments(java.util.List<AppRoleAssignment> value) { 
         this.appRoleAssignments = value; 
+        valueChanged("appRoleAssignments", value);
+
     }
     
         
@@ -1082,6 +1184,8 @@ public class User extends DirectoryObject {
     */
     public void setoauth2PermissionGrants(java.util.List<OAuth2PermissionGrant> value) { 
         this.oauth2PermissionGrants = value; 
+        valueChanged("oauth2PermissionGrants", value);
+
     }
     
         
@@ -1105,6 +1209,8 @@ public class User extends DirectoryObject {
     */
     public void setownedDevices(java.util.List<DirectoryObject> value) { 
         this.ownedDevices = value; 
+        valueChanged("ownedDevices", value);
+
     }
     
         
@@ -1128,6 +1234,8 @@ public class User extends DirectoryObject {
     */
     public void setregisteredDevices(java.util.List<DirectoryObject> value) { 
         this.registeredDevices = value; 
+        valueChanged("registeredDevices", value);
+
     }
             
     private DirectoryObject manager;
@@ -1148,6 +1256,8 @@ public class User extends DirectoryObject {
     */
     public void setmanager(DirectoryObject value) { 
         this.manager = value; 
+        valueChanged("manager", value);
+
     }
     
         
@@ -1171,6 +1281,8 @@ public class User extends DirectoryObject {
     */
     public void setdirectReports(java.util.List<DirectoryObject> value) { 
         this.directReports = value; 
+        valueChanged("directReports", value);
+
     }
     
         
@@ -1194,6 +1306,8 @@ public class User extends DirectoryObject {
     */
     public void setmemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
+        valueChanged("memberOf", value);
+
     }
     
         
@@ -1217,6 +1331,8 @@ public class User extends DirectoryObject {
     */
     public void setcreatedObjects(java.util.List<DirectoryObject> value) { 
         this.createdObjects = value; 
+        valueChanged("createdObjects", value);
+
     }
     
         
@@ -1240,6 +1356,8 @@ public class User extends DirectoryObject {
     */
     public void setownedObjects(java.util.List<DirectoryObject> value) { 
         this.ownedObjects = value; 
+        valueChanged("ownedObjects", value);
+
     }
     
         
@@ -1263,6 +1381,8 @@ public class User extends DirectoryObject {
     */
     public void setMessages(java.util.List<Message> value) { 
         this.Messages = value; 
+        valueChanged("Messages", value);
+
     }
     
         
@@ -1286,6 +1406,8 @@ public class User extends DirectoryObject {
     */
     public void setCalendars(java.util.List<Calendar> value) { 
         this.Calendars = value; 
+        valueChanged("Calendars", value);
+
     }
             
     private Calendar Calendar;
@@ -1306,6 +1428,8 @@ public class User extends DirectoryObject {
     */
     public void setCalendar(Calendar value) { 
         this.Calendar = value; 
+        valueChanged("Calendar", value);
+
     }
     
         
@@ -1329,6 +1453,8 @@ public class User extends DirectoryObject {
     */
     public void setCalendarGroups(java.util.List<CalendarGroup> value) { 
         this.CalendarGroups = value; 
+        valueChanged("CalendarGroups", value);
+
     }
     
         
@@ -1352,6 +1478,8 @@ public class User extends DirectoryObject {
     */
     public void setEvents(java.util.List<Event> value) { 
         this.Events = value; 
+        valueChanged("Events", value);
+
     }
     
         
@@ -1375,6 +1503,8 @@ public class User extends DirectoryObject {
     */
     public void setCalendarView(java.util.List<Event> value) { 
         this.CalendarView = value; 
+        valueChanged("CalendarView", value);
+
     }
             
     private Photo UserPhoto;
@@ -1395,6 +1525,8 @@ public class User extends DirectoryObject {
     */
     public void setUserPhoto(Photo value) { 
         this.UserPhoto = value; 
+        valueChanged("UserPhoto", value);
+
     }
     
         
@@ -1418,6 +1550,8 @@ public class User extends DirectoryObject {
     */
     public void setUserPhotos(java.util.List<Photo> value) { 
         this.UserPhotos = value; 
+        valueChanged("UserPhotos", value);
+
     }
             
     private Drive drive;
@@ -1438,6 +1572,8 @@ public class User extends DirectoryObject {
     */
     public void setdrive(Drive value) { 
         this.drive = value; 
+        valueChanged("drive", value);
+
     }
     
         
@@ -1461,6 +1597,8 @@ public class User extends DirectoryObject {
     */
     public void setfiles(java.util.List<Item> value) { 
         this.files = value; 
+        valueChanged("files", value);
+
     }
 }
 

@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type OAuth2Permission.
 */
@@ -39,7 +42,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the String
     */
     public void setadminConsentDescription(String value) { 
-        this.adminConsentDescription = value; 
+        this.adminConsentDescription = value;
+        valueChanged("adminConsentDescription", value);
+
     }
 
     private String adminConsentDisplayName;
@@ -59,7 +64,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the String
     */
     public void setadminConsentDisplayName(String value) { 
-        this.adminConsentDisplayName = value; 
+        this.adminConsentDisplayName = value;
+        valueChanged("adminConsentDisplayName", value);
+
     }
 
     private java.util.UUID id;
@@ -79,7 +86,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the java.util.UUID
     */
     public void setid(java.util.UUID value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private Boolean isEnabled;
@@ -99,7 +108,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setisEnabled(Boolean value) { 
-        this.isEnabled = value; 
+        this.isEnabled = value;
+        valueChanged("isEnabled", value);
+
     }
 
     private String type;
@@ -119,7 +130,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the String
     */
     public void settype(String value) { 
-        this.type = value; 
+        this.type = value;
+        valueChanged("type", value);
+
     }
 
     private String userConsentDescription;
@@ -139,7 +152,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the String
     */
     public void setuserConsentDescription(String value) { 
-        this.userConsentDescription = value; 
+        this.userConsentDescription = value;
+        valueChanged("userConsentDescription", value);
+
     }
 
     private String userConsentDisplayName;
@@ -159,7 +174,9 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the String
     */
     public void setuserConsentDisplayName(String value) { 
-        this.userConsentDisplayName = value; 
+        this.userConsentDisplayName = value;
+        valueChanged("userConsentDisplayName", value);
+
     }
 
     private String value;
@@ -179,6 +196,8 @@ public class OAuth2Permission extends ODataBaseEntity {
     * @param value the String
     */
     public void setvalue(String value) { 
-        this.value = value; 
+        this.value = value;
+        valueChanged("value", value);
+
     }
 }

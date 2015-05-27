@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Extension Property.
 */
@@ -40,6 +42,8 @@ public class ExtensionProperty extends DirectoryObject {
     */
     public void setappDisplayName(String value) { 
         this.appDisplayName = value; 
+        valueChanged("appDisplayName", value);
+
     }
             
     private String name;
@@ -60,6 +64,8 @@ public class ExtensionProperty extends DirectoryObject {
     */
     public void setname(String value) { 
         this.name = value; 
+        valueChanged("name", value);
+
     }
             
     private String dataType;
@@ -80,6 +86,8 @@ public class ExtensionProperty extends DirectoryObject {
     */
     public void setdataType(String value) { 
         this.dataType = value; 
+        valueChanged("dataType", value);
+
     }
             
     private Boolean isSyncedFromOnPremises;
@@ -100,6 +108,8 @@ public class ExtensionProperty extends DirectoryObject {
     */
     public void setisSyncedFromOnPremises(Boolean value) { 
         this.isSyncedFromOnPremises = value; 
+        valueChanged("isSyncedFromOnPremises", value);
+
     }
     
         
@@ -123,6 +133,8 @@ public class ExtensionProperty extends DirectoryObject {
     */
     public void settargetObjects(java.util.List<String> value) { 
         this.targetObjects = value; 
+        valueChanged("targetObjects", value);
+
     }
 }
 

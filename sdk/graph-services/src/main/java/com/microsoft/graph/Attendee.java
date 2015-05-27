@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Attendee.
 */
@@ -39,7 +42,9 @@ public class Attendee extends ODataBaseEntity {
     * @param value the EmailAddress
     */
     public void setEmailAddress(EmailAddress value) { 
-        this.EmailAddress = value; 
+        this.EmailAddress = value;
+        valueChanged("EmailAddress", value);
+
     }
 
     private ResponseStatus Status;
@@ -59,7 +64,9 @@ public class Attendee extends ODataBaseEntity {
     * @param value the ResponseStatus
     */
     public void setStatus(ResponseStatus value) { 
-        this.Status = value; 
+        this.Status = value;
+        valueChanged("Status", value);
+
     }
 
     private AttendeeType Type;
@@ -79,6 +86,8 @@ public class Attendee extends ODataBaseEntity {
     * @param value the AttendeeType
     */
     public void setType(AttendeeType value) { 
-        this.Type = value; 
+        this.Type = value;
+        valueChanged("Type", value);
+
     }
 }

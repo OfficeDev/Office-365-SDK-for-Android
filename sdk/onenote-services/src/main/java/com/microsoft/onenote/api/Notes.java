@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Notes.
 */
@@ -40,6 +43,8 @@ public class Notes extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
     
         
@@ -63,6 +68,8 @@ public class Notes extends ODataBaseEntity {
     */
     public void setnotebooks(java.util.List<Notebook> value) { 
         this.notebooks = value; 
+        valueChanged("notebooks", value);
+
     }
     
         
@@ -86,6 +93,8 @@ public class Notes extends ODataBaseEntity {
     */
     public void setsections(java.util.List<Section> value) { 
         this.sections = value; 
+        valueChanged("sections", value);
+
     }
     
         
@@ -109,6 +118,8 @@ public class Notes extends ODataBaseEntity {
     */
     public void setsectionGroups(java.util.List<SectionGroup> value) { 
         this.sectionGroups = value; 
+        valueChanged("sectionGroups", value);
+
     }
     
         
@@ -132,6 +143,8 @@ public class Notes extends ODataBaseEntity {
     */
     public void setpages(java.util.List<Page> value) { 
         this.pages = value; 
+        valueChanged("pages", value);
+
     }
     
         
@@ -155,6 +168,8 @@ public class Notes extends ODataBaseEntity {
     */
     public void setresources(java.util.List<Resource> value) { 
         this.resources = value; 
+        valueChanged("resources", value);
+
     }
 }
 

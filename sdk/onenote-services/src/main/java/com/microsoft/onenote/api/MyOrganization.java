@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type My Organization.
 */
@@ -40,6 +43,8 @@ public class MyOrganization extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
     
         
@@ -63,6 +68,8 @@ public class MyOrganization extends ODataBaseEntity {
     */
     public void setsiteCollections(java.util.List<SiteCollection> value) { 
         this.siteCollections = value; 
+        valueChanged("siteCollections", value);
+
     }
 }
 

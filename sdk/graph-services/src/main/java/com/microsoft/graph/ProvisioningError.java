@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Provisioning Error.
 */
@@ -39,7 +42,9 @@ public class ProvisioningError extends ODataBaseEntity {
     * @param value the String
     */
     public void seterrorDetail(String value) { 
-        this.errorDetail = value; 
+        this.errorDetail = value;
+        valueChanged("errorDetail", value);
+
     }
 
     private Boolean resolved;
@@ -59,7 +64,9 @@ public class ProvisioningError extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setresolved(Boolean value) { 
-        this.resolved = value; 
+        this.resolved = value;
+        valueChanged("resolved", value);
+
     }
 
     private String service;
@@ -79,7 +86,9 @@ public class ProvisioningError extends ODataBaseEntity {
     * @param value the String
     */
     public void setservice(String value) { 
-        this.service = value; 
+        this.service = value;
+        valueChanged("service", value);
+
     }
 
     private java.util.Calendar timestamp;
@@ -99,6 +108,8 @@ public class ProvisioningError extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void settimestamp(java.util.Calendar value) { 
-        this.timestamp = value; 
+        this.timestamp = value;
+        valueChanged("timestamp", value);
+
     }
 }

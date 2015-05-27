@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Application.
 */
@@ -40,6 +42,8 @@ public class Application extends DirectoryObject {
     */
     public void setappId(String value) { 
         this.appId = value; 
+        valueChanged("appId", value);
+
     }
     
         
@@ -63,6 +67,8 @@ public class Application extends DirectoryObject {
     */
     public void setappRoles(java.util.List<AppRole> value) { 
         this.appRoles = value; 
+        valueChanged("appRoles", value);
+
     }
             
     private Boolean availableToOtherTenants;
@@ -83,6 +89,8 @@ public class Application extends DirectoryObject {
     */
     public void setavailableToOtherTenants(Boolean value) { 
         this.availableToOtherTenants = value; 
+        valueChanged("availableToOtherTenants", value);
+
     }
             
     private String displayName;
@@ -103,6 +111,8 @@ public class Application extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
             
     private String errorUrl;
@@ -123,6 +133,8 @@ public class Application extends DirectoryObject {
     */
     public void seterrorUrl(String value) { 
         this.errorUrl = value; 
+        valueChanged("errorUrl", value);
+
     }
             
     private String groupMembershipClaims;
@@ -143,6 +155,8 @@ public class Application extends DirectoryObject {
     */
     public void setgroupMembershipClaims(String value) { 
         this.groupMembershipClaims = value; 
+        valueChanged("groupMembershipClaims", value);
+
     }
             
     private String homepage;
@@ -163,6 +177,8 @@ public class Application extends DirectoryObject {
     */
     public void sethomepage(String value) { 
         this.homepage = value; 
+        valueChanged("homepage", value);
+
     }
     
         
@@ -186,6 +202,8 @@ public class Application extends DirectoryObject {
     */
     public void setidentifierUris(java.util.List<String> value) { 
         this.identifierUris = value; 
+        valueChanged("identifierUris", value);
+
     }
     
         
@@ -209,6 +227,8 @@ public class Application extends DirectoryObject {
     */
     public void setkeyCredentials(java.util.List<KeyCredential> value) { 
         this.keyCredentials = value; 
+        valueChanged("keyCredentials", value);
+
     }
     
         
@@ -232,6 +252,8 @@ public class Application extends DirectoryObject {
     */
     public void setknownClientApplications(java.util.List<String> value) { 
         this.knownClientApplications = value; 
+        valueChanged("knownClientApplications", value);
+
     }
             
     private byte[] mainLogo;
@@ -252,6 +274,8 @@ public class Application extends DirectoryObject {
     */
     public void setmainLogo(byte[] value) { 
         this.mainLogo = value; 
+        valueChanged("mainLogo", value);
+
     }
             
     private String logoutUrl;
@@ -272,6 +296,8 @@ public class Application extends DirectoryObject {
     */
     public void setlogoutUrl(String value) { 
         this.logoutUrl = value; 
+        valueChanged("logoutUrl", value);
+
     }
             
     private Boolean oauth2AllowImplicitFlow;
@@ -292,6 +318,8 @@ public class Application extends DirectoryObject {
     */
     public void setoauth2AllowImplicitFlow(Boolean value) { 
         this.oauth2AllowImplicitFlow = value; 
+        valueChanged("oauth2AllowImplicitFlow", value);
+
     }
             
     private Boolean oauth2AllowUrlPathMatching;
@@ -312,6 +340,8 @@ public class Application extends DirectoryObject {
     */
     public void setoauth2AllowUrlPathMatching(Boolean value) { 
         this.oauth2AllowUrlPathMatching = value; 
+        valueChanged("oauth2AllowUrlPathMatching", value);
+
     }
     
         
@@ -335,6 +365,8 @@ public class Application extends DirectoryObject {
     */
     public void setoauth2Permissions(java.util.List<OAuth2Permission> value) { 
         this.oauth2Permissions = value; 
+        valueChanged("oauth2Permissions", value);
+
     }
             
     private Boolean oauth2RequirePostResponse;
@@ -355,6 +387,8 @@ public class Application extends DirectoryObject {
     */
     public void setoauth2RequirePostResponse(Boolean value) { 
         this.oauth2RequirePostResponse = value; 
+        valueChanged("oauth2RequirePostResponse", value);
+
     }
     
         
@@ -378,6 +412,8 @@ public class Application extends DirectoryObject {
     */
     public void setpasswordCredentials(java.util.List<PasswordCredential> value) { 
         this.passwordCredentials = value; 
+        valueChanged("passwordCredentials", value);
+
     }
             
     private Boolean publicClient;
@@ -398,6 +434,8 @@ public class Application extends DirectoryObject {
     */
     public void setpublicClient(Boolean value) { 
         this.publicClient = value; 
+        valueChanged("publicClient", value);
+
     }
     
         
@@ -421,6 +459,8 @@ public class Application extends DirectoryObject {
     */
     public void setreplyUrls(java.util.List<String> value) { 
         this.replyUrls = value; 
+        valueChanged("replyUrls", value);
+
     }
     
         
@@ -444,6 +484,8 @@ public class Application extends DirectoryObject {
     */
     public void setrequiredResourceAccess(java.util.List<RequiredResourceAccess> value) { 
         this.requiredResourceAccess = value; 
+        valueChanged("requiredResourceAccess", value);
+
     }
             
     private String samlMetadataUrl;
@@ -464,6 +506,8 @@ public class Application extends DirectoryObject {
     */
     public void setsamlMetadataUrl(String value) { 
         this.samlMetadataUrl = value; 
+        valueChanged("samlMetadataUrl", value);
+
     }
     
         
@@ -487,6 +531,8 @@ public class Application extends DirectoryObject {
     */
     public void setextensionProperties(java.util.List<ExtensionProperty> value) { 
         this.extensionProperties = value; 
+        valueChanged("extensionProperties", value);
+
     }
             
     private DirectoryObject createdOnBehalfOf;
@@ -507,6 +553,8 @@ public class Application extends DirectoryObject {
     */
     public void setcreatedOnBehalfOf(DirectoryObject value) { 
         this.createdOnBehalfOf = value; 
+        valueChanged("createdOnBehalfOf", value);
+
     }
     
         
@@ -530,6 +578,8 @@ public class Application extends DirectoryObject {
     */
     public void setowners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
+        valueChanged("owners", value);
+
     }
 }
 

@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Folder.
 */
@@ -40,6 +42,8 @@ public class Folder extends Item {
     */
     public void setchildCount(Integer value) { 
         this.childCount = value; 
+        valueChanged("childCount", value);
+
     }
 }
 

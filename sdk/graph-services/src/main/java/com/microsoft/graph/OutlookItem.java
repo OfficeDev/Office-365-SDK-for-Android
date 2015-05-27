@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Outlook Item.
 */
@@ -40,6 +43,8 @@ public class OutlookItem extends ODataBaseEntity {
     */
     public void setId(String value) { 
         this.Id = value; 
+        valueChanged("Id", value);
+
     }
             
     private String ChangeKey;
@@ -60,6 +65,8 @@ public class OutlookItem extends ODataBaseEntity {
     */
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
+        valueChanged("ChangeKey", value);
+
     }
     
         
@@ -83,6 +90,8 @@ public class OutlookItem extends ODataBaseEntity {
     */
     public void setCategories(java.util.List<String> value) { 
         this.Categories = value; 
+        valueChanged("Categories", value);
+
     }
             
     private java.util.Calendar DateTimeCreated;
@@ -103,6 +112,8 @@ public class OutlookItem extends ODataBaseEntity {
     */
     public void setDateTimeCreated(java.util.Calendar value) { 
         this.DateTimeCreated = value; 
+        valueChanged("DateTimeCreated", value);
+
     }
             
     private java.util.Calendar DateTimeLastModified;
@@ -123,6 +134,8 @@ public class OutlookItem extends ODataBaseEntity {
     */
     public void setDateTimeLastModified(java.util.Calendar value) { 
         this.DateTimeLastModified = value; 
+        valueChanged("DateTimeLastModified", value);
+
     }
 }
 

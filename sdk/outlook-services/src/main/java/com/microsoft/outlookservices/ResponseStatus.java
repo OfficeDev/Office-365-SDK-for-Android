@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Response Status.
 */
@@ -39,7 +42,9 @@ public class ResponseStatus extends ODataBaseEntity {
     * @param value the ResponseType
     */
     public void setResponse(ResponseType value) { 
-        this.Response = value; 
+        this.Response = value;
+        valueChanged("Response", value);
+
     }
 
     private java.util.Calendar Time;
@@ -59,6 +64,8 @@ public class ResponseStatus extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setTime(java.util.Calendar value) { 
-        this.Time = value; 
+        this.Time = value;
+        valueChanged("Time", value);
+
     }
 }

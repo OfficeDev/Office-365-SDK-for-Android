@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Patch Content Command.
 */
@@ -39,7 +42,9 @@ public class PatchContentCommand extends ODataBaseEntity {
     * @param value the PatchActionType
     */
     public void setaction(PatchActionType value) { 
-        this.action = value; 
+        this.action = value;
+        valueChanged("action", value);
+
     }
 
     private String target;
@@ -59,7 +64,9 @@ public class PatchContentCommand extends ODataBaseEntity {
     * @param value the String
     */
     public void settarget(String value) { 
-        this.target = value; 
+        this.target = value;
+        valueChanged("target", value);
+
     }
 
     private String content;
@@ -79,7 +86,9 @@ public class PatchContentCommand extends ODataBaseEntity {
     * @param value the String
     */
     public void setcontent(String value) { 
-        this.content = value; 
+        this.content = value;
+        valueChanged("content", value);
+
     }
 
     private PatchInsertPosition position;
@@ -99,6 +108,8 @@ public class PatchContentCommand extends ODataBaseEntity {
     * @param value the PatchInsertPosition
     */
     public void setposition(PatchInsertPosition value) { 
-        this.position = value; 
+        this.position = value;
+        valueChanged("position", value);
+
     }
 }

@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Device Configuration.
 */
@@ -43,6 +45,8 @@ public class DeviceConfiguration extends DirectoryObject {
     */
     public void setpublicIssuerCertificates(java.util.List<byte[]> value) { 
         this.publicIssuerCertificates = value; 
+        valueChanged("publicIssuerCertificates", value);
+
     }
     
         
@@ -66,6 +70,8 @@ public class DeviceConfiguration extends DirectoryObject {
     */
     public void setcloudPublicIssuerCertificates(java.util.List<byte[]> value) { 
         this.cloudPublicIssuerCertificates = value; 
+        valueChanged("cloudPublicIssuerCertificates", value);
+
     }
             
     private Integer registrationQuota;
@@ -86,6 +92,8 @@ public class DeviceConfiguration extends DirectoryObject {
     */
     public void setregistrationQuota(Integer value) { 
         this.registrationQuota = value; 
+        valueChanged("registrationQuota", value);
+
     }
             
     private Integer maximumRegistrationInactivityPeriod;
@@ -106,6 +114,8 @@ public class DeviceConfiguration extends DirectoryObject {
     */
     public void setmaximumRegistrationInactivityPeriod(Integer value) { 
         this.maximumRegistrationInactivityPeriod = value; 
+        valueChanged("maximumRegistrationInactivityPeriod", value);
+
     }
 }
 
