@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Physical Address.
 */
@@ -39,7 +42,9 @@ public class PhysicalAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setStreet(String value) { 
-        this.Street = value; 
+        this.Street = value;
+        valueChanged("Street", value);
+
     }
 
     private String City;
@@ -59,7 +64,9 @@ public class PhysicalAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setCity(String value) { 
-        this.City = value; 
+        this.City = value;
+        valueChanged("City", value);
+
     }
 
     private String State;
@@ -79,7 +86,9 @@ public class PhysicalAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setState(String value) { 
-        this.State = value; 
+        this.State = value;
+        valueChanged("State", value);
+
     }
 
     private String CountryOrRegion;
@@ -99,7 +108,9 @@ public class PhysicalAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setCountryOrRegion(String value) { 
-        this.CountryOrRegion = value; 
+        this.CountryOrRegion = value;
+        valueChanged("CountryOrRegion", value);
+
     }
 
     private String PostalCode;
@@ -119,6 +130,8 @@ public class PhysicalAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setPostalCode(String value) { 
-        this.PostalCode = value; 
+        this.PostalCode = value;
+        valueChanged("PostalCode", value);
+
     }
 }

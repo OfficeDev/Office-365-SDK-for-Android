@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Group.
 */
@@ -40,6 +42,8 @@ public class Group extends DirectoryObject {
     */
     public void setdescription(String value) { 
         this.description = value; 
+        valueChanged("description", value);
+
     }
             
     private Boolean dirSyncEnabled;
@@ -60,6 +64,8 @@ public class Group extends DirectoryObject {
     */
     public void setdirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
+        valueChanged("dirSyncEnabled", value);
+
     }
             
     private String displayName;
@@ -80,6 +86,8 @@ public class Group extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
             
     private String groupType;
@@ -100,6 +108,8 @@ public class Group extends DirectoryObject {
     */
     public void setgroupType(String value) { 
         this.groupType = value; 
+        valueChanged("groupType", value);
+
     }
             
     private Boolean isPublic;
@@ -120,6 +130,8 @@ public class Group extends DirectoryObject {
     */
     public void setisPublic(Boolean value) { 
         this.isPublic = value; 
+        valueChanged("isPublic", value);
+
     }
             
     private java.util.Calendar lastDirSyncTime;
@@ -140,6 +152,8 @@ public class Group extends DirectoryObject {
     */
     public void setlastDirSyncTime(java.util.Calendar value) { 
         this.lastDirSyncTime = value; 
+        valueChanged("lastDirSyncTime", value);
+
     }
             
     private String mail;
@@ -160,6 +174,8 @@ public class Group extends DirectoryObject {
     */
     public void setmail(String value) { 
         this.mail = value; 
+        valueChanged("mail", value);
+
     }
             
     private String mailNickname;
@@ -180,6 +196,8 @@ public class Group extends DirectoryObject {
     */
     public void setmailNickname(String value) { 
         this.mailNickname = value; 
+        valueChanged("mailNickname", value);
+
     }
             
     private Boolean mailEnabled;
@@ -200,6 +218,8 @@ public class Group extends DirectoryObject {
     */
     public void setmailEnabled(Boolean value) { 
         this.mailEnabled = value; 
+        valueChanged("mailEnabled", value);
+
     }
             
     private String onPremisesSecurityIdentifier;
@@ -220,6 +240,8 @@ public class Group extends DirectoryObject {
     */
     public void setonPremisesSecurityIdentifier(String value) { 
         this.onPremisesSecurityIdentifier = value; 
+        valueChanged("onPremisesSecurityIdentifier", value);
+
     }
     
         
@@ -243,6 +265,8 @@ public class Group extends DirectoryObject {
     */
     public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
+        valueChanged("provisioningErrors", value);
+
     }
     
         
@@ -266,6 +290,8 @@ public class Group extends DirectoryObject {
     */
     public void setproxyAddresses(java.util.List<String> value) { 
         this.proxyAddresses = value; 
+        valueChanged("proxyAddresses", value);
+
     }
             
     private Boolean securityEnabled;
@@ -286,6 +312,8 @@ public class Group extends DirectoryObject {
     */
     public void setsecurityEnabled(Boolean value) { 
         this.securityEnabled = value; 
+        valueChanged("securityEnabled", value);
+
     }
     
         
@@ -309,6 +337,8 @@ public class Group extends DirectoryObject {
     */
     public void setappRoleAssignments(java.util.List<AppRoleAssignment> value) { 
         this.appRoleAssignments = value; 
+        valueChanged("appRoleAssignments", value);
+
     }
     
         
@@ -332,6 +362,8 @@ public class Group extends DirectoryObject {
     */
     public void setmembers(java.util.List<DirectoryObject> value) { 
         this.members = value; 
+        valueChanged("members", value);
+
     }
     
         
@@ -355,6 +387,8 @@ public class Group extends DirectoryObject {
     */
     public void setmemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
+        valueChanged("memberOf", value);
+
     }
             
     private DirectoryObject createdOnBehalfOf;
@@ -375,6 +409,8 @@ public class Group extends DirectoryObject {
     */
     public void setcreatedOnBehalfOf(DirectoryObject value) { 
         this.createdOnBehalfOf = value; 
+        valueChanged("createdOnBehalfOf", value);
+
     }
     
         
@@ -398,6 +434,8 @@ public class Group extends DirectoryObject {
     */
     public void setowners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
+        valueChanged("owners", value);
+
     }
     
         
@@ -421,6 +459,8 @@ public class Group extends DirectoryObject {
     */
     public void setfiles(java.util.List<Item> value) { 
         this.files = value; 
+        valueChanged("files", value);
+
     }
 }
 

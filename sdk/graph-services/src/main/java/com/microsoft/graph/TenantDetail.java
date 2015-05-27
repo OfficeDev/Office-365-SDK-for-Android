@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Tenant Detail.
 */
@@ -43,6 +45,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setassignedPlans(java.util.List<AssignedPlan> value) { 
         this.assignedPlans = value; 
+        valueChanged("assignedPlans", value);
+
     }
             
     private String city;
@@ -63,6 +67,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setcity(String value) { 
         this.city = value; 
+        valueChanged("city", value);
+
     }
             
     private java.util.Calendar companyLastDirSyncTime;
@@ -83,6 +89,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setcompanyLastDirSyncTime(java.util.Calendar value) { 
         this.companyLastDirSyncTime = value; 
+        valueChanged("companyLastDirSyncTime", value);
+
     }
             
     private String country;
@@ -103,6 +111,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setcountry(String value) { 
         this.country = value; 
+        valueChanged("country", value);
+
     }
             
     private String countryLetterCode;
@@ -123,6 +133,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setcountryLetterCode(String value) { 
         this.countryLetterCode = value; 
+        valueChanged("countryLetterCode", value);
+
     }
             
     private Boolean dirSyncEnabled;
@@ -143,6 +155,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setdirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
+        valueChanged("dirSyncEnabled", value);
+
     }
             
     private String displayName;
@@ -163,6 +177,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
     
         
@@ -186,6 +202,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setmarketingNotificationEmails(java.util.List<String> value) { 
         this.marketingNotificationEmails = value; 
+        valueChanged("marketingNotificationEmails", value);
+
     }
             
     private String postalCode;
@@ -206,6 +224,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setpostalCode(String value) { 
         this.postalCode = value; 
+        valueChanged("postalCode", value);
+
     }
             
     private String preferredLanguage;
@@ -226,6 +246,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setpreferredLanguage(String value) { 
         this.preferredLanguage = value; 
+        valueChanged("preferredLanguage", value);
+
     }
     
         
@@ -249,6 +271,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setprovisionedPlans(java.util.List<ProvisionedPlan> value) { 
         this.provisionedPlans = value; 
+        valueChanged("provisionedPlans", value);
+
     }
     
         
@@ -272,6 +296,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
+        valueChanged("provisioningErrors", value);
+
     }
     
         
@@ -295,6 +321,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setsecurityComplianceNotificationMails(java.util.List<String> value) { 
         this.securityComplianceNotificationMails = value; 
+        valueChanged("securityComplianceNotificationMails", value);
+
     }
     
         
@@ -318,6 +346,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setsecurityComplianceNotificationPhones(java.util.List<String> value) { 
         this.securityComplianceNotificationPhones = value; 
+        valueChanged("securityComplianceNotificationPhones", value);
+
     }
             
     private String state;
@@ -338,6 +368,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setstate(String value) { 
         this.state = value; 
+        valueChanged("state", value);
+
     }
             
     private String street;
@@ -358,6 +390,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setstreet(String value) { 
         this.street = value; 
+        valueChanged("street", value);
+
     }
     
         
@@ -381,6 +415,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void settechnicalNotificationMails(java.util.List<String> value) { 
         this.technicalNotificationMails = value; 
+        valueChanged("technicalNotificationMails", value);
+
     }
             
     private String telephoneNumber;
@@ -401,6 +437,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void settelephoneNumber(String value) { 
         this.telephoneNumber = value; 
+        valueChanged("telephoneNumber", value);
+
     }
     
         
@@ -424,6 +462,8 @@ public class TenantDetail extends DirectoryObject {
     */
     public void setverifiedDomains(java.util.List<VerifiedDomain> value) { 
         this.verifiedDomains = value; 
+        valueChanged("verifiedDomains", value);
+
     }
 }
 

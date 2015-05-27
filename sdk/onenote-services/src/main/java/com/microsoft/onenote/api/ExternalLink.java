@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type External Link.
 */
@@ -39,6 +42,8 @@ public class ExternalLink extends ODataBaseEntity {
     * @param value the String
     */
     public void sethref(String value) { 
-        this.href = value; 
+        this.href = value;
+        valueChanged("href", value);
+
     }
 }

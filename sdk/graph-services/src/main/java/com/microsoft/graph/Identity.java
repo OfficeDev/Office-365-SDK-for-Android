@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Identity.
 */
@@ -39,7 +42,9 @@ public class Identity extends ODataBaseEntity {
     * @param value the String
     */
     public void setid(String value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private String displayName;
@@ -59,6 +64,8 @@ public class Identity extends ODataBaseEntity {
     * @param value the String
     */
     public void setdisplayName(String value) { 
-        this.displayName = value; 
+        this.displayName = value;
+        valueChanged("displayName", value);
+
     }
 }

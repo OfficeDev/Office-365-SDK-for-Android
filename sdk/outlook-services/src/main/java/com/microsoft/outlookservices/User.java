@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type User.
 */
@@ -40,6 +42,8 @@ public class User extends Entity {
     */
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
+        valueChanged("DisplayName", value);
+
     }
             
     private String Alias;
@@ -60,6 +64,8 @@ public class User extends Entity {
     */
     public void setAlias(String value) { 
         this.Alias = value; 
+        valueChanged("Alias", value);
+
     }
             
     private java.util.UUID MailboxGuid;
@@ -80,6 +86,8 @@ public class User extends Entity {
     */
     public void setMailboxGuid(java.util.UUID value) { 
         this.MailboxGuid = value; 
+        valueChanged("MailboxGuid", value);
+
     }
     
         
@@ -103,6 +111,8 @@ public class User extends Entity {
     */
     public void setFolders(java.util.List<Folder> value) { 
         this.Folders = value; 
+        valueChanged("Folders", value);
+
     }
     
         
@@ -126,6 +136,8 @@ public class User extends Entity {
     */
     public void setMessages(java.util.List<Message> value) { 
         this.Messages = value; 
+        valueChanged("Messages", value);
+
     }
             
     private Folder RootFolder;
@@ -146,6 +158,8 @@ public class User extends Entity {
     */
     public void setRootFolder(Folder value) { 
         this.RootFolder = value; 
+        valueChanged("RootFolder", value);
+
     }
     
         
@@ -169,6 +183,8 @@ public class User extends Entity {
     */
     public void setCalendars(java.util.List<Calendar> value) { 
         this.Calendars = value; 
+        valueChanged("Calendars", value);
+
     }
             
     private Calendar Calendar;
@@ -189,6 +205,8 @@ public class User extends Entity {
     */
     public void setCalendar(Calendar value) { 
         this.Calendar = value; 
+        valueChanged("Calendar", value);
+
     }
     
         
@@ -212,6 +230,8 @@ public class User extends Entity {
     */
     public void setCalendarGroups(java.util.List<CalendarGroup> value) { 
         this.CalendarGroups = value; 
+        valueChanged("CalendarGroups", value);
+
     }
     
         
@@ -235,6 +255,8 @@ public class User extends Entity {
     */
     public void setEvents(java.util.List<Event> value) { 
         this.Events = value; 
+        valueChanged("Events", value);
+
     }
     
         
@@ -258,6 +280,8 @@ public class User extends Entity {
     */
     public void setCalendarView(java.util.List<Event> value) { 
         this.CalendarView = value; 
+        valueChanged("CalendarView", value);
+
     }
     
         
@@ -281,6 +305,8 @@ public class User extends Entity {
     */
     public void setContacts(java.util.List<Contact> value) { 
         this.Contacts = value; 
+        valueChanged("Contacts", value);
+
     }
     
         
@@ -304,6 +330,8 @@ public class User extends Entity {
     */
     public void setContactFolders(java.util.List<ContactFolder> value) { 
         this.ContactFolders = value; 
+        valueChanged("ContactFolders", value);
+
     }
 }
 

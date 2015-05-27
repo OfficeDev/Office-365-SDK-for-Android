@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Copy Notebook Model.
 */
@@ -39,7 +42,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setisDefault(Boolean value) { 
-        this.isDefault = value; 
+        this.isDefault = value;
+        valueChanged("isDefault", value);
+
     }
 
     private UserRole userRole;
@@ -59,7 +64,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the UserRole
     */
     public void setuserRole(UserRole value) { 
-        this.userRole = value; 
+        this.userRole = value;
+        valueChanged("userRole", value);
+
     }
 
     private Boolean isShared;
@@ -79,7 +86,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setisShared(Boolean value) { 
-        this.isShared = value; 
+        this.isShared = value;
+        valueChanged("isShared", value);
+
     }
 
     private String sectionsUrl;
@@ -99,7 +108,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setsectionsUrl(String value) { 
-        this.sectionsUrl = value; 
+        this.sectionsUrl = value;
+        valueChanged("sectionsUrl", value);
+
     }
 
     private String sectionGroupsUrl;
@@ -119,7 +130,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setsectionGroupsUrl(String value) { 
-        this.sectionGroupsUrl = value; 
+        this.sectionGroupsUrl = value;
+        valueChanged("sectionGroupsUrl", value);
+
     }
 
     private NotebookLinks links;
@@ -139,7 +152,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the NotebookLinks
     */
     public void setlinks(NotebookLinks value) { 
-        this.links = value; 
+        this.links = value;
+        valueChanged("links", value);
+
     }
 
     private String name;
@@ -159,7 +174,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setname(String value) { 
-        this.name = value; 
+        this.name = value;
+        valueChanged("name", value);
+
     }
 
     private String createdBy;
@@ -179,7 +196,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setcreatedBy(String value) { 
-        this.createdBy = value; 
+        this.createdBy = value;
+        valueChanged("createdBy", value);
+
     }
 
     private String lastModifiedBy;
@@ -199,7 +218,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setlastModifiedBy(String value) { 
-        this.lastModifiedBy = value; 
+        this.lastModifiedBy = value;
+        valueChanged("lastModifiedBy", value);
+
     }
 
     private java.util.Calendar lastModifiedTime;
@@ -219,7 +240,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setlastModifiedTime(java.util.Calendar value) { 
-        this.lastModifiedTime = value; 
+        this.lastModifiedTime = value;
+        valueChanged("lastModifiedTime", value);
+
     }
 
     private String id;
@@ -239,7 +262,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setid(String value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private String self;
@@ -259,7 +284,9 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the String
     */
     public void setself(String value) { 
-        this.self = value; 
+        this.self = value;
+        valueChanged("self", value);
+
     }
 
     private java.util.Calendar createdTime;
@@ -279,6 +306,8 @@ public class CopyNotebookModel extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setcreatedTime(java.util.Calendar value) { 
-        this.createdTime = value; 
+        this.createdTime = value;
+        valueChanged("createdTime", value);
+
     }
 }

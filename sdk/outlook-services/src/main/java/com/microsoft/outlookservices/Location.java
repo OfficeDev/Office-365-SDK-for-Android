@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Location.
 */
@@ -39,7 +42,9 @@ public class Location extends ODataBaseEntity {
     * @param value the String
     */
     public void setDisplayName(String value) { 
-        this.DisplayName = value; 
+        this.DisplayName = value;
+        valueChanged("DisplayName", value);
+
     }
 
     private PhysicalAddress Address;
@@ -59,7 +64,9 @@ public class Location extends ODataBaseEntity {
     * @param value the PhysicalAddress
     */
     public void setAddress(PhysicalAddress value) { 
-        this.Address = value; 
+        this.Address = value;
+        valueChanged("Address", value);
+
     }
 
     private GeoCoordinates Coordinates;
@@ -79,6 +86,8 @@ public class Location extends ODataBaseEntity {
     * @param value the GeoCoordinates
     */
     public void setCoordinates(GeoCoordinates value) { 
-        this.Coordinates = value; 
+        this.Coordinates = value;
+        valueChanged("Coordinates", value);
+
     }
 }

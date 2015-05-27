@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.fileservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Current User Request Context.
 */
@@ -40,6 +43,8 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
             
     private Drive drive;
@@ -60,6 +65,8 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     */
     public void setdrive(Drive value) { 
         this.drive = value; 
+        valueChanged("drive", value);
+
     }
     
         
@@ -83,6 +90,8 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     */
     public void setfiles(java.util.List<Item> value) { 
         this.files = value; 
+        valueChanged("files", value);
+
     }
 }
 

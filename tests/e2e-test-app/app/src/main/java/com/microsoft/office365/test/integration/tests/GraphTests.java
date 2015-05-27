@@ -62,9 +62,9 @@ public class GraphTests extends TestGroup {
         this.addTest(canGetUserDrive("Can get user's drive", true));
         this.addTest(canGetUserFiles("Can get user's files", true));
         this.addTest(canGetUserFilesById("Can get user's file by id", true));
-        this.addTest(canCreateUserFiles("Can create user's files", true));
-        this.addTest(canUpdateUserFiles("Can update user's files", true));
-        this.addTest(canDeleteUserFiles("Can delete user's files", true));
+        this.addTest(canCreateUserFiles("Can create user's files", false));
+        this.addTest(canUpdateUserFiles("Can update user's files", false));
+        this.addTest(canDeleteUserFiles("Can delete user's files", false));
 
     }
 

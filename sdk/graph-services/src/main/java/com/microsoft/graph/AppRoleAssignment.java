@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type App Role Assignment.
 */
@@ -40,6 +42,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setcreationTimestamp(java.util.Calendar value) { 
         this.creationTimestamp = value; 
+        valueChanged("creationTimestamp", value);
+
     }
             
     private java.util.UUID id;
@@ -60,6 +64,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setid(java.util.UUID value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
             
     private String principalDisplayName;
@@ -80,6 +86,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setprincipalDisplayName(String value) { 
         this.principalDisplayName = value; 
+        valueChanged("principalDisplayName", value);
+
     }
             
     private java.util.UUID principalId;
@@ -100,6 +108,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setprincipalId(java.util.UUID value) { 
         this.principalId = value; 
+        valueChanged("principalId", value);
+
     }
             
     private String principalType;
@@ -120,6 +130,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setprincipalType(String value) { 
         this.principalType = value; 
+        valueChanged("principalType", value);
+
     }
             
     private String resourceDisplayName;
@@ -140,6 +152,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setresourceDisplayName(String value) { 
         this.resourceDisplayName = value; 
+        valueChanged("resourceDisplayName", value);
+
     }
             
     private java.util.UUID resourceId;
@@ -160,6 +174,8 @@ public class AppRoleAssignment extends DirectoryObject {
     */
     public void setresourceId(java.util.UUID value) { 
         this.resourceId = value; 
+        valueChanged("resourceId", value);
+
     }
 }
 

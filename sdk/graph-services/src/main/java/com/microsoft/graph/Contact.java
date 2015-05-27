@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Contact.
 */
@@ -40,6 +42,8 @@ public class Contact extends DirectoryObject {
     */
     public void setcity(String value) { 
         this.city = value; 
+        valueChanged("city", value);
+
     }
             
     private String country;
@@ -60,6 +64,8 @@ public class Contact extends DirectoryObject {
     */
     public void setcountry(String value) { 
         this.country = value; 
+        valueChanged("country", value);
+
     }
             
     private String department;
@@ -80,6 +86,8 @@ public class Contact extends DirectoryObject {
     */
     public void setdepartment(String value) { 
         this.department = value; 
+        valueChanged("department", value);
+
     }
             
     private Boolean dirSyncEnabled;
@@ -100,6 +108,8 @@ public class Contact extends DirectoryObject {
     */
     public void setdirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
+        valueChanged("dirSyncEnabled", value);
+
     }
             
     private String displayName;
@@ -120,6 +130,8 @@ public class Contact extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
             
     private String facsimileTelephoneNumber;
@@ -140,6 +152,8 @@ public class Contact extends DirectoryObject {
     */
     public void setfacsimileTelephoneNumber(String value) { 
         this.facsimileTelephoneNumber = value; 
+        valueChanged("facsimileTelephoneNumber", value);
+
     }
             
     private String givenName;
@@ -160,6 +174,8 @@ public class Contact extends DirectoryObject {
     */
     public void setgivenName(String value) { 
         this.givenName = value; 
+        valueChanged("givenName", value);
+
     }
             
     private String jobTitle;
@@ -180,6 +196,8 @@ public class Contact extends DirectoryObject {
     */
     public void setjobTitle(String value) { 
         this.jobTitle = value; 
+        valueChanged("jobTitle", value);
+
     }
             
     private java.util.Calendar lastDirSyncTime;
@@ -200,6 +218,8 @@ public class Contact extends DirectoryObject {
     */
     public void setlastDirSyncTime(java.util.Calendar value) { 
         this.lastDirSyncTime = value; 
+        valueChanged("lastDirSyncTime", value);
+
     }
             
     private String mail;
@@ -220,6 +240,8 @@ public class Contact extends DirectoryObject {
     */
     public void setmail(String value) { 
         this.mail = value; 
+        valueChanged("mail", value);
+
     }
             
     private String mailNickname;
@@ -240,6 +262,8 @@ public class Contact extends DirectoryObject {
     */
     public void setmailNickname(String value) { 
         this.mailNickname = value; 
+        valueChanged("mailNickname", value);
+
     }
             
     private String mobile;
@@ -260,6 +284,8 @@ public class Contact extends DirectoryObject {
     */
     public void setmobile(String value) { 
         this.mobile = value; 
+        valueChanged("mobile", value);
+
     }
             
     private String physicalDeliveryOfficeName;
@@ -280,6 +306,8 @@ public class Contact extends DirectoryObject {
     */
     public void setphysicalDeliveryOfficeName(String value) { 
         this.physicalDeliveryOfficeName = value; 
+        valueChanged("physicalDeliveryOfficeName", value);
+
     }
             
     private String postalCode;
@@ -300,6 +328,8 @@ public class Contact extends DirectoryObject {
     */
     public void setpostalCode(String value) { 
         this.postalCode = value; 
+        valueChanged("postalCode", value);
+
     }
     
         
@@ -323,6 +353,8 @@ public class Contact extends DirectoryObject {
     */
     public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
+        valueChanged("provisioningErrors", value);
+
     }
     
         
@@ -346,6 +378,8 @@ public class Contact extends DirectoryObject {
     */
     public void setproxyAddresses(java.util.List<String> value) { 
         this.proxyAddresses = value; 
+        valueChanged("proxyAddresses", value);
+
     }
             
     private String sipProxyAddress;
@@ -366,6 +400,8 @@ public class Contact extends DirectoryObject {
     */
     public void setsipProxyAddress(String value) { 
         this.sipProxyAddress = value; 
+        valueChanged("sipProxyAddress", value);
+
     }
             
     private String state;
@@ -386,6 +422,8 @@ public class Contact extends DirectoryObject {
     */
     public void setstate(String value) { 
         this.state = value; 
+        valueChanged("state", value);
+
     }
             
     private String streetAddress;
@@ -406,6 +444,8 @@ public class Contact extends DirectoryObject {
     */
     public void setstreetAddress(String value) { 
         this.streetAddress = value; 
+        valueChanged("streetAddress", value);
+
     }
             
     private String surname;
@@ -426,6 +466,8 @@ public class Contact extends DirectoryObject {
     */
     public void setsurname(String value) { 
         this.surname = value; 
+        valueChanged("surname", value);
+
     }
             
     private String telephoneNumber;
@@ -446,6 +488,8 @@ public class Contact extends DirectoryObject {
     */
     public void settelephoneNumber(String value) { 
         this.telephoneNumber = value; 
+        valueChanged("telephoneNumber", value);
+
     }
             
     private byte[] thumbnailPhoto;
@@ -466,6 +510,8 @@ public class Contact extends DirectoryObject {
     */
     public void setthumbnailPhoto(byte[] value) { 
         this.thumbnailPhoto = value; 
+        valueChanged("thumbnailPhoto", value);
+
     }
             
     private DirectoryObject manager;
@@ -486,6 +532,8 @@ public class Contact extends DirectoryObject {
     */
     public void setmanager(DirectoryObject value) { 
         this.manager = value; 
+        valueChanged("manager", value);
+
     }
     
         
@@ -509,6 +557,8 @@ public class Contact extends DirectoryObject {
     */
     public void setdirectReports(java.util.List<DirectoryObject> value) { 
         this.directReports = value; 
+        valueChanged("directReports", value);
+
     }
     
         
@@ -532,6 +582,8 @@ public class Contact extends DirectoryObject {
     */
     public void setmemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
+        valueChanged("memberOf", value);
+
     }
 }
 

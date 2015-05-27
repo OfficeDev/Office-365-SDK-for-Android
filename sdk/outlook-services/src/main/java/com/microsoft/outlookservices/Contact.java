@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Contact.
 */
@@ -40,6 +42,8 @@ public class Contact extends Item {
     */
     public void setParentFolderId(String value) { 
         this.ParentFolderId = value; 
+        valueChanged("ParentFolderId", value);
+
     }
             
     private java.util.Calendar Birthday;
@@ -60,6 +64,8 @@ public class Contact extends Item {
     */
     public void setBirthday(java.util.Calendar value) { 
         this.Birthday = value; 
+        valueChanged("Birthday", value);
+
     }
             
     private String FileAs;
@@ -80,6 +86,8 @@ public class Contact extends Item {
     */
     public void setFileAs(String value) { 
         this.FileAs = value; 
+        valueChanged("FileAs", value);
+
     }
             
     private String DisplayName;
@@ -100,6 +108,8 @@ public class Contact extends Item {
     */
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
+        valueChanged("DisplayName", value);
+
     }
             
     private String GivenName;
@@ -120,6 +130,8 @@ public class Contact extends Item {
     */
     public void setGivenName(String value) { 
         this.GivenName = value; 
+        valueChanged("GivenName", value);
+
     }
             
     private String Initials;
@@ -140,6 +152,8 @@ public class Contact extends Item {
     */
     public void setInitials(String value) { 
         this.Initials = value; 
+        valueChanged("Initials", value);
+
     }
             
     private String MiddleName;
@@ -160,6 +174,8 @@ public class Contact extends Item {
     */
     public void setMiddleName(String value) { 
         this.MiddleName = value; 
+        valueChanged("MiddleName", value);
+
     }
             
     private String NickName;
@@ -180,6 +196,8 @@ public class Contact extends Item {
     */
     public void setNickName(String value) { 
         this.NickName = value; 
+        valueChanged("NickName", value);
+
     }
             
     private String Surname;
@@ -200,6 +218,8 @@ public class Contact extends Item {
     */
     public void setSurname(String value) { 
         this.Surname = value; 
+        valueChanged("Surname", value);
+
     }
             
     private String Title;
@@ -220,6 +240,8 @@ public class Contact extends Item {
     */
     public void setTitle(String value) { 
         this.Title = value; 
+        valueChanged("Title", value);
+
     }
             
     private String Generation;
@@ -240,6 +262,8 @@ public class Contact extends Item {
     */
     public void setGeneration(String value) { 
         this.Generation = value; 
+        valueChanged("Generation", value);
+
     }
     
         
@@ -263,6 +287,8 @@ public class Contact extends Item {
     */
     public void setEmailAddresses(java.util.List<EmailAddress> value) { 
         this.EmailAddresses = value; 
+        valueChanged("EmailAddresses", value);
+
     }
     
         
@@ -286,6 +312,8 @@ public class Contact extends Item {
     */
     public void setImAddresses(java.util.List<String> value) { 
         this.ImAddresses = value; 
+        valueChanged("ImAddresses", value);
+
     }
             
     private String JobTitle;
@@ -306,6 +334,8 @@ public class Contact extends Item {
     */
     public void setJobTitle(String value) { 
         this.JobTitle = value; 
+        valueChanged("JobTitle", value);
+
     }
             
     private String CompanyName;
@@ -326,6 +356,8 @@ public class Contact extends Item {
     */
     public void setCompanyName(String value) { 
         this.CompanyName = value; 
+        valueChanged("CompanyName", value);
+
     }
             
     private String Department;
@@ -346,6 +378,8 @@ public class Contact extends Item {
     */
     public void setDepartment(String value) { 
         this.Department = value; 
+        valueChanged("Department", value);
+
     }
             
     private String OfficeLocation;
@@ -366,6 +400,8 @@ public class Contact extends Item {
     */
     public void setOfficeLocation(String value) { 
         this.OfficeLocation = value; 
+        valueChanged("OfficeLocation", value);
+
     }
             
     private String Profession;
@@ -386,6 +422,8 @@ public class Contact extends Item {
     */
     public void setProfession(String value) { 
         this.Profession = value; 
+        valueChanged("Profession", value);
+
     }
             
     private String BusinessHomePage;
@@ -406,6 +444,8 @@ public class Contact extends Item {
     */
     public void setBusinessHomePage(String value) { 
         this.BusinessHomePage = value; 
+        valueChanged("BusinessHomePage", value);
+
     }
             
     private String AssistantName;
@@ -426,6 +466,8 @@ public class Contact extends Item {
     */
     public void setAssistantName(String value) { 
         this.AssistantName = value; 
+        valueChanged("AssistantName", value);
+
     }
             
     private String Manager;
@@ -446,6 +488,8 @@ public class Contact extends Item {
     */
     public void setManager(String value) { 
         this.Manager = value; 
+        valueChanged("Manager", value);
+
     }
     
         
@@ -469,6 +513,8 @@ public class Contact extends Item {
     */
     public void setHomePhones(java.util.List<String> value) { 
         this.HomePhones = value; 
+        valueChanged("HomePhones", value);
+
     }
     
         
@@ -492,6 +538,8 @@ public class Contact extends Item {
     */
     public void setBusinessPhones(java.util.List<String> value) { 
         this.BusinessPhones = value; 
+        valueChanged("BusinessPhones", value);
+
     }
             
     private String MobilePhone1;
@@ -512,6 +560,8 @@ public class Contact extends Item {
     */
     public void setMobilePhone1(String value) { 
         this.MobilePhone1 = value; 
+        valueChanged("MobilePhone1", value);
+
     }
             
     private PhysicalAddress HomeAddress;
@@ -532,6 +582,8 @@ public class Contact extends Item {
     */
     public void setHomeAddress(PhysicalAddress value) { 
         this.HomeAddress = value; 
+        valueChanged("HomeAddress", value);
+
     }
             
     private PhysicalAddress BusinessAddress;
@@ -552,6 +604,8 @@ public class Contact extends Item {
     */
     public void setBusinessAddress(PhysicalAddress value) { 
         this.BusinessAddress = value; 
+        valueChanged("BusinessAddress", value);
+
     }
             
     private PhysicalAddress OtherAddress;
@@ -572,6 +626,8 @@ public class Contact extends Item {
     */
     public void setOtherAddress(PhysicalAddress value) { 
         this.OtherAddress = value; 
+        valueChanged("OtherAddress", value);
+
     }
             
     private String YomiCompanyName;
@@ -592,6 +648,8 @@ public class Contact extends Item {
     */
     public void setYomiCompanyName(String value) { 
         this.YomiCompanyName = value; 
+        valueChanged("YomiCompanyName", value);
+
     }
             
     private String YomiGivenName;
@@ -612,6 +670,8 @@ public class Contact extends Item {
     */
     public void setYomiGivenName(String value) { 
         this.YomiGivenName = value; 
+        valueChanged("YomiGivenName", value);
+
     }
             
     private String YomiSurname;
@@ -632,6 +692,8 @@ public class Contact extends Item {
     */
     public void setYomiSurname(String value) { 
         this.YomiSurname = value; 
+        valueChanged("YomiSurname", value);
+
     }
 }
 

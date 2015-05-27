@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Device.
 */
@@ -40,6 +42,8 @@ public class Device extends DirectoryObject {
     */
     public void setaccountEnabled(Boolean value) { 
         this.accountEnabled = value; 
+        valueChanged("accountEnabled", value);
+
     }
     
         
@@ -63,6 +67,8 @@ public class Device extends DirectoryObject {
     */
     public void setalternativeSecurityIds(java.util.List<AlternativeSecurityId> value) { 
         this.alternativeSecurityIds = value; 
+        valueChanged("alternativeSecurityIds", value);
+
     }
             
     private java.util.Calendar approximateLastLogonTimestamp;
@@ -83,6 +89,8 @@ public class Device extends DirectoryObject {
     */
     public void setapproximateLastLogonTimestamp(java.util.Calendar value) { 
         this.approximateLastLogonTimestamp = value; 
+        valueChanged("approximateLastLogonTimestamp", value);
+
     }
             
     private java.util.UUID deviceId;
@@ -103,6 +111,8 @@ public class Device extends DirectoryObject {
     */
     public void setdeviceId(java.util.UUID value) { 
         this.deviceId = value; 
+        valueChanged("deviceId", value);
+
     }
             
     private String deviceMetadata;
@@ -123,6 +133,8 @@ public class Device extends DirectoryObject {
     */
     public void setdeviceMetadata(String value) { 
         this.deviceMetadata = value; 
+        valueChanged("deviceMetadata", value);
+
     }
             
     private Integer deviceObjectVersion;
@@ -143,6 +155,8 @@ public class Device extends DirectoryObject {
     */
     public void setdeviceObjectVersion(Integer value) { 
         this.deviceObjectVersion = value; 
+        valueChanged("deviceObjectVersion", value);
+
     }
             
     private String deviceOSType;
@@ -163,6 +177,8 @@ public class Device extends DirectoryObject {
     */
     public void setdeviceOSType(String value) { 
         this.deviceOSType = value; 
+        valueChanged("deviceOSType", value);
+
     }
             
     private String deviceOSVersion;
@@ -183,6 +199,8 @@ public class Device extends DirectoryObject {
     */
     public void setdeviceOSVersion(String value) { 
         this.deviceOSVersion = value; 
+        valueChanged("deviceOSVersion", value);
+
     }
     
         
@@ -206,6 +224,8 @@ public class Device extends DirectoryObject {
     */
     public void setdevicePhysicalIds(java.util.List<String> value) { 
         this.devicePhysicalIds = value; 
+        valueChanged("devicePhysicalIds", value);
+
     }
             
     private String deviceTrustType;
@@ -226,6 +246,8 @@ public class Device extends DirectoryObject {
     */
     public void setdeviceTrustType(String value) { 
         this.deviceTrustType = value; 
+        valueChanged("deviceTrustType", value);
+
     }
             
     private Boolean dirSyncEnabled;
@@ -246,6 +268,8 @@ public class Device extends DirectoryObject {
     */
     public void setdirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
+        valueChanged("dirSyncEnabled", value);
+
     }
             
     private String displayName;
@@ -266,6 +290,8 @@ public class Device extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
             
     private java.util.Calendar lastDirSyncTime;
@@ -286,6 +312,8 @@ public class Device extends DirectoryObject {
     */
     public void setlastDirSyncTime(java.util.Calendar value) { 
         this.lastDirSyncTime = value; 
+        valueChanged("lastDirSyncTime", value);
+
     }
     
         
@@ -309,6 +337,8 @@ public class Device extends DirectoryObject {
     */
     public void setregisteredOwners(java.util.List<DirectoryObject> value) { 
         this.registeredOwners = value; 
+        valueChanged("registeredOwners", value);
+
     }
     
         
@@ -332,6 +362,8 @@ public class Device extends DirectoryObject {
     */
     public void setregisteredUsers(java.util.List<DirectoryObject> value) { 
         this.registeredUsers = value; 
+        valueChanged("registeredUsers", value);
+
     }
 }
 

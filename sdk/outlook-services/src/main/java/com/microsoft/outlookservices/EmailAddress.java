@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Email Address.
 */
@@ -39,7 +42,9 @@ public class EmailAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setName(String value) { 
-        this.Name = value; 
+        this.Name = value;
+        valueChanged("Name", value);
+
     }
 
     private String Address;
@@ -59,6 +64,8 @@ public class EmailAddress extends ODataBaseEntity {
     * @param value the String
     */
     public void setAddress(String value) { 
-        this.Address = value; 
+        this.Address = value;
+        valueChanged("Address", value);
+
     }
 }

@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Item Attachment.
 */
@@ -40,6 +42,8 @@ public class ItemAttachment extends Attachment {
     */
     public void setItem(Item value) { 
         this.Item = value; 
+        valueChanged("Item", value);
+
     }
 }
 

@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.fileservices;
 
+
+
 /**
  * The type Folder.
 */
@@ -40,6 +42,8 @@ public class Folder extends Item {
     */
     public void setchildCount(Integer value) { 
         this.childCount = value; 
+        valueChanged("childCount", value);
+
     }
     
         
@@ -63,6 +67,8 @@ public class Folder extends Item {
     */
     public void setchildren(java.util.List<Item> value) { 
         this.children = value; 
+        valueChanged("children", value);
+
     }
 }
 

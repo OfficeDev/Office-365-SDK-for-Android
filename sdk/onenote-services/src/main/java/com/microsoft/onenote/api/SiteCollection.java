@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Site Collection.
 */
@@ -40,6 +43,8 @@ public class SiteCollection extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
     
         
@@ -63,6 +68,8 @@ public class SiteCollection extends ODataBaseEntity {
     */
     public void setsites(java.util.List<Site> value) { 
         this.sites = value; 
+        valueChanged("sites", value);
+
     }
 }
 

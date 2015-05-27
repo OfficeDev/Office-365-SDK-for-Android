@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Resource Access.
 */
@@ -39,7 +42,9 @@ public class ResourceAccess extends ODataBaseEntity {
     * @param value the java.util.UUID
     */
     public void setid(java.util.UUID value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private String type;
@@ -59,6 +64,8 @@ public class ResourceAccess extends ODataBaseEntity {
     * @param value the String
     */
     public void settype(String value) { 
-        this.type = value; 
+        this.type = value;
+        valueChanged("type", value);
+
     }
 }

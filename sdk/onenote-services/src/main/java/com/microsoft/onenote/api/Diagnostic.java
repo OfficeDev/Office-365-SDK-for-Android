@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Diagnostic.
 */
@@ -39,7 +42,9 @@ public class Diagnostic extends ODataBaseEntity {
     * @param value the String
     */
     public void setmessage(String value) { 
-        this.message = value; 
+        this.message = value;
+        valueChanged("message", value);
+
     }
 
     private String url;
@@ -59,6 +64,8 @@ public class Diagnostic extends ODataBaseEntity {
     * @param value the String
     */
     public void seturl(String value) { 
-        this.url = value; 
+        this.url = value;
+        valueChanged("url", value);
+
     }
 }

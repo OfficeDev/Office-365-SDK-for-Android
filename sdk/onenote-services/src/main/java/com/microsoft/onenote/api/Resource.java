@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Resource.
 */
@@ -40,6 +43,8 @@ public class Resource extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
             
     private String self;
@@ -60,6 +65,8 @@ public class Resource extends ODataBaseEntity {
     */
     public void setself(String value) { 
         this.self = value; 
+        valueChanged("self", value);
+
     }
             
     private byte[] content;
@@ -80,6 +87,8 @@ public class Resource extends ODataBaseEntity {
     */
     public void setcontent(byte[] value) { 
         this.content = value; 
+        valueChanged("content", value);
+
     }
             
     private String contentUrl;
@@ -100,6 +109,8 @@ public class Resource extends ODataBaseEntity {
     */
     public void setcontentUrl(String value) { 
         this.contentUrl = value; 
+        valueChanged("contentUrl", value);
+
     }
 }
 

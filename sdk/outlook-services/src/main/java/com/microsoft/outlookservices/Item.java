@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Item.
 */
@@ -40,6 +42,8 @@ public class Item extends Entity {
     */
     public void setChangeKey(String value) { 
         this.ChangeKey = value; 
+        valueChanged("ChangeKey", value);
+
     }
     
         
@@ -63,6 +67,8 @@ public class Item extends Entity {
     */
     public void setCategories(java.util.List<String> value) { 
         this.Categories = value; 
+        valueChanged("Categories", value);
+
     }
             
     private java.util.Calendar DateTimeCreated;
@@ -83,6 +89,8 @@ public class Item extends Entity {
     */
     public void setDateTimeCreated(java.util.Calendar value) { 
         this.DateTimeCreated = value; 
+        valueChanged("DateTimeCreated", value);
+
     }
             
     private java.util.Calendar DateTimeLastModified;
@@ -103,6 +111,8 @@ public class Item extends Entity {
     */
     public void setDateTimeLastModified(java.util.Calendar value) { 
         this.DateTimeLastModified = value; 
+        valueChanged("DateTimeLastModified", value);
+
     }
 }
 

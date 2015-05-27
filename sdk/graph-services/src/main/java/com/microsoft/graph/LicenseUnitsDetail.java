@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type License Units Detail.
 */
@@ -39,7 +42,9 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setenabled(Integer value) { 
-        this.enabled = value; 
+        this.enabled = value;
+        valueChanged("enabled", value);
+
     }
 
     private Integer suspended;
@@ -59,7 +64,9 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setsuspended(Integer value) { 
-        this.suspended = value; 
+        this.suspended = value;
+        valueChanged("suspended", value);
+
     }
 
     private Integer warning;
@@ -79,6 +86,8 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     * @param value the Integer
     */
     public void setwarning(Integer value) { 
-        this.warning = value; 
+        this.warning = value;
+        valueChanged("warning", value);
+
     }
 }

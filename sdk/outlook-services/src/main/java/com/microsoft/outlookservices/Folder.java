@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Folder.
 */
@@ -40,6 +42,8 @@ public class Folder extends Entity {
     */
     public void setParentFolderId(String value) { 
         this.ParentFolderId = value; 
+        valueChanged("ParentFolderId", value);
+
     }
             
     private String DisplayName;
@@ -60,6 +64,8 @@ public class Folder extends Entity {
     */
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
+        valueChanged("DisplayName", value);
+
     }
             
     private Integer ChildFolderCount;
@@ -80,6 +86,8 @@ public class Folder extends Entity {
     */
     public void setChildFolderCount(Integer value) { 
         this.ChildFolderCount = value; 
+        valueChanged("ChildFolderCount", value);
+
     }
     
         
@@ -103,6 +111,8 @@ public class Folder extends Entity {
     */
     public void setChildFolders(java.util.List<Folder> value) { 
         this.ChildFolders = value; 
+        valueChanged("ChildFolders", value);
+
     }
     
         
@@ -126,6 +136,8 @@ public class Folder extends Entity {
     */
     public void setMessages(java.util.List<Message> value) { 
         this.Messages = value; 
+        valueChanged("Messages", value);
+
     }
 }
 

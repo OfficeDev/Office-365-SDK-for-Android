@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Photo.
 */
@@ -40,6 +43,8 @@ public class Photo extends ODataBaseEntity {
     */
     public void setId(String value) { 
         this.Id = value; 
+        valueChanged("Id", value);
+
     }
             
     private Integer Width;
@@ -60,6 +65,8 @@ public class Photo extends ODataBaseEntity {
     */
     public void setWidth(Integer value) { 
         this.Width = value; 
+        valueChanged("Width", value);
+
     }
             
     private Integer Height;
@@ -80,6 +87,8 @@ public class Photo extends ODataBaseEntity {
     */
     public void setHeight(Integer value) { 
         this.Height = value; 
+        valueChanged("Height", value);
+
     }
 }
 

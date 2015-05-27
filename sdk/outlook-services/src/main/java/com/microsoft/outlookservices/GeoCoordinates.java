@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Geo Coordinates.
 */
@@ -39,7 +42,9 @@ public class GeoCoordinates extends ODataBaseEntity {
     * @param value the Double
     */
     public void setAltitude(Double value) { 
-        this.Altitude = value; 
+        this.Altitude = value;
+        valueChanged("Altitude", value);
+
     }
 
     private Double Latitude;
@@ -59,7 +64,9 @@ public class GeoCoordinates extends ODataBaseEntity {
     * @param value the Double
     */
     public void setLatitude(Double value) { 
-        this.Latitude = value; 
+        this.Latitude = value;
+        valueChanged("Latitude", value);
+
     }
 
     private Double Longitude;
@@ -79,7 +86,9 @@ public class GeoCoordinates extends ODataBaseEntity {
     * @param value the Double
     */
     public void setLongitude(Double value) { 
-        this.Longitude = value; 
+        this.Longitude = value;
+        valueChanged("Longitude", value);
+
     }
 
     private Double Accuracy;
@@ -99,7 +108,9 @@ public class GeoCoordinates extends ODataBaseEntity {
     * @param value the Double
     */
     public void setAccuracy(Double value) { 
-        this.Accuracy = value; 
+        this.Accuracy = value;
+        valueChanged("Accuracy", value);
+
     }
 
     private Double AltitudeAccuracy;
@@ -119,6 +130,8 @@ public class GeoCoordinates extends ODataBaseEntity {
     * @param value the Double
     */
     public void setAltitudeAccuracy(Double value) { 
-        this.AltitudeAccuracy = value; 
+        this.AltitudeAccuracy = value;
+        valueChanged("AltitudeAccuracy", value);
+
     }
 }

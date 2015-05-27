@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Item Reference.
 */
@@ -39,7 +42,9 @@ public class ItemReference extends ODataBaseEntity {
     * @param value the String
     */
     public void setdriveId(String value) { 
-        this.driveId = value; 
+        this.driveId = value;
+        valueChanged("driveId", value);
+
     }
 
     private String id;
@@ -59,7 +64,9 @@ public class ItemReference extends ODataBaseEntity {
     * @param value the String
     */
     public void setid(String value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private String path;
@@ -79,6 +86,8 @@ public class ItemReference extends ODataBaseEntity {
     * @param value the String
     */
     public void setpath(String value) { 
-        this.path = value; 
+        this.path = value;
+        valueChanged("path", value);
+
     }
 }

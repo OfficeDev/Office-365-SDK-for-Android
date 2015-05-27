@@ -14,7 +14,6 @@
 package com.microsoft.fileservices.orc;
 
 import com.microsoft.fileservices.*;
-import com.microsoft.fileservices.orc.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.*;
 import com.microsoft.services.orc.Readable;
@@ -23,7 +22,7 @@ import com.microsoft.services.orc.interfaces.*;
 /**
  * The type  CurrentUserRequestContextFetcher.
  */
-public class CurrentUserRequestContextFetcher extends OrcEntityFetcher<CurrentUserRequestContext,CurrentUserRequestContextOperations>
+public class CurrentUserRequestContextFetcher extends OrcEntityFetcher<CurrentUserRequestContext,CurrentUserRequestContextOperations> 
                                      implements Readable<CurrentUserRequestContext> {
 
      /**

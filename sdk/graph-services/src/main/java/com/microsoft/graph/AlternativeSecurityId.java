@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Alternative Security Id.
 */
@@ -39,7 +42,9 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     * @param value the Integer
     */
     public void settype(Integer value) { 
-        this.type = value; 
+        this.type = value;
+        valueChanged("type", value);
+
     }
 
     private String identityProvider;
@@ -59,7 +64,9 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     * @param value the String
     */
     public void setidentityProvider(String value) { 
-        this.identityProvider = value; 
+        this.identityProvider = value;
+        valueChanged("identityProvider", value);
+
     }
 
     private byte[] key;
@@ -79,6 +86,8 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     * @param value the byte[]
     */
     public void setkey(byte[] value) { 
-        this.key = value; 
+        this.key = value;
+        valueChanged("key", value);
+
     }
 }

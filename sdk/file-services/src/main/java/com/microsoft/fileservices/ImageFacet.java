@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.fileservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Image Facet.
 */
@@ -39,6 +42,8 @@ public class ImageFacet extends ODataBaseEntity {
     * @param value the java.util.Calendar
     */
     public void setdateTimeTaken(java.util.Calendar value) { 
-        this.dateTimeTaken = value; 
+        this.dateTimeTaken = value;
+        valueChanged("dateTimeTaken", value);
+
     }
 }

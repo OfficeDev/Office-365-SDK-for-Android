@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.outlookservices;
 
+
+
 /**
  * The type Event.
 */
@@ -40,6 +42,8 @@ public class Event extends Item {
     */
     public void setSubject(String value) { 
         this.Subject = value; 
+        valueChanged("Subject", value);
+
     }
             
     private ItemBody Body;
@@ -60,6 +64,8 @@ public class Event extends Item {
     */
     public void setBody(ItemBody value) { 
         this.Body = value; 
+        valueChanged("Body", value);
+
     }
             
     private String BodyPreview;
@@ -80,6 +86,8 @@ public class Event extends Item {
     */
     public void setBodyPreview(String value) { 
         this.BodyPreview = value; 
+        valueChanged("BodyPreview", value);
+
     }
             
     private Importance Importance;
@@ -100,6 +108,8 @@ public class Event extends Item {
     */
     public void setImportance(Importance value) { 
         this.Importance = value; 
+        valueChanged("Importance", value);
+
     }
             
     private Boolean HasAttachments;
@@ -120,6 +130,8 @@ public class Event extends Item {
     */
     public void setHasAttachments(Boolean value) { 
         this.HasAttachments = value; 
+        valueChanged("HasAttachments", value);
+
     }
             
     private java.util.Calendar Start;
@@ -140,6 +152,8 @@ public class Event extends Item {
     */
     public void setStart(java.util.Calendar value) { 
         this.Start = value; 
+        valueChanged("Start", value);
+
     }
             
     private String StartTimeZone;
@@ -160,6 +174,8 @@ public class Event extends Item {
     */
     public void setStartTimeZone(String value) { 
         this.StartTimeZone = value; 
+        valueChanged("StartTimeZone", value);
+
     }
             
     private java.util.Calendar End;
@@ -180,6 +196,8 @@ public class Event extends Item {
     */
     public void setEnd(java.util.Calendar value) { 
         this.End = value; 
+        valueChanged("End", value);
+
     }
             
     private String EndTimeZone;
@@ -200,6 +218,8 @@ public class Event extends Item {
     */
     public void setEndTimeZone(String value) { 
         this.EndTimeZone = value; 
+        valueChanged("EndTimeZone", value);
+
     }
             
     private Integer Reminder;
@@ -220,6 +240,8 @@ public class Event extends Item {
     */
     public void setReminder(Integer value) { 
         this.Reminder = value; 
+        valueChanged("Reminder", value);
+
     }
             
     private Location Location;
@@ -240,6 +262,8 @@ public class Event extends Item {
     */
     public void setLocation(Location value) { 
         this.Location = value; 
+        valueChanged("Location", value);
+
     }
             
     private FreeBusyStatus ShowAs;
@@ -260,6 +284,8 @@ public class Event extends Item {
     */
     public void setShowAs(FreeBusyStatus value) { 
         this.ShowAs = value; 
+        valueChanged("ShowAs", value);
+
     }
             
     private ResponseStatus ResponseStatus;
@@ -280,6 +306,8 @@ public class Event extends Item {
     */
     public void setResponseStatus(ResponseStatus value) { 
         this.ResponseStatus = value; 
+        valueChanged("ResponseStatus", value);
+
     }
             
     private Boolean IsAllDay;
@@ -300,6 +328,8 @@ public class Event extends Item {
     */
     public void setIsAllDay(Boolean value) { 
         this.IsAllDay = value; 
+        valueChanged("IsAllDay", value);
+
     }
             
     private Boolean IsCancelled;
@@ -320,6 +350,8 @@ public class Event extends Item {
     */
     public void setIsCancelled(Boolean value) { 
         this.IsCancelled = value; 
+        valueChanged("IsCancelled", value);
+
     }
             
     private Boolean IsOrganizer;
@@ -340,6 +372,8 @@ public class Event extends Item {
     */
     public void setIsOrganizer(Boolean value) { 
         this.IsOrganizer = value; 
+        valueChanged("IsOrganizer", value);
+
     }
             
     private Boolean ResponseRequested;
@@ -360,6 +394,8 @@ public class Event extends Item {
     */
     public void setResponseRequested(Boolean value) { 
         this.ResponseRequested = value; 
+        valueChanged("ResponseRequested", value);
+
     }
             
     private EventType Type;
@@ -380,6 +416,8 @@ public class Event extends Item {
     */
     public void setType(EventType value) { 
         this.Type = value; 
+        valueChanged("Type", value);
+
     }
             
     private String SeriesMasterId;
@@ -400,6 +438,8 @@ public class Event extends Item {
     */
     public void setSeriesMasterId(String value) { 
         this.SeriesMasterId = value; 
+        valueChanged("SeriesMasterId", value);
+
     }
     
         
@@ -423,6 +463,8 @@ public class Event extends Item {
     */
     public void setAttendees(java.util.List<Attendee> value) { 
         this.Attendees = value; 
+        valueChanged("Attendees", value);
+
     }
             
     private PatternedRecurrence Recurrence;
@@ -443,6 +485,8 @@ public class Event extends Item {
     */
     public void setRecurrence(PatternedRecurrence value) { 
         this.Recurrence = value; 
+        valueChanged("Recurrence", value);
+
     }
             
     private Recipient Organizer;
@@ -463,6 +507,8 @@ public class Event extends Item {
     */
     public void setOrganizer(Recipient value) { 
         this.Organizer = value; 
+        valueChanged("Organizer", value);
+
     }
             
     private String iCalUId;
@@ -483,6 +529,8 @@ public class Event extends Item {
     */
     public void setiCalUId(String value) { 
         this.iCalUId = value; 
+        valueChanged("iCalUId", value);
+
     }
             
     private String WebLink;
@@ -503,6 +551,8 @@ public class Event extends Item {
     */
     public void setWebLink(String value) { 
         this.WebLink = value; 
+        valueChanged("WebLink", value);
+
     }
     
         
@@ -526,6 +576,8 @@ public class Event extends Item {
     */
     public void setAttachments(java.util.List<Attachment> value) { 
         this.Attachments = value; 
+        valueChanged("Attachments", value);
+
     }
             
     private Calendar Calendar;
@@ -546,6 +598,8 @@ public class Event extends Item {
     */
     public void setCalendar(Calendar value) { 
         this.Calendar = value; 
+        valueChanged("Calendar", value);
+
     }
     
         
@@ -569,6 +623,8 @@ public class Event extends Item {
     */
     public void setInstances(java.util.List<Event> value) { 
         this.Instances = value; 
+        valueChanged("Instances", value);
+
     }
 }
 

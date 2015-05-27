@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type App Role.
 */
@@ -39,7 +42,9 @@ public class AppRole extends ODataBaseEntity {
     * @param value the java.util.List<String>
     */
     public void setallowedMemberTypes(java.util.List<String> value) { 
-        this.allowedMemberTypes = value; 
+        this.allowedMemberTypes = value;
+        valueChanged("allowedMemberTypes", value);
+
     }
 
     private String description;
@@ -59,7 +64,9 @@ public class AppRole extends ODataBaseEntity {
     * @param value the String
     */
     public void setdescription(String value) { 
-        this.description = value; 
+        this.description = value;
+        valueChanged("description", value);
+
     }
 
     private String displayName;
@@ -79,7 +86,9 @@ public class AppRole extends ODataBaseEntity {
     * @param value the String
     */
     public void setdisplayName(String value) { 
-        this.displayName = value; 
+        this.displayName = value;
+        valueChanged("displayName", value);
+
     }
 
     private java.util.UUID id;
@@ -99,7 +108,9 @@ public class AppRole extends ODataBaseEntity {
     * @param value the java.util.UUID
     */
     public void setid(java.util.UUID value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private Boolean isEnabled;
@@ -119,7 +130,9 @@ public class AppRole extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setisEnabled(Boolean value) { 
-        this.isEnabled = value; 
+        this.isEnabled = value;
+        valueChanged("isEnabled", value);
+
     }
 
     private String value;
@@ -139,6 +152,8 @@ public class AppRole extends ODataBaseEntity {
     * @param value the String
     */
     public void setvalue(String value) { 
-        this.value = value; 
+        this.value = value;
+        valueChanged("value", value);
+
     }
 }

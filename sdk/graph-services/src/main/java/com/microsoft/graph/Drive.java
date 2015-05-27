@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Drive.
 */
@@ -40,6 +43,8 @@ public class Drive extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
             
     private Identity owner;
@@ -60,6 +65,8 @@ public class Drive extends ODataBaseEntity {
     */
     public void setowner(Identity value) { 
         this.owner = value; 
+        valueChanged("owner", value);
+
     }
             
     private DriveQuota quota;
@@ -80,6 +87,8 @@ public class Drive extends ODataBaseEntity {
     */
     public void setquota(DriveQuota value) { 
         this.quota = value; 
+        valueChanged("quota", value);
+
     }
 }
 

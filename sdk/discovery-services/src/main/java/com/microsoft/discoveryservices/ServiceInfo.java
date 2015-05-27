@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.discoveryservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Service Info.
 */
@@ -40,6 +43,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setcapability(String value) { 
         this.capability = value; 
+        valueChanged("capability", value);
+
     }
             
     private String entityKey;
@@ -60,6 +65,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setentityKey(String value) { 
         this.entityKey = value; 
+        valueChanged("entityKey", value);
+
     }
             
     private String providerId;
@@ -80,6 +87,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setproviderId(String value) { 
         this.providerId = value; 
+        valueChanged("providerId", value);
+
     }
             
     private String providerName;
@@ -100,6 +109,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setproviderName(String value) { 
         this.providerName = value; 
+        valueChanged("providerName", value);
+
     }
             
     private Integer serviceAccountType;
@@ -120,6 +131,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setserviceAccountType(Integer value) { 
         this.serviceAccountType = value; 
+        valueChanged("serviceAccountType", value);
+
     }
             
     private String serviceApiVersion;
@@ -140,6 +153,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setserviceApiVersion(String value) { 
         this.serviceApiVersion = value; 
+        valueChanged("serviceApiVersion", value);
+
     }
             
     private String serviceEndpointUri;
@@ -160,6 +175,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setserviceEndpointUri(String value) { 
         this.serviceEndpointUri = value; 
+        valueChanged("serviceEndpointUri", value);
+
     }
             
     private String serviceId;
@@ -180,6 +197,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setserviceId(String value) { 
         this.serviceId = value; 
+        valueChanged("serviceId", value);
+
     }
             
     private String serviceName;
@@ -200,6 +219,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setserviceName(String value) { 
         this.serviceName = value; 
+        valueChanged("serviceName", value);
+
     }
             
     private String serviceResourceId;
@@ -220,6 +241,8 @@ public class ServiceInfo extends ODataBaseEntity {
     */
     public void setserviceResourceId(String value) { 
         this.serviceResourceId = value; 
+        valueChanged("serviceResourceId", value);
+
     }
 }
 

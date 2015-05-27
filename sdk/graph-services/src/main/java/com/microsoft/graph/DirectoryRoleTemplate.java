@@ -13,6 +13,8 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+
+
 /**
  * The type Directory Role Template.
 */
@@ -40,6 +42,8 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     */
     public void setdescription(String value) { 
         this.description = value; 
+        valueChanged("description", value);
+
     }
             
     private String displayName;
@@ -60,6 +64,8 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     */
     public void setdisplayName(String value) { 
         this.displayName = value; 
+        valueChanged("displayName", value);
+
     }
 }
 

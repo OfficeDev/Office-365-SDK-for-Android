@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.fileservices;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Item.
 */
@@ -40,6 +43,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setcreatedBy(IdentitySet value) { 
         this.createdBy = value; 
+        valueChanged("createdBy", value);
+
     }
             
     private String eTag;
@@ -60,6 +65,8 @@ public class Item extends ODataBaseEntity {
     */
     public void seteTag(String value) { 
         this.eTag = value; 
+        valueChanged("eTag", value);
+
     }
             
     private String id;
@@ -80,6 +87,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setid(String value) { 
         this.id = value; 
+        valueChanged("id", value);
+
     }
             
     private IdentitySet lastModifiedBy;
@@ -100,6 +109,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setlastModifiedBy(IdentitySet value) { 
         this.lastModifiedBy = value; 
+        valueChanged("lastModifiedBy", value);
+
     }
             
     private String name;
@@ -120,6 +131,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setname(String value) { 
         this.name = value; 
+        valueChanged("name", value);
+
     }
             
     private ItemReference parentReference;
@@ -140,6 +153,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setparentReference(ItemReference value) { 
         this.parentReference = value; 
+        valueChanged("parentReference", value);
+
     }
             
     private Long size;
@@ -160,6 +175,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setsize(Long value) { 
         this.size = value; 
+        valueChanged("size", value);
+
     }
             
     private java.util.Calendar dateTimeCreated;
@@ -180,6 +197,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setdateTimeCreated(java.util.Calendar value) { 
         this.dateTimeCreated = value; 
+        valueChanged("dateTimeCreated", value);
+
     }
             
     private java.util.Calendar dateTimeLastModified;
@@ -200,6 +219,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setdateTimeLastModified(java.util.Calendar value) { 
         this.dateTimeLastModified = value; 
+        valueChanged("dateTimeLastModified", value);
+
     }
             
     private String type;
@@ -220,6 +241,8 @@ public class Item extends ODataBaseEntity {
     */
     public void settype(String value) { 
         this.type = value; 
+        valueChanged("type", value);
+
     }
             
     private String webUrl;
@@ -240,6 +263,8 @@ public class Item extends ODataBaseEntity {
     */
     public void setwebUrl(String value) { 
         this.webUrl = value; 
+        valueChanged("webUrl", value);
+
     }
 }
 

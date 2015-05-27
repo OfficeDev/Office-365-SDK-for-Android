@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Item Body.
 */
@@ -39,7 +42,9 @@ public class ItemBody extends ODataBaseEntity {
     * @param value the BodyType
     */
     public void setContentType(BodyType value) { 
-        this.ContentType = value; 
+        this.ContentType = value;
+        valueChanged("ContentType", value);
+
     }
 
     private String Content;
@@ -59,6 +64,8 @@ public class ItemBody extends ODataBaseEntity {
     * @param value the String
     */
     public void setContent(String value) { 
-        this.Content = value; 
+        this.Content = value;
+        valueChanged("Content", value);
+
     }
 }

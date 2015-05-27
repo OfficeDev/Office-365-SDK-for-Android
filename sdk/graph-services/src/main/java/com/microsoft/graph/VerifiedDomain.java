@@ -13,6 +13,9 @@
  ******************************************************************************/
 package com.microsoft.graph;
 
+import com.microsoft.services.orc.ODataBaseEntity;
+
+
 /**
  * The type Verified Domain.
 */
@@ -39,7 +42,9 @@ public class VerifiedDomain extends ODataBaseEntity {
     * @param value the String
     */
     public void setcapabilities(String value) { 
-        this.capabilities = value; 
+        this.capabilities = value;
+        valueChanged("capabilities", value);
+
     }
 
     private Boolean $$__$$default;
@@ -59,7 +64,9 @@ public class VerifiedDomain extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setdefault(Boolean value) { 
-        this.$$__$$default = value; 
+        this.$$__$$default = value;
+        valueChanged("default", value);
+
     }
 
     private String id;
@@ -79,7 +86,9 @@ public class VerifiedDomain extends ODataBaseEntity {
     * @param value the String
     */
     public void setid(String value) { 
-        this.id = value; 
+        this.id = value;
+        valueChanged("id", value);
+
     }
 
     private Boolean initial;
@@ -99,7 +108,9 @@ public class VerifiedDomain extends ODataBaseEntity {
     * @param value the Boolean
     */
     public void setinitial(Boolean value) { 
-        this.initial = value; 
+        this.initial = value;
+        valueChanged("initial", value);
+
     }
 
     private String name;
@@ -119,7 +130,9 @@ public class VerifiedDomain extends ODataBaseEntity {
     * @param value the String
     */
     public void setname(String value) { 
-        this.name = value; 
+        this.name = value;
+        valueChanged("name", value);
+
     }
 
     private String type;
@@ -139,6 +152,8 @@ public class VerifiedDomain extends ODataBaseEntity {
     * @param value the String
     */
     public void settype(String value) { 
-        this.type = value; 
+        this.type = value;
+        valueChanged("type", value);
+
     }
 }
