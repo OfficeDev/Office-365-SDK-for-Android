@@ -32,7 +32,7 @@ public class SiteCollection extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class SiteCollection extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -57,7 +57,7 @@ public class SiteCollection extends ODataBaseEntity {
     *
     * @return the java.util.List<Site>
     */
-    public java.util.List<Site> getsites() {
+    public java.util.List<Site> getSites() {
         return this.sites; 
     }
 
@@ -66,7 +66,7 @@ public class SiteCollection extends ODataBaseEntity {
     *
     * @param value the java.util.List<Site>
     */
-    public void setsites(java.util.List<Site> value) { 
+    public void setSites(java.util.List<Site> value) { 
         this.sites = value; 
         valueChanged("sites", value);
 

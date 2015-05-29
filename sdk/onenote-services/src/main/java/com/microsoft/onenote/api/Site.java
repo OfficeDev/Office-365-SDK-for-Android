@@ -32,7 +32,7 @@ public class Site extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class Site extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -54,7 +54,7 @@ public class Site extends ODataBaseEntity {
     *
     * @return the Notes
     */
-    public Notes getnotes() {
+    public Notes getNotes() {
         return this.notes; 
     }
 
@@ -63,7 +63,7 @@ public class Site extends ODataBaseEntity {
     *
     * @param value the Notes
     */
-    public void setnotes(Notes value) { 
+    public void setNotes(Notes value) { 
         this.notes = value; 
         valueChanged("notes", value);
 

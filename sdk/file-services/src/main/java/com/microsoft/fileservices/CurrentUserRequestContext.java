@@ -32,7 +32,7 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -54,7 +54,7 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @return the Drive
     */
-    public Drive getdrive() {
+    public Drive getDrive() {
         return this.drive; 
     }
 
@@ -63,7 +63,7 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @param value the Drive
     */
-    public void setdrive(Drive value) { 
+    public void setDrive(Drive value) { 
         this.drive = value; 
         valueChanged("drive", value);
 
@@ -79,7 +79,7 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @return the java.util.List<Item>
     */
-    public java.util.List<Item> getfiles() {
+    public java.util.List<Item> getFiles() {
         return this.files; 
     }
 
@@ -88,7 +88,7 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @param value the java.util.List<Item>
     */
-    public void setfiles(java.util.List<Item> value) { 
+    public void setFiles(java.util.List<Item> value) { 
         this.files = value; 
         valueChanged("files", value);
 

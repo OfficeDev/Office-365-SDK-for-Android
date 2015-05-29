@@ -32,7 +32,7 @@ public class ExternalLink extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gethref() {
+    public String getHref() {
         return this.href; 
     }
 
@@ -41,7 +41,7 @@ public class ExternalLink extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void sethref(String value) { 
+    public void setHref(String value) { 
         this.href = value;
         valueChanged("href", value);
 

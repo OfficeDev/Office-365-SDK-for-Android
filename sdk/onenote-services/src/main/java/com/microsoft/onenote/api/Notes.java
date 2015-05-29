@@ -32,7 +32,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -57,7 +57,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @return the java.util.List<Notebook>
     */
-    public java.util.List<Notebook> getnotebooks() {
+    public java.util.List<Notebook> getNotebooks() {
         return this.notebooks; 
     }
 
@@ -66,7 +66,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @param value the java.util.List<Notebook>
     */
-    public void setnotebooks(java.util.List<Notebook> value) { 
+    public void setNotebooks(java.util.List<Notebook> value) { 
         this.notebooks = value; 
         valueChanged("notebooks", value);
 
@@ -82,7 +82,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @return the java.util.List<Section>
     */
-    public java.util.List<Section> getsections() {
+    public java.util.List<Section> getSections() {
         return this.sections; 
     }
 
@@ -91,7 +91,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @param value the java.util.List<Section>
     */
-    public void setsections(java.util.List<Section> value) { 
+    public void setSections(java.util.List<Section> value) { 
         this.sections = value; 
         valueChanged("sections", value);
 
@@ -107,7 +107,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @return the java.util.List<SectionGroup>
     */
-    public java.util.List<SectionGroup> getsectionGroups() {
+    public java.util.List<SectionGroup> getSectionGroups() {
         return this.sectionGroups; 
     }
 
@@ -116,7 +116,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @param value the java.util.List<SectionGroup>
     */
-    public void setsectionGroups(java.util.List<SectionGroup> value) { 
+    public void setSectionGroups(java.util.List<SectionGroup> value) { 
         this.sectionGroups = value; 
         valueChanged("sectionGroups", value);
 
@@ -132,7 +132,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @return the java.util.List<Page>
     */
-    public java.util.List<Page> getpages() {
+    public java.util.List<Page> getPages() {
         return this.pages; 
     }
 
@@ -141,7 +141,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @param value the java.util.List<Page>
     */
-    public void setpages(java.util.List<Page> value) { 
+    public void setPages(java.util.List<Page> value) { 
         this.pages = value; 
         valueChanged("pages", value);
 
@@ -157,7 +157,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @return the java.util.List<Resource>
     */
-    public java.util.List<Resource> getresources() {
+    public java.util.List<Resource> getResources() {
         return this.resources; 
     }
 
@@ -166,7 +166,7 @@ public class Notes extends ODataBaseEntity {
     *
     * @param value the java.util.List<Resource>
     */
-    public void setresources(java.util.List<Resource> value) { 
+    public void setResources(java.util.List<Resource> value) { 
         this.resources = value; 
         valueChanged("resources", value);
 

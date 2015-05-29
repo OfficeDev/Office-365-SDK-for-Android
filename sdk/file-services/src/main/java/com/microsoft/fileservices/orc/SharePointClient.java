@@ -23,7 +23,7 @@ import com.microsoft.services.orc.interfaces.DependencyResolver;
 public class SharePointClient extends BaseOrcContainer {
 
      /**
-     * Instantiates a new SharePointClient.
+     * Instantiates a new EntityContainerClient.
      *
      * @param url the url
      * @param resolver the resolver

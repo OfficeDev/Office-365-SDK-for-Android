@@ -32,7 +32,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the IdentitySet
     */
-    public IdentitySet getcreatedBy() {
+    public IdentitySet getCreatedBy() {
         return this.createdBy; 
     }
 
@@ -41,7 +41,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the IdentitySet
     */
-    public void setcreatedBy(IdentitySet value) { 
+    public void setCreatedBy(IdentitySet value) { 
         this.createdBy = value; 
         valueChanged("createdBy", value);
 
@@ -54,7 +54,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String geteTag() {
+    public String getETag() {
         return this.eTag; 
     }
 
@@ -63,7 +63,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void seteTag(String value) { 
+    public void setETag(String value) { 
         this.eTag = value; 
         valueChanged("eTag", value);
 
@@ -76,7 +76,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -85,7 +85,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -98,7 +98,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the IdentitySet
     */
-    public IdentitySet getlastModifiedBy() {
+    public IdentitySet getLastModifiedBy() {
         return this.lastModifiedBy; 
     }
 
@@ -107,7 +107,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the IdentitySet
     */
-    public void setlastModifiedBy(IdentitySet value) { 
+    public void setLastModifiedBy(IdentitySet value) { 
         this.lastModifiedBy = value; 
         valueChanged("lastModifiedBy", value);
 
@@ -120,7 +120,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getname() {
+    public String getName() {
         return this.name; 
     }
 
@@ -129,7 +129,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setname(String value) { 
+    public void setName(String value) { 
         this.name = value; 
         valueChanged("name", value);
 
@@ -142,7 +142,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the ItemReference
     */
-    public ItemReference getparentReference() {
+    public ItemReference getParentReference() {
         return this.parentReference; 
     }
 
@@ -151,7 +151,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the ItemReference
     */
-    public void setparentReference(ItemReference value) { 
+    public void setParentReference(ItemReference value) { 
         this.parentReference = value; 
         valueChanged("parentReference", value);
 
@@ -164,7 +164,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the Long
     */
-    public Long getsize() {
+    public Long getSize() {
         return this.size; 
     }
 
@@ -173,7 +173,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the Long
     */
-    public void setsize(Long value) { 
+    public void setSize(Long value) { 
         this.size = value; 
         valueChanged("size", value);
 
@@ -186,7 +186,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getdateTimeCreated() {
+    public java.util.Calendar getDateTimeCreated() {
         return this.dateTimeCreated; 
     }
 
@@ -195,7 +195,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setdateTimeCreated(java.util.Calendar value) { 
+    public void setDateTimeCreated(java.util.Calendar value) { 
         this.dateTimeCreated = value; 
         valueChanged("dateTimeCreated", value);
 
@@ -208,7 +208,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getdateTimeLastModified() {
+    public java.util.Calendar getDateTimeLastModified() {
         return this.dateTimeLastModified; 
     }
 
@@ -217,7 +217,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setdateTimeLastModified(java.util.Calendar value) { 
+    public void setDateTimeLastModified(java.util.Calendar value) { 
         this.dateTimeLastModified = value; 
         valueChanged("dateTimeLastModified", value);
 
@@ -230,7 +230,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gettype() {
+    public String getType() {
         return this.type; 
     }
 
@@ -239,7 +239,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void settype(String value) { 
+    public void setType(String value) { 
         this.type = value; 
         valueChanged("type", value);
 
@@ -252,7 +252,7 @@ public class Item extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getwebUrl() {
+    public String getWebUrl() {
         return this.webUrl; 
     }
 
@@ -261,7 +261,7 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setwebUrl(String value) { 
+    public void setWebUrl(String value) { 
         this.webUrl = value; 
         valueChanged("webUrl", value);
 

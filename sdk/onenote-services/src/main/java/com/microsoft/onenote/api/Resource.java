@@ -32,7 +32,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -54,7 +54,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getself() {
+    public String getSelf() {
         return this.self; 
     }
 
@@ -63,7 +63,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setself(String value) { 
+    public void setSelf(String value) { 
         this.self = value; 
         valueChanged("self", value);
 
@@ -76,7 +76,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @return the byte[]
     */
-    public byte[] getcontent() {
+    public byte[] getContent() {
         return this.content; 
     }
 
@@ -85,7 +85,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @param value the byte[]
     */
-    public void setcontent(byte[] value) { 
+    public void setContent(byte[] value) { 
         this.content = value; 
         valueChanged("content", value);
 
@@ -98,7 +98,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcontentUrl() {
+    public String getContentUrl() {
         return this.contentUrl; 
     }
 
@@ -107,7 +107,7 @@ public class Resource extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcontentUrl(String value) { 
+    public void setContentUrl(String value) { 
         this.contentUrl = value; 
         valueChanged("contentUrl", value);
 

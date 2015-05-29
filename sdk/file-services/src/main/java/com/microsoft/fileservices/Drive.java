@@ -32,7 +32,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -54,7 +54,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @return the Identity
     */
-    public Identity getowner() {
+    public Identity getOwner() {
         return this.owner; 
     }
 
@@ -63,7 +63,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the Identity
     */
-    public void setowner(Identity value) { 
+    public void setOwner(Identity value) { 
         this.owner = value; 
         valueChanged("owner", value);
 
@@ -76,7 +76,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @return the DriveQuota
     */
-    public DriveQuota getquota() {
+    public DriveQuota getQuota() {
         return this.quota; 
     }
 
@@ -85,7 +85,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the DriveQuota
     */
-    public void setquota(DriveQuota value) { 
+    public void setQuota(DriveQuota value) { 
         this.quota = value; 
         valueChanged("quota", value);
 
@@ -101,7 +101,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @return the java.util.List<Item>
     */
-    public java.util.List<Item> getfiles() {
+    public java.util.List<Item> getFiles() {
         return this.files; 
     }
 
@@ -110,7 +110,7 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the java.util.List<Item>
     */
-    public void setfiles(java.util.List<Item> value) { 
+    public void setFiles(java.util.List<Item> value) { 
         this.files = value; 
         valueChanged("files", value);
 

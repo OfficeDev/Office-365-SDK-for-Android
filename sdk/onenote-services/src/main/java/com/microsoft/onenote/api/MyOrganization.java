@@ -32,7 +32,7 @@ public class MyOrganization extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class MyOrganization extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -57,7 +57,7 @@ public class MyOrganization extends ODataBaseEntity {
     *
     * @return the java.util.List<SiteCollection>
     */
-    public java.util.List<SiteCollection> getsiteCollections() {
+    public java.util.List<SiteCollection> getSiteCollections() {
         return this.siteCollections; 
     }
 
@@ -66,7 +66,7 @@ public class MyOrganization extends ODataBaseEntity {
     *
     * @param value the java.util.List<SiteCollection>
     */
-    public void setsiteCollections(java.util.List<SiteCollection> value) { 
+    public void setSiteCollections(java.util.List<SiteCollection> value) { 
         this.siteCollections = value; 
         valueChanged("siteCollections", value);
 

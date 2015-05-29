@@ -32,7 +32,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getsectionsUrl() {
+    public String getSectionsUrl() {
         return this.sectionsUrl; 
     }
 
@@ -41,7 +41,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setsectionsUrl(String value) { 
+    public void setSectionsUrl(String value) { 
         this.sectionsUrl = value; 
         valueChanged("sectionsUrl", value);
 
@@ -54,7 +54,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getsectionGroupsUrl() {
+    public String getSectionGroupsUrl() {
         return this.sectionGroupsUrl; 
     }
 
@@ -63,7 +63,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setsectionGroupsUrl(String value) { 
+    public void setSectionGroupsUrl(String value) { 
         this.sectionGroupsUrl = value; 
         valueChanged("sectionGroupsUrl", value);
 
@@ -76,7 +76,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getname() {
+    public String getName() {
         return this.name; 
     }
 
@@ -85,7 +85,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setname(String value) { 
+    public void setName(String value) { 
         this.name = value; 
         valueChanged("name", value);
 
@@ -98,7 +98,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcreatedBy() {
+    public String getCreatedBy() {
         return this.createdBy; 
     }
 
@@ -107,7 +107,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcreatedBy(String value) { 
+    public void setCreatedBy(String value) { 
         this.createdBy = value; 
         valueChanged("createdBy", value);
 
@@ -120,7 +120,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getlastModifiedBy() {
+    public String getLastModifiedBy() {
         return this.lastModifiedBy; 
     }
 
@@ -129,7 +129,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setlastModifiedBy(String value) { 
+    public void setLastModifiedBy(String value) { 
         this.lastModifiedBy = value; 
         valueChanged("lastModifiedBy", value);
 
@@ -142,7 +142,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getlastModifiedTime() {
+    public java.util.Calendar getLastModifiedTime() {
         return this.lastModifiedTime; 
     }
 
@@ -151,7 +151,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setlastModifiedTime(java.util.Calendar value) { 
+    public void setLastModifiedTime(java.util.Calendar value) { 
         this.lastModifiedTime = value; 
         valueChanged("lastModifiedTime", value);
 
@@ -164,7 +164,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -173,7 +173,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -186,7 +186,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getself() {
+    public String getSelf() {
         return this.self; 
     }
 
@@ -195,7 +195,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setself(String value) { 
+    public void setSelf(String value) { 
         this.self = value; 
         valueChanged("self", value);
 
@@ -208,7 +208,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getcreatedTime() {
+    public java.util.Calendar getCreatedTime() {
         return this.createdTime; 
     }
 
@@ -217,7 +217,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setcreatedTime(java.util.Calendar value) { 
+    public void setCreatedTime(java.util.Calendar value) { 
         this.createdTime = value; 
         valueChanged("createdTime", value);
 
@@ -230,7 +230,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the Notebook
     */
-    public Notebook getparentNotebook() {
+    public Notebook getParentNotebook() {
         return this.parentNotebook; 
     }
 
@@ -239,7 +239,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the Notebook
     */
-    public void setparentNotebook(Notebook value) { 
+    public void setParentNotebook(Notebook value) { 
         this.parentNotebook = value; 
         valueChanged("parentNotebook", value);
 
@@ -252,7 +252,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the SectionGroup
     */
-    public SectionGroup getparentSectionGroup() {
+    public SectionGroup getParentSectionGroup() {
         return this.parentSectionGroup; 
     }
 
@@ -261,7 +261,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the SectionGroup
     */
-    public void setparentSectionGroup(SectionGroup value) { 
+    public void setParentSectionGroup(SectionGroup value) { 
         this.parentSectionGroup = value; 
         valueChanged("parentSectionGroup", value);
 
@@ -277,7 +277,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the java.util.List<Section>
     */
-    public java.util.List<Section> getsections() {
+    public java.util.List<Section> getSections() {
         return this.sections; 
     }
 
@@ -286,7 +286,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the java.util.List<Section>
     */
-    public void setsections(java.util.List<Section> value) { 
+    public void setSections(java.util.List<Section> value) { 
         this.sections = value; 
         valueChanged("sections", value);
 
@@ -302,7 +302,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @return the java.util.List<SectionGroup>
     */
-    public java.util.List<SectionGroup> getsectionGroups() {
+    public java.util.List<SectionGroup> getSectionGroups() {
         return this.sectionGroups; 
     }
 
@@ -311,7 +311,7 @@ public class SectionGroup extends ODataBaseEntity {
     *
     * @param value the java.util.List<SectionGroup>
     */
-    public void setsectionGroups(java.util.List<SectionGroup> value) { 
+    public void setSectionGroups(java.util.List<SectionGroup> value) { 
         this.sectionGroups = value; 
         valueChanged("sectionGroups", value);
 

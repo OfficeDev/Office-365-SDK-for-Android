@@ -32,7 +32,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getisDefault() {
+    public Boolean getIsDefault() {
         return this.isDefault; 
     }
 
@@ -41,7 +41,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setisDefault(Boolean value) { 
+    public void setIsDefault(Boolean value) { 
         this.isDefault = value;
         valueChanged("isDefault", value);
 
@@ -54,7 +54,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getpagesUrl() {
+    public String getPagesUrl() {
         return this.pagesUrl; 
     }
 
@@ -63,7 +63,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setpagesUrl(String value) { 
+    public void setPagesUrl(String value) { 
         this.pagesUrl = value;
         valueChanged("pagesUrl", value);
 
@@ -76,7 +76,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getname() {
+    public String getName() {
         return this.name; 
     }
 
@@ -85,7 +85,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setname(String value) { 
+    public void setName(String value) { 
         this.name = value;
         valueChanged("name", value);
 
@@ -98,7 +98,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcreatedBy() {
+    public String getCreatedBy() {
         return this.createdBy; 
     }
 
@@ -107,7 +107,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcreatedBy(String value) { 
+    public void setCreatedBy(String value) { 
         this.createdBy = value;
         valueChanged("createdBy", value);
 
@@ -120,7 +120,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getlastModifiedBy() {
+    public String getLastModifiedBy() {
         return this.lastModifiedBy; 
     }
 
@@ -129,7 +129,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setlastModifiedBy(String value) { 
+    public void setLastModifiedBy(String value) { 
         this.lastModifiedBy = value;
         valueChanged("lastModifiedBy", value);
 
@@ -142,7 +142,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getlastModifiedTime() {
+    public java.util.Calendar getLastModifiedTime() {
         return this.lastModifiedTime; 
     }
 
@@ -151,7 +151,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setlastModifiedTime(java.util.Calendar value) { 
+    public void setLastModifiedTime(java.util.Calendar value) { 
         this.lastModifiedTime = value;
         valueChanged("lastModifiedTime", value);
 
@@ -164,7 +164,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -173,7 +173,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value;
         valueChanged("id", value);
 
@@ -186,7 +186,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getself() {
+    public String getSelf() {
         return this.self; 
     }
 
@@ -195,7 +195,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setself(String value) { 
+    public void setSelf(String value) { 
         this.self = value;
         valueChanged("self", value);
 
@@ -208,7 +208,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getcreatedTime() {
+    public java.util.Calendar getCreatedTime() {
         return this.createdTime; 
     }
 
@@ -217,7 +217,7 @@ public class CopySectionModel extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setcreatedTime(java.util.Calendar value) { 
+    public void setCreatedTime(java.util.Calendar value) { 
         this.createdTime = value;
         valueChanged("createdTime", value);
 

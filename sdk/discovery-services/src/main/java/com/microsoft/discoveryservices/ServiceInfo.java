@@ -32,7 +32,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcapability() {
+    public String getCapability() {
         return this.capability; 
     }
 
@@ -41,7 +41,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcapability(String value) { 
+    public void setCapability(String value) { 
         this.capability = value; 
         valueChanged("capability", value);
 
@@ -54,7 +54,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getentityKey() {
+    public String getEntityKey() {
         return this.entityKey; 
     }
 
@@ -63,7 +63,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setentityKey(String value) { 
+    public void setEntityKey(String value) { 
         this.entityKey = value; 
         valueChanged("entityKey", value);
 
@@ -76,7 +76,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getproviderId() {
+    public String getProviderId() {
         return this.providerId; 
     }
 
@@ -85,7 +85,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setproviderId(String value) { 
+    public void setProviderId(String value) { 
         this.providerId = value; 
         valueChanged("providerId", value);
 
@@ -98,7 +98,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getproviderName() {
+    public String getProviderName() {
         return this.providerName; 
     }
 
@@ -107,7 +107,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setproviderName(String value) { 
+    public void setProviderName(String value) { 
         this.providerName = value; 
         valueChanged("providerName", value);
 
@@ -120,7 +120,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the Integer
     */
-    public Integer getserviceAccountType() {
+    public Integer getServiceAccountType() {
         return this.serviceAccountType; 
     }
 
@@ -129,7 +129,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setserviceAccountType(Integer value) { 
+    public void setServiceAccountType(Integer value) { 
         this.serviceAccountType = value; 
         valueChanged("serviceAccountType", value);
 
@@ -142,7 +142,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getserviceApiVersion() {
+    public String getServiceApiVersion() {
         return this.serviceApiVersion; 
     }
 
@@ -151,7 +151,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setserviceApiVersion(String value) { 
+    public void setServiceApiVersion(String value) { 
         this.serviceApiVersion = value; 
         valueChanged("serviceApiVersion", value);
 
@@ -164,7 +164,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getserviceEndpointUri() {
+    public String getServiceEndpointUri() {
         return this.serviceEndpointUri; 
     }
 
@@ -173,7 +173,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setserviceEndpointUri(String value) { 
+    public void setServiceEndpointUri(String value) { 
         this.serviceEndpointUri = value; 
         valueChanged("serviceEndpointUri", value);
 
@@ -186,7 +186,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getserviceId() {
+    public String getServiceId() {
         return this.serviceId; 
     }
 
@@ -195,7 +195,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setserviceId(String value) { 
+    public void setServiceId(String value) { 
         this.serviceId = value; 
         valueChanged("serviceId", value);
 
@@ -208,7 +208,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getserviceName() {
+    public String getServiceName() {
         return this.serviceName; 
     }
 
@@ -217,7 +217,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setserviceName(String value) { 
+    public void setServiceName(String value) { 
         this.serviceName = value; 
         valueChanged("serviceName", value);
 
@@ -230,7 +230,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getserviceResourceId() {
+    public String getServiceResourceId() {
         return this.serviceResourceId; 
     }
 
@@ -239,7 +239,7 @@ public class ServiceInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setserviceResourceId(String value) { 
+    public void setServiceResourceId(String value) { 
         this.serviceResourceId = value; 
         valueChanged("serviceResourceId", value);
 

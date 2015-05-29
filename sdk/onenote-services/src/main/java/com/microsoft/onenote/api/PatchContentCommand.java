@@ -32,7 +32,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @return the PatchActionType
     */
-    public PatchActionType getaction() {
+    public PatchActionType getAction() {
         return this.action; 
     }
 
@@ -41,7 +41,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @param value the PatchActionType
     */
-    public void setaction(PatchActionType value) { 
+    public void setAction(PatchActionType value) { 
         this.action = value;
         valueChanged("action", value);
 
@@ -54,7 +54,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gettarget() {
+    public String getTarget() {
         return this.target; 
     }
 
@@ -63,7 +63,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void settarget(String value) { 
+    public void setTarget(String value) { 
         this.target = value;
         valueChanged("target", value);
 
@@ -76,7 +76,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcontent() {
+    public String getContent() {
         return this.content; 
     }
 
@@ -85,7 +85,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcontent(String value) { 
+    public void setContent(String value) { 
         this.content = value;
         valueChanged("content", value);
 
@@ -98,7 +98,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @return the PatchInsertPosition
     */
-    public PatchInsertPosition getposition() {
+    public PatchInsertPosition getPosition() {
         return this.position; 
     }
 
@@ -107,7 +107,7 @@ public class PatchContentCommand extends ODataBaseEntity {
     *
     * @param value the PatchInsertPosition
     */
-    public void setposition(PatchInsertPosition value) { 
+    public void setPosition(PatchInsertPosition value) { 
         this.position = value;
         valueChanged("position", value);
 

@@ -32,7 +32,7 @@ public class Diagnostic extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getmessage() {
+    public String getMessage() {
         return this.message; 
     }
 
@@ -41,7 +41,7 @@ public class Diagnostic extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setmessage(String value) { 
+    public void setMessage(String value) { 
         this.message = value;
         valueChanged("message", value);
 
@@ -54,7 +54,7 @@ public class Diagnostic extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String geturl() {
+    public String getUrl() {
         return this.url; 
     }
 
@@ -63,7 +63,7 @@ public class Diagnostic extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void seturl(String value) { 
+    public void setUrl(String value) { 
         this.url = value;
         valueChanged("url", value);
 

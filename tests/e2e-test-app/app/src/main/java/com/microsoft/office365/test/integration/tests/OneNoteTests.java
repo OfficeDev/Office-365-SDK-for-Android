@@ -104,8 +104,8 @@ public class OneNoteTests extends TestGroup {
 
                     //Assert
                     if (notebooks != null && notebooks.size() > 0){
-                        Notebook notebook = client.getme().getNote().getNotebooks().getById(notebooks.get(0).getid()).read().get();
-                        if(notebook != null && notebook.getname().equals(notebooks.get(0).getname())) {
+                        Notebook notebook = client.getme().getNote().getNotebooks().getById(notebooks.get(0).getId()).read().get();
+                        if(notebook != null && notebook.getName().equals(notebooks.get(0).getName())) {
                             result.setStatus(TestStatus.Passed);
                         }
                     }
@@ -141,13 +141,13 @@ public class OneNoteTests extends TestGroup {
                     if(notebooks.isEmpty()){
                         //Prepare
                         Notebook newNotebook = new Notebook();
-                        newNotebook.setname("Test notebook");
+                        newNotebook.setName("Test notebook");
 
                         //Act
                         Notebook added = client.getme().getNote().getNotebooks().add(newNotebook).get();
 
                         //Assert
-                        if (added != null && added.getname().equals(newNotebook.getname()))
+                        if (added != null && added.getName().equals(newNotebook.getName()))
                             result.setStatus(TestStatus.Passed);
                     }else
                     {
@@ -215,7 +215,7 @@ public class OneNoteTests extends TestGroup {
                     }
 
                     //Act
-                    Section section = client.getme().getNote().getSections().getById(sections.get(0).getid()).read().get();
+                    Section section = client.getme().getNote().getSections().getById(sections.get(0).getId()).read().get();
 
                     //Assert
                     if (section != null)
@@ -247,7 +247,7 @@ public class OneNoteTests extends TestGroup {
 
                     //Prepare
                     Section newSection = new Section();
-                    newSection.setname(UUID.randomUUID().toString());
+                    newSection.setName(UUID.randomUUID().toString());
 
                     List<Notebook> notebooks = client.getme().getNote().getNotebooks().filter("name eq 'Test notebook'").read().get();
                     if(notebooks.isEmpty())
@@ -257,11 +257,11 @@ public class OneNoteTests extends TestGroup {
 
                     //Act
                     Section addedSection = client.getme().getNote().getNotebooks()
-                            .getById(notebooks.get(0).getid())
+                            .getById(notebooks.get(0).getId())
                             .getSections().add(newSection).get();
 
                     //Assert
-                    if (addedSection != null && addedSection.getname().equals(newSection.getname()))
+                    if (addedSection != null && addedSection.getName().equals(newSection.getName()))
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -357,7 +357,7 @@ public class OneNoteTests extends TestGroup {
                     if(sections!= null && sections.size() >0) {
                         //Act
                         List<Page> pages = client.getme().getNote().getSections()
-                                .getById(sections.get(0).getid())
+                                .getById(sections.get(0).getId())
                                 .getPages()
                                 .top(3)
                                 .read()
@@ -400,10 +400,10 @@ public class OneNoteTests extends TestGroup {
                     if(pages != null && !pages.isEmpty()) {
 
                         //Act
-                        Page singlePage = client.getme().getNote().getPages().getById(pages.get(0).getid()).read().get();
+                        Page singlePage = client.getme().getNote().getPages().getById(pages.get(0).getId()).read().get();
 
                         //Assert
-                        if (singlePage != null && singlePage.getid().equals(pages.get(0).getid()))
+                        if (singlePage != null && singlePage.getId().equals(pages.get(0).getId()))
                             result.setStatus(TestStatus.Passed);
                     }
                     return result;
@@ -434,7 +434,7 @@ public class OneNoteTests extends TestGroup {
                     List<Page> pages = client.getme().getNote().getPages().top(1).read().get();
 
                     //Act
-                    byte[] content = client.getme().getNote().getPages().getById(pages.get(0).getid()).getContent().get();
+                    byte[] content = client.getme().getNote().getPages().getById(pages.get(0).getId()).getContent().get();
 
                     //Assert
                     if (content != null && content.length > 0)
@@ -819,13 +819,13 @@ public class OneNoteTests extends TestGroup {
                         ArrayList<PatchContentCommand> commands = new ArrayList<PatchContentCommand>();
 
                         PatchContentCommand c1 = new PatchContentCommand();
-                        c1.setaction(PatchActionType.Append);
-                        c1.setposition(PatchInsertPosition.Before);
-                        c1.settarget("body");
-                        c1.setcontent("<p>New trailing content</p>");
+                        c1.setAction(PatchActionType.Append);
+                        c1.setPosition(PatchInsertPosition.Before);
+                        c1.setTarget("body");
+                        c1.setContent("<p>New trailing content</p>");
 
                         commands.add(c1);
-                        client.getme().getNote().getPages().getById(pages.get(0).getid()).getOperations().patchContent(commands).get();
+                        client.getme().getNote().getPages().getById(pages.get(0).getId()).getOperations().patchContent(commands).get();
                     }
 
 

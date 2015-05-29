@@ -32,7 +32,7 @@ public class SiteMetadata extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getsiteCollectionId() {
+    public String getSiteCollectionId() {
         return this.siteCollectionId; 
     }
 
@@ -41,7 +41,7 @@ public class SiteMetadata extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setsiteCollectionId(String value) { 
+    public void setSiteCollectionId(String value) { 
         this.siteCollectionId = value;
         valueChanged("siteCollectionId", value);
 
@@ -54,7 +54,7 @@ public class SiteMetadata extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getsiteId() {
+    public String getSiteId() {
         return this.siteId; 
     }
 
@@ -63,7 +63,7 @@ public class SiteMetadata extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setsiteId(String value) { 
+    public void setSiteId(String value) { 
         this.siteId = value;
         valueChanged("siteId", value);
 

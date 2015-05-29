@@ -32,7 +32,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getisDefault() {
+    public Boolean getIsDefault() {
         return this.isDefault; 
     }
 
@@ -41,7 +41,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setisDefault(Boolean value) { 
+    public void setIsDefault(Boolean value) { 
         this.isDefault = value; 
         valueChanged("isDefault", value);
 
@@ -54,7 +54,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the UserRole
     */
-    public UserRole getuserRole() {
+    public UserRole getUserRole() {
         return this.userRole; 
     }
 
@@ -63,7 +63,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the UserRole
     */
-    public void setuserRole(UserRole value) { 
+    public void setUserRole(UserRole value) { 
         this.userRole = value; 
         valueChanged("userRole", value);
 
@@ -76,7 +76,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getisShared() {
+    public Boolean getIsShared() {
         return this.isShared; 
     }
 
@@ -85,7 +85,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setisShared(Boolean value) { 
+    public void setIsShared(Boolean value) { 
         this.isShared = value; 
         valueChanged("isShared", value);
 
@@ -98,7 +98,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getsectionsUrl() {
+    public String getSectionsUrl() {
         return this.sectionsUrl; 
     }
 
@@ -107,7 +107,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setsectionsUrl(String value) { 
+    public void setSectionsUrl(String value) { 
         this.sectionsUrl = value; 
         valueChanged("sectionsUrl", value);
 
@@ -120,7 +120,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getsectionGroupsUrl() {
+    public String getSectionGroupsUrl() {
         return this.sectionGroupsUrl; 
     }
 
@@ -129,7 +129,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setsectionGroupsUrl(String value) { 
+    public void setSectionGroupsUrl(String value) { 
         this.sectionGroupsUrl = value; 
         valueChanged("sectionGroupsUrl", value);
 
@@ -142,7 +142,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the NotebookLinks
     */
-    public NotebookLinks getlinks() {
+    public NotebookLinks getLinks() {
         return this.links; 
     }
 
@@ -151,7 +151,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the NotebookLinks
     */
-    public void setlinks(NotebookLinks value) { 
+    public void setLinks(NotebookLinks value) { 
         this.links = value; 
         valueChanged("links", value);
 
@@ -164,7 +164,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getname() {
+    public String getName() {
         return this.name; 
     }
 
@@ -173,7 +173,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setname(String value) { 
+    public void setName(String value) { 
         this.name = value; 
         valueChanged("name", value);
 
@@ -186,7 +186,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcreatedBy() {
+    public String getCreatedBy() {
         return this.createdBy; 
     }
 
@@ -195,7 +195,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcreatedBy(String value) { 
+    public void setCreatedBy(String value) { 
         this.createdBy = value; 
         valueChanged("createdBy", value);
 
@@ -208,7 +208,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getlastModifiedBy() {
+    public String getLastModifiedBy() {
         return this.lastModifiedBy; 
     }
 
@@ -217,7 +217,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setlastModifiedBy(String value) { 
+    public void setLastModifiedBy(String value) { 
         this.lastModifiedBy = value; 
         valueChanged("lastModifiedBy", value);
 
@@ -230,7 +230,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getlastModifiedTime() {
+    public java.util.Calendar getLastModifiedTime() {
         return this.lastModifiedTime; 
     }
 
@@ -239,7 +239,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setlastModifiedTime(java.util.Calendar value) { 
+    public void setLastModifiedTime(java.util.Calendar value) { 
         this.lastModifiedTime = value; 
         valueChanged("lastModifiedTime", value);
 
@@ -252,7 +252,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -261,7 +261,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -274,7 +274,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getself() {
+    public String getSelf() {
         return this.self; 
     }
 
@@ -283,7 +283,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setself(String value) { 
+    public void setSelf(String value) { 
         this.self = value; 
         valueChanged("self", value);
 
@@ -296,7 +296,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getcreatedTime() {
+    public java.util.Calendar getCreatedTime() {
         return this.createdTime; 
     }
 
@@ -305,7 +305,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setcreatedTime(java.util.Calendar value) { 
+    public void setCreatedTime(java.util.Calendar value) { 
         this.createdTime = value; 
         valueChanged("createdTime", value);
 
@@ -321,7 +321,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the java.util.List<Section>
     */
-    public java.util.List<Section> getsections() {
+    public java.util.List<Section> getSections() {
         return this.sections; 
     }
 
@@ -330,7 +330,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the java.util.List<Section>
     */
-    public void setsections(java.util.List<Section> value) { 
+    public void setSections(java.util.List<Section> value) { 
         this.sections = value; 
         valueChanged("sections", value);
 
@@ -346,7 +346,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @return the java.util.List<SectionGroup>
     */
-    public java.util.List<SectionGroup> getsectionGroups() {
+    public java.util.List<SectionGroup> getSectionGroups() {
         return this.sectionGroups; 
     }
 
@@ -355,7 +355,7 @@ public class Notebook extends ODataBaseEntity {
     *
     * @param value the java.util.List<SectionGroup>
     */
-    public void setsectionGroups(java.util.List<SectionGroup> value) { 
+    public void setSectionGroups(java.util.List<SectionGroup> value) { 
         this.sectionGroups = value; 
         valueChanged("sectionGroups", value);
 

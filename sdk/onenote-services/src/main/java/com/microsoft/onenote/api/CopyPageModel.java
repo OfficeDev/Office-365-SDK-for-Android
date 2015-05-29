@@ -32,7 +32,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the CopySectionModel
     */
-    public CopySectionModel getparentSection() {
+    public CopySectionModel getParentSection() {
         return this.parentSection; 
     }
 
@@ -41,7 +41,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the CopySectionModel
     */
-    public void setparentSection(CopySectionModel value) { 
+    public void setParentSection(CopySectionModel value) { 
         this.parentSection = value;
         valueChanged("parentSection", value);
 
@@ -54,7 +54,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the CopyNotebookModel
     */
-    public CopyNotebookModel getparentNotebook() {
+    public CopyNotebookModel getParentNotebook() {
         return this.parentNotebook; 
     }
 
@@ -63,7 +63,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the CopyNotebookModel
     */
-    public void setparentNotebook(CopyNotebookModel value) { 
+    public void setParentNotebook(CopyNotebookModel value) { 
         this.parentNotebook = value;
         valueChanged("parentNotebook", value);
 
@@ -76,7 +76,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gettitle() {
+    public String getTitle() {
         return this.title; 
     }
 
@@ -85,7 +85,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void settitle(String value) { 
+    public void setTitle(String value) { 
         this.title = value;
         valueChanged("title", value);
 
@@ -98,7 +98,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcreatedByAppId() {
+    public String getCreatedByAppId() {
         return this.createdByAppId; 
     }
 
@@ -107,7 +107,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcreatedByAppId(String value) { 
+    public void setCreatedByAppId(String value) { 
         this.createdByAppId = value;
         valueChanged("createdByAppId", value);
 
@@ -120,7 +120,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the PageLinks
     */
-    public PageLinks getlinks() {
+    public PageLinks getLinks() {
         return this.links; 
     }
 
@@ -129,7 +129,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the PageLinks
     */
-    public void setlinks(PageLinks value) { 
+    public void setLinks(PageLinks value) { 
         this.links = value;
         valueChanged("links", value);
 
@@ -142,7 +142,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcontentUrl() {
+    public String getContentUrl() {
         return this.contentUrl; 
     }
 
@@ -151,7 +151,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcontentUrl(String value) { 
+    public void setContentUrl(String value) { 
         this.contentUrl = value;
         valueChanged("contentUrl", value);
 
@@ -164,7 +164,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getlastModifiedTime() {
+    public java.util.Calendar getLastModifiedTime() {
         return this.lastModifiedTime; 
     }
 
@@ -173,7 +173,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setlastModifiedTime(java.util.Calendar value) { 
+    public void setLastModifiedTime(java.util.Calendar value) { 
         this.lastModifiedTime = value;
         valueChanged("lastModifiedTime", value);
 
@@ -186,7 +186,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -195,7 +195,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value;
         valueChanged("id", value);
 
@@ -208,7 +208,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getself() {
+    public String getSelf() {
         return this.self; 
     }
 
@@ -217,7 +217,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setself(String value) { 
+    public void setSelf(String value) { 
         this.self = value;
         valueChanged("self", value);
 
@@ -230,7 +230,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getcreatedTime() {
+    public java.util.Calendar getCreatedTime() {
         return this.createdTime; 
     }
 
@@ -239,7 +239,7 @@ public class CopyPageModel extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setcreatedTime(java.util.Calendar value) { 
+    public void setCreatedTime(java.util.Calendar value) { 
         this.createdTime = value;
         valueChanged("createdTime", value);
 

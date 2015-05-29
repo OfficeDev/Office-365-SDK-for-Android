@@ -32,7 +32,7 @@ public class NotebookLinks extends ODataBaseEntity {
     *
     * @return the ExternalLink
     */
-    public ExternalLink getoneNoteClientUrl() {
+    public ExternalLink getOneNoteClientUrl() {
         return this.oneNoteClientUrl; 
     }
 
@@ -41,7 +41,7 @@ public class NotebookLinks extends ODataBaseEntity {
     *
     * @param value the ExternalLink
     */
-    public void setoneNoteClientUrl(ExternalLink value) { 
+    public void setOneNoteClientUrl(ExternalLink value) { 
         this.oneNoteClientUrl = value;
         valueChanged("oneNoteClientUrl", value);
 
@@ -54,7 +54,7 @@ public class NotebookLinks extends ODataBaseEntity {
     *
     * @return the ExternalLink
     */
-    public ExternalLink getoneNoteWebUrl() {
+    public ExternalLink getOneNoteWebUrl() {
         return this.oneNoteWebUrl; 
     }
 
@@ -63,7 +63,7 @@ public class NotebookLinks extends ODataBaseEntity {
     *
     * @param value the ExternalLink
     */
-    public void setoneNoteWebUrl(ExternalLink value) { 
+    public void setOneNoteWebUrl(ExternalLink value) { 
         this.oneNoteWebUrl = value;
         valueChanged("oneNoteWebUrl", value);
 
