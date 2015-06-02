@@ -18,7 +18,7 @@ import com.microsoft.services.orc.*;
 import com.microsoft.services.orc.interfaces.DependencyResolver;
 
 /**
- * The type SharePointClient.
+ * The type EntityContainerClient.
  */
 public class SharePointClient extends BaseOrcContainer {
 
@@ -61,7 +61,7 @@ public class SharePointClient extends BaseOrcContainer {
      *
      * @return the Drive
      */
-    public OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations> getdrives() {
+    public OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations> getDrives() {
         return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("drives", this, Drive.class,DriveCollectionOperations.class);
     }
      /**
@@ -69,7 +69,7 @@ public class SharePointClient extends BaseOrcContainer {
      *
      * @return the Item
      */
-    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getfiles() {
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getFiles() {
         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class,ItemCollectionOperations.class);
     }
      /**
@@ -77,7 +77,7 @@ public class SharePointClient extends BaseOrcContainer {
      *
      * @return the drive
      */
-    public DriveFetcher getdrive() {
+    public DriveFetcher getDrive() {
         return new DriveFetcher("drive", this);
     }
      /**
@@ -85,7 +85,7 @@ public class SharePointClient extends BaseOrcContainer {
      *
      * @return the me
      */
-    public CurrentUserRequestContextFetcher getme() {
+    public CurrentUserRequestContextFetcher getMe() {
         return new CurrentUserRequestContextFetcher("me", this);
     }
 }

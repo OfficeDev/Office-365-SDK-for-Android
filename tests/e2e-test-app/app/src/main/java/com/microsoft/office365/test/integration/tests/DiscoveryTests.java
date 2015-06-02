@@ -39,7 +39,7 @@ public class DiscoveryTests extends TestGroup {
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Act
-                    List<ServiceInfo> allServices = client.getallServices().read().get();
+                    List<ServiceInfo> allServices = client.getAllServices().read().get();
 
                     //Assert
                     if (allServices != null && allServices.size() > 0)
@@ -70,7 +70,7 @@ public class DiscoveryTests extends TestGroup {
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Act
-                    List<ServiceInfo> services = client.getservices().read().get();
+                    List<ServiceInfo> services = client.getServices().read().get();
 
                     //Assert
                     if (services != null && services.size() > 0)
@@ -101,15 +101,15 @@ public class DiscoveryTests extends TestGroup {
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Prepare
-                    List<ServiceInfo> services = client.getservices().read().get();
+                    List<ServiceInfo> services = client.getServices().read().get();
 
                     //Act
                     ServiceInfo service = null;
                     if (services.size() > 0)
-                        service = client.getservices().getById(services.get(0).getentityKey()).read().get();
+                        service = client.getServices().getById(services.get(0).getEntityKey()).read().get();
 
                     //Assert
-                    if (service != null && service.getserviceId() != null)
+                    if (service != null && service.getServiceId() != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -139,12 +139,12 @@ public class DiscoveryTests extends TestGroup {
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Prepare
-                    List<ServiceInfo> services = client.getallServices().read().get();
+                    List<ServiceInfo> services = client.getAllServices().read().get();
 
                     //Act
 
-                    List<ServiceInfo> filteredServices = client.getallServices()
-                            .filter("entityKey eq '" + services.get(0).getentityKey() + "'")
+                    List<ServiceInfo> filteredServices = client.getAllServices()
+                            .filter("entityKey eq '" + services.get(0).getEntityKey() + "'")
                             .read().get();
 
                     //Assert
@@ -176,16 +176,16 @@ public class DiscoveryTests extends TestGroup {
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Prepare
-                    List<ServiceInfo> services = client.getallServices().read().get();
+                    List<ServiceInfo> services = client.getAllServices().read().get();
 
                     //Act
-                    List<ServiceInfo> filteredServices = client.getallServices()
-                            .filter("ServiceName eq '" + services.get(0).getserviceName() + "'")
+                    List<ServiceInfo> filteredServices = client.getAllServices()
+                            .filter("ServiceName eq '" + services.get(0).getServiceName() + "'")
                             .select("providerName")
                             .read().get();
 
                     //Assert
-                    if (filteredServices.size() > 0 && !filteredServices.get(0).getproviderName().equals("") && filteredServices.get(0).getserviceName() == null)
+                    if (filteredServices.size() > 0 && !filteredServices.get(0).getProviderName().equals("") && filteredServices.get(0).getServiceName() == null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -214,7 +214,7 @@ public class DiscoveryTests extends TestGroup {
                     DiscoveryClient client = ApplicationContext.getDiscoveryClient();
 
                     //Act
-                    List<ServiceInfo> filteredServices = client.getallServices()
+                    List<ServiceInfo> filteredServices = client.getAllServices()
                             .top(1)
                             .read().get();
 

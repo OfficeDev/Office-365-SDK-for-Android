@@ -18,7 +18,7 @@ import com.microsoft.services.orc.*;
 import com.microsoft.services.orc.interfaces.DependencyResolver;
 
 /**
- * The type DiscoveryClient.
+ * The type EntityContainerClient.
  */
 public class DiscoveryClient extends BaseOrcContainer {
 
@@ -61,7 +61,7 @@ public class DiscoveryClient extends BaseOrcContainer {
      *
      * @return the ServiceInfo
      */
-    public OrcCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getallServices() {
+    public OrcCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getAllServices() {
         return new OrcCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations>("allServices", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
     }
      /**
@@ -69,7 +69,7 @@ public class DiscoveryClient extends BaseOrcContainer {
      *
      * @return the ServiceInfo
      */
-    public OrcCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getservices() {
+    public OrcCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations> getServices() {
         return new OrcCollectionFetcher<ServiceInfo, ServiceInfoFetcher, ServiceInfoCollectionOperations>("services", this, ServiceInfo.class,ServiceInfoCollectionOperations.class);
     }
 }
