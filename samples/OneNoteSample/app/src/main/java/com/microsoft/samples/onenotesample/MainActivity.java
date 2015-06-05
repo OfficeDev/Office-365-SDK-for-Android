@@ -13,10 +13,11 @@ import android.widget.ListView;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.microsoft.live.LiveAuthClient;
-import com.microsoft.services.odata.impl.LiveAuthDependencyResolver;
+
 import com.microsoft.onenote.api.Notebook;
-import com.microsoft.onenote.api.odata.OneNoteApiClient;
-import com.microsoft.services.odata.interfaces.LogLevel;
+import com.microsoft.onenote.api.orc.OneNoteApiClient;
+import com.microsoft.services.android.impl.LiveAuthDependencyResolver;
+import com.microsoft.services.orc.interfaces.LogLevel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,12 +94,12 @@ public class MainActivity extends ActionBarActivity {
 
     private void getNotebooks() {
 
-        Futures.addCallback(getOneNoteClient().getnotebooks().read(), new FutureCallback<List<Notebook>>() {
+        Futures.addCallback(getOneNoteClient().getme().getNote().getNotebooks().read(), new FutureCallback<List<Notebook>>() {
             @Override
             public void onSuccess(List<Notebook> notebooks) {
                 List<String> nbNames = new ArrayList<String>();
                 for (Notebook nb : notebooks) {
-                    nbNames.add(nb.getname());
+                    nbNames.add(nb.getName());
                 }
                 final ArrayAdapter<String> adapter =
                         new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_list_item_1, nbNames);
