@@ -31,7 +31,7 @@ public class File extends Item {
     *
     * @return the String
     */
-    public String getcontentUrl() {
+    public String getContentUrl() {
         return this.contentUrl; 
     }
 
@@ -40,7 +40,7 @@ public class File extends Item {
     *
     * @param value the String
     */
-    public void setcontentUrl(String value) { 
+    public void setContentUrl(String value) { 
         this.contentUrl = value; 
         valueChanged("contentUrl", value);
 
@@ -53,7 +53,7 @@ public class File extends Item {
     *
     * @return the ImageFacet
     */
-    public ImageFacet getimage() {
+    public ImageFacet getImage() {
         return this.image; 
     }
 
@@ -62,7 +62,7 @@ public class File extends Item {
     *
     * @param value the ImageFacet
     */
-    public void setimage(ImageFacet value) { 
+    public void setImage(ImageFacet value) { 
         this.image = value; 
         valueChanged("image", value);
 

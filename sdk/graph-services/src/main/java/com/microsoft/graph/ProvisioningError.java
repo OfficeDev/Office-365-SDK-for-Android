@@ -32,7 +32,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String geterrorDetail() {
+    public String getErrorDetail() {
         return this.errorDetail; 
     }
 
@@ -41,7 +41,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void seterrorDetail(String value) { 
+    public void setErrorDetail(String value) { 
         this.errorDetail = value;
         valueChanged("errorDetail", value);
 
@@ -54,7 +54,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getresolved() {
+    public Boolean getResolved() {
         return this.resolved; 
     }
 
@@ -63,7 +63,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setresolved(Boolean value) { 
+    public void setResolved(Boolean value) { 
         this.resolved = value;
         valueChanged("resolved", value);
 
@@ -76,7 +76,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getservice() {
+    public String getService() {
         return this.service; 
     }
 
@@ -85,7 +85,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setservice(String value) { 
+    public void setService(String value) { 
         this.service = value;
         valueChanged("service", value);
 
@@ -98,7 +98,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar gettimestamp() {
+    public java.util.Calendar getTimestamp() {
         return this.timestamp; 
     }
 
@@ -107,7 +107,7 @@ public class ProvisioningError extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void settimestamp(java.util.Calendar value) { 
+    public void setTimestamp(java.util.Calendar value) { 
         this.timestamp = value;
         valueChanged("timestamp", value);
 

@@ -32,7 +32,7 @@ public class ItemReference extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getdriveId() {
+    public String getDriveId() {
         return this.driveId; 
     }
 
@@ -41,7 +41,7 @@ public class ItemReference extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setdriveId(String value) { 
+    public void setDriveId(String value) { 
         this.driveId = value;
         valueChanged("driveId", value);
 
@@ -54,7 +54,7 @@ public class ItemReference extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -63,7 +63,7 @@ public class ItemReference extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value;
         valueChanged("id", value);
 
@@ -76,7 +76,7 @@ public class ItemReference extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getpath() {
+    public String getPath() {
         return this.path; 
     }
 
@@ -85,7 +85,7 @@ public class ItemReference extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setpath(String value) { 
+    public void setPath(String value) { 
         this.path = value;
         valueChanged("path", value);
 

@@ -31,7 +31,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String getassociationType() {
+    public String getAssociationType() {
         return this.associationType; 
     }
 
@@ -40,7 +40,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setassociationType(String value) { 
+    public void setAssociationType(String value) { 
         this.associationType = value; 
         valueChanged("associationType", value);
 
@@ -53,7 +53,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsourceObjectId() {
+    public String getSourceObjectId() {
         return this.sourceObjectId; 
     }
 
@@ -62,7 +62,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsourceObjectId(String value) { 
+    public void setSourceObjectId(String value) { 
         this.sourceObjectId = value; 
         valueChanged("sourceObjectId", value);
 
@@ -75,7 +75,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsourceObjectType() {
+    public String getSourceObjectType() {
         return this.sourceObjectType; 
     }
 
@@ -84,7 +84,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsourceObjectType(String value) { 
+    public void setSourceObjectType(String value) { 
         this.sourceObjectType = value; 
         valueChanged("sourceObjectType", value);
 
@@ -97,7 +97,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsourceObjectUri() {
+    public String getSourceObjectUri() {
         return this.sourceObjectUri; 
     }
 
@@ -106,7 +106,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsourceObjectUri(String value) { 
+    public void setSourceObjectUri(String value) { 
         this.sourceObjectUri = value; 
         valueChanged("sourceObjectUri", value);
 
@@ -119,7 +119,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String gettargetObjectId() {
+    public String getTargetObjectId() {
         return this.targetObjectId; 
     }
 
@@ -128,7 +128,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void settargetObjectId(String value) { 
+    public void setTargetObjectId(String value) { 
         this.targetObjectId = value; 
         valueChanged("targetObjectId", value);
 
@@ -141,7 +141,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String gettargetObjectType() {
+    public String getTargetObjectType() {
         return this.targetObjectType; 
     }
 
@@ -150,7 +150,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void settargetObjectType(String value) { 
+    public void setTargetObjectType(String value) { 
         this.targetObjectType = value; 
         valueChanged("targetObjectType", value);
 
@@ -163,7 +163,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @return the String
     */
-    public String gettargetObjectUri() {
+    public String getTargetObjectUri() {
         return this.targetObjectUri; 
     }
 
@@ -172,7 +172,7 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void settargetObjectUri(String value) { 
+    public void setTargetObjectUri(String value) { 
         this.targetObjectUri = value; 
         valueChanged("targetObjectUri", value);
 

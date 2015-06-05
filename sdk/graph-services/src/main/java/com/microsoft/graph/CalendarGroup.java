@@ -19,8 +19,8 @@ import com.microsoft.services.orc.ODataBaseEntity;
 /**
  * The type Calendar Group.
 */
-public class CalendarGroup extends ODataBaseEntity
-{
+public class CalendarGroup extends ODataBaseEntity {
+
     public CalendarGroup(){
         setODataType("#Microsoft.Graph.CalendarGroup");
     }

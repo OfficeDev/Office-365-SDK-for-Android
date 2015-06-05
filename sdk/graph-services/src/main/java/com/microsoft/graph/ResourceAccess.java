@@ -32,7 +32,7 @@ public class ResourceAccess extends ODataBaseEntity {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getid() {
+    public java.util.UUID getId() {
         return this.id; 
     }
 
@@ -41,7 +41,7 @@ public class ResourceAccess extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setid(java.util.UUID value) { 
+    public void setId(java.util.UUID value) { 
         this.id = value;
         valueChanged("id", value);
 
@@ -54,7 +54,7 @@ public class ResourceAccess extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gettype() {
+    public String getType() {
         return this.type; 
     }
 
@@ -63,7 +63,7 @@ public class ResourceAccess extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void settype(String value) { 
+    public void setType(String value) { 
         this.type = value;
         valueChanged("type", value);
 

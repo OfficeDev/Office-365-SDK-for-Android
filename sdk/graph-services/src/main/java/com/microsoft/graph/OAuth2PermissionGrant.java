@@ -32,7 +32,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getclientId() {
+    public String getClientId() {
         return this.clientId; 
     }
 
@@ -41,7 +41,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setclientId(String value) { 
+    public void setClientId(String value) { 
         this.clientId = value; 
         valueChanged("clientId", value);
 
@@ -54,7 +54,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getconsentType() {
+    public String getConsentType() {
         return this.consentType; 
     }
 
@@ -63,7 +63,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setconsentType(String value) { 
+    public void setConsentType(String value) { 
         this.consentType = value; 
         valueChanged("consentType", value);
 
@@ -76,7 +76,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getexpiryTime() {
+    public java.util.Calendar getExpiryTime() {
         return this.expiryTime; 
     }
 
@@ -85,7 +85,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setexpiryTime(java.util.Calendar value) { 
+    public void setExpiryTime(java.util.Calendar value) { 
         this.expiryTime = value; 
         valueChanged("expiryTime", value);
 
@@ -98,7 +98,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getobjectId() {
+    public String getObjectId() {
         return this.objectId; 
     }
 
@@ -107,7 +107,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setobjectId(String value) { 
+    public void setObjectId(String value) { 
         this.objectId = value; 
         valueChanged("objectId", value);
 
@@ -120,7 +120,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getprincipalId() {
+    public String getPrincipalId() {
         return this.principalId; 
     }
 
@@ -129,7 +129,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setprincipalId(String value) { 
+    public void setPrincipalId(String value) { 
         this.principalId = value; 
         valueChanged("principalId", value);
 
@@ -142,7 +142,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getresourceId() {
+    public String getResourceId() {
         return this.resourceId; 
     }
 
@@ -151,7 +151,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setresourceId(String value) { 
+    public void setResourceId(String value) { 
         this.resourceId = value; 
         valueChanged("resourceId", value);
 
@@ -164,7 +164,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getscope() {
+    public String getScope() {
         return this.scope; 
     }
 
@@ -173,7 +173,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setscope(String value) { 
+    public void setScope(String value) { 
         this.scope = value; 
         valueChanged("scope", value);
 
@@ -186,7 +186,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getstartTime() {
+    public java.util.Calendar getStartTime() {
         return this.startTime; 
     }
 
@@ -195,7 +195,7 @@ public class OAuth2PermissionGrant extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setstartTime(java.util.Calendar value) { 
+    public void setStartTime(java.util.Calendar value) { 
         this.startTime = value; 
         valueChanged("startTime", value);
 

@@ -32,7 +32,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getadminConsentDescription() {
+    public String getAdminConsentDescription() {
         return this.adminConsentDescription; 
     }
 
@@ -41,7 +41,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setadminConsentDescription(String value) { 
+    public void setAdminConsentDescription(String value) { 
         this.adminConsentDescription = value;
         valueChanged("adminConsentDescription", value);
 
@@ -54,7 +54,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getadminConsentDisplayName() {
+    public String getAdminConsentDisplayName() {
         return this.adminConsentDisplayName; 
     }
 
@@ -63,7 +63,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setadminConsentDisplayName(String value) { 
+    public void setAdminConsentDisplayName(String value) { 
         this.adminConsentDisplayName = value;
         valueChanged("adminConsentDisplayName", value);
 
@@ -76,7 +76,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getid() {
+    public java.util.UUID getId() {
         return this.id; 
     }
 
@@ -85,7 +85,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setid(java.util.UUID value) { 
+    public void setId(java.util.UUID value) { 
         this.id = value;
         valueChanged("id", value);
 
@@ -98,7 +98,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getisEnabled() {
+    public Boolean getIsEnabled() {
         return this.isEnabled; 
     }
 
@@ -107,7 +107,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setisEnabled(Boolean value) { 
+    public void setIsEnabled(Boolean value) { 
         this.isEnabled = value;
         valueChanged("isEnabled", value);
 
@@ -120,7 +120,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gettype() {
+    public String getType() {
         return this.type; 
     }
 
@@ -129,7 +129,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void settype(String value) { 
+    public void setType(String value) { 
         this.type = value;
         valueChanged("type", value);
 
@@ -142,7 +142,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getuserConsentDescription() {
+    public String getUserConsentDescription() {
         return this.userConsentDescription; 
     }
 
@@ -151,7 +151,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setuserConsentDescription(String value) { 
+    public void setUserConsentDescription(String value) { 
         this.userConsentDescription = value;
         valueChanged("userConsentDescription", value);
 
@@ -164,7 +164,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getuserConsentDisplayName() {
+    public String getUserConsentDisplayName() {
         return this.userConsentDisplayName; 
     }
 
@@ -173,7 +173,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setuserConsentDisplayName(String value) { 
+    public void setUserConsentDisplayName(String value) { 
         this.userConsentDisplayName = value;
         valueChanged("userConsentDisplayName", value);
 
@@ -186,7 +186,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getvalue() {
+    public String getValue() {
         return this.value; 
     }
 
@@ -195,7 +195,7 @@ public class OAuth2Permission extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setvalue(String value) { 
+    public void setValue(String value) { 
         this.value = value;
         valueChanged("value", value);
 

@@ -32,7 +32,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcapabilities() {
+    public String getCapabilities() {
         return this.capabilities; 
     }
 
@@ -41,7 +41,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcapabilities(String value) { 
+    public void setCapabilities(String value) { 
         this.capabilities = value;
         valueChanged("capabilities", value);
 
@@ -54,7 +54,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getdefault() {
+    public Boolean getDefault() {
         return this.$$__$$default; 
     }
 
@@ -63,7 +63,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setdefault(Boolean value) { 
+    public void setDefault(Boolean value) { 
         this.$$__$$default = value;
         valueChanged("default", value);
 
@@ -76,7 +76,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getid() {
+    public String getId() {
         return this.id; 
     }
 
@@ -85,7 +85,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setid(String value) { 
+    public void setId(String value) { 
         this.id = value;
         valueChanged("id", value);
 
@@ -98,7 +98,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getinitial() {
+    public Boolean getInitial() {
         return this.initial; 
     }
 
@@ -107,7 +107,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setinitial(Boolean value) { 
+    public void setInitial(Boolean value) { 
         this.initial = value;
         valueChanged("initial", value);
 
@@ -120,7 +120,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getname() {
+    public String getName() {
         return this.name; 
     }
 
@@ -129,7 +129,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setname(String value) { 
+    public void setName(String value) { 
         this.name = value;
         valueChanged("name", value);
 
@@ -142,7 +142,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String gettype() {
+    public String getType() {
         return this.type; 
     }
 
@@ -151,7 +151,7 @@ public class VerifiedDomain extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void settype(String value) { 
+    public void setType(String value) { 
         this.type = value;
         valueChanged("type", value);
 

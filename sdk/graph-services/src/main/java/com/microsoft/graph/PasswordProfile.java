@@ -32,7 +32,7 @@ public class PasswordProfile extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getpassword() {
+    public String getPassword() {
         return this.password; 
     }
 
@@ -41,7 +41,7 @@ public class PasswordProfile extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setpassword(String value) { 
+    public void setPassword(String value) { 
         this.password = value;
         valueChanged("password", value);
 
@@ -54,7 +54,7 @@ public class PasswordProfile extends ODataBaseEntity {
     *
     * @return the Boolean
     */
-    public Boolean getforceChangePasswordNextLogin() {
+    public Boolean getForceChangePasswordNextLogin() {
         return this.forceChangePasswordNextLogin; 
     }
 
@@ -63,7 +63,7 @@ public class PasswordProfile extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setforceChangePasswordNextLogin(Boolean value) { 
+    public void setForceChangePasswordNextLogin(Boolean value) { 
         this.forceChangePasswordNextLogin = value;
         valueChanged("forceChangePasswordNextLogin", value);
 

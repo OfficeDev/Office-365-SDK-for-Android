@@ -31,7 +31,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getcreationTimestamp() {
+    public java.util.Calendar getCreationTimestamp() {
         return this.creationTimestamp; 
     }
 
@@ -40,7 +40,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setcreationTimestamp(java.util.Calendar value) { 
+    public void setCreationTimestamp(java.util.Calendar value) { 
         this.creationTimestamp = value; 
         valueChanged("creationTimestamp", value);
 
@@ -53,7 +53,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getid() {
+    public java.util.UUID getId() {
         return this.id; 
     }
 
@@ -62,7 +62,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the java.util.UUID
     */
-    public void setid(java.util.UUID value) { 
+    public void setId(java.util.UUID value) { 
         this.id = value; 
         valueChanged("id", value);
 
@@ -75,7 +75,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the String
     */
-    public String getprincipalDisplayName() {
+    public String getPrincipalDisplayName() {
         return this.principalDisplayName; 
     }
 
@@ -84,7 +84,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setprincipalDisplayName(String value) { 
+    public void setPrincipalDisplayName(String value) { 
         this.principalDisplayName = value; 
         valueChanged("principalDisplayName", value);
 
@@ -97,7 +97,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getprincipalId() {
+    public java.util.UUID getPrincipalId() {
         return this.principalId; 
     }
 
@@ -106,7 +106,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the java.util.UUID
     */
-    public void setprincipalId(java.util.UUID value) { 
+    public void setPrincipalId(java.util.UUID value) { 
         this.principalId = value; 
         valueChanged("principalId", value);
 
@@ -119,7 +119,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the String
     */
-    public String getprincipalType() {
+    public String getPrincipalType() {
         return this.principalType; 
     }
 
@@ -128,7 +128,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setprincipalType(String value) { 
+    public void setPrincipalType(String value) { 
         this.principalType = value; 
         valueChanged("principalType", value);
 
@@ -141,7 +141,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the String
     */
-    public String getresourceDisplayName() {
+    public String getResourceDisplayName() {
         return this.resourceDisplayName; 
     }
 
@@ -150,7 +150,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setresourceDisplayName(String value) { 
+    public void setResourceDisplayName(String value) { 
         this.resourceDisplayName = value; 
         valueChanged("resourceDisplayName", value);
 
@@ -163,7 +163,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getresourceId() {
+    public java.util.UUID getResourceId() {
         return this.resourceId; 
     }
 
@@ -172,7 +172,7 @@ public class AppRoleAssignment extends DirectoryObject {
     *
     * @param value the java.util.UUID
     */
-    public void setresourceId(java.util.UUID value) { 
+    public void setResourceId(java.util.UUID value) { 
         this.resourceId = value; 
         valueChanged("resourceId", value);
 

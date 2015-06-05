@@ -34,7 +34,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<AssignedPlan>
     */
-    public java.util.List<AssignedPlan> getassignedPlans() {
+    public java.util.List<AssignedPlan> getAssignedPlans() {
         return this.assignedPlans; 
     }
 
@@ -43,7 +43,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<AssignedPlan>
     */
-    public void setassignedPlans(java.util.List<AssignedPlan> value) { 
+    public void setAssignedPlans(java.util.List<AssignedPlan> value) { 
         this.assignedPlans = value; 
         valueChanged("assignedPlans", value);
 
@@ -56,7 +56,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcity() {
+    public String getCity() {
         return this.city; 
     }
 
@@ -65,7 +65,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcity(String value) { 
+    public void setCity(String value) { 
         this.city = value; 
         valueChanged("city", value);
 
@@ -78,7 +78,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getcompanyLastDirSyncTime() {
+    public java.util.Calendar getCompanyLastDirSyncTime() {
         return this.companyLastDirSyncTime; 
     }
 
@@ -87,7 +87,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setcompanyLastDirSyncTime(java.util.Calendar value) { 
+    public void setCompanyLastDirSyncTime(java.util.Calendar value) { 
         this.companyLastDirSyncTime = value; 
         valueChanged("companyLastDirSyncTime", value);
 
@@ -100,7 +100,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcountry() {
+    public String getCountry() {
         return this.country; 
     }
 
@@ -109,7 +109,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcountry(String value) { 
+    public void setCountry(String value) { 
         this.country = value; 
         valueChanged("country", value);
 
@@ -122,7 +122,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcountryLetterCode() {
+    public String getCountryLetterCode() {
         return this.countryLetterCode; 
     }
 
@@ -131,7 +131,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcountryLetterCode(String value) { 
+    public void setCountryLetterCode(String value) { 
         this.countryLetterCode = value; 
         valueChanged("countryLetterCode", value);
 
@@ -144,7 +144,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getdirSyncEnabled() {
+    public Boolean getDirSyncEnabled() {
         return this.dirSyncEnabled; 
     }
 
@@ -153,7 +153,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setdirSyncEnabled(Boolean value) { 
+    public void setDirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
         valueChanged("dirSyncEnabled", value);
 
@@ -166,7 +166,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdisplayName() {
+    public String getDisplayName() {
         return this.displayName; 
     }
 
@@ -175,7 +175,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdisplayName(String value) { 
+    public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
 
@@ -191,7 +191,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getmarketingNotificationEmails() {
+    public java.util.List<String> getMarketingNotificationEmails() {
         return this.marketingNotificationEmails; 
     }
 
@@ -200,7 +200,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setmarketingNotificationEmails(java.util.List<String> value) { 
+    public void setMarketingNotificationEmails(java.util.List<String> value) { 
         this.marketingNotificationEmails = value; 
         valueChanged("marketingNotificationEmails", value);
 
@@ -213,7 +213,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getpostalCode() {
+    public String getPostalCode() {
         return this.postalCode; 
     }
 
@@ -222,7 +222,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setpostalCode(String value) { 
+    public void setPostalCode(String value) { 
         this.postalCode = value; 
         valueChanged("postalCode", value);
 
@@ -235,7 +235,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getpreferredLanguage() {
+    public String getPreferredLanguage() {
         return this.preferredLanguage; 
     }
 
@@ -244,7 +244,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setpreferredLanguage(String value) { 
+    public void setPreferredLanguage(String value) { 
         this.preferredLanguage = value; 
         valueChanged("preferredLanguage", value);
 
@@ -260,7 +260,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<ProvisionedPlan>
     */
-    public java.util.List<ProvisionedPlan> getprovisionedPlans() {
+    public java.util.List<ProvisionedPlan> getProvisionedPlans() {
         return this.provisionedPlans; 
     }
 
@@ -269,7 +269,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<ProvisionedPlan>
     */
-    public void setprovisionedPlans(java.util.List<ProvisionedPlan> value) { 
+    public void setProvisionedPlans(java.util.List<ProvisionedPlan> value) { 
         this.provisionedPlans = value; 
         valueChanged("provisionedPlans", value);
 
@@ -285,7 +285,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<ProvisioningError>
     */
-    public java.util.List<ProvisioningError> getprovisioningErrors() {
+    public java.util.List<ProvisioningError> getProvisioningErrors() {
         return this.provisioningErrors; 
     }
 
@@ -294,7 +294,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<ProvisioningError>
     */
-    public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
+    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
         valueChanged("provisioningErrors", value);
 
@@ -310,7 +310,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getsecurityComplianceNotificationMails() {
+    public java.util.List<String> getSecurityComplianceNotificationMails() {
         return this.securityComplianceNotificationMails; 
     }
 
@@ -319,7 +319,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setsecurityComplianceNotificationMails(java.util.List<String> value) { 
+    public void setSecurityComplianceNotificationMails(java.util.List<String> value) { 
         this.securityComplianceNotificationMails = value; 
         valueChanged("securityComplianceNotificationMails", value);
 
@@ -335,7 +335,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getsecurityComplianceNotificationPhones() {
+    public java.util.List<String> getSecurityComplianceNotificationPhones() {
         return this.securityComplianceNotificationPhones; 
     }
 
@@ -344,7 +344,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setsecurityComplianceNotificationPhones(java.util.List<String> value) { 
+    public void setSecurityComplianceNotificationPhones(java.util.List<String> value) { 
         this.securityComplianceNotificationPhones = value; 
         valueChanged("securityComplianceNotificationPhones", value);
 
@@ -357,7 +357,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getstate() {
+    public String getState() {
         return this.state; 
     }
 
@@ -366,7 +366,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setstate(String value) { 
+    public void setState(String value) { 
         this.state = value; 
         valueChanged("state", value);
 
@@ -379,7 +379,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String getstreet() {
+    public String getStreet() {
         return this.street; 
     }
 
@@ -388,7 +388,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setstreet(String value) { 
+    public void setStreet(String value) { 
         this.street = value; 
         valueChanged("street", value);
 
@@ -404,7 +404,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> gettechnicalNotificationMails() {
+    public java.util.List<String> getTechnicalNotificationMails() {
         return this.technicalNotificationMails; 
     }
 
@@ -413,7 +413,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void settechnicalNotificationMails(java.util.List<String> value) { 
+    public void setTechnicalNotificationMails(java.util.List<String> value) { 
         this.technicalNotificationMails = value; 
         valueChanged("technicalNotificationMails", value);
 
@@ -426,7 +426,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the String
     */
-    public String gettelephoneNumber() {
+    public String getTelephoneNumber() {
         return this.telephoneNumber; 
     }
 
@@ -435,7 +435,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the String
     */
-    public void settelephoneNumber(String value) { 
+    public void setTelephoneNumber(String value) { 
         this.telephoneNumber = value; 
         valueChanged("telephoneNumber", value);
 
@@ -451,7 +451,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @return the java.util.List<VerifiedDomain>
     */
-    public java.util.List<VerifiedDomain> getverifiedDomains() {
+    public java.util.List<VerifiedDomain> getVerifiedDomains() {
         return this.verifiedDomains; 
     }
 
@@ -460,7 +460,7 @@ public class TenantDetail extends DirectoryObject {
     *
     * @param value the java.util.List<VerifiedDomain>
     */
-    public void setverifiedDomains(java.util.List<VerifiedDomain> value) { 
+    public void setVerifiedDomains(java.util.List<VerifiedDomain> value) { 
         this.verifiedDomains = value; 
         valueChanged("verifiedDomains", value);
 

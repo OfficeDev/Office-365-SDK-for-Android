@@ -32,7 +32,7 @@ public class ImageFacet extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getdateTimeTaken() {
+    public java.util.Calendar getDateTimeTaken() {
         return this.dateTimeTaken; 
     }
 
@@ -41,7 +41,7 @@ public class ImageFacet extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setdateTimeTaken(java.util.Calendar value) { 
+    public void setDateTimeTaken(java.util.Calendar value) { 
         this.dateTimeTaken = value;
         valueChanged("dateTimeTaken", value);
 

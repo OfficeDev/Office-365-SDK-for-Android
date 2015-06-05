@@ -61,7 +61,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the DirectoryObject
      */
-    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getdirectoryObjects() {
+    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getDirectoryObjects() {
         return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("directoryObjects", this, DirectoryObject.class,DirectoryObjectCollectionOperations.class);
     }
      /**
@@ -69,7 +69,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the Application
      */
-    public OrcCollectionFetcher<Application, ApplicationFetcher, ApplicationCollectionOperations> getapplications() {
+    public OrcCollectionFetcher<Application, ApplicationFetcher, ApplicationCollectionOperations> getApplications() {
         return new OrcCollectionFetcher<Application, ApplicationFetcher, ApplicationCollectionOperations>("applications", this, Application.class,ApplicationCollectionOperations.class);
     }
      /**
@@ -77,7 +77,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the Contact
      */
-    public OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getcontacts() {
+    public OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getContacts() {
         return new OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations>("contacts", this, Contact.class,ContactCollectionOperations.class);
     }
      /**
@@ -85,7 +85,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the DeviceConfiguration
      */
-    public OrcCollectionFetcher<DeviceConfiguration, DeviceConfigurationFetcher, DeviceConfigurationCollectionOperations> getdeviceConfiguration() {
+    public OrcCollectionFetcher<DeviceConfiguration, DeviceConfigurationFetcher, DeviceConfigurationCollectionOperations> getDeviceConfiguration() {
         return new OrcCollectionFetcher<DeviceConfiguration, DeviceConfigurationFetcher, DeviceConfigurationCollectionOperations>("deviceConfiguration", this, DeviceConfiguration.class,DeviceConfigurationCollectionOperations.class);
     }
      /**
@@ -93,7 +93,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the Device
      */
-    public OrcCollectionFetcher<Device, DeviceFetcher, DeviceCollectionOperations> getdevices() {
+    public OrcCollectionFetcher<Device, DeviceFetcher, DeviceCollectionOperations> getDevices() {
         return new OrcCollectionFetcher<Device, DeviceFetcher, DeviceCollectionOperations>("devices", this, Device.class,DeviceCollectionOperations.class);
     }
      /**
@@ -101,7 +101,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the Group
      */
-    public OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations> getgroups() {
+    public OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations> getGroups() {
         return new OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations>("groups", this, Group.class,GroupCollectionOperations.class);
     }
      /**
@@ -109,7 +109,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the DirectoryRole
      */
-    public OrcCollectionFetcher<DirectoryRole, DirectoryRoleFetcher, DirectoryRoleCollectionOperations> getdirectoryRoles() {
+    public OrcCollectionFetcher<DirectoryRole, DirectoryRoleFetcher, DirectoryRoleCollectionOperations> getDirectoryRoles() {
         return new OrcCollectionFetcher<DirectoryRole, DirectoryRoleFetcher, DirectoryRoleCollectionOperations>("directoryRoles", this, DirectoryRole.class,DirectoryRoleCollectionOperations.class);
     }
      /**
@@ -117,7 +117,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the DirectoryRoleTemplate
      */
-    public OrcCollectionFetcher<DirectoryRoleTemplate, DirectoryRoleTemplateFetcher, DirectoryRoleTemplateCollectionOperations> getdirectoryRoleTemplates() {
+    public OrcCollectionFetcher<DirectoryRoleTemplate, DirectoryRoleTemplateFetcher, DirectoryRoleTemplateCollectionOperations> getDirectoryRoleTemplates() {
         return new OrcCollectionFetcher<DirectoryRoleTemplate, DirectoryRoleTemplateFetcher, DirectoryRoleTemplateCollectionOperations>("directoryRoleTemplates", this, DirectoryRoleTemplate.class,DirectoryRoleTemplateCollectionOperations.class);
     }
      /**
@@ -125,7 +125,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the ServicePrincipal
      */
-    public OrcCollectionFetcher<ServicePrincipal, ServicePrincipalFetcher, ServicePrincipalCollectionOperations> getservicePrincipals() {
+    public OrcCollectionFetcher<ServicePrincipal, ServicePrincipalFetcher, ServicePrincipalCollectionOperations> getServicePrincipals() {
         return new OrcCollectionFetcher<ServicePrincipal, ServicePrincipalFetcher, ServicePrincipalCollectionOperations>("servicePrincipals", this, ServicePrincipal.class,ServicePrincipalCollectionOperations.class);
     }
      /**
@@ -133,7 +133,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the TenantDetail
      */
-    public OrcCollectionFetcher<TenantDetail, TenantDetailFetcher, TenantDetailCollectionOperations> gettenantDetails() {
+    public OrcCollectionFetcher<TenantDetail, TenantDetailFetcher, TenantDetailCollectionOperations> getTenantDetails() {
         return new OrcCollectionFetcher<TenantDetail, TenantDetailFetcher, TenantDetailCollectionOperations>("tenantDetails", this, TenantDetail.class,TenantDetailCollectionOperations.class);
     }
      /**
@@ -141,7 +141,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the User
      */
-    public OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations> getusers() {
+    public OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations> getUsers() {
         return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("users", this, User.class,UserCollectionOperations.class);
     }
      /**
@@ -149,7 +149,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the OAuth2PermissionGrant
      */
-    public OrcCollectionFetcher<OAuth2PermissionGrant, OAuth2PermissionGrantFetcher, OAuth2PermissionGrantCollectionOperations> getoauth2PermissionGrants() {
+    public OrcCollectionFetcher<OAuth2PermissionGrant, OAuth2PermissionGrantFetcher, OAuth2PermissionGrantCollectionOperations> getOauth2PermissionGrants() {
         return new OrcCollectionFetcher<OAuth2PermissionGrant, OAuth2PermissionGrantFetcher, OAuth2PermissionGrantCollectionOperations>("oauth2PermissionGrants", this, OAuth2PermissionGrant.class,OAuth2PermissionGrantCollectionOperations.class);
     }
      /**
@@ -157,7 +157,7 @@ public class GraphServiceClient extends BaseOrcContainer {
      *
      * @return the SubscribedSku
      */
-    public OrcCollectionFetcher<SubscribedSku, SubscribedSkuFetcher, SubscribedSkuCollectionOperations> getsubscribedSkus() {
+    public OrcCollectionFetcher<SubscribedSku, SubscribedSkuFetcher, SubscribedSkuCollectionOperations> getSubscribedSkus() {
         return new OrcCollectionFetcher<SubscribedSku, SubscribedSkuFetcher, SubscribedSkuCollectionOperations>("subscribedSkus", this, SubscribedSku.class,SubscribedSkuCollectionOperations.class);
     }
 }

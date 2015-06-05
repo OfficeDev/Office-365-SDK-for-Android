@@ -31,7 +31,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcity() {
+    public String getCity() {
         return this.city; 
     }
 
@@ -40,7 +40,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcity(String value) { 
+    public void setCity(String value) { 
         this.city = value; 
         valueChanged("city", value);
 
@@ -53,7 +53,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcountry() {
+    public String getCountry() {
         return this.country; 
     }
 
@@ -62,7 +62,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcountry(String value) { 
+    public void setCountry(String value) { 
         this.country = value; 
         valueChanged("country", value);
 
@@ -75,7 +75,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdepartment() {
+    public String getDepartment() {
         return this.department; 
     }
 
@@ -84,7 +84,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdepartment(String value) { 
+    public void setDepartment(String value) { 
         this.department = value; 
         valueChanged("department", value);
 
@@ -97,7 +97,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getdirSyncEnabled() {
+    public Boolean getDirSyncEnabled() {
         return this.dirSyncEnabled; 
     }
 
@@ -106,7 +106,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setdirSyncEnabled(Boolean value) { 
+    public void setDirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
         valueChanged("dirSyncEnabled", value);
 
@@ -119,7 +119,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdisplayName() {
+    public String getDisplayName() {
         return this.displayName; 
     }
 
@@ -128,7 +128,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdisplayName(String value) { 
+    public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
 
@@ -141,7 +141,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getfacsimileTelephoneNumber() {
+    public String getFacsimileTelephoneNumber() {
         return this.facsimileTelephoneNumber; 
     }
 
@@ -150,7 +150,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setfacsimileTelephoneNumber(String value) { 
+    public void setFacsimileTelephoneNumber(String value) { 
         this.facsimileTelephoneNumber = value; 
         valueChanged("facsimileTelephoneNumber", value);
 
@@ -163,7 +163,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getgivenName() {
+    public String getGivenName() {
         return this.givenName; 
     }
 
@@ -172,7 +172,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setgivenName(String value) { 
+    public void setGivenName(String value) { 
         this.givenName = value; 
         valueChanged("givenName", value);
 
@@ -185,7 +185,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getjobTitle() {
+    public String getJobTitle() {
         return this.jobTitle; 
     }
 
@@ -194,7 +194,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setjobTitle(String value) { 
+    public void setJobTitle(String value) { 
         this.jobTitle = value; 
         valueChanged("jobTitle", value);
 
@@ -207,7 +207,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getlastDirSyncTime() {
+    public java.util.Calendar getLastDirSyncTime() {
         return this.lastDirSyncTime; 
     }
 
@@ -216,7 +216,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setlastDirSyncTime(java.util.Calendar value) { 
+    public void setLastDirSyncTime(java.util.Calendar value) { 
         this.lastDirSyncTime = value; 
         valueChanged("lastDirSyncTime", value);
 
@@ -229,7 +229,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getmail() {
+    public String getMail() {
         return this.mail; 
     }
 
@@ -238,7 +238,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setmail(String value) { 
+    public void setMail(String value) { 
         this.mail = value; 
         valueChanged("mail", value);
 
@@ -251,7 +251,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getmailNickname() {
+    public String getMailNickname() {
         return this.mailNickname; 
     }
 
@@ -260,7 +260,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setmailNickname(String value) { 
+    public void setMailNickname(String value) { 
         this.mailNickname = value; 
         valueChanged("mailNickname", value);
 
@@ -273,7 +273,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getmobile() {
+    public String getMobile() {
         return this.mobile; 
     }
 
@@ -282,7 +282,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setmobile(String value) { 
+    public void setMobile(String value) { 
         this.mobile = value; 
         valueChanged("mobile", value);
 
@@ -295,7 +295,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getphysicalDeliveryOfficeName() {
+    public String getPhysicalDeliveryOfficeName() {
         return this.physicalDeliveryOfficeName; 
     }
 
@@ -304,7 +304,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setphysicalDeliveryOfficeName(String value) { 
+    public void setPhysicalDeliveryOfficeName(String value) { 
         this.physicalDeliveryOfficeName = value; 
         valueChanged("physicalDeliveryOfficeName", value);
 
@@ -317,7 +317,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getpostalCode() {
+    public String getPostalCode() {
         return this.postalCode; 
     }
 
@@ -326,7 +326,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setpostalCode(String value) { 
+    public void setPostalCode(String value) { 
         this.postalCode = value; 
         valueChanged("postalCode", value);
 
@@ -342,7 +342,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the java.util.List<ProvisioningError>
     */
-    public java.util.List<ProvisioningError> getprovisioningErrors() {
+    public java.util.List<ProvisioningError> getProvisioningErrors() {
         return this.provisioningErrors; 
     }
 
@@ -351,7 +351,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the java.util.List<ProvisioningError>
     */
-    public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
+    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
         valueChanged("provisioningErrors", value);
 
@@ -367,7 +367,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getproxyAddresses() {
+    public java.util.List<String> getProxyAddresses() {
         return this.proxyAddresses; 
     }
 
@@ -376,7 +376,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setproxyAddresses(java.util.List<String> value) { 
+    public void setProxyAddresses(java.util.List<String> value) { 
         this.proxyAddresses = value; 
         valueChanged("proxyAddresses", value);
 
@@ -389,7 +389,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsipProxyAddress() {
+    public String getSipProxyAddress() {
         return this.sipProxyAddress; 
     }
 
@@ -398,7 +398,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsipProxyAddress(String value) { 
+    public void setSipProxyAddress(String value) { 
         this.sipProxyAddress = value; 
         valueChanged("sipProxyAddress", value);
 
@@ -411,7 +411,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getstate() {
+    public String getState() {
         return this.state; 
     }
 
@@ -420,7 +420,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setstate(String value) { 
+    public void setState(String value) { 
         this.state = value; 
         valueChanged("state", value);
 
@@ -433,7 +433,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getstreetAddress() {
+    public String getStreetAddress() {
         return this.streetAddress; 
     }
 
@@ -442,7 +442,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setstreetAddress(String value) { 
+    public void setStreetAddress(String value) { 
         this.streetAddress = value; 
         valueChanged("streetAddress", value);
 
@@ -455,7 +455,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsurname() {
+    public String getSurname() {
         return this.surname; 
     }
 
@@ -464,7 +464,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsurname(String value) { 
+    public void setSurname(String value) { 
         this.surname = value; 
         valueChanged("surname", value);
 
@@ -477,7 +477,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the String
     */
-    public String gettelephoneNumber() {
+    public String getTelephoneNumber() {
         return this.telephoneNumber; 
     }
 
@@ -486,7 +486,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the String
     */
-    public void settelephoneNumber(String value) { 
+    public void setTelephoneNumber(String value) { 
         this.telephoneNumber = value; 
         valueChanged("telephoneNumber", value);
 
@@ -499,7 +499,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the byte[]
     */
-    public byte[] getthumbnailPhoto() {
+    public byte[] getThumbnailPhoto() {
         return this.thumbnailPhoto; 
     }
 
@@ -508,7 +508,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the byte[]
     */
-    public void setthumbnailPhoto(byte[] value) { 
+    public void setThumbnailPhoto(byte[] value) { 
         this.thumbnailPhoto = value; 
         valueChanged("thumbnailPhoto", value);
 
@@ -521,7 +521,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the DirectoryObject
     */
-    public DirectoryObject getmanager() {
+    public DirectoryObject getManager() {
         return this.manager; 
     }
 
@@ -530,7 +530,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the DirectoryObject
     */
-    public void setmanager(DirectoryObject value) { 
+    public void setManager(DirectoryObject value) { 
         this.manager = value; 
         valueChanged("manager", value);
 
@@ -546,7 +546,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getdirectReports() {
+    public java.util.List<DirectoryObject> getDirectReports() {
         return this.directReports; 
     }
 
@@ -555,7 +555,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setdirectReports(java.util.List<DirectoryObject> value) { 
+    public void setDirectReports(java.util.List<DirectoryObject> value) { 
         this.directReports = value; 
         valueChanged("directReports", value);
 
@@ -571,7 +571,7 @@ public class Contact extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getmemberOf() {
+    public java.util.List<DirectoryObject> getMemberOf() {
         return this.memberOf; 
     }
 
@@ -580,7 +580,7 @@ public class Contact extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setmemberOf(java.util.List<DirectoryObject> value) { 
+    public void setMemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
         valueChanged("memberOf", value);
 

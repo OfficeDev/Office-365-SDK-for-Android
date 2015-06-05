@@ -31,7 +31,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String getappId() {
+    public String getAppId() {
         return this.appId; 
     }
 
@@ -40,7 +40,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setappId(String value) { 
+    public void setAppId(String value) { 
         this.appId = value; 
         valueChanged("appId", value);
 
@@ -56,7 +56,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<AppRole>
     */
-    public java.util.List<AppRole> getappRoles() {
+    public java.util.List<AppRole> getAppRoles() {
         return this.appRoles; 
     }
 
@@ -65,7 +65,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<AppRole>
     */
-    public void setappRoles(java.util.List<AppRole> value) { 
+    public void setAppRoles(java.util.List<AppRole> value) { 
         this.appRoles = value; 
         valueChanged("appRoles", value);
 
@@ -78,7 +78,7 @@ public class Application extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getavailableToOtherTenants() {
+    public Boolean getAvailableToOtherTenants() {
         return this.availableToOtherTenants; 
     }
 
@@ -87,7 +87,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setavailableToOtherTenants(Boolean value) { 
+    public void setAvailableToOtherTenants(Boolean value) { 
         this.availableToOtherTenants = value; 
         valueChanged("availableToOtherTenants", value);
 
@@ -100,7 +100,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdisplayName() {
+    public String getDisplayName() {
         return this.displayName; 
     }
 
@@ -109,7 +109,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdisplayName(String value) { 
+    public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
 
@@ -122,7 +122,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String geterrorUrl() {
+    public String getErrorUrl() {
         return this.errorUrl; 
     }
 
@@ -131,7 +131,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void seterrorUrl(String value) { 
+    public void setErrorUrl(String value) { 
         this.errorUrl = value; 
         valueChanged("errorUrl", value);
 
@@ -144,7 +144,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String getgroupMembershipClaims() {
+    public String getGroupMembershipClaims() {
         return this.groupMembershipClaims; 
     }
 
@@ -153,7 +153,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setgroupMembershipClaims(String value) { 
+    public void setGroupMembershipClaims(String value) { 
         this.groupMembershipClaims = value; 
         valueChanged("groupMembershipClaims", value);
 
@@ -166,7 +166,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String gethomepage() {
+    public String getHomepage() {
         return this.homepage; 
     }
 
@@ -175,7 +175,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void sethomepage(String value) { 
+    public void setHomepage(String value) { 
         this.homepage = value; 
         valueChanged("homepage", value);
 
@@ -191,7 +191,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getidentifierUris() {
+    public java.util.List<String> getIdentifierUris() {
         return this.identifierUris; 
     }
 
@@ -200,7 +200,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setidentifierUris(java.util.List<String> value) { 
+    public void setIdentifierUris(java.util.List<String> value) { 
         this.identifierUris = value; 
         valueChanged("identifierUris", value);
 
@@ -216,7 +216,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<KeyCredential>
     */
-    public java.util.List<KeyCredential> getkeyCredentials() {
+    public java.util.List<KeyCredential> getKeyCredentials() {
         return this.keyCredentials; 
     }
 
@@ -225,7 +225,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<KeyCredential>
     */
-    public void setkeyCredentials(java.util.List<KeyCredential> value) { 
+    public void setKeyCredentials(java.util.List<KeyCredential> value) { 
         this.keyCredentials = value; 
         valueChanged("keyCredentials", value);
 
@@ -241,7 +241,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getknownClientApplications() {
+    public java.util.List<String> getKnownClientApplications() {
         return this.knownClientApplications; 
     }
 
@@ -250,7 +250,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setknownClientApplications(java.util.List<String> value) { 
+    public void setKnownClientApplications(java.util.List<String> value) { 
         this.knownClientApplications = value; 
         valueChanged("knownClientApplications", value);
 
@@ -263,7 +263,7 @@ public class Application extends DirectoryObject {
     *
     * @return the byte[]
     */
-    public byte[] getmainLogo() {
+    public byte[] getMainLogo() {
         return this.mainLogo; 
     }
 
@@ -272,7 +272,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the byte[]
     */
-    public void setmainLogo(byte[] value) { 
+    public void setMainLogo(byte[] value) { 
         this.mainLogo = value; 
         valueChanged("mainLogo", value);
 
@@ -285,7 +285,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String getlogoutUrl() {
+    public String getLogoutUrl() {
         return this.logoutUrl; 
     }
 
@@ -294,7 +294,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setlogoutUrl(String value) { 
+    public void setLogoutUrl(String value) { 
         this.logoutUrl = value; 
         valueChanged("logoutUrl", value);
 
@@ -307,7 +307,7 @@ public class Application extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getoauth2AllowImplicitFlow() {
+    public Boolean getOauth2AllowImplicitFlow() {
         return this.oauth2AllowImplicitFlow; 
     }
 
@@ -316,7 +316,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setoauth2AllowImplicitFlow(Boolean value) { 
+    public void setOauth2AllowImplicitFlow(Boolean value) { 
         this.oauth2AllowImplicitFlow = value; 
         valueChanged("oauth2AllowImplicitFlow", value);
 
@@ -329,7 +329,7 @@ public class Application extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getoauth2AllowUrlPathMatching() {
+    public Boolean getOauth2AllowUrlPathMatching() {
         return this.oauth2AllowUrlPathMatching; 
     }
 
@@ -338,7 +338,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setoauth2AllowUrlPathMatching(Boolean value) { 
+    public void setOauth2AllowUrlPathMatching(Boolean value) { 
         this.oauth2AllowUrlPathMatching = value; 
         valueChanged("oauth2AllowUrlPathMatching", value);
 
@@ -354,7 +354,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<OAuth2Permission>
     */
-    public java.util.List<OAuth2Permission> getoauth2Permissions() {
+    public java.util.List<OAuth2Permission> getOauth2Permissions() {
         return this.oauth2Permissions; 
     }
 
@@ -363,7 +363,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<OAuth2Permission>
     */
-    public void setoauth2Permissions(java.util.List<OAuth2Permission> value) { 
+    public void setOauth2Permissions(java.util.List<OAuth2Permission> value) { 
         this.oauth2Permissions = value; 
         valueChanged("oauth2Permissions", value);
 
@@ -376,7 +376,7 @@ public class Application extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getoauth2RequirePostResponse() {
+    public Boolean getOauth2RequirePostResponse() {
         return this.oauth2RequirePostResponse; 
     }
 
@@ -385,7 +385,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setoauth2RequirePostResponse(Boolean value) { 
+    public void setOauth2RequirePostResponse(Boolean value) { 
         this.oauth2RequirePostResponse = value; 
         valueChanged("oauth2RequirePostResponse", value);
 
@@ -401,7 +401,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<PasswordCredential>
     */
-    public java.util.List<PasswordCredential> getpasswordCredentials() {
+    public java.util.List<PasswordCredential> getPasswordCredentials() {
         return this.passwordCredentials; 
     }
 
@@ -410,7 +410,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<PasswordCredential>
     */
-    public void setpasswordCredentials(java.util.List<PasswordCredential> value) { 
+    public void setPasswordCredentials(java.util.List<PasswordCredential> value) { 
         this.passwordCredentials = value; 
         valueChanged("passwordCredentials", value);
 
@@ -423,7 +423,7 @@ public class Application extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getpublicClient() {
+    public Boolean getPublicClient() {
         return this.publicClient; 
     }
 
@@ -432,7 +432,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setpublicClient(Boolean value) { 
+    public void setPublicClient(Boolean value) { 
         this.publicClient = value; 
         valueChanged("publicClient", value);
 
@@ -448,7 +448,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getreplyUrls() {
+    public java.util.List<String> getReplyUrls() {
         return this.replyUrls; 
     }
 
@@ -457,7 +457,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setreplyUrls(java.util.List<String> value) { 
+    public void setReplyUrls(java.util.List<String> value) { 
         this.replyUrls = value; 
         valueChanged("replyUrls", value);
 
@@ -473,7 +473,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<RequiredResourceAccess>
     */
-    public java.util.List<RequiredResourceAccess> getrequiredResourceAccess() {
+    public java.util.List<RequiredResourceAccess> getRequiredResourceAccess() {
         return this.requiredResourceAccess; 
     }
 
@@ -482,7 +482,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<RequiredResourceAccess>
     */
-    public void setrequiredResourceAccess(java.util.List<RequiredResourceAccess> value) { 
+    public void setRequiredResourceAccess(java.util.List<RequiredResourceAccess> value) { 
         this.requiredResourceAccess = value; 
         valueChanged("requiredResourceAccess", value);
 
@@ -495,7 +495,7 @@ public class Application extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsamlMetadataUrl() {
+    public String getSamlMetadataUrl() {
         return this.samlMetadataUrl; 
     }
 
@@ -504,7 +504,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsamlMetadataUrl(String value) { 
+    public void setSamlMetadataUrl(String value) { 
         this.samlMetadataUrl = value; 
         valueChanged("samlMetadataUrl", value);
 
@@ -520,7 +520,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<ExtensionProperty>
     */
-    public java.util.List<ExtensionProperty> getextensionProperties() {
+    public java.util.List<ExtensionProperty> getExtensionProperties() {
         return this.extensionProperties; 
     }
 
@@ -529,7 +529,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<ExtensionProperty>
     */
-    public void setextensionProperties(java.util.List<ExtensionProperty> value) { 
+    public void setExtensionProperties(java.util.List<ExtensionProperty> value) { 
         this.extensionProperties = value; 
         valueChanged("extensionProperties", value);
 
@@ -542,7 +542,7 @@ public class Application extends DirectoryObject {
     *
     * @return the DirectoryObject
     */
-    public DirectoryObject getcreatedOnBehalfOf() {
+    public DirectoryObject getCreatedOnBehalfOf() {
         return this.createdOnBehalfOf; 
     }
 
@@ -551,7 +551,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the DirectoryObject
     */
-    public void setcreatedOnBehalfOf(DirectoryObject value) { 
+    public void setCreatedOnBehalfOf(DirectoryObject value) { 
         this.createdOnBehalfOf = value; 
         valueChanged("createdOnBehalfOf", value);
 
@@ -567,7 +567,7 @@ public class Application extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getowners() {
+    public java.util.List<DirectoryObject> getOwners() {
         return this.owners; 
     }
 
@@ -576,7 +576,7 @@ public class Application extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setowners(java.util.List<DirectoryObject> value) { 
+    public void setOwners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
         valueChanged("owners", value);
 

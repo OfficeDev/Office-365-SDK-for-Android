@@ -32,7 +32,7 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     *
     * @return the Integer
     */
-    public Integer gettype() {
+    public Integer getType() {
         return this.type; 
     }
 
@@ -41,7 +41,7 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void settype(Integer value) { 
+    public void setType(Integer value) { 
         this.type = value;
         valueChanged("type", value);
 
@@ -54,7 +54,7 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getidentityProvider() {
+    public String getIdentityProvider() {
         return this.identityProvider; 
     }
 
@@ -63,7 +63,7 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setidentityProvider(String value) { 
+    public void setIdentityProvider(String value) { 
         this.identityProvider = value;
         valueChanged("identityProvider", value);
 
@@ -76,7 +76,7 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     *
     * @return the byte[]
     */
-    public byte[] getkey() {
+    public byte[] getKey() {
         return this.key; 
     }
 
@@ -85,7 +85,7 @@ public class AlternativeSecurityId extends ODataBaseEntity {
     *
     * @param value the byte[]
     */
-    public void setkey(byte[] value) { 
+    public void setKey(byte[] value) { 
         this.key = value;
         valueChanged("key", value);
 

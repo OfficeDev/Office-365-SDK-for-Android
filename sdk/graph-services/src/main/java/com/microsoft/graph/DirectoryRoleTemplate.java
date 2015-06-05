@@ -31,7 +31,7 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdescription() {
+    public String getDescription() {
         return this.description; 
     }
 
@@ -40,7 +40,7 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdescription(String value) { 
+    public void setDescription(String value) { 
         this.description = value; 
         valueChanged("description", value);
 
@@ -53,7 +53,7 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdisplayName() {
+    public String getDisplayName() {
         return this.displayName; 
     }
 
@@ -62,7 +62,7 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdisplayName(String value) { 
+    public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
 

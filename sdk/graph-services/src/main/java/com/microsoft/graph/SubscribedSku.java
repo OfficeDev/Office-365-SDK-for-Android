@@ -32,7 +32,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getcapabilityStatus() {
+    public String getCapabilityStatus() {
         return this.capabilityStatus; 
     }
 
@@ -41,7 +41,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setcapabilityStatus(String value) { 
+    public void setCapabilityStatus(String value) { 
         this.capabilityStatus = value; 
         valueChanged("capabilityStatus", value);
 
@@ -54,7 +54,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the Integer
     */
-    public Integer getconsumedUnits() {
+    public Integer getConsumedUnits() {
         return this.consumedUnits; 
     }
 
@@ -63,7 +63,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setconsumedUnits(Integer value) { 
+    public void setConsumedUnits(Integer value) { 
         this.consumedUnits = value; 
         valueChanged("consumedUnits", value);
 
@@ -76,7 +76,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getobjectId() {
+    public String getObjectId() {
         return this.objectId; 
     }
 
@@ -85,7 +85,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setobjectId(String value) { 
+    public void setObjectId(String value) { 
         this.objectId = value; 
         valueChanged("objectId", value);
 
@@ -98,7 +98,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the LicenseUnitsDetail
     */
-    public LicenseUnitsDetail getprepaidUnits() {
+    public LicenseUnitsDetail getPrepaidUnits() {
         return this.prepaidUnits; 
     }
 
@@ -107,7 +107,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the LicenseUnitsDetail
     */
-    public void setprepaidUnits(LicenseUnitsDetail value) { 
+    public void setPrepaidUnits(LicenseUnitsDetail value) { 
         this.prepaidUnits = value; 
         valueChanged("prepaidUnits", value);
 
@@ -123,7 +123,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the java.util.List<ServicePlanInfo>
     */
-    public java.util.List<ServicePlanInfo> getservicePlans() {
+    public java.util.List<ServicePlanInfo> getServicePlans() {
         return this.servicePlans; 
     }
 
@@ -132,7 +132,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the java.util.List<ServicePlanInfo>
     */
-    public void setservicePlans(java.util.List<ServicePlanInfo> value) { 
+    public void setServicePlans(java.util.List<ServicePlanInfo> value) { 
         this.servicePlans = value; 
         valueChanged("servicePlans", value);
 
@@ -145,7 +145,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getskuId() {
+    public java.util.UUID getSkuId() {
         return this.skuId; 
     }
 
@@ -154,7 +154,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setskuId(java.util.UUID value) { 
+    public void setSkuId(java.util.UUID value) { 
         this.skuId = value; 
         valueChanged("skuId", value);
 
@@ -167,7 +167,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getskuPartNumber() {
+    public String getSkuPartNumber() {
         return this.skuPartNumber; 
     }
 
@@ -176,7 +176,7 @@ public class SubscribedSku extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setskuPartNumber(String value) { 
+    public void setSkuPartNumber(String value) { 
         this.skuPartNumber = value; 
         valueChanged("skuPartNumber", value);
 

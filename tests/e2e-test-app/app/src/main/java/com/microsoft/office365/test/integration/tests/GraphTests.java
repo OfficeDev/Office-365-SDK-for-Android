@@ -81,7 +81,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Application> applications = client.getapplications().read().get();
+                    List<Application> applications = client.getApplications().read().get();
 
                     //Assert
                     if (applications != null)
@@ -112,7 +112,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Contact> contacts = client.getcontacts().read().get();
+                    List<Contact> contacts = client.getContacts().read().get();
 
                     //Assert
                     if (contacts != null)
@@ -143,7 +143,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DeviceConfiguration> deviceConfiguration = client.getdeviceConfiguration().read().get();
+                    List<DeviceConfiguration> deviceConfiguration = client.getDeviceConfiguration().read().get();
 
                     //Assert
                     if (deviceConfiguration != null)
@@ -174,7 +174,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Device> devices = client.getdevices().read().get();
+                    List<Device> devices = client.getDevices().read().get();
 
                     //Assert
                     if (devices != null)
@@ -205,7 +205,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Group> groups = client.getgroups().read().get();
+                    List<Group> groups = client.getGroups().read().get();
 
                     //Assert
                     if (groups != null)
@@ -236,7 +236,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryRole> directoryRoles = client.getdirectoryRoles().read().get();
+                    List<DirectoryRole> directoryRoles = client.getDirectoryRoles().read().get();
 
                     //Assert
                     if (directoryRoles != null)
@@ -267,7 +267,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryRoleTemplate> directoryRoleTemplates = client.getdirectoryRoleTemplates().read().get();
+                    List<DirectoryRoleTemplate> directoryRoleTemplates = client.getDirectoryRoleTemplates().read().get();
 
                     //Assert
                     if (directoryRoleTemplates != null)
@@ -298,7 +298,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<ServicePrincipal> servicePrincipals = client.getservicePrincipals().read().get();
+                    List<ServicePrincipal> servicePrincipals = client.getServicePrincipals().read().get();
 
                     //Assert
                     if (servicePrincipals != null)
@@ -329,7 +329,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<TenantDetail> tenantDetails = client.gettenantDetails().read().get();
+                    List<TenantDetail> tenantDetails = client.getTenantDetails().read().get();
 
                     //Assert
                     if (tenantDetails != null)
@@ -360,7 +360,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<User> users = client.getusers().read().get();
+                    List<User> users = client.getUsers().read().get();
 
                     //Assert
                     if (users != null)
@@ -391,7 +391,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<SubscribedSku> SubscribedSkus = client.getsubscribedSkus().read().get();
+                    List<SubscribedSku> SubscribedSkus = client.getSubscribedSkus().read().get();
 
                     //Assert
                     if (SubscribedSkus != null)
@@ -425,7 +425,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<AppRoleAssignment> appRoleAssignments = client.getusers().getById(ApplicationContext.getTestMail()).getAppRoleAssignments().read().get();
+                    List<AppRoleAssignment> appRoleAssignments = client.getUsers().getById(ApplicationContext.getTestMail()).getAppRoleAssignments().read().get();
 
                     //Assert
                     if (appRoleAssignments != null)
@@ -455,7 +455,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<OAuth2PermissionGrant> oauth2PermissionGrants = client.getusers().getById(ApplicationContext.getTestMail()).getOauth2PermissionGrants().read().get();
+                    List<OAuth2PermissionGrant> oauth2PermissionGrants = client.getUsers().getById(ApplicationContext.getTestMail()).getOauth2PermissionGrants().read().get();
 
                     //Assert
                     if (oauth2PermissionGrants != null)
@@ -485,7 +485,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryObject> ownedDevices = client.getusers().getById(ApplicationContext.getTestMail()).getOwnedDevices().read().get();
+                    List<DirectoryObject> ownedDevices = client.getUsers().getById(ApplicationContext.getTestMail()).getOwnedDevices().read().get();
 
                     //Assert
                     if (ownedDevices != null)
@@ -515,7 +515,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryObject> registeredDevices = client.getusers().getById(ApplicationContext.getTestMail()).getRegisteredDevices().read().get();
+                    List<DirectoryObject> registeredDevices = client.getUsers().getById(ApplicationContext.getTestMail()).getRegisteredDevices().read().get();
 
                     //Assert
                     if (registeredDevices != null)
@@ -545,7 +545,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryObject> directReports = client.getusers().getById(ApplicationContext.getTestMail()).getDirectReports().read().get();
+                    List<DirectoryObject> directReports = client.getUsers().getById(ApplicationContext.getTestMail()).getDirectReports().read().get();
 
                     //Assert
                     if (directReports != null)
@@ -575,12 +575,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
-                    List<DirectoryObject> directReports = client.getusers().getById(ApplicationContext.getTestMail()).getDirectReports().top(1).read().get();
+                    List<DirectoryObject> directReports = client.getUsers().getById(ApplicationContext.getTestMail()).getDirectReports().top(1).read().get();
                     String directReportId;
                     if (directReports != null && directReports.size() > 0) {
-                        directReportId = directReports.get(0).getobjectId().toString();
+                        directReportId = directReports.get(0).getObjectId().toString();
                         //Act
-                        DirectoryObject directReport = client.getusers().getById(ApplicationContext.getTestMail())
+                        DirectoryObject directReport = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getDirectReport(directReportId).read().get();
                         //Assert
                         if (directReport != null)
@@ -612,7 +612,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryObject> memberOf = client.getusers().getById(ApplicationContext.getTestMail()).getMemberOf().read().get();
+                    List<DirectoryObject> memberOf = client.getUsers().getById(ApplicationContext.getTestMail()).getMemberOf().read().get();
 
                     //Assert
                     if (memberOf != null)
@@ -642,12 +642,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 //Prepare
-                    List<DirectoryObject> memberOf = client.getusers().getById(ApplicationContext.getTestMail()).getMemberOf().top(1).read().get();
+                    List<DirectoryObject> memberOf = client.getUsers().getById(ApplicationContext.getTestMail()).getMemberOf().top(1).read().get();
                     String memberOfId;
                     if (memberOf != null && memberOf.size() > 0) {
-                        memberOfId = memberOf.get(0).getobjectId().toString();
+                        memberOfId = memberOf.get(0).getObjectId().toString();
                         //Act
-                        DirectoryObject memberOfItem = client.getusers().getById(ApplicationContext.getTestMail())
+                        DirectoryObject memberOfItem = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getMemberOf(memberOfId).read().get();
                         //Assert
                         if (memberOfItem != null)
@@ -679,7 +679,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryObject> createdObjects = client.getusers().getById(ApplicationContext.getTestMail()).getCreatedObjects().read().get();
+                    List<DirectoryObject> createdObjects = client.getUsers().getById(ApplicationContext.getTestMail()).getCreatedObjects().read().get();
 
                     //Assert
                     if (createdObjects != null)
@@ -709,7 +709,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<DirectoryObject> ownedObjects = client.getusers().getById(ApplicationContext.getTestMail()).getOwnedObjects().read().get();
+                    List<DirectoryObject> ownedObjects = client.getUsers().getById(ApplicationContext.getTestMail()).getOwnedObjects().read().get();
 
                     //Assert
                     if (ownedObjects != null)
@@ -739,12 +739,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 //Prepare
-                    List<DirectoryObject> ownedObjects = client.getusers().getById(ApplicationContext.getTestMail()).getOwnedObjects().top(1).read().get();
+                    List<DirectoryObject> ownedObjects = client.getUsers().getById(ApplicationContext.getTestMail()).getOwnedObjects().top(1).read().get();
                     String ownedObjectId;
                     if (ownedObjects != null && ownedObjects.size() > 0) {
-                        ownedObjectId = ownedObjects.get(0).getobjectId().toString();
+                        ownedObjectId = ownedObjects.get(0).getObjectId().toString();
                         //Act
-                        DirectoryObject ownedObject = client.getusers().getById(ApplicationContext.getTestMail())
+                        DirectoryObject ownedObject = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getOwnedObject(ownedObjectId).read().get();
                         //Assert
                         if (ownedObject != null)
@@ -776,7 +776,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Message> Messages = client.getusers().getById(ApplicationContext.getTestMail()).getMessages().read().get();
+                    List<Message> Messages = client.getUsers().getById(ApplicationContext.getTestMail()).getMessages().read().get();
 
                     //Assert
                     if (Messages != null)
@@ -806,12 +806,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
-                    List<Message> Messages = client.getusers().getById(ApplicationContext.getTestMail()).getMessages().top(1).read().get();
+                    List<Message> Messages = client.getUsers().getById(ApplicationContext.getTestMail()).getMessages().top(1).read().get();
                     String messageId;
                     if (Messages != null && Messages.size() > 0) {
                         messageId = Messages.get(0).getId();
                         //Act
-                        Message message = client.getusers().getById(ApplicationContext.getTestMail())
+                        Message message = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getMessage(messageId).read().get();
                         //Assert
                         if (message != null)
@@ -843,7 +843,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     Message message = getSampleMessage("Mail sent using graph", ApplicationContext.getTestMail(), "");
                     //Act
-                    client.getusers().getById(ApplicationContext.getTestMail()).getOperations().sendMail(message, true).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getOperations().sendMail(message, true).get();
 
                     return result;
                 } catch (Exception e) {
@@ -869,7 +869,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Calendar> Calendars = client.getusers().getById(ApplicationContext.getTestMail()).getCalendars().read().get();
+                    List<Calendar> Calendars = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendars().read().get();
 
                     //Assert
                     if (Calendars != null)
@@ -899,12 +899,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
-                    List<Calendar> Calendars = client.getusers().getById(ApplicationContext.getTestMail()).getCalendars().top(1).read().get();
+                    List<Calendar> Calendars = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendars().top(1).read().get();
                     String calendarId;
                     if (Calendars != null && Calendars.size() > 0) {
                         calendarId = Calendars.get(0).getId().toString();
                         //Act
-                        Calendar calendar = client.getusers().getById(ApplicationContext.getTestMail())
+                        Calendar calendar = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getCalendar(calendarId).read().get();
                         //Assert
                         if (calendar != null)
@@ -936,7 +936,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    Calendar calendar = client.getusers().getById(ApplicationContext.getTestMail()).getCalendar().read().get();
+                    Calendar calendar = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendar().read().get();
 
                     //Assert
                     if (calendar != null)
@@ -966,7 +966,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<CalendarGroup> CalendarGroups = client.getusers().getById(ApplicationContext.getTestMail()).getCalendarGroups().read().get();
+                    List<CalendarGroup> CalendarGroups = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendarGroups().read().get();
 
                     //Assert
                     if (CalendarGroups != null)
@@ -996,12 +996,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 //Prepare
-                    List<CalendarGroup> CalendarGroups = client.getusers().getById(ApplicationContext.getTestMail()).getCalendarGroups().top(1).read().get();
+                    List<CalendarGroup> CalendarGroups = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendarGroups().top(1).read().get();
                     String calendarGroupId;
                     if (CalendarGroups != null && CalendarGroups.size() > 0) {
                         calendarGroupId = CalendarGroups.get(0).getId().toString();
                         //Act
-                        CalendarGroup calendarGroup = client.getusers().getById(ApplicationContext.getTestMail())
+                        CalendarGroup calendarGroup = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getCalendarGroup(calendarGroupId).read().get();
                         //Assert
                         if (calendarGroup != null)
@@ -1033,7 +1033,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Event> Events = client.getusers().getById(ApplicationContext.getTestMail()).getEvents().read().get();
+                    List<Event> Events = client.getUsers().getById(ApplicationContext.getTestMail()).getEvents().read().get();
 
                     //Assert
                     if (Events != null)
@@ -1063,12 +1063,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
-                    List<Event> Events = client.getusers().getById(ApplicationContext.getTestMail()).getEvents().top(1).read().get();
+                    List<Event> Events = client.getUsers().getById(ApplicationContext.getTestMail()).getEvents().top(1).read().get();
                     String eventId;
                     if (Events != null && Events.size() > 0) {
                         eventId = Events.get(0).getId().toString();
                         //Act
-                        Event event = client.getusers().getById(ApplicationContext.getTestMail())
+                        Event event = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getEvent(eventId).read().get();
                         //Assert
                         if (event != null)
@@ -1103,14 +1103,14 @@ public class GraphTests extends TestGroup {
                     Event event = getSampleEvent();
 
                     // Act
-                    Event addedEvent = client.getusers().getById(ApplicationContext.getTestMail()).getEvents().add(event).get();
+                    Event addedEvent = client.getUsers().getById(ApplicationContext.getTestMail()).getEvents().add(event).get();
 
                     //Assert
                     if (!addedEvent.getSubject().equals(event.getSubject()))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getusers().getById(ApplicationContext.getTestMail())
+                    client.getUsers().getById(ApplicationContext.getTestMail())
                             .getEvents()
                             .getById(addedEvent.getId())
                             .delete().get();
@@ -1139,13 +1139,13 @@ public class GraphTests extends TestGroup {
 
                     // Prepare
                     Event event = getSampleEvent();
-                    Event addedEvent = client.getusers().getById(ApplicationContext.getTestMail()).getEvents().add(event).get();
+                    Event addedEvent = client.getUsers().getById(ApplicationContext.getTestMail()).getEvents().add(event).get();
 
                     // Act
                     event.setSubject("Updated Subject");
                     event.setImportance(Importance.Low);
 
-                    Event updatedEvent = client.getusers()
+                    Event updatedEvent = client.getUsers()
                             .getById(ApplicationContext.getTestMail())
                             .getEvents()
                             .getById(addedEvent.getId())
@@ -1156,7 +1156,7 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getusers()
+                    client.getUsers()
                             .getById(ApplicationContext.getTestMail())
                             .getEvents()
                             .getById(addedEvent.getId())
@@ -1187,12 +1187,12 @@ public class GraphTests extends TestGroup {
 
                     // Prepare
                     Event event = getSampleEvent();
-                    Event addedEvent = client.getusers()
+                    Event addedEvent = client.getUsers()
                             .getById(ApplicationContext.getTestMail())
                             .getEvents().add(event).get();
 
                     // Act
-                    client.getusers()
+                    client.getUsers()
                             .getById(ApplicationContext.getTestMail())
                             .getEvents()
                             .getById(addedEvent.getId())
@@ -1200,7 +1200,7 @@ public class GraphTests extends TestGroup {
 
                     //Assert
                     try {
-                        client.getusers()
+                        client.getUsers()
                                 .getById(ApplicationContext.getTestMail())
                                 .getEvents()
                                 .getById(addedEvent.getId()).read().get();
@@ -1241,7 +1241,7 @@ public class GraphTests extends TestGroup {
                     dateStart.add(java.util.Calendar.HOUR, 2);
 
                     //Act
-                    List<Event> calendarView = client.getusers().getById(ApplicationContext.getTestMail()).getCalendarView()
+                    List<Event> calendarView = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendarView()
                             .addParameter("startdatetime",dateStart)
                             .addParameter("enddatetime", dateEnd)
                             .read().get();
@@ -1274,7 +1274,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    Photo userPhoto = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhoto().read().get();
+                    Photo userPhoto = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhoto().read().get();
 
                     //Assert
                     if (userPhoto != null)
@@ -1305,7 +1305,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().read().get();
+                    List<Photo> userPhotos = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhotos().read().get();
 
                     //Assert
                     if (userPhotos != null)
@@ -1335,12 +1335,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                       //Prepare
-                    List<Photo> userPhotos = client.getusers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
+                    List<Photo> userPhotos = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
                     String userPhotoId;
                     if (userPhotos != null && userPhotos.size() > 0) {
                         userPhotoId = userPhotos.get(0).getId().toString();
                         //Act
-                        Photo userPhoto = client.getusers().getById(ApplicationContext.getTestMail())
+                        Photo userPhoto = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getUserPhoto(userPhotoId).read().get();
                         //Assert
                         if (userPhoto != null)
@@ -1373,7 +1373,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    Drive drive = client.getusers().getById(ApplicationContext.getTestMail()).getDrive().read().get();
+                    Drive drive = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().read().get();
 
                     //Assert
                     if (drive != null)
@@ -1403,7 +1403,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Item> files = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().read().get();
+                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().read().get();
 
                     //Assert
                     if (files != null)
@@ -1433,12 +1433,12 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 //Prepare
-                    List<Item> files = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().top(1).read().get();
+                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().top(1).read().get();
                     String fileId;
                     if (files != null && files.size() > 0) {
-                        fileId = files.get(0).getid().toString();
+                        fileId = files.get(0).getId().toString();
                         //Act
-                        Item file = client.getusers().getById(ApplicationContext.getTestMail())
+                        Item file = client.getUsers().getById(ApplicationContext.getTestMail())
                                 .getFile(fileId).read().get();
                         //Assert
                         if (file != null)
@@ -1471,15 +1471,15 @@ public class GraphTests extends TestGroup {
 
                     //Prepare
                     Item newFile = new Item();
-                    newFile.settype("File");
-                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+                    newFile.setType("File");
+                    newFile.setName(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
-                    client.getusers().getById(ApplicationContext.getTestMail())
-                            .getFiles().getById(addedFile.getid())
+                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail())
+                            .getFiles().getById(addedFile.getId())
                             .asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
-                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
+                    //byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
                     byte[] content = new byte[0];
 
                     //Assert
@@ -1490,7 +1490,7 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
 
                     return result;
@@ -1518,18 +1518,18 @@ public class GraphTests extends TestGroup {
 
                     //Prepare
                     Item newFile = new Item();
-                    newFile.settype("File");
-                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+                    newFile.setType("File");
+                    newFile.setName(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
+                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
                     //Prepare
-                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
                     //Act
-                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
 
                     //Assert
-                    //byte[] content = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
+                    //byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
                     byte[] content = new byte[0];
                     String strContent = new String(content);
 
@@ -1537,7 +1537,7 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
-                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
 
                     return result;
@@ -1565,13 +1565,13 @@ public class GraphTests extends TestGroup {
 
                     //Prepare
                     Item newFile = new Item();
-                    newFile.settype("File");
-                    newFile.setname(UUID.randomUUID().toString() + ".txt");
+                    newFile.setType("File");
+                    newFile.setName(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getusers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
+                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
 
                     //Act
-                    client.getusers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
 
                     return result;

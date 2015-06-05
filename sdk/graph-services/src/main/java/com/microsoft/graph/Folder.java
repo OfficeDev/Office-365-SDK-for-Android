@@ -31,7 +31,7 @@ public class Folder extends Item {
     *
     * @return the Integer
     */
-    public Integer getchildCount() {
+    public Integer getChildCount() {
         return this.childCount; 
     }
 
@@ -40,7 +40,7 @@ public class Folder extends Item {
     *
     * @param value the Integer
     */
-    public void setchildCount(Integer value) { 
+    public void setChildCount(Integer value) { 
         this.childCount = value; 
         valueChanged("childCount", value);
 

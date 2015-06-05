@@ -31,7 +31,7 @@ public class User extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getaccountEnabled() {
+    public Boolean getAccountEnabled() {
         return this.accountEnabled; 
     }
 
@@ -40,7 +40,7 @@ public class User extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setaccountEnabled(Boolean value) { 
+    public void setAccountEnabled(Boolean value) { 
         this.accountEnabled = value; 
         valueChanged("accountEnabled", value);
 
@@ -56,7 +56,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<AssignedLicense>
     */
-    public java.util.List<AssignedLicense> getassignedLicenses() {
+    public java.util.List<AssignedLicense> getAssignedLicenses() {
         return this.assignedLicenses; 
     }
 
@@ -65,7 +65,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<AssignedLicense>
     */
-    public void setassignedLicenses(java.util.List<AssignedLicense> value) { 
+    public void setAssignedLicenses(java.util.List<AssignedLicense> value) { 
         this.assignedLicenses = value; 
         valueChanged("assignedLicenses", value);
 
@@ -81,7 +81,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<AssignedPlan>
     */
-    public java.util.List<AssignedPlan> getassignedPlans() {
+    public java.util.List<AssignedPlan> getAssignedPlans() {
         return this.assignedPlans; 
     }
 
@@ -90,7 +90,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<AssignedPlan>
     */
-    public void setassignedPlans(java.util.List<AssignedPlan> value) { 
+    public void setAssignedPlans(java.util.List<AssignedPlan> value) { 
         this.assignedPlans = value; 
         valueChanged("assignedPlans", value);
 
@@ -103,7 +103,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcity() {
+    public String getCity() {
         return this.city; 
     }
 
@@ -112,7 +112,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcity(String value) { 
+    public void setCity(String value) { 
         this.city = value; 
         valueChanged("city", value);
 
@@ -125,7 +125,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getcountry() {
+    public String getCountry() {
         return this.country; 
     }
 
@@ -134,7 +134,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setcountry(String value) { 
+    public void setCountry(String value) { 
         this.country = value; 
         valueChanged("country", value);
 
@@ -147,7 +147,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdepartment() {
+    public String getDepartment() {
         return this.department; 
     }
 
@@ -156,7 +156,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdepartment(String value) { 
+    public void setDepartment(String value) { 
         this.department = value; 
         valueChanged("department", value);
 
@@ -169,7 +169,7 @@ public class User extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getdirSyncEnabled() {
+    public Boolean getDirSyncEnabled() {
         return this.dirSyncEnabled; 
     }
 
@@ -178,7 +178,7 @@ public class User extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setdirSyncEnabled(Boolean value) { 
+    public void setDirSyncEnabled(Boolean value) { 
         this.dirSyncEnabled = value; 
         valueChanged("dirSyncEnabled", value);
 
@@ -191,7 +191,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdisplayName() {
+    public String getDisplayName() {
         return this.displayName; 
     }
 
@@ -200,7 +200,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdisplayName(String value) { 
+    public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
 
@@ -213,7 +213,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getfacsimileTelephoneNumber() {
+    public String getFacsimileTelephoneNumber() {
         return this.facsimileTelephoneNumber; 
     }
 
@@ -222,7 +222,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setfacsimileTelephoneNumber(String value) { 
+    public void setFacsimileTelephoneNumber(String value) { 
         this.facsimileTelephoneNumber = value; 
         valueChanged("facsimileTelephoneNumber", value);
 
@@ -235,7 +235,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getgivenName() {
+    public String getGivenName() {
         return this.givenName; 
     }
 
@@ -244,7 +244,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setgivenName(String value) { 
+    public void setGivenName(String value) { 
         this.givenName = value; 
         valueChanged("givenName", value);
 
@@ -257,7 +257,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getimmutableId() {
+    public String getImmutableId() {
         return this.immutableId; 
     }
 
@@ -266,7 +266,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setimmutableId(String value) { 
+    public void setImmutableId(String value) { 
         this.immutableId = value; 
         valueChanged("immutableId", value);
 
@@ -279,7 +279,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getjobTitle() {
+    public String getJobTitle() {
         return this.jobTitle; 
     }
 
@@ -288,7 +288,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setjobTitle(String value) { 
+    public void setJobTitle(String value) { 
         this.jobTitle = value; 
         valueChanged("jobTitle", value);
 
@@ -301,7 +301,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getlastDirSyncTime() {
+    public java.util.Calendar getLastDirSyncTime() {
         return this.lastDirSyncTime; 
     }
 
@@ -310,7 +310,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setlastDirSyncTime(java.util.Calendar value) { 
+    public void setLastDirSyncTime(java.util.Calendar value) { 
         this.lastDirSyncTime = value; 
         valueChanged("lastDirSyncTime", value);
 
@@ -323,7 +323,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getmail() {
+    public String getMail() {
         return this.mail; 
     }
 
@@ -332,7 +332,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setmail(String value) { 
+    public void setMail(String value) { 
         this.mail = value; 
         valueChanged("mail", value);
 
@@ -345,7 +345,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getmailNickname() {
+    public String getMailNickname() {
         return this.mailNickname; 
     }
 
@@ -354,7 +354,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setmailNickname(String value) { 
+    public void setMailNickname(String value) { 
         this.mailNickname = value; 
         valueChanged("mailNickname", value);
 
@@ -367,7 +367,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getmobile() {
+    public String getMobile() {
         return this.mobile; 
     }
 
@@ -376,7 +376,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setmobile(String value) { 
+    public void setMobile(String value) { 
         this.mobile = value; 
         valueChanged("mobile", value);
 
@@ -389,7 +389,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getonPremisesSecurityIdentifier() {
+    public String getOnPremisesSecurityIdentifier() {
         return this.onPremisesSecurityIdentifier; 
     }
 
@@ -398,7 +398,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setonPremisesSecurityIdentifier(String value) { 
+    public void setOnPremisesSecurityIdentifier(String value) { 
         this.onPremisesSecurityIdentifier = value; 
         valueChanged("onPremisesSecurityIdentifier", value);
 
@@ -414,7 +414,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getotherMails() {
+    public java.util.List<String> getOtherMails() {
         return this.otherMails; 
     }
 
@@ -423,7 +423,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setotherMails(java.util.List<String> value) { 
+    public void setOtherMails(java.util.List<String> value) { 
         this.otherMails = value; 
         valueChanged("otherMails", value);
 
@@ -436,7 +436,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getpasswordPolicies() {
+    public String getPasswordPolicies() {
         return this.passwordPolicies; 
     }
 
@@ -445,7 +445,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setpasswordPolicies(String value) { 
+    public void setPasswordPolicies(String value) { 
         this.passwordPolicies = value; 
         valueChanged("passwordPolicies", value);
 
@@ -458,7 +458,7 @@ public class User extends DirectoryObject {
     *
     * @return the PasswordProfile
     */
-    public PasswordProfile getpasswordProfile() {
+    public PasswordProfile getPasswordProfile() {
         return this.passwordProfile; 
     }
 
@@ -467,7 +467,7 @@ public class User extends DirectoryObject {
     *
     * @param value the PasswordProfile
     */
-    public void setpasswordProfile(PasswordProfile value) { 
+    public void setPasswordProfile(PasswordProfile value) { 
         this.passwordProfile = value; 
         valueChanged("passwordProfile", value);
 
@@ -480,7 +480,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getphysicalDeliveryOfficeName() {
+    public String getPhysicalDeliveryOfficeName() {
         return this.physicalDeliveryOfficeName; 
     }
 
@@ -489,7 +489,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setphysicalDeliveryOfficeName(String value) { 
+    public void setPhysicalDeliveryOfficeName(String value) { 
         this.physicalDeliveryOfficeName = value; 
         valueChanged("physicalDeliveryOfficeName", value);
 
@@ -502,7 +502,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getpostalCode() {
+    public String getPostalCode() {
         return this.postalCode; 
     }
 
@@ -511,7 +511,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setpostalCode(String value) { 
+    public void setPostalCode(String value) { 
         this.postalCode = value; 
         valueChanged("postalCode", value);
 
@@ -524,7 +524,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getpreferredLanguage() {
+    public String getPreferredLanguage() {
         return this.preferredLanguage; 
     }
 
@@ -533,7 +533,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setpreferredLanguage(String value) { 
+    public void setPreferredLanguage(String value) { 
         this.preferredLanguage = value; 
         valueChanged("preferredLanguage", value);
 
@@ -549,7 +549,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<ProvisionedPlan>
     */
-    public java.util.List<ProvisionedPlan> getprovisionedPlans() {
+    public java.util.List<ProvisionedPlan> getProvisionedPlans() {
         return this.provisionedPlans; 
     }
 
@@ -558,7 +558,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<ProvisionedPlan>
     */
-    public void setprovisionedPlans(java.util.List<ProvisionedPlan> value) { 
+    public void setProvisionedPlans(java.util.List<ProvisionedPlan> value) { 
         this.provisionedPlans = value; 
         valueChanged("provisionedPlans", value);
 
@@ -574,7 +574,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<ProvisioningError>
     */
-    public java.util.List<ProvisioningError> getprovisioningErrors() {
+    public java.util.List<ProvisioningError> getProvisioningErrors() {
         return this.provisioningErrors; 
     }
 
@@ -583,7 +583,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<ProvisioningError>
     */
-    public void setprovisioningErrors(java.util.List<ProvisioningError> value) { 
+    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
         this.provisioningErrors = value; 
         valueChanged("provisioningErrors", value);
 
@@ -599,7 +599,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getproxyAddresses() {
+    public java.util.List<String> getProxyAddresses() {
         return this.proxyAddresses; 
     }
 
@@ -608,7 +608,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setproxyAddresses(java.util.List<String> value) { 
+    public void setProxyAddresses(java.util.List<String> value) { 
         this.proxyAddresses = value; 
         valueChanged("proxyAddresses", value);
 
@@ -621,7 +621,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsipProxyAddress() {
+    public String getSipProxyAddress() {
         return this.sipProxyAddress; 
     }
 
@@ -630,7 +630,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsipProxyAddress(String value) { 
+    public void setSipProxyAddress(String value) { 
         this.sipProxyAddress = value; 
         valueChanged("sipProxyAddress", value);
 
@@ -643,7 +643,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getstate() {
+    public String getState() {
         return this.state; 
     }
 
@@ -652,7 +652,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setstate(String value) { 
+    public void setState(String value) { 
         this.state = value; 
         valueChanged("state", value);
 
@@ -665,7 +665,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getstreetAddress() {
+    public String getStreetAddress() {
         return this.streetAddress; 
     }
 
@@ -674,7 +674,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setstreetAddress(String value) { 
+    public void setStreetAddress(String value) { 
         this.streetAddress = value; 
         valueChanged("streetAddress", value);
 
@@ -687,7 +687,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getsurname() {
+    public String getSurname() {
         return this.surname; 
     }
 
@@ -696,7 +696,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setsurname(String value) { 
+    public void setSurname(String value) { 
         this.surname = value; 
         valueChanged("surname", value);
 
@@ -709,7 +709,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String gettelephoneNumber() {
+    public String getTelephoneNumber() {
         return this.telephoneNumber; 
     }
 
@@ -718,7 +718,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void settelephoneNumber(String value) { 
+    public void setTelephoneNumber(String value) { 
         this.telephoneNumber = value; 
         valueChanged("telephoneNumber", value);
 
@@ -731,7 +731,7 @@ public class User extends DirectoryObject {
     *
     * @return the byte[]
     */
-    public byte[] getthumbnailPhoto() {
+    public byte[] getThumbnailPhoto() {
         return this.thumbnailPhoto; 
     }
 
@@ -740,7 +740,7 @@ public class User extends DirectoryObject {
     *
     * @param value the byte[]
     */
-    public void setthumbnailPhoto(byte[] value) { 
+    public void setThumbnailPhoto(byte[] value) { 
         this.thumbnailPhoto = value; 
         valueChanged("thumbnailPhoto", value);
 
@@ -753,7 +753,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getusageLocation() {
+    public String getUsageLocation() {
         return this.usageLocation; 
     }
 
@@ -762,7 +762,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setusageLocation(String value) { 
+    public void setUsageLocation(String value) { 
         this.usageLocation = value; 
         valueChanged("usageLocation", value);
 
@@ -775,7 +775,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getuserPrincipalName() {
+    public String getUserPrincipalName() {
         return this.userPrincipalName; 
     }
 
@@ -784,7 +784,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setuserPrincipalName(String value) { 
+    public void setUserPrincipalName(String value) { 
         this.userPrincipalName = value; 
         valueChanged("userPrincipalName", value);
 
@@ -797,7 +797,7 @@ public class User extends DirectoryObject {
     *
     * @return the String
     */
-    public String getuserType() {
+    public String getUserType() {
         return this.userType; 
     }
 
@@ -806,7 +806,7 @@ public class User extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setuserType(String value) { 
+    public void setUserType(String value) { 
         this.userType = value; 
         valueChanged("userType", value);
 
@@ -1148,7 +1148,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<AppRoleAssignment>
     */
-    public java.util.List<AppRoleAssignment> getappRoleAssignments() {
+    public java.util.List<AppRoleAssignment> getAppRoleAssignments() {
         return this.appRoleAssignments; 
     }
 
@@ -1157,7 +1157,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<AppRoleAssignment>
     */
-    public void setappRoleAssignments(java.util.List<AppRoleAssignment> value) { 
+    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) { 
         this.appRoleAssignments = value; 
         valueChanged("appRoleAssignments", value);
 
@@ -1173,7 +1173,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<OAuth2PermissionGrant>
     */
-    public java.util.List<OAuth2PermissionGrant> getoauth2PermissionGrants() {
+    public java.util.List<OAuth2PermissionGrant> getOauth2PermissionGrants() {
         return this.oauth2PermissionGrants; 
     }
 
@@ -1182,7 +1182,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<OAuth2PermissionGrant>
     */
-    public void setoauth2PermissionGrants(java.util.List<OAuth2PermissionGrant> value) { 
+    public void setOauth2PermissionGrants(java.util.List<OAuth2PermissionGrant> value) { 
         this.oauth2PermissionGrants = value; 
         valueChanged("oauth2PermissionGrants", value);
 
@@ -1198,7 +1198,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getownedDevices() {
+    public java.util.List<DirectoryObject> getOwnedDevices() {
         return this.ownedDevices; 
     }
 
@@ -1207,7 +1207,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setownedDevices(java.util.List<DirectoryObject> value) { 
+    public void setOwnedDevices(java.util.List<DirectoryObject> value) { 
         this.ownedDevices = value; 
         valueChanged("ownedDevices", value);
 
@@ -1223,7 +1223,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getregisteredDevices() {
+    public java.util.List<DirectoryObject> getRegisteredDevices() {
         return this.registeredDevices; 
     }
 
@@ -1232,7 +1232,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setregisteredDevices(java.util.List<DirectoryObject> value) { 
+    public void setRegisteredDevices(java.util.List<DirectoryObject> value) { 
         this.registeredDevices = value; 
         valueChanged("registeredDevices", value);
 
@@ -1245,7 +1245,7 @@ public class User extends DirectoryObject {
     *
     * @return the DirectoryObject
     */
-    public DirectoryObject getmanager() {
+    public DirectoryObject getManager() {
         return this.manager; 
     }
 
@@ -1254,7 +1254,7 @@ public class User extends DirectoryObject {
     *
     * @param value the DirectoryObject
     */
-    public void setmanager(DirectoryObject value) { 
+    public void setManager(DirectoryObject value) { 
         this.manager = value; 
         valueChanged("manager", value);
 
@@ -1270,7 +1270,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getdirectReports() {
+    public java.util.List<DirectoryObject> getDirectReports() {
         return this.directReports; 
     }
 
@@ -1279,7 +1279,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setdirectReports(java.util.List<DirectoryObject> value) { 
+    public void setDirectReports(java.util.List<DirectoryObject> value) { 
         this.directReports = value; 
         valueChanged("directReports", value);
 
@@ -1295,7 +1295,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getmemberOf() {
+    public java.util.List<DirectoryObject> getMemberOf() {
         return this.memberOf; 
     }
 
@@ -1304,7 +1304,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setmemberOf(java.util.List<DirectoryObject> value) { 
+    public void setMemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
         valueChanged("memberOf", value);
 
@@ -1320,7 +1320,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getcreatedObjects() {
+    public java.util.List<DirectoryObject> getCreatedObjects() {
         return this.createdObjects; 
     }
 
@@ -1329,7 +1329,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setcreatedObjects(java.util.List<DirectoryObject> value) { 
+    public void setCreatedObjects(java.util.List<DirectoryObject> value) { 
         this.createdObjects = value; 
         valueChanged("createdObjects", value);
 
@@ -1345,7 +1345,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getownedObjects() {
+    public java.util.List<DirectoryObject> getOwnedObjects() {
         return this.ownedObjects; 
     }
 
@@ -1354,7 +1354,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setownedObjects(java.util.List<DirectoryObject> value) { 
+    public void setOwnedObjects(java.util.List<DirectoryObject> value) { 
         this.ownedObjects = value; 
         valueChanged("ownedObjects", value);
 
@@ -1561,7 +1561,7 @@ public class User extends DirectoryObject {
     *
     * @return the Drive
     */
-    public Drive getdrive() {
+    public Drive getDrive() {
         return this.drive; 
     }
 
@@ -1570,7 +1570,7 @@ public class User extends DirectoryObject {
     *
     * @param value the Drive
     */
-    public void setdrive(Drive value) { 
+    public void setDrive(Drive value) { 
         this.drive = value; 
         valueChanged("drive", value);
 
@@ -1586,7 +1586,7 @@ public class User extends DirectoryObject {
     *
     * @return the java.util.List<Item>
     */
-    public java.util.List<Item> getfiles() {
+    public java.util.List<Item> getFiles() {
         return this.files; 
     }
 
@@ -1595,7 +1595,7 @@ public class User extends DirectoryObject {
     *
     * @param value the java.util.List<Item>
     */
-    public void setfiles(java.util.List<Item> value) { 
+    public void setFiles(java.util.List<Item> value) { 
         this.files = value; 
         valueChanged("files", value);
 

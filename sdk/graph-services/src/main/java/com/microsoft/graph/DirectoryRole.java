@@ -31,7 +31,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdescription() {
+    public String getDescription() {
         return this.description; 
     }
 
@@ -40,7 +40,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdescription(String value) { 
+    public void setDescription(String value) { 
         this.description = value; 
         valueChanged("description", value);
 
@@ -53,7 +53,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the String
     */
-    public String getdisplayName() {
+    public String getDisplayName() {
         return this.displayName; 
     }
 
@@ -62,7 +62,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setdisplayName(String value) { 
+    public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
 
@@ -75,7 +75,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getisSystem() {
+    public Boolean getIsSystem() {
         return this.isSystem; 
     }
 
@@ -84,7 +84,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setisSystem(Boolean value) { 
+    public void setIsSystem(Boolean value) { 
         this.isSystem = value; 
         valueChanged("isSystem", value);
 
@@ -97,7 +97,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the Boolean
     */
-    public Boolean getroleDisabled() {
+    public Boolean getRoleDisabled() {
         return this.roleDisabled; 
     }
 
@@ -106,7 +106,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setroleDisabled(Boolean value) { 
+    public void setRoleDisabled(Boolean value) { 
         this.roleDisabled = value; 
         valueChanged("roleDisabled", value);
 
@@ -119,7 +119,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the String
     */
-    public String getroleTemplateId() {
+    public String getRoleTemplateId() {
         return this.roleTemplateId; 
     }
 
@@ -128,7 +128,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setroleTemplateId(String value) { 
+    public void setRoleTemplateId(String value) { 
         this.roleTemplateId = value; 
         valueChanged("roleTemplateId", value);
 
@@ -144,7 +144,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getmembers() {
+    public java.util.List<DirectoryObject> getMembers() {
         return this.members; 
     }
 
@@ -153,7 +153,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setmembers(java.util.List<DirectoryObject> value) { 
+    public void setMembers(java.util.List<DirectoryObject> value) { 
         this.members = value; 
         valueChanged("members", value);
 
@@ -169,7 +169,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getmemberOf() {
+    public java.util.List<DirectoryObject> getMemberOf() {
         return this.memberOf; 
     }
 
@@ -178,7 +178,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setmemberOf(java.util.List<DirectoryObject> value) { 
+    public void setMemberOf(java.util.List<DirectoryObject> value) { 
         this.memberOf = value; 
         valueChanged("memberOf", value);
 
@@ -194,7 +194,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getowners() {
+    public java.util.List<DirectoryObject> getOwners() {
         return this.owners; 
     }
 
@@ -203,7 +203,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setowners(java.util.List<DirectoryObject> value) { 
+    public void setOwners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
         valueChanged("owners", value);
 
@@ -219,7 +219,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<DirectoryObject> getownedObjects() {
+    public java.util.List<DirectoryObject> getOwnedObjects() {
         return this.ownedObjects; 
     }
 
@@ -228,7 +228,7 @@ public class DirectoryRole extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setownedObjects(java.util.List<DirectoryObject> value) { 
+    public void setOwnedObjects(java.util.List<DirectoryObject> value) { 
         this.ownedObjects = value; 
         valueChanged("ownedObjects", value);
 

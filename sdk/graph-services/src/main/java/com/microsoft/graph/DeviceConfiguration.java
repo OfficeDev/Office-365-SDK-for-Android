@@ -34,7 +34,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @return the java.util.List<byte[]>
     */
-    public java.util.List<byte[]> getpublicIssuerCertificates() {
+    public java.util.List<byte[]> getPublicIssuerCertificates() {
         return this.publicIssuerCertificates; 
     }
 
@@ -43,7 +43,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the java.util.List<byte[]>
     */
-    public void setpublicIssuerCertificates(java.util.List<byte[]> value) { 
+    public void setPublicIssuerCertificates(java.util.List<byte[]> value) { 
         this.publicIssuerCertificates = value; 
         valueChanged("publicIssuerCertificates", value);
 
@@ -59,7 +59,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @return the java.util.List<byte[]>
     */
-    public java.util.List<byte[]> getcloudPublicIssuerCertificates() {
+    public java.util.List<byte[]> getCloudPublicIssuerCertificates() {
         return this.cloudPublicIssuerCertificates; 
     }
 
@@ -68,7 +68,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the java.util.List<byte[]>
     */
-    public void setcloudPublicIssuerCertificates(java.util.List<byte[]> value) { 
+    public void setCloudPublicIssuerCertificates(java.util.List<byte[]> value) { 
         this.cloudPublicIssuerCertificates = value; 
         valueChanged("cloudPublicIssuerCertificates", value);
 
@@ -81,7 +81,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @return the Integer
     */
-    public Integer getregistrationQuota() {
+    public Integer getRegistrationQuota() {
         return this.registrationQuota; 
     }
 
@@ -90,7 +90,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the Integer
     */
-    public void setregistrationQuota(Integer value) { 
+    public void setRegistrationQuota(Integer value) { 
         this.registrationQuota = value; 
         valueChanged("registrationQuota", value);
 
@@ -103,7 +103,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @return the Integer
     */
-    public Integer getmaximumRegistrationInactivityPeriod() {
+    public Integer getMaximumRegistrationInactivityPeriod() {
         return this.maximumRegistrationInactivityPeriod; 
     }
 
@@ -112,7 +112,7 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the Integer
     */
-    public void setmaximumRegistrationInactivityPeriod(Integer value) { 
+    public void setMaximumRegistrationInactivityPeriod(Integer value) { 
         this.maximumRegistrationInactivityPeriod = value; 
         valueChanged("maximumRegistrationInactivityPeriod", value);
 

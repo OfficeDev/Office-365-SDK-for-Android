@@ -32,7 +32,7 @@ public class AssignedLicense extends ODataBaseEntity {
     *
     * @return the java.util.List<String>
     */
-    public java.util.List<String> getdisabledPlans() {
+    public java.util.List<String> getDisabledPlans() {
         return this.disabledPlans; 
     }
 
@@ -41,7 +41,7 @@ public class AssignedLicense extends ODataBaseEntity {
     *
     * @param value the java.util.List<String>
     */
-    public void setdisabledPlans(java.util.List<String> value) { 
+    public void setDisabledPlans(java.util.List<String> value) { 
         this.disabledPlans = value;
         valueChanged("disabledPlans", value);
 
@@ -54,7 +54,7 @@ public class AssignedLicense extends ODataBaseEntity {
     *
     * @return the java.util.UUID
     */
-    public java.util.UUID getskuId() {
+    public java.util.UUID getSkuId() {
         return this.skuId; 
     }
 
@@ -63,7 +63,7 @@ public class AssignedLicense extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setskuId(java.util.UUID value) { 
+    public void setSkuId(java.util.UUID value) { 
         this.skuId = value;
         valueChanged("skuId", value);
 

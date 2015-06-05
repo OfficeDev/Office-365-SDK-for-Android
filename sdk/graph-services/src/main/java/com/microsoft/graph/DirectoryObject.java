@@ -32,7 +32,7 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getobjectType() {
+    public String getObjectType() {
         return this.objectType; 
     }
 
@@ -41,7 +41,7 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setobjectType(String value) { 
+    public void setObjectType(String value) { 
         this.objectType = value; 
         valueChanged("objectType", value);
 
@@ -54,7 +54,7 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @return the String
     */
-    public String getobjectId() {
+    public String getObjectId() {
         return this.objectId; 
     }
 
@@ -63,7 +63,7 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setobjectId(String value) { 
+    public void setObjectId(String value) { 
         this.objectId = value; 
         valueChanged("objectId", value);
 
@@ -76,7 +76,7 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getdeletionTimestamp() {
+    public java.util.Calendar getDeletionTimestamp() {
         return this.deletionTimestamp; 
     }
 
@@ -85,7 +85,7 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setdeletionTimestamp(java.util.Calendar value) { 
+    public void setDeletionTimestamp(java.util.Calendar value) { 
         this.deletionTimestamp = value; 
         valueChanged("deletionTimestamp", value);
 
