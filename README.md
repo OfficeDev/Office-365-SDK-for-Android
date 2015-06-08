@@ -23,7 +23,7 @@ Current services, service versions, and SDK versions:
 
 |API|Service Version|SDK Version|Artifact Id|
 |---|---------------|-----------|-----------|
-|Mail/Calendar/Contacts|1.0|0.14.0|outlook-services|
+|Mail/Calendar/Contacts|1.0|0.14.1|outlook-services|
 |Files|1.0|0.14.1|file-services|
 |Discovery|1.0|0.14.1|discovery-services|
 |AAD Graph|1.5|0.14.1|directory-services|
