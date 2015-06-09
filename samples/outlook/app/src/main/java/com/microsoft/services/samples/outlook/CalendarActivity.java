@@ -12,7 +12,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.outlookservices.Event;
-import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.outlookservices.orc.OutlookClient;
 import com.microsoft.services.controllers.AsyncController;
 import com.microsoft.services.controllers.AuthenticationController;
 

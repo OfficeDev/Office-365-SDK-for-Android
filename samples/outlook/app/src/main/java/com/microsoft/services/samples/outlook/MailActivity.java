@@ -26,7 +26,7 @@ import com.microsoft.outlookservices.EmailAddress;
 import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
-import com.microsoft.outlookservices.odata.OutlookClient;
+import com.microsoft.outlookservices.orc.OutlookClient;
 import com.microsoft.services.controllers.AsyncController;
 import com.microsoft.services.controllers.AuthenticationController;
 

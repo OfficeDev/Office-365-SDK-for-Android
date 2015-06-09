@@ -14,9 +14,10 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.AuthenticationResult.AuthenticationStatus;
 import com.microsoft.aad.adal.PromptBehavior;
-import com.microsoft.services.odata.impl.ADALDependencyResolver;
-import com.microsoft.services.odata.interfaces.DependencyResolver;
-import com.microsoft.services.odata.interfaces.LogLevel;
+
+import com.microsoft.services.android.impl.ADALDependencyResolver;
+import com.microsoft.services.orc.interfaces.DependencyResolver;
+import com.microsoft.services.orc.interfaces.LogLevel;
 import com.microsoft.services.samples.outlook.ServiceConstants;
 
 /**
