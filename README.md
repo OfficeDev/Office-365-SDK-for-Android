@@ -23,7 +23,7 @@ Current services, service versions, and SDK versions:
 
 |API|Service Version|SDK Version|Artifact Id|
 |---|---------------|-----------|-----------|
-|Mail/Calendar/Contacts|1.0|0.14.0|outlook-services|
+|Mail/Calendar/Contacts|1.0|0.14.1|outlook-services|
 |Files|1.0|0.14.1|file-services|
 |Discovery|1.0|0.14.1|discovery-services|
 |AAD Graph|1.5|0.14.1|directory-services|
@@ -56,7 +56,7 @@ To use these libraries in your project, follow these general steps, as described
 
     ```groovy
     compile 'com.microsoft.services:outlook-services:0.14.1'
-    compile 'com.microsoft.services:orc-engine-android:0.14.1@aar'
+    compile 'com.microsoft.orc:orc-engine-android:0.14.1@aar'
     compile 'com.microsoft.aad:adal:1.1.3@aar'
     ```
 
@@ -84,7 +84,7 @@ With your project prepared, the next step is to initialize the dependency manage
     ```xml
     <string name="AADAuthority">https://login.microsoftonline.com/common</string>
     <string name="AADResourceId">https://outlook.office365.com</string>
-	  <string name="AADClientId">Paste your Client ID HERE</string>
+    <string name="AADClientId">Paste your Client ID HERE</string>
     <string name="AADRedirectUrl">Paste your Redirect URI HERE</string>
     ```
 
