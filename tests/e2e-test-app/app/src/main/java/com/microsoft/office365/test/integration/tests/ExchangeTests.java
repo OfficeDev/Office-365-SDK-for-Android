@@ -3,7 +3,6 @@ package com.microsoft.office365.test.integration.tests;
 
 import android.util.Log;
 
-import com.microsoft.fileservices.Item;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
@@ -29,6 +28,7 @@ import com.microsoft.services.odata.CalendarSerializer;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -1976,12 +1976,15 @@ public class ExchangeTests extends TestGroup {
                     Event event = getSampleEvent();
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    String formattedTime = formatter.format(addedEvent.getStart().getTime());
+
                     //format date properly
-                    java.util.Calendar dateStart = addedEvent.getStart();
+                    java.util.Calendar dateStart = (java.util.Calendar)addedEvent.getStart().clone();
                     dateStart.add(java.util.Calendar.HOUR, -2);
 
-                    java.util.Calendar dateEnd = addedEvent.getStart();
-                    dateStart.add(java.util.Calendar.HOUR, 2);
+                    java.util.Calendar dateEnd = (java.util.Calendar)addedEvent.getStart().clone();
+                    dateEnd.add(java.util.Calendar.HOUR, 2);
 
                     // Act
                     List<Event> calendarView = client.getMe().getCalendarView()
