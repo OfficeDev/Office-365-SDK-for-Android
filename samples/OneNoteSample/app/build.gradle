@@ -21,8 +21,8 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.microsoft.services:onenote-services:0.14.1'
-    compile 'com.microsoft.orc:orc-engine-android:0.14.1@aar'
-    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.1', ext: 'jar')
-    compile 'com.microsoft.orc:live-auth:0.14.1@aar'
+    compile 'com.microsoft.services:onenote-services:0.14.2'
+    compile 'com.microsoft.orc:orc-engine-android:0.14.2@aar'
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.2', ext: 'jar')
+    compile 'com.microsoft.orc:live-auth:0.14.2@aar'
 }
