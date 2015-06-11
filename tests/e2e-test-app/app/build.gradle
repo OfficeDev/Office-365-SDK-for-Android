@@ -36,9 +36,9 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.1', ext: 'jar', changing: true)
-    compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.1', ext: 'aar', changing: true)
-    compile(group: 'com.microsoft.orc', name: 'orc-engine-android', version: '0.14.1', ext: 'aar', changing: true)
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.2', ext: 'jar', changing: true)
+    compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
+    compile(group: 'com.microsoft.orc', name: 'orc-engine-android', version: '0.14.2', ext: 'aar', changing: true)
 
     compile project(':outlook-services')
     compile project(':directory-services')

@@ -29,12 +29,12 @@ allprojects {
 
     apply plugin: 'idea'
     group = 'com.microsoft.services'
-    version = '0.14.1'
+    version = '0.14.2'
 }
 
 //overriding version number for graph-services
 project(':graph-services'){
     apply plugin: 'idea'
     group = 'com.microsoft.services'
-    version = '0.2.0'
+    version = '0.2.1'
 }

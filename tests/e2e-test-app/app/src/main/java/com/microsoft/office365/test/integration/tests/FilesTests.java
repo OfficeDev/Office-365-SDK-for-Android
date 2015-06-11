@@ -36,8 +36,8 @@ public class FilesTests extends TestGroup {
         this.addTest(canUpdateFile("Can update file", true));
         this.addTest(canUpdateFileContent("Can update file content", true));
         this.addTest(canGetDrive("Can get drive", false));
-        this.addTest(canGetFilesTyped("Can get files typed with derived classes", false));
-        this.addTest(canGetFileTyped("Can get file typed with derived class", false));
+        this.addTest(canGetFilesTyped("Can get files typed with derived classes", true));
+        this.addTest(canGetFileTyped("Can get file typed with derived class", true));
         this.addTest(canDeleteFiles("Can delete files", true));
         //Select, top
         this.addTest(canSelectFiles("Can use select in files", true));

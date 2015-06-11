@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 dependencies {
-    compile group: 'com.microsoft.orc' , name: 'orc-engine-core' , version: '0.14.1', changing: true
+    compile group: 'com.microsoft.orc' , name: 'orc-engine-core' , version: '0.14.2', changing: true
 }
 
 apply from :'../java-libraries.gradle'
