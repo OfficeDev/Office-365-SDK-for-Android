@@ -1,4 +1,16 @@
 # Office 365 SDK for Android  #
+ 
+ ### Version 0.14.2 ### 
+
+* Fixed bug in tracking changes for lists
+* Fixed deserialization bug in lists with derived clases
+
+ ### Version 0.14.1 ### 
+ 
+* Updated to new ORC structure (Office REST Client)
+* Fixed camel case in all methods to match with Java standards
+* Fixed issue #86
+* Fixed issue with payloads in PATCH requests
 
  ### Version 0.13.0 ### 
 
