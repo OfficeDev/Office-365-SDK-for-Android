@@ -518,7 +518,7 @@ public class Event extends Item {
     *
     * @return the String
     */
-    public String getiCalUId() {
+    public String getICalUId() {
         return this.iCalUId; 
     }
 
@@ -527,7 +527,7 @@ public class Event extends Item {
     *
     * @param value the String
     */
-    public void setiCalUId(String value) { 
+    public void setICalUId(String value) { 
         this.iCalUId = value; 
         valueChanged("iCalUId", value);
 
