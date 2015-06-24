@@ -1,8 +1,8 @@
 include ':sharepoint-services',
-        ':onenote-services',
-	    ':graph-services',
-        ':outlook-services',
+        ':discovery-services',
         ':file-services',
-        ':directory-services',
-        ':discovery-services'
+        ':graph-services',
+        ':onenote-services',
+        ':outlook-services',
+        ':directory-services'
 
