@@ -1,8 +1,0 @@
-include ':odata-engine-unit-tests',
-        ':sample-service'
-        //':odata-engine-jvm-impl',
-        //':odata-engine-core'
-
-//project (':odata-engine-jvm-impl').projectDir = file('../../sdk/odata-engine-jvm-impl')
-//project (':odata-engine-core').projectDir = file('../../sdk/odata-engine-core')
-

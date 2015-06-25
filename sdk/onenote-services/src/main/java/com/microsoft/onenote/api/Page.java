@@ -13,7 +13,7 @@
  ******************************************************************************/
 package com.microsoft.onenote.api;
 
-import com.microsoft.services.orc.ODataBaseEntity;
+import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**

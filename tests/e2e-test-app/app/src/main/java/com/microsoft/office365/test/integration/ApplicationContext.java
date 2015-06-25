@@ -10,25 +10,31 @@ import android.util.Log;
 import com.google.common.io.ByteStreams;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
+
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
-import com.microsoft.directoryservices.odata.DirectoryClient;
-import com.microsoft.discoveryservices.orc.DiscoveryClient;
-import com.microsoft.graph.orc.GraphServiceClient;
-import com.microsoft.live.LiveAuthClient;
+
 import com.microsoft.office365.test.integration.android.Constants;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
-import com.microsoft.outlookservices.orc.OutlookClient;
-import com.microsoft.services.android.impl.DefaultDependencyResolver;
-import com.microsoft.services.orc.interfaces.*;
-import com.microsoft.services.android.impl.LiveAuthDependencyResolver;
+
+import com.microsoft.services.orc.core.DependencyResolver;
+import com.microsoft.services.orc.log.LogLevel;
+import com.microsoft.services.orc.resolvers.DefaultDependencyResolver;
+import com.microsoft.services.orc.resolvers.LiveAuthDependencyResolver;
+
+import com.microsoft.live.LiveAuthClient;
+
+import com.microsoft.directoryservices.odata.DirectoryClient;
+import com.microsoft.discoveryservices.fetchers.DiscoveryClient;
+import com.microsoft.fileservices.fetchers.SharePointClient;
+import com.microsoft.graph.fetchers.GraphServiceClient;
+import com.microsoft.outlookservices.fetchers.OutlookClient;
+import com.microsoft.onenote.api.fetchers.OneNoteApiClient;
 import com.microsoft.sharepointservices.ListClient;
-import com.microsoft.fileservices.orc.SharePointClient;
-import com.microsoft.onenote.api.orc.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -105,7 +111,6 @@ public class ApplicationContext {
     public static String getTestDocumentListName() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_DOCUMENT_LIST_NAME, "");
     }
-
 
     public static String getSiteRelativeUrl() {
         return PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_SITE_URL, "");
@@ -217,11 +222,6 @@ public class ApplicationContext {
     }
 
 
-    public static void sleep(int seconds) throws Exception {
-        Thread.sleep(seconds * 1000);
-    }
-
-
     public static OutlookClient getMailCalendarContactClient() {
         return getTClientAAD(getExchangeServerUrl(), getExchangeEndpointUrl(), OutlookClient.class);
     }
@@ -278,7 +278,7 @@ public class ApplicationContext {
 
 
                         public void onSuccess(AuthenticationResult result) {
-                            TClient client = null;
+                            TClient client;
                             try {
                                 client = clientClass.getDeclaredConstructor(String.class, DependencyResolver.class)
                                         .newInstance(endpointUrl, getDependencyResolver(result.getAccessToken()));
@@ -351,9 +351,7 @@ public class ApplicationContext {
 
             try {
                 liveAuthDependencyResolver.interactiveInitialize(mActivity).get();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
 
@@ -382,7 +380,7 @@ public class ApplicationContext {
     }
 
     public static OneNoteApiClient getOneNoteApiClient(){
-        return getTClientLiveSDK(getOneNoteEndpoint(), com.microsoft.onenote.api.orc.OneNoteApiClient.class);
+        return getTClientLiveSDK(getOneNoteEndpoint(), OneNoteApiClient.class);
     }
 
     public static GraphServiceClient getGraphServiceClient(){

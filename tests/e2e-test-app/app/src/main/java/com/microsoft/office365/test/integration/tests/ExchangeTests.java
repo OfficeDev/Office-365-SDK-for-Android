@@ -23,7 +23,7 @@ import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
 import com.microsoft.outlookservices.User;
-import com.microsoft.outlookservices.orc.OutlookClient;
+import com.microsoft.outlookservices.fetchers.OutlookClient;
 import com.microsoft.services.odata.CalendarSerializer;
 
 import java.io.PrintWriter;
@@ -247,7 +247,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -314,8 +313,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
-
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
             }
@@ -384,7 +381,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -461,7 +457,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -529,7 +524,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -1156,7 +1150,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -1230,7 +1223,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -2616,7 +2608,9 @@ public class ExchangeTests extends TestGroup {
 
                     FileAttachment fileAttachment = getFileAttachment();
                     //Prepare
-                    Message added = client.getMe().getMessages().add(message).get();
+                    Message added = client.getMe().getFolders()
+                            .getById("Drafts").getMessages().add(message).get();
+
                     client.getMe().getMessages()
                             .getById(added.getId())
                             .getAttachments()
