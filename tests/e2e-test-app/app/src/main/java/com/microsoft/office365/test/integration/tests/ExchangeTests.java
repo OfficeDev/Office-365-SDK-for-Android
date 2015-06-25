@@ -23,7 +23,7 @@ import com.microsoft.outlookservices.ItemBody;
 import com.microsoft.outlookservices.Message;
 import com.microsoft.outlookservices.Recipient;
 import com.microsoft.outlookservices.User;
-import com.microsoft.outlookservices.orc.OutlookClient;
+import com.microsoft.outlookservices.fetchers.OutlookClient;
 import com.microsoft.services.odata.CalendarSerializer;
 
 import java.io.PrintWriter;

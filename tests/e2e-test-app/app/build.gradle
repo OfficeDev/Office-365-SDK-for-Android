@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 22
+    buildToolsVersion "23.0.0 rc2"
 
     defaultConfig {
         minSdkVersion 15
@@ -30,15 +30,15 @@ android {
 
 dependencies {
     compile 'com.android.support:support-v4:22.0.0'
+    //compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.google.guava:guava:18.0'
     compile 'com.google.code.gson:gson:2.3'
     compile('com.microsoft.aad:adal:1.1.2') {
         exclude group: 'com.android.support'
     }
 
-    compile(group: 'com.microsoft.orc', name: 'orc-engine-core', version: '0.14.2', ext: 'jar', changing: true)
+    compile(group: 'com.microsoft.services.orc', name: 'orc-engine-android', version: '0.15.8')
     compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
-    compile(group: 'com.microsoft.orc', name: 'orc-engine-android', version: '0.14.2', ext: 'aar', changing: true)
 
     compile project(':outlook-services')
     compile project(':directory-services')

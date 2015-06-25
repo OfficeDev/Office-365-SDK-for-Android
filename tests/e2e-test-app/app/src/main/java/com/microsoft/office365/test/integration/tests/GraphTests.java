@@ -2,7 +2,7 @@ package com.microsoft.office365.test.integration.tests;
 
 
 import com.microsoft.graph.*;
-import com.microsoft.graph.orc.GraphServiceClient;
+import com.microsoft.graph.fetchers.GraphServiceClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
