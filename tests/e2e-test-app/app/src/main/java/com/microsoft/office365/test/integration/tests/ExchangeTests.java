@@ -102,7 +102,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canFilterMessages("Can use filter in messages list", true));
         this.addTest(canSelectMessages("Can use select in messages list", true));
         this.addTest(canTopMessages("Can use top in messages list", true));
-        this.addTest(canExpandMessages("Can use expand in messages list", true));
+        this.addTest(canExpandMessages("Can use expand in messages list", false));
         this.addTest(canExpandMessage("Can use expand in message", true));
         this.addTest(canSelectMessage("Can use select in message", true));
         this.addTest(canOrderByContacts("Can use orderby in contacts", true));
@@ -247,7 +247,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -314,8 +313,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
-
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
             }
@@ -384,7 +381,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -461,7 +457,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -529,7 +524,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -1156,7 +1150,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
@@ -1230,7 +1223,6 @@ public class ExchangeTests extends TestGroup {
 
                     String stackTrace = e.toString();
                     Log.e("SDK-Error", stackTrace);
-                    //return createResultFromException(e);
 
                     return createResultFromException(new Exception("Error in test execution", e));
                 }
