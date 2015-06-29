@@ -1,13 +1,24 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'maven'
+
 buildscript {
     repositories {
         jcenter()
     }
+
     dependencies {
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
         classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url project.nightliesUrl
+        }
+    }
+}
+
 
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
@@ -15,38 +26,4 @@ if (JavaVersion.current().isJava8Compatible()) {
             options.addStringOption('Xdoclint:none', '-quiet')
         }
     }
-}
-
-allprojects {
-
-    repositories {
-        jcenter()
-
-        maven {
-            url  "http://dl.bintray.com/msopentech/Maven"
-        }
-    }
-
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '1.0.0'
-}
-
-//overriding version number for graph-services
-project(':graph-services'){
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.2.2'
-}
-
-project(':directory-services'){
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.15.0'
-}
-
-project(':onenote-services'){
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.15.0'
 }
