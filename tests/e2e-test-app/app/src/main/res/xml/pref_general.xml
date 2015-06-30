@@ -65,7 +65,7 @@
 
     <EditTextPreference
         android:name="sharepointUrl"
-        android:defaultValue="@string/prefSharePointUrl"
+        android:defaultValue="@string/prefSharepointUrl"
         android:key="prefSharepointUrl"
         android:summary="Enter your Sharepoint Server URL"
         android:title="Sharepoint URL" >
