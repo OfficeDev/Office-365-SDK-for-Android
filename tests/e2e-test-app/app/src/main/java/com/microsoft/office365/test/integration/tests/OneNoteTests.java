@@ -10,14 +10,14 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.onenote.api.Notebook;
-import com.microsoft.onenote.api.Page;
-import com.microsoft.onenote.api.PatchActionType;
-import com.microsoft.onenote.api.PatchContentCommand;
-import com.microsoft.onenote.api.PatchInsertPosition;
-import com.microsoft.onenote.api.Section;
-import com.microsoft.onenote.api.SectionGroup;
-import com.microsoft.onenote.api.fetchers.OneNoteApiClient;
+import com.microsoft.services.onenote.Notebook;
+import com.microsoft.services.onenote.Page;
+import com.microsoft.services.onenote.PatchActionType;
+import com.microsoft.services.onenote.PatchContentCommand;
+import com.microsoft.services.onenote.PatchInsertPosition;
+import com.microsoft.services.onenote.Section;
+import com.microsoft.services.onenote.SectionGroup;
+import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.services.odata.CalendarSerializer;
 import com.microsoft.services.orc.core.MultiPartElement;
 
@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
 
 public class OneNoteTests extends TestGroup {

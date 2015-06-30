@@ -33,7 +33,7 @@ import com.microsoft.discoveryservices.fetchers.DiscoveryClient;
 import com.microsoft.fileservices.fetchers.SharePointClient;
 import com.microsoft.graph.fetchers.GraphServiceClient;
 import com.microsoft.outlookservices.fetchers.OutlookClient;
-import com.microsoft.onenote.api.fetchers.OneNoteApiClient;
+import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.sharepointservices.ListClient;
 
 import java.io.File;
