@@ -33,6 +33,7 @@ gradlew
 gradlew.bat
 
 # generated files
+**/build/
 bin/
 gen/
 target/

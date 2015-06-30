@@ -1,0 +1,69 @@
+// This is the build script for all libraries/folders in this repo.
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 15
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.microsoft.aad:adal:1.1.7'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile group:'com.microsoft.services.orc', name:'orc-android', version:'[1.0.0,2.0.0)', ext:'aar', transitive: true
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories.mavenDeployer {
+        pom {
+           setGroupId project.mavenGroupId
+           setArtifactId project.mavenArtifactId
+           setVersion project.mavenVersion
+        }
+        repository (url: project.mavenRepoUrl) {
+            authentication(
+                 // put these values in local file ~/.gradle/properties.gradle
+                 userName: project.bintrayUsername,
+                 password: project.bintrayApikey
+            )
+        }
+    }
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
