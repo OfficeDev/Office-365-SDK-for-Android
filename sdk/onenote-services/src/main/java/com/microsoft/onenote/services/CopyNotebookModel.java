@@ -15,7 +15,7 @@ package com.microsoft.onenote.services;
 
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
-∫
+
 /**
  * The type Copy Notebook Model.
 */

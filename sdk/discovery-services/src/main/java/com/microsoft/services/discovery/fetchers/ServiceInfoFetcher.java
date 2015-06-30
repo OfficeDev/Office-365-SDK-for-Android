@@ -13,7 +13,7 @@
  ******************************************************************************/
 package com.microsoft.services.discovery.fetchers;
 
-import com.microsoft.services.*;
+import com.microsoft.services.discovery.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
