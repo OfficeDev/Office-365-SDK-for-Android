@@ -28,13 +28,15 @@ import com.microsoft.services.orc.resolvers.LiveAuthDependencyResolver;
 
 import com.microsoft.live.LiveAuthClient;
 
+
 import com.microsoft.directoryservices.odata.DirectoryClient;
-import com.microsoft.discoveryservices.fetchers.DiscoveryClient;
-import com.microsoft.fileservices.fetchers.SharePointClient;
-import com.microsoft.graph.fetchers.GraphServiceClient;
-import com.microsoft.outlookservices.fetchers.OutlookClient;
+import com.microsoft.services.discovery.fetchers.DiscoveryClient;
+import com.microsoft.services.files.fetchers.FilesClient;
+import com.microsoft.services.graph.fetchers.GraphServiceClient;
+import com.microsoft.services.outlook.fetchers.OutlookClient;
 import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
-import com.microsoft.sharepointservices.ListClient;
+import com.microsoft.services.sharepoint.ListClient;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -227,8 +229,8 @@ public class ApplicationContext {
     }
 
 
-    public static SharePointClient getFilesClient() {
-        return getTClientAAD(getFileServerUrl(), getFilesEndpointUrl(), SharePointClient.class);
+    public static FilesClient getFilesClient() {
+        return getTClientAAD(getFileServerUrl(), getFilesEndpointUrl(), FilesClient.class);
     }
 
 
@@ -242,10 +244,10 @@ public class ApplicationContext {
     }
 
 
+
     public static DirectoryClient getDirectoryClient() {
         return getTClientAAD(getDirectoryServerUrl(), getDirectoryEndpointUrl(), DirectoryClient.class);
     }
-
 
     public static InputStream getResource(int id) {
         return mActivity.getResources().openRawResource(id);
@@ -316,7 +318,7 @@ public class ApplicationContext {
 
 
                         public void onSuccess(AuthenticationResult result) {
-                            com.microsoft.sharepointservices.http.OAuthCredentials credentials = new com.microsoft.sharepointservices.http.OAuthCredentials(result.getAccessToken());
+                            com.microsoft.services.sharepoint.http.OAuthCredentials credentials = new com.microsoft.services.sharepoint.http.OAuthCredentials(result.getAccessToken());
                             ListClient client = new ListClient(getSharepointServerUrl(), getSiteRelativeUrl(), credentials);
                             future.set(client);
                         }

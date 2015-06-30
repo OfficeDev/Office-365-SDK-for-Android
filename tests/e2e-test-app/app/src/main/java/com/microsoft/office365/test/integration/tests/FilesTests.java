@@ -1,24 +1,18 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import com.microsoft.directoryservices.Application;
-import com.microsoft.fileservices.Drive;
-import com.microsoft.fileservices.File;
-import com.microsoft.fileservices.Folder;
-import com.microsoft.fileservices.Item;
+import com.microsoft.services.files.*;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.R;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.services.odata.Constants;
-import com.microsoft.fileservices.fetchers.SharePointClient;
+import com.microsoft.services.files.fetchers.FilesClient;
+import com.microsoft.services.orc.core.Constants;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.UUID;
 
@@ -54,7 +48,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     List<Item> files = client.getFiles().read().get();
 
@@ -84,7 +78,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Item newFile = new Item();
                     newFile.setType("File");
@@ -123,7 +117,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Item newFile = new Item();
                     newFile.setType("File");
@@ -166,7 +160,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Item newFile = new Item();
                     newFile.setType("File");
@@ -212,7 +206,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Item newFile = new Item();
                     newFile.setType("File");
@@ -263,7 +257,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Item newFile = new Item();
                     newFile.setType("File");
@@ -307,7 +301,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Item newFile = new Item();
                     newFile.setType("File");
@@ -349,7 +343,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     Drive drive = client.getDrive().read().get();
 
@@ -382,7 +376,7 @@ public class FilesTests extends TestGroup {
 
                     String fileName = "TestFile" + UUID.randomUUID().toString();
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     //Prepare
                     Item newFile = new Item();
@@ -428,7 +422,7 @@ public class FilesTests extends TestGroup {
 
                     String fileName = "TestFile" + UUID.randomUUID().toString();
                     String fileName2 = "TestFile" + UUID.randomUUID().toString();
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     //Prepare
                     Item newFile = new Item();
@@ -477,7 +471,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     //Prepare
                     Item newFile = new Item();
@@ -529,7 +523,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     //Prepare
                     Item newFile = new Item();
@@ -563,7 +557,7 @@ public class FilesTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    SharePointClient client = ApplicationContext.getFilesClient();
+                    FilesClient client = ApplicationContext.getFilesClient();
 
                     //Prepare
                     Item newFile = new Item();

@@ -1,8 +1,8 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import com.microsoft.discoveryservices.ServiceInfo;
-import com.microsoft.discoveryservices.fetchers.DiscoveryClient;
+import com.microsoft.services.discovery.ServiceInfo;
+import com.microsoft.services.discovery.fetchers.DiscoveryClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;

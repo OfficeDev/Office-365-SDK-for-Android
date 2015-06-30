@@ -26,16 +26,14 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.sharepointservices.ListClient;
-import com.microsoft.sharepointservices.SPList;
-import com.microsoft.sharepointservices.SPListField;
-import com.microsoft.sharepointservices.SPListItem;
+import com.microsoft.services.sharepoint.ListClient;
+import com.microsoft.services.sharepoint.*;
 
 import java.util.List;
 import java.util.UUID;
 
-import static com.microsoft.sharepointservices.QueryOperations.field;
-import static com.microsoft.sharepointservices.QueryOperations.startsWith;
+import static com.microsoft.services.sharepoint.QueryOperations.*;
+
 
 public class ListsTests extends TestGroup {
 

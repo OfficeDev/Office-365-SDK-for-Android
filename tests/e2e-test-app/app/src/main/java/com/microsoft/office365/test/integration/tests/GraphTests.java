@@ -1,14 +1,15 @@
 package com.microsoft.office365.test.integration.tests;
 
 
-import com.microsoft.graph.*;
-import com.microsoft.graph.fetchers.GraphServiceClient;
+import com.microsoft.services.graph.*;
+import com.microsoft.services.graph.fetchers.GraphServiceClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.services.odata.Constants;
+import com.microsoft.services.orc.core.Constants;
+
 
 import java.util.ArrayList;
 import java.util.List;
