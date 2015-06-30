@@ -28,6 +28,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url  "http://dl.bintray.com/msopentech/Maven"
+    }
+}
+
 dependencies {
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.google.guava:guava:18.0'
@@ -36,7 +42,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0')
+    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
     compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
 
     compile project(':outlook-services')
