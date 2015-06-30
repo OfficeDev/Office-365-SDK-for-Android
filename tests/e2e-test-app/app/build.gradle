@@ -43,7 +43,7 @@ dependencies {
     compile project(':directory-services')
     compile project(':discovery-services')
     compile project(':sharepoint-services')
-    compile project(':file-services')
+    compile project(':files-services')
     compile project(':onenote-services')
     compile project(':graph-services')
 }
