@@ -1,1 +1,7 @@
-apply from:'../library.gradle'
+apply plugin: 'java'
+
+dependencies {
+    compile(group: 'com.microsoft.services', name: 'odata-engine-core', version: '0.13.0', ext: 'jar')
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+}
+
