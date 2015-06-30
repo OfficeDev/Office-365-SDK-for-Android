@@ -25,9 +25,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.google.guava:guava:18.0'
     compile 'com.microsoft.aad:adal:1.1.7'
-
     compile 'com.android.support:appcompat-v7:22.2.0'
-
     compile group:'com.microsoft.services.orc', name:'orc-android', version:'[1.0.0,2.0.0)', ext:'aar', transitive: true
 }
 
@@ -51,8 +49,8 @@ uploadArchives {
 
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath())
     classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {

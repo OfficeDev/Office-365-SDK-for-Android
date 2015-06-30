@@ -4,4 +4,4 @@ include ':sharepoint-services',
         ':graph-services',
         ':onenote-services',
         ':outlook-services'
-        // ,':directory-services'
+        //':directory-services'
