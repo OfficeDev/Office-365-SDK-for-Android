@@ -12,7 +12,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.microsoft.services.controllers.AsyncController;
 import com.microsoft.services.controllers.AuthenticationController;
-import com.microsoft.services.orc.interfaces.LogLevel;
+import com.microsoft.services.orc.log.LogLevel;
+
 
 import java.util.concurrent.Callable;
 

@@ -22,11 +22,8 @@ import android.widget.Toast;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.microsoft.outlookservices.EmailAddress;
-import com.microsoft.outlookservices.ItemBody;
-import com.microsoft.outlookservices.Message;
-import com.microsoft.outlookservices.Recipient;
-import com.microsoft.outlookservices.orc.OutlookClient;
+import com.microsoft.services.outlook.*;
+import com.microsoft.services.outlook.fetchers.OutlookClient;
 import com.microsoft.services.controllers.AsyncController;
 import com.microsoft.services.controllers.AuthenticationController;
 

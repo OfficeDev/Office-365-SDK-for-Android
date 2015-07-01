@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) Microsoft Open Technologies, Inc.
  * All Rights Reserved
- * See License.txt in the project root for license information. 
+ * See License.txt in the project root for license information.
  ******************************************************************************/
 package com.microsoft.services.controllers;
 
@@ -15,9 +15,10 @@ import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.AuthenticationResult.AuthenticationStatus;
 import com.microsoft.aad.adal.PromptBehavior;
 
-import com.microsoft.services.android.impl.ADALDependencyResolver;
-import com.microsoft.services.orc.interfaces.DependencyResolver;
-import com.microsoft.services.orc.interfaces.LogLevel;
+
+import com.microsoft.services.orc.core.DependencyResolver;
+import com.microsoft.services.orc.log.LogLevel;
+import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
 import com.microsoft.services.samples.outlook.ServiceConstants;
 
 /**

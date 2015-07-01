@@ -14,10 +14,11 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.microsoft.live.LiveAuthClient;
 
-import com.microsoft.onenote.api.Notebook;
-import com.microsoft.onenote.api.orc.OneNoteApiClient;
-import com.microsoft.services.android.impl.LiveAuthDependencyResolver;
-import com.microsoft.services.orc.interfaces.LogLevel;
+import com.microsoft.services.onenote.*;
+import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
+import com.microsoft.services.orc.log.LogLevel;
+import com.microsoft.services.orc.resolvers.LiveAuthDependencyResolver;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,7 +95,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void getNotebooks() {
 
-        Futures.addCallback(getOneNoteClient().getme().getNote().getNotebooks().read(), new FutureCallback<List<Notebook>>() {
+        Futures.addCallback(getOneNoteClient().getMe().getNote().getNotebooks().read(), new FutureCallback<List<Notebook>>() {
             @Override
             public void onSuccess(List<Notebook> notebooks) {
                 List<String> nbNames = new ArrayList<String>();

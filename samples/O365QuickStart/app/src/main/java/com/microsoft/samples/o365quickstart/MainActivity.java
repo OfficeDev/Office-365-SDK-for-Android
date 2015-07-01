@@ -18,10 +18,11 @@ import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
 
-import com.microsoft.services.android.impl.ADALDependencyResolver;
-import com.microsoft.outlookservices.orc.OutlookClient;
-import com.microsoft.outlookservices.Message;
-import com.microsoft.services.orc.interfaces.LogLevel;
+import com.microsoft.services.orc.log.LogLevel;
+import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
+import com.microsoft.services.outlook.fetchers.OutlookClient;
+import com.microsoft.services.outlook.*;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void getMessages() {
         _resolver.getLogger().log("Getting messages...", LogLevel.VERBOSE);
-        Futures.addCallback(_client.getMe().getFolders().getById("Inbox").getMessages().read(), new FutureCallback<List<Message>>() {
+        Futures.addCallback(_client.getMe().getFolders().getById("Inbox").getMessages().top(10).read(), new FutureCallback<List<Message>>() {
             @Override
             public void onSuccess(final List<Message> result) {
                 _resolver.getLogger().log("Preparing messages for display.", LogLevel.VERBOSE);
@@ -122,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
                 for (Message m : result) {
                     Map<String, String> oneMessage = new HashMap<String,String>();
                     oneMessage.put("subject", m.getSubject());
-                    oneMessage.put("from", "From: " + m.getFrom().getEmailAddress().getAddress());
+                    oneMessage.put("from", "From: " +  m.getFrom().getEmailAddress().getAddress());
                     listOfMessages.add(oneMessage);
                 }
 

@@ -20,5 +20,8 @@ if (JavaVersion.current().isJava8Compatible()) {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url 'https://dl.bintray.com/msopentech/Maven'
+        }
     }
 }
