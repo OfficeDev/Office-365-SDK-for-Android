@@ -1,18 +1,24 @@
 # Office 365 SDK for Android  #
- 
- ### Version 0.14.2 ### 
+
+### Version 1.0.0 ###
+
+* Bumped to 1.0 version
+* Package and artifacts renaming
+* Bugfixing
+
+### Version 0.14.2 ###
 
 * Fixed bug in tracking changes for lists
 * Fixed deserialization bug in lists with derived clases
 
- ### Version 0.14.1 ### 
+### Version 0.14.1 ### 
  
 * Updated to new ORC structure (Office REST Client)
 * Fixed camel case in all methods to match with Java standards
 * Fixed issue #86
 * Fixed issue with payloads in PATCH requests
 
- ### Version 0.13.0 ### 
+### Version 0.13.0 ### 
 
 * Added OneNote SDK 
 * Added Graph Services (Preview)
@@ -20,14 +26,14 @@
 * Added LiveDependencyResolver
 * Updated the Exchange SDK to use TimeZone, CalendarColor, GeoCoordinates
  
- ### Version 0.12.0 ### 
+### Version 0.12.0 ### 
 
 * Fixing classpath for javadoc generation
 * SDK and test app updated with vipr
 * Merge PR #67
 * Support for Streamed media entities
 
- ### Version 0.11.0 ###
+### Version 0.11.0 ###
 
 *  Cleaned imports
 *  Improved tests for sample service comparing request's payloads too
