@@ -38,7 +38,7 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.google.guava:guava:18.0'
     compile 'com.google.code.gson:gson:2.3'
-    compile('com.microsoft.aad:adal:1.1.2') {
+    compile('com.microsoft.aad:adal:1.1.7') {
         exclude group: 'com.android.support'
     }
 
