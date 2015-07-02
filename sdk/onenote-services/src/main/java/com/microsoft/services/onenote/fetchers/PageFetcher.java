@@ -13,14 +13,15 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
-import com.microsoft.services.onenote.Page;
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PageFetcher.
  */
-public class PageFetcher extends OrcMediaEntityFetcher<Page,PageOperations>
+public class PageFetcher extends OrcMediaEntityFetcher<Page,PageOperations> 
                                      implements Readable<Page> {
 
      /**

@@ -13,14 +13,15 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
-import com.microsoft.services.onenote.Resource;
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ResourceFetcher.
  */
-public class ResourceFetcher extends OrcMediaEntityFetcher<Resource,ResourceOperations>
+public class ResourceFetcher extends OrcMediaEntityFetcher<Resource,ResourceOperations> 
                                      implements Readable<Resource> {
 
      /**

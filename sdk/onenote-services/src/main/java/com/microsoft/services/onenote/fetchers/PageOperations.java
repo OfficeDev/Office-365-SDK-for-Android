@@ -13,9 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
+import com.microsoft.services.onenote.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.onenote.CopyPageModel;
-import com.microsoft.services.onenote.PatchContentCommand;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -68,7 +67,7 @@ public class PageOperations extends OrcOperations {
      * @param commands the commands 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> patchContent(java.util.List<PatchContentCommand> commands) {
+    public ListenableFuture<Integer> patchContent(java.util.List<PatchContentCommand> commands) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedcommands = serializer.serialize(commands);
 		  
@@ -109,7 +108,7 @@ public class PageOperations extends OrcOperations {
      * @param id the id @param siteCollectionId the siteCollectionId @param siteId the siteId 
      * @return the listenable future
      */         
-    public ListenableFuture<CopyPageModel> copyToSection(String id, String siteCollectionId, String siteId) {
+    public ListenableFuture<CopyPageModel> copyToSection(String id, String siteCollectionId, String siteId) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedid = serializer.serialize(id);
 		String serializedsiteCollectionId = serializer.serialize(siteCollectionId);

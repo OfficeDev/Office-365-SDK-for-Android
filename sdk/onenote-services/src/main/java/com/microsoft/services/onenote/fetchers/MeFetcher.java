@@ -13,14 +13,15 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
-import com.microsoft.services.onenote.Me;
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  MeFetcher.
  */
-public class MeFetcher extends OrcEntityFetcher<Me,MeOperations>
+public class MeFetcher extends OrcEntityFetcher<Me,MeOperations> 
                                      implements Readable<Me> {
 
      /**

@@ -13,19 +13,15 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
-import com.microsoft.services.onenote.Notebook;
-import com.microsoft.services.onenote.Notes;
-import com.microsoft.services.onenote.Page;
-import com.microsoft.services.onenote.Resource;
-import com.microsoft.services.onenote.Section;
-import com.microsoft.services.onenote.SectionGroup;
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  NotesFetcher.
  */
-public class NotesFetcher extends OrcEntityFetcher<Notes,NotesOperations>
+public class NotesFetcher extends OrcEntityFetcher<Notes,NotesOperations> 
                                      implements Readable<Notes> {
 
      /**
@@ -122,8 +118,8 @@ public class NotesFetcher extends OrcEntityFetcher<Notes,NotesOperations>
      *
      * @return the pages
      */
-    public MultipartCollectionFetcher<Page, PageFetcher, PageCollectionOperations> getPages() {
-        return new MultipartCollectionFetcher<Page, PageFetcher, PageCollectionOperations>("pages", this, Page.class, PageCollectionOperations.class);
+    public OrcCollectionFetcher<Page, PageFetcher, PageCollectionOperations> getPages() {
+        return new OrcCollectionFetcher<Page, PageFetcher, PageCollectionOperations>("pages", this, Page.class, PageCollectionOperations.class);
     }
 
     /**

@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
+import com.microsoft.services.onenote.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.onenote.CopyNotebookModel;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -67,7 +67,7 @@ public class NotebookOperations extends OrcOperations {
      * @param siteCollectionId the siteCollectionId @param siteId the siteId 
      * @return the listenable future
      */         
-    public ListenableFuture<CopyNotebookModel> copyNotebook(String siteCollectionId, String siteId) {
+    public ListenableFuture<CopyNotebookModel> copyNotebook(String siteCollectionId, String siteId) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedsiteCollectionId = serializer.serialize(siteCollectionId);
 		String serializedsiteId = serializer.serialize(siteId);

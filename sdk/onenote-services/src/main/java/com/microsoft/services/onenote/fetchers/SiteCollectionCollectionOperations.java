@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
+import com.microsoft.services.onenote.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.onenote.SiteMetadata;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -67,7 +67,7 @@ public class SiteCollectionCollectionOperations extends OrcOperations{
      * @param url the url 
      * @return the listenable future
      */         
-    public ListenableFuture<SiteMetadata> fromUrl(String url) {
+    public ListenableFuture<SiteMetadata> fromUrl(String url) { 
         
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedurl = serializer.serialize(url);

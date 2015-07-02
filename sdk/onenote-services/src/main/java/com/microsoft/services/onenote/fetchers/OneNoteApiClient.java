@@ -13,6 +13,7 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
+import com.microsoft.services.onenote.*;
 import com.microsoft.services.orc.core.*;
 
 /**

@@ -13,7 +13,13 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
+import com.microsoft.services.orc.http.*;
+import com.microsoft.services.orc.serialization.*;
+
+import static com.microsoft.services.orc.core.Helpers.*;
 
 /**
  * The type MeOperations.

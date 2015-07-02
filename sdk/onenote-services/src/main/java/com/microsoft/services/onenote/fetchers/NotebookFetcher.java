@@ -13,16 +13,15 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
-import com.microsoft.services.onenote.Notebook;
-import com.microsoft.services.onenote.Section;
-import com.microsoft.services.onenote.SectionGroup;
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  NotebookFetcher.
  */
-public class NotebookFetcher extends OrcEntityFetcher<Notebook,NotebookOperations>
+public class NotebookFetcher extends OrcEntityFetcher<Notebook,NotebookOperations> 
                                      implements Readable<Notebook> {
 
      /**

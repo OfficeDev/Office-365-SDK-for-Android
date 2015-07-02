@@ -13,14 +13,15 @@
  ******************************************************************************/
 package com.microsoft.services.onenote.fetchers;
 
-import com.microsoft.services.onenote.Site;
+import com.microsoft.services.onenote.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  SiteFetcher.
  */
-public class SiteFetcher extends OrcEntityFetcher<Site,SiteOperations>
+public class SiteFetcher extends OrcEntityFetcher<Site,SiteOperations> 
                                      implements Readable<Site> {
 
      /**
