@@ -118,8 +118,8 @@ public class NotesFetcher extends OrcEntityFetcher<Notes,NotesOperations>
      *
      * @return the pages
      */
-    public OrcCollectionFetcher<Page, PageFetcher, PageCollectionOperations> getPages() {
-        return new OrcCollectionFetcher<Page, PageFetcher, PageCollectionOperations>("pages", this, Page.class, PageCollectionOperations.class);
+    public MultipartCollectionFetcher<Page, PageFetcher, PageCollectionOperations> getPages() {
+        return new MultipartCollectionFetcher<>("pages", this, Page.class, PageCollectionOperations.class);
     }
 
     /**
