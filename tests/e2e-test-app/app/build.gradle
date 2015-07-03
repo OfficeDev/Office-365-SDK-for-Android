@@ -28,12 +28,6 @@ android {
     }
 }
 
-repositories {
-    maven {
-        url  "http://dl.bintray.com/msopentech/Maven"
-    }
-}
-
 dependencies {
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.google.guava:guava:18.0'
