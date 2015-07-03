@@ -42,8 +42,10 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
     compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
+    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
+
+
 
     compile project(':outlook-services')
     compile project(':directory-services')

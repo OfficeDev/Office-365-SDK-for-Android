@@ -159,7 +159,7 @@ public class ItemOperations extends OrcOperations {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
+        request.setVerb(HttpVerb.GET);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
         String parameters = getFunctionParameters(map);
                  request.getUrl().appendPathComponent("Microsoft.Graph.content(" + parameters + ")");   

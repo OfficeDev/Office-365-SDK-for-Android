@@ -90,7 +90,7 @@ public class SiteCollectionCollectionOperations extends OrcOperations{
         map.put("url", url);
 		
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
+        request.setVerb(HttpVerb.GET);
             
         request.setContent(getResolver().getJsonSerializer()
                                         .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));

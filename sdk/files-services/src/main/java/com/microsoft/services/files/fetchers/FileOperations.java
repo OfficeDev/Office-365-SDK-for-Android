@@ -134,7 +134,7 @@ public class FileOperations extends ItemOperations {
         map.put("contentStream", contentStream);
 		
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
+        request.setVerb(HttpVerb.GET);
         
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
