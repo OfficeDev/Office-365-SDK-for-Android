@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
-import com.microsoft.services.files.File;
+import com.microsoft.services.files.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  FileFetcher.
  */
-public class FileFetcher extends OrcMediaEntityFetcher<File,FileOperations>
+public class FileFetcher extends OrcMediaEntityFetcher<File,FileOperations> 
                                      implements Readable<File> {
 
      /**

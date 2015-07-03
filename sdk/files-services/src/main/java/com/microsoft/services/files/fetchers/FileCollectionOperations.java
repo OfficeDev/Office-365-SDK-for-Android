@@ -13,8 +13,9 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
+import com.microsoft.services.files.*;
 import com.microsoft.services.orc.core.*;
-import static com.microsoft.services.orc.core.Helpers.*;
+
 
 /**
  * The type FileCollectionOperations

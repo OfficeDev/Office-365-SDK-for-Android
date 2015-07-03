@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
-import com.microsoft.services.files.Item;
+import com.microsoft.services.files.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ItemFetcher.
  */
-public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
+public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations> 
                                      implements Readable<Item> {
 
      /**

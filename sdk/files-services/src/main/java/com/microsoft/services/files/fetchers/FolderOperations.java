@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
+import com.microsoft.services.files.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.files.Folder;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -67,7 +67,7 @@ public class FolderOperations extends ItemOperations {
      * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName 
      * @return the listenable future
      */         
-    public ListenableFuture<Folder> copy(String destFolderId, String destFolderPath, String newName) {
+    public ListenableFuture<Folder> copy(String destFolderId, String destFolderPath, String newName) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializeddestFolderId = serializer.serialize(destFolderId);
 		String serializeddestFolderPath = serializer.serialize(destFolderPath);

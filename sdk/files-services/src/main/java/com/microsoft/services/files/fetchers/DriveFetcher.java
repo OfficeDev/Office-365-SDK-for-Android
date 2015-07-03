@@ -13,15 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
-import com.microsoft.services.files.Drive;
-import com.microsoft.services.files.Item;
+import com.microsoft.services.files.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DriveFetcher.
  */
-public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
+public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations> 
                                      implements Readable<Drive> {
 
      /**

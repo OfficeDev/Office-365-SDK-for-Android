@@ -13,15 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
-import com.microsoft.services.files.Folder;
-import com.microsoft.services.files.Item;
+import com.microsoft.services.files.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  FolderFetcher.
  */
-public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
+public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations> 
                                      implements Readable<Folder> {
 
      /**
