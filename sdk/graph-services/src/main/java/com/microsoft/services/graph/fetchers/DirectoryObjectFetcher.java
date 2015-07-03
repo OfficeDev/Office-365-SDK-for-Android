@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.DirectoryObject;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DirectoryObjectFetcher.
  */
-public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,DirectoryObjectOperations>
+public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,DirectoryObjectOperations> 
                                      implements Readable<DirectoryObject> {
 
      /**

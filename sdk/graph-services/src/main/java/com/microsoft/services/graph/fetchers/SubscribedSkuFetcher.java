@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.SubscribedSku;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  SubscribedSkuFetcher.
  */
-public class SubscribedSkuFetcher extends OrcEntityFetcher<SubscribedSku,SubscribedSkuOperations>
+public class SubscribedSkuFetcher extends OrcEntityFetcher<SubscribedSku,SubscribedSkuOperations> 
                                      implements Readable<SubscribedSku> {
 
      /**

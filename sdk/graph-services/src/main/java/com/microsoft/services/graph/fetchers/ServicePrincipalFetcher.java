@@ -13,17 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.AppRoleAssignment;
-import com.microsoft.services.graph.DirectoryObject;
-import com.microsoft.services.graph.OAuth2PermissionGrant;
-import com.microsoft.services.graph.ServicePrincipal;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ServicePrincipalFetcher.
  */
-public class ServicePrincipalFetcher extends OrcEntityFetcher<ServicePrincipal,ServicePrincipalOperations>
+public class ServicePrincipalFetcher extends OrcEntityFetcher<ServicePrincipal,ServicePrincipalOperations> 
                                      implements Readable<ServicePrincipal> {
 
      /**

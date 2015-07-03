@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.ItemAttachment;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ItemAttachmentFetcher.
  */
-public class ItemAttachmentFetcher extends OrcEntityFetcher<ItemAttachment,ItemAttachmentOperations>
+public class ItemAttachmentFetcher extends OrcEntityFetcher<ItemAttachment,ItemAttachmentOperations> 
                                      implements Readable<ItemAttachment> {
 
      /**

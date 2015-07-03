@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
+import com.microsoft.services.graph.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.graph.Application;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -67,7 +67,7 @@ public class ApplicationOperations extends DirectoryObjectOperations {
      * @param identifierUris the identifierUris 
      * @return the listenable future
      */         
-    public ListenableFuture<Application> restore(java.util.List<String> identifierUris) {
+    public ListenableFuture<Application> restore(java.util.List<String> identifierUris) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedidentifierUris = serializer.serialize(identifierUris);
 		  

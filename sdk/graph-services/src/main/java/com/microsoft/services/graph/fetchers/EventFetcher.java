@@ -13,15 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Attachment;
-import com.microsoft.services.graph.Event;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  EventFetcher.
  */
-public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
+public class EventFetcher extends OrcEntityFetcher<Event,EventOperations> 
                                      implements Readable<Event> {
 
      /**

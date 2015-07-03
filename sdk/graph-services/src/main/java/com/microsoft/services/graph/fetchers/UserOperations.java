@@ -13,10 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
+import com.microsoft.services.graph.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.graph.AssignedLicense;
-import com.microsoft.services.graph.Message;
-import com.microsoft.services.graph.User;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -69,7 +67,7 @@ public class UserOperations extends DirectoryObjectOperations {
      * @param addLicenses the addLicenses @param removeLicenses the removeLicenses 
      * @return the listenable future
      */         
-    public ListenableFuture<User> assignLicense(java.util.List<AssignedLicense> addLicenses, java.util.List<java.util.UUID> removeLicenses) {
+    public ListenableFuture<User> assignLicense(java.util.List<AssignedLicense> addLicenses, java.util.List<java.util.UUID> removeLicenses) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedaddLicenses = serializer.serialize(addLicenses);
 		String serializedremoveLicenses = serializer.serialize(removeLicenses);
@@ -112,7 +110,7 @@ public class UserOperations extends DirectoryObjectOperations {
      * @param message the message @param saveToSentItems the saveToSentItems 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) {
+    public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedMessage = serializer.serialize(message);
 		String serializedSaveToSentItems = serializer.serialize(saveToSentItems);

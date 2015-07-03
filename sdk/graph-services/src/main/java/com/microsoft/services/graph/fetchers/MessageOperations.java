@@ -13,9 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
+import com.microsoft.services.graph.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.graph.Message;
-import com.microsoft.services.graph.Recipient;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -68,7 +67,7 @@ public class MessageOperations extends OutlookItemOperations {
      * @param destinationId the destinationId 
      * @return the listenable future
      */         
-    public ListenableFuture<Message> copy(String destinationId) {
+    public ListenableFuture<Message> copy(String destinationId) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedDestinationId = serializer.serialize(destinationId);
 		  
@@ -334,7 +333,7 @@ public class MessageOperations extends OutlookItemOperations {
      * @param comment the comment @param toRecipients the toRecipients 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> toRecipients) {
+    public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> toRecipients) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
 		String serializedToRecipients = serializer.serialize(toRecipients);

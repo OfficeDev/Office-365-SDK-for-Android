@@ -13,19 +13,7 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Application;
-import com.microsoft.services.graph.Contact;
-import com.microsoft.services.graph.Device;
-import com.microsoft.services.graph.DeviceConfiguration;
-import com.microsoft.services.graph.DirectoryObject;
-import com.microsoft.services.graph.DirectoryRole;
-import com.microsoft.services.graph.DirectoryRoleTemplate;
-import com.microsoft.services.graph.Group;
-import com.microsoft.services.graph.OAuth2PermissionGrant;
-import com.microsoft.services.graph.ServicePrincipal;
-import com.microsoft.services.graph.SubscribedSku;
-import com.microsoft.services.graph.TenantDetail;
-import com.microsoft.services.graph.User;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 
 /**

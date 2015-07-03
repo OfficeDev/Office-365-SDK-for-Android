@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.File;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  FileFetcher.
  */
-public class FileFetcher extends OrcEntityFetcher<File,FileOperations>
+public class FileFetcher extends OrcEntityFetcher<File,FileOperations> 
                                      implements Readable<File> {
 
      /**

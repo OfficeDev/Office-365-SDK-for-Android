@@ -13,17 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.AppRoleAssignment;
-import com.microsoft.services.graph.DirectoryObject;
-import com.microsoft.services.graph.Group;
-import com.microsoft.services.graph.Item;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  GroupFetcher.
  */
-public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
+public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations> 
                                      implements Readable<Group> {
 
      /**

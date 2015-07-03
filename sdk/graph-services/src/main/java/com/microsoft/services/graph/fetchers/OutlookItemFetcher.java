@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.OutlookItem;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  OutlookItemFetcher.
  */
-public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItemOperations>
+public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItemOperations> 
                                      implements Readable<OutlookItem> {
 
      /**

@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.TenantDetail;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  TenantDetailFetcher.
  */
-public class TenantDetailFetcher extends OrcEntityFetcher<TenantDetail,TenantDetailOperations>
+public class TenantDetailFetcher extends OrcEntityFetcher<TenantDetail,TenantDetailOperations> 
                                      implements Readable<TenantDetail> {
 
      /**

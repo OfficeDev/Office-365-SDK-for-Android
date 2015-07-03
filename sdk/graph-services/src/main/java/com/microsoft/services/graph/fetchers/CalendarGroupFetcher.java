@@ -13,15 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Calendar;
-import com.microsoft.services.graph.CalendarGroup;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  CalendarGroupFetcher.
  */
-public class CalendarGroupFetcher extends OrcEntityFetcher<CalendarGroup,CalendarGroupOperations>
+public class CalendarGroupFetcher extends OrcEntityFetcher<CalendarGroup,CalendarGroupOperations> 
                                      implements Readable<CalendarGroup> {
 
      /**

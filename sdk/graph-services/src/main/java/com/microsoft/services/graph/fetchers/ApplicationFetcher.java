@@ -13,16 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Application;
-import com.microsoft.services.graph.DirectoryObject;
-import com.microsoft.services.graph.ExtensionProperty;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ApplicationFetcher.
  */
-public class ApplicationFetcher extends OrcEntityFetcher<Application,ApplicationOperations>
+public class ApplicationFetcher extends OrcEntityFetcher<Application,ApplicationOperations> 
                                      implements Readable<Application> {
 
      /**

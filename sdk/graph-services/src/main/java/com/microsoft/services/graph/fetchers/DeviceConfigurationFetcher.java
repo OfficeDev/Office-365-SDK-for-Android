@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.DeviceConfiguration;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DeviceConfigurationFetcher.
  */
-public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfiguration,DeviceConfigurationOperations>
+public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfiguration,DeviceConfigurationOperations> 
                                      implements Readable<DeviceConfiguration> {
 
      /**

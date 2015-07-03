@@ -13,6 +13,7 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 
 /**

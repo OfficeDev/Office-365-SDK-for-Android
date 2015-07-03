@@ -13,15 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Device;
-import com.microsoft.services.graph.DirectoryObject;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DeviceFetcher.
  */
-public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations>
+public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations> 
                                      implements Readable<Device> {
 
      /**

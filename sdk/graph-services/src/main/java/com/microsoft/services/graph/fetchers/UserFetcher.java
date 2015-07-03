@@ -13,23 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.AppRoleAssignment;
-import com.microsoft.services.graph.Calendar;
-import com.microsoft.services.graph.CalendarGroup;
-import com.microsoft.services.graph.DirectoryObject;
-import com.microsoft.services.graph.Event;
-import com.microsoft.services.graph.Item;
-import com.microsoft.services.graph.Message;
-import com.microsoft.services.graph.OAuth2PermissionGrant;
-import com.microsoft.services.graph.Photo;
-import com.microsoft.services.graph.User;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  UserFetcher.
  */
-public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
+public class UserFetcher extends OrcEntityFetcher<User,UserOperations> 
                                      implements Readable<User> {
 
      /**

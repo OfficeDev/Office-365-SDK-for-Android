@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Photo;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PhotoFetcher.
  */
-public class PhotoFetcher extends OrcEntityFetcher<Photo,PhotoOperations>
+public class PhotoFetcher extends OrcEntityFetcher<Photo,PhotoOperations> 
                                      implements Readable<Photo> {
 
      /**

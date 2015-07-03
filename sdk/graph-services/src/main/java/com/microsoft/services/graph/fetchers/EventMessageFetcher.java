@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.EventMessage;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  EventMessageFetcher.
  */
-public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMessageOperations>
+public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMessageOperations> 
                                      implements Readable<EventMessage> {
 
      /**

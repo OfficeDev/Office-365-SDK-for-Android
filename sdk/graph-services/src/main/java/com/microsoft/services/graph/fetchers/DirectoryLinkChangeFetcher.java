@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.DirectoryLinkChange;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DirectoryLinkChangeFetcher.
  */
-public class DirectoryLinkChangeFetcher extends OrcEntityFetcher<DirectoryLinkChange,DirectoryLinkChangeOperations>
+public class DirectoryLinkChangeFetcher extends OrcEntityFetcher<DirectoryLinkChange,DirectoryLinkChangeOperations> 
                                      implements Readable<DirectoryLinkChange> {
 
      /**

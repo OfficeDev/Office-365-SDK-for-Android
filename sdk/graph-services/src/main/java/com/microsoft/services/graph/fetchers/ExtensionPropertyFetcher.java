@@ -13,14 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.ExtensionProperty;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ExtensionPropertyFetcher.
  */
-public class ExtensionPropertyFetcher extends OrcEntityFetcher<ExtensionProperty,ExtensionPropertyOperations>
+public class ExtensionPropertyFetcher extends OrcEntityFetcher<ExtensionProperty,ExtensionPropertyOperations> 
                                      implements Readable<ExtensionProperty> {
 
      /**

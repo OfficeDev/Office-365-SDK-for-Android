@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
+import com.microsoft.services.graph.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.graph.Item;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -67,7 +67,7 @@ public class ItemCollectionOperations extends OrcOperations{
      * @param path the path @param nameConflict the nameConflict @param type the type @param content the content 
      * @return the listenable future
      */         
-    public ListenableFuture<Item> add(String path, String nameConflict, String type, byte[] content) {
+    public ListenableFuture<Item> add(String path, String nameConflict, String type, byte[] content) { 
         
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedpath = serializer.serialize(path);
@@ -122,7 +122,7 @@ public class ItemCollectionOperations extends OrcOperations{
         map.put("path", path);
 		
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
+        request.setVerb(HttpVerb.GET);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
 
         String parameters = getFunctionParameters(map);

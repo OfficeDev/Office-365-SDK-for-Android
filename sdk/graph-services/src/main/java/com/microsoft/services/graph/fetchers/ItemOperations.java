@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
+import com.microsoft.services.graph.*;
 import com.google.common.util.concurrent.*;
-import com.microsoft.services.graph.Item;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
 import com.microsoft.services.orc.serialization.*;
@@ -67,7 +67,7 @@ public class ItemOperations extends OrcOperations {
      * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName 
      * @return the listenable future
      */         
-    public ListenableFuture<Item> copy(String destFolderId, String destFolderPath, String newName) {
+    public ListenableFuture<Item> copy(String destFolderId, String destFolderPath, String newName) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializeddestFolderId = serializer.serialize(destFolderId);
 		String serializeddestFolderPath = serializer.serialize(destFolderPath);

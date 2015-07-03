@@ -13,15 +13,14 @@
  ******************************************************************************/
 package com.microsoft.services.graph.fetchers;
 
-import com.microsoft.services.graph.Calendar;
-import com.microsoft.services.graph.Event;
+import com.microsoft.services.graph.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  CalendarFetcher.
  */
-public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperations>
+public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperations> 
                                      implements Readable<Calendar> {
 
      /**
