@@ -35,6 +35,26 @@ dependencies {
     compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
 }
 
+
+//overriding version number for graph-services
+project(':graph-services'){
+    apply plugin: 'idea'
+    group = 'com.microsoft.services'
+    version = '0.2.2'
+}
+
+project(':directory-services'){
+    apply plugin: 'idea'
+    group = 'com.microsoft.services'
+    version = '0.15.0'
+}
+
+project(':onenote-services'){
+    apply plugin: 'idea'
+    group = 'com.microsoft.services'
+    version = '0.15.0'
+}
+
 uploadArchives {
     configuration = configurations.archives
     repositories.mavenDeployer {
