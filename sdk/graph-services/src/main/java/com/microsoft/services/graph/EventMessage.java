@@ -14,6 +14,7 @@
 package com.microsoft.services.graph;
 
 
+
 /**
  * The type Event Message.
 */
@@ -22,16 +23,16 @@ public class EventMessage extends Message {
     public EventMessage(){
         setODataType("#Microsoft.Graph.EventMessage");
     }
-            
-    private com.microsoft.services.graph.MeetingMessageType MeetingMessageType;
-     
+
+    private MeetingMessageType MeetingMessageType;
+
     /**
     * Gets the Meeting Message Type.
     *
     * @return the MeetingMessageType
     */
     public MeetingMessageType getMeetingMessageType() {
-        return this.MeetingMessageType; 
+        return this.MeetingMessageType;
     }
 
     /**
@@ -39,21 +40,21 @@ public class EventMessage extends Message {
     *
     * @param value the MeetingMessageType
     */
-    public void setMeetingMessageType(MeetingMessageType value) { 
-        this.MeetingMessageType = value; 
+    public void setMeetingMessageType(MeetingMessageType value) {
+        this.MeetingMessageType = value;
         valueChanged("MeetingMessageType", value);
 
     }
-            
+
     private Event Event;
-     
+
     /**
     * Gets the Event.
     *
     * @return the Event
     */
     public Event getEvent() {
-        return this.Event; 
+        return this.Event;
     }
 
     /**
@@ -61,8 +62,8 @@ public class EventMessage extends Message {
     *
     * @param value the Event
     */
-    public void setEvent(Event value) { 
-        this.Event = value; 
+    public void setEvent(Event value) {
+        this.Event = value;
         valueChanged("Event", value);
 
     }

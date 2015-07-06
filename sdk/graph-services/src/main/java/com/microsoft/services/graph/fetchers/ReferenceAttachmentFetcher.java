@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ReferenceAttachmentFetcher.
  */
-public class ReferenceAttachmentFetcher extends OrcEntityFetcher<ReferenceAttachment,ReferenceAttachmentOperations> 
+public class ReferenceAttachmentFetcher extends OrcEntityFetcher<ReferenceAttachment,ReferenceAttachmentOperations>
                                      implements Readable<ReferenceAttachment> {
 
      /**
@@ -57,5 +58,5 @@ public class ReferenceAttachmentFetcher extends OrcEntityFetcher<ReferenceAttach
         return this;
     }
 
-        
+
 }

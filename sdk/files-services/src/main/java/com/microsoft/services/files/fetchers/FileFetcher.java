@@ -14,13 +14,14 @@
 package com.microsoft.services.files.fetchers;
 
 import com.microsoft.services.files.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  FileFetcher.
  */
-public class FileFetcher extends OrcMediaEntityFetcher<File,FileOperations> 
+public class FileFetcher extends OrcMediaEntityFetcher<File,FileOperations>
                                      implements Readable<File> {
 
      /**
@@ -57,5 +58,5 @@ public class FileFetcher extends OrcMediaEntityFetcher<File,FileOperations>
         return this;
     }
 
-        
+
 }

@@ -24,16 +24,16 @@ public class Item extends ODataBaseEntity {
     public Item(){
         setODataType("#Microsoft.Graph.Item");
     }
-            
+
     private IdentitySet createdBy;
-     
+
     /**
     * Gets the created By.
     *
     * @return the IdentitySet
     */
     public IdentitySet getCreatedBy() {
-        return this.createdBy; 
+        return this.createdBy;
     }
 
     /**
@@ -41,21 +41,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the IdentitySet
     */
-    public void setCreatedBy(IdentitySet value) { 
-        this.createdBy = value; 
+    public void setCreatedBy(IdentitySet value) {
+        this.createdBy = value;
         valueChanged("createdBy", value);
 
     }
-            
+
     private String eTag;
-     
+
     /**
     * Gets the e Tag.
     *
     * @return the String
     */
     public String getETag() {
-        return this.eTag; 
+        return this.eTag;
     }
 
     /**
@@ -63,21 +63,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setETag(String value) { 
-        this.eTag = value; 
+    public void setETag(String value) {
+        this.eTag = value;
         valueChanged("eTag", value);
 
     }
-            
+
     private String id;
-     
+
     /**
     * Gets the id.
     *
     * @return the String
     */
     public String getId() {
-        return this.id; 
+        return this.id;
     }
 
     /**
@@ -85,21 +85,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.id = value; 
+    public void setId(String value) {
+        this.id = value;
         valueChanged("id", value);
 
     }
-            
+
     private IdentitySet lastModifiedBy;
-     
+
     /**
     * Gets the last Modified By.
     *
     * @return the IdentitySet
     */
     public IdentitySet getLastModifiedBy() {
-        return this.lastModifiedBy; 
+        return this.lastModifiedBy;
     }
 
     /**
@@ -107,21 +107,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the IdentitySet
     */
-    public void setLastModifiedBy(IdentitySet value) { 
-        this.lastModifiedBy = value; 
+    public void setLastModifiedBy(IdentitySet value) {
+        this.lastModifiedBy = value;
         valueChanged("lastModifiedBy", value);
 
     }
-            
+
     private String name;
-     
+
     /**
     * Gets the name.
     *
     * @return the String
     */
     public String getName() {
-        return this.name; 
+        return this.name;
     }
 
     /**
@@ -129,21 +129,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setName(String value) { 
-        this.name = value; 
+    public void setName(String value) {
+        this.name = value;
         valueChanged("name", value);
 
     }
-            
+
     private ItemReference parentReference;
-     
+
     /**
     * Gets the parent Reference.
     *
     * @return the ItemReference
     */
     public ItemReference getParentReference() {
-        return this.parentReference; 
+        return this.parentReference;
     }
 
     /**
@@ -151,21 +151,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the ItemReference
     */
-    public void setParentReference(ItemReference value) { 
-        this.parentReference = value; 
+    public void setParentReference(ItemReference value) {
+        this.parentReference = value;
         valueChanged("parentReference", value);
 
     }
-            
+
     private Long size;
-     
+
     /**
     * Gets the size.
     *
     * @return the Long
     */
     public Long getSize() {
-        return this.size; 
+        return this.size;
     }
 
     /**
@@ -173,21 +173,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the Long
     */
-    public void setSize(Long value) { 
-        this.size = value; 
+    public void setSize(Long value) {
+        this.size = value;
         valueChanged("size", value);
 
     }
-            
+
     private java.util.Calendar dateTimeCreated;
-     
+
     /**
     * Gets the date Time Created.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getDateTimeCreated() {
-        return this.dateTimeCreated; 
+        return this.dateTimeCreated;
     }
 
     /**
@@ -195,21 +195,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeCreated(java.util.Calendar value) { 
-        this.dateTimeCreated = value; 
+    public void setDateTimeCreated(java.util.Calendar value) {
+        this.dateTimeCreated = value;
         valueChanged("dateTimeCreated", value);
 
     }
-            
+
     private java.util.Calendar dateTimeLastModified;
-     
+
     /**
     * Gets the date Time Last Modified.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getDateTimeLastModified() {
-        return this.dateTimeLastModified; 
+        return this.dateTimeLastModified;
     }
 
     /**
@@ -217,21 +217,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeLastModified(java.util.Calendar value) { 
-        this.dateTimeLastModified = value; 
+    public void setDateTimeLastModified(java.util.Calendar value) {
+        this.dateTimeLastModified = value;
         valueChanged("dateTimeLastModified", value);
 
     }
-            
+
     private String type;
-     
+
     /**
     * Gets the type.
     *
     * @return the String
     */
     public String getType() {
-        return this.type; 
+        return this.type;
     }
 
     /**
@@ -239,21 +239,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setType(String value) { 
-        this.type = value; 
+    public void setType(String value) {
+        this.type = value;
         valueChanged("type", value);
 
     }
-            
+
     private String webUrl;
-     
+
     /**
     * Gets the web Url.
     *
     * @return the String
     */
     public String getWebUrl() {
-        return this.webUrl; 
+        return this.webUrl;
     }
 
     /**
@@ -261,21 +261,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setWebUrl(String value) { 
-        this.webUrl = value; 
+    public void setWebUrl(String value) {
+        this.webUrl = value;
         valueChanged("webUrl", value);
 
     }
-            
+
     private User createdByUser;
-     
+
     /**
     * Gets the created By User.
     *
     * @return the User
     */
     public User getCreatedByUser() {
-        return this.createdByUser; 
+        return this.createdByUser;
     }
 
     /**
@@ -283,21 +283,21 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the User
     */
-    public void setCreatedByUser(User value) { 
-        this.createdByUser = value; 
+    public void setCreatedByUser(User value) {
+        this.createdByUser = value;
         valueChanged("createdByUser", value);
 
     }
-            
+
     private User lastModifiedByUser;
-     
+
     /**
     * Gets the last Modified By User.
     *
     * @return the User
     */
     public User getLastModifiedByUser() {
-        return this.lastModifiedByUser; 
+        return this.lastModifiedByUser;
     }
 
     /**
@@ -305,24 +305,24 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the User
     */
-    public void setLastModifiedByUser(User value) { 
-        this.lastModifiedByUser = value; 
+    public void setLastModifiedByUser(User value) {
+        this.lastModifiedByUser = value;
         valueChanged("lastModifiedByUser", value);
 
     }
-    
-        
+
+
     private java.util.List<Item> children = null;
-    
-    
-     
+
+
+
     /**
     * Gets the children.
     *
     * @return the java.util.List<Item>
     */
     public java.util.List<Item> getChildren() {
-        return this.children; 
+        return this.children;
     }
 
     /**
@@ -330,8 +330,8 @@ public class Item extends ODataBaseEntity {
     *
     * @param value the java.util.List<Item>
     */
-    public void setChildren(java.util.List<Item> value) { 
-        this.children = value; 
+    public void setChildren(java.util.List<Item> value) {
+        this.children = value;
         valueChanged("children", value);
 
     }

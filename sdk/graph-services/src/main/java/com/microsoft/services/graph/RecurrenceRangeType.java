@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Recurrence Range Type.
 */
-public enum RecurrenceRangeType	
+public enum RecurrenceRangeType
 {
     /**
     * End Date

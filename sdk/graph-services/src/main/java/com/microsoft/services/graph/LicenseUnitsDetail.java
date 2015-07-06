@@ -33,7 +33,7 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     * @return the Integer
     */
     public Integer getEnabled() {
-        return this.enabled; 
+        return this.enabled;
     }
 
     /**
@@ -41,7 +41,7 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setEnabled(Integer value) { 
+    public void setEnabled(Integer value) {
         this.enabled = value;
         valueChanged("enabled", value);
 
@@ -55,7 +55,7 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     * @return the Integer
     */
     public Integer getSuspended() {
-        return this.suspended; 
+        return this.suspended;
     }
 
     /**
@@ -63,7 +63,7 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setSuspended(Integer value) { 
+    public void setSuspended(Integer value) {
         this.suspended = value;
         valueChanged("suspended", value);
 
@@ -77,7 +77,7 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     * @return the Integer
     */
     public Integer getWarning() {
-        return this.warning; 
+        return this.warning;
     }
 
     /**
@@ -85,7 +85,7 @@ public class LicenseUnitsDetail extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setWarning(Integer value) { 
+    public void setWarning(Integer value) {
         this.warning = value;
         valueChanged("warning", value);
 

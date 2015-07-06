@@ -13,7 +13,6 @@
  ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.graph.BodyType;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
@@ -34,7 +33,7 @@ public class ItemBody extends ODataBaseEntity {
     * @return the BodyType
     */
     public BodyType getContentType() {
-        return this.ContentType; 
+        return this.ContentType;
     }
 
     /**
@@ -42,7 +41,7 @@ public class ItemBody extends ODataBaseEntity {
     *
     * @param value the BodyType
     */
-    public void setContentType(BodyType value) { 
+    public void setContentType(BodyType value) {
         this.ContentType = value;
         valueChanged("ContentType", value);
 
@@ -56,7 +55,7 @@ public class ItemBody extends ODataBaseEntity {
     * @return the String
     */
     public String getContent() {
-        return this.Content; 
+        return this.Content;
     }
 
     /**
@@ -64,7 +63,7 @@ public class ItemBody extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setContent(String value) { 
+    public void setContent(String value) {
         this.Content = value;
         valueChanged("Content", value);
 

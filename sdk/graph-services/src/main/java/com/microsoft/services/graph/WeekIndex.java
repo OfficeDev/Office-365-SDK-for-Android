@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Week Index.
 */
-public enum WeekIndex	
+public enum WeekIndex
 {
     /**
     * First

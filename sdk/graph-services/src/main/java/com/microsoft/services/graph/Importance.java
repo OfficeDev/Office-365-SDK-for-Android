@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Importance.
 */
-public enum Importance	
+public enum Importance
 {
     /**
     * Low

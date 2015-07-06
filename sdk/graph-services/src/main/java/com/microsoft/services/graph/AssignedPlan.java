@@ -33,7 +33,7 @@ public class AssignedPlan extends ODataBaseEntity {
     * @return the java.util.Calendar
     */
     public java.util.Calendar getAssignedTimestamp() {
-        return this.assignedTimestamp; 
+        return this.assignedTimestamp;
     }
 
     /**
@@ -41,7 +41,7 @@ public class AssignedPlan extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setAssignedTimestamp(java.util.Calendar value) { 
+    public void setAssignedTimestamp(java.util.Calendar value) {
         this.assignedTimestamp = value;
         valueChanged("assignedTimestamp", value);
 
@@ -55,7 +55,7 @@ public class AssignedPlan extends ODataBaseEntity {
     * @return the String
     */
     public String getCapabilityStatus() {
-        return this.capabilityStatus; 
+        return this.capabilityStatus;
     }
 
     /**
@@ -63,7 +63,7 @@ public class AssignedPlan extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setCapabilityStatus(String value) { 
+    public void setCapabilityStatus(String value) {
         this.capabilityStatus = value;
         valueChanged("capabilityStatus", value);
 
@@ -77,7 +77,7 @@ public class AssignedPlan extends ODataBaseEntity {
     * @return the String
     */
     public String getService() {
-        return this.service; 
+        return this.service;
     }
 
     /**
@@ -85,7 +85,7 @@ public class AssignedPlan extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setService(String value) { 
+    public void setService(String value) {
         this.service = value;
         valueChanged("service", value);
 
@@ -99,7 +99,7 @@ public class AssignedPlan extends ODataBaseEntity {
     * @return the java.util.UUID
     */
     public java.util.UUID getServicePlanId() {
-        return this.servicePlanId; 
+        return this.servicePlanId;
     }
 
     /**
@@ -107,7 +107,7 @@ public class AssignedPlan extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setServicePlanId(java.util.UUID value) { 
+    public void setServicePlanId(java.util.UUID value) {
         this.servicePlanId = value;
         valueChanged("servicePlanId", value);
 

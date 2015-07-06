@@ -24,16 +24,16 @@ public class Photo extends ODataBaseEntity {
     public Photo(){
         setODataType("#Microsoft.Graph.Photo");
     }
-            
+
     private String Id;
-     
+
     /**
     * Gets the Id.
     *
     * @return the String
     */
     public String getId() {
-        return this.Id; 
+        return this.Id;
     }
 
     /**
@@ -41,21 +41,21 @@ public class Photo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.Id = value; 
+    public void setId(String value) {
+        this.Id = value;
         valueChanged("Id", value);
 
     }
-            
+
     private Integer Width;
-     
+
     /**
     * Gets the Width.
     *
     * @return the Integer
     */
     public Integer getWidth() {
-        return this.Width; 
+        return this.Width;
     }
 
     /**
@@ -63,21 +63,21 @@ public class Photo extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setWidth(Integer value) { 
-        this.Width = value; 
+    public void setWidth(Integer value) {
+        this.Width = value;
         valueChanged("Width", value);
 
     }
-            
+
     private Integer Height;
-     
+
     /**
     * Gets the Height.
     *
     * @return the Integer
     */
     public Integer getHeight() {
-        return this.Height; 
+        return this.Height;
     }
 
     /**
@@ -85,8 +85,8 @@ public class Photo extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setHeight(Integer value) { 
-        this.Height = value; 
+    public void setHeight(Integer value) {
+        this.Height = value;
         valueChanged("Height", value);
 
     }

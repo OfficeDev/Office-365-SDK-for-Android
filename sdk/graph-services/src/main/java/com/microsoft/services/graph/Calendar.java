@@ -24,16 +24,16 @@ public class Calendar extends ODataBaseEntity {
     public Calendar(){
         setODataType("#Microsoft.Graph.Calendar");
     }
-            
+
     private String Id;
-     
+
     /**
     * Gets the Id.
     *
     * @return the String
     */
     public String getId() {
-        return this.Id; 
+        return this.Id;
     }
 
     /**
@@ -41,21 +41,21 @@ public class Calendar extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.Id = value; 
+    public void setId(String value) {
+        this.Id = value;
         valueChanged("Id", value);
 
     }
-            
+
     private String Name;
-     
+
     /**
     * Gets the Name.
     *
     * @return the String
     */
     public String getName() {
-        return this.Name; 
+        return this.Name;
     }
 
     /**
@@ -63,21 +63,21 @@ public class Calendar extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setName(String value) { 
-        this.Name = value; 
+    public void setName(String value) {
+        this.Name = value;
         valueChanged("Name", value);
 
     }
-            
+
     private String ChangeKey;
-     
+
     /**
     * Gets the Change Key.
     *
     * @return the String
     */
     public String getChangeKey() {
-        return this.ChangeKey; 
+        return this.ChangeKey;
     }
 
     /**
@@ -85,24 +85,24 @@ public class Calendar extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setChangeKey(String value) { 
-        this.ChangeKey = value; 
+    public void setChangeKey(String value) {
+        this.ChangeKey = value;
         valueChanged("ChangeKey", value);
 
     }
-    
-        
+
+
     private java.util.List<Event> CalendarView = null;
-    
-    
-     
+
+
+
     /**
     * Gets the Calendar View.
     *
     * @return the java.util.List<Event>
     */
     public java.util.List<Event> getCalendarView() {
-        return this.CalendarView; 
+        return this.CalendarView;
     }
 
     /**
@@ -110,24 +110,24 @@ public class Calendar extends ODataBaseEntity {
     *
     * @param value the java.util.List<Event>
     */
-    public void setCalendarView(java.util.List<Event> value) { 
-        this.CalendarView = value; 
+    public void setCalendarView(java.util.List<Event> value) {
+        this.CalendarView = value;
         valueChanged("CalendarView", value);
 
     }
-    
-        
+
+
     private java.util.List<Event> Events = null;
-    
-    
-     
+
+
+
     /**
     * Gets the Events.
     *
     * @return the java.util.List<Event>
     */
     public java.util.List<Event> getEvents() {
-        return this.Events; 
+        return this.Events;
     }
 
     /**
@@ -135,8 +135,8 @@ public class Calendar extends ODataBaseEntity {
     *
     * @param value the java.util.List<Event>
     */
-    public void setEvents(java.util.List<Event> value) { 
-        this.Events = value; 
+    public void setEvents(java.util.List<Event> value) {
+        this.Events = value;
         valueChanged("Events", value);
 
     }

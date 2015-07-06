@@ -14,6 +14,7 @@
 package com.microsoft.services.graph;
 
 
+
 /**
  * The type Device.
 */
@@ -22,16 +23,16 @@ public class Device extends DirectoryObject {
     public Device(){
         setODataType("#Microsoft.Graph.Device");
     }
-            
+
     private Boolean accountEnabled;
-     
+
     /**
     * Gets the account Enabled.
     *
     * @return the Boolean
     */
     public Boolean getAccountEnabled() {
-        return this.accountEnabled; 
+        return this.accountEnabled;
     }
 
     /**
@@ -39,24 +40,24 @@ public class Device extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setAccountEnabled(Boolean value) { 
-        this.accountEnabled = value; 
+    public void setAccountEnabled(Boolean value) {
+        this.accountEnabled = value;
         valueChanged("accountEnabled", value);
 
     }
-    
-        
+
+
     private java.util.List<AlternativeSecurityId> alternativeSecurityIds = null;
-    
-    
-     
+
+
+
     /**
     * Gets the alternative Security Ids.
     *
     * @return the java.util.List<AlternativeSecurityId>
     */
     public java.util.List<AlternativeSecurityId> getAlternativeSecurityIds() {
-        return this.alternativeSecurityIds; 
+        return this.alternativeSecurityIds;
     }
 
     /**
@@ -64,21 +65,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.List<AlternativeSecurityId>
     */
-    public void setAlternativeSecurityIds(java.util.List<AlternativeSecurityId> value) { 
-        this.alternativeSecurityIds = value; 
+    public void setAlternativeSecurityIds(java.util.List<AlternativeSecurityId> value) {
+        this.alternativeSecurityIds = value;
         valueChanged("alternativeSecurityIds", value);
 
     }
-            
+
     private java.util.Calendar approximateLastLogonTimestamp;
-     
+
     /**
     * Gets the approximate Last Logon Timestamp.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getApproximateLastLogonTimestamp() {
-        return this.approximateLastLogonTimestamp; 
+        return this.approximateLastLogonTimestamp;
     }
 
     /**
@@ -86,21 +87,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setApproximateLastLogonTimestamp(java.util.Calendar value) { 
-        this.approximateLastLogonTimestamp = value; 
+    public void setApproximateLastLogonTimestamp(java.util.Calendar value) {
+        this.approximateLastLogonTimestamp = value;
         valueChanged("approximateLastLogonTimestamp", value);
 
     }
-            
+
     private java.util.UUID deviceId;
-     
+
     /**
     * Gets the device Id.
     *
     * @return the java.util.UUID
     */
     public java.util.UUID getDeviceId() {
-        return this.deviceId; 
+        return this.deviceId;
     }
 
     /**
@@ -108,21 +109,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.UUID
     */
-    public void setDeviceId(java.util.UUID value) { 
-        this.deviceId = value; 
+    public void setDeviceId(java.util.UUID value) {
+        this.deviceId = value;
         valueChanged("deviceId", value);
 
     }
-            
+
     private String deviceMetadata;
-     
+
     /**
     * Gets the device Metadata.
     *
     * @return the String
     */
     public String getDeviceMetadata() {
-        return this.deviceMetadata; 
+        return this.deviceMetadata;
     }
 
     /**
@@ -130,21 +131,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDeviceMetadata(String value) { 
-        this.deviceMetadata = value; 
+    public void setDeviceMetadata(String value) {
+        this.deviceMetadata = value;
         valueChanged("deviceMetadata", value);
 
     }
-            
+
     private Integer deviceObjectVersion;
-     
+
     /**
     * Gets the device Object Version.
     *
     * @return the Integer
     */
     public Integer getDeviceObjectVersion() {
-        return this.deviceObjectVersion; 
+        return this.deviceObjectVersion;
     }
 
     /**
@@ -152,21 +153,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the Integer
     */
-    public void setDeviceObjectVersion(Integer value) { 
-        this.deviceObjectVersion = value; 
+    public void setDeviceObjectVersion(Integer value) {
+        this.deviceObjectVersion = value;
         valueChanged("deviceObjectVersion", value);
 
     }
-            
+
     private String deviceOSType;
-     
+
     /**
     * Gets the device OSType.
     *
     * @return the String
     */
     public String getDeviceOSType() {
-        return this.deviceOSType; 
+        return this.deviceOSType;
     }
 
     /**
@@ -174,21 +175,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDeviceOSType(String value) { 
-        this.deviceOSType = value; 
+    public void setDeviceOSType(String value) {
+        this.deviceOSType = value;
         valueChanged("deviceOSType", value);
 
     }
-            
+
     private String deviceOSVersion;
-     
+
     /**
     * Gets the device OSVersion.
     *
     * @return the String
     */
     public String getDeviceOSVersion() {
-        return this.deviceOSVersion; 
+        return this.deviceOSVersion;
     }
 
     /**
@@ -196,24 +197,24 @@ public class Device extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDeviceOSVersion(String value) { 
-        this.deviceOSVersion = value; 
+    public void setDeviceOSVersion(String value) {
+        this.deviceOSVersion = value;
         valueChanged("deviceOSVersion", value);
 
     }
-    
-        
+
+
     private java.util.List<String> devicePhysicalIds = null;
-    
-    
-     
+
+
+
     /**
     * Gets the device Physical Ids.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getDevicePhysicalIds() {
-        return this.devicePhysicalIds; 
+        return this.devicePhysicalIds;
     }
 
     /**
@@ -221,21 +222,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setDevicePhysicalIds(java.util.List<String> value) { 
-        this.devicePhysicalIds = value; 
+    public void setDevicePhysicalIds(java.util.List<String> value) {
+        this.devicePhysicalIds = value;
         valueChanged("devicePhysicalIds", value);
 
     }
-            
+
     private String deviceTrustType;
-     
+
     /**
     * Gets the device Trust Type.
     *
     * @return the String
     */
     public String getDeviceTrustType() {
-        return this.deviceTrustType; 
+        return this.deviceTrustType;
     }
 
     /**
@@ -243,21 +244,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDeviceTrustType(String value) { 
-        this.deviceTrustType = value; 
+    public void setDeviceTrustType(String value) {
+        this.deviceTrustType = value;
         valueChanged("deviceTrustType", value);
 
     }
-            
+
     private Boolean dirSyncEnabled;
-     
+
     /**
     * Gets the dir Sync Enabled.
     *
     * @return the Boolean
     */
     public Boolean getDirSyncEnabled() {
-        return this.dirSyncEnabled; 
+        return this.dirSyncEnabled;
     }
 
     /**
@@ -265,21 +266,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setDirSyncEnabled(Boolean value) { 
-        this.dirSyncEnabled = value; 
+    public void setDirSyncEnabled(Boolean value) {
+        this.dirSyncEnabled = value;
         valueChanged("dirSyncEnabled", value);
 
     }
-            
+
     private String displayName;
-     
+
     /**
     * Gets the display Name.
     *
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.displayName;
     }
 
     /**
@@ -287,21 +288,21 @@ public class Device extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
-        this.displayName = value; 
+    public void setDisplayName(String value) {
+        this.displayName = value;
         valueChanged("displayName", value);
 
     }
-            
+
     private java.util.Calendar lastDirSyncTime;
-     
+
     /**
     * Gets the last Dir Sync Time.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getLastDirSyncTime() {
-        return this.lastDirSyncTime; 
+        return this.lastDirSyncTime;
     }
 
     /**
@@ -309,24 +310,24 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setLastDirSyncTime(java.util.Calendar value) { 
-        this.lastDirSyncTime = value; 
+    public void setLastDirSyncTime(java.util.Calendar value) {
+        this.lastDirSyncTime = value;
         valueChanged("lastDirSyncTime", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> registeredOwners = null;
-    
-    
-     
+
+
+
     /**
     * Gets the registered Owners.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getRegisteredOwners() {
-        return this.registeredOwners; 
+        return this.registeredOwners;
     }
 
     /**
@@ -334,24 +335,24 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setRegisteredOwners(java.util.List<DirectoryObject> value) { 
-        this.registeredOwners = value; 
+    public void setRegisteredOwners(java.util.List<DirectoryObject> value) {
+        this.registeredOwners = value;
         valueChanged("registeredOwners", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> registeredUsers = null;
-    
-    
-     
+
+
+
     /**
     * Gets the registered Users.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getRegisteredUsers() {
-        return this.registeredUsers; 
+        return this.registeredUsers;
     }
 
     /**
@@ -359,8 +360,8 @@ public class Device extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setRegisteredUsers(java.util.List<DirectoryObject> value) { 
-        this.registeredUsers = value; 
+    public void setRegisteredUsers(java.util.List<DirectoryObject> value) {
+        this.registeredUsers = value;
         valueChanged("registeredUsers", value);
 
     }

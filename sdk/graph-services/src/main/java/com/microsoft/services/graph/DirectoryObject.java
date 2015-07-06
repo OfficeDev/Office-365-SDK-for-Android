@@ -24,16 +24,16 @@ public class DirectoryObject extends ODataBaseEntity {
     public DirectoryObject(){
         setODataType("#Microsoft.Graph.DirectoryObject");
     }
-            
+
     private String objectType;
-     
+
     /**
     * Gets the object Type.
     *
     * @return the String
     */
     public String getObjectType() {
-        return this.objectType; 
+        return this.objectType;
     }
 
     /**
@@ -41,21 +41,21 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setObjectType(String value) { 
-        this.objectType = value; 
+    public void setObjectType(String value) {
+        this.objectType = value;
         valueChanged("objectType", value);
 
     }
-            
+
     private String objectId;
-     
+
     /**
     * Gets the object Id.
     *
     * @return the String
     */
     public String getObjectId() {
-        return this.objectId; 
+        return this.objectId;
     }
 
     /**
@@ -63,21 +63,21 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setObjectId(String value) { 
-        this.objectId = value; 
+    public void setObjectId(String value) {
+        this.objectId = value;
         valueChanged("objectId", value);
 
     }
-            
+
     private java.util.Calendar deletionTimestamp;
-     
+
     /**
     * Gets the deletion Timestamp.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getDeletionTimestamp() {
-        return this.deletionTimestamp; 
+        return this.deletionTimestamp;
     }
 
     /**
@@ -85,8 +85,8 @@ public class DirectoryObject extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setDeletionTimestamp(java.util.Calendar value) { 
-        this.deletionTimestamp = value; 
+    public void setDeletionTimestamp(java.util.Calendar value) {
+        this.deletionTimestamp = value;
         valueChanged("deletionTimestamp", value);
 
     }

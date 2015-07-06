@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DriveFetcher.
  */
-public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations> 
+public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
                                      implements Readable<Drive> {
 
      /**
@@ -57,5 +58,5 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
         return this;
     }
 
-        
+
 }

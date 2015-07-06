@@ -33,7 +33,7 @@ public class ProvisionedPlan extends ODataBaseEntity {
     * @return the String
     */
     public String getCapabilityStatus() {
-        return this.capabilityStatus; 
+        return this.capabilityStatus;
     }
 
     /**
@@ -41,7 +41,7 @@ public class ProvisionedPlan extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setCapabilityStatus(String value) { 
+    public void setCapabilityStatus(String value) {
         this.capabilityStatus = value;
         valueChanged("capabilityStatus", value);
 
@@ -55,7 +55,7 @@ public class ProvisionedPlan extends ODataBaseEntity {
     * @return the String
     */
     public String getProvisioningStatus() {
-        return this.provisioningStatus; 
+        return this.provisioningStatus;
     }
 
     /**
@@ -63,7 +63,7 @@ public class ProvisionedPlan extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setProvisioningStatus(String value) { 
+    public void setProvisioningStatus(String value) {
         this.provisioningStatus = value;
         valueChanged("provisioningStatus", value);
 
@@ -77,7 +77,7 @@ public class ProvisionedPlan extends ODataBaseEntity {
     * @return the String
     */
     public String getService() {
-        return this.service; 
+        return this.service;
     }
 
     /**
@@ -85,7 +85,7 @@ public class ProvisionedPlan extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setService(String value) { 
+    public void setService(String value) {
         this.service = value;
         valueChanged("service", value);
 

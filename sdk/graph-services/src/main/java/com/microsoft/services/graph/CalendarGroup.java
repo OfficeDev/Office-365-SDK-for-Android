@@ -24,16 +24,16 @@ public class CalendarGroup extends ODataBaseEntity {
     public CalendarGroup(){
         setODataType("#Microsoft.Graph.CalendarGroup");
     }
-            
+
     private String Id;
-     
+
     /**
     * Gets the Id.
     *
     * @return the String
     */
     public String getId() {
-        return this.Id; 
+        return this.Id;
     }
 
     /**
@@ -41,21 +41,21 @@ public class CalendarGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.Id = value; 
+    public void setId(String value) {
+        this.Id = value;
         valueChanged("Id", value);
 
     }
-            
+
     private String Name;
-     
+
     /**
     * Gets the Name.
     *
     * @return the String
     */
     public String getName() {
-        return this.Name; 
+        return this.Name;
     }
 
     /**
@@ -63,21 +63,21 @@ public class CalendarGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setName(String value) { 
-        this.Name = value; 
+    public void setName(String value) {
+        this.Name = value;
         valueChanged("Name", value);
 
     }
-            
+
     private String ChangeKey;
-     
+
     /**
     * Gets the Change Key.
     *
     * @return the String
     */
     public String getChangeKey() {
-        return this.ChangeKey; 
+        return this.ChangeKey;
     }
 
     /**
@@ -85,21 +85,21 @@ public class CalendarGroup extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setChangeKey(String value) { 
-        this.ChangeKey = value; 
+    public void setChangeKey(String value) {
+        this.ChangeKey = value;
         valueChanged("ChangeKey", value);
 
     }
-            
+
     private java.util.UUID ClassId;
-     
+
     /**
     * Gets the Class Id.
     *
     * @return the java.util.UUID
     */
     public java.util.UUID getClassId() {
-        return this.ClassId; 
+        return this.ClassId;
     }
 
     /**
@@ -107,24 +107,24 @@ public class CalendarGroup extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setClassId(java.util.UUID value) { 
-        this.ClassId = value; 
+    public void setClassId(java.util.UUID value) {
+        this.ClassId = value;
         valueChanged("ClassId", value);
 
     }
-    
-        
+
+
     private java.util.List<Calendar> Calendars = null;
-    
-    
-     
+
+
+
     /**
     * Gets the Calendars.
     *
     * @return the java.util.List<Calendar>
     */
     public java.util.List<Calendar> getCalendars() {
-        return this.Calendars; 
+        return this.Calendars;
     }
 
     /**
@@ -132,8 +132,8 @@ public class CalendarGroup extends ODataBaseEntity {
     *
     * @param value the java.util.List<Calendar>
     */
-    public void setCalendars(java.util.List<Calendar> value) { 
-        this.Calendars = value; 
+    public void setCalendars(java.util.List<Calendar> value) {
+        this.Calendars = value;
         valueChanged("Calendars", value);
 
     }

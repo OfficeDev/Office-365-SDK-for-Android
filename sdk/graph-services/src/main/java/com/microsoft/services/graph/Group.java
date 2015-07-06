@@ -14,6 +14,7 @@
 package com.microsoft.services.graph;
 
 
+
 /**
  * The type Group.
 */
@@ -22,16 +23,16 @@ public class Group extends DirectoryObject {
     public Group(){
         setODataType("#Microsoft.Graph.Group");
     }
-            
+
     private String description;
-     
+
     /**
     * Gets the description.
     *
     * @return the String
     */
     public String getDescription() {
-        return this.description; 
+        return this.description;
     }
 
     /**
@@ -39,21 +40,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDescription(String value) { 
-        this.description = value; 
+    public void setDescription(String value) {
+        this.description = value;
         valueChanged("description", value);
 
     }
-            
+
     private Boolean dirSyncEnabled;
-     
+
     /**
     * Gets the dir Sync Enabled.
     *
     * @return the Boolean
     */
     public Boolean getDirSyncEnabled() {
-        return this.dirSyncEnabled; 
+        return this.dirSyncEnabled;
     }
 
     /**
@@ -61,21 +62,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setDirSyncEnabled(Boolean value) { 
-        this.dirSyncEnabled = value; 
+    public void setDirSyncEnabled(Boolean value) {
+        this.dirSyncEnabled = value;
         valueChanged("dirSyncEnabled", value);
 
     }
-            
+
     private String displayName;
-     
+
     /**
     * Gets the display Name.
     *
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.displayName;
     }
 
     /**
@@ -83,21 +84,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
-        this.displayName = value; 
+    public void setDisplayName(String value) {
+        this.displayName = value;
         valueChanged("displayName", value);
 
     }
-            
+
     private String groupType;
-     
+
     /**
     * Gets the group Type.
     *
     * @return the String
     */
     public String getGroupType() {
-        return this.groupType; 
+        return this.groupType;
     }
 
     /**
@@ -105,21 +106,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setGroupType(String value) { 
-        this.groupType = value; 
+    public void setGroupType(String value) {
+        this.groupType = value;
         valueChanged("groupType", value);
 
     }
-            
+
     private Boolean isPublic;
-     
+
     /**
     * Gets the is Public.
     *
     * @return the Boolean
     */
     public Boolean getIsPublic() {
-        return this.isPublic; 
+        return this.isPublic;
     }
 
     /**
@@ -127,21 +128,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setIsPublic(Boolean value) { 
-        this.isPublic = value; 
+    public void setIsPublic(Boolean value) {
+        this.isPublic = value;
         valueChanged("isPublic", value);
 
     }
-            
+
     private java.util.Calendar lastDirSyncTime;
-     
+
     /**
     * Gets the last Dir Sync Time.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getLastDirSyncTime() {
-        return this.lastDirSyncTime; 
+        return this.lastDirSyncTime;
     }
 
     /**
@@ -149,21 +150,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.Calendar
     */
-    public void setLastDirSyncTime(java.util.Calendar value) { 
-        this.lastDirSyncTime = value; 
+    public void setLastDirSyncTime(java.util.Calendar value) {
+        this.lastDirSyncTime = value;
         valueChanged("lastDirSyncTime", value);
 
     }
-            
+
     private String mail;
-     
+
     /**
     * Gets the mail.
     *
     * @return the String
     */
     public String getMail() {
-        return this.mail; 
+        return this.mail;
     }
 
     /**
@@ -171,21 +172,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setMail(String value) { 
-        this.mail = value; 
+    public void setMail(String value) {
+        this.mail = value;
         valueChanged("mail", value);
 
     }
-            
+
     private String mailNickname;
-     
+
     /**
     * Gets the mail Nickname.
     *
     * @return the String
     */
     public String getMailNickname() {
-        return this.mailNickname; 
+        return this.mailNickname;
     }
 
     /**
@@ -193,21 +194,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setMailNickname(String value) { 
-        this.mailNickname = value; 
+    public void setMailNickname(String value) {
+        this.mailNickname = value;
         valueChanged("mailNickname", value);
 
     }
-            
+
     private Boolean mailEnabled;
-     
+
     /**
     * Gets the mail Enabled.
     *
     * @return the Boolean
     */
     public Boolean getMailEnabled() {
-        return this.mailEnabled; 
+        return this.mailEnabled;
     }
 
     /**
@@ -215,21 +216,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setMailEnabled(Boolean value) { 
-        this.mailEnabled = value; 
+    public void setMailEnabled(Boolean value) {
+        this.mailEnabled = value;
         valueChanged("mailEnabled", value);
 
     }
-            
+
     private String onPremisesSecurityIdentifier;
-     
+
     /**
     * Gets the on Premises Security Identifier.
     *
     * @return the String
     */
     public String getOnPremisesSecurityIdentifier() {
-        return this.onPremisesSecurityIdentifier; 
+        return this.onPremisesSecurityIdentifier;
     }
 
     /**
@@ -237,24 +238,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setOnPremisesSecurityIdentifier(String value) { 
-        this.onPremisesSecurityIdentifier = value; 
+    public void setOnPremisesSecurityIdentifier(String value) {
+        this.onPremisesSecurityIdentifier = value;
         valueChanged("onPremisesSecurityIdentifier", value);
 
     }
-    
-        
+
+
     private java.util.List<ProvisioningError> provisioningErrors = null;
-    
-    
-     
+
+
+
     /**
     * Gets the provisioning Errors.
     *
     * @return the java.util.List<ProvisioningError>
     */
     public java.util.List<ProvisioningError> getProvisioningErrors() {
-        return this.provisioningErrors; 
+        return this.provisioningErrors;
     }
 
     /**
@@ -262,24 +263,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<ProvisioningError>
     */
-    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
-        this.provisioningErrors = value; 
+    public void setProvisioningErrors(java.util.List<ProvisioningError> value) {
+        this.provisioningErrors = value;
         valueChanged("provisioningErrors", value);
 
     }
-    
-        
+
+
     private java.util.List<String> proxyAddresses = null;
-    
-    
-     
+
+
+
     /**
     * Gets the proxy Addresses.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getProxyAddresses() {
-        return this.proxyAddresses; 
+        return this.proxyAddresses;
     }
 
     /**
@@ -287,21 +288,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setProxyAddresses(java.util.List<String> value) { 
-        this.proxyAddresses = value; 
+    public void setProxyAddresses(java.util.List<String> value) {
+        this.proxyAddresses = value;
         valueChanged("proxyAddresses", value);
 
     }
-            
+
     private Boolean securityEnabled;
-     
+
     /**
     * Gets the security Enabled.
     *
     * @return the Boolean
     */
     public Boolean getSecurityEnabled() {
-        return this.securityEnabled; 
+        return this.securityEnabled;
     }
 
     /**
@@ -309,24 +310,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setSecurityEnabled(Boolean value) { 
-        this.securityEnabled = value; 
+    public void setSecurityEnabled(Boolean value) {
+        this.securityEnabled = value;
         valueChanged("securityEnabled", value);
 
     }
-    
-        
+
+
     private java.util.List<AppRoleAssignment> appRoleAssignments = null;
-    
-    
-     
+
+
+
     /**
     * Gets the app Role Assignments.
     *
     * @return the java.util.List<AppRoleAssignment>
     */
     public java.util.List<AppRoleAssignment> getAppRoleAssignments() {
-        return this.appRoleAssignments; 
+        return this.appRoleAssignments;
     }
 
     /**
@@ -334,24 +335,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<AppRoleAssignment>
     */
-    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) { 
-        this.appRoleAssignments = value; 
+    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) {
+        this.appRoleAssignments = value;
         valueChanged("appRoleAssignments", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> members = null;
-    
-    
-     
+
+
+
     /**
     * Gets the members.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getMembers() {
-        return this.members; 
+        return this.members;
     }
 
     /**
@@ -359,24 +360,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setMembers(java.util.List<DirectoryObject> value) { 
-        this.members = value; 
+    public void setMembers(java.util.List<DirectoryObject> value) {
+        this.members = value;
         valueChanged("members", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> memberOf = null;
-    
-    
-     
+
+
+
     /**
     * Gets the member Of.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getMemberOf() {
-        return this.memberOf; 
+        return this.memberOf;
     }
 
     /**
@@ -384,21 +385,21 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setMemberOf(java.util.List<DirectoryObject> value) { 
-        this.memberOf = value; 
+    public void setMemberOf(java.util.List<DirectoryObject> value) {
+        this.memberOf = value;
         valueChanged("memberOf", value);
 
     }
-            
+
     private DirectoryObject createdOnBehalfOf;
-     
+
     /**
     * Gets the created On Behalf Of.
     *
     * @return the DirectoryObject
     */
     public DirectoryObject getCreatedOnBehalfOf() {
-        return this.createdOnBehalfOf; 
+        return this.createdOnBehalfOf;
     }
 
     /**
@@ -406,24 +407,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the DirectoryObject
     */
-    public void setCreatedOnBehalfOf(DirectoryObject value) { 
-        this.createdOnBehalfOf = value; 
+    public void setCreatedOnBehalfOf(DirectoryObject value) {
+        this.createdOnBehalfOf = value;
         valueChanged("createdOnBehalfOf", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> owners = null;
-    
-    
-     
+
+
+
     /**
     * Gets the owners.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getOwners() {
-        return this.owners; 
+        return this.owners;
     }
 
     /**
@@ -431,24 +432,24 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setOwners(java.util.List<DirectoryObject> value) { 
-        this.owners = value; 
+    public void setOwners(java.util.List<DirectoryObject> value) {
+        this.owners = value;
         valueChanged("owners", value);
 
     }
-    
-        
+
+
     private java.util.List<Item> files = null;
-    
-    
-     
+
+
+
     /**
     * Gets the files.
     *
     * @return the java.util.List<Item>
     */
     public java.util.List<Item> getFiles() {
-        return this.files; 
+        return this.files;
     }
 
     /**
@@ -456,8 +457,8 @@ public class Group extends DirectoryObject {
     *
     * @param value the java.util.List<Item>
     */
-    public void setFiles(java.util.List<Item> value) { 
-        this.files = value; 
+    public void setFiles(java.util.List<Item> value) {
+        this.files = value;
         valueChanged("files", value);
 
     }

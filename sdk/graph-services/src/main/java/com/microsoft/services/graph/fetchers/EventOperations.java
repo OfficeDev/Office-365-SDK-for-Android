@@ -60,124 +60,124 @@ public class EventOperations extends OutlookItemOperations {
         return this;
     }
 
-    
-    
+
+
     /**
      * Accept listenable future.
-     * @param comment the comment 
+     * @param comment the comment
      * @return the listenable future
-     */         
-    public ListenableFuture<Integer> accept(String comment) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
+     */
+    public ListenableFuture<Integer> accept(String comment) {
+        JsonSerializer serializer = getResolver().getJsonSerializer();
         String serializedComment = serializer.serialize(comment);
-		  
-        
+
+
         ListenableFuture<String> future = acceptRaw(serializedComment);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
-        
+
     }
 
      /**
      * AcceptRaw listenable future.
-     * @param comment the comment 
+     * @param comment the comment
      * @return the listenable future
-     */ 
+     */
     public ListenableFuture<String> acceptRaw(String comment){
-        
+
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
+
         map.put("Comment", comment);
-		
+
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        
+
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
+
         request.getUrl().appendPathComponent("Microsoft.Graph.Accept");
-        
+
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
 
-    
-    
+
+
     /**
      * Decline listenable future.
-     * @param comment the comment 
+     * @param comment the comment
      * @return the listenable future
-     */         
-    public ListenableFuture<Integer> decline(String comment) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
+     */
+    public ListenableFuture<Integer> decline(String comment) {
+        JsonSerializer serializer = getResolver().getJsonSerializer();
         String serializedComment = serializer.serialize(comment);
-		  
-        
+
+
         ListenableFuture<String> future = declineRaw(serializedComment);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
-        
+
     }
 
      /**
      * DeclineRaw listenable future.
-     * @param comment the comment 
+     * @param comment the comment
      * @return the listenable future
-     */ 
+     */
     public ListenableFuture<String> declineRaw(String comment){
-        
+
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
+
         map.put("Comment", comment);
-		
+
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        
+
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
+
         request.getUrl().appendPathComponent("Microsoft.Graph.Decline");
-        
+
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
 
-    
-    
+
+
     /**
      * TentativelyAccept listenable future.
-     * @param comment the comment 
+     * @param comment the comment
      * @return the listenable future
-     */         
-    public ListenableFuture<Integer> tentativelyAccept(String comment) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
+     */
+    public ListenableFuture<Integer> tentativelyAccept(String comment) {
+        JsonSerializer serializer = getResolver().getJsonSerializer();
         String serializedComment = serializer.serialize(comment);
-		  
-        
+
+
         ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
-        
+
     }
 
      /**
      * TentativelyAcceptRaw listenable future.
-     * @param comment the comment 
+     * @param comment the comment
      * @return the listenable future
-     */ 
+     */
     public ListenableFuture<String> tentativelyAcceptRaw(String comment){
-        
+
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
+
         map.put("Comment", comment);
-		
+
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        
+
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
+
         request.getUrl().appendPathComponent("Microsoft.Graph.TentativelyAccept");
-        
+
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }

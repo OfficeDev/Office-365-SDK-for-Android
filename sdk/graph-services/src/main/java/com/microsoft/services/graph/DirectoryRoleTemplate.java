@@ -23,16 +23,16 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     public DirectoryRoleTemplate(){
         setODataType("#Microsoft.Graph.DirectoryRoleTemplate");
     }
-            
+
     private String description;
-     
+
     /**
     * Gets the description.
     *
     * @return the String
     */
     public String getDescription() {
-        return this.description; 
+        return this.description;
     }
 
     /**
@@ -40,21 +40,21 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDescription(String value) { 
-        this.description = value; 
+    public void setDescription(String value) {
+        this.description = value;
         valueChanged("description", value);
 
     }
-            
+
     private String displayName;
-     
+
     /**
     * Gets the display Name.
     *
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.displayName;
     }
 
     /**
@@ -62,8 +62,8 @@ public class DirectoryRoleTemplate extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
-        this.displayName = value; 
+    public void setDisplayName(String value) {
+        this.displayName = value;
         valueChanged("displayName", value);
 
     }

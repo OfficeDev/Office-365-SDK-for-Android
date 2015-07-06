@@ -33,7 +33,7 @@ public class Location extends ODataBaseEntity {
     * @return the String
     */
     public String getDisplayName() {
-        return this.DisplayName; 
+        return this.DisplayName;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Location extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
+    public void setDisplayName(String value) {
         this.DisplayName = value;
         valueChanged("DisplayName", value);
 

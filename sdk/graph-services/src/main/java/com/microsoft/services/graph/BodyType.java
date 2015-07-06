@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Body Type.
 */
-public enum BodyType	
+public enum BodyType
 {
     /**
     * Text

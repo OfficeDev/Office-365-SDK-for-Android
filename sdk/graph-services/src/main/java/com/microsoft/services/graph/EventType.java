@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Event Type.
 */
-public enum EventType	
+public enum EventType
 {
     /**
     * Single Instance

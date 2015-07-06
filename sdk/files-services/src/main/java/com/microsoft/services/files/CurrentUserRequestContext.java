@@ -14,7 +14,7 @@
 package com.microsoft.services.files;
 
 import com.microsoft.services.orc.core.ODataBaseEntity;
-
+import com.microsoft.services.files.*;
 
 /**
  * The type Current User Request Context.
@@ -24,16 +24,16 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     public CurrentUserRequestContext(){
         setODataType("#Microsoft.CoreServices.CurrentUserRequestContext");
     }
-            
+
     private String id;
-     
+
     /**
     * Gets the id.
     *
     * @return the String
     */
     public String getId() {
-        return this.id; 
+        return this.id;
     }
 
     /**
@@ -41,21 +41,21 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.id = value; 
+    public void setId(String value) {
+        this.id = value;
         valueChanged("id", value);
 
     }
-            
+
     private Drive drive;
-     
+
     /**
     * Gets the drive.
     *
     * @return the Drive
     */
     public Drive getDrive() {
-        return this.drive; 
+        return this.drive;
     }
 
     /**
@@ -63,24 +63,24 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @param value the Drive
     */
-    public void setDrive(Drive value) { 
-        this.drive = value; 
+    public void setDrive(Drive value) {
+        this.drive = value;
         valueChanged("drive", value);
 
     }
-    
-        
+
+
     private java.util.List<Item> files = null;
-    
-    
-     
+
+
+
     /**
     * Gets the files.
     *
     * @return the java.util.List<Item>
     */
     public java.util.List<Item> getFiles() {
-        return this.files; 
+        return this.files;
     }
 
     /**
@@ -88,8 +88,8 @@ public class CurrentUserRequestContext extends ODataBaseEntity {
     *
     * @param value the java.util.List<Item>
     */
-    public void setFiles(java.util.List<Item> value) { 
-        this.files = value; 
+    public void setFiles(java.util.List<Item> value) {
+        this.files = value;
         valueChanged("files", value);
 
     }

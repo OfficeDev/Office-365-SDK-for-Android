@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DeviceFetcher.
  */
-public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations> 
+public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations>
                                      implements Readable<Device> {
 
      /**
@@ -57,7 +58,7 @@ public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations>
         return this;
     }
 
-        
+
      /**
      * Gets registered owners.
      *

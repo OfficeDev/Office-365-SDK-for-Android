@@ -33,7 +33,7 @@ public class EmailAddress extends ODataBaseEntity {
     * @return the String
     */
     public String getName() {
-        return this.Name; 
+        return this.Name;
     }
 
     /**
@@ -41,7 +41,7 @@ public class EmailAddress extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setName(String value) { 
+    public void setName(String value) {
         this.Name = value;
         valueChanged("Name", value);
 
@@ -55,7 +55,7 @@ public class EmailAddress extends ODataBaseEntity {
     * @return the String
     */
     public String getAddress() {
-        return this.Address; 
+        return this.Address;
     }
 
     /**
@@ -63,7 +63,7 @@ public class EmailAddress extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setAddress(String value) { 
+    public void setAddress(String value) {
         this.Address = value;
         valueChanged("Address", value);
 

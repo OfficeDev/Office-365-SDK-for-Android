@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Meeting Message Type.
 */
-public enum MeetingMessageType	
+public enum MeetingMessageType
 {
     /**
     * None

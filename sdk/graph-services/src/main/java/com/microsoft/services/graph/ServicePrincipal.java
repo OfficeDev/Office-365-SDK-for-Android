@@ -14,13 +14,6 @@
 package com.microsoft.services.graph;
 
 
-import com.microsoft.services.graph.AppRole;
-import com.microsoft.services.graph.AppRoleAssignment;
-import com.microsoft.services.graph.DirectoryObject;
-import com.microsoft.services.graph.KeyCredential;
-import com.microsoft.services.graph.OAuth2Permission;
-import com.microsoft.services.graph.OAuth2PermissionGrant;
-import com.microsoft.services.graph.PasswordCredential;
 
 /**
  * The type Service Principal.
@@ -30,16 +23,16 @@ public class ServicePrincipal extends DirectoryObject {
     public ServicePrincipal(){
         setODataType("#Microsoft.Graph.ServicePrincipal");
     }
-            
+
     private Boolean accountEnabled;
-     
+
     /**
     * Gets the account Enabled.
     *
     * @return the Boolean
     */
     public Boolean getAccountEnabled() {
-        return this.accountEnabled; 
+        return this.accountEnabled;
     }
 
     /**
@@ -47,21 +40,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setAccountEnabled(Boolean value) { 
-        this.accountEnabled = value; 
+    public void setAccountEnabled(Boolean value) {
+        this.accountEnabled = value;
         valueChanged("accountEnabled", value);
 
     }
-            
+
     private String appDisplayName;
-     
+
     /**
     * Gets the app Display Name.
     *
     * @return the String
     */
     public String getAppDisplayName() {
-        return this.appDisplayName; 
+        return this.appDisplayName;
     }
 
     /**
@@ -69,21 +62,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setAppDisplayName(String value) { 
-        this.appDisplayName = value; 
+    public void setAppDisplayName(String value) {
+        this.appDisplayName = value;
         valueChanged("appDisplayName", value);
 
     }
-            
+
     private String appId;
-     
+
     /**
     * Gets the app Id.
     *
     * @return the String
     */
     public String getAppId() {
-        return this.appId; 
+        return this.appId;
     }
 
     /**
@@ -91,21 +84,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setAppId(String value) { 
-        this.appId = value; 
+    public void setAppId(String value) {
+        this.appId = value;
         valueChanged("appId", value);
 
     }
-            
+
     private java.util.UUID appOwnerTenantId;
-     
+
     /**
     * Gets the app Owner Tenant Id.
     *
     * @return the java.util.UUID
     */
     public java.util.UUID getAppOwnerTenantId() {
-        return this.appOwnerTenantId; 
+        return this.appOwnerTenantId;
     }
 
     /**
@@ -113,21 +106,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.UUID
     */
-    public void setAppOwnerTenantId(java.util.UUID value) { 
-        this.appOwnerTenantId = value; 
+    public void setAppOwnerTenantId(java.util.UUID value) {
+        this.appOwnerTenantId = value;
         valueChanged("appOwnerTenantId", value);
 
     }
-            
+
     private Boolean appRoleAssignmentRequired;
-     
+
     /**
     * Gets the app Role Assignment Required.
     *
     * @return the Boolean
     */
     public Boolean getAppRoleAssignmentRequired() {
-        return this.appRoleAssignmentRequired; 
+        return this.appRoleAssignmentRequired;
     }
 
     /**
@@ -135,24 +128,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setAppRoleAssignmentRequired(Boolean value) { 
-        this.appRoleAssignmentRequired = value; 
+    public void setAppRoleAssignmentRequired(Boolean value) {
+        this.appRoleAssignmentRequired = value;
         valueChanged("appRoleAssignmentRequired", value);
 
     }
-    
-        
+
+
     private java.util.List<AppRole> appRoles = null;
-    
-    
-     
+
+
+
     /**
     * Gets the app Roles.
     *
     * @return the java.util.List<AppRole>
     */
     public java.util.List<AppRole> getAppRoles() {
-        return this.appRoles; 
+        return this.appRoles;
     }
 
     /**
@@ -160,21 +153,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<AppRole>
     */
-    public void setAppRoles(java.util.List<AppRole> value) { 
-        this.appRoles = value; 
+    public void setAppRoles(java.util.List<AppRole> value) {
+        this.appRoles = value;
         valueChanged("appRoles", value);
 
     }
-            
+
     private String displayName;
-     
+
     /**
     * Gets the display Name.
     *
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.displayName;
     }
 
     /**
@@ -182,21 +175,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
-        this.displayName = value; 
+    public void setDisplayName(String value) {
+        this.displayName = value;
         valueChanged("displayName", value);
 
     }
-            
+
     private String errorUrl;
-     
+
     /**
     * Gets the error Url.
     *
     * @return the String
     */
     public String getErrorUrl() {
-        return this.errorUrl; 
+        return this.errorUrl;
     }
 
     /**
@@ -204,21 +197,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setErrorUrl(String value) { 
-        this.errorUrl = value; 
+    public void setErrorUrl(String value) {
+        this.errorUrl = value;
         valueChanged("errorUrl", value);
 
     }
-            
+
     private String homepage;
-     
+
     /**
     * Gets the homepage.
     *
     * @return the String
     */
     public String getHomepage() {
-        return this.homepage; 
+        return this.homepage;
     }
 
     /**
@@ -226,24 +219,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setHomepage(String value) { 
-        this.homepage = value; 
+    public void setHomepage(String value) {
+        this.homepage = value;
         valueChanged("homepage", value);
 
     }
-    
-        
+
+
     private java.util.List<KeyCredential> keyCredentials = null;
-    
-    
-     
+
+
+
     /**
     * Gets the key Credentials.
     *
     * @return the java.util.List<KeyCredential>
     */
     public java.util.List<KeyCredential> getKeyCredentials() {
-        return this.keyCredentials; 
+        return this.keyCredentials;
     }
 
     /**
@@ -251,21 +244,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<KeyCredential>
     */
-    public void setKeyCredentials(java.util.List<KeyCredential> value) { 
-        this.keyCredentials = value; 
+    public void setKeyCredentials(java.util.List<KeyCredential> value) {
+        this.keyCredentials = value;
         valueChanged("keyCredentials", value);
 
     }
-            
+
     private String logoutUrl;
-     
+
     /**
     * Gets the logout Url.
     *
     * @return the String
     */
     public String getLogoutUrl() {
-        return this.logoutUrl; 
+        return this.logoutUrl;
     }
 
     /**
@@ -273,24 +266,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setLogoutUrl(String value) { 
-        this.logoutUrl = value; 
+    public void setLogoutUrl(String value) {
+        this.logoutUrl = value;
         valueChanged("logoutUrl", value);
 
     }
-    
-        
+
+
     private java.util.List<OAuth2Permission> oauth2Permissions = null;
-    
-    
-     
+
+
+
     /**
     * Gets the oauth2Permissions.
     *
     * @return the java.util.List<OAuth2Permission>
     */
     public java.util.List<OAuth2Permission> getOauth2Permissions() {
-        return this.oauth2Permissions; 
+        return this.oauth2Permissions;
     }
 
     /**
@@ -298,24 +291,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<OAuth2Permission>
     */
-    public void setOauth2Permissions(java.util.List<OAuth2Permission> value) { 
-        this.oauth2Permissions = value; 
+    public void setOauth2Permissions(java.util.List<OAuth2Permission> value) {
+        this.oauth2Permissions = value;
         valueChanged("oauth2Permissions", value);
 
     }
-    
-        
+
+
     private java.util.List<PasswordCredential> passwordCredentials = null;
-    
-    
-     
+
+
+
     /**
     * Gets the password Credentials.
     *
     * @return the java.util.List<PasswordCredential>
     */
     public java.util.List<PasswordCredential> getPasswordCredentials() {
-        return this.passwordCredentials; 
+        return this.passwordCredentials;
     }
 
     /**
@@ -323,21 +316,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<PasswordCredential>
     */
-    public void setPasswordCredentials(java.util.List<PasswordCredential> value) { 
-        this.passwordCredentials = value; 
+    public void setPasswordCredentials(java.util.List<PasswordCredential> value) {
+        this.passwordCredentials = value;
         valueChanged("passwordCredentials", value);
 
     }
-            
+
     private String preferredTokenSigningKeyThumbprint;
-     
+
     /**
     * Gets the preferred Token Signing Key Thumbprint.
     *
     * @return the String
     */
     public String getPreferredTokenSigningKeyThumbprint() {
-        return this.preferredTokenSigningKeyThumbprint; 
+        return this.preferredTokenSigningKeyThumbprint;
     }
 
     /**
@@ -345,21 +338,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setPreferredTokenSigningKeyThumbprint(String value) { 
-        this.preferredTokenSigningKeyThumbprint = value; 
+    public void setPreferredTokenSigningKeyThumbprint(String value) {
+        this.preferredTokenSigningKeyThumbprint = value;
         valueChanged("preferredTokenSigningKeyThumbprint", value);
 
     }
-            
+
     private String publisherName;
-     
+
     /**
     * Gets the publisher Name.
     *
     * @return the String
     */
     public String getPublisherName() {
-        return this.publisherName; 
+        return this.publisherName;
     }
 
     /**
@@ -367,24 +360,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setPublisherName(String value) { 
-        this.publisherName = value; 
+    public void setPublisherName(String value) {
+        this.publisherName = value;
         valueChanged("publisherName", value);
 
     }
-    
-        
+
+
     private java.util.List<String> replyUrls = null;
-    
-    
-     
+
+
+
     /**
     * Gets the reply Urls.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getReplyUrls() {
-        return this.replyUrls; 
+        return this.replyUrls;
     }
 
     /**
@@ -392,21 +385,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setReplyUrls(java.util.List<String> value) { 
-        this.replyUrls = value; 
+    public void setReplyUrls(java.util.List<String> value) {
+        this.replyUrls = value;
         valueChanged("replyUrls", value);
 
     }
-            
+
     private String samlMetadataUrl;
-     
+
     /**
     * Gets the saml Metadata Url.
     *
     * @return the String
     */
     public String getSamlMetadataUrl() {
-        return this.samlMetadataUrl; 
+        return this.samlMetadataUrl;
     }
 
     /**
@@ -414,24 +407,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setSamlMetadataUrl(String value) { 
-        this.samlMetadataUrl = value; 
+    public void setSamlMetadataUrl(String value) {
+        this.samlMetadataUrl = value;
         valueChanged("samlMetadataUrl", value);
 
     }
-    
-        
+
+
     private java.util.List<String> servicePrincipalNames = null;
-    
-    
-     
+
+
+
     /**
     * Gets the service Principal Names.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getServicePrincipalNames() {
-        return this.servicePrincipalNames; 
+        return this.servicePrincipalNames;
     }
 
     /**
@@ -439,24 +432,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setServicePrincipalNames(java.util.List<String> value) { 
-        this.servicePrincipalNames = value; 
+    public void setServicePrincipalNames(java.util.List<String> value) {
+        this.servicePrincipalNames = value;
         valueChanged("servicePrincipalNames", value);
 
     }
-    
-        
+
+
     private java.util.List<String> tags = null;
-    
-    
-     
+
+
+
     /**
     * Gets the tags.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getTags() {
-        return this.tags; 
+        return this.tags;
     }
 
     /**
@@ -464,21 +457,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setTags(java.util.List<String> value) { 
-        this.tags = value; 
+    public void setTags(java.util.List<String> value) {
+        this.tags = value;
         valueChanged("tags", value);
 
     }
-            
+
     private AppRoleAssignment appRoleAssignedTo;
-     
+
     /**
     * Gets the app Role Assigned To.
     *
     * @return the AppRoleAssignment
     */
     public AppRoleAssignment getAppRoleAssignedTo() {
-        return this.appRoleAssignedTo; 
+        return this.appRoleAssignedTo;
     }
 
     /**
@@ -486,24 +479,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the AppRoleAssignment
     */
-    public void setAppRoleAssignedTo(AppRoleAssignment value) { 
-        this.appRoleAssignedTo = value; 
+    public void setAppRoleAssignedTo(AppRoleAssignment value) {
+        this.appRoleAssignedTo = value;
         valueChanged("appRoleAssignedTo", value);
 
     }
-    
-        
+
+
     private java.util.List<AppRoleAssignment> appRoleAssignments = null;
-    
-    
-     
+
+
+
     /**
     * Gets the app Role Assignments.
     *
     * @return the java.util.List<AppRoleAssignment>
     */
     public java.util.List<AppRoleAssignment> getAppRoleAssignments() {
-        return this.appRoleAssignments; 
+        return this.appRoleAssignments;
     }
 
     /**
@@ -511,24 +504,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<AppRoleAssignment>
     */
-    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) { 
-        this.appRoleAssignments = value; 
+    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) {
+        this.appRoleAssignments = value;
         valueChanged("appRoleAssignments", value);
 
     }
-    
-        
+
+
     private java.util.List<OAuth2PermissionGrant> oauth2PermissionGrants = null;
-    
-    
-     
+
+
+
     /**
     * Gets the oauth2Permission Grants.
     *
     * @return the java.util.List<OAuth2PermissionGrant>
     */
     public java.util.List<OAuth2PermissionGrant> getOauth2PermissionGrants() {
-        return this.oauth2PermissionGrants; 
+        return this.oauth2PermissionGrants;
     }
 
     /**
@@ -536,24 +529,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<OAuth2PermissionGrant>
     */
-    public void setOauth2PermissionGrants(java.util.List<OAuth2PermissionGrant> value) { 
-        this.oauth2PermissionGrants = value; 
+    public void setOauth2PermissionGrants(java.util.List<OAuth2PermissionGrant> value) {
+        this.oauth2PermissionGrants = value;
         valueChanged("oauth2PermissionGrants", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> memberOf = null;
-    
-    
-     
+
+
+
     /**
     * Gets the member Of.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getMemberOf() {
-        return this.memberOf; 
+        return this.memberOf;
     }
 
     /**
@@ -561,21 +554,21 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setMemberOf(java.util.List<DirectoryObject> value) { 
-        this.memberOf = value; 
+    public void setMemberOf(java.util.List<DirectoryObject> value) {
+        this.memberOf = value;
         valueChanged("memberOf", value);
 
     }
-            
+
     private DirectoryObject createdOnBehalfOf;
-     
+
     /**
     * Gets the created On Behalf Of.
     *
     * @return the DirectoryObject
     */
     public DirectoryObject getCreatedOnBehalfOf() {
-        return this.createdOnBehalfOf; 
+        return this.createdOnBehalfOf;
     }
 
     /**
@@ -583,24 +576,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the DirectoryObject
     */
-    public void setCreatedOnBehalfOf(DirectoryObject value) { 
-        this.createdOnBehalfOf = value; 
+    public void setCreatedOnBehalfOf(DirectoryObject value) {
+        this.createdOnBehalfOf = value;
         valueChanged("createdOnBehalfOf", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> createdObjects = null;
-    
-    
-     
+
+
+
     /**
     * Gets the created Objects.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getCreatedObjects() {
-        return this.createdObjects; 
+        return this.createdObjects;
     }
 
     /**
@@ -608,24 +601,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setCreatedObjects(java.util.List<DirectoryObject> value) { 
-        this.createdObjects = value; 
+    public void setCreatedObjects(java.util.List<DirectoryObject> value) {
+        this.createdObjects = value;
         valueChanged("createdObjects", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> owners = null;
-    
-    
-     
+
+
+
     /**
     * Gets the owners.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getOwners() {
-        return this.owners; 
+        return this.owners;
     }
 
     /**
@@ -633,24 +626,24 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setOwners(java.util.List<DirectoryObject> value) { 
-        this.owners = value; 
+    public void setOwners(java.util.List<DirectoryObject> value) {
+        this.owners = value;
         valueChanged("owners", value);
 
     }
-    
-        
+
+
     private java.util.List<DirectoryObject> ownedObjects = null;
-    
-    
-     
+
+
+
     /**
     * Gets the owned Objects.
     *
     * @return the java.util.List<DirectoryObject>
     */
     public java.util.List<DirectoryObject> getOwnedObjects() {
-        return this.ownedObjects; 
+        return this.ownedObjects;
     }
 
     /**
@@ -658,8 +651,8 @@ public class ServicePrincipal extends DirectoryObject {
     *
     * @param value the java.util.List<DirectoryObject>
     */
-    public void setOwnedObjects(java.util.List<DirectoryObject> value) { 
-        this.ownedObjects = value; 
+    public void setOwnedObjects(java.util.List<DirectoryObject> value) {
+        this.ownedObjects = value;
         valueChanged("ownedObjects", value);
 
     }

@@ -33,7 +33,7 @@ public class ServicePlanInfo extends ODataBaseEntity {
     * @return the java.util.UUID
     */
     public java.util.UUID getServicePlanId() {
-        return this.servicePlanId; 
+        return this.servicePlanId;
     }
 
     /**
@@ -41,7 +41,7 @@ public class ServicePlanInfo extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setServicePlanId(java.util.UUID value) { 
+    public void setServicePlanId(java.util.UUID value) {
         this.servicePlanId = value;
         valueChanged("servicePlanId", value);
 
@@ -55,7 +55,7 @@ public class ServicePlanInfo extends ODataBaseEntity {
     * @return the String
     */
     public String getServicePlanName() {
-        return this.servicePlanName; 
+        return this.servicePlanName;
     }
 
     /**
@@ -63,7 +63,7 @@ public class ServicePlanInfo extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setServicePlanName(String value) { 
+    public void setServicePlanName(String value) {
         this.servicePlanName = value;
         valueChanged("servicePlanName", value);
 

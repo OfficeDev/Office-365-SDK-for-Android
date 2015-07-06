@@ -25,7 +25,7 @@ public class Attendee extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.Attendee");
     }
 
-    private com.microsoft.services.graph.EmailAddress EmailAddress;
+    private EmailAddress EmailAddress;
 
     /**
     * Gets the Email Address.
@@ -33,7 +33,7 @@ public class Attendee extends ODataBaseEntity {
     * @return the EmailAddress
     */
     public EmailAddress getEmailAddress() {
-        return this.EmailAddress; 
+        return this.EmailAddress;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Attendee extends ODataBaseEntity {
     *
     * @param value the EmailAddress
     */
-    public void setEmailAddress(EmailAddress value) { 
+    public void setEmailAddress(EmailAddress value) {
         this.EmailAddress = value;
         valueChanged("EmailAddress", value);
 
@@ -55,7 +55,7 @@ public class Attendee extends ODataBaseEntity {
     * @return the ResponseStatus
     */
     public ResponseStatus getStatus() {
-        return this.Status; 
+        return this.Status;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Attendee extends ODataBaseEntity {
     *
     * @param value the ResponseStatus
     */
-    public void setStatus(ResponseStatus value) { 
+    public void setStatus(ResponseStatus value) {
         this.Status = value;
         valueChanged("Status", value);
 
@@ -77,7 +77,7 @@ public class Attendee extends ODataBaseEntity {
     * @return the AttendeeType
     */
     public AttendeeType getType() {
-        return this.Type; 
+        return this.Type;
     }
 
     /**
@@ -85,7 +85,7 @@ public class Attendee extends ODataBaseEntity {
     *
     * @param value the AttendeeType
     */
-    public void setType(AttendeeType value) { 
+    public void setType(AttendeeType value) {
         this.Type = value;
         valueChanged("Type", value);
 

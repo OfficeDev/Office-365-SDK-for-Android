@@ -23,16 +23,16 @@ public class DirectoryLinkChange extends DirectoryObject {
     public DirectoryLinkChange(){
         setODataType("#Microsoft.Graph.DirectoryLinkChange");
     }
-            
+
     private String associationType;
-     
+
     /**
     * Gets the association Type.
     *
     * @return the String
     */
     public String getAssociationType() {
-        return this.associationType; 
+        return this.associationType;
     }
 
     /**
@@ -40,21 +40,21 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setAssociationType(String value) { 
-        this.associationType = value; 
+    public void setAssociationType(String value) {
+        this.associationType = value;
         valueChanged("associationType", value);
 
     }
-            
+
     private String sourceObjectId;
-     
+
     /**
     * Gets the source Object Id.
     *
     * @return the String
     */
     public String getSourceObjectId() {
-        return this.sourceObjectId; 
+        return this.sourceObjectId;
     }
 
     /**
@@ -62,21 +62,21 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setSourceObjectId(String value) { 
-        this.sourceObjectId = value; 
+    public void setSourceObjectId(String value) {
+        this.sourceObjectId = value;
         valueChanged("sourceObjectId", value);
 
     }
-            
+
     private String sourceObjectType;
-     
+
     /**
     * Gets the source Object Type.
     *
     * @return the String
     */
     public String getSourceObjectType() {
-        return this.sourceObjectType; 
+        return this.sourceObjectType;
     }
 
     /**
@@ -84,21 +84,21 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setSourceObjectType(String value) { 
-        this.sourceObjectType = value; 
+    public void setSourceObjectType(String value) {
+        this.sourceObjectType = value;
         valueChanged("sourceObjectType", value);
 
     }
-            
+
     private String sourceObjectUri;
-     
+
     /**
     * Gets the source Object Uri.
     *
     * @return the String
     */
     public String getSourceObjectUri() {
-        return this.sourceObjectUri; 
+        return this.sourceObjectUri;
     }
 
     /**
@@ -106,21 +106,21 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setSourceObjectUri(String value) { 
-        this.sourceObjectUri = value; 
+    public void setSourceObjectUri(String value) {
+        this.sourceObjectUri = value;
         valueChanged("sourceObjectUri", value);
 
     }
-            
+
     private String targetObjectId;
-     
+
     /**
     * Gets the target Object Id.
     *
     * @return the String
     */
     public String getTargetObjectId() {
-        return this.targetObjectId; 
+        return this.targetObjectId;
     }
 
     /**
@@ -128,21 +128,21 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setTargetObjectId(String value) { 
-        this.targetObjectId = value; 
+    public void setTargetObjectId(String value) {
+        this.targetObjectId = value;
         valueChanged("targetObjectId", value);
 
     }
-            
+
     private String targetObjectType;
-     
+
     /**
     * Gets the target Object Type.
     *
     * @return the String
     */
     public String getTargetObjectType() {
-        return this.targetObjectType; 
+        return this.targetObjectType;
     }
 
     /**
@@ -150,21 +150,21 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setTargetObjectType(String value) { 
-        this.targetObjectType = value; 
+    public void setTargetObjectType(String value) {
+        this.targetObjectType = value;
         valueChanged("targetObjectType", value);
 
     }
-            
+
     private String targetObjectUri;
-     
+
     /**
     * Gets the target Object Uri.
     *
     * @return the String
     */
     public String getTargetObjectUri() {
-        return this.targetObjectUri; 
+        return this.targetObjectUri;
     }
 
     /**
@@ -172,8 +172,8 @@ public class DirectoryLinkChange extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setTargetObjectUri(String value) { 
-        this.targetObjectUri = value; 
+    public void setTargetObjectUri(String value) {
+        this.targetObjectUri = value;
         valueChanged("targetObjectUri", value);
 
     }

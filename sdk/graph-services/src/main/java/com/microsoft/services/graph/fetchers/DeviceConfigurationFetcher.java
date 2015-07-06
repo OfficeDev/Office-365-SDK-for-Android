@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DeviceConfigurationFetcher.
  */
-public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfiguration,DeviceConfigurationOperations> 
+public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfiguration,DeviceConfigurationOperations>
                                      implements Readable<DeviceConfiguration> {
 
      /**
@@ -57,5 +58,5 @@ public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfigura
         return this;
     }
 
-        
+
 }

@@ -23,16 +23,16 @@ public class ExtensionProperty extends DirectoryObject {
     public ExtensionProperty(){
         setODataType("#Microsoft.Graph.ExtensionProperty");
     }
-            
+
     private String appDisplayName;
-     
+
     /**
     * Gets the app Display Name.
     *
     * @return the String
     */
     public String getAppDisplayName() {
-        return this.appDisplayName; 
+        return this.appDisplayName;
     }
 
     /**
@@ -40,21 +40,21 @@ public class ExtensionProperty extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setAppDisplayName(String value) { 
-        this.appDisplayName = value; 
+    public void setAppDisplayName(String value) {
+        this.appDisplayName = value;
         valueChanged("appDisplayName", value);
 
     }
-            
+
     private String name;
-     
+
     /**
     * Gets the name.
     *
     * @return the String
     */
     public String getName() {
-        return this.name; 
+        return this.name;
     }
 
     /**
@@ -62,21 +62,21 @@ public class ExtensionProperty extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setName(String value) { 
-        this.name = value; 
+    public void setName(String value) {
+        this.name = value;
         valueChanged("name", value);
 
     }
-            
+
     private String dataType;
-     
+
     /**
     * Gets the data Type.
     *
     * @return the String
     */
     public String getDataType() {
-        return this.dataType; 
+        return this.dataType;
     }
 
     /**
@@ -84,21 +84,21 @@ public class ExtensionProperty extends DirectoryObject {
     *
     * @param value the String
     */
-    public void setDataType(String value) { 
-        this.dataType = value; 
+    public void setDataType(String value) {
+        this.dataType = value;
         valueChanged("dataType", value);
 
     }
-            
+
     private Boolean isSyncedFromOnPremises;
-     
+
     /**
     * Gets the is Synced From On Premises.
     *
     * @return the Boolean
     */
     public Boolean getIsSyncedFromOnPremises() {
-        return this.isSyncedFromOnPremises; 
+        return this.isSyncedFromOnPremises;
     }
 
     /**
@@ -106,24 +106,24 @@ public class ExtensionProperty extends DirectoryObject {
     *
     * @param value the Boolean
     */
-    public void setIsSyncedFromOnPremises(Boolean value) { 
-        this.isSyncedFromOnPremises = value; 
+    public void setIsSyncedFromOnPremises(Boolean value) {
+        this.isSyncedFromOnPremises = value;
         valueChanged("isSyncedFromOnPremises", value);
 
     }
-    
-        
+
+
     private java.util.List<String> targetObjects = null;
-    
-    
-     
+
+
+
     /**
     * Gets the target Objects.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getTargetObjects() {
-        return this.targetObjects; 
+        return this.targetObjects;
     }
 
     /**
@@ -131,8 +131,8 @@ public class ExtensionProperty extends DirectoryObject {
     *
     * @param value the java.util.List<String>
     */
-    public void setTargetObjects(java.util.List<String> value) { 
-        this.targetObjects = value; 
+    public void setTargetObjects(java.util.List<String> value) {
+        this.targetObjects = value;
         valueChanged("targetObjects", value);
 
     }

@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  GroupFetcher.
  */
-public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations> 
+public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
                                      implements Readable<Group> {
 
      /**
@@ -57,7 +58,7 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
         return this;
     }
 
-        
+
      /**
      * Gets app role assignments.
      *

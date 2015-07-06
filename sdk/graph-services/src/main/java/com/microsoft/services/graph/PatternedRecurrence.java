@@ -33,7 +33,7 @@ public class PatternedRecurrence extends ODataBaseEntity {
     * @return the RecurrencePattern
     */
     public RecurrencePattern getPattern() {
-        return this.Pattern; 
+        return this.Pattern;
     }
 
     /**
@@ -41,7 +41,7 @@ public class PatternedRecurrence extends ODataBaseEntity {
     *
     * @param value the RecurrencePattern
     */
-    public void setPattern(RecurrencePattern value) { 
+    public void setPattern(RecurrencePattern value) {
         this.Pattern = value;
         valueChanged("Pattern", value);
 
@@ -55,7 +55,7 @@ public class PatternedRecurrence extends ODataBaseEntity {
     * @return the RecurrenceRange
     */
     public RecurrenceRange getRange() {
-        return this.Range; 
+        return this.Range;
     }
 
     /**
@@ -63,7 +63,7 @@ public class PatternedRecurrence extends ODataBaseEntity {
     *
     * @param value the RecurrenceRange
     */
-    public void setRange(RecurrenceRange value) { 
+    public void setRange(RecurrenceRange value) {
         this.Range = value;
         valueChanged("Range", value);
 

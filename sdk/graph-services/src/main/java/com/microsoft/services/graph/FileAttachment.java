@@ -14,7 +14,6 @@
 package com.microsoft.services.graph;
 
 
-import com.microsoft.services.graph.Attachment;
 
 /**
  * The type File Attachment.
@@ -24,16 +23,16 @@ public class FileAttachment extends Attachment {
     public FileAttachment(){
         setODataType("#Microsoft.Graph.FileAttachment");
     }
-            
+
     private String ContentId;
-     
+
     /**
     * Gets the Content Id.
     *
     * @return the String
     */
     public String getContentId() {
-        return this.ContentId; 
+        return this.ContentId;
     }
 
     /**
@@ -41,21 +40,21 @@ public class FileAttachment extends Attachment {
     *
     * @param value the String
     */
-    public void setContentId(String value) { 
-        this.ContentId = value; 
+    public void setContentId(String value) {
+        this.ContentId = value;
         valueChanged("ContentId", value);
 
     }
-            
+
     private String ContentLocation;
-     
+
     /**
     * Gets the Content Location.
     *
     * @return the String
     */
     public String getContentLocation() {
-        return this.ContentLocation; 
+        return this.ContentLocation;
     }
 
     /**
@@ -63,21 +62,21 @@ public class FileAttachment extends Attachment {
     *
     * @param value the String
     */
-    public void setContentLocation(String value) { 
-        this.ContentLocation = value; 
+    public void setContentLocation(String value) {
+        this.ContentLocation = value;
         valueChanged("ContentLocation", value);
 
     }
-            
+
     private Boolean IsContactPhoto;
-     
+
     /**
     * Gets the Is Contact Photo.
     *
     * @return the Boolean
     */
     public Boolean getIsContactPhoto() {
-        return this.IsContactPhoto; 
+        return this.IsContactPhoto;
     }
 
     /**
@@ -85,21 +84,21 @@ public class FileAttachment extends Attachment {
     *
     * @param value the Boolean
     */
-    public void setIsContactPhoto(Boolean value) { 
-        this.IsContactPhoto = value; 
+    public void setIsContactPhoto(Boolean value) {
+        this.IsContactPhoto = value;
         valueChanged("IsContactPhoto", value);
 
     }
-            
+
     private byte[] ContentBytes;
-     
+
     /**
     * Gets the Content Bytes.
     *
     * @return the byte[]
     */
     public byte[] getContentBytes() {
-        return this.ContentBytes; 
+        return this.ContentBytes;
     }
 
     /**
@@ -107,8 +106,8 @@ public class FileAttachment extends Attachment {
     *
     * @param value the byte[]
     */
-    public void setContentBytes(byte[] value) { 
-        this.ContentBytes = value; 
+    public void setContentBytes(byte[] value) {
+        this.ContentBytes = value;
         valueChanged("ContentBytes", value);
 
     }

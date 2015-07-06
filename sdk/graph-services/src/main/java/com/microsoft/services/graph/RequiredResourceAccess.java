@@ -33,7 +33,7 @@ public class RequiredResourceAccess extends ODataBaseEntity {
     * @return the String
     */
     public String getResourceAppId() {
-        return this.resourceAppId; 
+        return this.resourceAppId;
     }
 
     /**
@@ -41,7 +41,7 @@ public class RequiredResourceAccess extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setResourceAppId(String value) { 
+    public void setResourceAppId(String value) {
         this.resourceAppId = value;
         valueChanged("resourceAppId", value);
 
@@ -55,7 +55,7 @@ public class RequiredResourceAccess extends ODataBaseEntity {
     * @return the java.util.List<ResourceAccess>
     */
     public java.util.List<ResourceAccess> getResourceAccess() {
-        return this.resourceAccess; 
+        return this.resourceAccess;
     }
 
     /**
@@ -63,7 +63,7 @@ public class RequiredResourceAccess extends ODataBaseEntity {
     *
     * @param value the java.util.List<ResourceAccess>
     */
-    public void setResourceAccess(java.util.List<ResourceAccess> value) { 
+    public void setResourceAccess(java.util.List<ResourceAccess> value) {
         this.resourceAccess = value;
         valueChanged("resourceAccess", value);
 

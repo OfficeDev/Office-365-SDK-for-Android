@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ContactFetcher.
  */
-public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations> 
+public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
                                      implements Readable<Contact> {
 
      /**

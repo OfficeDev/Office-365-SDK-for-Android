@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Free Busy Status.
 */
-public enum FreeBusyStatus	
+public enum FreeBusyStatus
 {
     /**
     * Free

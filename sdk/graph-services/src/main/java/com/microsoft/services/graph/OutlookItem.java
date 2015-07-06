@@ -24,16 +24,16 @@ public class OutlookItem extends ODataBaseEntity {
     public OutlookItem(){
         setODataType("#Microsoft.Graph.OutlookItem");
     }
-            
+
     private String Id;
-     
+
     /**
     * Gets the Id.
     *
     * @return the String
     */
     public String getId() {
-        return this.Id; 
+        return this.Id;
     }
 
     /**
@@ -41,21 +41,21 @@ public class OutlookItem extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.Id = value; 
+    public void setId(String value) {
+        this.Id = value;
         valueChanged("Id", value);
 
     }
-            
+
     private String ChangeKey;
-     
+
     /**
     * Gets the Change Key.
     *
     * @return the String
     */
     public String getChangeKey() {
-        return this.ChangeKey; 
+        return this.ChangeKey;
     }
 
     /**
@@ -63,24 +63,24 @@ public class OutlookItem extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setChangeKey(String value) { 
-        this.ChangeKey = value; 
+    public void setChangeKey(String value) {
+        this.ChangeKey = value;
         valueChanged("ChangeKey", value);
 
     }
-    
-        
+
+
     private java.util.List<String> Categories = null;
-    
-    
-     
+
+
+
     /**
     * Gets the Categories.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getCategories() {
-        return this.Categories; 
+        return this.Categories;
     }
 
     /**
@@ -88,21 +88,21 @@ public class OutlookItem extends ODataBaseEntity {
     *
     * @param value the java.util.List<String>
     */
-    public void setCategories(java.util.List<String> value) { 
-        this.Categories = value; 
+    public void setCategories(java.util.List<String> value) {
+        this.Categories = value;
         valueChanged("Categories", value);
 
     }
-            
+
     private java.util.Calendar DateTimeCreated;
-     
+
     /**
     * Gets the Date Time Created.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getDateTimeCreated() {
-        return this.DateTimeCreated; 
+        return this.DateTimeCreated;
     }
 
     /**
@@ -110,21 +110,21 @@ public class OutlookItem extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeCreated(java.util.Calendar value) { 
-        this.DateTimeCreated = value; 
+    public void setDateTimeCreated(java.util.Calendar value) {
+        this.DateTimeCreated = value;
         valueChanged("DateTimeCreated", value);
 
     }
-            
+
     private java.util.Calendar DateTimeLastModified;
-     
+
     /**
     * Gets the Date Time Last Modified.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getDateTimeLastModified() {
-        return this.DateTimeLastModified; 
+        return this.DateTimeLastModified;
     }
 
     /**
@@ -132,8 +132,8 @@ public class OutlookItem extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeLastModified(java.util.Calendar value) { 
-        this.DateTimeLastModified = value; 
+    public void setDateTimeLastModified(java.util.Calendar value) {
+        this.DateTimeLastModified = value;
         valueChanged("DateTimeLastModified", value);
 
     }

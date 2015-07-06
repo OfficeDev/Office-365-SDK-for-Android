@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  MessageFetcher.
  */
-public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations> 
+public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
                                      implements Readable<Message> {
 
      /**
@@ -57,11 +58,11 @@ public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
         return this;
     }
 
-    
+
     public EventMessageFetcher asEventMessage(){
         return new EventMessageFetcher(this.urlComponent, this.parent);
-    }   
-    
+    }
+
      /**
      * Gets attachments.
      *

@@ -14,7 +14,12 @@
 package com.microsoft.services.files.fetchers;
 
 import com.microsoft.services.files.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
+import com.microsoft.services.orc.http.*;
+import com.microsoft.services.orc.serialization.*;
+
+import static com.microsoft.services.orc.core.Helpers.*;
 
 /**
  * The type DriveOperations.

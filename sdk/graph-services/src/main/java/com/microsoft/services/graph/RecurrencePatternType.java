@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Recurrence Pattern Type.
 */
-public enum RecurrencePatternType	
+public enum RecurrencePatternType
 {
     /**
     * Daily

@@ -14,7 +14,6 @@
 package com.microsoft.services.graph;
 
 
-import com.microsoft.services.graph.Attachment;
 
 /**
  * The type Reference Attachment.

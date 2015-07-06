@@ -14,13 +14,14 @@
 package com.microsoft.services.files.fetchers;
 
 import com.microsoft.services.files.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ItemFetcher.
  */
-public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations> 
+public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
                                      implements Readable<Item> {
 
      /**
@@ -57,13 +58,13 @@ public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
         return this;
     }
 
-    
+
     public FileFetcher asFile(){
         return new FileFetcher(this.urlComponent, this.parent);
-    }   
+    }
 
     public FolderFetcher asFolder(){
         return new FolderFetcher(this.urlComponent, this.parent);
-    }   
-    
+    }
+
 }

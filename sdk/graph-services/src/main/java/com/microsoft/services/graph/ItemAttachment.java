@@ -14,6 +14,7 @@
 package com.microsoft.services.graph;
 
 
+
 /**
  * The type Item Attachment.
 */
@@ -22,16 +23,16 @@ public class ItemAttachment extends Attachment {
     public ItemAttachment(){
         setODataType("#Microsoft.Graph.ItemAttachment");
     }
-            
+
     private OutlookItem Item;
-     
+
     /**
     * Gets the Item.
     *
     * @return the OutlookItem
     */
     public OutlookItem getItem() {
-        return this.Item; 
+        return this.Item;
     }
 
     /**
@@ -39,8 +40,8 @@ public class ItemAttachment extends Attachment {
     *
     * @param value the OutlookItem
     */
-    public void setItem(OutlookItem value) { 
-        this.Item = value; 
+    public void setItem(OutlookItem value) {
+        this.Item = value;
         valueChanged("Item", value);
 
     }

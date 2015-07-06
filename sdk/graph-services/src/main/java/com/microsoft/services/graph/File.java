@@ -14,6 +14,7 @@
 package com.microsoft.services.graph;
 
 
+
 /**
  * The type File.
 */
@@ -22,16 +23,16 @@ public class File extends Item {
     public File(){
         setODataType("#Microsoft.Graph.File");
     }
-            
+
     private String contentUrl;
-     
+
     /**
     * Gets the content Url.
     *
     * @return the String
     */
     public String getContentUrl() {
-        return this.contentUrl; 
+        return this.contentUrl;
     }
 
     /**
@@ -39,21 +40,21 @@ public class File extends Item {
     *
     * @param value the String
     */
-    public void setContentUrl(String value) { 
-        this.contentUrl = value; 
+    public void setContentUrl(String value) {
+        this.contentUrl = value;
         valueChanged("contentUrl", value);
 
     }
-            
+
     private ImageFacet image;
-     
+
     /**
     * Gets the image.
     *
     * @return the ImageFacet
     */
     public ImageFacet getImage() {
-        return this.image; 
+        return this.image;
     }
 
     /**
@@ -61,8 +62,8 @@ public class File extends Item {
     *
     * @param value the ImageFacet
     */
-    public void setImage(ImageFacet value) { 
-        this.image = value; 
+    public void setImage(ImageFacet value) {
+        this.image = value;
         valueChanged("image", value);
 
     }

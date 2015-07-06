@@ -33,7 +33,7 @@ public class IdentitySet extends ODataBaseEntity {
     * @return the Identity
     */
     public Identity getApplication() {
-        return this.application; 
+        return this.application;
     }
 
     /**
@@ -41,7 +41,7 @@ public class IdentitySet extends ODataBaseEntity {
     *
     * @param value the Identity
     */
-    public void setApplication(Identity value) { 
+    public void setApplication(Identity value) {
         this.application = value;
         valueChanged("application", value);
 
@@ -55,7 +55,7 @@ public class IdentitySet extends ODataBaseEntity {
     * @return the Identity
     */
     public Identity getUser() {
-        return this.user; 
+        return this.user;
     }
 
     /**
@@ -63,7 +63,7 @@ public class IdentitySet extends ODataBaseEntity {
     *
     * @param value the Identity
     */
-    public void setUser(Identity value) { 
+    public void setUser(Identity value) {
         this.user = value;
         valueChanged("user", value);
 

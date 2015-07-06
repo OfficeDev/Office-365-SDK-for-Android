@@ -23,19 +23,19 @@ public class DeviceConfiguration extends DirectoryObject {
     public DeviceConfiguration(){
         setODataType("#Microsoft.Graph.DeviceConfiguration");
     }
-    
-        
+
+
     private java.util.List<byte[]> publicIssuerCertificates = null;
-    
-    
-     
+
+
+
     /**
     * Gets the public Issuer Certificates.
     *
     * @return the java.util.List<byte[]>
     */
     public java.util.List<byte[]> getPublicIssuerCertificates() {
-        return this.publicIssuerCertificates; 
+        return this.publicIssuerCertificates;
     }
 
     /**
@@ -43,24 +43,24 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the java.util.List<byte[]>
     */
-    public void setPublicIssuerCertificates(java.util.List<byte[]> value) { 
-        this.publicIssuerCertificates = value; 
+    public void setPublicIssuerCertificates(java.util.List<byte[]> value) {
+        this.publicIssuerCertificates = value;
         valueChanged("publicIssuerCertificates", value);
 
     }
-    
-        
+
+
     private java.util.List<byte[]> cloudPublicIssuerCertificates = null;
-    
-    
-     
+
+
+
     /**
     * Gets the cloud Public Issuer Certificates.
     *
     * @return the java.util.List<byte[]>
     */
     public java.util.List<byte[]> getCloudPublicIssuerCertificates() {
-        return this.cloudPublicIssuerCertificates; 
+        return this.cloudPublicIssuerCertificates;
     }
 
     /**
@@ -68,21 +68,21 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the java.util.List<byte[]>
     */
-    public void setCloudPublicIssuerCertificates(java.util.List<byte[]> value) { 
-        this.cloudPublicIssuerCertificates = value; 
+    public void setCloudPublicIssuerCertificates(java.util.List<byte[]> value) {
+        this.cloudPublicIssuerCertificates = value;
         valueChanged("cloudPublicIssuerCertificates", value);
 
     }
-            
+
     private Integer registrationQuota;
-     
+
     /**
     * Gets the registration Quota.
     *
     * @return the Integer
     */
     public Integer getRegistrationQuota() {
-        return this.registrationQuota; 
+        return this.registrationQuota;
     }
 
     /**
@@ -90,21 +90,21 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the Integer
     */
-    public void setRegistrationQuota(Integer value) { 
-        this.registrationQuota = value; 
+    public void setRegistrationQuota(Integer value) {
+        this.registrationQuota = value;
         valueChanged("registrationQuota", value);
 
     }
-            
+
     private Integer maximumRegistrationInactivityPeriod;
-     
+
     /**
     * Gets the maximum Registration Inactivity Period.
     *
     * @return the Integer
     */
     public Integer getMaximumRegistrationInactivityPeriod() {
-        return this.maximumRegistrationInactivityPeriod; 
+        return this.maximumRegistrationInactivityPeriod;
     }
 
     /**
@@ -112,8 +112,8 @@ public class DeviceConfiguration extends DirectoryObject {
     *
     * @param value the Integer
     */
-    public void setMaximumRegistrationInactivityPeriod(Integer value) { 
-        this.maximumRegistrationInactivityPeriod = value; 
+    public void setMaximumRegistrationInactivityPeriod(Integer value) {
+        this.maximumRegistrationInactivityPeriod = value;
         valueChanged("maximumRegistrationInactivityPeriod", value);
 
     }

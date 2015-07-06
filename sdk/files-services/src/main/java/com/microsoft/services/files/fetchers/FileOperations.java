@@ -60,115 +60,115 @@ public class FileOperations extends ItemOperations {
         return this;
     }
 
-    
-    
+
+
     /**
      * copy listenable future.
-     * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName 
+     * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName
      * @return the listenable future
-     */         
-    public ListenableFuture<File> copy(String destFolderId, String destFolderPath, String newName) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
+     */
+    public ListenableFuture<File> copy(String destFolderId, String destFolderPath, String newName) {
+        JsonSerializer serializer = getResolver().getJsonSerializer();
         String serializeddestFolderId = serializer.serialize(destFolderId);
 		String serializeddestFolderPath = serializer.serialize(destFolderPath);
 		String serializednewName = serializer.serialize(newName);
-		  
-        
+
+
         ListenableFuture<String> future = copyRaw(serializeddestFolderId, serializeddestFolderPath, serializednewName);
         return transformToEntityListenableFuture(future, File.class, getResolver());
-        
+
     }
 
      /**
      * copyRaw listenable future.
-     * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName 
+     * @param destFolderId the destFolderId @param destFolderPath the destFolderPath @param newName the newName
      * @return the listenable future
-     */ 
+     */
     public ListenableFuture<String> copyRaw(String destFolderId, String destFolderPath, String newName){
-        
+
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
+
         map.put("destFolderId", destFolderId);
 		map.put("destFolderPath", destFolderPath);
 		map.put("newName", newName);
-		
+
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        
+
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
+
         request.getUrl().appendPathComponent("Microsoft.FileServices.copy");
-        
+
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
 
-    
-    
+
+
     /**
      * uploadContent listenable future.
-     * @param contentStream the contentStream 
+     * @param contentStream the contentStream
      * @return the listenable future
-     */         
-    public ListenableFuture<Integer> uploadContent(byte[] contentStream) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
+     */
+    public ListenableFuture<Integer> uploadContent(byte[] contentStream) {
+        JsonSerializer serializer = getResolver().getJsonSerializer();
         String serializedcontentStream = serializer.serialize(contentStream);
-		  
-        
+
+
         ListenableFuture<String> future = uploadContentRaw(serializedcontentStream);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
-        
+
     }
 
      /**
      * uploadContentRaw listenable future.
-     * @param contentStream the contentStream 
+     * @param contentStream the contentStream
      * @return the listenable future
-     */ 
+     */
     public ListenableFuture<String> uploadContentRaw(String contentStream){
-        
+
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
+
         map.put("contentStream", contentStream);
-		
+
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
-        
+        request.setVerb(HttpVerb.POST);
+
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
+
         request.getUrl().appendPathComponent("Microsoft.FileServices.uploadContent");
-        
+
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
     }
 
 
-    
-    
+
+
      /**
      * content listenable future.
-     * 
+     *
      * @return the listenable future
-     */         
-    public ListenableFuture<byte[]> content() { 
+     */
+    public ListenableFuture<byte[]> content() {
 
     final SettableFuture<byte[]> result = SettableFuture.create();
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        
+
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
+        request.setVerb(HttpVerb.GET);
         request.setContent(serializeToJsonByteArray(map, getResolver()));
         String parameters = getFunctionParameters(map);
-                 request.getUrl().appendPathComponent("Microsoft.FileServices.content(" + parameters + ")");   
-                request.getUrl().appendPathComponent("content(" + parameters + ")");   
-        ListenableFuture<OrcResponse> future = oDataExecute(request);   
-        
+                 request.getUrl().appendPathComponent("Microsoft.FileServices.content");
+
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+
         return transformToByteArrayListenableFuture(future);
 
-        
+
    }
-    
+
 }

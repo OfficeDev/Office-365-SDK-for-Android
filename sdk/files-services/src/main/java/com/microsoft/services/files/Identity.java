@@ -33,7 +33,7 @@ public class Identity extends ODataBaseEntity {
     * @return the String
     */
     public String getId() {
-        return this.id; 
+        return this.id;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Identity extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
+    public void setId(String value) {
         this.id = value;
         valueChanged("id", value);
 
@@ -55,7 +55,7 @@ public class Identity extends ODataBaseEntity {
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.displayName;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Identity extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
+    public void setDisplayName(String value) {
         this.displayName = value;
         valueChanged("displayName", value);
 

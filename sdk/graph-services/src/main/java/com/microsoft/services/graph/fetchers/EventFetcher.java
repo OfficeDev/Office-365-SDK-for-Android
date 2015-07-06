@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  EventFetcher.
  */
-public class EventFetcher extends OrcEntityFetcher<Event,EventOperations> 
+public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
                                      implements Readable<Event> {
 
      /**
@@ -57,7 +58,7 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
         return this;
     }
 
-        
+
      /**
      * Gets attachments.
      *

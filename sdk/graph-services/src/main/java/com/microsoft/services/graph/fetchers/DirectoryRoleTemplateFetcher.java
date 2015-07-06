@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DirectoryRoleTemplateFetcher.
  */
-public class DirectoryRoleTemplateFetcher extends OrcEntityFetcher<DirectoryRoleTemplate,DirectoryRoleTemplateOperations> 
+public class DirectoryRoleTemplateFetcher extends OrcEntityFetcher<DirectoryRoleTemplate,DirectoryRoleTemplateOperations>
                                      implements Readable<DirectoryRoleTemplate> {
 
      /**
@@ -57,5 +58,5 @@ public class DirectoryRoleTemplateFetcher extends OrcEntityFetcher<DirectoryRole
         return this;
     }
 
-        
+
 }

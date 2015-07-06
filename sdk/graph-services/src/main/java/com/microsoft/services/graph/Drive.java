@@ -24,16 +24,16 @@ public class Drive extends ODataBaseEntity {
     public Drive(){
         setODataType("#Microsoft.Graph.Drive");
     }
-            
+
     private String id;
-     
+
     /**
     * Gets the id.
     *
     * @return the String
     */
     public String getId() {
-        return this.id; 
+        return this.id;
     }
 
     /**
@@ -41,21 +41,21 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setId(String value) { 
-        this.id = value; 
+    public void setId(String value) {
+        this.id = value;
         valueChanged("id", value);
 
     }
-            
+
     private Identity owner;
-     
+
     /**
     * Gets the owner.
     *
     * @return the Identity
     */
     public Identity getOwner() {
-        return this.owner; 
+        return this.owner;
     }
 
     /**
@@ -63,21 +63,21 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the Identity
     */
-    public void setOwner(Identity value) { 
-        this.owner = value; 
+    public void setOwner(Identity value) {
+        this.owner = value;
         valueChanged("owner", value);
 
     }
-            
+
     private DriveQuota quota;
-     
+
     /**
     * Gets the quota.
     *
     * @return the DriveQuota
     */
     public DriveQuota getQuota() {
-        return this.quota; 
+        return this.quota;
     }
 
     /**
@@ -85,8 +85,8 @@ public class Drive extends ODataBaseEntity {
     *
     * @param value the DriveQuota
     */
-    public void setQuota(DriveQuota value) { 
-        this.quota = value; 
+    public void setQuota(DriveQuota value) {
+        this.quota = value;
         valueChanged("quota", value);
 
     }

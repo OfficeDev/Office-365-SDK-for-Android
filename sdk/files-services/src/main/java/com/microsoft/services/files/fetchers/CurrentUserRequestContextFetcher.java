@@ -13,8 +13,8 @@
  ******************************************************************************/
 package com.microsoft.services.files.fetchers;
 
-import com.microsoft.services.files.CurrentUserRequestContext;
-import com.microsoft.services.files.Item;
+import com.microsoft.services.files.fetchers.*;
+import com.microsoft.services.files.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 

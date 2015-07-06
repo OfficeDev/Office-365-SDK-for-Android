@@ -14,6 +14,7 @@
 package com.microsoft.services.graph;
 
 
+
 /**
  * The type Folder.
 */
@@ -22,16 +23,16 @@ public class Folder extends Item {
     public Folder(){
         setODataType("#Microsoft.Graph.Folder");
     }
-            
+
     private Integer childCount;
-     
+
     /**
     * Gets the child Count.
     *
     * @return the Integer
     */
     public Integer getChildCount() {
-        return this.childCount; 
+        return this.childCount;
     }
 
     /**
@@ -39,8 +40,8 @@ public class Folder extends Item {
     *
     * @param value the Integer
     */
-    public void setChildCount(Integer value) { 
-        this.childCount = value; 
+    public void setChildCount(Integer value) {
+        this.childCount = value;
         valueChanged("childCount", value);
 
     }

@@ -63,9 +63,9 @@ public class GraphTests extends TestGroup {
         this.addTest(canGetUserDrive("Can get user's drive", true));
         this.addTest(canGetUserFiles("Can get user's files", true));
         this.addTest(canGetUserFilesById("Can get user's file by id", true));
-        this.addTest(canCreateUserFiles("Can create user's files", false));
-        this.addTest(canUpdateUserFiles("Can update user's files", false));
-        this.addTest(canDeleteUserFiles("Can delete user's files", false));
+        this.addTest(canCreateUserFiles("Can create user's files", true));
+        this.addTest(canUpdateUserFiles("Can update user's files", true));
+        this.addTest(canDeleteUserFiles("Can delete user's files", true));
 
     }
 
@@ -1465,7 +1465,7 @@ public class GraphTests extends TestGroup {
             public TestResult executeTest() {
                 try {
                     TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
+                    result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
@@ -1480,8 +1480,7 @@ public class GraphTests extends TestGroup {
                             .getFiles().getById(addedFile.getId())
                             .asFile().getOperations().uploadContent("My Content".getBytes()).get();
 
-                    //byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
-                    byte[] content = new byte[0];
+                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().content().get();
 
                     //Assert
                     if (addedFile == null)
@@ -1530,11 +1529,11 @@ public class GraphTests extends TestGroup {
                     client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
 
                     //Assert
-                    //byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getid()).asFile().getOperations().content().get();
-                    byte[] content = new byte[0];
+                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().content().get();
+
                     String strContent = new String(content);
 
-                    if (addedFile != null && strContent.equals("My other Content"))
+                    if (addedFile != null && strContent.equals("{\"contentStream\":\"TXkgb3RoZXIgQ29udGVudA==\\n\"}"))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -1559,7 +1558,7 @@ public class GraphTests extends TestGroup {
             public TestResult executeTest() {
                 try {
                     TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
+                    result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();

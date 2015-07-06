@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Attendee Type.
 */
-public enum AttendeeType	
+public enum AttendeeType
 {
     /**
     * Required

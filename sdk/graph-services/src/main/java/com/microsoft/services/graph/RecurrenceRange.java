@@ -33,7 +33,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @return the RecurrenceRangeType
     */
     public RecurrenceRangeType getType() {
-        return this.Type; 
+        return this.Type;
     }
 
     /**
@@ -41,7 +41,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     *
     * @param value the RecurrenceRangeType
     */
-    public void setType(RecurrenceRangeType value) { 
+    public void setType(RecurrenceRangeType value) {
         this.Type = value;
         valueChanged("Type", value);
 
@@ -55,7 +55,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @return the java.util.Calendar
     */
     public java.util.Calendar getStartDate() {
-        return this.StartDate; 
+        return this.StartDate;
     }
 
     /**
@@ -63,7 +63,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setStartDate(java.util.Calendar value) { 
+    public void setStartDate(java.util.Calendar value) {
         this.StartDate = value;
         valueChanged("StartDate", value);
 
@@ -77,7 +77,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @return the java.util.Calendar
     */
     public java.util.Calendar getEndDate() {
-        return this.EndDate; 
+        return this.EndDate;
     }
 
     /**
@@ -85,7 +85,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setEndDate(java.util.Calendar value) { 
+    public void setEndDate(java.util.Calendar value) {
         this.EndDate = value;
         valueChanged("EndDate", value);
 
@@ -99,7 +99,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     * @return the Integer
     */
     public Integer getNumberOfOccurrences() {
-        return this.NumberOfOccurrences; 
+        return this.NumberOfOccurrences;
     }
 
     /**
@@ -107,7 +107,7 @@ public class RecurrenceRange extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setNumberOfOccurrences(Integer value) { 
+    public void setNumberOfOccurrences(Integer value) {
         this.NumberOfOccurrences = value;
         valueChanged("NumberOfOccurrences", value);
 

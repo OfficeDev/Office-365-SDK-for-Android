@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Response Type.
 */
-public enum ResponseType	
+public enum ResponseType
 {
     /**
     * None

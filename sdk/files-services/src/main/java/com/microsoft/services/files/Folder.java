@@ -23,16 +23,16 @@ public class Folder extends Item {
     public Folder(){
         setODataType("#Microsoft.FileServices.Folder");
     }
-            
+
     private Integer childCount;
-     
+
     /**
     * Gets the child Count.
     *
     * @return the Integer
     */
     public Integer getChildCount() {
-        return this.childCount; 
+        return this.childCount;
     }
 
     /**
@@ -40,24 +40,24 @@ public class Folder extends Item {
     *
     * @param value the Integer
     */
-    public void setChildCount(Integer value) { 
-        this.childCount = value; 
+    public void setChildCount(Integer value) {
+        this.childCount = value;
         valueChanged("childCount", value);
 
     }
-    
-        
+
+
     private java.util.List<Item> children = null;
-    
-    
-     
+
+
+
     /**
     * Gets the children.
     *
     * @return the java.util.List<Item>
     */
     public java.util.List<Item> getChildren() {
-        return this.children; 
+        return this.children;
     }
 
     /**
@@ -65,8 +65,8 @@ public class Folder extends Item {
     *
     * @param value the java.util.List<Item>
     */
-    public void setChildren(java.util.List<Item> value) { 
-        this.children = value; 
+    public void setChildren(java.util.List<Item> value) {
+        this.children = value;
         valueChanged("children", value);
 
     }

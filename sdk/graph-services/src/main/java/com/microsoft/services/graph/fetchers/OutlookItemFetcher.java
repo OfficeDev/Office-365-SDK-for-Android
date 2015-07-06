@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  OutlookItemFetcher.
  */
-public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItemOperations> 
+public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItemOperations>
                                      implements Readable<OutlookItem> {
 
      /**
@@ -57,13 +58,13 @@ public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItem
         return this;
     }
 
-    
+
     public MessageFetcher asMessage(){
         return new MessageFetcher(this.urlComponent, this.parent);
-    }   
+    }
 
     public EventFetcher asEvent(){
         return new EventFetcher(this.urlComponent, this.parent);
-    }   
-    
+    }
+
 }

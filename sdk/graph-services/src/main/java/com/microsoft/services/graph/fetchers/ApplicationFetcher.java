@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ApplicationFetcher.
  */
-public class ApplicationFetcher extends OrcEntityFetcher<Application,ApplicationOperations> 
+public class ApplicationFetcher extends OrcEntityFetcher<Application,ApplicationOperations>
                                      implements Readable<Application> {
 
      /**
@@ -57,7 +58,7 @@ public class ApplicationFetcher extends OrcEntityFetcher<Application,Application
         return this;
     }
 
-        
+
      /**
      * Gets extension properties.
      *

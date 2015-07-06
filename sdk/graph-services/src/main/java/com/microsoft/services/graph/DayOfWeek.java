@@ -16,7 +16,7 @@ package com.microsoft.services.graph;
 /**
  * The Enum Day Of Week.
 */
-public enum DayOfWeek	
+public enum DayOfWeek
 {
     /**
     * Sunday

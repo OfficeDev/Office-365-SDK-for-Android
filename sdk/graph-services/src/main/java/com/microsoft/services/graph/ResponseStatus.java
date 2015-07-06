@@ -33,7 +33,7 @@ public class ResponseStatus extends ODataBaseEntity {
     * @return the ResponseType
     */
     public ResponseType getResponse() {
-        return this.Response; 
+        return this.Response;
     }
 
     /**
@@ -41,7 +41,7 @@ public class ResponseStatus extends ODataBaseEntity {
     *
     * @param value the ResponseType
     */
-    public void setResponse(ResponseType value) { 
+    public void setResponse(ResponseType value) {
         this.Response = value;
         valueChanged("Response", value);
 
@@ -55,7 +55,7 @@ public class ResponseStatus extends ODataBaseEntity {
     * @return the java.util.Calendar
     */
     public java.util.Calendar getTime() {
-        return this.Time; 
+        return this.Time;
     }
 
     /**
@@ -63,7 +63,7 @@ public class ResponseStatus extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setTime(java.util.Calendar value) { 
+    public void setTime(java.util.Calendar value) {
         this.Time = value;
         valueChanged("Time", value);
 

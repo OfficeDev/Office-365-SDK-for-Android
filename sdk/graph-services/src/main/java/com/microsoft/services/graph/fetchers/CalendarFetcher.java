@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  CalendarFetcher.
  */
-public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperations> 
+public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperations>
                                      implements Readable<Calendar> {
 
      /**
@@ -57,7 +58,7 @@ public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperation
         return this;
     }
 
-        
+
      /**
      * Gets calendar view.
      *

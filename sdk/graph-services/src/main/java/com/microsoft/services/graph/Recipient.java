@@ -13,7 +13,6 @@
  ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.graph.EmailAddress;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
@@ -26,7 +25,7 @@ public class Recipient extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.Recipient");
     }
 
-    private com.microsoft.services.graph.EmailAddress EmailAddress;
+    private EmailAddress EmailAddress;
 
     /**
     * Gets the Email Address.
@@ -34,7 +33,7 @@ public class Recipient extends ODataBaseEntity {
     * @return the EmailAddress
     */
     public EmailAddress getEmailAddress() {
-        return this.EmailAddress; 
+        return this.EmailAddress;
     }
 
     /**
@@ -42,7 +41,7 @@ public class Recipient extends ODataBaseEntity {
     *
     * @param value the EmailAddress
     */
-    public void setEmailAddress(EmailAddress value) { 
+    public void setEmailAddress(EmailAddress value) {
         this.EmailAddress = value;
         valueChanged("EmailAddress", value);
 

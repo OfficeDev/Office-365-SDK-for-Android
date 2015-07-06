@@ -33,7 +33,7 @@ public class AppRole extends ODataBaseEntity {
     * @return the java.util.List<String>
     */
     public java.util.List<String> getAllowedMemberTypes() {
-        return this.allowedMemberTypes; 
+        return this.allowedMemberTypes;
     }
 
     /**
@@ -41,7 +41,7 @@ public class AppRole extends ODataBaseEntity {
     *
     * @param value the java.util.List<String>
     */
-    public void setAllowedMemberTypes(java.util.List<String> value) { 
+    public void setAllowedMemberTypes(java.util.List<String> value) {
         this.allowedMemberTypes = value;
         valueChanged("allowedMemberTypes", value);
 
@@ -55,7 +55,7 @@ public class AppRole extends ODataBaseEntity {
     * @return the String
     */
     public String getDescription() {
-        return this.description; 
+        return this.description;
     }
 
     /**
@@ -63,7 +63,7 @@ public class AppRole extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setDescription(String value) { 
+    public void setDescription(String value) {
         this.description = value;
         valueChanged("description", value);
 
@@ -77,7 +77,7 @@ public class AppRole extends ODataBaseEntity {
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.displayName;
     }
 
     /**
@@ -85,7 +85,7 @@ public class AppRole extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setDisplayName(String value) { 
+    public void setDisplayName(String value) {
         this.displayName = value;
         valueChanged("displayName", value);
 
@@ -99,7 +99,7 @@ public class AppRole extends ODataBaseEntity {
     * @return the java.util.UUID
     */
     public java.util.UUID getId() {
-        return this.id; 
+        return this.id;
     }
 
     /**
@@ -107,7 +107,7 @@ public class AppRole extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setId(java.util.UUID value) { 
+    public void setId(java.util.UUID value) {
         this.id = value;
         valueChanged("id", value);
 
@@ -121,7 +121,7 @@ public class AppRole extends ODataBaseEntity {
     * @return the Boolean
     */
     public Boolean getIsEnabled() {
-        return this.isEnabled; 
+        return this.isEnabled;
     }
 
     /**
@@ -129,7 +129,7 @@ public class AppRole extends ODataBaseEntity {
     *
     * @param value the Boolean
     */
-    public void setIsEnabled(Boolean value) { 
+    public void setIsEnabled(Boolean value) {
         this.isEnabled = value;
         valueChanged("isEnabled", value);
 
@@ -143,7 +143,7 @@ public class AppRole extends ODataBaseEntity {
     * @return the String
     */
     public String getValue() {
-        return this.value; 
+        return this.value;
     }
 
     /**
@@ -151,7 +151,7 @@ public class AppRole extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setValue(String value) { 
+    public void setValue(String value) {
         this.value = value;
         valueChanged("value", value);
 

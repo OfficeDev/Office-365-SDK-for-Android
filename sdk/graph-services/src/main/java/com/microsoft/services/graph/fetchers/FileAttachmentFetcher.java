@@ -14,13 +14,14 @@
 package com.microsoft.services.graph.fetchers;
 
 import com.microsoft.services.graph.*;
+import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  FileAttachmentFetcher.
  */
-public class FileAttachmentFetcher extends OrcEntityFetcher<FileAttachment,FileAttachmentOperations> 
+public class FileAttachmentFetcher extends OrcEntityFetcher<FileAttachment,FileAttachmentOperations>
                                      implements Readable<FileAttachment> {
 
      /**
@@ -57,5 +58,5 @@ public class FileAttachmentFetcher extends OrcEntityFetcher<FileAttachment,FileA
         return this;
     }
 
-        
+
 }

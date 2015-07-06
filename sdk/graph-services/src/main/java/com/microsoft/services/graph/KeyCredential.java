@@ -33,7 +33,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the byte[]
     */
     public byte[] getCustomKeyIdentifier() {
-        return this.customKeyIdentifier; 
+        return this.customKeyIdentifier;
     }
 
     /**
@@ -41,7 +41,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the byte[]
     */
-    public void setCustomKeyIdentifier(byte[] value) { 
+    public void setCustomKeyIdentifier(byte[] value) {
         this.customKeyIdentifier = value;
         valueChanged("customKeyIdentifier", value);
 
@@ -55,7 +55,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the java.util.Calendar
     */
     public java.util.Calendar getEndDate() {
-        return this.endDate; 
+        return this.endDate;
     }
 
     /**
@@ -63,7 +63,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setEndDate(java.util.Calendar value) { 
+    public void setEndDate(java.util.Calendar value) {
         this.endDate = value;
         valueChanged("endDate", value);
 
@@ -77,7 +77,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the java.util.UUID
     */
     public java.util.UUID getKeyId() {
-        return this.keyId; 
+        return this.keyId;
     }
 
     /**
@@ -85,7 +85,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the java.util.UUID
     */
-    public void setKeyId(java.util.UUID value) { 
+    public void setKeyId(java.util.UUID value) {
         this.keyId = value;
         valueChanged("keyId", value);
 
@@ -99,7 +99,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the java.util.Calendar
     */
     public java.util.Calendar getStartDate() {
-        return this.startDate; 
+        return this.startDate;
     }
 
     /**
@@ -107,7 +107,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the java.util.Calendar
     */
-    public void setStartDate(java.util.Calendar value) { 
+    public void setStartDate(java.util.Calendar value) {
         this.startDate = value;
         valueChanged("startDate", value);
 
@@ -121,7 +121,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the String
     */
     public String getType() {
-        return this.type; 
+        return this.type;
     }
 
     /**
@@ -129,7 +129,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setType(String value) { 
+    public void setType(String value) {
         this.type = value;
         valueChanged("type", value);
 
@@ -143,7 +143,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the String
     */
     public String getUsage() {
-        return this.usage; 
+        return this.usage;
     }
 
     /**
@@ -151,7 +151,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setUsage(String value) { 
+    public void setUsage(String value) {
         this.usage = value;
         valueChanged("usage", value);
 
@@ -165,7 +165,7 @@ public class KeyCredential extends ODataBaseEntity {
     * @return the byte[]
     */
     public byte[] getValue() {
-        return this.value; 
+        return this.value;
     }
 
     /**
@@ -173,7 +173,7 @@ public class KeyCredential extends ODataBaseEntity {
     *
     * @param value the byte[]
     */
-    public void setValue(byte[] value) { 
+    public void setValue(byte[] value) {
         this.value = value;
         valueChanged("value", value);
 
