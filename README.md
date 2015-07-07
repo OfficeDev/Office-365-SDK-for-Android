@@ -24,7 +24,7 @@ Current services, service versions, and SDK versions:
 |API|Service Version|SDK Version|Artifact Id|
 |---|---------------|-----------|-----------|
 |Mail/Calendar/Contacts|1.0|1.0.0|outlook-services|
-|Files|1.0|1.0.0|file-services|
+|Files|1.0|1.0.0|files-services|
 |Discovery|1.0|1.0.0|discovery-services|
 |AAD Graph|1.5|0.15.0|directory-services|
 |OneNote|1.0|0.15.0|onenote-services|
@@ -108,8 +108,8 @@ With your project prepared, the next step is to initialize the dependency manage
     import com.microsoft.aad.adal.AuthenticationContext;
     import com.microsoft.aad.adal.AuthenticationResult;
     import com.microsoft.aad.adal.PromptBehavior;
-    import com.microsoft.outlookservices.Message;
-    import com.microsoft.outlookservices.fetchers.OutlookClient;
+    import com.microsoft.services.outlook.Message;
+    import com.microsoft.services.outlook.fetchers.OutlookClient;
     import com.microsoft.services.orc.resolvers.ADALDependencyResolver;;
     import static com.microsoft.aad.adal.AuthenticationResult.AuthenticationStatus;
     ```

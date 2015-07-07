@@ -23,7 +23,7 @@ android {
 
 repositories {
     maven {
-        url  "http://dl.bintray.com/msopentech/Maven" 
+        url  "http://dl.bintray.com/msopentech/Maven"
     }
 }
 
@@ -33,26 +33,6 @@ dependencies {
     compile 'com.microsoft.aad:adal:1.1.7'
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
-}
-
-
-//overriding version number for graph-services
-project(':graph-services'){
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.2.2'
-}
-
-project(':directory-services'){
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.15.0'
-}
-
-project(':onenote-services'){
-    apply plugin: 'idea'
-    group = 'com.microsoft.services'
-    version = '0.15.0'
 }
 
 uploadArchives {
