@@ -5,7 +5,7 @@ import com.google.common.collect.Iterators;
 import java.util.Arrays;
 
 public class Constants {
-    final static public String CLIENT_ID = "00000000DDDDDDDD"; // get your own please
+    final static public String CLIENT_ID = "00000000441364FF"; // get your own please
     final static public String[] SCOPES = {
             "wl.signin",
             "wl.basic",

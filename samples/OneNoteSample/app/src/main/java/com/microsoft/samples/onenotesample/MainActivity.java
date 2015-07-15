@@ -1,7 +1,7 @@
 package com.microsoft.samples.onenotesample;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,13 +12,10 @@ import android.widget.ListView;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-import com.microsoft.live.LiveAuthClient;
-
-import com.microsoft.services.onenote.*;
+import com.microsoft.services.msa.LiveAuthClient;
+import com.microsoft.services.onenote.Notebook;
 import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.services.orc.log.LogLevel;
-import com.microsoft.services.orc.resolvers.LiveAuthDependencyResolver;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView lvNotebooks;
     private Button btnNotebooks;
     private OneNoteApiClient oneNoteClient;
-    private LiveAuthDependencyResolver dependencyResolver;
+    private MSAAuthDependencyResolver dependencyResolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +55,13 @@ public class MainActivity extends ActionBarActivity {
         return oneNoteClient;
     }
 
-    protected LiveAuthDependencyResolver getDependencyResolver() {
+    protected MSAAuthDependencyResolver getDependencyResolver() {
 
         if (dependencyResolver == null) {
             LiveAuthClient theAuthClient = new LiveAuthClient(getApplicationContext(), Constants.CLIENT_ID,
                     Arrays.asList(Constants.SCOPES));
 
-            dependencyResolver = new LiveAuthDependencyResolver(theAuthClient);
-
+            dependencyResolver = new MSAAuthDependencyResolver(theAuthClient);
             dependencyResolver.getLogger().setEnabled(true);
             dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
         }

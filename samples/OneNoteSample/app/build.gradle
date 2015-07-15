@@ -22,6 +22,9 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile project(':onenote-services')
+    compile project(':msa')
     compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
-    compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
+    //compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
+
+
 }

@@ -1,5 +1,6 @@
 include ':app',
-':onenote-services'
+':onenote-services',
+':msa'
 
 project (':onenote-services').projectDir = file('../../sdk/onenote-services')
-
+project (':msa').projectDir = file('../../../msa-sdk-java/msa')
