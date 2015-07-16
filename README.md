@@ -55,8 +55,8 @@ To use these libraries in your project, follow these general steps, as described
 4. In the `dependencies` closure, add the following dependencies to the `compile` configuration:
 
     ```groovy
-    compile 'com.microsoft.services:outlook-services:1.0.0'
-    compile 'com.microsoft.services.orc:orc-android:1.0.0'
+    compile 'com.microsoft.services:outlook-services:1.0.0@aar'
+    compile 'com.microsoft.services.orc:orc-android:1.0.0@aar'
     compile 'com.microsoft.aad:adal:1.1.3@aar'
     ```
 
