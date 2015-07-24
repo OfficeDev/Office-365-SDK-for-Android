@@ -46,8 +46,8 @@ uploadArchives {
         repository (url: project.mavenRepoUrl) {
             authentication(
                  // put these values in local file ~/.gradle/properties.gradle
-                 userName: project.bintrayUsername,
-                 password: project.bintrayApikey
+                 userName: project.hasProperty("bintrayUsername") ? project.bintrayUsername : "",
+                 password: project.hasProperty("bintrayApikey") ? project.bintrayApikey : ""
             )
         }
     }

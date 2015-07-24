@@ -28,9 +28,6 @@ production/
 
 ## Gradle
 .gradle/
-gradle/
-gradlew
-gradlew.bat
 
 # generated files
 **/build/
