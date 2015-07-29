@@ -12,7 +12,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,7 +37,7 @@ dependencies {
     }
 
     compile 'com.microsoft.services.msa:msa-auth:0.8.0'
-    compile 'com.microsoft.services.orc:orc-android:1.2.0-SNAPSHOT@aar'
+    compile group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.2.0-SNAPSHOT', ext:'aar', changing: 'true'
 
     compile project(':outlook-services')
     compile project(':directory-services')

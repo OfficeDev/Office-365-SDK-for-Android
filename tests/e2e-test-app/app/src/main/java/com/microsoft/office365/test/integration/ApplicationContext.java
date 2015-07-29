@@ -21,18 +21,17 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
 
+import com.microsoft.services.msa.LiveAuthClient;
 import com.microsoft.services.orc.core.DependencyResolver;
 import com.microsoft.services.orc.log.LogLevel;
 import com.microsoft.services.orc.resolvers.DefaultDependencyResolver;
-import com.microsoft.services.orc.resolvers.LiveAuthDependencyResolver;
-
-import com.microsoft.live.LiveAuthClient;
 
 
 import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.services.discovery.fetchers.DiscoveryClient;
 import com.microsoft.services.files.fetchers.FilesClient;
 import com.microsoft.services.graph.fetchers.GraphServiceClient;
+import com.microsoft.services.orc.resolvers.MSAAuthDependencyResolver;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
 import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.services.sharepoint.ListClient;
@@ -344,12 +343,12 @@ public class ApplicationContext {
         return dependencyResolver;
     }
 
-    private static LiveAuthDependencyResolver liveAuthDependencyResolver;
+    private static MSAAuthDependencyResolver liveAuthDependencyResolver;
 
-    private static LiveAuthDependencyResolver getLiveAuthDependencyResolver() {
+    private static MSAAuthDependencyResolver getLiveAuthDependencyResolver() {
         if (liveAuthDependencyResolver == null) {
             LiveAuthClient theAuthClient = new LiveAuthClient(mActivity.getApplicationContext(), getLiveSDKClientId(), Arrays.asList(scopes));
-            liveAuthDependencyResolver = new LiveAuthDependencyResolver(theAuthClient);
+            liveAuthDependencyResolver = new MSAAuthDependencyResolver(theAuthClient);
 
             try {
                 liveAuthDependencyResolver.interactiveInitialize(mActivity).get();
