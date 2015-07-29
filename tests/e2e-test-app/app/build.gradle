@@ -36,10 +36,8 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
-
-
+    compile 'com.microsoft.services.msa:msa-auth:0.8.0'
+    compile 'com.microsoft.services.orc:orc-android:1.2.0-SNAPSHOT@aar'
 
     compile project(':outlook-services')
     compile project(':directory-services')
@@ -49,3 +47,4 @@ dependencies {
     compile project(':onenote-services')
     compile project(':graph-services')
 }
+

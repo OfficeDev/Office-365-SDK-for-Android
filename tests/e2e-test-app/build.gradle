@@ -1,5 +1,8 @@
 buildscript {
     repositories {
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+        }
         jcenter()
 
     }
@@ -10,6 +13,10 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+        }
         jcenter()
     }
+
 }
