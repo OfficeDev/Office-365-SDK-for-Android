@@ -1,16 +1,1 @@
-include ':app',
-        ':outlook-services',
-        ':directory-services',
-        ':discovery-services',
-        ':files-services',
-        ':sharepoint-services',
-        ':onenote-services',
-        ':graph-services'
-
-project (':outlook-services').projectDir = file('../../sdk/outlook-services')
-project (':directory-services').projectDir = file('../../sdk/directory-services')
-project (':discovery-services').projectDir = file('../../sdk/discovery-services')
-project (':files-services').projectDir = file('../../sdk/files-services')
-project (':sharepoint-services').projectDir = file('../../sdk/sharepoint-services')
-project (':onenote-services').projectDir = file('../../sdk/onenote-services')
-project (':graph-services').projectDir = file('../../sdk/graph-services')
+include ':app'

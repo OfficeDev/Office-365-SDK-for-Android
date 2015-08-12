@@ -214,8 +214,8 @@ public class FilesTests extends TestGroup {
 
                     Item addedFile = client.getFiles().add(newFile).get();
 
-                    long newFileSize = 1 * 1024;
-                    java.io.File file = ApplicationContext.createTempFile(1 * 1024);
+                    long newFileSize = 1024;
+                    java.io.File file = ApplicationContext.createTempFile(newFileSize);
 
                     InputStream stream = new FileInputStream(file);
                     long size = file.length();

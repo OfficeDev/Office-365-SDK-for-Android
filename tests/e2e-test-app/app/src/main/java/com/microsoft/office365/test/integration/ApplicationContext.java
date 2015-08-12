@@ -24,6 +24,7 @@ import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.services.msa.LiveAuthClient;
 import com.microsoft.services.orc.core.DependencyResolver;
 import com.microsoft.services.orc.log.LogLevel;
+import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
 import com.microsoft.services.orc.resolvers.DefaultDependencyResolver;
 
 
@@ -32,6 +33,7 @@ import com.microsoft.services.discovery.fetchers.DiscoveryClient;
 import com.microsoft.services.files.fetchers.FilesClient;
 import com.microsoft.services.graph.fetchers.GraphServiceClient;
 import com.microsoft.services.orc.resolvers.MSAAuthDependencyResolver;
+import com.microsoft.services.orc.resolvers.OkHttpDependencyResolver;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
 import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.services.sharepoint.ListClient;
@@ -336,7 +338,7 @@ public class ApplicationContext {
 
     private static DependencyResolver getDependencyResolver(final String token) {
 
-        DefaultDependencyResolver dependencyResolver = new DefaultDependencyResolver(token);
+        DependencyResolver dependencyResolver = new OkHttpDependencyResolver(token);
 
         dependencyResolver.getLogger().setEnabled(true);
         dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);

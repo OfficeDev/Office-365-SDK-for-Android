@@ -793,7 +793,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Act
                     List<Attachment> attachments = client.getMe().getMessage(added.getId()).getAttachments().read().get();
-                    
+
                     //Assert
                     if (attachments != null && attachments.size() > 0)
                         result.setStatus(TestStatus.Passed);
@@ -1245,8 +1245,6 @@ public class ExchangeTests extends TestGroup {
                     Message messageToReply = inboxMessages.get(0);
                     //Act
                     Message repliedMessage = client.getMe()
-                            .getFolders()
-                            .getById("Drafts")
                             .getMessages()
                             .getById(messageToReply.getId())
                             .getOperations().createReply().get();

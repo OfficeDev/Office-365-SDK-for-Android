@@ -135,7 +135,8 @@ public class MainActivity extends Activity {
         adapter.add(new FilesTests());
         adapter.add(new ListsTests());
         adapter.add(new DiscoveryTests());
-        adapter.add(new DirectoryTests());
+        //disabling DirectoryTests
+		//adapter.add(new DirectoryTests());
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
 		mTestGroupSpinner.setSelection(0);
@@ -297,7 +298,7 @@ public class MainActivity extends Activity {
 
 	private void log(String title, String content) {
 		String message = title + " - " + content;
-		Log.d("OFFICE-ANDROID-SDK-INTEGRATION", message);
+		Log.d("OFFICE-SDK-INTEGRATION", message);
 
 		mLog.append(message);
 		mLog.append('\n');
