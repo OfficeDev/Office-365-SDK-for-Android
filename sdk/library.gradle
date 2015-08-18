@@ -8,7 +8,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = project.mavenGroupId
 version = project.mavenVersion
 
-def targetRepo = project.version.endsWith('-SNAPSHOT')?'oss-snapshot-local':'oss-release-local'
+//def targetRepo = project.version.endsWith('-SNAPSHOT')?'oss-snapshot-local':'oss-release-local'
+def targetRepo = 'oss-snapshot-local'
 
 android {
     compileSdkVersion 22
