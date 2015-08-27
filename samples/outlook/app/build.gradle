@@ -23,9 +23,9 @@ android {
 }
 
 dependencies {
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
+    compile 'com.microsoft.services.orc:orc-android:1.2.0'
     compile 'com.microsoft.aad:adal:1.1.3@aar'
-    compile project(':outlook-services')
+    compile 'com.microsoft.services:outlook-services:1.0.0'
     compile 'com.android.support:support-annotations:21.0.2'
     compile 'com.android.support:support-v13:21.0.2'
 }

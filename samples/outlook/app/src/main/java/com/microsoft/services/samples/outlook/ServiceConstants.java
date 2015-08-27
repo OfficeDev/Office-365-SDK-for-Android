@@ -13,10 +13,10 @@ package com.microsoft.services.samples.outlook;
  * fill in the values according to your subscription
  */
 public class ServiceConstants {
-    public static final String AUTHORITY_URL = "https://login.windows.net/common";
+    public static final String AUTHORITY_URL = "https://login.microsoftonline.com/common";
     public static final String RESOURCE_ID = "https://outlook.office365.com/";
-    public static final String REDIRECT_URL = "";
-    public static final String CLIENT_ID = "";
+    public static final String REDIRECT_URL = "redirect-url";
+    public static final String CLIENT_ID = "enter-yout-client-id";
     // public static final String ENCRYPTION_KEY = "EncryptionKey";
     // it is generally the case for O365 services that the endpoint ID is the concatenation
     // RESOURCE_ID and the api version. Please check against your actual deployment
