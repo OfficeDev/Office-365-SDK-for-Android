@@ -28,7 +28,7 @@ Current services, service versions, and SDK versions:
 |Discovery|1.0|1.0.0|discovery-services|
 |AAD Graph|1.5|0.15.0|directory-services|
 |OneNote|1.0|0.15.0|onenote-services|
-|Unified API|beta|0.2.2|graph-services|
+|Unified API|beta|0.2.5|graph-services|
 |SharePoint Lists|1.0|1.0.0|sharepoint-services|
 
 [Vipr]: https://github.com/microsoft/vipr
@@ -55,9 +55,9 @@ To use these libraries in your project, follow these general steps, as described
 4. In the `dependencies` closure, add the following dependencies to the `compile` configuration:
 
     ```groovy
-    compile 'com.microsoft.services:outlook-services:1.0.0'
+    compile 'com.microsoft.services:outlook-services:1.2.0'
     compile 'com.microsoft.services.orc:orc-android:1.0.0'
-    compile 'com.microsoft.aad:adal:1.1.3@aar'
+    compile 'com.microsoft.aad:adal:1.1.7@aar'
     ```
 
     > **NOTE**: All three dependencies must be explicitly specified, because there are alternate ORC implementations (e.g. for JVM) and alternate authentication libraries (e.g. MSA) which can be used.
