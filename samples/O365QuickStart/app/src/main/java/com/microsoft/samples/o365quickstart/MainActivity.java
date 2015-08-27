@@ -1,14 +1,13 @@
 package com.microsoft.samples.o365quickstart;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -17,12 +16,10 @@ import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
-
 import com.microsoft.services.orc.log.LogLevel;
 import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
+import com.microsoft.services.outlook.Message;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
-import com.microsoft.services.outlook.*;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,11 +57,7 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
-
     }
-
-
-
 
     public SettableFuture<Boolean> logon() {
 
@@ -121,16 +114,19 @@ public class MainActivity extends ActionBarActivity {
                 List<Map<String, String>> listOfMessages = new ArrayList<Map<String, String>>();
 
                 for (Message m : result) {
-                    Map<String, String> oneMessage = new HashMap<String,String>();
+                    Map<String, String> oneMessage = new HashMap<String, String>();
                     oneMessage.put("subject", m.getSubject());
-                    oneMessage.put("from", "From: " +  m.getFrom().getEmailAddress().getAddress());
+
+                    if (m.getFrom() != null && m.getFrom().getEmailAddress() != null) {
+                        oneMessage.put("from", "From: " + m.getFrom().getEmailAddress().getAddress());
+                    }
                     listOfMessages.add(oneMessage);
                 }
 
                 final SimpleAdapter adapter = new SimpleAdapter(MainActivity.this, listOfMessages,
                         android.R.layout.simple_list_item_2,
-                        new String[] {"subject", "from"},
-                        new int[] {android.R.id.text1, android.R.id.text2});
+                        new String[]{"subject", "from"},
+                        new int[]{android.R.id.text1, android.R.id.text2});
 
                 runOnUiThread(new Runnable() {
                     @Override
