@@ -56,7 +56,7 @@ To use these libraries in your project, follow these general steps, as described
 
     ```groovy
     compile 'com.microsoft.services:outlook-services:1.2.0'
-    compile 'com.microsoft.services.orc:orc-android:1.0.0'
+    compile 'com.microsoft.services.orc:orc-android:1.2.0'
     compile 'com.microsoft.aad:adal:1.1.7@aar'
     ```
 
