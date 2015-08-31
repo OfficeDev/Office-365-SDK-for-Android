@@ -21,6 +21,7 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestResult;
 
+import com.microsoft.services.directory.fetchers.DirectoryClient;
 import com.microsoft.services.msa.LiveAuthClient;
 import com.microsoft.services.orc.core.DependencyResolver;
 import com.microsoft.services.orc.log.LogLevel;
@@ -28,7 +29,6 @@ import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
 import com.microsoft.services.orc.resolvers.DefaultDependencyResolver;
 
 
-import com.microsoft.directoryservices.odata.DirectoryClient;
 import com.microsoft.services.discovery.fetchers.DiscoveryClient;
 import com.microsoft.services.files.fetchers.FilesClient;
 import com.microsoft.services.graph.fetchers.GraphServiceClient;

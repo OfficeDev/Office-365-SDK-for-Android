@@ -42,7 +42,7 @@ dependencies {
     }
 
     compile 'com.microsoft.services:outlook-services:1.0.0'
-    compile 'com.microsoft.services:directory-services:0.15.0'
+    compile 'com.microsoft.services:directory-services:0.16.0-SNAPSHOT'
     compile 'com.microsoft.services:discovery-services:1.0.0'
     compile 'com.microsoft.services:sharepoint-services:1.0.0'
     compile 'com.microsoft.services:onenote-services:0.15.0'

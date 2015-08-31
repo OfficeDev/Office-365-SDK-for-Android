@@ -135,8 +135,7 @@ public class MainActivity extends Activity {
         adapter.add(new FilesTests());
         adapter.add(new ListsTests());
         adapter.add(new DiscoveryTests());
-        //disabling DirectoryTests
-		//adapter.add(new DirectoryTests());
+        adapter.add(new DirectoryTests());
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
 		mTestGroupSpinner.setSelection(0);

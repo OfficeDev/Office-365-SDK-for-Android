@@ -18,8 +18,8 @@ import com.microsoft.services.onenote.PatchInsertPosition;
 import com.microsoft.services.onenote.Section;
 import com.microsoft.services.onenote.SectionGroup;
 import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
-import com.microsoft.services.odata.CalendarSerializer;
 import com.microsoft.services.orc.core.MultiPartElement;
+import com.microsoft.services.orc.serialization.impl.CalendarSerializer;
 
 import java.io.InputStream;
 import java.util.ArrayList;
