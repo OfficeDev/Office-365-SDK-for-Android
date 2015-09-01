@@ -123,10 +123,14 @@ public class FilesTests extends TestGroup {
                     newFile.setType("File");
                     newFile.setName(UUID.randomUUID().toString() + ".txt");
 
+                    String someContent = "My Content";
+
                     Item addedFile = client.getFiles().add(newFile).get();
-                    client.getFiles().getById(addedFile.getId()).asFile().putContent("My Content".getBytes()).get();
+                    client.getFiles().getById(addedFile.getId()).asFile().putContent(someContent.getBytes()).get();
 
                     byte[] content = client.getFiles().getById(addedFile.getId()).asFile().getContent().get();
+
+                    String retrievedContent = new String(content, "UTF-8");
 
                     //Assert
                     if (addedFile == null)
@@ -134,6 +138,10 @@ public class FilesTests extends TestGroup {
 
                     if (content.length == 0)
                         result.setStatus(TestStatus.Failed);
+
+                    if (!retrievedContent.equals(someContent)) {
+                        result.setStatus(TestStatus.Failed);
+                    }
 
                     //Cleanup
                     client.getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
@@ -491,8 +499,8 @@ public class FilesTests extends TestGroup {
                     //Assert
                     boolean wellTyped = true;
 
-                    for(Item i : files){
-                        if(!(i instanceof Folder || i instanceof File)) wellTyped = false;
+                    for (Item i : files) {
+                        if (!(i instanceof Folder || i instanceof File)) wellTyped = false;
                     }
 
                     if (files == null || !wellTyped)
