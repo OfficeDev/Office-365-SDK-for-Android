@@ -43,18 +43,21 @@ import com.microsoft.office365.test.integration.R;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestExecutionCallback;
 import com.microsoft.office365.test.integration.framework.TestGroup;
+import com.microsoft.office365.test.integration.framework.TestLog;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestResultsPostManager;
-import com.microsoft.office365.test.integration.tests.AllTests;
-import com.microsoft.office365.test.integration.tests.DirectoryTests;
-import com.microsoft.office365.test.integration.tests.DiscoveryTests;
-import com.microsoft.office365.test.integration.tests.ExchangeTests;
-import com.microsoft.office365.test.integration.tests.FilesTests;
-import com.microsoft.office365.test.integration.tests.GraphTests;
-import com.microsoft.office365.test.integration.tests.ListsTests;
-import com.microsoft.office365.test.integration.tests.OneNoteTests;
+import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.office365.test.integration.tests.OutlookClientTests;
+import com.microsoft.office365.test.integration.tests.filters.OutlookFilters;
+import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
@@ -63,8 +66,9 @@ public class MainActivity extends Activity {
     private StringBuilder mLog;
 
     private ListView mTestCaseList;
-
     private Spinner mTestGroupSpinner;
+
+    private List<TestLog> mCurrentTestRun;
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -128,20 +132,48 @@ public class MainActivity extends Activity {
     private void refreshTestGroupsAndLog() {
         mLog = new StringBuilder();
 
+        Map<String, Map<String, String>> exclusions = GetExclusions(getResources().openRawResource(R.raw.excluded_tests));
+
         ArrayAdapter<TestGroup> adapter = (ArrayAdapter<TestGroup>) mTestGroupSpinner.getAdapter();
         adapter.clear();
-        adapter.add(new AllTests());
-        adapter.add(new ExchangeTests());
+        /*
+        //adapter.add(new AllTests(exclusions));
+        adapter.add(new ExchangeTests();
         adapter.add(new FilesTests());
         adapter.add(new ListsTests());
         adapter.add(new DiscoveryTests());
         adapter.add(new DirectoryTests());
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
+        */
+
+        OutlookFilters outlookFilters = new OutlookFilters(exclusions.containsKey("Outlook") ? exclusions.get("Outlook") : null);
+        adapter.add(new OutlookClientTests(outlookFilters.getFilters(), outlookFilters.getNotSupportedTests()));
+
+
 		mTestGroupSpinner.setSelection(0);
 		selectTestGroup(0);
 	}
 
+    private Map<String, Map<String, String>> GetExclusions(InputStream inputStream){
+        Map<String, Map<String, String>> exclusions = new HashMap<>();
+        try {
+            BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder total = new StringBuilder();
+            String line;
+            while ((line = r.readLine()) != null) {
+                total.append(line);
+            }
+
+            GsonSerializer serializer = new GsonSerializer();
+            exclusions = serializer.deserialize(total.toString(), exclusions.getClass());
+
+            return exclusions;
+        }catch (Throwable t){
+            //log
+            return exclusions;
+        }
+    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -160,6 +192,7 @@ public class MainActivity extends Activity {
 			if (ApplicationContext.getExchangeEndpointUrl().trim().equals("")) {
 				startActivity(new Intent(this, OfficePreferenceActivity.class));
 			} else {
+                mCurrentTestRun = new ArrayList<>();
 				runTests();
 			}
 			return true;
@@ -177,6 +210,7 @@ public class MainActivity extends Activity {
 			return true;
 
 		case R.id.menu_view_log:
+            /*
 			AlertDialog.Builder logDialogBuilder = new AlertDialog.Builder(this);
 			logDialogBuilder.setTitle("Log");
 
@@ -199,6 +233,16 @@ public class MainActivity extends Activity {
 
 			logDialogBuilder.create().show();
 			return true;
+			*/
+            GsonSerializer serializer = new GsonSerializer();
+            String currentRun = serializer.serialize(mCurrentTestRun);
+
+            Intent intent = new Intent(this, LogActivity.class);
+            Bundle b = new Bundle();
+            b.putString("TestResults", currentRun); //Your id
+            intent.putExtras(b); //Put your id to your next Intent
+            startActivity(intent);
+            return true;
 
 		default:
 			return super.onOptionsItemSelected(item);
@@ -279,6 +323,10 @@ public class MainActivity extends Activity {
 				log("TEST COMPLETED", test.getName() + " - " + result.getStatus().toString()
 						+ " - Ex: " + exMessage);
 				logSeparator();
+
+                TestLog testLog = new TestLog(test.getName(), result.getStatus());
+                testLog.setException(result.getException());
+                mCurrentTestRun.add(testLog);
 			}
 		}, mIsAutomatedRun);
 
@@ -330,6 +378,8 @@ public class MainActivity extends Activity {
 	 * @param exception
 	 *            The exception to show in the dialog
 	 * @param title
+	 *
+	 *
 	 *            The dialog title
 	 */
 	@SuppressWarnings("unused")

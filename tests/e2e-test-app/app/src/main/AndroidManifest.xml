@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.microsoft.office365.test.integration">
+    package="com.microsoft.office365.test.integration" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
-        
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.microsoft.office365.test.integration.android.MainActivity"
+            android:name=".android.MainActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:label="@string/app_name" >
             <intent-filter>
@@ -23,19 +22,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.microsoft.office365.test.integration.android.OfficePreferenceActivity"
+            android:name=".android.OfficePreferenceActivity"
             android:label="@string/title_activity_office_preference" >
         </activity>
         <activity
-            android:name="com.microsoft.office365.test.integration.AADSettingsActivity"
-            android:label="@string/title_activity_aad_settings">
+            android:name=".AADSettingsActivity"
+            android:label="@string/title_activity_aad_settings" >
             <intent-filter>
                 <action android:name=".activities.AADSettingsActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name="com.microsoft.aad.adal.AuthenticationActivity" >
+        </activity>
         <activity
-            android:name="com.microsoft.aad.adal.AuthenticationActivity" >
+            android:name=".android.LogActivity"
+            android:label="@string/title_activity_log" >
         </activity>
     </application>
 

@@ -19,10 +19,6 @@ See the Apache Version 2.0 License for specific language governing permissions a
  */
 package com.microsoft.office365.test.integration.android;
 
-import com.microsoft.office365.test.integration.R;
-import com.microsoft.office365.test.integration.framework.TestCase;
-import com.microsoft.office365.test.integration.framework.TestStatus;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -31,11 +27,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.TextView;
+
+import com.microsoft.office365.test.integration.R;
+import com.microsoft.office365.test.integration.framework.TestCase;
+import com.microsoft.office365.test.integration.framework.TestLog;
+import com.microsoft.office365.test.integration.framework.TestResult;
+import com.microsoft.office365.test.integration.framework.TestStatus;
+
+import junit.framework.Test;
 
 /**
  * Adapter to bind a ToDoItem List to a view
  */
-public class TestCaseAdapter extends ArrayAdapter<TestCase> {
+public class TestLogAdapter extends ArrayAdapter<TestLog> {
 
 	/**
 	 * Adapter mAuthContext
@@ -47,7 +52,7 @@ public class TestCaseAdapter extends ArrayAdapter<TestCase> {
 	 */
 	int mLayoutResourceId;
 
-	public TestCaseAdapter(Context context, int layoutResourceId) {
+	public TestLogAdapter(Context context, int layoutResourceId) {
 		super(context, layoutResourceId);
 
 		mContext = context;
@@ -61,37 +66,39 @@ public class TestCaseAdapter extends ArrayAdapter<TestCase> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 
-		final TestCase testCase = getItem(position);
+		final TestLog testResult = getItem(position);
 
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
 			row = inflater.inflate(mLayoutResourceId, parent, false);
 		}
 
-		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkTestCase);
+		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkTestLog);
 
-		String text = String.format("%s - %s", testCase.getName(), testCase.getStatus().toString());
+		String text = String.format("%s - %s", testResult.getName(), testResult.getTestStatus().toString());
 
-		if (testCase.getStatus() == TestStatus.Failed) {
+		if (testResult.getTestStatus() == TestStatus.Failed) {
 			checkBox.setTextColor(Color.RED);
-		} else if (testCase.getStatus() == TestStatus.Passed) {
+		} else if (testResult.getTestStatus() == TestStatus.Passed) {
 			checkBox.setTextColor(Color.GREEN);
-		} else if (testCase.getStatus() == TestStatus.Disabled || testCase.getStatus() == TestStatus.NotSupported) {
-			checkBox.setTextColor(Color.GRAY);
 		} else {
-			checkBox.setTextColor(Color.BLACK);
+			checkBox.setTextColor(Color.GRAY);
 		}
 
 		checkBox.setText(text);
-		checkBox.setChecked(testCase.isSelected());
-		checkBox.setEnabled(testCase.isEnabled());
+		/*
 		checkBox.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				testCase.setSelected(checkBox.isChecked());
+				testResult.getTestCase().setSelected(checkBox.isChecked());
 			}
 		});
+*/
+		final TextView textView = (TextView) row.findViewById(R.id.textLog);
+
+        String errorMessage = testResult.getException() == null ? " - " : testResult.getException().getLocalizedMessage();
+        textView.setText(errorMessage);
 
 		return row;
 	}
