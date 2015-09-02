@@ -154,15 +154,13 @@ public class ItemOperations extends OrcOperations {
      */         
     public ListenableFuture<byte[]> content() { 
 
-    final SettableFuture<byte[]> result = SettableFuture.create();
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        
+        final SettableFuture<byte[]> result = SettableFuture.create();
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.GET);
-        request.setContent(serializeToJsonByteArray(map, getResolver()));
         
-                 request.getUrl().appendPathComponent("Microsoft.Graph.content");   
-                ListenableFuture<OrcResponse> future = oDataExecute(request);   
+        request.getUrl().appendPathComponent("Microsoft.Graph.content");   
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);   
         
         return transformToByteArrayListenableFuture(future);
 

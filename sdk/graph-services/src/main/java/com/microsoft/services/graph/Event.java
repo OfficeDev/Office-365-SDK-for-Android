@@ -156,6 +156,28 @@ public class Event extends OutlookItem {
 
     }
             
+    private String StartTimeZone;
+     
+    /**
+    * Gets the Start Time Zone.
+    *
+    * @return the String
+    */
+    public String getStartTimeZone() {
+        return this.StartTimeZone; 
+    }
+
+    /**
+    * Sets the Start Time Zone.
+    *
+    * @param value the String
+    */
+    public void setStartTimeZone(String value) { 
+        this.StartTimeZone = value; 
+        valueChanged("StartTimeZone", value);
+
+    }
+            
     private java.util.Calendar End;
      
     /**
@@ -175,6 +197,50 @@ public class Event extends OutlookItem {
     public void setEnd(java.util.Calendar value) { 
         this.End = value; 
         valueChanged("End", value);
+
+    }
+            
+    private String EndTimeZone;
+     
+    /**
+    * Gets the End Time Zone.
+    *
+    * @return the String
+    */
+    public String getEndTimeZone() {
+        return this.EndTimeZone; 
+    }
+
+    /**
+    * Sets the End Time Zone.
+    *
+    * @param value the String
+    */
+    public void setEndTimeZone(String value) { 
+        this.EndTimeZone = value; 
+        valueChanged("EndTimeZone", value);
+
+    }
+            
+    private Integer Reminder;
+     
+    /**
+    * Gets the Reminder.
+    *
+    * @return the Integer
+    */
+    public Integer getReminder() {
+        return this.Reminder; 
+    }
+
+    /**
+    * Sets the Reminder.
+    *
+    * @param value the Integer
+    */
+    public void setReminder(Integer value) { 
+        this.Reminder = value; 
+        valueChanged("Reminder", value);
 
     }
             
@@ -219,6 +285,28 @@ public class Event extends OutlookItem {
     public void setShowAs(FreeBusyStatus value) { 
         this.ShowAs = value; 
         valueChanged("ShowAs", value);
+
+    }
+            
+    private ResponseStatus ResponseStatus;
+     
+    /**
+    * Gets the Response Status.
+    *
+    * @return the ResponseStatus
+    */
+    public ResponseStatus getResponseStatus() {
+        return this.ResponseStatus; 
+    }
+
+    /**
+    * Sets the Response Status.
+    *
+    * @param value the ResponseStatus
+    */
+    public void setResponseStatus(ResponseStatus value) { 
+        this.ResponseStatus = value; 
+        valueChanged("ResponseStatus", value);
 
     }
             
@@ -423,47 +511,25 @@ public class Event extends OutlookItem {
 
     }
             
-    private String StartTimeZone;
+    private String iCalUId;
      
     /**
-    * Gets the Start Time Zone.
+    * Gets the i Cal UId.
     *
     * @return the String
     */
-    public String getStartTimeZone() {
-        return this.StartTimeZone; 
+    public String getICalUId() {
+        return this.iCalUId; 
     }
 
     /**
-    * Sets the Start Time Zone.
+    * Sets the i Cal UId.
     *
     * @param value the String
     */
-    public void setStartTimeZone(String value) { 
-        this.StartTimeZone = value; 
-        valueChanged("StartTimeZone", value);
-
-    }
-            
-    private String EndTimeZone;
-     
-    /**
-    * Gets the End Time Zone.
-    *
-    * @return the String
-    */
-    public String getEndTimeZone() {
-        return this.EndTimeZone; 
-    }
-
-    /**
-    * Sets the End Time Zone.
-    *
-    * @param value the String
-    */
-    public void setEndTimeZone(String value) { 
-        this.EndTimeZone = value; 
-        valueChanged("EndTimeZone", value);
+    public void setICalUId(String value) { 
+        this.iCalUId = value; 
+        valueChanged("iCalUId", value);
 
     }
             

@@ -59,4 +59,174 @@ public class GroupOperations extends DirectoryObjectOperations {
         return this;
     }
 
+    
+    
+    /**
+     * SubscribeByMail listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> subscribeByMail() { 
+              
+          
+        
+        ListenableFuture<String> future = subscribeByMailRaw();
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * SubscribeByMailRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> subscribeByMailRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.SubscribeByMail");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * UnsubscribeByMail listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> unsubscribeByMail() { 
+              
+          
+        
+        ListenableFuture<String> future = unsubscribeByMailRaw();
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * UnsubscribeByMailRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> unsubscribeByMailRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.UnsubscribeByMail");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * AddFavorite listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> addFavorite() { 
+              
+          
+        
+        ListenableFuture<String> future = addFavoriteRaw();
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * AddFavoriteRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> addFavoriteRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.AddFavorite");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * RemoveFavorite listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> removeFavorite() { 
+              
+          
+        
+        ListenableFuture<String> future = removeFavoriteRaw();
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * RemoveFavoriteRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> removeFavoriteRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.RemoveFavorite");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * ResetUnseenCount listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> resetUnseenCount() { 
+              
+          
+        
+        ListenableFuture<String> future = resetUnseenCountRaw();
+        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * ResetUnseenCountRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> resetUnseenCountRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.ResetUnseenCount");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }

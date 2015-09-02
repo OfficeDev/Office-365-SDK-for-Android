@@ -345,7 +345,7 @@ public class MainActivity extends Activity {
 
 	private void log(String title, String content) {
 		String message = title + " - " + content;
-		Log.d("OFFICE-ANDROID-SDK-INTEGRATION", message);
+		Log.d("OFFICE-SDK-INTEGRATION", message);
 
 		mLog.append(message);
 		mLog.append('\n');

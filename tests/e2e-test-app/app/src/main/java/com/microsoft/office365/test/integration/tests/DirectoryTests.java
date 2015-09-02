@@ -1,24 +1,13 @@
 
 package com.microsoft.office365.test.integration.tests;
 
-import com.microsoft.directoryservices.Application;
-import com.microsoft.directoryservices.Contact;
-import com.microsoft.directoryservices.Device;
-import com.microsoft.directoryservices.DirectoryObject;
-import com.microsoft.directoryservices.DirectoryRole;
-import com.microsoft.directoryservices.Group;
-import com.microsoft.directoryservices.OAuth2PermissionGrant;
-import com.microsoft.directoryservices.PasswordProfile;
-import com.microsoft.directoryservices.ServicePrincipal;
-import com.microsoft.directoryservices.SubscribedSku;
-import com.microsoft.directoryservices.TenantDetail;
-import com.microsoft.directoryservices.User;
-import com.microsoft.directoryservices.odata.DirectoryClient;
+import com.microsoft.services.directory.*;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.services.directory.fetchers.DirectoryClient;
 
 import java.util.List;
 import java.util.UUID;
@@ -73,10 +62,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<User> users = client.getusers().read().get();
+                    List<User> users = client.getUsers().read().get();
 
                     //Assert}
-                    if(users != null && users.size() >0)
+                    if (users != null && users.size() > 0)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -104,13 +93,13 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
                     //Prepare
                     User newUser = getUser();
-                    User addedUser = client.getusers().add(newUser).get();
+                    User addedUser = client.getUsers().add(newUser).get();
 
                     //Act
-                    User storedUser = client.getusers().getById(addedUser.getobjectId()).read().get();
+                    User storedUser = client.getUsers().getById(addedUser.getObjectId()).read().get();
 
                     //Assert}
-                    if(storedUser != null && storedUser.getdisplayName().equals(newUser.getdisplayName()))
+                    if (storedUser != null && storedUser.getDisplayName().equals(newUser.getDisplayName()))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -141,10 +130,10 @@ public class DirectoryTests extends TestGroup {
 
                     //Act
                     User newUser = getUser();
-                    User addedUser = client.getusers().add(newUser).get();
+                    User addedUser = client.getUsers().add(newUser).get();
 
                     //Assert}
-                    if(addedUser != null && addedUser.getdisplayName().equals(newUser.getdisplayName()))
+                    if (addedUser != null && addedUser.getDisplayName().equals(newUser.getDisplayName()))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -177,12 +166,12 @@ public class DirectoryTests extends TestGroup {
 
                     //Prepare
                     User newUser = getUser();
-                    User addedUser = client.getusers().add(newUser).get();
+                    User addedUser = client.getUsers().add(newUser).get();
 
                     //Act
-                    String updatedDisplayName ="Updated display name";
-                    newUser.setdisplayName(updatedDisplayName);
-                    client.getusers().getById(addedUser.getobjectId()).update(newUser).get();
+                    String updatedDisplayName = "Updated display name";
+                    newUser.setDisplayName(updatedDisplayName);
+                    client.getUsers().getById(addedUser.getObjectId()).update(newUser).get();
 
                     //Assert
                     result.setStatus(TestStatus.Passed);
@@ -217,10 +206,10 @@ public class DirectoryTests extends TestGroup {
 
                     //Prepare
                     User newUser = getUser();
-                    User addedUser = client.getusers().add(newUser).get();
+                    User addedUser = client.getUsers().add(newUser).get();
 
                     //Act
-                    client.getusers().getById(addedUser.getobjectId()).delete().get();
+                    client.getUsers().getById(addedUser.getObjectId()).delete().get();
 
                     return result;
                 } catch (Exception e) {
@@ -251,10 +240,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<Application> applications = client.getapplications().read().get();
+                    List<Application> applications = client.getApplications().read().get();
 
                     //Assert}
-                    if(applications != null)
+                    if (applications != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -285,10 +274,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<Contact> contacts = client.getcontacts().read().get();
+                    List<Contact> contacts = client.getContacts().read().get();
 
                     //Assert}
-                    if(contacts != null)
+                    if (contacts != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -318,10 +307,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<DirectoryObject> deletedDirectoryObjects = client.getdeletedDirectoryObjects().read().get();
+                    List<DirectoryObject> deletedDirectoryObjects = client.getDeletedDirectoryObjects().read().get();
 
                     //Assert}
-                    if(deletedDirectoryObjects != null)
+                    if (deletedDirectoryObjects != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -351,10 +340,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<DirectoryObject> directoryObjects = client.getdirectoryObjects().read().get();
+                    List<DirectoryObject> directoryObjects = client.getDirectoryObjects().read().get();
 
                     //Assert}
-                    if(directoryObjects != null)
+                    if (directoryObjects != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -384,10 +373,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<Group> groups = client.getgroups().read().get();
+                    List<Group> groups = client.getGroups().read().get();
 
                     //Assert}
-                    if(groups != null)
+                    if (groups != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -417,10 +406,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<OAuth2PermissionGrant> permissionGrants = client.getoauth2PermissionGrants().read().get();
+                    List<OAuth2PermissionGrant> permissionGrants = client.getOauth2PermissionGrants().read().get();
 
                     //Assert}
-                    if(permissionGrants != null)
+                    if (permissionGrants != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -451,10 +440,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<DirectoryRole> roles = client.getroles().read().get();
+                    List<DirectoryRole> roles = client.getRoles().read().get();
 
                     //Assert}
-                    if(roles != null)
+                    if (roles != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -484,10 +473,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<ServicePrincipal> servicePrincipals = client.getservicePrincipals().read().get();
+                    List<ServicePrincipal> servicePrincipals = client.getServicePrincipals().read().get();
 
                     //Assert}
-                    if(servicePrincipals != null)
+                    if (servicePrincipals != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -517,10 +506,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<SubscribedSku> subscribedSkus = client.getsubscribedSkus().read().get();
+                    List<SubscribedSku> subscribedSkus = client.getSubscribedSkus().read().get();
 
                     //Assert}
-                    if(subscribedSkus != null)
+                    if (subscribedSkus != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -550,10 +539,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<Device> devices = client.getdevices().read().get();
+                    List<Device> devices = client.getDevices().read().get();
 
                     //Assert}
-                    if(devices != null)
+                    if (devices != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -583,10 +572,10 @@ public class DirectoryTests extends TestGroup {
                     DirectoryClient client = ApplicationContext.getDirectoryClient();
 
                     //Act
-                    List<TenantDetail> tenantDetails = client.gettenantDetails().read().get();
+                    List<TenantDetail> tenantDetails = client.getTenantDetails().read().get();
 
                     //Assert}
-                    if(tenantDetails != null)
+                    if (tenantDetails != null)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -601,20 +590,20 @@ public class DirectoryTests extends TestGroup {
         return test;
     }
 
-    private User getUser(){
-        String guid = UUID.randomUUID().toString().replace("-","");
+    private User getUser() {
+        String guid = UUID.randomUUID().toString().replace("-", "");
         String userName = String.format("Alex%s", guid);
         User user = new User();
-        user.setaccountEnabled(true);
-        user.setgivenName(userName);
-        user.setuserPrincipalName(String.format("%s@teeudev1.onmicrosoft.com",userName));
-        user.setdisplayName("Display Name");
-        user.setmailNickname(userName);
-        user.setcountry("MyCountry");
+        user.setAccountEnabled(true);
+        user.setGivenName(userName);
+        user.setUserPrincipalName(String.format("%s@teeudev1.onmicrosoft.com", userName));
+        user.setDisplayName("Display Name");
+        user.setMailNickname(userName);
+        user.setCountry("MyCountry");
         PasswordProfile profile = new PasswordProfile();
-        profile.setpassword("TestPassword1");
-        profile.setforceChangePasswordNextLogin(false);
-        user.setpasswordProfile(profile);
+        profile.setPassword("TestPassword1");
+        profile.setForceChangePasswordNextLogin(false);
+        user.setPasswordProfile(profile);
         return user;
     }
 }

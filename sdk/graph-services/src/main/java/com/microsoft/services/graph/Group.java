@@ -315,6 +315,160 @@ public class Group extends DirectoryObject {
         valueChanged("securityEnabled", value);
 
     }
+            
+    private GroupAccessType AccessType;
+     
+    /**
+    * Gets the Access Type.
+    *
+    * @return the GroupAccessType
+    */
+    public GroupAccessType getAccessType() {
+        return this.AccessType; 
+    }
+
+    /**
+    * Sets the Access Type.
+    *
+    * @param value the GroupAccessType
+    */
+    public void setAccessType(GroupAccessType value) { 
+        this.AccessType = value; 
+        valueChanged("AccessType", value);
+
+    }
+            
+    private String EmailAddress;
+     
+    /**
+    * Gets the Email Address.
+    *
+    * @return the String
+    */
+    public String getEmailAddress() {
+        return this.EmailAddress; 
+    }
+
+    /**
+    * Sets the Email Address.
+    *
+    * @param value the String
+    */
+    public void setEmailAddress(String value) { 
+        this.EmailAddress = value; 
+        valueChanged("EmailAddress", value);
+
+    }
+            
+    private Boolean AllowExternalSenders;
+     
+    /**
+    * Gets the Allow External Senders.
+    *
+    * @return the Boolean
+    */
+    public Boolean getAllowExternalSenders() {
+        return this.AllowExternalSenders; 
+    }
+
+    /**
+    * Sets the Allow External Senders.
+    *
+    * @param value the Boolean
+    */
+    public void setAllowExternalSenders(Boolean value) { 
+        this.AllowExternalSenders = value; 
+        valueChanged("AllowExternalSenders", value);
+
+    }
+            
+    private Boolean AutoSubscribeNewMembers;
+     
+    /**
+    * Gets the Auto Subscribe New Members.
+    *
+    * @return the Boolean
+    */
+    public Boolean getAutoSubscribeNewMembers() {
+        return this.AutoSubscribeNewMembers; 
+    }
+
+    /**
+    * Sets the Auto Subscribe New Members.
+    *
+    * @param value the Boolean
+    */
+    public void setAutoSubscribeNewMembers(Boolean value) { 
+        this.AutoSubscribeNewMembers = value; 
+        valueChanged("AutoSubscribeNewMembers", value);
+
+    }
+            
+    private Boolean IsSubscribedByMail;
+     
+    /**
+    * Gets the Is Subscribed By Mail.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsSubscribedByMail() {
+        return this.IsSubscribedByMail; 
+    }
+
+    /**
+    * Sets the Is Subscribed By Mail.
+    *
+    * @param value the Boolean
+    */
+    public void setIsSubscribedByMail(Boolean value) { 
+        this.IsSubscribedByMail = value; 
+        valueChanged("IsSubscribedByMail", value);
+
+    }
+            
+    private Boolean IsFavorite;
+     
+    /**
+    * Gets the Is Favorite.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsFavorite() {
+        return this.IsFavorite; 
+    }
+
+    /**
+    * Sets the Is Favorite.
+    *
+    * @param value the Boolean
+    */
+    public void setIsFavorite(Boolean value) { 
+        this.IsFavorite = value; 
+        valueChanged("IsFavorite", value);
+
+    }
+            
+    private Integer UnseenCount;
+     
+    /**
+    * Gets the Unseen Count.
+    *
+    * @return the Integer
+    */
+    public Integer getUnseenCount() {
+        return this.UnseenCount; 
+    }
+
+    /**
+    * Sets the Unseen Count.
+    *
+    * @param value the Integer
+    */
+    public void setUnseenCount(Integer value) { 
+        this.UnseenCount = value; 
+        valueChanged("UnseenCount", value);
+
+    }
     
         
     private java.util.List<AppRoleAssignment> appRoleAssignments = null;
@@ -435,6 +589,175 @@ public class Group extends DirectoryObject {
     public void setOwners(java.util.List<DirectoryObject> value) { 
         this.owners = value; 
         valueChanged("owners", value);
+
+    }
+            
+    private Photo GroupPhoto;
+     
+    /**
+    * Gets the Group Photo.
+    *
+    * @return the Photo
+    */
+    public Photo getGroupPhoto() {
+        return this.GroupPhoto; 
+    }
+
+    /**
+    * Sets the Group Photo.
+    *
+    * @param value the Photo
+    */
+    public void setGroupPhoto(Photo value) { 
+        this.GroupPhoto = value; 
+        valueChanged("GroupPhoto", value);
+
+    }
+    
+        
+    private java.util.List<Photo> GroupPhotos = null;
+    
+    
+     
+    /**
+    * Gets the Group Photos.
+    *
+    * @return the java.util.List<Photo>
+    */
+    public java.util.List<Photo> getGroupPhotos() {
+        return this.GroupPhotos; 
+    }
+
+    /**
+    * Sets the Group Photos.
+    *
+    * @param value the java.util.List<Photo>
+    */
+    public void setGroupPhotos(java.util.List<Photo> value) { 
+        this.GroupPhotos = value; 
+        valueChanged("GroupPhotos", value);
+
+    }
+    
+        
+    private java.util.List<Conversation> Conversations = null;
+    
+    
+     
+    /**
+    * Gets the Conversations.
+    *
+    * @return the java.util.List<Conversation>
+    */
+    public java.util.List<Conversation> getConversations() {
+        return this.Conversations; 
+    }
+
+    /**
+    * Sets the Conversations.
+    *
+    * @param value the java.util.List<Conversation>
+    */
+    public void setConversations(java.util.List<Conversation> value) { 
+        this.Conversations = value; 
+        valueChanged("Conversations", value);
+
+    }
+    
+        
+    private java.util.List<ConversationThread> Threads = null;
+    
+    
+     
+    /**
+    * Gets the Threads.
+    *
+    * @return the java.util.List<ConversationThread>
+    */
+    public java.util.List<ConversationThread> getThreads() {
+        return this.Threads; 
+    }
+
+    /**
+    * Sets the Threads.
+    *
+    * @param value the java.util.List<ConversationThread>
+    */
+    public void setThreads(java.util.List<ConversationThread> value) { 
+        this.Threads = value; 
+        valueChanged("Threads", value);
+
+    }
+            
+    private Calendar Calendar;
+     
+    /**
+    * Gets the Calendar.
+    *
+    * @return the Calendar
+    */
+    public Calendar getCalendar() {
+        return this.Calendar; 
+    }
+
+    /**
+    * Sets the Calendar.
+    *
+    * @param value the Calendar
+    */
+    public void setCalendar(Calendar value) { 
+        this.Calendar = value; 
+        valueChanged("Calendar", value);
+
+    }
+    
+        
+    private java.util.List<Event> Events = null;
+    
+    
+     
+    /**
+    * Gets the Events.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getEvents() {
+        return this.Events; 
+    }
+
+    /**
+    * Sets the Events.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setEvents(java.util.List<Event> value) { 
+        this.Events = value; 
+        valueChanged("Events", value);
+
+    }
+    
+        
+    private java.util.List<Event> CalendarView = null;
+    
+    
+     
+    /**
+    * Gets the Calendar View.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getCalendarView() {
+        return this.CalendarView; 
+    }
+
+    /**
+    * Sets the Calendar View.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setCalendarView(java.util.List<Event> value) { 
+        this.CalendarView = value; 
+        valueChanged("CalendarView", value);
 
     }
     

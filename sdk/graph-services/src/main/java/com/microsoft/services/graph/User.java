@@ -1553,6 +1553,31 @@ public class User extends DirectoryObject {
         valueChanged("UserPhotos", value);
 
     }
+    
+        
+    private java.util.List<Group> JoinedGroups = null;
+    
+    
+     
+    /**
+    * Gets the Joined Groups.
+    *
+    * @return the java.util.List<Group>
+    */
+    public java.util.List<Group> getJoinedGroups() {
+        return this.JoinedGroups; 
+    }
+
+    /**
+    * Sets the Joined Groups.
+    *
+    * @param value the java.util.List<Group>
+    */
+    public void setJoinedGroups(java.util.List<Group> value) { 
+        this.JoinedGroups = value; 
+        valueChanged("JoinedGroups", value);
+
+    }
             
     private Drive drive;
      

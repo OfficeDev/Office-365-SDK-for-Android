@@ -22,7 +22,7 @@ import com.microsoft.services.orc.core.Readable;
  * The type  Photo
  .
  */
-public class PhotoFetcher extends OrcEntityFetcher<Photo,PhotoOperations> 
+public class PhotoFetcher extends OrcMediaEntityFetcher<Photo,PhotoOperations> 
                                      implements Readable<Photo> {
 
      /**

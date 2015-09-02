@@ -2,6 +2,14 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
+apply plugin: 'com.jfrog.artifactory-upload'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = project.mavenGroupId
+version = project.mavenVersion
+
+//def targetRepo = project.version.endsWith('-SNAPSHOT')?'oss-snapshot-local':'oss-release-local'
+def targetRepo = 'oss-snapshot-local'
 
 android {
     compileSdkVersion 22
@@ -23,7 +31,7 @@ android {
 
 repositories {
     maven {
-        url  "http://dl.bintray.com/msopentech/Maven"
+        url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
     }
 }
 
@@ -32,7 +40,43 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'com.microsoft.aad:adal:1.1.7'
     compile 'com.android.support:appcompat-v7:22.2.0'
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
+
+    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.1.0', ext: 'aar'){
+        transitive = true
+    }
+}
+
+artifactory {
+    contextUrl = 'https://oss.jfrog.org'
+    publish {
+        repository {
+            repoKey = targetRepo
+            username = project.hasProperty("bintrayUsername") ? project.bintrayUsername : ""
+            password = project.hasProperty("bintrayApikey") ? project.bintrayApikey : ""
+        }
+        defaults {
+            publishConfigs('archives')
+            publishPom = true //Publish generated POM files to Artifactory (true by default)
+            publishIvy = false //Publish generated Ivy descriptor files to Artifactory (true by default)
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'oss-release-local'
+        }
+    }
+}
+
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+    }
 }
 
 uploadArchives {
@@ -72,4 +116,8 @@ task sourcesJar(type: Jar) {
 artifacts {
     archives javadocJar
     archives sourcesJar
+}
+
+artifactoryPublish {
+    dependsOn sourcesJar
 }

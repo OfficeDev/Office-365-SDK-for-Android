@@ -22,7 +22,7 @@ import com.microsoft.services.orc.core.Readable;
  * The type  File
  .
  */
-public class FileFetcher extends OrcEntityFetcher<File,FileOperations> 
+public class FileFetcher extends OrcMediaEntityFetcher<File,FileOperations> 
                                      implements Readable<File> {
 
      /**

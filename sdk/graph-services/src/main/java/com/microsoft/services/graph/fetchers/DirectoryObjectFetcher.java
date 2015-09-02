@@ -76,6 +76,10 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
         return new AppRoleAssignmentFetcher(this.urlComponent, this.parent);
     }   
 
+    public GroupFetcher asGroup(){
+        return new GroupFetcher(this.urlComponent, this.parent);
+    }   
+
     public ContactFetcher asContact(){
         return new ContactFetcher(this.urlComponent, this.parent);
     }   
@@ -98,10 +102,6 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
 
     public DirectoryRoleTemplateFetcher asDirectoryRoleTemplate(){
         return new DirectoryRoleTemplateFetcher(this.urlComponent, this.parent);
-    }   
-
-    public GroupFetcher asGroup(){
-        return new GroupFetcher(this.urlComponent, this.parent);
     }   
 
     public ServicePrincipalFetcher asServicePrincipal(){

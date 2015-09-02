@@ -66,7 +66,7 @@ public class GraphTests extends TestGroup {
         this.addTest(canCreateUserFiles("Can create user's files", true));
         this.addTest(canUpdateUserFiles("Can update user's files", true));
         this.addTest(canDeleteUserFiles("Can delete user's files", true));
-
+        this.addTest(canRetrieveConversation("Can retrieve conversation from group", true));
     }
 
     private TestCase canGetApplications(String name, boolean enabled) {
@@ -1238,12 +1238,12 @@ public class GraphTests extends TestGroup {
                     java.util.Calendar dateStart = java.util.Calendar.getInstance();
                     dateStart.add(java.util.Calendar.HOUR, -2);
 
-                    java.util.Calendar dateEnd =  java.util.Calendar.getInstance();
+                    java.util.Calendar dateEnd = java.util.Calendar.getInstance();
                     dateStart.add(java.util.Calendar.HOUR, 2);
 
                     //Act
                     List<Event> calendarView = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendarView()
-                            .addParameter("startdatetime",dateStart)
+                            .addParameter("startdatetime", dateStart)
                             .addParameter("enddatetime", dateEnd)
                             .read().get();
 
@@ -1335,7 +1335,7 @@ public class GraphTests extends TestGroup {
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
-                      //Prepare
+                    //Prepare
                     List<Photo> userPhotos = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
                     String userPhotoId;
                     if (userPhotos != null && userPhotos.size() > 0) {
@@ -1583,6 +1583,35 @@ public class GraphTests extends TestGroup {
         test.setName(name);
         test.setEnabled(enabled);
         return test;
+    }
+
+    private TestCase canRetrieveConversation(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    List<Group> groups = client.getUsers().getById(ApplicationContext.getTestMail()).getJoinedGroups().read().get();
+
+                    if (groups.isEmpty()) {
+
+                    }
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+
     }
 
     private Message getSampleMessage(String subject, String to, String cc) {

@@ -1,10 +1,1 @@
-include ':app',
-        ':odata-engine-core',
-        ':odata-engine-android-impl',
-        ':outlook-services',
-        ':live-auth'
-
-project (':odata-engine-android-impl').projectDir = file('../../sdk/odata-engine-android-impl')
-project (':odata-engine-core').projectDir = file('../../sdk/odata-engine-core')
-project (':outlook-services').projectDir = file('../../sdk/outlook-services')
-project (':live-auth').projectDir = file('../../sdk/live-auth')
+include ':app'

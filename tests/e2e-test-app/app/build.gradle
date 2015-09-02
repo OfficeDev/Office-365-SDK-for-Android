@@ -12,7 +12,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -36,16 +36,17 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    compile(group: 'com.microsoft.orc', name: 'live-auth', version: '0.14.2', ext: 'aar', changing: true)
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.0.0', ext: 'aar')
+    compile 'com.microsoft.services.msa:msa-auth:0.8.0'
+    compile (group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.2.0', ext:'aar', changing: 'true'){
+        transitive = true
+    }
 
-
-
-    compile project(':outlook-services')
-    compile project(':directory-services')
-    compile project(':discovery-services')
-    compile project(':sharepoint-services')
-    compile project(':files-services')
-    compile project(':onenote-services')
-    compile project(':graph-services')
+    compile 'com.microsoft.services:outlook-services:1.0.0'
+    compile 'com.microsoft.services:directory-services:0.16.0-SNAPSHOT'
+    compile 'com.microsoft.services:discovery-services:1.0.0'
+    compile 'com.microsoft.services:sharepoint-services:1.0.0'
+    compile 'com.microsoft.services:onenote-services:0.15.0'
+    compile 'com.microsoft.services:graph-services:0.2.4'
+    compile 'com.microsoft.services:files-services:1.0.0'
 }
+

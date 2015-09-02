@@ -335,6 +335,24 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     public PhotoFetcher getUserPhoto(String id){
          return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
     }
+
+     /**
+     * Gets joined groups.
+     *
+     * @return the joined groups
+     */
+    public OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations> getJoinedGroups() {
+        return new OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations>("JoinedGroups", this, Group.class, GroupCollectionOperations.class);
+    }
+
+    /**
+     * Gets joined group.
+     *
+     * @return the joined group
+     */
+    public GroupFetcher getJoinedGroup(String id){
+         return new OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations>("JoinedGroups", this, Group.class, GroupCollectionOperations.class).getById(id);
+    }
      /**
      * Gets drive.
      *

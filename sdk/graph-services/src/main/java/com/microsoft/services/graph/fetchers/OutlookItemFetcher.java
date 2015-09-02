@@ -67,5 +67,9 @@ public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItem
     public EventFetcher asEvent(){
         return new EventFetcher(this.urlComponent, this.parent);
     }   
+
+    public PostFetcher asPost(){
+        return new PostFetcher(this.urlComponent, this.parent);
+    }   
     
 }

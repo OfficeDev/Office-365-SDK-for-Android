@@ -90,6 +90,28 @@ public class Calendar extends ODataBaseEntity {
         valueChanged("ChangeKey", value);
 
     }
+            
+    private CalendarColor Color;
+     
+    /**
+    * Gets the Color.
+    *
+    * @return the CalendarColor
+    */
+    public CalendarColor getColor() {
+        return this.Color; 
+    }
+
+    /**
+    * Sets the Color.
+    *
+    * @param value the CalendarColor
+    */
+    public void setColor(CalendarColor value) { 
+        this.Color = value; 
+        valueChanged("Color", value);
+
+    }
     
         
     private java.util.List<Event> CalendarView = null;

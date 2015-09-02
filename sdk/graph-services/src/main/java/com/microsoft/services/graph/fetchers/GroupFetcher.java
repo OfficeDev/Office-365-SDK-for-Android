@@ -139,6 +139,112 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
     public DirectoryObjectFetcher getOwner(String id){
          return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("owners", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class).getById(id);
     }
+     /**
+     * Gets groupphoto.
+     *
+     * @return the group photo
+     */
+    public PhotoFetcher getGroupPhoto() {
+        return new PhotoFetcher("GroupPhoto", this);
+    }
+
+     /**
+     * Gets group photos.
+     *
+     * @return the group photos
+     */
+    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getGroupPhotos() {
+        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("GroupPhotos", this, Photo.class, PhotoCollectionOperations.class);
+    }
+
+    /**
+     * Gets group photo.
+     *
+     * @return the group photo
+     */
+    public PhotoFetcher getGroupPhoto(String id){
+         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("GroupPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets conversations.
+     *
+     * @return the conversations
+     */
+    public OrcCollectionFetcher<Conversation, ConversationFetcher, ConversationCollectionOperations> getConversations() {
+        return new OrcCollectionFetcher<Conversation, ConversationFetcher, ConversationCollectionOperations>("Conversations", this, Conversation.class, ConversationCollectionOperations.class);
+    }
+
+    /**
+     * Gets conversation.
+     *
+     * @return the conversation
+     */
+    public ConversationFetcher getConversation(String id){
+         return new OrcCollectionFetcher<Conversation, ConversationFetcher, ConversationCollectionOperations>("Conversations", this, Conversation.class, ConversationCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets threads.
+     *
+     * @return the threads
+     */
+    public OrcCollectionFetcher<ConversationThread, ConversationThreadFetcher, ConversationThreadCollectionOperations> getThreads() {
+        return new OrcCollectionFetcher<ConversationThread, ConversationThreadFetcher, ConversationThreadCollectionOperations>("Threads", this, ConversationThread.class, ConversationThreadCollectionOperations.class);
+    }
+
+    /**
+     * Gets thread.
+     *
+     * @return the thread
+     */
+    public ConversationThreadFetcher getThread(String id){
+         return new OrcCollectionFetcher<ConversationThread, ConversationThreadFetcher, ConversationThreadCollectionOperations>("Threads", this, ConversationThread.class, ConversationThreadCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets calendar.
+     *
+     * @return the calendar
+     */
+    public CalendarFetcher getCalendar() {
+        return new CalendarFetcher("Calendar", this);
+    }
+
+     /**
+     * Gets events.
+     *
+     * @return the events
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getEvents() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets event.
+     *
+     * @return the event
+     */
+    public EventFetcher getEvent(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets calendar view.
+     *
+     * @return the calendar view
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getCalendarView() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets calendar view.
+     *
+     * @return the calendar view
+     */
+    public EventFetcher getCalendarView(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
 
      /**
      * Gets files.
