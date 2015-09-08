@@ -10,14 +10,13 @@ import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.orc.serialization.impl.CalendarSerializer;
 import com.microsoft.services.outlook.*;
+import com.microsoft.services.outlook.Calendar;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class ExchangeTests extends TestGroup {
 
@@ -76,6 +75,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canCreateEvents("Can create events", true));
         this.addTest(canUpdateEvents("Can update events", true));
         this.addTest(canDeleteEvents("Can delete events", true));
+        this.addTest(canCreateAllDayEvent("Can create all day event", true));
 
         //Contacts
         this.addTest(canGetContactsFolder("Can get contacts folder", true));
@@ -107,13 +107,13 @@ public class ExchangeTests extends TestGroup {
 
                     OutlookClient client = ApplicationContext.getMailCalendarContactClient();
                     Message message = client.getMe().getFolders().getById("Inbox").getMessages()
-                                            .top(1).read().get().get(0);
+                            .top(1).read().get().get(0);
                     message.setIsRead(false);
                     message.setIsRead(true);
 
                     Message updatedMessage = client.getMe().getMessage(message.getId()).update(message).get();
 
-                    if (updatedMessage == null || !updatedMessage.getIsRead()){
+                    if (updatedMessage == null || !updatedMessage.getIsRead()) {
                         result.setStatus(TestStatus.Failed);
                     }
 
@@ -126,7 +126,8 @@ public class ExchangeTests extends TestGroup {
 
         test.setName(name);
         test.setEnabled(enabled);
-        return test;    }
+        return test;
+    }
 
 
     //Messages
@@ -905,7 +906,7 @@ public class ExchangeTests extends TestGroup {
                             .filter("Subject eq '" + mailSubject + "'")
                             .read().get();
 
-                    if(messages.size() > 0 && messages.get(0).getBody().getContentType() == BodyType.HTML)
+                    if (messages.size() > 0 && messages.get(0).getBody().getContentType() == BodyType.HTML)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -954,7 +955,7 @@ public class ExchangeTests extends TestGroup {
                             .getMessage(messages.get(0).getId()).getOperations().createReply().get();
 
                     //Assert
-                    if(messageToReply.getBody().getContentType() == BodyType.HTML)
+                    if (messageToReply.getBody().getContentType() == BodyType.HTML)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -1455,7 +1456,7 @@ public class ExchangeTests extends TestGroup {
         FileAttachment att = new FileAttachment();
 
         att.setContentBytes("hello world".getBytes());
-        att.setName(UUID.randomUUID().toString() +  "-myFile.txt");
+        att.setName(UUID.randomUUID().toString() + "-myFile.txt");
 
         return att;
     }
@@ -1956,15 +1957,15 @@ public class ExchangeTests extends TestGroup {
                     String formattedTime = formatter.format(addedEvent.getStart().getTime());
 
                     //format date properly
-                    java.util.Calendar dateStart = (java.util.Calendar)addedEvent.getStart().clone();
+                    java.util.Calendar dateStart = (java.util.Calendar) addedEvent.getStart().clone();
                     dateStart.add(java.util.Calendar.HOUR, -2);
 
-                    java.util.Calendar dateEnd = (java.util.Calendar)addedEvent.getStart().clone();
+                    java.util.Calendar dateEnd = (java.util.Calendar) addedEvent.getStart().clone();
                     dateEnd.add(java.util.Calendar.HOUR, 2);
 
                     // Act
                     List<Event> calendarView = client.getMe().getCalendarView()
-                            .addParameter("startdatetime",dateStart)
+                            .addParameter("startdatetime", dateStart)
                             .addParameter("enddatetime", dateEnd)
                             .read().get();
 
@@ -1976,7 +1977,7 @@ public class ExchangeTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(calendarView.size() == 0 || calendarViewById.size() == 0)
+                    if (calendarView.size() == 0 || calendarViewById.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -2184,6 +2185,67 @@ public class ExchangeTests extends TestGroup {
                             .getEvents()
                             .getById(addedEvent.getId())
                             .getOperations().accept("Accepted").get();
+
+                    //Assert
+                    if (!addedEvent.getSubject().equals(event.getSubject()))
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getEvents()
+                            .getById(addedEvent.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateAllDayEvent(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+
+                    // Prepare
+                    Event event = getSampleEvent();
+                    event.setIsAllDay(true);
+
+                    java.util.Calendar start = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+
+                    // reset hour, minutes, seconds and millis
+                    start.set(java.util.Calendar.HOUR_OF_DAY, 0);
+                    start.set(java.util.Calendar.MINUTE, 0);
+                    start.set(java.util.Calendar.SECOND, 0);
+                    start.set(java.util.Calendar.MILLISECOND, 0);
+
+                    event.setStart(start);
+
+                    java.util.Calendar end = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+
+                    // reset hour, minutes, seconds and millis
+                    end.set(java.util.Calendar.HOUR_OF_DAY, 0);
+                    end.set(java.util.Calendar.MINUTE, 0);
+                    end.set(java.util.Calendar.SECOND, 0);
+                    end.set(java.util.Calendar.MILLISECOND, 0);
+
+                    end.add(java.util.Calendar.DATE, 1);
+                    event.setEnd(end);
+
+                    Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
                     //Assert
                     if (!addedEvent.getSubject().equals(event.getSubject()))
@@ -2614,11 +2676,11 @@ public class ExchangeTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(messagesWithExpand.size() == 1
+                    if (messagesWithExpand.size() == 1
                             && messagesWithoutExpand.size() == 1
                             && messagesWithExpand.get(0).getAttachments().size() == 1
                             && messagesWithoutExpand.get(0).getAttachments() == null
-                            && messagesWithExpand.get(0).getAttachments().get(0).getName().equals(fileAttachment.getName())){
+                            && messagesWithExpand.get(0).getAttachments().get(0).getName().equals(fileAttachment.getName())) {
                         result.setStatus(TestStatus.Passed);
                     }
 
@@ -2669,11 +2731,11 @@ public class ExchangeTests extends TestGroup {
                             .read().get();
 
                     //Assert
-                    if(messageWithExpand != null
+                    if (messageWithExpand != null
                             && messageWithoutExpand != null
                             && messageWithExpand.getAttachments().size() == 1
                             && messageWithoutExpand.getAttachments() == null
-                            && messageWithExpand.getAttachments().get(0).getName().equals(fileAttachment.getName())){
+                            && messageWithExpand.getAttachments().get(0).getName().equals(fileAttachment.getName())) {
                         result.setStatus(TestStatus.Passed);
                     }
 
@@ -2760,7 +2822,7 @@ public class ExchangeTests extends TestGroup {
                     Contact addedContact2 = client.getMe().getContacts().add(contact2).get();
 
                     //Act
-                    String filter =String.format("DisplayName eq '%s' or DisplayName eq '%s'",name1, name2) ;
+                    String filter = String.format("DisplayName eq '%s' or DisplayName eq '%s'", name1, name2);
                     List<Contact> resultAsc = client.getMe().getContacts().filter(filter).orderBy("DisplayName asc").read().get();
                     List<Contact> resultDesc = client.getMe().getContacts().filter(filter).orderBy("DisplayName desc").read().get();
 
@@ -2811,7 +2873,7 @@ public class ExchangeTests extends TestGroup {
                     Contact addedContact2 = client.getMe().getContacts().add(contact2).get();
 
                     //Act
-                    String filter =String.format("DisplayName eq '%s' or DisplayName eq '%s'",name1, name2) ;
+                    String filter = String.format("DisplayName eq '%s' or DisplayName eq '%s'", name1, name2);
                     List<Contact> resultDesc = client.getMe().getContacts()
                             .filter(filter)
                             .orderBy("DisplayName desc")
