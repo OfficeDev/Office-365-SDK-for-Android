@@ -23,7 +23,6 @@ import com.microsoft.office365.test.integration.framework.*;
 import com.microsoft.office365.test.integration.framework.objectFiller.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -4672,7 +4671,6 @@ public class OutlookClientTests extends TestGroup {
         this();
         mFiller = new ObjectFiller();
         mNotSupportedTests = notSupportedTests;
-        setSubelementsForContainer();
 
         for (PropertyFilter pf : filters) {
             mFiller.addPropertyFilter(pf);
@@ -4884,27 +4882,4 @@ public class OutlookClientTests extends TestGroup {
         return sampleContactFolder;
     }
 
-    private void setSubelementsForContainer(){
-        mFiller.setSubElementClass(User.class, "Folders", Folder.class);
-        mFiller.setSubElementClass(Folder.class, "ChildFolders", Folder.class);
-        mFiller.setSubElementClass(Folder.class, "Messages", Message.class);
-        mFiller.setSubElementClass(Message.class, "ToRecipients", Recipient.class);
-        mFiller.setSubElementClass(Message.class, "Attachments", Attachment.class);
-        mFiller.setSubElementClass(User.class, "Messages", Message.class);
-        mFiller.setSubElementClass(User.class, "Calendars", Calendar.class);
-        mFiller.setSubElementClass(Calendar.class, "CalendarView", Event.class);
-        mFiller.setSubElementClass(Event.class, "Attendees", Attendee.class);
-        mFiller.setSubElementClass(RecurrencePattern.class, "DaysOfWeek", DayOfWeek.class);
-        mFiller.setSubElementClass(Event.class, "Attachments", Attachment.class);
-        mFiller.setSubElementClass(Event.class, "Instances", Event.class);
-        mFiller.setSubElementClass(User.class, "CalendarGroups", CalendarGroup.class);
-        mFiller.setSubElementClass(CalendarGroup.class, "Calendars", Calendar.class);
-        mFiller.setSubElementClass(User.class, "Events", Event.class);
-        mFiller.setSubElementClass(User.class, "Contacts", Contact.class);
-        mFiller.setSubElementClass(Contact.class, "EmailAddresses", EmailAddress.class);
-        mFiller.setSubElementClass(Contact.class, "ImAddresses", String.class);
-        mFiller.setSubElementClass(User.class, "ContactFolders", ContactFolder.class);
-        mFiller.setSubElementClass(ContactFolder.class, "Contacts", Contact.class);
-        mFiller.setSubElementClass(ContactFolder.class, "ChildFolders", ContactFolder.class);
-    }
 }

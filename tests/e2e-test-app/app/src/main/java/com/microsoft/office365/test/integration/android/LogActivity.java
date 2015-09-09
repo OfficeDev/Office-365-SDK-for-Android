@@ -53,7 +53,7 @@ public class LogActivity extends Activity {
         mTestLogList = (ListView) findViewById(R.id.testLogList);
         TestLogAdapter testLogAdapter = new TestLogAdapter(this, R.layout.row_list_test_log);
         mTestLogList.setAdapter(testLogAdapter);
-        selectLogResults(1);
+
 
 
         mTestLogSpinner = (Spinner) findViewById(R.id.testResultSpinner);
@@ -73,26 +73,30 @@ public class LogActivity extends Activity {
                 // do nothing
             }
         });
-
         refreshTestGroupsAndLog();
     }
 
     private void selectLogResults(int pos) {
-        String tr = (String) mTestLogList.getItemAtPosition(pos);
-        if(tr.equals("All")){
-            fillTestResultList(mTestResults, false);
-        }else{
-            fillTestResultList(mTestResults, true);
+        //fillTestResultList(mTestResults, false);
+        if(mTestLogSpinner != null) {
+            String tr = (String) mTestLogSpinner.getItemAtPosition(pos);
+            if (tr.equals("All")) {
+                fillTestResultList(mTestResults, false);
+            } else {
+                fillTestResultList(mTestResults, true);
+            }
         }
     }
 
     private void fillTestResultList(List<TestLog> testResults, boolean showOnlyFailed) {
-        TestLogAdapter testLogAdapter = (TestLogAdapter) mTestLogList.getAdapter();
+        if (testResults != null) {
+            TestLogAdapter testLogAdapter = (TestLogAdapter) mTestLogList.getAdapter();
 
-        testLogAdapter.clear();
-        for (TestLog testResult : testResults) {
-            if(!showOnlyFailed || (showOnlyFailed && testResult.getTestStatus().equals(TestStatus.Failed))){
-                testLogAdapter.add(testResult);
+            testLogAdapter.clear();
+            for (TestLog testResult : testResults) {
+                if (!showOnlyFailed || (showOnlyFailed && testResult.getTestStatus().equals(TestStatus.Failed))) {
+                    testLogAdapter.add(testResult);
+                }
             }
         }
     }
