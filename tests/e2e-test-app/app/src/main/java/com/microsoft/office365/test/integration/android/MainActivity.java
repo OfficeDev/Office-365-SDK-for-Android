@@ -54,10 +54,16 @@ import com.microsoft.office365.test.integration.tests.GraphTests;
 import com.microsoft.office365.test.integration.tests.ListsTests;
 import com.microsoft.office365.test.integration.tests.OneNoteTests;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
+
+    Logger log = LoggerFactory.getLogger(MainActivity.class);
+
     private String mPostUrl = "";
     private boolean mIsAutomatedRun = false;
     private StringBuilder mLog;
@@ -72,21 +78,23 @@ public class MainActivity extends Activity {
         super.onConfigurationChanged(newConfig);
     }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        log.info("Initializing app");
 
         //As there are multiple preference screens, setDefaultValues with readAgain false won't work for the second view
         if (PreferenceManager.getDefaultSharedPreferences(this).getString("prefAADClientId", "").isEmpty()) {
             PreferenceManager.setDefaultValues(this, R.xml.aad_settings, true);
         }
 
-        if (PreferenceManager.getDefaultSharedPreferences(this).getString("prefExchangeEndpoint", "").isEmpty()){
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString("prefExchangeEndpoint", "").isEmpty()) {
             PreferenceManager.setDefaultValues(this, R.xml.pref_general, true);
         }
 
 
-		ApplicationContext.initialize(this);
+        ApplicationContext.initialize(this);
 
         setContentView(R.layout.activity_main);
 
@@ -138,220 +146,214 @@ public class MainActivity extends Activity {
         adapter.add(new DirectoryTests());
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
-		mTestGroupSpinner.setSelection(0);
-		selectTestGroup(0);
-	}
+        mTestGroupSpinner.setSelection(0);
+        selectTestGroup(0);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.menu_settings:
-			startActivity(new Intent(this, OfficePreferenceActivity.class));
-			return true;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                startActivity(new Intent(this, OfficePreferenceActivity.class));
+                return true;
 
-		case R.id.menu_run_tests:
-			if (ApplicationContext.getExchangeEndpointUrl().trim().equals("")) {
-				startActivity(new Intent(this, OfficePreferenceActivity.class));
-			} else {
-				runTests();
-			}
-			return true;
+            case R.id.menu_run_tests:
+                if (ApplicationContext.getExchangeEndpointUrl().trim().equals("")) {
+                    startActivity(new Intent(this, OfficePreferenceActivity.class));
+                } else {
+                    runTests();
+                }
+                return true;
 
-		case R.id.menu_check_all:
-			changeCheckAllTests(true);
-			return true;
+            case R.id.menu_check_all:
+                changeCheckAllTests(true);
+                return true;
 
-		case R.id.menu_uncheck_all:
-			changeCheckAllTests(false);
-			return true;
+            case R.id.menu_uncheck_all:
+                changeCheckAllTests(false);
+                return true;
 
-		case R.id.menu_reset:
-			refreshTestGroupsAndLog();
-			return true;
+            case R.id.menu_reset:
+                refreshTestGroupsAndLog();
+                return true;
 
-		case R.id.menu_view_log:
-			AlertDialog.Builder logDialogBuilder = new AlertDialog.Builder(this);
-			logDialogBuilder.setTitle("Log");
+            case R.id.menu_view_log:
+                AlertDialog.Builder logDialogBuilder = new AlertDialog.Builder(this);
+                logDialogBuilder.setTitle("Log");
 
-			final WebView webView = new WebView(this);
+                final WebView webView = new WebView(this);
 
-			String logContent = TextUtils.htmlEncode(mLog.toString()).replace("\n", "<br />");
-			String logHtml = "<html><body><pre>" + logContent + "</pre></body></html>";
-			webView.loadData(logHtml, "text/html", "utf-8");
+                String logContent = TextUtils.htmlEncode(mLog.toString()).replace("\n", "<br />");
+                String logHtml = "<html><body><pre>" + logContent + "</pre></body></html>";
+                webView.loadData(logHtml, "text/html", "utf-8");
 
-			logDialogBuilder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+                logDialogBuilder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-					clipboardManager.setText(mLog.toString());
-				}
-			});
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                        clipboardManager.setText(mLog.toString());
+                    }
+                });
 
-			logDialogBuilder.setView(webView);
+                logDialogBuilder.setView(webView);
 
-			logDialogBuilder.create().show();
-			return true;
+                logDialogBuilder.create().show();
+                return true;
 
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-	private void changeCheckAllTests(boolean check) {
-		TestGroup tg = (TestGroup) mTestGroupSpinner.getSelectedItem();
-		List<TestCase> testCases = tg.getTestCases();
+    private void changeCheckAllTests(boolean check) {
+        TestGroup tg = (TestGroup) mTestGroupSpinner.getSelectedItem();
+        List<TestCase> testCases = tg.getTestCases();
 
-		for (TestCase testCase : testCases) {
-			if(testCase.isEnabled())
-				testCase.setSelected(check);
-		}
+        for (TestCase testCase : testCases) {
+            if (testCase.isEnabled())
+                testCase.setSelected(check);
+        }
 
-		fillTestList(testCases);
-	}
+        fillTestList(testCases);
+    }
 
-	private void fillTestList(List<TestCase> testCases) {
-		TestCaseAdapter testCaseAdapter = (TestCaseAdapter) mTestCaseList.getAdapter();
+    private void fillTestList(List<TestCase> testCases) {
+        TestCaseAdapter testCaseAdapter = (TestCaseAdapter) mTestCaseList.getAdapter();
 
-		testCaseAdapter.clear();
-		for (TestCase testCase : testCases) {
-			testCaseAdapter.add(testCase);
-		}
-	}
+        testCaseAdapter.clear();
+        for (TestCase testCase : testCases) {
+            testCaseAdapter.add(testCase);
+        }
+    }
 
-	private void runTests() {
-		TestGroup group = (TestGroup) mTestGroupSpinner.getSelectedItem();
+    private void runTests() {
+        TestGroup group = (TestGroup) mTestGroupSpinner.getSelectedItem();
 
-		group.runTests(new TestExecutionCallback() {
+        group.runTests(new TestExecutionCallback() {
 
-			@Override
-			public void onTestStart(TestCase test) {
-				TestCaseAdapter adapter = (TestCaseAdapter) mTestCaseList.getAdapter();
-				adapter.notifyDataSetChanged();
-				log("TEST START", test.getName());
-			}
+            @Override
+            public void onTestStart(TestCase test) {
+                TestCaseAdapter adapter = (TestCaseAdapter) mTestCaseList.getAdapter();
+                adapter.notifyDataSetChanged();
+                log("TEST START", test.getName());
+            }
 
-			@Override
-			public void onTestGroupComplete(TestGroup group, List<TestResult> results) {
-				log("TEST GROUP COMPLETED", group.getName() + " - " + group.getStatus().toString());
-				logSeparator();
+            @Override
+            public void onTestGroupComplete(TestGroup group, List<TestResult> results) {
+                log("TEST GROUP COMPLETED", group.getName() + " - " + group.getStatus().toString());
+                logSeparator();
 
-				if(mIsAutomatedRun){
-					postResults(results);
-				}
-			}
+                if (mIsAutomatedRun) {
+                    postResults(results);
+                }
+            }
 
-			@Override
-			public void onTestComplete(TestCase test, TestResult result) {
-				Throwable e = result.getException();
-				String exMessage = "-";
-				if (e != null) {
-					StringBuilder sb = new StringBuilder();
-					while (e != null) {
-						sb.append(e.getClass().getSimpleName() + ": ");
-						sb.append(e.getMessage());
-						sb.append(" // ");
-						e = e.getCause();
-					}
+            @Override
+            public void onTestComplete(TestCase test, TestResult result) {
+                Throwable e = result.getException();
+                String exMessage = "-";
+                if (e != null) {
+                    StringBuilder sb = new StringBuilder();
+                    while (e != null) {
+                        sb.append(e.getClass().getSimpleName() + ": ");
+                        sb.append(e.getMessage());
+                        sb.append(" // ");
+                        e = e.getCause();
+                    }
 
-					exMessage = sb.toString();
-				}
+                    exMessage = sb.toString();
+                }
 
-				final TestCaseAdapter adapter = (TestCaseAdapter) mTestCaseList.getAdapter();
+                final TestCaseAdapter adapter = (TestCaseAdapter) mTestCaseList.getAdapter();
 
-				runOnUiThread(new Runnable() {
+                runOnUiThread(new Runnable() {
 
-					@Override
-					public void run() {
-						adapter.notifyDataSetChanged();
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
 
-					}
+                    }
 
-				});
-				log("TEST LOG", test.getLog());
-				log("TEST COMPLETED", test.getName() + " - " + result.getStatus().toString()
-						+ " - Ex: " + exMessage);
-				logSeparator();
-			}
-		}, mIsAutomatedRun);
+                });
+                log("TEST LOG", test.getLog());
+                log("TEST COMPLETED", test.getName() + " - " + result.getStatus().toString()
+                        + " - Ex: " + exMessage);
+                logSeparator();
+            }
+        }, mIsAutomatedRun);
 
-	}
+    }
 
-	private void logSeparator() {
-		mLog.append("\n");
-		mLog.append("----\n");
-		mLog.append("\n");
-	}
+    private void logSeparator() {
+        mLog.append("\n");
+        mLog.append("----\n");
+        mLog.append("\n");
+    }
 
-	@SuppressWarnings("unused")
-	private void log(String content) {
-		log("Info", content);
-	}
+    @SuppressWarnings("unused")
+    private void log(String content) {
+        log("Info", content);
+    }
 
-	private void log(String title, String content) {
-		String message = title + " - " + content;
-		Log.d("OFFICE-SDK-INTEGRATION", message);
+    private void log(String title, String content) {
+        String message = title + " - " + content;
+        Log.d("OFFICE-SDK-INTEGRATION", message);
 
-		mLog.append(message);
-		mLog.append('\n');
-	}
+        mLog.append(message);
+        mLog.append('\n');
+    }
 
-	private void postResults(List<TestResult> results){
-		TestResultsPostManager manager = new TestResultsPostManager(mPostUrl);
-		manager.InformResults(results);
-	}
+    private void postResults(List<TestResult> results) {
+        TestResultsPostManager manager = new TestResultsPostManager(mPostUrl);
+        manager.InformResults(results);
+    }
 
-	private void checkForCIServer(){
-		Bundle extras = this.getIntent ( ).getExtras ( );
-		if ( extras != null){
-			if( extras.containsKey( "runForCI" ) && extras.getString("runForCI", "false").equalsIgnoreCase("true"))
-			{
-				if(extras.getString("postUrl", null) != null)
-				{
-					mIsAutomatedRun = true;
-					mPostUrl = extras.getString("postUrl");
-					changeCheckAllTests(true);
-					runTests();
-				}
-			}
-		}
-	}
+    private void checkForCIServer() {
+        Bundle extras = this.getIntent().getExtras();
+        if (extras != null) {
+            if (extras.containsKey("runForCI") && extras.getString("runForCI", "false").equalsIgnoreCase("true")) {
+                if (extras.getString("postUrl", null) != null) {
+                    mIsAutomatedRun = true;
+                    mPostUrl = extras.getString("postUrl");
+                    changeCheckAllTests(true);
+                    runTests();
+                }
+            }
+        }
+    }
 
-	/**
-	 * Creates a dialog and shows it
-	 *
-	 * @param exception
-	 *            The exception to show in the dialog
-	 * @param title
-	 *            The dialog title
-	 */
-	@SuppressWarnings("unused")
-	private void createAndShowDialog(Exception exception, String title) {
-		createAndShowDialog(exception.toString(), title);
-	}
+    /**
+     * Creates a dialog and shows it
+     *
+     * @param exception The exception to show in the dialog
+     * @param title     The dialog title
+     */
+    @SuppressWarnings("unused")
+    private void createAndShowDialog(Exception exception, String title) {
+        createAndShowDialog(exception.toString(), title);
+    }
 
-	/**
-	 * Creates a dialog and shows it
-	 *
-	 * @param message
-	 *            The dialog message
-	 * @param title
-	 *            The dialog title
-	 */
-	private void createAndShowDialog(String message, String title) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    /**
+     * Creates a dialog and shows it
+     *
+     * @param message The dialog message
+     * @param title   The dialog title
+     */
+    private void createAndShowDialog(String message, String title) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-		builder.setMessage(message);
-		builder.setTitle(title);
-		builder.create().show();
-	}
+        builder.setMessage(message);
+        builder.setTitle(title);
+        builder.create().show();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

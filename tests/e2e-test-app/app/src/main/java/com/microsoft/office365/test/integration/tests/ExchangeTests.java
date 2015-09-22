@@ -2223,6 +2223,7 @@ public class ExchangeTests extends TestGroup {
                     // Prepare
                     Event event = getSampleEvent();
                     event.setIsAllDay(true);
+                    event.setSubject("all day event");
 
                     java.util.Calendar start = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 
@@ -2252,11 +2253,12 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
+                    /*
                     client.getMe()
                             .getEvents()
                             .getById(addedEvent.getId())
                             .delete().get();
-
+                    */
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
