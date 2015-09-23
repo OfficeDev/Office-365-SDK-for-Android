@@ -34,11 +34,11 @@ dependencies {
         exclude group: 'com.android.support'
     }
     compile 'com.microsoft.services:outlook-services:1.0.1-SNAPSHOT'
-    compile 'com.microsoft.services:directory-services:0.16.0-SNAPSHOT'
-    compile 'com.microsoft.services:discovery-services:1.0.0'
+    compile 'com.microsoft.services:directory-services:0.16.1-SNAPSHOT'
+    compile 'com.microsoft.services:discovery-services:1.0.1-SNAPSHOT'
+    compile 'com.microsoft.services:onenote-services:0.15.1-SNAPSHOT'
+    compile 'com.microsoft.services:graph-services:0.2.6-SNAPSHOT'
+    compile 'com.microsoft.services:files-services:1.0.1-SNAPSHOT'
     compile 'com.microsoft.services:sharepoint-services:1.0.0'
-    compile 'com.microsoft.services:onenote-services:0.15.0'
-    compile 'com.microsoft.services:graph-services:0.2.4'
-    compile 'com.microsoft.services:files-services:1.0.0'
 }
 
