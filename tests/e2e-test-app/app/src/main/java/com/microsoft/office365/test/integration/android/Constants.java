@@ -45,4 +45,5 @@ public class Constants {
     public static final String PREFERENCE_TEST_MAIL="prefTestMail";
     public static final String PREFERENCE_BASIC_TOKEN="prefBasicToken";
     public static final String PREFERENCE_LIVESDK_CLIENT_ID = "prefLiveSDKClientId";
+    public static final String LOG_TAG = "Office-SDK";
 }

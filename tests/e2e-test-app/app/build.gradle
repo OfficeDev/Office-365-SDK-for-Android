@@ -37,7 +37,7 @@ dependencies {
     }
 
     compile 'com.microsoft.services.msa:msa-auth:0.8.0'
-    compile (group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.2.0', ext:'aar', changing: 'true'){
+    compile (group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.2.1-SNAPSHOT', ext:'aar', changing: 'true'){
         transitive = true
     }
 
