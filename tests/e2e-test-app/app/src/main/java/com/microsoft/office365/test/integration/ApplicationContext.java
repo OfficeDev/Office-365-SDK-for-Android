@@ -23,17 +23,18 @@ import com.microsoft.office365.test.integration.framework.TestResult;
 
 import com.microsoft.services.directory.fetchers.DirectoryClient;
 import com.microsoft.services.msa.LiveAuthClient;
-import com.microsoft.services.orc.core.DependencyResolver;
-import com.microsoft.services.orc.log.LogLevel;
-import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
-import com.microsoft.services.orc.resolvers.DefaultDependencyResolver;
 
 
 import com.microsoft.services.discovery.fetchers.DiscoveryClient;
 import com.microsoft.services.files.fetchers.FilesClient;
 import com.microsoft.services.graph.fetchers.GraphServiceClient;
-import com.microsoft.services.orc.resolvers.MSAAuthDependencyResolver;
-import com.microsoft.services.orc.resolvers.OkHttpDependencyResolver;
+import com.microsoft.services.orc.auth.AuthenticationCredentials;
+import com.microsoft.services.orc.auth.MSAAuthentication;
+import com.microsoft.services.orc.core.DependencyResolver;
+import com.microsoft.services.orc.http.Credentials;
+import com.microsoft.services.orc.http.impl.OAuthCredentials;
+import com.microsoft.services.orc.http.impl.OkHttpTransport;
+import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
 import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.services.sharepoint.ListClient;
@@ -53,14 +54,14 @@ public class ApplicationContext {
     public static AuthenticationContext mAADAuthContext = null;
     public static LiveAuthClient mLiveAuthContext = null;
 
-     final static String[] scopes = {
-             // https://msdn.microsoft.com/en-us/library/hh243646.aspx
+    final static String[] scopes = {
+            // https://msdn.microsoft.com/en-us/library/hh243646.aspx
             "wl.signin",
             "wl.basic",
             "wl.offline_access",
             "wl.skydrive_update",
             "wl.contacts_create",
-             "office.onenote_create"
+            "office.onenote_create"
     };
 
     public static void initialize(Activity activity) {
@@ -245,7 +246,6 @@ public class ApplicationContext {
     }
 
 
-
     public static DirectoryClient getDirectoryClient() {
         return getTClientAAD(getDirectoryServerUrl(), getDirectoryEndpointUrl(), DirectoryClient.class);
     }
@@ -338,31 +338,28 @@ public class ApplicationContext {
 
     private static DependencyResolver getDependencyResolver(final String token) {
 
-        DependencyResolver dependencyResolver = new OkHttpDependencyResolver(token);
-
-        dependencyResolver.getLogger().setEnabled(true);
-        dependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
-        return dependencyResolver;
+        return new DependencyResolver.Builder(
+                new OkHttpTransport(), new GsonSerializer(),
+                new AuthenticationCredentials() {
+                    @Override
+                    public Credentials getCredentials() {
+                        return new OAuthCredentials(token);
+                    }
+                }).build();
     }
 
-    private static MSAAuthDependencyResolver liveAuthDependencyResolver;
+    private static DependencyResolver getLiveAuthDependencyResolver() {
 
-    private static MSAAuthDependencyResolver getLiveAuthDependencyResolver() {
-        if (liveAuthDependencyResolver == null) {
-            LiveAuthClient theAuthClient = new LiveAuthClient(mActivity.getApplicationContext(), getLiveSDKClientId(), Arrays.asList(scopes));
-            liveAuthDependencyResolver = new MSAAuthDependencyResolver(theAuthClient);
-
-            try {
-                liveAuthDependencyResolver.interactiveInitialize(mActivity).get();
-            } catch (ExecutionException | InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            liveAuthDependencyResolver.getLogger().setEnabled(true);
-            liveAuthDependencyResolver.getLogger().setLogLevel(LogLevel.VERBOSE);
+        LiveAuthClient theAuthClient = new LiveAuthClient(mActivity.getApplicationContext(), getLiveSDKClientId(), Arrays.asList(scopes));
+        MSAAuthentication msaAuthentication = new MSAAuthentication(theAuthClient);
+        try {
+            msaAuthentication.interactiveInitialize(mActivity).get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
         }
-
-        return liveAuthDependencyResolver;
+        return new DependencyResolver.Builder(
+                new OkHttpTransport(), new GsonSerializer(),
+                new MSAAuthentication(theAuthClient)).build();
     }
 
     public static File createTempFile(long sizeInKb) throws IOException {
@@ -382,13 +379,13 @@ public class ApplicationContext {
         return tempFile;
     }
 
-    public static OneNoteApiClient getOneNoteApiClient(){
+    public static OneNoteApiClient getOneNoteApiClient() {
         return getTClientLiveSDK(getOneNoteEndpoint(), OneNoteApiClient.class);
     }
 
-    public static GraphServiceClient getGraphServiceClient(){
+    public static GraphServiceClient getGraphServiceClient() {
         return getTClientAAD(getGraphServerUrl(), getGraphEndpointUrl(), GraphServiceClient.class);
-}
+    }
 
     private static <TClient> TClient getTClientLiveSDK(final String endpointUrl, final Class<TClient> clientClass) {
 
@@ -402,7 +399,7 @@ public class ApplicationContext {
         TClient client = null;
         try {
             client = clientClass.getDeclaredConstructor(String.class, DependencyResolver.class)
-                                    .newInstance(endpointUrl, getLiveAuthDependencyResolver());
+                    .newInstance(endpointUrl, getLiveAuthDependencyResolver());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 <resources>
 
     <string name="title_activity_office_preference">Settings</string>
+    <string name="title_activity_office_log">Log</string>
 
     <!-- General settings -->
     <string name="pref_header_general">General</string>

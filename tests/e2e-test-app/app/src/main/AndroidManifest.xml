@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.microsoft.office365.test.integration" >
+    package="com.microsoft.office365.test.integration">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
+
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".android.MainActivity"
+            android:name="com.microsoft.office365.test.integration.android.MainActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,24 +24,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".android.OfficePreferenceActivity"
-            android:label="@string/title_activity_office_preference" >
-        </activity>
+            android:name="com.microsoft.office365.test.integration.android.OfficePreferenceActivity"
+            android:label="@string/title_activity_office_preference"></activity>
         <activity
-            android:name=".AADSettingsActivity"
-            android:label="@string/title_activity_aad_settings" >
+            android:name="com.microsoft.office365.test.integration.android.LogActivity"
+            android:label="@string/title_activity_office_log"></activity>
+        <activity
+            android:name="com.microsoft.office365.test.integration.AADSettingsActivity"
+            android:label="@string/title_activity_aad_settings">
             <intent-filter>
                 <action android:name=".activities.AADSettingsActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.microsoft.aad.adal.AuthenticationActivity" >
-        </activity>
-        <activity
-            android:name=".android.LogActivity"
-            android:label="@string/title_activity_log" >
-        </activity>
+        <activity android:name="com.microsoft.aad.adal.AuthenticationActivity"></activity>
     </application>
+
+    <logback>
+        <configuration>
+            <appender
+                name="LOGCAT"
+                class="ch.qos.logback.classic.android.LogcatAppender">
+                <tagEncoder>
+                    <pattern>%logger{0}</pattern>
+                </tagEncoder>
+                <encoder>
+                    <pattern>[ %thread ] %msg%n</pattern>
+                </encoder>
+            </appender>
+
+            <root level="INFO">
+                <appender-ref ref="LOGCAT" />
+            </root>
+
+            <appender
+                name="FILE"
+                class="ch.qos.logback.core.FileAppender">
+                <file>/sdcard/testFile.log</file>
+                <append>true</append>
+                <encoder>
+                    <pattern>[ %thread ] %msg%n</pattern>
+                </encoder>
+            </appender>
+
+            <root level="DEBUG">
+                <appender-ref ref="FILE" />
+            </root>
+        </configuration>
+
+    </logback>
+
 
 </manifest>

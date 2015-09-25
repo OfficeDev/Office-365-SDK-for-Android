@@ -9,7 +9,7 @@
     <string name="prefDirectoryResourceUrl">https://sample-directory-resource.com/</string>
     <string name="prefDirectoryEndpoint">https://sample-directory-resource.com/endpoint/</string>
     <string name="prefTestMail">testmail@microsoft.com</string>
-    <string name="prefSharepointUrl">https://sample-sharepoint-resource.com/</string>
+    <string name="prefSharePointUrl">https://sample-sharepoint-resource.com/</string>
     <string name="prefSiteRelativeUrl">/</string>
     <string name="prefListName">TestEnd2EndLib</string>
     <string name="prefDocumentListName">TestEnd2EndDocLib</string>

@@ -30,23 +30,15 @@ android {
 
 dependencies {
     compile 'com.android.support:support-v4:22.2.0'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.google.code.gson:gson:2.3'
     compile('com.microsoft.aad:adal:1.1.7') {
         exclude group: 'com.android.support'
     }
-
-    compile 'com.microsoft.services.msa:msa-auth:0.8.0'
-    compile (group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.2.1-SNAPSHOT', ext:'aar', changing: 'true'){
-        transitive = true
-    }
-
-    compile 'com.microsoft.services:outlook-services:1.0.0'
-    compile 'com.microsoft.services:directory-services:0.16.0-SNAPSHOT'
-    compile 'com.microsoft.services:discovery-services:1.0.0'
+    compile 'com.microsoft.services:outlook-services:1.0.1-SNAPSHOT'
+    compile 'com.microsoft.services:directory-services:0.16.1-SNAPSHOT'
+    compile 'com.microsoft.services:discovery-services:1.0.1-SNAPSHOT'
+    compile 'com.microsoft.services:onenote-services:0.15.1-SNAPSHOT'
+    compile 'com.microsoft.services:graph-services:0.2.6-SNAPSHOT'
+    compile 'com.microsoft.services:files-services:1.0.1-SNAPSHOT'
     compile 'com.microsoft.services:sharepoint-services:1.0.0'
-    compile 'com.microsoft.services:onenote-services:0.15.0'
-    compile 'com.microsoft.services:graph-services:0.2.4'
-    compile 'com.microsoft.services:files-services:1.0.0'
 }
 
