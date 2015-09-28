@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.google.common.io.ByteStreams;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -40,6 +39,9 @@ import com.microsoft.services.onenote.fetchers.OneNoteApiClient;
 import com.microsoft.services.sharepoint.ListClient;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -50,9 +52,10 @@ import java.util.concurrent.ExecutionException;
 
 public class ApplicationContext {
 
+    static Logger logger = LoggerFactory.getLogger(ApplicationContext.class);
+
     private static Activity mActivity;
     public static AuthenticationContext mAADAuthContext = null;
-    public static LiveAuthClient mLiveAuthContext = null;
 
     final static String[] scopes = {
             // https://msdn.microsoft.com/en-us/library/hh243646.aspx
@@ -69,7 +72,7 @@ public class ApplicationContext {
         try {
             mAADAuthContext = new AuthenticationContext(mActivity, Constants.AUTHORITY_URL, true);
         } catch (Throwable e) {
-            Log.e("E2ETestApp", "Error creating AuthenticationContext: " + e.getMessage());
+            logger.error("E2ETestApp", "Error creating AuthenticationContext: " + e.getMessage(), e);
         }
     }
 
@@ -299,7 +302,7 @@ public class ApplicationContext {
         try {
             return future.get();
         } catch (Throwable t) {
-            Log.e(Constants.TAG, t.getMessage());
+            logger.error(Constants.TAG, t.getMessage(), t);
             return null;
         }
     }
@@ -331,7 +334,7 @@ public class ApplicationContext {
         try {
             return future.get();
         } catch (Throwable t) {
-            Log.e(Constants.TAG, t.getMessage());
+            logger.error(Constants.TAG, t.getMessage(), t);
             return null;
         }
     }
