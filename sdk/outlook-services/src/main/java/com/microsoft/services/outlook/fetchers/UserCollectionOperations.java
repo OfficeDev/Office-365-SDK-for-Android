@@ -19,12 +19,13 @@ import com.microsoft.services.outlook.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
+import com.microsoft.services.orc.serialization.JsonSerializer;
 import static com.microsoft.services.orc.core.Helpers.*;
 
 /**
  * The type UserCollectionOperations
  */
-public class UserCollectionOperations extends EntityCollectionOperations{
+public class UserCollectionOperations extends DirectoryObjectCollectionOperations{
 
     /**
      * Instantiates a new UserCollectionOperations.

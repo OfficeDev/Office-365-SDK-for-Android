@@ -19,6 +19,7 @@ import com.microsoft.services.outlook.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.http.*;
+import com.microsoft.services.orc.serialization.JsonSerializer;
 import static com.microsoft.services.orc.core.Helpers.*;
 
 /**

@@ -71,5 +71,9 @@ public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
     public ContactFetcher asContact(){
         return new ContactFetcher(this.urlComponent, this.parent);
     }   
+
+    public PostFetcher asPost(){
+        return new PostFetcher(this.urlComponent, this.parent);
+    }   
     
 }

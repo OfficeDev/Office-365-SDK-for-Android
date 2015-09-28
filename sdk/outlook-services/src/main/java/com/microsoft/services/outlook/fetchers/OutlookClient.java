@@ -68,6 +68,14 @@ public class OutlookClient extends BaseOrcContainer {
         return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("Users", this, User.class,UserCollectionOperations.class);
     }
      /**
+     * Gets Group.
+     *
+     * @return the Group
+     */
+    public OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations> getGroups() {
+        return new OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations>("Groups", this, Group.class,GroupCollectionOperations.class);
+    }
+     /**
      * Gets Me.
      *
      * @return the Me

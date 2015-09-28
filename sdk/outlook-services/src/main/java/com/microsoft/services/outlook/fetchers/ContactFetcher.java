@@ -59,5 +59,13 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
         return this;
     }
 
-        
+             /**
+     * Gets contactphoto.
+     *
+     * @return the contact photo
+     */
+    public PhotoFetcher getContactPhoto() {
+        return new PhotoFetcher("ContactPhoto", this);
+    }
+
 }

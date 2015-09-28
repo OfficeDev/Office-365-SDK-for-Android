@@ -24,6 +24,28 @@ public class Message extends Item {
         setODataType("#Microsoft.OutlookServices.Message");
     }
             
+    private Boolean HasAttachments;
+     
+    /**
+    * Gets the Has Attachments.
+    *
+    * @return the Boolean
+    */
+    public Boolean getHasAttachments() {
+        return this.HasAttachments; 
+    }
+
+    /**
+    * Sets the Has Attachments.
+    *
+    * @param value the Boolean
+    */
+    public void setHasAttachments(Boolean value) { 
+        this.HasAttachments = value; 
+        valueChanged("HasAttachments", value);
+
+    }
+            
     private String Subject;
      
     /**
@@ -112,28 +134,6 @@ public class Message extends Item {
 
     }
             
-    private Boolean HasAttachments;
-     
-    /**
-    * Gets the Has Attachments.
-    *
-    * @return the Boolean
-    */
-    public Boolean getHasAttachments() {
-        return this.HasAttachments; 
-    }
-
-    /**
-    * Sets the Has Attachments.
-    *
-    * @param value the Boolean
-    */
-    public void setHasAttachments(Boolean value) { 
-        this.HasAttachments = value; 
-        valueChanged("HasAttachments", value);
-
-    }
-            
     private String ParentFolderId;
      
     /**
@@ -156,28 +156,6 @@ public class Message extends Item {
 
     }
             
-    private Recipient From;
-     
-    /**
-    * Gets the From.
-    *
-    * @return the Recipient
-    */
-    public Recipient getFrom() {
-        return this.From; 
-    }
-
-    /**
-    * Sets the From.
-    *
-    * @param value the Recipient
-    */
-    public void setFrom(Recipient value) { 
-        this.From = value; 
-        valueChanged("From", value);
-
-    }
-            
     private Recipient Sender;
      
     /**
@@ -197,6 +175,28 @@ public class Message extends Item {
     public void setSender(Recipient value) { 
         this.Sender = value; 
         valueChanged("Sender", value);
+
+    }
+            
+    private Recipient From;
+     
+    /**
+    * Gets the From.
+    *
+    * @return the Recipient
+    */
+    public Recipient getFrom() {
+        return this.From; 
+    }
+
+    /**
+    * Sets the From.
+    *
+    * @param value the Recipient
+    */
+    public void setFrom(Recipient value) { 
+        this.From = value; 
+        valueChanged("From", value);
 
     }
     
@@ -344,50 +344,6 @@ public class Message extends Item {
 
     }
             
-    private java.util.Calendar DateTimeReceived;
-     
-    /**
-    * Gets the Date Time Received.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeReceived() {
-        return this.DateTimeReceived; 
-    }
-
-    /**
-    * Sets the Date Time Received.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeReceived(java.util.Calendar value) { 
-        this.DateTimeReceived = value; 
-        valueChanged("DateTimeReceived", value);
-
-    }
-            
-    private java.util.Calendar DateTimeSent;
-     
-    /**
-    * Gets the Date Time Sent.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeSent() {
-        return this.DateTimeSent; 
-    }
-
-    /**
-    * Sets the Date Time Sent.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeSent(java.util.Calendar value) { 
-        this.DateTimeSent = value; 
-        valueChanged("DateTimeSent", value);
-
-    }
-            
     private Boolean IsDeliveryReceiptRequested;
      
     /**
@@ -432,6 +388,28 @@ public class Message extends Item {
 
     }
             
+    private Boolean IsRead;
+     
+    /**
+    * Gets the Is Read.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsRead() {
+        return this.IsRead; 
+    }
+
+    /**
+    * Sets the Is Read.
+    *
+    * @param value the Boolean
+    */
+    public void setIsRead(Boolean value) { 
+        this.IsRead = value; 
+        valueChanged("IsRead", value);
+
+    }
+            
     private Boolean IsDraft;
      
     /**
@@ -454,25 +432,47 @@ public class Message extends Item {
 
     }
             
-    private Boolean IsRead;
+    private java.util.Calendar DateTimeReceived;
      
     /**
-    * Gets the Is Read.
+    * Gets the Date Time Received.
     *
-    * @return the Boolean
+    * @return the java.util.Calendar
     */
-    public Boolean getIsRead() {
-        return this.IsRead; 
+    public java.util.Calendar getDateTimeReceived() {
+        return this.DateTimeReceived; 
     }
 
     /**
-    * Sets the Is Read.
+    * Sets the Date Time Received.
     *
-    * @param value the Boolean
+    * @param value the java.util.Calendar
     */
-    public void setIsRead(Boolean value) { 
-        this.IsRead = value; 
-        valueChanged("IsRead", value);
+    public void setDateTimeReceived(java.util.Calendar value) { 
+        this.DateTimeReceived = value; 
+        valueChanged("DateTimeReceived", value);
+
+    }
+            
+    private java.util.Calendar DateTimeSent;
+     
+    /**
+    * Gets the Date Time Sent.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getDateTimeSent() {
+        return this.DateTimeSent; 
+    }
+
+    /**
+    * Sets the Date Time Sent.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setDateTimeSent(java.util.Calendar value) { 
+        this.DateTimeSent = value; 
+        valueChanged("DateTimeSent", value);
 
     }
             

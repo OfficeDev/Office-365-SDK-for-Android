@@ -61,24 +61,6 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
 
         
      /**
-     * Gets child folders.
-     *
-     * @return the child folders
-     */
-    public OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getChildFolders() {
-        return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class);
-    }
-
-    /**
-     * Gets child folder.
-     *
-     * @return the child folder
-     */
-    public FolderFetcher getChildFolder(String id){
-         return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets messages.
      *
      * @return the messages
@@ -94,6 +76,24 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
      */
     public MessageFetcher getMessage(String id){
          return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets child folders.
+     *
+     * @return the child folders
+     */
+    public OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getChildFolders() {
+        return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class);
+    }
+
+    /**
+     * Gets child folder.
+     *
+     * @return the child folder
+     */
+    public FolderFetcher getChildFolder(String id){
+         return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class).getById(id);
     }
 
 }

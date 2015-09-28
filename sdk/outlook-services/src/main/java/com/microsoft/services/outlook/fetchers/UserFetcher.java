@@ -61,21 +61,21 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
 
         
      /**
-     * Gets folders.
+     * Gets subscriptions.
      *
-     * @return the folders
+     * @return the subscriptions
      */
-    public OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getFolders() {
-        return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("Folders", this, Folder.class, FolderCollectionOperations.class);
+    public OrcCollectionFetcher<Subscription, SubscriptionFetcher, SubscriptionCollectionOperations> getSubscriptions() {
+        return new OrcCollectionFetcher<Subscription, SubscriptionFetcher, SubscriptionCollectionOperations>("Subscriptions", this, Subscription.class, SubscriptionCollectionOperations.class);
     }
 
     /**
-     * Gets folder.
+     * Gets subscription.
      *
-     * @return the folder
+     * @return the subscription
      */
-    public FolderFetcher getFolder(String id){
-         return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("Folders", this, Folder.class, FolderCollectionOperations.class).getById(id);
+    public SubscriptionFetcher getSubscription(String id){
+         return new OrcCollectionFetcher<Subscription, SubscriptionFetcher, SubscriptionCollectionOperations>("Subscriptions", this, Subscription.class, SubscriptionCollectionOperations.class).getById(id);
     }
 
      /**
@@ -95,13 +95,49 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     public MessageFetcher getMessage(String id){
          return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
     }
+
      /**
-     * Gets rootfolder.
+     * Gets joined groups.
      *
-     * @return the root folder
+     * @return the joined groups
      */
-    public FolderFetcher getRootFolder() {
-        return new FolderFetcher("RootFolder", this);
+    public OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations> getJoinedGroups() {
+        return new OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations>("JoinedGroups", this, Group.class, GroupCollectionOperations.class);
+    }
+
+    /**
+     * Gets joined group.
+     *
+     * @return the joined group
+     */
+    public GroupFetcher getJoinedGroup(String id){
+         return new OrcCollectionFetcher<Group, GroupFetcher, GroupCollectionOperations>("JoinedGroups", this, Group.class, GroupCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets folders.
+     *
+     * @return the folders
+     */
+    public OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getFolders() {
+        return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("Folders", this, Folder.class, FolderCollectionOperations.class);
+    }
+
+    /**
+     * Gets folder.
+     *
+     * @return the folder
+     */
+    public FolderFetcher getFolder(String id){
+         return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("Folders", this, Folder.class, FolderCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets calendar.
+     *
+     * @return the calendar
+     */
+    public CalendarFetcher getCalendar() {
+        return new CalendarFetcher("Calendar", this);
     }
 
      /**
@@ -120,14 +156,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public CalendarFetcher getCalendar(String id){
          return new OrcCollectionFetcher<Calendar, CalendarFetcher, CalendarCollectionOperations>("Calendars", this, Calendar.class, CalendarCollectionOperations.class).getById(id);
-    }
-     /**
-     * Gets calendar.
-     *
-     * @return the calendar
-     */
-    public CalendarFetcher getCalendar() {
-        return new CalendarFetcher("Calendar", this);
     }
 
      /**
@@ -149,24 +177,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
-     * Gets events.
-     *
-     * @return the events
-     */
-    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getEvents() {
-        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class);
-    }
-
-    /**
-     * Gets event.
-     *
-     * @return the event
-     */
-    public EventFetcher getEvent(String id){
-         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets calendar view.
      *
      * @return the calendar view
@@ -182,6 +192,24 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public EventFetcher getCalendarView(String id){
          return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets events.
+     *
+     * @return the events
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getEvents() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets event.
+     *
+     * @return the event
+     */
+    public EventFetcher getEvent(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
     }
 
      /**
@@ -218,6 +246,40 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public ContactFolderFetcher getContactFolder(String id){
          return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets rootfolder.
+     *
+     * @return the root folder
+     */
+    public FolderFetcher getRootFolder() {
+        return new FolderFetcher("RootFolder", this);
+    }
+     /**
+     * Gets userphoto.
+     *
+     * @return the user photo
+     */
+    public PhotoFetcher getUserPhoto() {
+        return new PhotoFetcher("UserPhoto", this);
+    }
+
+     /**
+     * Gets user photos.
+     *
+     * @return the user photos
+     */
+    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getUserPhotos() {
+        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class);
+    }
+
+    /**
+     * Gets user photo.
+     *
+     * @return the user photo
+     */
+    public PhotoFetcher getUserPhoto(String id){
+         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
     }
 
 }

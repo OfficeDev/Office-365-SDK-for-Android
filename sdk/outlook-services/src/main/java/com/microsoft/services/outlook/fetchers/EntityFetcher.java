@@ -68,8 +68,8 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new ItemFetcher(this.urlComponent, this.parent);
     }   
 
-    public UserFetcher asUser(){
-        return new UserFetcher(this.urlComponent, this.parent);
+    public DirectoryObjectFetcher asDirectoryObject(){
+        return new DirectoryObjectFetcher(this.urlComponent, this.parent);
     }   
 
     public FolderFetcher asFolder(){
@@ -86,6 +86,26 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
 
     public ContactFolderFetcher asContactFolder(){
         return new ContactFolderFetcher(this.urlComponent, this.parent);
+    }   
+
+    public PhotoFetcher asPhoto(){
+        return new PhotoFetcher(this.urlComponent, this.parent);
+    }   
+
+    public SubscriptionFetcher asSubscription(){
+        return new SubscriptionFetcher(this.urlComponent, this.parent);
+    }   
+
+    public NotificationFetcher asNotification(){
+        return new NotificationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ConversationFetcher asConversation(){
+        return new ConversationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ConversationThreadFetcher asConversationThread(){
+        return new ConversationThreadFetcher(this.urlComponent, this.parent);
     }   
     
 }

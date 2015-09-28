@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type UserOperations.
  */
-public class UserOperations extends EntityOperations {
+public class UserOperations extends DirectoryObjectOperations {
 
      /**
       * Instantiates a new UserOperations.
