@@ -47,6 +47,7 @@ import com.microsoft.office365.test.integration.framework.TestLog;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestResultsPostManager;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.office365.test.integration.tests.GraphTests;
 import com.microsoft.office365.test.integration.tests.OutlookClientTests;
 import com.microsoft.office365.test.integration.tests.filters.OutlookFilters;
 import com.microsoft.services.orc.serialization.impl.GsonSerializer;
@@ -146,7 +147,7 @@ public class MainActivity extends Activity {
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
         */
-
+		adapter.add(new GraphTests());
         OutlookFilters outlookFilters = new OutlookFilters(exclusions.containsKey("Outlook") ? exclusions.get("Outlook") : null);
         adapter.add(new OutlookClientTests(outlookFilters.getFilters(), outlookFilters.getNotSupportedTests()));
 

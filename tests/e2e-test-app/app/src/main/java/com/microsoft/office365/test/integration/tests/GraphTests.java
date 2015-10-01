@@ -67,6 +67,8 @@ public class GraphTests extends TestGroup {
         this.addTest(canUpdateUserFiles("Can update user's files", true));
         this.addTest(canDeleteUserFiles("Can delete user's files", true));
         this.addTest(canRetrieveConversation("Can retrieve conversation from group", true));
+
+        this.addTest(canRetrievePrivilegedRoleSettings("Can retrieve privileged role settings", true));
     }
 
     private TestCase canGetApplications(String name, boolean enabled) {
@@ -113,7 +115,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Contact> contacts = client.getContacts().read().get();
+                    List<OrgContact> contacts = client.getContacts().read().get();
 
                     //Assert
                     if (contacts != null)
@@ -1404,7 +1406,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().read().get();
+                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().read().get();
 
                     //Assert
                     if (files != null)
@@ -1433,14 +1435,14 @@ public class GraphTests extends TestGroup {
 
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
-//Prepare
-                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().top(1).read().get();
+                    //Prepare
+                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().top(1).read().get();
                     String fileId;
                     if (files != null && files.size() > 0) {
                         fileId = files.get(0).getId().toString();
                         //Act
                         Item file = client.getUsers().getById(ApplicationContext.getTestMail())
-                                .getFile(fileId).read().get();
+                                .getDrive().getItem(fileId).read().get();
                         //Assert
                         if (file != null)
                             result.setStatus(TestStatus.Passed);
@@ -1472,15 +1474,17 @@ public class GraphTests extends TestGroup {
 
                     //Prepare
                     Item newFile = new Item();
-                    newFile.setType("File");
+
+                    File file = new File();
+                    newFile.setFile(file);
                     newFile.setName(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
+                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().add(newFile).get();
                     client.getUsers().getById(ApplicationContext.getTestMail())
-                            .getFiles().getById(addedFile.getId())
-                            .asFile().getOperations().uploadContent("My Content".getBytes()).get();
+                            .getDrive().getItems().getById(addedFile.getId())
+                            .getOperations().uploadContent("My Content".getBytes()).get();
 
-                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().content().get();
+                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().content().get();
 
                     //Assert
                     if (addedFile == null)
@@ -1490,7 +1494,7 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
 
                     return result;
@@ -1518,18 +1522,19 @@ public class GraphTests extends TestGroup {
 
                     //Prepare
                     Item newFile = new Item();
-                    newFile.setType("File");
+                    File file = new File();
+                    newFile.setFile(file);
                     newFile.setName(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
+                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().add(newFile).get();
                     //Prepare
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().uploadContent("My Content".getBytes()).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().uploadContent("My Content".getBytes()).get();
 
                     //Act
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().uploadContent("My other Content".getBytes()).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().uploadContent("My other Content".getBytes()).get();
 
                     //Assert
-                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().getOperations().content().get();
+                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().content().get();
 
                     String strContent = new String(content);
 
@@ -1537,7 +1542,7 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
 
                     return result;
@@ -1565,13 +1570,14 @@ public class GraphTests extends TestGroup {
 
                     //Prepare
                     Item newFile = new Item();
-                    newFile.setType("File");
+                    File file = new File();
+                    newFile.setFile(file);
                     newFile.setName(UUID.randomUUID().toString() + ".txt");
 
-                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().add(newFile).get();
+                    Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().add(newFile).get();
 
                     //Act
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getFiles().getById(addedFile.getId()).asFile().addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).addHeader(Constants.IF_MATCH_HEADER, "*").delete().get();
 
 
                     return result;
@@ -1602,6 +1608,38 @@ public class GraphTests extends TestGroup {
                     if (groups.isEmpty()) {
 
                     }
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+
+    }
+
+    private TestCase canRetrievePrivilegedRoleSettings(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    List<PrivilegedRole> privilegedRoles = client.getPrivilegedRoles().top(1).read().get();
+                    if(privilegedRoles != null){
+                        PrivilegedRoleSettings settings = client.getPrivilegedRoles().getById("").getSetting().read().get();
+                        if(settings != null){
+                            result.setStatus(TestStatus.Passed);
+                        }
+                    }
+
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
