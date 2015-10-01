@@ -60,4 +60,30 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
     }
 
         
+     /**
+     * Gets items.
+     *
+     * @return the items
+     */
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getItems() {
+        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("items", this, Item.class, ItemCollectionOperations.class);
+    }
+
+    /**
+     * Gets item.
+     *
+     * @return the item
+     */
+    public ItemFetcher getItem(String id){
+         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("items", this, Item.class, ItemCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets root.
+     *
+     * @return the root
+     */
+    public ItemFetcher getRoot() {
+        return new ItemFetcher("root", this);
+    }
+
 }

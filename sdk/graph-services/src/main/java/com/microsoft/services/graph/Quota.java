@@ -17,12 +17,12 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
- * The type Drive Quota.
+ * The type Quota.
 */
-public class DriveQuota extends ODataBaseEntity {
+public class Quota extends ODataBaseEntity {
 
-    public DriveQuota(){
-        setODataType("#Microsoft.Graph.DriveQuota");
+    public Quota(){
+        setODataType("#Microsoft.Graph.quota");
     }
 
     private Long deleted;

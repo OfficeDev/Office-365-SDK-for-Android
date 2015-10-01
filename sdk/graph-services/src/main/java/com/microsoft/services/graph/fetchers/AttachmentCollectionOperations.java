@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type AttachmentCollectionOperations
  */
-public class AttachmentCollectionOperations extends OrcOperations{
+public class AttachmentCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new AttachmentCollectionOperations.

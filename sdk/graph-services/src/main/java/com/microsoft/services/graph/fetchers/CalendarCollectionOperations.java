@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type CalendarCollectionOperations
  */
-public class CalendarCollectionOperations extends OrcOperations{
+public class CalendarCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new CalendarCollectionOperations.

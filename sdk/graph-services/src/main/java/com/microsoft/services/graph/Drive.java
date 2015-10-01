@@ -22,7 +22,29 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Drive extends ODataBaseEntity {
 
     public Drive(){
-        setODataType("#Microsoft.Graph.Drive");
+        setODataType("#Microsoft.Graph.drive");
+    }
+            
+    private String driveType;
+     
+    /**
+    * Gets the drive Type.
+    *
+    * @return the String
+    */
+    public String getDriveType() {
+        return this.driveType; 
+    }
+
+    /**
+    * Sets the drive Type.
+    *
+    * @param value the String
+    */
+    public void setDriveType(String value) { 
+        this.driveType = value; 
+        valueChanged("driveType", value);
+
     }
             
     private String id;
@@ -47,47 +69,94 @@ public class Drive extends ODataBaseEntity {
 
     }
             
-    private Identity owner;
+    private IdentitySet owner;
      
     /**
     * Gets the owner.
     *
-    * @return the Identity
+    * @return the IdentitySet
     */
-    public Identity getOwner() {
+    public IdentitySet getOwner() {
         return this.owner; 
     }
 
     /**
     * Sets the owner.
     *
-    * @param value the Identity
+    * @param value the IdentitySet
     */
-    public void setOwner(Identity value) { 
+    public void setOwner(IdentitySet value) { 
         this.owner = value; 
         valueChanged("owner", value);
 
     }
             
-    private DriveQuota quota;
+    private Quota quota;
      
     /**
     * Gets the quota.
     *
-    * @return the DriveQuota
+    * @return the Quota
     */
-    public DriveQuota getQuota() {
+    public Quota getQuota() {
         return this.quota; 
     }
 
     /**
     * Sets the quota.
     *
-    * @param value the DriveQuota
+    * @param value the Quota
     */
-    public void setQuota(DriveQuota value) { 
+    public void setQuota(Quota value) { 
         this.quota = value; 
         valueChanged("quota", value);
+
+    }
+    
+        
+    private java.util.List<Item> items = null;
+    
+    
+     
+    /**
+    * Gets the items.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getItems() {
+        return this.items; 
+    }
+
+    /**
+    * Sets the items.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setItems(java.util.List<Item> value) { 
+        this.items = value; 
+        valueChanged("items", value);
+
+    }
+            
+    private Item root;
+     
+    /**
+    * Gets the root.
+    *
+    * @return the Item
+    */
+    public Item getRoot() {
+        return this.root; 
+    }
+
+    /**
+    * Sets the root.
+    *
+    * @param value the Item
+    */
+    public void setRoot(Item value) { 
+        this.root = value; 
+        valueChanged("root", value);
 
     }
 }

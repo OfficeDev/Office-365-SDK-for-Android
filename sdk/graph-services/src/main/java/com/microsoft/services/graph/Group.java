@@ -89,26 +89,54 @@ public class Group extends DirectoryObject {
         valueChanged("displayName", value);
 
     }
-            
-    private String groupType;
+    
+        
+    private java.util.List<String> creationOptions = null;
+    
+    
      
     /**
-    * Gets the group Type.
+    * Gets the creation Options.
     *
-    * @return the String
+    * @return the java.util.List<String>
     */
-    public String getGroupType() {
-        return this.groupType; 
+    public java.util.List<String> getCreationOptions() {
+        return this.creationOptions; 
     }
 
     /**
-    * Sets the group Type.
+    * Sets the creation Options.
     *
-    * @param value the String
+    * @param value the java.util.List<String>
     */
-    public void setGroupType(String value) { 
-        this.groupType = value; 
-        valueChanged("groupType", value);
+    public void setCreationOptions(java.util.List<String> value) { 
+        this.creationOptions = value; 
+        valueChanged("creationOptions", value);
+
+    }
+    
+        
+    private java.util.List<String> groupTypes = null;
+    
+    
+     
+    /**
+    * Gets the group Types.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getGroupTypes() {
+        return this.groupTypes; 
+    }
+
+    /**
+    * Sets the group Types.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setGroupTypes(java.util.List<String> value) { 
+        this.groupTypes = value; 
+        valueChanged("groupTypes", value);
 
     }
             
@@ -762,27 +790,124 @@ public class Group extends DirectoryObject {
     }
     
         
-    private java.util.List<Item> files = null;
+    private java.util.List<DirectoryObject> AcceptedSenders = null;
     
     
      
     /**
-    * Gets the files.
+    * Gets the Accepted Senders.
     *
-    * @return the java.util.List<Item>
+    * @return the java.util.List<DirectoryObject>
     */
-    public java.util.List<Item> getFiles() {
-        return this.files; 
+    public java.util.List<DirectoryObject> getAcceptedSenders() {
+        return this.AcceptedSenders; 
     }
 
     /**
-    * Sets the files.
+    * Sets the Accepted Senders.
     *
-    * @param value the java.util.List<Item>
+    * @param value the java.util.List<DirectoryObject>
     */
-    public void setFiles(java.util.List<Item> value) { 
-        this.files = value; 
-        valueChanged("files", value);
+    public void setAcceptedSenders(java.util.List<DirectoryObject> value) { 
+        this.AcceptedSenders = value; 
+        valueChanged("AcceptedSenders", value);
+
+    }
+    
+        
+    private java.util.List<DirectoryObject> RejectedSenders = null;
+    
+    
+     
+    /**
+    * Gets the Rejected Senders.
+    *
+    * @return the java.util.List<DirectoryObject>
+    */
+    public java.util.List<DirectoryObject> getRejectedSenders() {
+        return this.RejectedSenders; 
+    }
+
+    /**
+    * Sets the Rejected Senders.
+    *
+    * @param value the java.util.List<DirectoryObject>
+    */
+    public void setRejectedSenders(java.util.List<DirectoryObject> value) { 
+        this.RejectedSenders = value; 
+        valueChanged("RejectedSenders", value);
+
+    }
+            
+    private Drive drive;
+     
+    /**
+    * Gets the drive.
+    *
+    * @return the Drive
+    */
+    public Drive getDrive() {
+        return this.drive; 
+    }
+
+    /**
+    * Sets the drive.
+    *
+    * @param value the Drive
+    */
+    public void setDrive(Drive value) { 
+        this.drive = value; 
+        valueChanged("drive", value);
+
+    }
+    
+        
+    private java.util.List<Task> tasks = null;
+    
+    
+     
+    /**
+    * Gets the tasks.
+    *
+    * @return the java.util.List<Task>
+    */
+    public java.util.List<Task> getTasks() {
+        return this.tasks; 
+    }
+
+    /**
+    * Sets the tasks.
+    *
+    * @param value the java.util.List<Task>
+    */
+    public void setTasks(java.util.List<Task> value) { 
+        this.tasks = value; 
+        valueChanged("tasks", value);
+
+    }
+    
+        
+    private java.util.List<Plan> plans = null;
+    
+    
+     
+    /**
+    * Gets the plans.
+    *
+    * @return the java.util.List<Plan>
+    */
+    public java.util.List<Plan> getPlans() {
+        return this.plans; 
+    }
+
+    /**
+    * Sets the plans.
+    *
+    * @param value the java.util.List<Plan>
+    */
+    public void setPlans(java.util.List<Plan> value) { 
+        this.plans = value; 
+        valueChanged("plans", value);
 
     }
 }

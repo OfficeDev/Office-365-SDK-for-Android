@@ -13,37 +13,29 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
-
-
 /**
- * The type Image Facet.
+ * The Enum Setup Status.
 */
-public class ImageFacet extends ODataBaseEntity {
-
-    public ImageFacet(){
-        setODataType("#Microsoft.Graph.ImageFacet");
-    }
-
-    private java.util.Calendar dateTimeTaken;
-
+public enum SetupStatus	
+{
     /**
-    * Gets the date Time Taken.
-    *
-    * @return the java.util.Calendar
+    * Unknown
     */
-    public java.util.Calendar getDateTimeTaken() {
-        return this.dateTimeTaken; 
-    }
-
+    Unknown,
     /**
-    * Sets the date Time Taken.
-    *
-    * @param value the java.util.Calendar
+    * Not Registered Yet
     */
-    public void setDateTimeTaken(java.util.Calendar value) { 
-        this.dateTimeTaken = value;
-        valueChanged("dateTimeTaken", value);
-
-    }
+    NotRegisteredYet,
+    /**
+    * Registered Setup Not Started
+    */
+    RegisteredSetupNotStarted,
+    /**
+    * Registered Setup In Progress
+    */
+    RegisteredSetupInProgress,
+    /**
+    * Registration And Setup Completed
+    */
+    RegistrationAndSetupCompleted,
 }

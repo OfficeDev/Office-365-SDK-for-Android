@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type ContactOperations.
  */
-public class ContactOperations extends DirectoryObjectOperations {
+public class ContactOperations extends OutlookItemOperations {
 
      /**
       * Instantiates a new ContactOperations.

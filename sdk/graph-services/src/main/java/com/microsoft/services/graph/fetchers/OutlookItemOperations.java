@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type OutlookItemOperations.
  */
-public class OutlookItemOperations extends OrcOperations {
+public class OutlookItemOperations extends EntityOperations {
 
      /**
       * Instantiates a new OutlookItemOperations.

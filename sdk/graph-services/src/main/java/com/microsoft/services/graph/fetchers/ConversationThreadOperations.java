@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type ConversationThreadOperations.
  */
-public class ConversationThreadOperations extends OrcOperations {
+public class ConversationThreadOperations extends EntityOperations {
 
      /**
       * Instantiates a new ConversationThreadOperations.

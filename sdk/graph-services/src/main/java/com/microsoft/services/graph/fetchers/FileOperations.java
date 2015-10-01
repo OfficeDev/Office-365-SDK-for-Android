@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type FileOperations.
  */
-public class FileOperations extends ItemOperations {
+public class FileOperations extends OrcOperations {
 
      /**
       * Instantiates a new FileOperations.

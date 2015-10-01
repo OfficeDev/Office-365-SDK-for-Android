@@ -1361,6 +1361,31 @@ public class User extends DirectoryObject {
     }
     
         
+    private java.util.List<MailFolder> Folders = null;
+    
+    
+     
+    /**
+    * Gets the Folders.
+    *
+    * @return the java.util.List<MailFolder>
+    */
+    public java.util.List<MailFolder> getFolders() {
+        return this.Folders; 
+    }
+
+    /**
+    * Sets the Folders.
+    *
+    * @param value the java.util.List<MailFolder>
+    */
+    public void setFolders(java.util.List<MailFolder> value) { 
+        this.Folders = value; 
+        valueChanged("Folders", value);
+
+    }
+    
+        
     private java.util.List<Message> Messages = null;
     
     
@@ -1382,6 +1407,28 @@ public class User extends DirectoryObject {
     public void setMessages(java.util.List<Message> value) { 
         this.Messages = value; 
         valueChanged("Messages", value);
+
+    }
+            
+    private MailFolder RootFolder;
+     
+    /**
+    * Gets the Root Folder.
+    *
+    * @return the MailFolder
+    */
+    public MailFolder getRootFolder() {
+        return this.RootFolder; 
+    }
+
+    /**
+    * Sets the Root Folder.
+    *
+    * @param value the MailFolder
+    */
+    public void setRootFolder(MailFolder value) { 
+        this.RootFolder = value; 
+        valueChanged("RootFolder", value);
 
     }
     
@@ -1506,6 +1553,56 @@ public class User extends DirectoryObject {
         valueChanged("CalendarView", value);
 
     }
+    
+        
+    private java.util.List<Contact> Contacts = null;
+    
+    
+     
+    /**
+    * Gets the Contacts.
+    *
+    * @return the java.util.List<Contact>
+    */
+    public java.util.List<Contact> getContacts() {
+        return this.Contacts; 
+    }
+
+    /**
+    * Sets the Contacts.
+    *
+    * @param value the java.util.List<Contact>
+    */
+    public void setContacts(java.util.List<Contact> value) { 
+        this.Contacts = value; 
+        valueChanged("Contacts", value);
+
+    }
+    
+        
+    private java.util.List<ContactFolder> ContactFolders = null;
+    
+    
+     
+    /**
+    * Gets the Contact Folders.
+    *
+    * @return the java.util.List<ContactFolder>
+    */
+    public java.util.List<ContactFolder> getContactFolders() {
+        return this.ContactFolders; 
+    }
+
+    /**
+    * Sets the Contact Folders.
+    *
+    * @param value the java.util.List<ContactFolder>
+    */
+    public void setContactFolders(java.util.List<ContactFolder> value) { 
+        this.ContactFolders = value; 
+        valueChanged("ContactFolders", value);
+
+    }
             
     private Photo UserPhoto;
      
@@ -1551,6 +1648,56 @@ public class User extends DirectoryObject {
     public void setUserPhotos(java.util.List<Photo> value) { 
         this.UserPhotos = value; 
         valueChanged("UserPhotos", value);
+
+    }
+    
+        
+    private java.util.List<File> TrendingAround = null;
+    
+    
+     
+    /**
+    * Gets the Trending Around.
+    *
+    * @return the java.util.List<File>
+    */
+    public java.util.List<File> getTrendingAround() {
+        return this.TrendingAround; 
+    }
+
+    /**
+    * Sets the Trending Around.
+    *
+    * @param value the java.util.List<File>
+    */
+    public void setTrendingAround(java.util.List<File> value) { 
+        this.TrendingAround = value; 
+        valueChanged("TrendingAround", value);
+
+    }
+    
+        
+    private java.util.List<User> WorkingWith = null;
+    
+    
+     
+    /**
+    * Gets the Working With.
+    *
+    * @return the java.util.List<User>
+    */
+    public java.util.List<User> getWorkingWith() {
+        return this.WorkingWith; 
+    }
+
+    /**
+    * Sets the Working With.
+    *
+    * @param value the java.util.List<User>
+    */
+    public void setWorkingWith(java.util.List<User> value) { 
+        this.WorkingWith = value; 
+        valueChanged("WorkingWith", value);
 
     }
     
@@ -1602,27 +1749,52 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<Item> files = null;
+    private java.util.List<Task> tasks = null;
     
     
      
     /**
-    * Gets the files.
+    * Gets the tasks.
     *
-    * @return the java.util.List<Item>
+    * @return the java.util.List<Task>
     */
-    public java.util.List<Item> getFiles() {
-        return this.files; 
+    public java.util.List<Task> getTasks() {
+        return this.tasks; 
     }
 
     /**
-    * Sets the files.
+    * Sets the tasks.
     *
-    * @param value the java.util.List<Item>
+    * @param value the java.util.List<Task>
     */
-    public void setFiles(java.util.List<Item> value) { 
-        this.files = value; 
-        valueChanged("files", value);
+    public void setTasks(java.util.List<Task> value) { 
+        this.tasks = value; 
+        valueChanged("tasks", value);
+
+    }
+    
+        
+    private java.util.List<Plan> plans = null;
+    
+    
+     
+    /**
+    * Gets the plans.
+    *
+    * @return the java.util.List<Plan>
+    */
+    public java.util.List<Plan> getPlans() {
+        return this.plans; 
+    }
+
+    /**
+    * Sets the plans.
+    *
+    * @param value the java.util.List<Plan>
+    */
+    public void setPlans(java.util.List<Plan> value) { 
+        this.plans = value; 
+        valueChanged("plans", value);
 
     }
 }

@@ -22,7 +22,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Item extends ODataBaseEntity {
 
     public Item(){
-        setODataType("#Microsoft.Graph.Item");
+        setODataType("#Microsoft.Graph.item");
     }
             
     private IdentitySet createdBy;
@@ -44,6 +44,50 @@ public class Item extends ODataBaseEntity {
     public void setCreatedBy(IdentitySet value) { 
         this.createdBy = value; 
         valueChanged("createdBy", value);
+
+    }
+            
+    private java.util.Calendar createdDateTime;
+     
+    /**
+    * Gets the created Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getCreatedDateTime() {
+        return this.createdDateTime; 
+    }
+
+    /**
+    * Sets the created Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setCreatedDateTime(java.util.Calendar value) { 
+        this.createdDateTime = value; 
+        valueChanged("createdDateTime", value);
+
+    }
+            
+    private Deleted deleted;
+     
+    /**
+    * Gets the deleted.
+    *
+    * @return the Deleted
+    */
+    public Deleted getDeleted() {
+        return this.deleted; 
+    }
+
+    /**
+    * Sets the deleted.
+    *
+    * @param value the Deleted
+    */
+    public void setDeleted(Deleted value) { 
+        this.deleted = value; 
+        valueChanged("deleted", value);
 
     }
             
@@ -69,6 +113,50 @@ public class Item extends ODataBaseEntity {
 
     }
             
+    private File file;
+     
+    /**
+    * Gets the file.
+    *
+    * @return the File
+    */
+    public File getFile() {
+        return this.file; 
+    }
+
+    /**
+    * Sets the file.
+    *
+    * @param value the File
+    */
+    public void setFile(File value) { 
+        this.file = value; 
+        valueChanged("file", value);
+
+    }
+            
+    private Folder folder;
+     
+    /**
+    * Gets the folder.
+    *
+    * @return the Folder
+    */
+    public Folder getFolder() {
+        return this.folder; 
+    }
+
+    /**
+    * Sets the folder.
+    *
+    * @param value the Folder
+    */
+    public void setFolder(Folder value) { 
+        this.folder = value; 
+        valueChanged("folder", value);
+
+    }
+            
     private String id;
      
     /**
@@ -91,6 +179,28 @@ public class Item extends ODataBaseEntity {
 
     }
             
+    private Image image;
+     
+    /**
+    * Gets the image.
+    *
+    * @return the Image
+    */
+    public Image getImage() {
+        return this.image; 
+    }
+
+    /**
+    * Sets the image.
+    *
+    * @param value the Image
+    */
+    public void setImage(Image value) { 
+        this.image = value; 
+        valueChanged("image", value);
+
+    }
+            
     private IdentitySet lastModifiedBy;
      
     /**
@@ -110,6 +220,28 @@ public class Item extends ODataBaseEntity {
     public void setLastModifiedBy(IdentitySet value) { 
         this.lastModifiedBy = value; 
         valueChanged("lastModifiedBy", value);
+
+    }
+            
+    private java.util.Calendar lastModifiedDateTime;
+     
+    /**
+    * Gets the last Modified Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getLastModifiedDateTime() {
+        return this.lastModifiedDateTime; 
+    }
+
+    /**
+    * Sets the last Modified Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setLastModifiedDateTime(java.util.Calendar value) { 
+        this.lastModifiedDateTime = value; 
+        valueChanged("lastModifiedDateTime", value);
 
     }
             
@@ -157,6 +289,50 @@ public class Item extends ODataBaseEntity {
 
     }
             
+    private Photo photo;
+     
+    /**
+    * Gets the photo.
+    *
+    * @return the Photo
+    */
+    public Photo getPhoto() {
+        return this.photo; 
+    }
+
+    /**
+    * Sets the photo.
+    *
+    * @param value the Photo
+    */
+    public void setPhoto(Photo value) { 
+        this.photo = value; 
+        valueChanged("photo", value);
+
+    }
+            
+    private SearchResult searchResult;
+     
+    /**
+    * Gets the search Result.
+    *
+    * @return the SearchResult
+    */
+    public SearchResult getSearchResult() {
+        return this.searchResult; 
+    }
+
+    /**
+    * Sets the search Result.
+    *
+    * @param value the SearchResult
+    */
+    public void setSearchResult(SearchResult value) { 
+        this.searchResult = value; 
+        valueChanged("searchResult", value);
+
+    }
+            
     private Long size;
      
     /**
@@ -179,72 +355,6 @@ public class Item extends ODataBaseEntity {
 
     }
             
-    private java.util.Calendar dateTimeCreated;
-     
-    /**
-    * Gets the date Time Created.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeCreated() {
-        return this.dateTimeCreated; 
-    }
-
-    /**
-    * Sets the date Time Created.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeCreated(java.util.Calendar value) { 
-        this.dateTimeCreated = value; 
-        valueChanged("dateTimeCreated", value);
-
-    }
-            
-    private java.util.Calendar dateTimeLastModified;
-     
-    /**
-    * Gets the date Time Last Modified.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeLastModified() {
-        return this.dateTimeLastModified; 
-    }
-
-    /**
-    * Sets the date Time Last Modified.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeLastModified(java.util.Calendar value) { 
-        this.dateTimeLastModified = value; 
-        valueChanged("dateTimeLastModified", value);
-
-    }
-            
-    private String type;
-     
-    /**
-    * Gets the type.
-    *
-    * @return the String
-    */
-    public String getType() {
-        return this.type; 
-    }
-
-    /**
-    * Sets the type.
-    *
-    * @param value the String
-    */
-    public void setType(String value) { 
-        this.type = value; 
-        valueChanged("type", value);
-
-    }
-            
     private String webUrl;
      
     /**
@@ -264,6 +374,28 @@ public class Item extends ODataBaseEntity {
     public void setWebUrl(String value) { 
         this.webUrl = value; 
         valueChanged("webUrl", value);
+
+    }
+            
+    private String webDavUrl;
+     
+    /**
+    * Gets the web Dav Url.
+    *
+    * @return the String
+    */
+    public String getWebDavUrl() {
+        return this.webDavUrl; 
+    }
+
+    /**
+    * Sets the web Dav Url.
+    *
+    * @param value the String
+    */
+    public void setWebDavUrl(String value) { 
+        this.webDavUrl = value; 
+        valueChanged("webDavUrl", value);
 
     }
             
@@ -333,6 +465,31 @@ public class Item extends ODataBaseEntity {
     public void setChildren(java.util.List<Item> value) { 
         this.children = value; 
         valueChanged("children", value);
+
+    }
+    
+        
+    private java.util.List<ThumbnailSet> thumbnails = null;
+    
+    
+     
+    /**
+    * Gets the thumbnails.
+    *
+    * @return the java.util.List<ThumbnailSet>
+    */
+    public java.util.List<ThumbnailSet> getThumbnails() {
+        return this.thumbnails; 
+    }
+
+    /**
+    * Sets the thumbnails.
+    *
+    * @param value the java.util.List<ThumbnailSet>
+    */
+    public void setThumbnails(java.util.List<ThumbnailSet> value) { 
+        this.thumbnails = value; 
+        valueChanged("thumbnails", value);
 
     }
 }

@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type PhotoOperations.
  */
-public class PhotoOperations extends OrcOperations {
+public class PhotoOperations extends EntityOperations {
 
      /**
       * Instantiates a new PhotoOperations.

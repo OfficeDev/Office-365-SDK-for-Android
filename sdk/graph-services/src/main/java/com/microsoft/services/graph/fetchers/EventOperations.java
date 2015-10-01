@@ -63,29 +63,31 @@ public class EventOperations extends OutlookItemOperations {
     
     /**
      * Accept listenable future.
-     * @param comment the comment 
+     * @param comment the comment @param sendResponse the sendResponse 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> accept(String comment) { 
+    public ListenableFuture<Integer> accept(String comment, Boolean sendResponse) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
+		String serializedSendResponse = serializer.serialize(sendResponse);
 		  
         
-        ListenableFuture<String> future = acceptRaw(serializedComment);
+        ListenableFuture<String> future = acceptRaw(serializedComment, serializedSendResponse);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
      /**
      * AcceptRaw listenable future.
-     * @param comment the comment 
+     * @param comment the comment @param sendResponse the sendResponse 
      * @return the listenable future
      */ 
-    public ListenableFuture<String> acceptRaw(String comment){
+    public ListenableFuture<String> acceptRaw(String comment, String sendResponse){
         
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         
         map.put("Comment", comment);
+		map.put("SendResponse", sendResponse);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
@@ -104,29 +106,31 @@ public class EventOperations extends OutlookItemOperations {
     
     /**
      * Decline listenable future.
-     * @param comment the comment 
+     * @param comment the comment @param sendResponse the sendResponse 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> decline(String comment) { 
+    public ListenableFuture<Integer> decline(String comment, Boolean sendResponse) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
+		String serializedSendResponse = serializer.serialize(sendResponse);
 		  
         
-        ListenableFuture<String> future = declineRaw(serializedComment);
+        ListenableFuture<String> future = declineRaw(serializedComment, serializedSendResponse);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
      /**
      * DeclineRaw listenable future.
-     * @param comment the comment 
+     * @param comment the comment @param sendResponse the sendResponse 
      * @return the listenable future
      */ 
-    public ListenableFuture<String> declineRaw(String comment){
+    public ListenableFuture<String> declineRaw(String comment, String sendResponse){
         
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         
         map.put("Comment", comment);
+		map.put("SendResponse", sendResponse);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
@@ -145,29 +149,31 @@ public class EventOperations extends OutlookItemOperations {
     
     /**
      * TentativelyAccept listenable future.
-     * @param comment the comment 
+     * @param comment the comment @param sendResponse the sendResponse 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> tentativelyAccept(String comment) { 
+    public ListenableFuture<Integer> tentativelyAccept(String comment, Boolean sendResponse) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedComment = serializer.serialize(comment);
+		String serializedSendResponse = serializer.serialize(sendResponse);
 		  
         
-        ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment);
+        ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment, serializedSendResponse);
         return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
      /**
      * TentativelyAcceptRaw listenable future.
-     * @param comment the comment 
+     * @param comment the comment @param sendResponse the sendResponse 
      * @return the listenable future
      */ 
-    public ListenableFuture<String> tentativelyAcceptRaw(String comment){
+    public ListenableFuture<String> tentativelyAcceptRaw(String comment, String sendResponse){
         
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         
         map.put("Comment", comment);
+		map.put("SendResponse", sendResponse);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);

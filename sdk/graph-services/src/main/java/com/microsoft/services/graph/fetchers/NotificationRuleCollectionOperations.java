@@ -23,17 +23,17 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 import static com.microsoft.services.orc.core.Helpers.*;
 
 /**
- * The type FolderCollectionOperations
+ * The type NotificationRuleCollectionOperations
  */
-public class FolderCollectionOperations extends ItemCollectionOperations{
+public class NotificationRuleCollectionOperations extends OrcOperations{
 
     /**
-     * Instantiates a new FolderCollectionOperations.
+     * Instantiates a new NotificationRuleCollectionOperations.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-    public FolderCollectionOperations(String urlComponent, OrcExecutable parent) {
+    public NotificationRuleCollectionOperations(String urlComponent, OrcExecutable parent) {
         super(urlComponent, parent);
     }
 
@@ -44,7 +44,7 @@ public class FolderCollectionOperations extends ItemCollectionOperations{
      * @param value the value
      * @return the collection operations
      */
-    public FolderCollectionOperations addParameter(String name, Object value) {
+    public NotificationRuleCollectionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -56,8 +56,42 @@ public class FolderCollectionOperations extends ItemCollectionOperations{
      * @param value the value
      * @return the collection operations
      */
-    public FolderCollectionOperations addHeader(String name, String value) {
+    public NotificationRuleCollectionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
+ 
+     
+    /**
+     * EventTypes listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<String> eventTypes() { 
+              
+          
+        
+        ListenableFuture<String> future = eventTypesRaw();
+        return transformToEntityListenableFuture(future, String.class, getResolver());
+        
+    }
+
+     /**
+     * EventTypesRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> eventTypesRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.getUrl().appendPathComponent("EventTypes");
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+                
 }

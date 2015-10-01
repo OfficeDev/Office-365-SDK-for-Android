@@ -232,25 +232,25 @@ public class Application extends DirectoryObject {
     }
     
         
-    private java.util.List<String> knownClientApplications = null;
+    private java.util.List<java.util.UUID> knownClientApplications = null;
     
     
      
     /**
     * Gets the known Client Applications.
     *
-    * @return the java.util.List<String>
+    * @return the java.util.List<java.util.UUID>
     */
-    public java.util.List<String> getKnownClientApplications() {
+    public java.util.List<java.util.UUID> getKnownClientApplications() {
         return this.knownClientApplications; 
     }
 
     /**
     * Sets the known Client Applications.
     *
-    * @param value the java.util.List<String>
+    * @param value the java.util.List<java.util.UUID>
     */
-    public void setKnownClientApplications(java.util.List<String> value) { 
+    public void setKnownClientApplications(java.util.List<java.util.UUID> value) { 
         this.knownClientApplications = value; 
         valueChanged("knownClientApplications", value);
 

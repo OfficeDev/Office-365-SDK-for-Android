@@ -13,19 +13,20 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
+import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
  * The type Folder.
 */
-public class Folder extends Item {
+public class Folder extends ODataBaseEntity {
 
     public Folder(){
-        setODataType("#Microsoft.Graph.Folder");
+        setODataType("#Microsoft.Graph.folder");
     }
-            
+
     private Integer childCount;
-     
+
     /**
     * Gets the child Count.
     *
@@ -41,9 +42,8 @@ public class Folder extends Item {
     * @param value the Integer
     */
     public void setChildCount(Integer value) { 
-        this.childCount = value; 
+        this.childCount = value;
         valueChanged("childCount", value);
 
     }
 }
-

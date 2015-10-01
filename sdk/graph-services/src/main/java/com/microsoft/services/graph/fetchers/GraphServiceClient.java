@@ -76,12 +76,12 @@ public class GraphServiceClient extends BaseOrcContainer {
         return new OrcCollectionFetcher<Application, ApplicationFetcher, ApplicationCollectionOperations>("applications", this, Application.class,ApplicationCollectionOperations.class);
     }
      /**
-     * Gets Contact.
+     * Gets OrgContact.
      *
-     * @return the Contact
+     * @return the OrgContact
      */
-    public OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getContacts() {
-        return new OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations>("contacts", this, Contact.class,ContactCollectionOperations.class);
+    public OrcCollectionFetcher<OrgContact, OrgContactFetcher, OrgContactCollectionOperations> getContacts() {
+        return new OrcCollectionFetcher<OrgContact, OrgContactFetcher, OrgContactCollectionOperations>("contacts", this, OrgContact.class,OrgContactCollectionOperations.class);
     }
      /**
      * Gets DeviceConfiguration.
@@ -162,5 +162,109 @@ public class GraphServiceClient extends BaseOrcContainer {
      */
     public OrcCollectionFetcher<SubscribedSku, SubscribedSkuFetcher, SubscribedSkuCollectionOperations> getSubscribedSkus() {
         return new OrcCollectionFetcher<SubscribedSku, SubscribedSkuFetcher, SubscribedSkuCollectionOperations>("subscribedSkus", this, SubscribedSku.class,SubscribedSkuCollectionOperations.class);
+    }
+     /**
+     * Gets Drive.
+     *
+     * @return the Drive
+     */
+    public OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations> getDrives() {
+        return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("drives", this, Drive.class,DriveCollectionOperations.class);
+    }
+     /**
+     * Gets Task.
+     *
+     * @return the Task
+     */
+    public OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations> getTasks() {
+        return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class,TaskCollectionOperations.class);
+    }
+     /**
+     * Gets Plan.
+     *
+     * @return the Plan
+     */
+    public OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations> getPlans() {
+        return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class,PlanCollectionOperations.class);
+    }
+     /**
+     * Gets PrivilegedRole.
+     *
+     * @return the PrivilegedRole
+     */
+    public OrcCollectionFetcher<PrivilegedRole, PrivilegedRoleFetcher, PrivilegedRoleCollectionOperations> getPrivilegedRoles() {
+        return new OrcCollectionFetcher<PrivilegedRole, PrivilegedRoleFetcher, PrivilegedRoleCollectionOperations>("PrivilegedRoles", this, PrivilegedRole.class,PrivilegedRoleCollectionOperations.class);
+    }
+     /**
+     * Gets PrivilegedRoleAssignment.
+     *
+     * @return the PrivilegedRoleAssignment
+     */
+    public OrcCollectionFetcher<PrivilegedRoleAssignment, PrivilegedRoleAssignmentFetcher, PrivilegedRoleAssignmentCollectionOperations> getPrivilegedRoleAssignments() {
+        return new OrcCollectionFetcher<PrivilegedRoleAssignment, PrivilegedRoleAssignmentFetcher, PrivilegedRoleAssignmentCollectionOperations>("PrivilegedRoleAssignments", this, PrivilegedRoleAssignment.class,PrivilegedRoleAssignmentCollectionOperations.class);
+    }
+     /**
+     * Gets PrivilegedOperationEvent.
+     *
+     * @return the PrivilegedOperationEvent
+     */
+    public OrcCollectionFetcher<PrivilegedOperationEvent, PrivilegedOperationEventFetcher, PrivilegedOperationEventCollectionOperations> getPrivilegedOperationEvents() {
+        return new OrcCollectionFetcher<PrivilegedOperationEvent, PrivilegedOperationEventFetcher, PrivilegedOperationEventCollectionOperations>("PrivilegedOperationEvents", this, PrivilegedOperationEvent.class,PrivilegedOperationEventCollectionOperations.class);
+    }
+     /**
+     * Gets PrivilegedSignupStatus.
+     *
+     * @return the PrivilegedSignupStatus
+     */
+    public OrcCollectionFetcher<PrivilegedSignupStatus, PrivilegedSignupStatusFetcher, PrivilegedSignupStatusCollectionOperations> getPrivilegedSignupStatus() {
+        return new OrcCollectionFetcher<PrivilegedSignupStatus, PrivilegedSignupStatusFetcher, PrivilegedSignupStatusCollectionOperations>("PrivilegedSignupStatus", this, PrivilegedSignupStatus.class,PrivilegedSignupStatusCollectionOperations.class);
+    }
+     /**
+     * Gets Notification.
+     *
+     * @return the Notification
+     */
+    public OrcCollectionFetcher<Notification, NotificationFetcher, NotificationCollectionOperations> getNotifications() {
+        return new OrcCollectionFetcher<Notification, NotificationFetcher, NotificationCollectionOperations>("Notifications", this, Notification.class,NotificationCollectionOperations.class);
+    }
+     /**
+     * Gets NotificationRule.
+     *
+     * @return the NotificationRule
+     */
+    public OrcCollectionFetcher<NotificationRule, NotificationRuleFetcher, NotificationRuleCollectionOperations> getNotificationRules() {
+        return new OrcCollectionFetcher<NotificationRule, NotificationRuleFetcher, NotificationRuleCollectionOperations>("NotificationRules", this, NotificationRule.class,NotificationRuleCollectionOperations.class);
+    }
+     /**
+     * Gets PimAlert.
+     *
+     * @return the PimAlert
+     */
+    public OrcCollectionFetcher<PimAlert, PimAlertFetcher, PimAlertCollectionOperations> getAlerts() {
+        return new OrcCollectionFetcher<PimAlert, PimAlertFetcher, PimAlertCollectionOperations>("Alerts", this, PimAlert.class,PimAlertCollectionOperations.class);
+    }
+     /**
+     * Gets PimAlertSettings.
+     *
+     * @return the PimAlertSettings
+     */
+    public OrcCollectionFetcher<PimAlertSettings, PimAlertSettingsFetcher, PimAlertSettingsCollectionOperations> getAlertSettings() {
+        return new OrcCollectionFetcher<PimAlertSettings, PimAlertSettingsFetcher, PimAlertSettingsCollectionOperations>("AlertSettings", this, PimAlertSettings.class,PimAlertSettingsCollectionOperations.class);
+    }
+     /**
+     * Gets PimAlertInfo.
+     *
+     * @return the PimAlertInfo
+     */
+    public OrcCollectionFetcher<PimAlertInfo, PimAlertInfoFetcher, PimAlertInfoCollectionOperations> getAlertInfo() {
+        return new OrcCollectionFetcher<PimAlertInfo, PimAlertInfoFetcher, PimAlertInfoCollectionOperations>("AlertInfo", this, PimAlertInfo.class,PimAlertInfoCollectionOperations.class);
+    }
+     /**
+     * Gets drive.
+     *
+     * @return the drive
+     */
+    public DriveFetcher getDrive() {
+        return new DriveFetcher("drive", this);
     }
 }

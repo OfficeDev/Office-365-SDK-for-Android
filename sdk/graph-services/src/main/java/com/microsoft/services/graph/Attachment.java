@@ -13,38 +13,15 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
  * The type Attachment.
 */
-public class Attachment extends ODataBaseEntity {
+public class Attachment extends Entity {
 
     public Attachment(){
         setODataType("#Microsoft.Graph.Attachment");
-    }
-            
-    private String Id;
-     
-    /**
-    * Gets the Id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.Id; 
-    }
-
-    /**
-    * Sets the Id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.Id = value; 
-        valueChanged("Id", value);
-
     }
             
     private String Name;

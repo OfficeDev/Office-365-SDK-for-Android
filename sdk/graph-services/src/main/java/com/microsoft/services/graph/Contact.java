@@ -18,571 +18,703 @@ package com.microsoft.services.graph;
 /**
  * The type Contact.
 */
-public class Contact extends DirectoryObject {
+public class Contact extends OutlookItem {
 
     public Contact(){
         setODataType("#Microsoft.Graph.Contact");
     }
             
-    private String city;
+    private String ParentFolderId;
      
     /**
-    * Gets the city.
+    * Gets the Parent Folder Id.
     *
     * @return the String
     */
-    public String getCity() {
-        return this.city; 
+    public String getParentFolderId() {
+        return this.ParentFolderId; 
     }
 
     /**
-    * Sets the city.
+    * Sets the Parent Folder Id.
     *
     * @param value the String
     */
-    public void setCity(String value) { 
-        this.city = value; 
-        valueChanged("city", value);
+    public void setParentFolderId(String value) { 
+        this.ParentFolderId = value; 
+        valueChanged("ParentFolderId", value);
 
     }
             
-    private String country;
+    private java.util.Calendar Birthday;
      
     /**
-    * Gets the country.
+    * Gets the Birthday.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getBirthday() {
+        return this.Birthday; 
+    }
+
+    /**
+    * Sets the Birthday.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setBirthday(java.util.Calendar value) { 
+        this.Birthday = value; 
+        valueChanged("Birthday", value);
+
+    }
+            
+    private String FileAs;
+     
+    /**
+    * Gets the File As.
     *
     * @return the String
     */
-    public String getCountry() {
-        return this.country; 
+    public String getFileAs() {
+        return this.FileAs; 
     }
 
     /**
-    * Sets the country.
+    * Sets the File As.
     *
     * @param value the String
     */
-    public void setCountry(String value) { 
-        this.country = value; 
-        valueChanged("country", value);
+    public void setFileAs(String value) { 
+        this.FileAs = value; 
+        valueChanged("FileAs", value);
 
     }
             
-    private String department;
+    private String DisplayName;
      
     /**
-    * Gets the department.
-    *
-    * @return the String
-    */
-    public String getDepartment() {
-        return this.department; 
-    }
-
-    /**
-    * Sets the department.
-    *
-    * @param value the String
-    */
-    public void setDepartment(String value) { 
-        this.department = value; 
-        valueChanged("department", value);
-
-    }
-            
-    private Boolean dirSyncEnabled;
-     
-    /**
-    * Gets the dir Sync Enabled.
-    *
-    * @return the Boolean
-    */
-    public Boolean getDirSyncEnabled() {
-        return this.dirSyncEnabled; 
-    }
-
-    /**
-    * Sets the dir Sync Enabled.
-    *
-    * @param value the Boolean
-    */
-    public void setDirSyncEnabled(Boolean value) { 
-        this.dirSyncEnabled = value; 
-        valueChanged("dirSyncEnabled", value);
-
-    }
-            
-    private String displayName;
-     
-    /**
-    * Gets the display Name.
+    * Gets the Display Name.
     *
     * @return the String
     */
     public String getDisplayName() {
-        return this.displayName; 
+        return this.DisplayName; 
     }
 
     /**
-    * Sets the display Name.
+    * Sets the Display Name.
     *
     * @param value the String
     */
     public void setDisplayName(String value) { 
-        this.displayName = value; 
-        valueChanged("displayName", value);
+        this.DisplayName = value; 
+        valueChanged("DisplayName", value);
 
     }
             
-    private String facsimileTelephoneNumber;
+    private String GivenName;
      
     /**
-    * Gets the facsimile Telephone Number.
-    *
-    * @return the String
-    */
-    public String getFacsimileTelephoneNumber() {
-        return this.facsimileTelephoneNumber; 
-    }
-
-    /**
-    * Sets the facsimile Telephone Number.
-    *
-    * @param value the String
-    */
-    public void setFacsimileTelephoneNumber(String value) { 
-        this.facsimileTelephoneNumber = value; 
-        valueChanged("facsimileTelephoneNumber", value);
-
-    }
-            
-    private String givenName;
-     
-    /**
-    * Gets the given Name.
+    * Gets the Given Name.
     *
     * @return the String
     */
     public String getGivenName() {
-        return this.givenName; 
+        return this.GivenName; 
     }
 
     /**
-    * Sets the given Name.
+    * Sets the Given Name.
     *
     * @param value the String
     */
     public void setGivenName(String value) { 
-        this.givenName = value; 
-        valueChanged("givenName", value);
+        this.GivenName = value; 
+        valueChanged("GivenName", value);
 
     }
             
-    private String jobTitle;
+    private String Initials;
      
     /**
-    * Gets the job Title.
+    * Gets the Initials.
     *
     * @return the String
     */
-    public String getJobTitle() {
-        return this.jobTitle; 
+    public String getInitials() {
+        return this.Initials; 
     }
 
     /**
-    * Sets the job Title.
+    * Sets the Initials.
     *
     * @param value the String
     */
-    public void setJobTitle(String value) { 
-        this.jobTitle = value; 
-        valueChanged("jobTitle", value);
+    public void setInitials(String value) { 
+        this.Initials = value; 
+        valueChanged("Initials", value);
 
     }
             
-    private java.util.Calendar lastDirSyncTime;
+    private String MiddleName;
      
     /**
-    * Gets the last Dir Sync Time.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getLastDirSyncTime() {
-        return this.lastDirSyncTime; 
-    }
-
-    /**
-    * Sets the last Dir Sync Time.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setLastDirSyncTime(java.util.Calendar value) { 
-        this.lastDirSyncTime = value; 
-        valueChanged("lastDirSyncTime", value);
-
-    }
-            
-    private String mail;
-     
-    /**
-    * Gets the mail.
+    * Gets the Middle Name.
     *
     * @return the String
     */
-    public String getMail() {
-        return this.mail; 
+    public String getMiddleName() {
+        return this.MiddleName; 
     }
 
     /**
-    * Sets the mail.
+    * Sets the Middle Name.
     *
     * @param value the String
     */
-    public void setMail(String value) { 
-        this.mail = value; 
-        valueChanged("mail", value);
+    public void setMiddleName(String value) { 
+        this.MiddleName = value; 
+        valueChanged("MiddleName", value);
 
     }
             
-    private String mailNickname;
+    private String NickName;
      
     /**
-    * Gets the mail Nickname.
+    * Gets the Nick Name.
     *
     * @return the String
     */
-    public String getMailNickname() {
-        return this.mailNickname; 
+    public String getNickName() {
+        return this.NickName; 
     }
 
     /**
-    * Sets the mail Nickname.
+    * Sets the Nick Name.
     *
     * @param value the String
     */
-    public void setMailNickname(String value) { 
-        this.mailNickname = value; 
-        valueChanged("mailNickname", value);
+    public void setNickName(String value) { 
+        this.NickName = value; 
+        valueChanged("NickName", value);
 
     }
             
-    private String mobile;
+    private String Surname;
      
     /**
-    * Gets the mobile.
-    *
-    * @return the String
-    */
-    public String getMobile() {
-        return this.mobile; 
-    }
-
-    /**
-    * Sets the mobile.
-    *
-    * @param value the String
-    */
-    public void setMobile(String value) { 
-        this.mobile = value; 
-        valueChanged("mobile", value);
-
-    }
-            
-    private String physicalDeliveryOfficeName;
-     
-    /**
-    * Gets the physical Delivery Office Name.
-    *
-    * @return the String
-    */
-    public String getPhysicalDeliveryOfficeName() {
-        return this.physicalDeliveryOfficeName; 
-    }
-
-    /**
-    * Sets the physical Delivery Office Name.
-    *
-    * @param value the String
-    */
-    public void setPhysicalDeliveryOfficeName(String value) { 
-        this.physicalDeliveryOfficeName = value; 
-        valueChanged("physicalDeliveryOfficeName", value);
-
-    }
-            
-    private String postalCode;
-     
-    /**
-    * Gets the postal Code.
-    *
-    * @return the String
-    */
-    public String getPostalCode() {
-        return this.postalCode; 
-    }
-
-    /**
-    * Sets the postal Code.
-    *
-    * @param value the String
-    */
-    public void setPostalCode(String value) { 
-        this.postalCode = value; 
-        valueChanged("postalCode", value);
-
-    }
-    
-        
-    private java.util.List<ProvisioningError> provisioningErrors = null;
-    
-    
-     
-    /**
-    * Gets the provisioning Errors.
-    *
-    * @return the java.util.List<ProvisioningError>
-    */
-    public java.util.List<ProvisioningError> getProvisioningErrors() {
-        return this.provisioningErrors; 
-    }
-
-    /**
-    * Sets the provisioning Errors.
-    *
-    * @param value the java.util.List<ProvisioningError>
-    */
-    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
-        this.provisioningErrors = value; 
-        valueChanged("provisioningErrors", value);
-
-    }
-    
-        
-    private java.util.List<String> proxyAddresses = null;
-    
-    
-     
-    /**
-    * Gets the proxy Addresses.
-    *
-    * @return the java.util.List<String>
-    */
-    public java.util.List<String> getProxyAddresses() {
-        return this.proxyAddresses; 
-    }
-
-    /**
-    * Sets the proxy Addresses.
-    *
-    * @param value the java.util.List<String>
-    */
-    public void setProxyAddresses(java.util.List<String> value) { 
-        this.proxyAddresses = value; 
-        valueChanged("proxyAddresses", value);
-
-    }
-            
-    private String sipProxyAddress;
-     
-    /**
-    * Gets the sip Proxy Address.
-    *
-    * @return the String
-    */
-    public String getSipProxyAddress() {
-        return this.sipProxyAddress; 
-    }
-
-    /**
-    * Sets the sip Proxy Address.
-    *
-    * @param value the String
-    */
-    public void setSipProxyAddress(String value) { 
-        this.sipProxyAddress = value; 
-        valueChanged("sipProxyAddress", value);
-
-    }
-            
-    private String state;
-     
-    /**
-    * Gets the state.
-    *
-    * @return the String
-    */
-    public String getState() {
-        return this.state; 
-    }
-
-    /**
-    * Sets the state.
-    *
-    * @param value the String
-    */
-    public void setState(String value) { 
-        this.state = value; 
-        valueChanged("state", value);
-
-    }
-            
-    private String streetAddress;
-     
-    /**
-    * Gets the street Address.
-    *
-    * @return the String
-    */
-    public String getStreetAddress() {
-        return this.streetAddress; 
-    }
-
-    /**
-    * Sets the street Address.
-    *
-    * @param value the String
-    */
-    public void setStreetAddress(String value) { 
-        this.streetAddress = value; 
-        valueChanged("streetAddress", value);
-
-    }
-            
-    private String surname;
-     
-    /**
-    * Gets the surname.
+    * Gets the Surname.
     *
     * @return the String
     */
     public String getSurname() {
-        return this.surname; 
+        return this.Surname; 
     }
 
     /**
-    * Sets the surname.
+    * Sets the Surname.
     *
     * @param value the String
     */
     public void setSurname(String value) { 
-        this.surname = value; 
-        valueChanged("surname", value);
+        this.Surname = value; 
+        valueChanged("Surname", value);
 
     }
             
-    private String telephoneNumber;
+    private String Title;
      
     /**
-    * Gets the telephone Number.
+    * Gets the Title.
     *
     * @return the String
     */
-    public String getTelephoneNumber() {
-        return this.telephoneNumber; 
+    public String getTitle() {
+        return this.Title; 
     }
 
     /**
-    * Sets the telephone Number.
+    * Sets the Title.
     *
     * @param value the String
     */
-    public void setTelephoneNumber(String value) { 
-        this.telephoneNumber = value; 
-        valueChanged("telephoneNumber", value);
+    public void setTitle(String value) { 
+        this.Title = value; 
+        valueChanged("Title", value);
 
     }
             
-    private byte[] thumbnailPhoto;
+    private String Generation;
      
     /**
-    * Gets the thumbnail Photo.
+    * Gets the Generation.
     *
-    * @return the byte[]
+    * @return the String
     */
-    public byte[] getThumbnailPhoto() {
-        return this.thumbnailPhoto; 
+    public String getGeneration() {
+        return this.Generation; 
     }
 
     /**
-    * Sets the thumbnail Photo.
+    * Sets the Generation.
     *
-    * @param value the byte[]
+    * @param value the String
     */
-    public void setThumbnailPhoto(byte[] value) { 
-        this.thumbnailPhoto = value; 
-        valueChanged("thumbnailPhoto", value);
-
-    }
-            
-    private DirectoryObject manager;
-     
-    /**
-    * Gets the manager.
-    *
-    * @return the DirectoryObject
-    */
-    public DirectoryObject getManager() {
-        return this.manager; 
-    }
-
-    /**
-    * Sets the manager.
-    *
-    * @param value the DirectoryObject
-    */
-    public void setManager(DirectoryObject value) { 
-        this.manager = value; 
-        valueChanged("manager", value);
+    public void setGeneration(String value) { 
+        this.Generation = value; 
+        valueChanged("Generation", value);
 
     }
     
         
-    private java.util.List<DirectoryObject> directReports = null;
+    private java.util.List<EmailAddress> EmailAddresses = null;
     
     
      
     /**
-    * Gets the direct Reports.
+    * Gets the Email Addresses.
     *
-    * @return the java.util.List<DirectoryObject>
+    * @return the java.util.List<EmailAddress>
     */
-    public java.util.List<DirectoryObject> getDirectReports() {
-        return this.directReports; 
+    public java.util.List<EmailAddress> getEmailAddresses() {
+        return this.EmailAddresses; 
     }
 
     /**
-    * Sets the direct Reports.
+    * Sets the Email Addresses.
     *
-    * @param value the java.util.List<DirectoryObject>
+    * @param value the java.util.List<EmailAddress>
     */
-    public void setDirectReports(java.util.List<DirectoryObject> value) { 
-        this.directReports = value; 
-        valueChanged("directReports", value);
+    public void setEmailAddresses(java.util.List<EmailAddress> value) { 
+        this.EmailAddresses = value; 
+        valueChanged("EmailAddresses", value);
 
     }
     
         
-    private java.util.List<DirectoryObject> memberOf = null;
+    private java.util.List<String> ImAddresses = null;
     
     
      
     /**
-    * Gets the member Of.
+    * Gets the Im Addresses.
     *
-    * @return the java.util.List<DirectoryObject>
+    * @return the java.util.List<String>
     */
-    public java.util.List<DirectoryObject> getMemberOf() {
-        return this.memberOf; 
+    public java.util.List<String> getImAddresses() {
+        return this.ImAddresses; 
     }
 
     /**
-    * Sets the member Of.
+    * Sets the Im Addresses.
     *
-    * @param value the java.util.List<DirectoryObject>
+    * @param value the java.util.List<String>
     */
-    public void setMemberOf(java.util.List<DirectoryObject> value) { 
-        this.memberOf = value; 
-        valueChanged("memberOf", value);
+    public void setImAddresses(java.util.List<String> value) { 
+        this.ImAddresses = value; 
+        valueChanged("ImAddresses", value);
+
+    }
+            
+    private String JobTitle;
+     
+    /**
+    * Gets the Job Title.
+    *
+    * @return the String
+    */
+    public String getJobTitle() {
+        return this.JobTitle; 
+    }
+
+    /**
+    * Sets the Job Title.
+    *
+    * @param value the String
+    */
+    public void setJobTitle(String value) { 
+        this.JobTitle = value; 
+        valueChanged("JobTitle", value);
+
+    }
+            
+    private String CompanyName;
+     
+    /**
+    * Gets the Company Name.
+    *
+    * @return the String
+    */
+    public String getCompanyName() {
+        return this.CompanyName; 
+    }
+
+    /**
+    * Sets the Company Name.
+    *
+    * @param value the String
+    */
+    public void setCompanyName(String value) { 
+        this.CompanyName = value; 
+        valueChanged("CompanyName", value);
+
+    }
+            
+    private String Department;
+     
+    /**
+    * Gets the Department.
+    *
+    * @return the String
+    */
+    public String getDepartment() {
+        return this.Department; 
+    }
+
+    /**
+    * Sets the Department.
+    *
+    * @param value the String
+    */
+    public void setDepartment(String value) { 
+        this.Department = value; 
+        valueChanged("Department", value);
+
+    }
+            
+    private String OfficeLocation;
+     
+    /**
+    * Gets the Office Location.
+    *
+    * @return the String
+    */
+    public String getOfficeLocation() {
+        return this.OfficeLocation; 
+    }
+
+    /**
+    * Sets the Office Location.
+    *
+    * @param value the String
+    */
+    public void setOfficeLocation(String value) { 
+        this.OfficeLocation = value; 
+        valueChanged("OfficeLocation", value);
+
+    }
+            
+    private String Profession;
+     
+    /**
+    * Gets the Profession.
+    *
+    * @return the String
+    */
+    public String getProfession() {
+        return this.Profession; 
+    }
+
+    /**
+    * Sets the Profession.
+    *
+    * @param value the String
+    */
+    public void setProfession(String value) { 
+        this.Profession = value; 
+        valueChanged("Profession", value);
+
+    }
+            
+    private String BusinessHomePage;
+     
+    /**
+    * Gets the Business Home Page.
+    *
+    * @return the String
+    */
+    public String getBusinessHomePage() {
+        return this.BusinessHomePage; 
+    }
+
+    /**
+    * Sets the Business Home Page.
+    *
+    * @param value the String
+    */
+    public void setBusinessHomePage(String value) { 
+        this.BusinessHomePage = value; 
+        valueChanged("BusinessHomePage", value);
+
+    }
+            
+    private String AssistantName;
+     
+    /**
+    * Gets the Assistant Name.
+    *
+    * @return the String
+    */
+    public String getAssistantName() {
+        return this.AssistantName; 
+    }
+
+    /**
+    * Sets the Assistant Name.
+    *
+    * @param value the String
+    */
+    public void setAssistantName(String value) { 
+        this.AssistantName = value; 
+        valueChanged("AssistantName", value);
+
+    }
+            
+    private String Manager;
+     
+    /**
+    * Gets the Manager.
+    *
+    * @return the String
+    */
+    public String getManager() {
+        return this.Manager; 
+    }
+
+    /**
+    * Sets the Manager.
+    *
+    * @param value the String
+    */
+    public void setManager(String value) { 
+        this.Manager = value; 
+        valueChanged("Manager", value);
+
+    }
+    
+        
+    private java.util.List<String> HomePhones = null;
+    
+    
+     
+    /**
+    * Gets the Home Phones.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getHomePhones() {
+        return this.HomePhones; 
+    }
+
+    /**
+    * Sets the Home Phones.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setHomePhones(java.util.List<String> value) { 
+        this.HomePhones = value; 
+        valueChanged("HomePhones", value);
+
+    }
+    
+        
+    private java.util.List<String> BusinessPhones = null;
+    
+    
+     
+    /**
+    * Gets the Business Phones.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getBusinessPhones() {
+        return this.BusinessPhones; 
+    }
+
+    /**
+    * Sets the Business Phones.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setBusinessPhones(java.util.List<String> value) { 
+        this.BusinessPhones = value; 
+        valueChanged("BusinessPhones", value);
+
+    }
+            
+    private String MobilePhone1;
+     
+    /**
+    * Gets the Mobile Phone1.
+    *
+    * @return the String
+    */
+    public String getMobilePhone1() {
+        return this.MobilePhone1; 
+    }
+
+    /**
+    * Sets the Mobile Phone1.
+    *
+    * @param value the String
+    */
+    public void setMobilePhone1(String value) { 
+        this.MobilePhone1 = value; 
+        valueChanged("MobilePhone1", value);
+
+    }
+            
+    private PhysicalAddress HomeAddress;
+     
+    /**
+    * Gets the Home Address.
+    *
+    * @return the PhysicalAddress
+    */
+    public PhysicalAddress getHomeAddress() {
+        return this.HomeAddress; 
+    }
+
+    /**
+    * Sets the Home Address.
+    *
+    * @param value the PhysicalAddress
+    */
+    public void setHomeAddress(PhysicalAddress value) { 
+        this.HomeAddress = value; 
+        valueChanged("HomeAddress", value);
+
+    }
+            
+    private PhysicalAddress BusinessAddress;
+     
+    /**
+    * Gets the Business Address.
+    *
+    * @return the PhysicalAddress
+    */
+    public PhysicalAddress getBusinessAddress() {
+        return this.BusinessAddress; 
+    }
+
+    /**
+    * Sets the Business Address.
+    *
+    * @param value the PhysicalAddress
+    */
+    public void setBusinessAddress(PhysicalAddress value) { 
+        this.BusinessAddress = value; 
+        valueChanged("BusinessAddress", value);
+
+    }
+            
+    private PhysicalAddress OtherAddress;
+     
+    /**
+    * Gets the Other Address.
+    *
+    * @return the PhysicalAddress
+    */
+    public PhysicalAddress getOtherAddress() {
+        return this.OtherAddress; 
+    }
+
+    /**
+    * Sets the Other Address.
+    *
+    * @param value the PhysicalAddress
+    */
+    public void setOtherAddress(PhysicalAddress value) { 
+        this.OtherAddress = value; 
+        valueChanged("OtherAddress", value);
+
+    }
+            
+    private String YomiCompanyName;
+     
+    /**
+    * Gets the Yomi Company Name.
+    *
+    * @return the String
+    */
+    public String getYomiCompanyName() {
+        return this.YomiCompanyName; 
+    }
+
+    /**
+    * Sets the Yomi Company Name.
+    *
+    * @param value the String
+    */
+    public void setYomiCompanyName(String value) { 
+        this.YomiCompanyName = value; 
+        valueChanged("YomiCompanyName", value);
+
+    }
+            
+    private String YomiGivenName;
+     
+    /**
+    * Gets the Yomi Given Name.
+    *
+    * @return the String
+    */
+    public String getYomiGivenName() {
+        return this.YomiGivenName; 
+    }
+
+    /**
+    * Sets the Yomi Given Name.
+    *
+    * @param value the String
+    */
+    public void setYomiGivenName(String value) { 
+        this.YomiGivenName = value; 
+        valueChanged("YomiGivenName", value);
+
+    }
+            
+    private String YomiSurname;
+     
+    /**
+    * Gets the Yomi Surname.
+    *
+    * @return the String
+    */
+    public String getYomiSurname() {
+        return this.YomiSurname; 
+    }
+
+    /**
+    * Sets the Yomi Surname.
+    *
+    * @param value the String
+    */
+    public void setYomiSurname(String value) { 
+        this.YomiSurname = value; 
+        valueChanged("YomiSurname", value);
+
+    }
+            
+    private Photo ContactPhoto;
+     
+    /**
+    * Gets the Contact Photo.
+    *
+    * @return the Photo
+    */
+    public Photo getContactPhoto() {
+        return this.ContactPhoto; 
+    }
+
+    /**
+    * Sets the Contact Photo.
+    *
+    * @param value the Photo
+    */
+    public void setContactPhoto(Photo value) { 
+        this.ContactPhoto = value; 
+        valueChanged("ContactPhoto", value);
 
     }
 }

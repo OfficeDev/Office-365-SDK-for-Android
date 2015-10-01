@@ -25,23 +25,23 @@ public class AssignedLicense extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.AssignedLicense");
     }
 
-    private java.util.List<String> disabledPlans;
+    private java.util.List<java.util.UUID> disabledPlans;
 
     /**
     * Gets the disabled Plans.
     *
-    * @return the java.util.List<String>
+    * @return the java.util.List<java.util.UUID>
     */
-    public java.util.List<String> getDisabledPlans() {
+    public java.util.List<java.util.UUID> getDisabledPlans() {
         return this.disabledPlans; 
     }
 
     /**
     * Sets the disabled Plans.
     *
-    * @param value the java.util.List<String>
+    * @param value the java.util.List<java.util.UUID>
     */
-    public void setDisabledPlans(java.util.List<String> value) { 
+    public void setDisabledPlans(java.util.List<java.util.UUID> value) { 
         this.disabledPlans = value;
         valueChanged("disabledPlans", value);
 

@@ -13,59 +13,16 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
+import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
  * The type File.
 */
-public class File extends Item {
+public class File extends ODataBaseEntity {
 
     public File(){
         setODataType("#Microsoft.Graph.File");
-    }
-            
-    private String contentUrl;
-     
-    /**
-    * Gets the content Url.
-    *
-    * @return the String
-    */
-    public String getContentUrl() {
-        return this.contentUrl; 
-    }
-
-    /**
-    * Sets the content Url.
-    *
-    * @param value the String
-    */
-    public void setContentUrl(String value) { 
-        this.contentUrl = value; 
-        valueChanged("contentUrl", value);
-
-    }
-            
-    private ImageFacet image;
-     
-    /**
-    * Gets the image.
-    *
-    * @return the ImageFacet
-    */
-    public ImageFacet getImage() {
-        return this.image; 
-    }
-
-    /**
-    * Sets the image.
-    *
-    * @param value the ImageFacet
-    */
-    public void setImage(ImageFacet value) { 
-        this.image = value; 
-        valueChanged("image", value);
-
     }
 }
 

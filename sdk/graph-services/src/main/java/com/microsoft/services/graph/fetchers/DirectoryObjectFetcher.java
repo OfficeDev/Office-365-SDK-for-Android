@@ -80,8 +80,8 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
         return new GroupFetcher(this.urlComponent, this.parent);
     }   
 
-    public ContactFetcher asContact(){
-        return new ContactFetcher(this.urlComponent, this.parent);
+    public OrgContactFetcher asOrgContact(){
+        return new OrgContactFetcher(this.urlComponent, this.parent);
     }   
 
     public DeviceFetcher asDevice(){
@@ -112,4 +112,22 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
         return new TenantDetailFetcher(this.urlComponent, this.parent);
     }   
     
+     /**
+     * Gets extensions.
+     *
+     * @return the extensions
+     */
+    public OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations> getExtensions() {
+        return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class);
+    }
+
+    /**
+     * Gets extension.
+     *
+     * @return the extension
+     */
+    public ExtensionFetcher getExtension(String id){
+         return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
+    }
+
 }

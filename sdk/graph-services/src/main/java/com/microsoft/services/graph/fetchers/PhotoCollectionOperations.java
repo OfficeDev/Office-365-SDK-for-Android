@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type PhotoCollectionOperations
  */
-public class PhotoCollectionOperations extends OrcOperations{
+public class PhotoCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new PhotoCollectionOperations.

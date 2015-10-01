@@ -554,6 +554,28 @@ public class Event extends OutlookItem {
         valueChanged("WebLink", value);
 
     }
+            
+    private java.util.Calendar OriginalStart;
+     
+    /**
+    * Gets the Original Start.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getOriginalStart() {
+        return this.OriginalStart; 
+    }
+
+    /**
+    * Sets the Original Start.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setOriginalStart(java.util.Calendar value) { 
+        this.OriginalStart = value; 
+        valueChanged("OriginalStart", value);
+
+    }
     
         
     private java.util.List<Attachment> Attachments = null;

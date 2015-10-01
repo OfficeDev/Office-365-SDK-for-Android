@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type CalendarGroupOperations.
  */
-public class CalendarGroupOperations extends OrcOperations {
+public class CalendarGroupOperations extends EntityOperations {
 
      /**
       * Instantiates a new CalendarGroupOperations.

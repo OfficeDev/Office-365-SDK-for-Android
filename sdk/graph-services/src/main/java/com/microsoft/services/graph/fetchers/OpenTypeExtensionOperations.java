@@ -16,33 +16,33 @@ package com.microsoft.services.graph.fetchers;
 import com.microsoft.services.graph.*;
 import com.google.common.util.concurrent.*;
 import com.microsoft.services.orc.core.*;
-import com.microsoft.services.orc.core.Readable;
+import com.microsoft.services.orc.http.*;
+import static com.microsoft.services.orc.core.Helpers.*;
+import com.microsoft.services.orc.serialization.JsonSerializer;
 
 /**
- * The type  Folder
- .
+ * The type OpenTypeExtensionOperations.
  */
-public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations> 
-                                     implements Readable<Folder> {
+public class OpenTypeExtensionOperations extends ExtensionOperations {
 
      /**
-     * Instantiates a new FolderFetcher.
-     *
-     * @param urlComponent the url component
-     * @param parent the parent
-     */
-     public FolderFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, Folder.class, FolderOperations.class);
+      * Instantiates a new OpenTypeExtensionOperations.
+      *
+      * @param urlComponent the url component
+      * @param parent the parent
+      */
+    public OpenTypeExtensionOperations(String urlComponent, OrcExecutable parent) {
+            super(urlComponent, parent);
     }
 
-     /**
+    /**
      * Add parameter.
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the operations
      */
-    public FolderFetcher addParameter(String name, Object value) {
+    public OpenTypeExtensionOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -52,12 +52,11 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
      *
      * @param name the name
      * @param value the value
-     * @return the fetcher
+     * @return the operations
      */
-    public FolderFetcher addHeader(String name, String value) {
+    public OpenTypeExtensionOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
 
-        
 }

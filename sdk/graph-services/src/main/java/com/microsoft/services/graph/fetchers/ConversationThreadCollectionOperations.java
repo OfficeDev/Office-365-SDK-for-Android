@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type ConversationThreadCollectionOperations
  */
-public class ConversationThreadCollectionOperations extends OrcOperations{
+public class ConversationThreadCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new ConversationThreadCollectionOperations.

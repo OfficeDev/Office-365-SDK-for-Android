@@ -247,21 +247,83 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
     }
 
      /**
-     * Gets files.
+     * Gets accepted senders.
      *
-     * @return the files
+     * @return the accepted senders
      */
-    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getFiles() {
-        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class);
+    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getAcceptedSenders() {
+        return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("AcceptedSenders", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class);
     }
 
     /**
-     * Gets file.
+     * Gets accepted sender.
      *
-     * @return the file
+     * @return the accepted sender
      */
-    public ItemFetcher getFile(String id){
-         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class).getById(id);
+    public DirectoryObjectFetcher getAcceptedSender(String id){
+         return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("AcceptedSenders", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets rejected senders.
+     *
+     * @return the rejected senders
+     */
+    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getRejectedSenders() {
+        return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("RejectedSenders", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class);
+    }
+
+    /**
+     * Gets rejected sender.
+     *
+     * @return the rejected sender
+     */
+    public DirectoryObjectFetcher getRejectedSender(String id){
+         return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("RejectedSenders", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets drive.
+     *
+     * @return the drive
+     */
+    public DriveFetcher getDrive() {
+        return new DriveFetcher("drive", this);
+    }
+
+     /**
+     * Gets tasks.
+     *
+     * @return the tasks
+     */
+    public OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations> getTasks() {
+        return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class);
+    }
+
+    /**
+     * Gets task.
+     *
+     * @return the task
+     */
+    public TaskFetcher getTask(String id){
+         return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets plans.
+     *
+     * @return the plans
+     */
+    public OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations> getPlans() {
+        return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class);
+    }
+
+    /**
+     * Gets plan.
+     *
+     * @return the plan
+     */
+    public PlanFetcher getPlan(String id){
+         return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class).getById(id);
     }
 
 }

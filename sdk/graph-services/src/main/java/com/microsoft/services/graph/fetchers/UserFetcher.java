@@ -213,6 +213,24 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
+     * Gets folders.
+     *
+     * @return the folders
+     */
+    public OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations> getFolders() {
+        return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("Folders", this, MailFolder.class, MailFolderCollectionOperations.class);
+    }
+
+    /**
+     * Gets folder.
+     *
+     * @return the folder
+     */
+    public MailFolderFetcher getFolder(String id){
+         return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("Folders", this, MailFolder.class, MailFolderCollectionOperations.class).getById(id);
+    }
+
+     /**
      * Gets messages.
      *
      * @return the messages
@@ -228,6 +246,14 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public MessageFetcher getMessage(String id){
          return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets rootfolder.
+     *
+     * @return the root folder
+     */
+    public MailFolderFetcher getRootFolder() {
+        return new MailFolderFetcher("RootFolder", this);
     }
 
      /**
@@ -309,6 +335,42 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     public EventFetcher getCalendarView(String id){
          return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
     }
+
+     /**
+     * Gets contacts.
+     *
+     * @return the contacts
+     */
+    public OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations> getContacts() {
+        return new OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations>("Contacts", this, Contact.class, ContactCollectionOperations.class);
+    }
+
+    /**
+     * Gets contact.
+     *
+     * @return the contact
+     */
+    public ContactFetcher getContact(String id){
+         return new OrcCollectionFetcher<Contact, ContactFetcher, ContactCollectionOperations>("Contacts", this, Contact.class, ContactCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets contact folders.
+     *
+     * @return the contact folders
+     */
+    public OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations> getContactFolders() {
+        return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class);
+    }
+
+    /**
+     * Gets contact folder.
+     *
+     * @return the contact folder
+     */
+    public ContactFolderFetcher getContactFolder(String id){
+         return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
+    }
      /**
      * Gets userphoto.
      *
@@ -334,6 +396,42 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public PhotoFetcher getUserPhoto(String id){
          return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets trending around.
+     *
+     * @return the trending around
+     */
+    public OrcCollectionFetcher<File, FileFetcher, FileCollectionOperations> getTrendingAround() {
+        return new OrcCollectionFetcher<File, FileFetcher, FileCollectionOperations>("TrendingAround", this, File.class, FileCollectionOperations.class);
+    }
+
+    /**
+     * Gets trending around.
+     *
+     * @return the trending around
+     */
+    public FileFetcher getTrendingAround(String id){
+         return new OrcCollectionFetcher<File, FileFetcher, FileCollectionOperations>("TrendingAround", this, File.class, FileCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets working with.
+     *
+     * @return the working with
+     */
+    public OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations> getWorkingWith() {
+        return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("WorkingWith", this, User.class, UserCollectionOperations.class);
+    }
+
+    /**
+     * Gets working with.
+     *
+     * @return the working with
+     */
+    public UserFetcher getWorkingWith(String id){
+         return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("WorkingWith", this, User.class, UserCollectionOperations.class).getById(id);
     }
 
      /**
@@ -363,21 +461,39 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
-     * Gets files.
+     * Gets tasks.
      *
-     * @return the files
+     * @return the tasks
      */
-    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getFiles() {
-        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class);
+    public OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations> getTasks() {
+        return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class);
     }
 
     /**
-     * Gets file.
+     * Gets task.
      *
-     * @return the file
+     * @return the task
      */
-    public ItemFetcher getFile(String id){
-         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("files", this, Item.class, ItemCollectionOperations.class).getById(id);
+    public TaskFetcher getTask(String id){
+         return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets plans.
+     *
+     * @return the plans
+     */
+    public OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations> getPlans() {
+        return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class);
+    }
+
+    /**
+     * Gets plan.
+     *
+     * @return the plan
+     */
+    public PlanFetcher getPlan(String id){
+         return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class).getById(id);
     }
 
 }

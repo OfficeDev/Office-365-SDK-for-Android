@@ -60,48 +60,12 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
     }
 
              /**
-     * Gets manager.
+     * Gets contactphoto.
      *
-     * @return the manager
+     * @return the contact photo
      */
-    public DirectoryObjectFetcher getManager() {
-        return new DirectoryObjectFetcher("manager", this);
-    }
-
-     /**
-     * Gets direct reports.
-     *
-     * @return the direct reports
-     */
-    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getDirectReports() {
-        return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("directReports", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class);
-    }
-
-    /**
-     * Gets direct report.
-     *
-     * @return the direct report
-     */
-    public DirectoryObjectFetcher getDirectReport(String id){
-         return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("directReports", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets member of.
-     *
-     * @return the member of
-     */
-    public OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations> getMemberOf() {
-        return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("memberOf", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class);
-    }
-
-    /**
-     * Gets member of.
-     *
-     * @return the member of
-     */
-    public DirectoryObjectFetcher getMemberOf(String id){
-         return new OrcCollectionFetcher<DirectoryObject, DirectoryObjectFetcher, DirectoryObjectCollectionOperations>("memberOf", this, DirectoryObject.class, DirectoryObjectCollectionOperations.class).getById(id);
+    public PhotoFetcher getContactPhoto() {
+        return new PhotoFetcher("ContactPhoto", this);
     }
 
 }

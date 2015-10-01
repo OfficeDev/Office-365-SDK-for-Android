@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type FileCollectionOperations
  */
-public class FileCollectionOperations extends ItemCollectionOperations{
+public class FileCollectionOperations extends OrcOperations{
 
     /**
      * Instantiates a new FileCollectionOperations.

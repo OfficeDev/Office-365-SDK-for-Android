@@ -22,7 +22,7 @@ import com.microsoft.services.orc.core.Readable;
  * The type  Item
  .
  */
-public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations> 
+public class ItemFetcher extends OrcMediaEntityFetcher<Item,ItemOperations> 
                                      implements Readable<Item> {
 
      /**
@@ -59,15 +59,7 @@ public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
         return this;
     }
 
-    
-    public FileFetcher asFile(){
-        return new FileFetcher(this.urlComponent, this.parent);
-    }   
-
-    public FolderFetcher asFolder(){
-        return new FolderFetcher(this.urlComponent, this.parent);
-    }   
-         /**
+             /**
      * Gets createdbyuser.
      *
      * @return the created by user
@@ -100,6 +92,24 @@ public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations>
      */
     public ItemFetcher getChild(String id){
          return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("children", this, Item.class, ItemCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets thumbnails.
+     *
+     * @return the thumbnails
+     */
+    public OrcCollectionFetcher<ThumbnailSet, ThumbnailSetFetcher, ThumbnailSetCollectionOperations> getThumbnails() {
+        return new OrcCollectionFetcher<ThumbnailSet, ThumbnailSetFetcher, ThumbnailSetCollectionOperations>("thumbnails", this, ThumbnailSet.class, ThumbnailSetCollectionOperations.class);
+    }
+
+    /**
+     * Gets thumbnail.
+     *
+     * @return the thumbnail
+     */
+    public ThumbnailSetFetcher getThumbnail(String id){
+         return new OrcCollectionFetcher<ThumbnailSet, ThumbnailSetFetcher, ThumbnailSetCollectionOperations>("thumbnails", this, ThumbnailSet.class, ThumbnailSetCollectionOperations.class).getById(id);
     }
 
 }

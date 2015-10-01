@@ -13,38 +13,15 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
  * The type Conversation Thread.
 */
-public class ConversationThread extends ODataBaseEntity {
+public class ConversationThread extends Entity {
 
     public ConversationThread(){
         setODataType("#Microsoft.Graph.ConversationThread");
-    }
-            
-    private String Id;
-     
-    /**
-    * Gets the Id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.Id; 
-    }
-
-    /**
-    * Sets the Id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.Id = value; 
-        valueChanged("Id", value);
-
     }
     
         
@@ -69,6 +46,97 @@ public class ConversationThread extends ODataBaseEntity {
     public void setToRecipients(java.util.List<Recipient> value) { 
         this.ToRecipients = value; 
         valueChanged("ToRecipients", value);
+
+    }
+            
+    private String Topic;
+     
+    /**
+    * Gets the Topic.
+    *
+    * @return the String
+    */
+    public String getTopic() {
+        return this.Topic; 
+    }
+
+    /**
+    * Sets the Topic.
+    *
+    * @param value the String
+    */
+    public void setTopic(String value) { 
+        this.Topic = value; 
+        valueChanged("Topic", value);
+
+    }
+            
+    private Boolean HasAttachments;
+     
+    /**
+    * Gets the Has Attachments.
+    *
+    * @return the Boolean
+    */
+    public Boolean getHasAttachments() {
+        return this.HasAttachments; 
+    }
+
+    /**
+    * Sets the Has Attachments.
+    *
+    * @param value the Boolean
+    */
+    public void setHasAttachments(Boolean value) { 
+        this.HasAttachments = value; 
+        valueChanged("HasAttachments", value);
+
+    }
+            
+    private java.util.Calendar DateTimeLastDelivered;
+     
+    /**
+    * Gets the Date Time Last Delivered.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getDateTimeLastDelivered() {
+        return this.DateTimeLastDelivered; 
+    }
+
+    /**
+    * Sets the Date Time Last Delivered.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setDateTimeLastDelivered(java.util.Calendar value) { 
+        this.DateTimeLastDelivered = value; 
+        valueChanged("DateTimeLastDelivered", value);
+
+    }
+    
+        
+    private java.util.List<String> UniqueSenders = null;
+    
+    
+     
+    /**
+    * Gets the Unique Senders.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getUniqueSenders() {
+        return this.UniqueSenders; 
+    }
+
+    /**
+    * Sets the Unique Senders.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setUniqueSenders(java.util.List<String> value) { 
+        this.UniqueSenders = value; 
+        valueChanged("UniqueSenders", value);
 
     }
     
@@ -116,6 +184,28 @@ public class ConversationThread extends ODataBaseEntity {
     public void setPreview(String value) { 
         this.Preview = value; 
         valueChanged("Preview", value);
+
+    }
+            
+    private Boolean IsLocked;
+     
+    /**
+    * Gets the Is Locked.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsLocked() {
+        return this.IsLocked; 
+    }
+
+    /**
+    * Sets the Is Locked.
+    *
+    * @param value the Boolean
+    */
+    public void setIsLocked(Boolean value) { 
+        this.IsLocked = value; 
+        valueChanged("IsLocked", value);
 
     }
     

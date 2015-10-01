@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type AttachmentOperations.
  */
-public class AttachmentOperations extends OrcOperations {
+public class AttachmentOperations extends EntityOperations {
 
      /**
       * Instantiates a new AttachmentOperations.

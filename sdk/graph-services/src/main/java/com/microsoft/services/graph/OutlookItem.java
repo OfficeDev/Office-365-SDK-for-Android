@@ -13,38 +13,15 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
  * The type Outlook Item.
 */
-public class OutlookItem extends ODataBaseEntity {
+public class OutlookItem extends Entity {
 
     public OutlookItem(){
         setODataType("#Microsoft.Graph.OutlookItem");
-    }
-            
-    private String Id;
-     
-    /**
-    * Gets the Id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.Id; 
-    }
-
-    /**
-    * Sets the Id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.Id = value; 
-        valueChanged("Id", value);
-
     }
             
     private String ChangeKey;

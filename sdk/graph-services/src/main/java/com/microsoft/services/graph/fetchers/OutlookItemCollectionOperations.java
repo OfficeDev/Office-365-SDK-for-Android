@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type OutlookItemCollectionOperations
  */
-public class OutlookItemCollectionOperations extends OrcOperations{
+public class OutlookItemCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new OutlookItemCollectionOperations.

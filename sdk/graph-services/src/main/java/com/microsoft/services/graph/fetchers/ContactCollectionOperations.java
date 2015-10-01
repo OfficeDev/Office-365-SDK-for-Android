@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type ContactCollectionOperations
  */
-public class ContactCollectionOperations extends DirectoryObjectCollectionOperations{
+public class ContactCollectionOperations extends OutlookItemCollectionOperations{
 
     /**
      * Instantiates a new ContactCollectionOperations.

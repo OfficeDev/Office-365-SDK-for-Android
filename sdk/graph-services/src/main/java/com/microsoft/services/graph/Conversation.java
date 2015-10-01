@@ -13,38 +13,15 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
  * The type Conversation.
 */
-public class Conversation extends ODataBaseEntity {
+public class Conversation extends Entity {
 
     public Conversation(){
         setODataType("#Microsoft.Graph.Conversation");
-    }
-            
-    private String Id;
-     
-    /**
-    * Gets the Id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.Id; 
-    }
-
-    /**
-    * Sets the Id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.Id = value; 
-        valueChanged("Id", value);
-
     }
             
     private String Topic;
@@ -91,25 +68,25 @@ public class Conversation extends ODataBaseEntity {
 
     }
             
-    private java.util.Calendar LastDeliveryTime;
+    private java.util.Calendar DateTimeLastDelivered;
      
     /**
-    * Gets the Last Delivery Time.
+    * Gets the Date Time Last Delivered.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getLastDeliveryTime() {
-        return this.LastDeliveryTime; 
+    public java.util.Calendar getDateTimeLastDelivered() {
+        return this.DateTimeLastDelivered; 
     }
 
     /**
-    * Sets the Last Delivery Time.
+    * Sets the Date Time Last Delivered.
     *
     * @param value the java.util.Calendar
     */
-    public void setLastDeliveryTime(java.util.Calendar value) { 
-        this.LastDeliveryTime = value; 
-        valueChanged("LastDeliveryTime", value);
+    public void setDateTimeLastDelivered(java.util.Calendar value) { 
+        this.DateTimeLastDelivered = value; 
+        valueChanged("DateTimeLastDelivered", value);
 
     }
     
