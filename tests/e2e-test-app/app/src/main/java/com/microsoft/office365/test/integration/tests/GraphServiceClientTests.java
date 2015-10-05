@@ -26,6 +26,8 @@
 /**
  * The type GraphServiceClientTests.
  */
+
+/*
 public class GraphServiceClientTests extends TestGroup {
     private ObjectFiller mFiller;
     private List<String> mNotSupportedTests;
@@ -32596,3 +32598,4 @@ public class GraphServiceClientTests extends TestGroup {
         mFiller.setSubElementClass(SubscribedSku.class, "servicePlans", ServicePlanInfo.class);
     }
 }
+*/
