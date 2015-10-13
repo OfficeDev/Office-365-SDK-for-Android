@@ -76,7 +76,7 @@ public class TestCaseAdapter extends ArrayAdapter<TestCase> {
 			checkBox.setTextColor(Color.RED);
 		} else if (testCase.getStatus() == TestStatus.Passed) {
 			checkBox.setTextColor(Color.GREEN);
-		} else if (testCase.getStatus() == TestStatus.Disabled) {
+		} else if (testCase.getStatus() == TestStatus.Disabled || testCase.getStatus() == TestStatus.NotSupported) {
 			checkBox.setTextColor(Color.GRAY);
 		} else {
 			checkBox.setTextColor(Color.BLACK);

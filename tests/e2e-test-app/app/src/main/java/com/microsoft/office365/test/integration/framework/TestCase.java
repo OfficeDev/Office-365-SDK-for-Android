@@ -20,6 +20,7 @@ See the Apache Version 2.0 License for specific language governing permissions a
 package com.microsoft.office365.test.integration.framework;
 
 import android.util.Log;
+import android.widget.Switch;
 
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.android.Constants;
@@ -79,7 +80,13 @@ public abstract class TestCase {
 	}
 
 	public TestStatus getStatus() {
-		return mEnabled ? mStatus : TestStatus.Disabled;
+		if(mEnabled){
+			return mStatus;
+		}else if(!mEnabled && mStatus.equals(TestStatus.NotSupported)) {
+			return TestStatus.NotSupported;
+		}else{
+			return TestStatus.Disabled;
+		}
 	}
 
 	public void setStatus(TestStatus status) {

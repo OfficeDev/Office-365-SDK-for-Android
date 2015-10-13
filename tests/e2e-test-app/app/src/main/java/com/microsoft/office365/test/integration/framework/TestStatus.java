@@ -20,5 +20,5 @@ See the Apache Version 2.0 License for specific language governing permissions a
 package com.microsoft.office365.test.integration.framework;
 
 public enum TestStatus {
-	NotRun, Running, Failed, Passed, Disabled
+	NotRun, Running, Failed, Passed, Disabled, NotSupported
 }

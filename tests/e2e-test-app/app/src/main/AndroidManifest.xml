@@ -27,6 +27,9 @@
             android:name="com.microsoft.office365.test.integration.android.OfficePreferenceActivity"
             android:label="@string/title_activity_office_preference"></activity>
         <activity
+            android:name="com.microsoft.office365.test.integration.android.LogActivity"
+            android:label="@string/title_activity_office_log"></activity>
+        <activity
             android:name="com.microsoft.office365.test.integration.AADSettingsActivity"
             android:label="@string/title_activity_aad_settings">
             <intent-filter>
@@ -60,7 +63,7 @@
                 <file>/sdcard/testFile.log</file>
                 <append>true</append>
                 <encoder>
-                    <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+                    <pattern>[ %thread ] %msg%n</pattern>
                 </encoder>
             </appender>
 

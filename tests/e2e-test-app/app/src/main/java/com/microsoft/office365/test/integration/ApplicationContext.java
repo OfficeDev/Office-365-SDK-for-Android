@@ -229,7 +229,7 @@ public class ApplicationContext {
     }
 
 
-    public static OutlookClient getMailCalendarContactClient() {
+    public static OutlookClient getOutlookClient() {
         return getTClientAAD(getExchangeServerUrl(), getExchangeEndpointUrl(), OutlookClient.class);
     }
 

@@ -105,7 +105,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Message message = client.getMe().getFolders().getById("Inbox").getMessages()
                             .top(1).read().get().get(0);
                     message.setIsRead(false);
@@ -141,7 +141,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder folder = client.getMe().getFolders().getById("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
@@ -168,7 +168,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder folder = client.getMe().getFolder("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
@@ -199,7 +199,7 @@ public class ExchangeTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Create new folder
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -260,7 +260,7 @@ public class ExchangeTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Prepare for test
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -326,7 +326,7 @@ public class ExchangeTests extends TestGroup {
                     String destinationFolderName = "Drafts";
 
                     //Create new folder
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -395,7 +395,7 @@ public class ExchangeTests extends TestGroup {
                     String destinationFolderName = "Drafts";
 
                     //Create new folder
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(newFolderName);
                     Folder addedFolder = client.getMe()
@@ -473,7 +473,7 @@ public class ExchangeTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Create new folder
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     Folder newFolder = new Folder();
                     newFolder.setDisplayName(folderName);
                     Folder addedFolder = client.getMe()
@@ -533,7 +533,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(3).read().get();
                     if (inboxMessages.size() == 0) {
@@ -571,7 +571,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
 
@@ -612,7 +612,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     if (client == null)
                         result.setStatus(TestStatus.Failed);
@@ -639,7 +639,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     User me = client.getMe().read().get();
                     if (client != null && me != null)
@@ -667,7 +667,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
                     List<Folder> folders = client.getMe().getFolders().read().get();
                     if (folders == null || folders.size() == 0)
                         result.setStatus(TestStatus.Failed);
@@ -694,7 +694,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
 
@@ -739,7 +739,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
 
@@ -781,7 +781,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
 
@@ -824,7 +824,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test Send Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -855,7 +855,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test Send Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -886,7 +886,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -931,7 +931,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -982,7 +982,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test Update Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -1037,7 +1037,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test Delete Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -1093,7 +1093,7 @@ public class ExchangeTests extends TestGroup {
 
                     String destinationFolderName = "Inbox";
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test move Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -1160,7 +1160,7 @@ public class ExchangeTests extends TestGroup {
 
                     String destinationFolderName = "Inbox";
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String mailSubject = "Test copy Message";
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
@@ -1232,7 +1232,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     if (inboxMessages.size() == 0) {
@@ -1297,7 +1297,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     if (inboxMessages.size() == 0) {
@@ -1364,7 +1364,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
                     if (inboxMessages.size() == 0) {
@@ -1473,7 +1473,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Act
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -1513,7 +1513,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -1556,7 +1556,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -1600,7 +1600,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -1646,7 +1646,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     CalendarGroup calendarGroup = new CalendarGroup();
@@ -1692,7 +1692,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -1736,7 +1736,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Act
                     Calendar calendar = client.getMe().getCalendar().read().get();
@@ -1767,7 +1767,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Act
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -1808,7 +1808,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -1853,7 +1853,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -1901,7 +1901,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     String calendarName = "My testing calendar" + UUID.randomUUID().toString();
@@ -1947,7 +1947,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2005,7 +2005,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2047,7 +2047,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2087,7 +2087,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2131,7 +2131,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2174,7 +2174,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2218,7 +2218,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2307,7 +2307,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Act
                     List<Contact> contacts = client.getMe()
@@ -2341,7 +2341,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
@@ -2377,7 +2377,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
@@ -2415,7 +2415,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Contact addedContact = client.getMe().getContacts().add(getContact()).get();
@@ -2457,7 +2457,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Contact contact = getContact();
@@ -2515,7 +2515,7 @@ public class ExchangeTests extends TestGroup {
                     String subject = "Test Subject " + UUID.randomUUID().toString();
                     Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
@@ -2563,7 +2563,7 @@ public class ExchangeTests extends TestGroup {
                     String subject = "Test Subject " + UUID.randomUUID().toString();
                     Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
@@ -2607,7 +2607,7 @@ public class ExchangeTests extends TestGroup {
                     String subject = "Test Subject " + UUID.randomUUID().toString();
                     Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Message addedMessage1 = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
@@ -2649,7 +2649,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String messageSubject = "Test message" + UUID.randomUUID().toString();
                     Message message = getSampleMessage(messageSubject, ApplicationContext.getTestMail(), "");
@@ -2710,7 +2710,7 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     String messageSubject = "Test message" + UUID.randomUUID().toString();
                     Message message = getSampleMessage(messageSubject, ApplicationContext.getTestMail(), "");
@@ -2768,7 +2768,7 @@ public class ExchangeTests extends TestGroup {
                     String subject = "Test Subject " + UUID.randomUUID().toString();
                     Message message = getSampleMessage(subject, ApplicationContext.getTestMail(), "");
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
@@ -2817,7 +2817,7 @@ public class ExchangeTests extends TestGroup {
                     Contact contact2 = getContact();
                     contact2.setDisplayName(name2);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Contact addedContact1 = client.getMe().getContacts().add(contact1).get();
@@ -2868,7 +2868,7 @@ public class ExchangeTests extends TestGroup {
                     Contact contact2 = getContact();
                     contact2.setDisplayName(name2);
 
-                    OutlookClient client = ApplicationContext.getMailCalendarContactClient();
+                    OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
                     Contact addedContact1 = client.getMe().getContacts().add(contact1).get();
