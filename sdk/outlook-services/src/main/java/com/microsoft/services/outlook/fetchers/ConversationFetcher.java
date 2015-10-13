@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Conversation
- .
  */
 public class ConversationFetcher extends OrcEntityFetcher<Conversation,ConversationOperations> 
                                      implements Readable<Conversation> {
@@ -46,8 +45,8 @@ public class ConversationFetcher extends OrcEntityFetcher<Conversation,Conversat
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class ConversationFetcher extends OrcEntityFetcher<Conversation,Conversat
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets threads.
      *

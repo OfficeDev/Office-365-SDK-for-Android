@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Message
- .
  */
 public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations> 
                                      implements Readable<Message> {
@@ -46,8 +45,8 @@ public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -63,6 +62,8 @@ public class MessageFetcher extends OrcEntityFetcher<Message,MessageOperations>
     public EventMessageFetcher asEventMessage(){
         return new EventMessageFetcher(this.urlComponent, this.parent);
     }   
+
+    
     
      /**
      * Gets attachments.

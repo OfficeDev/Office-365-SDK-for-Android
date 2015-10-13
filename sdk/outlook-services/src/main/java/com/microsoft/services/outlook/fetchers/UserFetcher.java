@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  User
- .
  */
 public class UserFetcher extends OrcEntityFetcher<User,UserOperations> 
                                      implements Readable<User> {
@@ -46,8 +45,8 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets subscriptions.
      *

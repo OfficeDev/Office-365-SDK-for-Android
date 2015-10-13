@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ConversationThread
- .
  */
 public class ConversationThreadFetcher extends OrcEntityFetcher<ConversationThread,ConversationThreadOperations> 
                                      implements Readable<ConversationThread> {
@@ -46,8 +45,8 @@ public class ConversationThreadFetcher extends OrcEntityFetcher<ConversationThre
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class ConversationThreadFetcher extends OrcEntityFetcher<ConversationThre
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets posts.
      *

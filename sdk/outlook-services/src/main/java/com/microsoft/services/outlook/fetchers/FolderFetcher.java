@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Folder
- .
  */
 public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations> 
                                      implements Readable<Folder> {
@@ -46,8 +45,8 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets messages.
      *

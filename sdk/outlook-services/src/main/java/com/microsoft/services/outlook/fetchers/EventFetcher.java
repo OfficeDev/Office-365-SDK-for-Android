@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Event
- .
  */
 public class EventFetcher extends OrcEntityFetcher<Event,EventOperations> 
                                      implements Readable<Event> {
@@ -46,8 +45,8 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
         return this;
     }
 
-             /**
+    
+    
+         /**
      * Gets calendar.
      *
      * @return the calendar

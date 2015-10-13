@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DirectoryObject
- .
  */
 public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,DirectoryObjectOperations> 
                                      implements Readable<DirectoryObject> {
@@ -46,8 +45,8 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -67,5 +66,7 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
     public GroupFetcher asGroup(){
         return new GroupFetcher(this.urlComponent, this.parent);
     }   
+
+    
     
 }

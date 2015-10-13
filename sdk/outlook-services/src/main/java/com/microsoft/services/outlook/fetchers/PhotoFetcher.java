@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Photo
- .
  */
 public class PhotoFetcher extends OrcMediaEntityFetcher<Photo,PhotoOperations> 
                                      implements Readable<Photo> {
@@ -46,8 +45,8 @@ public class PhotoFetcher extends OrcMediaEntityFetcher<Photo,PhotoOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PhotoFetcher extends OrcMediaEntityFetcher<Photo,PhotoOperations>
         return this;
     }
 
-        
+    
+    
+    
 }

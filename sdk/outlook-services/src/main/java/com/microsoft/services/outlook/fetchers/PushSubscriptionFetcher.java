@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PushSubscription
- .
  */
 public class PushSubscriptionFetcher extends OrcEntityFetcher<PushSubscription,PushSubscriptionOperations> 
                                      implements Readable<PushSubscription> {
@@ -46,8 +45,8 @@ public class PushSubscriptionFetcher extends OrcEntityFetcher<PushSubscription,P
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PushSubscriptionFetcher extends OrcEntityFetcher<PushSubscription,P
         return this;
     }
 
-        
+    
+    
+    
 }
