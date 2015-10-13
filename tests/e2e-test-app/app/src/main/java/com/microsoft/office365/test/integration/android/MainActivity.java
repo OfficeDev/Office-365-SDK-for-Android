@@ -151,7 +151,7 @@ public class MainActivity extends Activity {
         adapter.add(new DirectoryTests());
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
-		
+
 		/*
         OutlookFilters outlookFilters = new OutlookFilters(exclusions.containsKey("Outlook") ? exclusions.get("Outlook") : null);
         adapter.add(new OutlookClientTests(outlookFilters.getFilters(), outlookFilters.getNotSupportedTests()));
