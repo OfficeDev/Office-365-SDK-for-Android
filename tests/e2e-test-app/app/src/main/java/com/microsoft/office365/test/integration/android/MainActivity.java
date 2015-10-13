@@ -47,7 +47,13 @@ import com.microsoft.office365.test.integration.framework.TestLog;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestResultsPostManager;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.office365.test.integration.tests.DirectoryTests;
+import com.microsoft.office365.test.integration.tests.DiscoveryTests;
+import com.microsoft.office365.test.integration.tests.ExchangeTests;
+import com.microsoft.office365.test.integration.tests.FilesTests;
 import com.microsoft.office365.test.integration.tests.GraphTests;
+import com.microsoft.office365.test.integration.tests.ListsTests;
+import com.microsoft.office365.test.integration.tests.OneNoteTests;
 import com.microsoft.office365.test.integration.tests.OutlookClientTests;
 import com.microsoft.office365.test.integration.tests.filters.OutlookFilters;
 import com.microsoft.services.orc.serialization.impl.GsonSerializer;
@@ -137,20 +143,19 @@ public class MainActivity extends Activity {
 
         ArrayAdapter<TestGroup> adapter = (ArrayAdapter<TestGroup>) mTestGroupSpinner.getAdapter();
         adapter.clear();
-        /*
-        //adapter.add(new AllTests(exclusions));
-        adapter.add(new ExchangeTests();
+
+        adapter.add(new ExchangeTests());
         adapter.add(new FilesTests());
         adapter.add(new ListsTests());
         adapter.add(new DiscoveryTests());
         adapter.add(new DirectoryTests());
         adapter.add(new OneNoteTests());
         adapter.add(new GraphTests());
-        */
-		adapter.add(new GraphTests());
+		
+		/*
         OutlookFilters outlookFilters = new OutlookFilters(exclusions.containsKey("Outlook") ? exclusions.get("Outlook") : null);
         adapter.add(new OutlookClientTests(outlookFilters.getFilters(), outlookFilters.getNotSupportedTests()));
-
+		*/
 
 		mTestGroupSpinner.setSelection(0);
 		selectTestGroup(0);
@@ -211,37 +216,13 @@ public class MainActivity extends Activity {
 			return true;
 
 		case R.id.menu_view_log:
-            /*
-			AlertDialog.Builder logDialogBuilder = new AlertDialog.Builder(this);
-			logDialogBuilder.setTitle("Log");
-
-			final WebView webView = new WebView(this);
-
-			String logContent = TextUtils.htmlEncode(mLog.toString()).replace("\n", "<br />");
-			String logHtml = "<html><body><pre>" + logContent + "</pre></body></html>";
-			webView.loadData(logHtml, "text/html", "utf-8");
-
-			logDialogBuilder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-					clipboardManager.setText(mLog.toString());
-				}
-			});
-
-			logDialogBuilder.setView(webView);
-
-			logDialogBuilder.create().show();
-			return true;
-			*/
             GsonSerializer serializer = new GsonSerializer();
             String currentRun = serializer.serialize(mCurrentTestRun);
 
             Intent intent = new Intent(this, LogActivity.class);
             Bundle b = new Bundle();
-            b.putString("TestResults", currentRun); //Your id
-            intent.putExtras(b); //Put your id to your next Intent
+            b.putString("TestResults", currentRun);
+            intent.putExtras(b);
             startActivity(intent);
             return true;
 
