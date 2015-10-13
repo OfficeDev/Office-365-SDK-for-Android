@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PrivilegedOperationEvent
- .
  */
 public class PrivilegedOperationEventFetcher extends OrcEntityFetcher<PrivilegedOperationEvent,PrivilegedOperationEventOperations> 
                                      implements Readable<PrivilegedOperationEvent> {
@@ -46,8 +45,8 @@ public class PrivilegedOperationEventFetcher extends OrcEntityFetcher<Privileged
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PrivilegedOperationEventFetcher extends OrcEntityFetcher<Privileged
         return this;
     }
 
-        
+    
+    
+    
 }

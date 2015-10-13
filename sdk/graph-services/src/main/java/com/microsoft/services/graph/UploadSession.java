@@ -25,6 +25,28 @@ public class UploadSession extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.uploadSession");
     }
 
+    private String uploadUrl;
+
+    /**
+    * Gets the upload Url.
+    *
+    * @return the String
+    */
+    public String getUploadUrl() {
+        return this.uploadUrl; 
+    }
+
+    /**
+    * Sets the upload Url.
+    *
+    * @param value the String
+    */
+    public void setUploadUrl(String value) { 
+        this.uploadUrl = value;
+        valueChanged("uploadUrl", value);
+
+    }
+
     private java.util.Calendar expirationDateTime;
 
     /**
@@ -66,28 +88,6 @@ public class UploadSession extends ODataBaseEntity {
     public void setNextExpectedRanges(java.util.List<String> value) { 
         this.nextExpectedRanges = value;
         valueChanged("nextExpectedRanges", value);
-
-    }
-
-    private String uploadUrl;
-
-    /**
-    * Gets the upload Url.
-    *
-    * @return the String
-    */
-    public String getUploadUrl() {
-        return this.uploadUrl; 
-    }
-
-    /**
-    * Sets the upload Url.
-    *
-    * @param value the String
-    */
-    public void setUploadUrl(String value) { 
-        this.uploadUrl = value;
-        valueChanged("uploadUrl", value);
 
     }
 }

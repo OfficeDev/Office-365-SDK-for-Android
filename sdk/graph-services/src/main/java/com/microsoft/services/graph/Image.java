@@ -24,4 +24,48 @@ public class Image extends ODataBaseEntity {
     public Image(){
         setODataType("#Microsoft.Graph.image");
     }
+
+    private Integer height;
+
+    /**
+    * Gets the height.
+    *
+    * @return the Integer
+    */
+    public Integer getHeight() {
+        return this.height; 
+    }
+
+    /**
+    * Sets the height.
+    *
+    * @param value the Integer
+    */
+    public void setHeight(Integer value) { 
+        this.height = value;
+        valueChanged("height", value);
+
+    }
+
+    private Integer width;
+
+    /**
+    * Gets the width.
+    *
+    * @return the Integer
+    */
+    public Integer getWidth() {
+        return this.width; 
+    }
+
+    /**
+    * Sets the width.
+    *
+    * @param value the Integer
+    */
+    public void setWidth(Integer value) { 
+        this.width = value;
+        valueChanged("width", value);
+
+    }
 }

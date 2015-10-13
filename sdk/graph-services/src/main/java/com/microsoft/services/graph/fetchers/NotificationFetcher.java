@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Notification
- .
  */
 public class NotificationFetcher extends OrcEntityFetcher<Notification,NotificationOperations> 
                                      implements Readable<Notification> {
@@ -46,8 +45,8 @@ public class NotificationFetcher extends OrcEntityFetcher<Notification,Notificat
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class NotificationFetcher extends OrcEntityFetcher<Notification,Notificat
         return this;
     }
 
-        
+    
+    
+    
 }

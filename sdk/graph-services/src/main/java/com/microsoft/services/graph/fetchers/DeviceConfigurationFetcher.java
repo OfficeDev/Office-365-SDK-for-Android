@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DeviceConfiguration
- .
  */
 public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfiguration,DeviceConfigurationOperations> 
                                      implements Readable<DeviceConfiguration> {
@@ -46,8 +45,8 @@ public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfigura
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class DeviceConfigurationFetcher extends OrcEntityFetcher<DeviceConfigura
         return this;
     }
 
-        
+    
+    
+    
 }

@@ -16,6 +16,8 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Thumbnail Set.
 */
@@ -110,6 +112,28 @@ public class ThumbnailSet extends ODataBaseEntity {
     public void setSmall(Thumbnail value) { 
         this.small = value; 
         valueChanged("small", value);
+
+    }
+            
+    private Thumbnail source;
+     
+    /**
+    * Gets the source.
+    *
+    * @return the Thumbnail
+    */
+    public Thumbnail getSource() {
+        return this.source; 
+    }
+
+    /**
+    * Sets the source.
+    *
+    * @param value the Thumbnail
+    */
+    public void setSource(Thumbnail value) { 
+        this.source = value; 
+        valueChanged("source", value);
 
     }
 }

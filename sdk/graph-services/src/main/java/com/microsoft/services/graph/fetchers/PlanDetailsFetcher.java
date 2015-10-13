@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PlanDetails
- .
  */
 public class PlanDetailsFetcher extends OrcEntityFetcher<PlanDetails,PlanDetailsOperations> 
                                      implements Readable<PlanDetails> {
@@ -46,8 +45,8 @@ public class PlanDetailsFetcher extends OrcEntityFetcher<PlanDetails,PlanDetails
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PlanDetailsFetcher extends OrcEntityFetcher<PlanDetails,PlanDetails
         return this;
     }
 
-        
+    
+    
+    
 }

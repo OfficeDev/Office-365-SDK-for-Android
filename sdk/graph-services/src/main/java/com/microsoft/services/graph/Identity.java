@@ -25,28 +25,6 @@ public class Identity extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.identity");
     }
 
-    private String id;
-
-    /**
-    * Gets the id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.id; 
-    }
-
-    /**
-    * Sets the id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.id = value;
-        valueChanged("id", value);
-
-    }
-
     private String displayName;
 
     /**
@@ -66,6 +44,28 @@ public class Identity extends ODataBaseEntity {
     public void setDisplayName(String value) { 
         this.displayName = value;
         valueChanged("displayName", value);
+
+    }
+
+    private String id;
+
+    /**
+    * Gets the id.
+    *
+    * @return the String
+    */
+    public String getId() {
+        return this.id; 
+    }
+
+    /**
+    * Sets the id.
+    *
+    * @param value the String
+    */
+    public void setId(String value) { 
+        this.id = value;
+        valueChanged("id", value);
 
     }
 }

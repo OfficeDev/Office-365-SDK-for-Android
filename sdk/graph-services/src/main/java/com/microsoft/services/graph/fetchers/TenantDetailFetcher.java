@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  TenantDetail
- .
  */
 public class TenantDetailFetcher extends OrcEntityFetcher<TenantDetail,TenantDetailOperations> 
                                      implements Readable<TenantDetail> {
@@ -46,8 +45,8 @@ public class TenantDetailFetcher extends OrcEntityFetcher<TenantDetail,TenantDet
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class TenantDetailFetcher extends OrcEntityFetcher<TenantDetail,TenantDet
         return this;
     }
 
-        
+    
+    
+    
 }

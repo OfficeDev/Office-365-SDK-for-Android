@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PrivilegedRoleSettings
- .
  */
 public class PrivilegedRoleSettingsFetcher extends OrcEntityFetcher<PrivilegedRoleSettings,PrivilegedRoleSettingsOperations> 
                                      implements Readable<PrivilegedRoleSettings> {
@@ -46,8 +45,8 @@ public class PrivilegedRoleSettingsFetcher extends OrcEntityFetcher<PrivilegedRo
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PrivilegedRoleSettingsFetcher extends OrcEntityFetcher<PrivilegedRo
         return this;
     }
 
-        
+    
+    
+    
 }

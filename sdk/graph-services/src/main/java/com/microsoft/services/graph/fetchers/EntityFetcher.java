@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Entity
- .
  */
 public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations> 
                                      implements Readable<Entity> {
@@ -46,8 +45,8 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -99,6 +98,8 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
     public AttachmentFetcher asAttachment(){
         return new AttachmentFetcher(this.urlComponent, this.parent);
     }   
+
+    
     
      /**
      * Gets extensions.

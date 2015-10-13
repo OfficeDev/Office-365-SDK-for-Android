@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  OrgContact
- .
  */
 public class OrgContactFetcher extends OrcEntityFetcher<OrgContact,OrgContactOperations> 
                                      implements Readable<OrgContact> {
@@ -46,8 +45,8 @@ public class OrgContactFetcher extends OrcEntityFetcher<OrgContact,OrgContactOpe
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,20 @@ public class OrgContactFetcher extends OrcEntityFetcher<OrgContact,OrgContactOpe
         return this;
     }
 
-             /**
+    
+    	
+
+	/**
+     * Gets thumbnail photo.
+     *
+     * @return the thumbnail photo
+     */
+    public OrcODataStreamFetcher getThumbnailPhoto() {
+		return new OrcODataStreamFetcher("thumbnailphoto", this, getResolver());
+    }
+
+	
+         /**
      * Gets manager.
      *
      * @return the manager

@@ -22,72 +22,72 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Location extends ODataBaseEntity {
 
     public Location(){
-        setODataType("#Microsoft.Graph.Location");
+        setODataType("#Microsoft.Graph.location");
     }
 
-    private String DisplayName;
+    private Double altitude;
 
     /**
-    * Gets the Display Name.
+    * Gets the altitude.
     *
-    * @return the String
+    * @return the Double
     */
-    public String getDisplayName() {
-        return this.DisplayName; 
-    }
-
-    /**
-    * Sets the Display Name.
-    *
-    * @param value the String
-    */
-    public void setDisplayName(String value) { 
-        this.DisplayName = value;
-        valueChanged("DisplayName", value);
-
-    }
-
-    private PhysicalAddress Address;
-
-    /**
-    * Gets the Address.
-    *
-    * @return the PhysicalAddress
-    */
-    public PhysicalAddress getAddress() {
-        return this.Address; 
+    public Double getAltitude() {
+        return this.altitude; 
     }
 
     /**
-    * Sets the Address.
+    * Sets the altitude.
     *
-    * @param value the PhysicalAddress
+    * @param value the Double
     */
-    public void setAddress(PhysicalAddress value) { 
-        this.Address = value;
-        valueChanged("Address", value);
+    public void setAltitude(Double value) { 
+        this.altitude = value;
+        valueChanged("altitude", value);
 
     }
 
-    private GeoCoordinates Coordinates;
+    private Double latitude;
 
     /**
-    * Gets the Coordinates.
+    * Gets the latitude.
     *
-    * @return the GeoCoordinates
+    * @return the Double
     */
-    public GeoCoordinates getCoordinates() {
-        return this.Coordinates; 
+    public Double getLatitude() {
+        return this.latitude; 
     }
 
     /**
-    * Sets the Coordinates.
+    * Sets the latitude.
     *
-    * @param value the GeoCoordinates
+    * @param value the Double
     */
-    public void setCoordinates(GeoCoordinates value) { 
-        this.Coordinates = value;
-        valueChanged("Coordinates", value);
+    public void setLatitude(Double value) { 
+        this.latitude = value;
+        valueChanged("latitude", value);
+
+    }
+
+    private Double longitude;
+
+    /**
+    * Gets the longitude.
+    *
+    * @return the Double
+    */
+    public Double getLongitude() {
+        return this.longitude; 
+    }
+
+    /**
+    * Sets the longitude.
+    *
+    * @param value the Double
+    */
+    public void setLongitude(Double value) { 
+        this.longitude = value;
+        valueChanged("longitude", value);
 
     }
 }

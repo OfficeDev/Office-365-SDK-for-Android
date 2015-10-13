@@ -59,26 +59,4 @@ public class ThumbnailSetOperations extends OrcOperations {
         return this;
     }
 
-    
-    
-     /**
-     * getCustomThumbnail listenable future.
-     * @param size the size 
-     * @return the listenable future
-     */         
-    public ListenableFuture<Thumbnail> getCustomThumbnail(String size) { 
-
-        final SettableFuture<Thumbnail> result = SettableFuture.create();
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
-        
-        request.getUrl().appendPathComponent("Microsoft.Graph.getCustomThumbnail");   
-        
-        ListenableFuture<OrcResponse> future = oDataExecute(request);   
-        
-        return transformToEntityListenableFuture(transformToStringListenableFuture(future), Thumbnail.class, getResolver());
-        
-        
-   }
-    
 }

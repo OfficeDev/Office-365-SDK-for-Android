@@ -62,6 +62,55 @@ public class ItemOperations extends OrcOperations {
     
     
     /**
+     * invite listenable future.
+     * @param recipients the recipients @param message the message @param requireSignIn the requireSignIn @param sendInvitation the sendInvitation @param roles the roles 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Permission> invite(java.util.List<Recipients> recipients, String message, Boolean requireSignIn, Boolean sendInvitation, java.util.List<String> roles) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedrecipients = serializer.serialize(recipients);
+		String serializedmessage = serializer.serialize(message);
+		String serializedrequireSignIn = serializer.serialize(requireSignIn);
+		String serializedsendInvitation = serializer.serialize(sendInvitation);
+		String serializedroles = serializer.serialize(roles);
+		  
+        
+        ListenableFuture<String> future = inviteRaw(serializedrecipients, serializedmessage, serializedrequireSignIn, serializedsendInvitation, serializedroles);
+        return transformToEntityListenableFuture(future, Permission.class, getResolver());
+        
+    }
+
+     /**
+     * inviteRaw listenable future.
+     * @param recipients the recipients @param message the message @param requireSignIn the requireSignIn @param sendInvitation the sendInvitation @param roles the roles 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> inviteRaw(String recipients, String message, String requireSignIn, String sendInvitation, String roles){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("recipients", recipients);
+		map.put("message", message);
+		map.put("requireSignIn", requireSignIn);
+		map.put("sendInvitation", sendInvitation);
+		map.put("roles", roles);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.invite");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
      * copy listenable future.
      * @param parentReference the parentReference @param name the name 
      * @return the listenable future
@@ -147,31 +196,29 @@ public class ItemOperations extends OrcOperations {
     
     /**
      * createSession listenable future.
-     * @param path the path @param item the item 
+     * @param item the item 
      * @return the listenable future
      */         
-    public ListenableFuture<UploadSession> createSession(String path, FileSystemItemInformation item) { 
+    public ListenableFuture<UploadSession> createSession(ChunkedUploadSessionDescriptor item) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedpath = serializer.serialize(path);
-		String serializeditem = serializer.serialize(item);
+        String serializeditem = serializer.serialize(item);
 		  
         
-        ListenableFuture<String> future = createSessionRaw(serializedpath, serializeditem);
+        ListenableFuture<String> future = createSessionRaw(serializeditem);
         return transformToEntityListenableFuture(future, UploadSession.class, getResolver());
         
     }
 
      /**
      * createSessionRaw listenable future.
-     * @param path the path @param item the item 
+     * @param item the item 
      * @return the listenable future
      */ 
-    public ListenableFuture<String> createSessionRaw(String path, String item){
+    public ListenableFuture<String> createSessionRaw(String item){
         
         java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         
-        map.put("path", path);
-		map.put("item", item);
+        map.put("item", item);
 		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
@@ -189,38 +236,31 @@ public class ItemOperations extends OrcOperations {
     
     
     /**
-     * uploadContent listenable future.
-     * @param contentStream the contentStream 
+     * allPhotos listenable future.
+     * 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> uploadContent(byte[] contentStream) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedcontentStream = serializer.serialize(contentStream);
-		  
+    public ListenableFuture<Item> allPhotos() { 
+              
+          
         
-        ListenableFuture<String> future = uploadContentRaw(serializedcontentStream);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        ListenableFuture<String> future = allPhotosRaw();
+        return transformToEntityListenableFuture(future, Item.class, getResolver());
         
     }
 
      /**
-     * uploadContentRaw listenable future.
-     * @param contentStream the contentStream 
+     * allPhotosRaw listenable future.
+     * 
      * @return the listenable future
      */ 
-    public ListenableFuture<String> uploadContentRaw(String contentStream){
+    public ListenableFuture<String> allPhotosRaw(){
         
-        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
         
-        map.put("contentStream", contentStream);
-		
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
-        
-        request.setContent(getResolver().getJsonSerializer()
-               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.uploadContent");
+        request.getUrl().appendPathComponent("Microsoft.Graph.allPhotos");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -229,68 +269,84 @@ public class ItemOperations extends OrcOperations {
 
     
     
-     /**
-     * content listenable future.
-     * 
-     * @return the listenable future
-     */         
-    public ListenableFuture<byte[]> content() { 
-
-        final SettableFuture<byte[]> result = SettableFuture.create();
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
-        
-        request.getUrl().appendPathComponent("Microsoft.Graph.content");   
-        
-        ListenableFuture<OrcResponse> future = oDataExecute(request);   
-        
-        return transformToByteArrayListenableFuture(future);
-
-        
-   }
-    
-    
-    
-     /**
+    /**
      * delta listenable future.
-     * 
+     * @param token the token 
      * @return the listenable future
      */         
-    public ListenableFuture<Item> delta() { 
+    public ListenableFuture<Item> delta(String token) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedtoken = serializer.serialize(token);
+		  
+        
+        ListenableFuture<String> future = deltaRaw(serializedtoken);
+        return transformToEntityListenableFuture(future, Item.class, getResolver());
+        
+    }
 
-        final SettableFuture<Item> result = SettableFuture.create();
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
-        
-        request.getUrl().appendPathComponent("Microsoft.Graph.delta");   
-        
-        ListenableFuture<OrcResponse> future = oDataExecute(request);   
-        
-        return transformToEntityListenableFuture(transformToStringListenableFuture(future), Item.class, getResolver());
-        
-        
-   }
-    
-    
-    
      /**
+     * deltaRaw listenable future.
+     * @param token the token 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> deltaRaw(String token){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("token", token);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.delta");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
      * search listenable future.
      * @param q the q 
      * @return the listenable future
      */         
     public ListenableFuture<Item> search(String q) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedq = serializer.serialize(q);
+		  
+        
+        ListenableFuture<String> future = searchRaw(serializedq);
+        return transformToEntityListenableFuture(future, Item.class, getResolver());
+        
+    }
 
-        final SettableFuture<Item> result = SettableFuture.create();
+     /**
+     * searchRaw listenable future.
+     * @param q the q 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> searchRaw(String q){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("q", q);
+		
         Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.GET);
+        request.setVerb(HttpVerb.POST);
         
-        request.getUrl().appendPathComponent("Microsoft.Graph.search");   
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.search");
         
-        ListenableFuture<OrcResponse> future = oDataExecute(request);   
-        
-        return transformToEntityListenableFuture(transformToStringListenableFuture(future), Item.class, getResolver());
-        
-        
-   }
-    
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }

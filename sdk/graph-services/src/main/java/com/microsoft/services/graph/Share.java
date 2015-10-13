@@ -16,61 +16,41 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
- * The type File System Item Information.
+ * The type Share.
 */
-public class FileSystemItemInformation extends ODataBaseEntity {
+public class Share extends ODataBaseEntity {
 
-    public FileSystemItemInformation(){
-        setODataType("#Microsoft.Graph.FileSystemItemInformation");
+    public Share(){
+        setODataType("#Microsoft.Graph.share");
     }
-
-    private File file;
-
+            
+    private String id;
+     
     /**
-    * Gets the file.
+    * Gets the id.
     *
-    * @return the File
+    * @return the String
     */
-    public File getFile() {
-        return this.file; 
-    }
-
-    /**
-    * Sets the file.
-    *
-    * @param value the File
-    */
-    public void setFile(File value) { 
-        this.file = value;
-        valueChanged("file", value);
-
-    }
-
-    private Folder folder;
-
-    /**
-    * Gets the folder.
-    *
-    * @return the Folder
-    */
-    public Folder getFolder() {
-        return this.folder; 
+    public String getId() {
+        return this.id; 
     }
 
     /**
-    * Sets the folder.
+    * Sets the id.
     *
-    * @param value the Folder
+    * @param value the String
     */
-    public void setFolder(Folder value) { 
-        this.folder = value;
-        valueChanged("folder", value);
+    public void setId(String value) { 
+        this.id = value; 
+        valueChanged("id", value);
 
     }
-
+            
     private String name;
-
+     
     /**
     * Gets the name.
     *
@@ -86,30 +66,56 @@ public class FileSystemItemInformation extends ODataBaseEntity {
     * @param value the String
     */
     public void setName(String value) { 
-        this.name = value;
+        this.name = value; 
         valueChanged("name", value);
 
     }
-
-    private ItemReference parentReference;
-
+            
+    private IdentitySet owner;
+     
     /**
-    * Gets the parent Reference.
+    * Gets the owner.
     *
-    * @return the ItemReference
+    * @return the IdentitySet
     */
-    public ItemReference getParentReference() {
-        return this.parentReference; 
+    public IdentitySet getOwner() {
+        return this.owner; 
     }
 
     /**
-    * Sets the parent Reference.
+    * Sets the owner.
     *
-    * @param value the ItemReference
+    * @param value the IdentitySet
     */
-    public void setParentReference(ItemReference value) { 
-        this.parentReference = value;
-        valueChanged("parentReference", value);
+    public void setOwner(IdentitySet value) { 
+        this.owner = value; 
+        valueChanged("owner", value);
+
+    }
+    
+        
+    private java.util.List<Item> items = null;
+    
+    
+     
+    /**
+    * Gets the items.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getItems() {
+        return this.items; 
+    }
+
+    /**
+    * Sets the items.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setItems(java.util.List<Item> value) { 
+        this.items = value; 
+        valueChanged("items", value);
 
     }
 }
+

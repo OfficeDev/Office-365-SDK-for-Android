@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ServicePrincipal
- .
  */
 public class ServicePrincipalFetcher extends OrcEntityFetcher<ServicePrincipal,ServicePrincipalOperations> 
                                      implements Readable<ServicePrincipal> {
@@ -46,8 +45,8 @@ public class ServicePrincipalFetcher extends OrcEntityFetcher<ServicePrincipal,S
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class ServicePrincipalFetcher extends OrcEntityFetcher<ServicePrincipal,S
         return this;
     }
 
-             /**
+    
+    
+         /**
      * Gets approleassignedto.
      *
      * @return the app role assigned to

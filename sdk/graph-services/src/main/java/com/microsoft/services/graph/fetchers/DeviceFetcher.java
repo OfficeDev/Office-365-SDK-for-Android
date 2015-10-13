@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Device
- .
  */
 public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations> 
                                      implements Readable<Device> {
@@ -46,8 +45,8 @@ public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class DeviceFetcher extends OrcEntityFetcher<Device,DeviceOperations>
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets registered owners.
      *

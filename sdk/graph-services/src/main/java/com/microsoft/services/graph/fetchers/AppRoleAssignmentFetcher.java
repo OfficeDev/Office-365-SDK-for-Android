@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  AppRoleAssignment
- .
  */
 public class AppRoleAssignmentFetcher extends OrcEntityFetcher<AppRoleAssignment,AppRoleAssignmentOperations> 
                                      implements Readable<AppRoleAssignment> {
@@ -46,8 +45,8 @@ public class AppRoleAssignmentFetcher extends OrcEntityFetcher<AppRoleAssignment
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class AppRoleAssignmentFetcher extends OrcEntityFetcher<AppRoleAssignment
         return this;
     }
 
-        
+    
+    
+    
 }

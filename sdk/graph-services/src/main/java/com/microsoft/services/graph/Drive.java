@@ -16,6 +16,8 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Drive.
 */
@@ -23,28 +25,6 @@ public class Drive extends ODataBaseEntity {
 
     public Drive(){
         setODataType("#Microsoft.Graph.drive");
-    }
-            
-    private String driveType;
-     
-    /**
-    * Gets the drive Type.
-    *
-    * @return the String
-    */
-    public String getDriveType() {
-        return this.driveType; 
-    }
-
-    /**
-    * Sets the drive Type.
-    *
-    * @param value the String
-    */
-    public void setDriveType(String value) { 
-        this.driveType = value; 
-        valueChanged("driveType", value);
-
     }
             
     private String id;
@@ -66,6 +46,28 @@ public class Drive extends ODataBaseEntity {
     public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
+
+    }
+            
+    private String driveType;
+     
+    /**
+    * Gets the drive Type.
+    *
+    * @return the String
+    */
+    public String getDriveType() {
+        return this.driveType; 
+    }
+
+    /**
+    * Sets the drive Type.
+    *
+    * @param value the String
+    */
+    public void setDriveType(String value) { 
+        this.driveType = value; 
+        valueChanged("driveType", value);
 
     }
             
@@ -135,6 +137,56 @@ public class Drive extends ODataBaseEntity {
     public void setItems(java.util.List<Item> value) { 
         this.items = value; 
         valueChanged("items", value);
+
+    }
+    
+        
+    private java.util.List<Item> shared = null;
+    
+    
+     
+    /**
+    * Gets the shared.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getShared() {
+        return this.shared; 
+    }
+
+    /**
+    * Sets the shared.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setShared(java.util.List<Item> value) { 
+        this.shared = value; 
+        valueChanged("shared", value);
+
+    }
+    
+        
+    private java.util.List<Item> special = null;
+    
+    
+     
+    /**
+    * Gets the special.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getSpecial() {
+        return this.special; 
+    }
+
+    /**
+    * Sets the special.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setSpecial(java.util.List<Item> value) { 
+        this.special = value; 
+        valueChanged("special", value);
 
     }
             

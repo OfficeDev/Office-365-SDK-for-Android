@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Drive
- .
  */
 public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations> 
                                      implements Readable<Drive> {
@@ -46,8 +45,8 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets items.
      *
@@ -76,6 +77,42 @@ public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations>
      */
     public ItemFetcher getItem(String id){
          return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("items", this, Item.class, ItemCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets shared.
+     *
+     * @return the shared
+     */
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getShared() {
+        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("shared", this, Item.class, ItemCollectionOperations.class);
+    }
+
+    /**
+     * Gets shared.
+     *
+     * @return the shared
+     */
+    public ItemFetcher getShared(String id){
+         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("shared", this, Item.class, ItemCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets special.
+     *
+     * @return the special
+     */
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getSpecial() {
+        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("special", this, Item.class, ItemCollectionOperations.class);
+    }
+
+    /**
+     * Gets special.
+     *
+     * @return the special
+     */
+    public ItemFetcher getSpecial(String id){
+         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("special", this, Item.class, ItemCollectionOperations.class).getById(id);
     }
      /**
      * Gets root.

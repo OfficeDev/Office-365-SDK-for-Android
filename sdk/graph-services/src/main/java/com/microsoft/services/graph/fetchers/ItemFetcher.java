@@ -20,9 +20,8 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Item
- .
  */
-public class ItemFetcher extends OrcMediaEntityFetcher<Item,ItemOperations> 
+public class ItemFetcher extends OrcEntityFetcher<Item,ItemOperations> 
                                      implements Readable<Item> {
 
      /**
@@ -46,8 +45,8 @@ public class ItemFetcher extends OrcMediaEntityFetcher<Item,ItemOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,20 @@ public class ItemFetcher extends OrcMediaEntityFetcher<Item,ItemOperations>
         return this;
     }
 
-             /**
+    
+    	
+
+	/**
+     * Gets content.
+     *
+     * @return the content
+     */
+    public OrcODataStreamFetcher getContent() {
+		return new OrcODataStreamFetcher("content", this, getResolver());
+    }
+
+	
+         /**
      * Gets createdbyuser.
      *
      * @return the created by user
@@ -74,6 +86,42 @@ public class ItemFetcher extends OrcMediaEntityFetcher<Item,ItemOperations>
      */
     public UserFetcher getLastModifiedByUser() {
         return new UserFetcher("lastModifiedByUser", this);
+    }
+
+     /**
+     * Gets permissions.
+     *
+     * @return the permissions
+     */
+    public OrcCollectionFetcher<Permission, PermissionFetcher, PermissionCollectionOperations> getPermissions() {
+        return new OrcCollectionFetcher<Permission, PermissionFetcher, PermissionCollectionOperations>("permissions", this, Permission.class, PermissionCollectionOperations.class);
+    }
+
+    /**
+     * Gets permission.
+     *
+     * @return the permission
+     */
+    public PermissionFetcher getPermission(String id){
+         return new OrcCollectionFetcher<Permission, PermissionFetcher, PermissionCollectionOperations>("permissions", this, Permission.class, PermissionCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets versions.
+     *
+     * @return the versions
+     */
+    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getVersions() {
+        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("versions", this, Item.class, ItemCollectionOperations.class);
+    }
+
+    /**
+     * Gets version.
+     *
+     * @return the version
+     */
+    public ItemFetcher getVersion(String id){
+         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("versions", this, Item.class, ItemCollectionOperations.class).getById(id);
     }
 
      /**

@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Post
- .
  */
 public class PostFetcher extends OrcEntityFetcher<Post,PostOperations> 
                                      implements Readable<Post> {
@@ -46,8 +45,8 @@ public class PostFetcher extends OrcEntityFetcher<Post,PostOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class PostFetcher extends OrcEntityFetcher<Post,PostOperations>
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets attachments.
      *

@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DirectoryRoleTemplate
- .
  */
 public class DirectoryRoleTemplateFetcher extends OrcEntityFetcher<DirectoryRoleTemplate,DirectoryRoleTemplateOperations> 
                                      implements Readable<DirectoryRoleTemplate> {
@@ -46,8 +45,8 @@ public class DirectoryRoleTemplateFetcher extends OrcEntityFetcher<DirectoryRole
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class DirectoryRoleTemplateFetcher extends OrcEntityFetcher<DirectoryRole
         return this;
     }
 
-        
+    
+    
+    
 }

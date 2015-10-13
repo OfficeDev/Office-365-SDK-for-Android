@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Contact
- .
  */
 public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations> 
                                      implements Readable<Contact> {
@@ -46,8 +45,8 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
         return this;
     }
 
-             /**
+    
+    
+         /**
      * Gets contactphoto.
      *
      * @return the contact photo

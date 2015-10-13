@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Group
- .
  */
 public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations> 
                                      implements Readable<Group> {
@@ -46,8 +45,8 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets app role assignments.
      *

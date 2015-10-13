@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Extension
- .
  */
 public class ExtensionFetcher extends OrcEntityFetcher<Extension,ExtensionOperations> 
                                      implements Readable<Extension> {
@@ -46,8 +45,8 @@ public class ExtensionFetcher extends OrcEntityFetcher<Extension,ExtensionOperat
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -63,5 +62,7 @@ public class ExtensionFetcher extends OrcEntityFetcher<Extension,ExtensionOperat
     public OpenTypeExtensionFetcher asOpenTypeExtension(){
         return new OpenTypeExtensionFetcher(this.urlComponent, this.parent);
     }   
+
+    
     
 }

@@ -25,6 +25,28 @@ public class Thumbnail extends ODataBaseEntity {
         setODataType("#Microsoft.Graph.thumbnail");
     }
 
+    private ODataStream content;
+
+    /**
+    * Gets the content.
+    *
+    * @return the ODataStream
+    */
+    public ODataStream getContent() {
+        return this.content; 
+    }
+
+    /**
+    * Sets the content.
+    *
+    * @param value the ODataStream
+    */
+    public void setContent(ODataStream value) { 
+        this.content = value;
+        valueChanged("content", value);
+
+    }
+
     private Integer height;
 
     /**

@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  TaskDetails
- .
  */
 public class TaskDetailsFetcher extends OrcEntityFetcher<TaskDetails,TaskDetailsOperations> 
                                      implements Readable<TaskDetails> {
@@ -46,8 +45,8 @@ public class TaskDetailsFetcher extends OrcEntityFetcher<TaskDetails,TaskDetails
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class TaskDetailsFetcher extends OrcEntityFetcher<TaskDetails,TaskDetails
         return this;
     }
 
-        
+    
+    
+    
 }

@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Permission
- .
  */
 public class PermissionFetcher extends OrcEntityFetcher<Permission,PermissionOperations> 
                                      implements Readable<Permission> {
@@ -46,8 +45,8 @@ public class PermissionFetcher extends OrcEntityFetcher<Permission,PermissionOpe
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PermissionFetcher extends OrcEntityFetcher<Permission,PermissionOpe
         return this;
     }
 
-        
+    
+    
+    
 }

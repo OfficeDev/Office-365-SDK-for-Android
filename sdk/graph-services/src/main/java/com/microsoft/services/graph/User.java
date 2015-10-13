@@ -14,6 +14,9 @@ root for authoritative license information.﻿
 package com.microsoft.services.graph;
 
 
+import com.microsoft.services.orc.core.ODataStream;
+
+
 
 /**
  * The type User.
@@ -724,23 +727,23 @@ public class User extends DirectoryObject {
 
     }
             
-    private byte[] thumbnailPhoto;
+    private ODataStream thumbnailPhoto;
      
     /**
     * Gets the thumbnail Photo.
     *
-    * @return the byte[]
+    * @return the ODataStream
     */
-    public byte[] getThumbnailPhoto() {
+    public ODataStream getThumbnailPhoto() {
         return this.thumbnailPhoto; 
     }
 
     /**
     * Sets the thumbnail Photo.
     *
-    * @param value the byte[]
+    * @param value the ODataStream
     */
-    public void setThumbnailPhoto(byte[] value) { 
+    public void setThumbnailPhoto(ODataStream value) { 
         this.thumbnailPhoto = value; 
         valueChanged("thumbnailPhoto", value);
 

@@ -14,6 +14,9 @@ root for authoritative license information.﻿
 package com.microsoft.services.graph;
 
 
+import com.microsoft.services.orc.core.ODataStream;
+
+
 
 /**
  * The type Application.
@@ -256,23 +259,23 @@ public class Application extends DirectoryObject {
 
     }
             
-    private byte[] mainLogo;
+    private ODataStream mainLogo;
      
     /**
     * Gets the main Logo.
     *
-    * @return the byte[]
+    * @return the ODataStream
     */
-    public byte[] getMainLogo() {
+    public ODataStream getMainLogo() {
         return this.mainLogo; 
     }
 
     /**
     * Sets the main Logo.
     *
-    * @param value the byte[]
+    * @param value the ODataStream
     */
-    public void setMainLogo(byte[] value) { 
+    public void setMainLogo(ODataStream value) { 
         this.mainLogo = value; 
         valueChanged("mainLogo", value);
 

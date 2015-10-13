@@ -47,6 +47,28 @@ public class IdentitySet extends ODataBaseEntity {
 
     }
 
+    private Identity device;
+
+    /**
+    * Gets the device.
+    *
+    * @return the Identity
+    */
+    public Identity getDevice() {
+        return this.device; 
+    }
+
+    /**
+    * Sets the device.
+    *
+    * @param value the Identity
+    */
+    public void setDevice(Identity value) { 
+        this.device = value;
+        valueChanged("device", value);
+
+    }
+
     private Identity user;
 
     /**

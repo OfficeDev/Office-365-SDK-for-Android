@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  OutlookItem
- .
  */
 public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItemOperations> 
                                      implements Readable<OutlookItem> {
@@ -46,8 +45,8 @@ public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItem
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -75,5 +74,7 @@ public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItem
     public PostFetcher asPost(){
         return new PostFetcher(this.urlComponent, this.parent);
     }   
+
+    
     
 }

@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PimAlertInfo
- .
  */
 public class PimAlertInfoFetcher extends OrcEntityFetcher<PimAlertInfo,PimAlertInfoOperations> 
                                      implements Readable<PimAlertInfo> {
@@ -46,8 +45,8 @@ public class PimAlertInfoFetcher extends OrcEntityFetcher<PimAlertInfo,PimAlertI
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PimAlertInfoFetcher extends OrcEntityFetcher<PimAlertInfo,PimAlertI
         return this;
     }
 
-        
+    
+    
+    
 }

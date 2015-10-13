@@ -59,4 +59,38 @@ public class DriveOperations extends OrcOperations {
         return this;
     }
 
+    
+    
+    /**
+     * allPhotos listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Item> allPhotos() { 
+              
+          
+        
+        ListenableFuture<String> future = allPhotosRaw();
+        return transformToEntityListenableFuture(future, Item.class, getResolver());
+        
+    }
+
+     /**
+     * allPhotosRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> allPhotosRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.allPhotos");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }

@@ -16,6 +16,8 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Permission.
 */
@@ -23,6 +25,28 @@ public class Permission extends ODataBaseEntity {
 
     public Permission(){
         setODataType("#Microsoft.Graph.permission");
+    }
+            
+    private IdentitySet grantedTo;
+     
+    /**
+    * Gets the granted To.
+    *
+    * @return the IdentitySet
+    */
+    public IdentitySet getGrantedTo() {
+        return this.grantedTo; 
+    }
+
+    /**
+    * Sets the granted To.
+    *
+    * @param value the IdentitySet
+    */
+    public void setGrantedTo(IdentitySet value) { 
+        this.grantedTo = value; 
+        valueChanged("grantedTo", value);
+
     }
             
     private String id;
@@ -44,6 +68,72 @@ public class Permission extends ODataBaseEntity {
     public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
+
+    }
+            
+    private SharingInvitation invitation;
+     
+    /**
+    * Gets the invitation.
+    *
+    * @return the SharingInvitation
+    */
+    public SharingInvitation getInvitation() {
+        return this.invitation; 
+    }
+
+    /**
+    * Sets the invitation.
+    *
+    * @param value the SharingInvitation
+    */
+    public void setInvitation(SharingInvitation value) { 
+        this.invitation = value; 
+        valueChanged("invitation", value);
+
+    }
+            
+    private ItemReference inheritedFrom;
+     
+    /**
+    * Gets the inherited From.
+    *
+    * @return the ItemReference
+    */
+    public ItemReference getInheritedFrom() {
+        return this.inheritedFrom; 
+    }
+
+    /**
+    * Sets the inherited From.
+    *
+    * @param value the ItemReference
+    */
+    public void setInheritedFrom(ItemReference value) { 
+        this.inheritedFrom = value; 
+        valueChanged("inheritedFrom", value);
+
+    }
+            
+    private SharingLink link;
+     
+    /**
+    * Gets the link.
+    *
+    * @return the SharingLink
+    */
+    public SharingLink getLink() {
+        return this.link; 
+    }
+
+    /**
+    * Sets the link.
+    *
+    * @param value the SharingLink
+    */
+    public void setLink(SharingLink value) { 
+        this.link = value; 
+        valueChanged("link", value);
 
     }
     
@@ -72,25 +162,25 @@ public class Permission extends ODataBaseEntity {
 
     }
             
-    private SharingLink link;
+    private String shareId;
      
     /**
-    * Gets the link.
+    * Gets the share Id.
     *
-    * @return the SharingLink
+    * @return the String
     */
-    public SharingLink getLink() {
-        return this.link; 
+    public String getShareId() {
+        return this.shareId; 
     }
 
     /**
-    * Sets the link.
+    * Sets the share Id.
     *
-    * @param value the SharingLink
+    * @param value the String
     */
-    public void setLink(SharingLink value) { 
-        this.link = value; 
-        valueChanged("link", value);
+    public void setShareId(String value) { 
+        this.shareId = value; 
+        valueChanged("shareId", value);
 
     }
 }

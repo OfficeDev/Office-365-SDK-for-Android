@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  OAuth2PermissionGrant
- .
  */
 public class OAuth2PermissionGrantFetcher extends OrcEntityFetcher<OAuth2PermissionGrant,OAuth2PermissionGrantOperations> 
                                      implements Readable<OAuth2PermissionGrant> {
@@ -46,8 +45,8 @@ public class OAuth2PermissionGrantFetcher extends OrcEntityFetcher<OAuth2Permiss
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class OAuth2PermissionGrantFetcher extends OrcEntityFetcher<OAuth2Permiss
         return this;
     }
 
-        
+    
+    
+    
 }

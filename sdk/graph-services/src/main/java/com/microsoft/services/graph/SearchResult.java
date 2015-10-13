@@ -24,4 +24,26 @@ public class SearchResult extends ODataBaseEntity {
     public SearchResult(){
         setODataType("#Microsoft.Graph.searchResult");
     }
+
+    private String onClickTelemetryUrl;
+
+    /**
+    * Gets the on Click Telemetry Url.
+    *
+    * @return the String
+    */
+    public String getOnClickTelemetryUrl() {
+        return this.onClickTelemetryUrl; 
+    }
+
+    /**
+    * Sets the on Click Telemetry Url.
+    *
+    * @param value the String
+    */
+    public void setOnClickTelemetryUrl(String value) { 
+        this.onClickTelemetryUrl = value;
+        valueChanged("onClickTelemetryUrl", value);
+
+    }
 }

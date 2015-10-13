@@ -112,4 +112,26 @@ public class Quota extends ODataBaseEntity {
         valueChanged("total", value);
 
     }
+
+    private Long used;
+
+    /**
+    * Gets the used.
+    *
+    * @return the Long
+    */
+    public Long getUsed() {
+        return this.used; 
+    }
+
+    /**
+    * Sets the used.
+    *
+    * @param value the Long
+    */
+    public void setUsed(Long value) { 
+        this.used = value;
+        valueChanged("used", value);
+
+    }
 }

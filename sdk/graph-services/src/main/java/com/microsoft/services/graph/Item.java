@@ -15,6 +15,9 @@ package com.microsoft.services.graph;
 
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
+import com.microsoft.services.orc.core.ODataStream;
+
+
 
 /**
  * The type Item.
@@ -23,6 +26,28 @@ public class Item extends ODataBaseEntity {
 
     public Item(){
         setODataType("#Microsoft.Graph.item");
+    }
+            
+    private ODataStream content;
+     
+    /**
+    * Gets the content.
+    *
+    * @return the ODataStream
+    */
+    public ODataStream getContent() {
+        return this.content; 
+    }
+
+    /**
+    * Sets the content.
+    *
+    * @param value the ODataStream
+    */
+    public void setContent(ODataStream value) { 
+        this.content = value; 
+        valueChanged("content", value);
+
     }
             
     private IdentitySet createdBy;
@@ -69,25 +94,47 @@ public class Item extends ODataBaseEntity {
 
     }
             
-    private Deleted deleted;
+    private String cTag;
      
     /**
-    * Gets the deleted.
+    * Gets the c Tag.
     *
-    * @return the Deleted
+    * @return the String
     */
-    public Deleted getDeleted() {
-        return this.deleted; 
+    public String getCTag() {
+        return this.cTag; 
     }
 
     /**
-    * Sets the deleted.
+    * Sets the c Tag.
     *
-    * @param value the Deleted
+    * @param value the String
     */
-    public void setDeleted(Deleted value) { 
-        this.deleted = value; 
-        valueChanged("deleted", value);
+    public void setCTag(String value) { 
+        this.cTag = value; 
+        valueChanged("cTag", value);
+
+    }
+            
+    private String description;
+     
+    /**
+    * Gets the description.
+    *
+    * @return the String
+    */
+    public String getDescription() {
+        return this.description; 
+    }
+
+    /**
+    * Sets the description.
+    *
+    * @param value the String
+    */
+    public void setDescription(String value) { 
+        this.description = value; 
+        valueChanged("description", value);
 
     }
             
@@ -113,50 +160,6 @@ public class Item extends ODataBaseEntity {
 
     }
             
-    private File file;
-     
-    /**
-    * Gets the file.
-    *
-    * @return the File
-    */
-    public File getFile() {
-        return this.file; 
-    }
-
-    /**
-    * Sets the file.
-    *
-    * @param value the File
-    */
-    public void setFile(File value) { 
-        this.file = value; 
-        valueChanged("file", value);
-
-    }
-            
-    private Folder folder;
-     
-    /**
-    * Gets the folder.
-    *
-    * @return the Folder
-    */
-    public Folder getFolder() {
-        return this.folder; 
-    }
-
-    /**
-    * Sets the folder.
-    *
-    * @param value the Folder
-    */
-    public void setFolder(Folder value) { 
-        this.folder = value; 
-        valueChanged("folder", value);
-
-    }
-            
     private String id;
      
     /**
@@ -176,28 +179,6 @@ public class Item extends ODataBaseEntity {
     public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
-
-    }
-            
-    private Image image;
-     
-    /**
-    * Gets the image.
-    *
-    * @return the Image
-    */
-    public Image getImage() {
-        return this.image; 
-    }
-
-    /**
-    * Sets the image.
-    *
-    * @param value the Image
-    */
-    public void setImage(Image value) { 
-        this.image = value; 
-        valueChanged("image", value);
 
     }
             
@@ -289,6 +270,248 @@ public class Item extends ODataBaseEntity {
 
     }
             
+    private Long size;
+     
+    /**
+    * Gets the size.
+    *
+    * @return the Long
+    */
+    public Long getSize() {
+        return this.size; 
+    }
+
+    /**
+    * Sets the size.
+    *
+    * @param value the Long
+    */
+    public void setSize(Long value) { 
+        this.size = value; 
+        valueChanged("size", value);
+
+    }
+            
+    private String webDavUrl;
+     
+    /**
+    * Gets the web Dav Url.
+    *
+    * @return the String
+    */
+    public String getWebDavUrl() {
+        return this.webDavUrl; 
+    }
+
+    /**
+    * Sets the web Dav Url.
+    *
+    * @param value the String
+    */
+    public void setWebDavUrl(String value) { 
+        this.webDavUrl = value; 
+        valueChanged("webDavUrl", value);
+
+    }
+            
+    private String webUrl;
+     
+    /**
+    * Gets the web Url.
+    *
+    * @return the String
+    */
+    public String getWebUrl() {
+        return this.webUrl; 
+    }
+
+    /**
+    * Sets the web Url.
+    *
+    * @param value the String
+    */
+    public void setWebUrl(String value) { 
+        this.webUrl = value; 
+        valueChanged("webUrl", value);
+
+    }
+            
+    private Audio audio;
+     
+    /**
+    * Gets the audio.
+    *
+    * @return the Audio
+    */
+    public Audio getAudio() {
+        return this.audio; 
+    }
+
+    /**
+    * Sets the audio.
+    *
+    * @param value the Audio
+    */
+    public void setAudio(Audio value) { 
+        this.audio = value; 
+        valueChanged("audio", value);
+
+    }
+            
+    private Deleted deleted;
+     
+    /**
+    * Gets the deleted.
+    *
+    * @return the Deleted
+    */
+    public Deleted getDeleted() {
+        return this.deleted; 
+    }
+
+    /**
+    * Sets the deleted.
+    *
+    * @param value the Deleted
+    */
+    public void setDeleted(Deleted value) { 
+        this.deleted = value; 
+        valueChanged("deleted", value);
+
+    }
+            
+    private File file;
+     
+    /**
+    * Gets the file.
+    *
+    * @return the File
+    */
+    public File getFile() {
+        return this.file; 
+    }
+
+    /**
+    * Sets the file.
+    *
+    * @param value the File
+    */
+    public void setFile(File value) { 
+        this.file = value; 
+        valueChanged("file", value);
+
+    }
+            
+    private FileSystemInfo fileSystemInfo;
+     
+    /**
+    * Gets the file System Info.
+    *
+    * @return the FileSystemInfo
+    */
+    public FileSystemInfo getFileSystemInfo() {
+        return this.fileSystemInfo; 
+    }
+
+    /**
+    * Sets the file System Info.
+    *
+    * @param value the FileSystemInfo
+    */
+    public void setFileSystemInfo(FileSystemInfo value) { 
+        this.fileSystemInfo = value; 
+        valueChanged("fileSystemInfo", value);
+
+    }
+            
+    private Folder folder;
+     
+    /**
+    * Gets the folder.
+    *
+    * @return the Folder
+    */
+    public Folder getFolder() {
+        return this.folder; 
+    }
+
+    /**
+    * Sets the folder.
+    *
+    * @param value the Folder
+    */
+    public void setFolder(Folder value) { 
+        this.folder = value; 
+        valueChanged("folder", value);
+
+    }
+            
+    private Image image;
+     
+    /**
+    * Gets the image.
+    *
+    * @return the Image
+    */
+    public Image getImage() {
+        return this.image; 
+    }
+
+    /**
+    * Sets the image.
+    *
+    * @param value the Image
+    */
+    public void setImage(Image value) { 
+        this.image = value; 
+        valueChanged("image", value);
+
+    }
+            
+    private Location location;
+     
+    /**
+    * Gets the location.
+    *
+    * @return the Location
+    */
+    public Location getLocation() {
+        return this.location; 
+    }
+
+    /**
+    * Sets the location.
+    *
+    * @param value the Location
+    */
+    public void setLocation(Location value) { 
+        this.location = value; 
+        valueChanged("location", value);
+
+    }
+            
+    private OpenWithSet openWith;
+     
+    /**
+    * Gets the open With.
+    *
+    * @return the OpenWithSet
+    */
+    public OpenWithSet getOpenWith() {
+        return this.openWith; 
+    }
+
+    /**
+    * Sets the open With.
+    *
+    * @param value the OpenWithSet
+    */
+    public void setOpenWith(OpenWithSet value) { 
+        this.openWith = value; 
+        valueChanged("openWith", value);
+
+    }
+            
     private Photo photo;
      
     /**
@@ -333,69 +556,69 @@ public class Item extends ODataBaseEntity {
 
     }
             
-    private Long size;
+    private Shared shared;
      
     /**
-    * Gets the size.
+    * Gets the shared.
     *
-    * @return the Long
+    * @return the Shared
     */
-    public Long getSize() {
-        return this.size; 
+    public Shared getShared() {
+        return this.shared; 
     }
 
     /**
-    * Sets the size.
+    * Sets the shared.
     *
-    * @param value the Long
+    * @param value the Shared
     */
-    public void setSize(Long value) { 
-        this.size = value; 
-        valueChanged("size", value);
+    public void setShared(Shared value) { 
+        this.shared = value; 
+        valueChanged("shared", value);
 
     }
             
-    private String webUrl;
+    private SpecialFolder specialFolder;
      
     /**
-    * Gets the web Url.
+    * Gets the special Folder.
     *
-    * @return the String
+    * @return the SpecialFolder
     */
-    public String getWebUrl() {
-        return this.webUrl; 
+    public SpecialFolder getSpecialFolder() {
+        return this.specialFolder; 
     }
 
     /**
-    * Sets the web Url.
+    * Sets the special Folder.
     *
-    * @param value the String
+    * @param value the SpecialFolder
     */
-    public void setWebUrl(String value) { 
-        this.webUrl = value; 
-        valueChanged("webUrl", value);
+    public void setSpecialFolder(SpecialFolder value) { 
+        this.specialFolder = value; 
+        valueChanged("specialFolder", value);
 
     }
             
-    private String webDavUrl;
+    private Video video;
      
     /**
-    * Gets the web Dav Url.
+    * Gets the video.
     *
-    * @return the String
+    * @return the Video
     */
-    public String getWebDavUrl() {
-        return this.webDavUrl; 
+    public Video getVideo() {
+        return this.video; 
     }
 
     /**
-    * Sets the web Dav Url.
+    * Sets the video.
     *
-    * @param value the String
+    * @param value the Video
     */
-    public void setWebDavUrl(String value) { 
-        this.webDavUrl = value; 
-        valueChanged("webDavUrl", value);
+    public void setVideo(Video value) { 
+        this.video = value; 
+        valueChanged("video", value);
 
     }
             
@@ -440,6 +663,56 @@ public class Item extends ODataBaseEntity {
     public void setLastModifiedByUser(User value) { 
         this.lastModifiedByUser = value; 
         valueChanged("lastModifiedByUser", value);
+
+    }
+    
+        
+    private java.util.List<Permission> permissions = null;
+    
+    
+     
+    /**
+    * Gets the permissions.
+    *
+    * @return the java.util.List<Permission>
+    */
+    public java.util.List<Permission> getPermissions() {
+        return this.permissions; 
+    }
+
+    /**
+    * Sets the permissions.
+    *
+    * @param value the java.util.List<Permission>
+    */
+    public void setPermissions(java.util.List<Permission> value) { 
+        this.permissions = value; 
+        valueChanged("permissions", value);
+
+    }
+    
+        
+    private java.util.List<Item> versions = null;
+    
+    
+     
+    /**
+    * Gets the versions.
+    *
+    * @return the java.util.List<Item>
+    */
+    public java.util.List<Item> getVersions() {
+        return this.versions; 
+    }
+
+    /**
+    * Sets the versions.
+    *
+    * @param value the java.util.List<Item>
+    */
+    public void setVersions(java.util.List<Item> value) { 
+        this.versions = value; 
+        valueChanged("versions", value);
 
     }
     

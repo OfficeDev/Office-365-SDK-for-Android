@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  DirectoryLinkChange
- .
  */
 public class DirectoryLinkChangeFetcher extends OrcEntityFetcher<DirectoryLinkChange,DirectoryLinkChangeOperations> 
                                      implements Readable<DirectoryLinkChange> {
@@ -46,8 +45,8 @@ public class DirectoryLinkChangeFetcher extends OrcEntityFetcher<DirectoryLinkCh
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class DirectoryLinkChangeFetcher extends OrcEntityFetcher<DirectoryLinkCh
         return this;
     }
 
-        
+    
+    
+    
 }

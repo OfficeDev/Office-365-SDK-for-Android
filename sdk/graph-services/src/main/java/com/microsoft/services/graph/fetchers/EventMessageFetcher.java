@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  EventMessage
- .
  */
 public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMessageOperations> 
                                      implements Readable<EventMessage> {
@@ -46,8 +45,8 @@ public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMess
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class EventMessageFetcher extends OrcEntityFetcher<EventMessage,EventMess
         return this;
     }
 
-             /**
+    
+    
+         /**
      * Gets event.
      *
      * @return the event

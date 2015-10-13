@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  MailFolder
- .
  */
 public class MailFolderFetcher extends OrcEntityFetcher<MailFolder,MailFolderOperations> 
                                      implements Readable<MailFolder> {
@@ -46,8 +45,8 @@ public class MailFolderFetcher extends OrcEntityFetcher<MailFolder,MailFolderOpe
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class MailFolderFetcher extends OrcEntityFetcher<MailFolder,MailFolderOpe
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets child folders.
      *

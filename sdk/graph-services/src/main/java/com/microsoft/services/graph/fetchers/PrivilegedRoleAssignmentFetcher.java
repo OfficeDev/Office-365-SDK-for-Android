@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PrivilegedRoleAssignment
- .
  */
 public class PrivilegedRoleAssignmentFetcher extends OrcEntityFetcher<PrivilegedRoleAssignment,PrivilegedRoleAssignmentOperations> 
                                      implements Readable<PrivilegedRoleAssignment> {
@@ -46,8 +45,8 @@ public class PrivilegedRoleAssignmentFetcher extends OrcEntityFetcher<Privileged
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class PrivilegedRoleAssignmentFetcher extends OrcEntityFetcher<Privileged
         return this;
     }
 
-             /**
+    
+    
+         /**
      * Gets roleinfo.
      *
      * @return the role info

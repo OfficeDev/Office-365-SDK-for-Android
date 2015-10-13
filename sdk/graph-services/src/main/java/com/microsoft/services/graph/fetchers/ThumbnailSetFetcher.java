@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ThumbnailSet
- .
  */
 public class ThumbnailSetFetcher extends OrcEntityFetcher<ThumbnailSet,ThumbnailSetOperations> 
                                      implements Readable<ThumbnailSet> {
@@ -46,8 +45,8 @@ public class ThumbnailSetFetcher extends OrcEntityFetcher<ThumbnailSet,Thumbnail
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class ThumbnailSetFetcher extends OrcEntityFetcher<ThumbnailSet,Thumbnail
         return this;
     }
 
-        
+    
+    
+    
 }

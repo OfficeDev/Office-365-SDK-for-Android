@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Application
- .
  */
 public class ApplicationFetcher extends OrcEntityFetcher<Application,ApplicationOperations> 
                                      implements Readable<Application> {
@@ -46,8 +45,8 @@ public class ApplicationFetcher extends OrcEntityFetcher<Application,Application
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,20 @@ public class ApplicationFetcher extends OrcEntityFetcher<Application,Application
         return this;
     }
 
-        
+    
+    	
+
+	/**
+     * Gets main logo.
+     *
+     * @return the main logo
+     */
+    public OrcODataStreamFetcher getMainLogo() {
+		return new OrcODataStreamFetcher("mainlogo", this, getResolver());
+    }
+
+	
+    
      /**
      * Gets extension properties.
      *

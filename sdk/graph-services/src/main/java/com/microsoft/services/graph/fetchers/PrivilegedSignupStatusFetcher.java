@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  PrivilegedSignupStatus
- .
  */
 public class PrivilegedSignupStatusFetcher extends OrcEntityFetcher<PrivilegedSignupStatus,PrivilegedSignupStatusOperations> 
                                      implements Readable<PrivilegedSignupStatus> {
@@ -46,8 +45,8 @@ public class PrivilegedSignupStatusFetcher extends OrcEntityFetcher<PrivilegedSi
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,5 +58,7 @@ public class PrivilegedSignupStatusFetcher extends OrcEntityFetcher<PrivilegedSi
         return this;
     }
 
-        
+    
+    
+    
 }
