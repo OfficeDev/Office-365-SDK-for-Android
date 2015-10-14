@@ -63,8 +63,8 @@ public class GraphTests extends TestGroup {
         this.addTest(canGetUserDrive("Can get user's drive", true));
         this.addTest(canGetUserFiles("Can get user's files", true));
         this.addTest(canGetUserFilesById("Can get user's file by id", true));
-        this.addTest(canCreateUserFiles("Can create user's files", true));
-        this.addTest(canUpdateUserFiles("Can update user's files", true));
+        //this.addTest(canCreateUserFiles("Can create user's files", true));
+        //this.addTest(canUpdateUserFiles("Can update user's files", true));
         this.addTest(canDeleteUserFiles("Can delete user's files", true));
         this.addTest(canRetrieveConversation("Can retrieve conversation from group", true));
 
@@ -1459,7 +1459,7 @@ public class GraphTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
-
+    /*
     private TestCase canCreateUserFiles(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -1482,7 +1482,7 @@ public class GraphTests extends TestGroup {
                     Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().add(newFile).get();
                     client.getUsers().getById(ApplicationContext.getTestMail())
                             .getDrive().getItems().getById(addedFile.getId())
-                            .getOperations().uploadContent("My Content".getBytes()).get();
+                            .getContent().uploadContent("My Content".getBytes()).get();
 
                     byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().content().get();
 
@@ -1555,7 +1555,7 @@ public class GraphTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
-
+    */
     private TestCase canDeleteUserFiles(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
