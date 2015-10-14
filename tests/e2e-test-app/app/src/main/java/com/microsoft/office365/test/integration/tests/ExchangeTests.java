@@ -2184,7 +2184,7 @@ public class ExchangeTests extends TestGroup {
                     Integer accepted = client.getMe()
                             .getEvents()
                             .getById(addedEvent.getId())
-                            .getOperations().accept("Accepted").get();
+                            .getOperations().accept("Accepted", true).get();
 
                     //Assert
                     if (!addedEvent.getSubject().equals(event.getSubject()))
