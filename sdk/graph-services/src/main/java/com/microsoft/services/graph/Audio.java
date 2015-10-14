@@ -157,45 +157,45 @@ public class Audio extends ODataBaseEntity {
 
     }
 
-    private Int16 disc;
+    private Integer disc;
 
     /**
     * Gets the disc.
     *
-    * @return the Int16
+    * @return the Integer
     */
-    public Int16 getDisc() {
+    public Integer getDisc() {
         return this.disc; 
     }
 
     /**
     * Sets the disc.
     *
-    * @param value the Int16
+    * @param value the Integer
     */
-    public void setDisc(Int16 value) { 
+    public void setDisc(Integer value) { 
         this.disc = value;
         valueChanged("disc", value);
 
     }
 
-    private Int16 discCount;
+    private Integer discCount;
 
     /**
     * Gets the disc Count.
     *
-    * @return the Int16
+    * @return the Integer
     */
-    public Int16 getDiscCount() {
+    public Integer getDiscCount() {
         return this.discCount; 
     }
 
     /**
     * Sets the disc Count.
     *
-    * @param value the Int16
+    * @param value the Integer
     */
-    public void setDiscCount(Int16 value) { 
+    public void setDiscCount(Integer value) { 
         this.discCount = value;
         valueChanged("discCount", value);
 
