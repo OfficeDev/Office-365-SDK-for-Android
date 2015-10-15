@@ -58,8 +58,6 @@ public class GraphTests extends TestGroup {
         this.addTest(canDeleteUserEvent("Can delete user's Event", true));
         this.addTest(canGetUserCalendarView("Can get user's CalendarView", true));
         this.addTest(canGetUserUserPhoto("Can get user's UserPhoto", true));
-        this.addTest(canGetUserUserPhotos("Can get user's UserPhotos", true));
-        this.addTest(canGetUserUserPhotosById("Can get user's UserPhoto by id", true));
         this.addTest(canGetUserDrive("Can get user's drive", true));
         this.addTest(canGetUserFiles("Can get user's files", true));
         this.addTest(canGetUserFilesById("Can get user's file by id", true));
@@ -1294,75 +1292,6 @@ public class GraphTests extends TestGroup {
         return test;
     }
 
-
-    private TestCase canGetUserUserPhotos(String name, boolean enabled) {
-        TestCase test = new TestCase() {
-
-            @Override
-            public TestResult executeTest() {
-                try {
-                    TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
-                    result.setTestCase(this);
-
-                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
-
-                    //Act
-                    List<Photo> userPhotos = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhotos().read().get();
-
-                    //Assert
-                    if (userPhotos != null)
-                        result.setStatus(TestStatus.Passed);
-
-                    return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
-                }
-            }
-        };
-        test.setName(name);
-        test.setEnabled(enabled);
-        return test;
-    }
-
-    private TestCase canGetUserUserPhotosById(String name, boolean enabled) {
-        TestCase test = new TestCase() {
-
-            @Override
-            public TestResult executeTest() {
-                try {
-                    TestResult result = new TestResult();
-                    result.setStatus(TestStatus.Failed);
-                    result.setTestCase(this);
-
-                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
-
-                    //Prepare
-                    List<Photo> userPhotos = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhotos().top(1).read().get();
-                    String userPhotoId;
-                    if (userPhotos != null && userPhotos.size() > 0) {
-                        userPhotoId = userPhotos.get(0).getId().toString();
-                        //Act
-                        Photo userPhoto = client.getUsers().getById(ApplicationContext.getTestMail())
-                                .getUserPhoto(userPhotoId).read().get();
-                        //Assert
-                        if (userPhoto != null)
-                            result.setStatus(TestStatus.Passed);
-
-                    } else {
-                        result.setException(new Exception("No available UserPhotos"));
-                    }
-                    return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
-                }
-            }
-        };
-        test.setName(name);
-        test.setEnabled(enabled);
-        return test;
-    }
-
     private TestCase canGetUserDrive(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -1634,7 +1563,7 @@ public class GraphTests extends TestGroup {
 
                     List<PrivilegedRole> privilegedRoles = client.getPrivilegedRoles().top(1).read().get();
                     if(privilegedRoles != null){
-                        PrivilegedRoleSettings settings = client.getPrivilegedRoles().getById("").getSetting().read().get();
+                        PrivilegedRoleSettings settings = client.getPrivilegedRoles().getById(privilegedRoles.get(0).getId().toString()).getSetting().read().get();
                         if(settings != null){
                             result.setStatus(TestStatus.Passed);
                         }

@@ -150,24 +150,6 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
     }
 
      /**
-     * Gets group photos.
-     *
-     * @return the group photos
-     */
-    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getGroupPhotos() {
-        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("GroupPhotos", this, Photo.class, PhotoCollectionOperations.class);
-    }
-
-    /**
-     * Gets group photo.
-     *
-     * @return the group photo
-     */
-    public PhotoFetcher getGroupPhoto(String id){
-         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("GroupPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets conversations.
      *
      * @return the conversations

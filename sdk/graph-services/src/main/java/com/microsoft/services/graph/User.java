@@ -837,307 +837,307 @@ public class User extends DirectoryObject {
 
     }
             
-    private String AboutMe;
+    private String aboutMe;
      
     /**
-    * Gets the About Me.
+    * Gets the about Me.
     *
     * @return the String
     */
     public String getAboutMe() {
-        return this.AboutMe; 
+        return this.aboutMe; 
     }
 
     /**
-    * Sets the About Me.
+    * Sets the about Me.
     *
     * @param value the String
     */
     public void setAboutMe(String value) { 
-        this.AboutMe = value; 
-        valueChanged("AboutMe", value);
+        this.aboutMe = value; 
+        valueChanged("aboutMe", value);
 
     }
             
-    private String Alias;
+    private String alias;
      
     /**
-    * Gets the Alias.
+    * Gets the alias.
     *
     * @return the String
     */
     public String getAlias() {
-        return this.Alias; 
+        return this.alias; 
     }
 
     /**
-    * Sets the Alias.
+    * Sets the alias.
     *
     * @param value the String
     */
     public void setAlias(String value) { 
-        this.Alias = value; 
-        valueChanged("Alias", value);
+        this.alias = value; 
+        valueChanged("alias", value);
 
     }
             
-    private java.util.Calendar Birthday;
+    private java.util.Calendar birthday;
      
     /**
-    * Gets the Birthday.
+    * Gets the birthday.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getBirthday() {
-        return this.Birthday; 
+        return this.birthday; 
     }
 
     /**
-    * Sets the Birthday.
+    * Sets the birthday.
     *
     * @param value the java.util.Calendar
     */
     public void setBirthday(java.util.Calendar value) { 
-        this.Birthday = value; 
-        valueChanged("Birthday", value);
+        this.birthday = value; 
+        valueChanged("birthday", value);
 
     }
             
-    private java.util.Calendar HireDate;
+    private java.util.Calendar hireDate;
      
     /**
-    * Gets the Hire Date.
+    * Gets the hire Date.
     *
     * @return the java.util.Calendar
     */
     public java.util.Calendar getHireDate() {
-        return this.HireDate; 
+        return this.hireDate; 
     }
 
     /**
-    * Sets the Hire Date.
+    * Sets the hire Date.
     *
     * @param value the java.util.Calendar
     */
     public void setHireDate(java.util.Calendar value) { 
-        this.HireDate = value; 
-        valueChanged("HireDate", value);
+        this.hireDate = value; 
+        valueChanged("hireDate", value);
 
     }
     
         
-    private java.util.List<String> Interests = null;
+    private java.util.List<String> interests = null;
     
     
      
     /**
-    * Gets the Interests.
+    * Gets the interests.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getInterests() {
-        return this.Interests; 
+        return this.interests; 
     }
 
     /**
-    * Sets the Interests.
+    * Sets the interests.
     *
     * @param value the java.util.List<String>
     */
     public void setInterests(java.util.List<String> value) { 
-        this.Interests = value; 
-        valueChanged("Interests", value);
+        this.interests = value; 
+        valueChanged("interests", value);
 
     }
             
-    private String MySite;
+    private String mySite;
      
     /**
-    * Gets the My Site.
+    * Gets the my Site.
     *
     * @return the String
     */
     public String getMySite() {
-        return this.MySite; 
+        return this.mySite; 
     }
 
     /**
-    * Sets the My Site.
+    * Sets the my Site.
     *
     * @param value the String
     */
     public void setMySite(String value) { 
-        this.MySite = value; 
-        valueChanged("MySite", value);
+        this.mySite = value; 
+        valueChanged("mySite", value);
 
     }
     
         
-    private java.util.List<String> PastProjects = null;
+    private java.util.List<String> pastProjects = null;
     
     
      
     /**
-    * Gets the Past Projects.
+    * Gets the past Projects.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getPastProjects() {
-        return this.PastProjects; 
+        return this.pastProjects; 
     }
 
     /**
-    * Sets the Past Projects.
+    * Sets the past Projects.
     *
     * @param value the java.util.List<String>
     */
     public void setPastProjects(java.util.List<String> value) { 
-        this.PastProjects = value; 
-        valueChanged("PastProjects", value);
+        this.pastProjects = value; 
+        valueChanged("pastProjects", value);
 
     }
             
-    private String PreferredName;
+    private String preferredName;
      
     /**
-    * Gets the Preferred Name.
+    * Gets the preferred Name.
     *
     * @return the String
     */
     public String getPreferredName() {
-        return this.PreferredName; 
+        return this.preferredName; 
     }
 
     /**
-    * Sets the Preferred Name.
+    * Sets the preferred Name.
     *
     * @param value the String
     */
     public void setPreferredName(String value) { 
-        this.PreferredName = value; 
-        valueChanged("PreferredName", value);
+        this.preferredName = value; 
+        valueChanged("preferredName", value);
 
     }
             
-    private String PrincipalName;
+    private String principalName;
      
     /**
-    * Gets the Principal Name.
+    * Gets the principal Name.
     *
     * @return the String
     */
     public String getPrincipalName() {
-        return this.PrincipalName; 
+        return this.principalName; 
     }
 
     /**
-    * Sets the Principal Name.
+    * Sets the principal Name.
     *
     * @param value the String
     */
     public void setPrincipalName(String value) { 
-        this.PrincipalName = value; 
-        valueChanged("PrincipalName", value);
+        this.principalName = value; 
+        valueChanged("principalName", value);
 
     }
     
         
-    private java.util.List<String> Responsibilities = null;
+    private java.util.List<String> responsibilities = null;
     
     
      
     /**
-    * Gets the Responsibilities.
+    * Gets the responsibilities.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getResponsibilities() {
-        return this.Responsibilities; 
+        return this.responsibilities; 
     }
 
     /**
-    * Sets the Responsibilities.
+    * Sets the responsibilities.
     *
     * @param value the java.util.List<String>
     */
     public void setResponsibilities(java.util.List<String> value) { 
-        this.Responsibilities = value; 
-        valueChanged("Responsibilities", value);
+        this.responsibilities = value; 
+        valueChanged("responsibilities", value);
 
     }
     
         
-    private java.util.List<String> Schools = null;
+    private java.util.List<String> schools = null;
     
     
      
     /**
-    * Gets the Schools.
+    * Gets the schools.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getSchools() {
-        return this.Schools; 
+        return this.schools; 
     }
 
     /**
-    * Sets the Schools.
+    * Sets the schools.
     *
     * @param value the java.util.List<String>
     */
     public void setSchools(java.util.List<String> value) { 
-        this.Schools = value; 
-        valueChanged("Schools", value);
+        this.schools = value; 
+        valueChanged("schools", value);
 
     }
     
         
-    private java.util.List<String> Skills = null;
+    private java.util.List<String> skills = null;
     
     
      
     /**
-    * Gets the Skills.
+    * Gets the skills.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getSkills() {
-        return this.Skills; 
+        return this.skills; 
     }
 
     /**
-    * Sets the Skills.
+    * Sets the skills.
     *
     * @param value the java.util.List<String>
     */
     public void setSkills(java.util.List<String> value) { 
-        this.Skills = value; 
-        valueChanged("Skills", value);
+        this.skills = value; 
+        valueChanged("skills", value);
 
     }
     
         
-    private java.util.List<String> Tags = null;
+    private java.util.List<String> tags = null;
     
     
      
     /**
-    * Gets the Tags.
+    * Gets the tags.
     *
     * @return the java.util.List<String>
     */
     public java.util.List<String> getTags() {
-        return this.Tags; 
+        return this.tags; 
     }
 
     /**
-    * Sets the Tags.
+    * Sets the tags.
     *
     * @param value the java.util.List<String>
     */
     public void setTags(java.util.List<String> value) { 
-        this.Tags = value; 
-        valueChanged("Tags", value);
+        this.tags = value; 
+        valueChanged("tags", value);
 
     }
     
@@ -1412,28 +1412,6 @@ public class User extends DirectoryObject {
         valueChanged("Messages", value);
 
     }
-            
-    private MailFolder RootFolder;
-     
-    /**
-    * Gets the Root Folder.
-    *
-    * @return the MailFolder
-    */
-    public MailFolder getRootFolder() {
-        return this.RootFolder; 
-    }
-
-    /**
-    * Sets the Root Folder.
-    *
-    * @param value the MailFolder
-    */
-    public void setRootFolder(MailFolder value) { 
-        this.RootFolder = value; 
-        valueChanged("RootFolder", value);
-
-    }
     
         
     private java.util.List<Calendar> Calendars = null;
@@ -1626,31 +1604,6 @@ public class User extends DirectoryObject {
     public void setUserPhoto(Photo value) { 
         this.UserPhoto = value; 
         valueChanged("UserPhoto", value);
-
-    }
-    
-        
-    private java.util.List<Photo> UserPhotos = null;
-    
-    
-     
-    /**
-    * Gets the User Photos.
-    *
-    * @return the java.util.List<Photo>
-    */
-    public java.util.List<Photo> getUserPhotos() {
-        return this.UserPhotos; 
-    }
-
-    /**
-    * Sets the User Photos.
-    *
-    * @param value the java.util.List<Photo>
-    */
-    public void setUserPhotos(java.util.List<Photo> value) { 
-        this.UserPhotos = value; 
-        valueChanged("UserPhotos", value);
 
     }
     

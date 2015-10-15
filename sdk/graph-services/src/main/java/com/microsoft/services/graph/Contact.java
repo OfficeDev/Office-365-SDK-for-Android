@@ -698,6 +698,75 @@ public class Contact extends OutlookItem {
 
     }
             
+    private String SpouseName;
+     
+    /**
+    * Gets the Spouse Name.
+    *
+    * @return the String
+    */
+    public String getSpouseName() {
+        return this.SpouseName; 
+    }
+
+    /**
+    * Sets the Spouse Name.
+    *
+    * @param value the String
+    */
+    public void setSpouseName(String value) { 
+        this.SpouseName = value; 
+        valueChanged("SpouseName", value);
+
+    }
+            
+    private String PersonalNotes;
+     
+    /**
+    * Gets the Personal Notes.
+    *
+    * @return the String
+    */
+    public String getPersonalNotes() {
+        return this.PersonalNotes; 
+    }
+
+    /**
+    * Sets the Personal Notes.
+    *
+    * @param value the String
+    */
+    public void setPersonalNotes(String value) { 
+        this.PersonalNotes = value; 
+        valueChanged("PersonalNotes", value);
+
+    }
+    
+        
+    private java.util.List<String> Children = null;
+    
+    
+     
+    /**
+    * Gets the Children.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getChildren() {
+        return this.Children; 
+    }
+
+    /**
+    * Sets the Children.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setChildren(java.util.List<String> value) { 
+        this.Children = value; 
+        valueChanged("Children", value);
+
+    }
+            
     private Photo ContactPhoto;
      
     /**
@@ -717,6 +786,31 @@ public class Contact extends OutlookItem {
     public void setContactPhoto(Photo value) { 
         this.ContactPhoto = value; 
         valueChanged("ContactPhoto", value);
+
+    }
+    
+        
+    private java.util.List<Extension> Extensions = null;
+    
+    
+     
+    /**
+    * Gets the Extensions.
+    *
+    * @return the java.util.List<Extension>
+    */
+    public java.util.List<Extension> getExtensions() {
+        return this.Extensions; 
+    }
+
+    /**
+    * Sets the Extensions.
+    *
+    * @param value the java.util.List<Extension>
+    */
+    public void setExtensions(java.util.List<Extension> value) { 
+        this.Extensions = value; 
+        valueChanged("Extensions", value);
 
     }
 }

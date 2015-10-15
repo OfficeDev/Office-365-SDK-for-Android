@@ -259,14 +259,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     public MessageFetcher getMessage(String id){
          return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
     }
-     /**
-     * Gets rootfolder.
-     *
-     * @return the root folder
-     */
-    public MailFolderFetcher getRootFolder() {
-        return new MailFolderFetcher("RootFolder", this);
-    }
 
      /**
      * Gets calendars.
@@ -390,24 +382,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public PhotoFetcher getUserPhoto() {
         return new PhotoFetcher("UserPhoto", this);
-    }
-
-     /**
-     * Gets user photos.
-     *
-     * @return the user photos
-     */
-    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getUserPhotos() {
-        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class);
-    }
-
-    /**
-     * Gets user photo.
-     *
-     * @return the user photo
-     */
-    public PhotoFetcher getUserPhoto(String id){
-         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
     }
 
      /**

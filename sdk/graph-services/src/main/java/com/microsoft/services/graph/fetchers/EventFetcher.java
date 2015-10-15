@@ -88,6 +88,24 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
     }
 
      /**
+     * Gets extensions.
+     *
+     * @return the extensions
+     */
+    public OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations> getExtensions() {
+        return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class);
+    }
+
+    /**
+     * Gets extension.
+     *
+     * @return the extension
+     */
+    public ExtensionFetcher getExtension(String id){
+         return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
+    }
+
+     /**
      * Gets instances.
      *
      * @return the instances

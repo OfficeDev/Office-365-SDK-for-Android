@@ -34,7 +34,7 @@ public class Thumbnail extends ODataBaseEntity {
     * @return the ODataStream
     */
     public ODataStream getContent() {
-        return this.content;
+        return this.content; 
     }
 
     /**
@@ -42,7 +42,7 @@ public class Thumbnail extends ODataBaseEntity {
     *
     * @param value the ODataStream
     */
-    public void setContent(ODataStream value) {
+    public void setContent(ODataStream value) { 
         this.content = value;
         valueChanged("content", value);
 
@@ -56,7 +56,7 @@ public class Thumbnail extends ODataBaseEntity {
     * @return the Integer
     */
     public Integer getHeight() {
-        return this.height;
+        return this.height; 
     }
 
     /**
@@ -64,7 +64,7 @@ public class Thumbnail extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setHeight(Integer value) {
+    public void setHeight(Integer value) { 
         this.height = value;
         valueChanged("height", value);
 
@@ -78,7 +78,7 @@ public class Thumbnail extends ODataBaseEntity {
     * @return the String
     */
     public String getUrl() {
-        return this.url;
+        return this.url; 
     }
 
     /**
@@ -86,7 +86,7 @@ public class Thumbnail extends ODataBaseEntity {
     *
     * @param value the String
     */
-    public void setUrl(String value) {
+    public void setUrl(String value) { 
         this.url = value;
         valueChanged("url", value);
 
@@ -100,7 +100,7 @@ public class Thumbnail extends ODataBaseEntity {
     * @return the Integer
     */
     public Integer getWidth() {
-        return this.width;
+        return this.width; 
     }
 
     /**
@@ -108,7 +108,7 @@ public class Thumbnail extends ODataBaseEntity {
     *
     * @param value the Integer
     */
-    public void setWidth(Integer value) {
+    public void setWidth(Integer value) { 
         this.width = value;
         valueChanged("width", value);
 

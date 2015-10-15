@@ -78,6 +78,24 @@ public class PostFetcher extends OrcEntityFetcher<Post,PostOperations>
     public AttachmentFetcher getAttachment(String id){
          return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
     }
+
+     /**
+     * Gets extensions.
+     *
+     * @return the extensions
+     */
+    public OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations> getExtensions() {
+        return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class);
+    }
+
+    /**
+     * Gets extension.
+     *
+     * @return the extension
+     */
+    public ExtensionFetcher getExtension(String id){
+         return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
+    }
      /**
      * Gets inreplyto.
      *

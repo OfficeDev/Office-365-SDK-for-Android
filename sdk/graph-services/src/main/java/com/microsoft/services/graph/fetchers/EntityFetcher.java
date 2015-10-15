@@ -59,10 +59,6 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
     }
 
     
-    public ExtensionFetcher asExtension(){
-        return new ExtensionFetcher(this.urlComponent, this.parent);
-    }   
-
     public MailFolderFetcher asMailFolder(){
         return new MailFolderFetcher(this.urlComponent, this.parent);
     }   
@@ -99,24 +95,10 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new AttachmentFetcher(this.urlComponent, this.parent);
     }   
 
+    public ExtensionFetcher asExtension(){
+        return new ExtensionFetcher(this.urlComponent, this.parent);
+    }   
+
     
     
-     /**
-     * Gets extensions.
-     *
-     * @return the extensions
-     */
-    public OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations> getExtensions() {
-        return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class);
-    }
-
-    /**
-     * Gets extension.
-     *
-     * @return the extension
-     */
-    public ExtensionFetcher getExtension(String id){
-         return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
-    }
-
 }
