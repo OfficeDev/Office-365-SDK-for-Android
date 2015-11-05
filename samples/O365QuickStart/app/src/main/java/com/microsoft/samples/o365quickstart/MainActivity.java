@@ -86,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
                     this,
                     new String[]{"https://outlook.office.com/Mail.Read"},
                     null,
-                    "134f466a-06ef-4c7a-afec-2d86a1d5c348",
+                    "ef219c37-3575-4d54-8d65-7a9bb4b6b594",
                     "urn:ietf:wg:oauth:2.0:oob",
                     //"da0398ad-d857-4aae-b1f5-bcf8b8df770c",
                     //"https://lagash.com/redirect",
@@ -123,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void getMessages() {
         logger.info("Getting messages...");
-        Futures.addCallback(_client.getMe().getFolders().getById("Inbox").getMessages().top(10).read(), new FutureCallback<List<Message>>() {
+        Futures.addCallback(_client.getMe().getMessages().top(10).read(), new FutureCallback<List<Message>>() {
             @Override
             public void onSuccess(final List<Message> result) {
                 logger.info("Preparing messages for display.");
