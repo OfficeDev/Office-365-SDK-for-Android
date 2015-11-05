@@ -16,10 +16,18 @@ import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationContext;
 import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.aad.adal.PromptBehavior;
-import com.microsoft.services.orc.log.LogLevel;
-import com.microsoft.services.orc.resolvers.ADALDependencyResolver;
+import com.microsoft.services.orc.auth.AuthenticationCredentials;
+import com.microsoft.services.orc.core.DependencyResolver;
+import com.microsoft.services.orc.http.Credentials;
+import com.microsoft.services.orc.http.impl.LoggingInterceptor;
+import com.microsoft.services.orc.http.impl.OAuthCredentials;
+import com.microsoft.services.orc.http.impl.OkHttpTransport;
+import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 import com.microsoft.services.outlook.Message;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,11 +37,13 @@ import java.util.Map;
 
 public class MainActivity extends ActionBarActivity {
 
+    Logger logger = LoggerFactory.getLogger(MainActivity.class);
+
     private static final String TAG = "MainActivity";
-    private static final String outlookBaseUrl = "https://outlook.office365.com/api/v1.0";
+    private static final String outlookBaseUrl = "https://outlook.office.com/api/beta";
 
     private AuthenticationContext _authContext;
-    private ADALDependencyResolver _resolver;
+    private DependencyResolver _resolver;
     private OutlookClient _client;
 
     private ListView lvMessages;
@@ -54,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onFailure(Throwable t) {
-
+                logger.error("authentication failed", t);
             }
         });
     }
@@ -74,9 +84,12 @@ public class MainActivity extends ActionBarActivity {
         if (_authContext != null) {
             _authContext.acquireToken(
                     this,
-                    getResources().getString(R.string.AADResourceId),
-                    getResources().getString(R.string.AADClientId),
-                    getResources().getString(R.string.AADRedirectUrl),
+                    new String[]{"https://outlook.office.com/Mail.Read"},
+                    null,
+                    //"134f466a-06ef-4c7a-afec-2d86a1d5c348",
+                    //"urn:ietf:wg:oauth:2.0:oob",
+                    "da0398ad-d857-4aae-b1f5-bcf8b8df770c",
+                    "https://lagash.com/redirect",
                     PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
@@ -84,12 +97,15 @@ public class MainActivity extends ActionBarActivity {
                         public void onSuccess(final AuthenticationResult authenticationResult) {
 
                             if (authenticationResult != null && authenticationResult.getStatus() == AuthenticationResult.AuthenticationStatus.Succeeded) {
-                                _resolver = new ADALDependencyResolver(
-                                        _authContext,
-                                        getResources().getString(R.string.AADResourceId),
-                                        getResources().getString(R.string.AADClientId));
-                                _resolver.getLogger().setLogLevel(LogLevel.VERBOSE);
-                                _resolver.getLogger().setEnabled(true);
+                                _resolver = new DependencyResolver.Builder(
+                                        new OkHttpTransport().setInterceptor(new LoggingInterceptor()), new GsonSerializer(),
+                                        new AuthenticationCredentials() {
+                                            @Override
+                                            public Credentials getCredentials() {
+                                                return new OAuthCredentials(authenticationResult.getAccessToken());
+                                            }
+                                        }).build();
+
                                 result.set(true);
                             }
                         }
@@ -106,11 +122,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void getMessages() {
-        _resolver.getLogger().log("Getting messages...", LogLevel.VERBOSE);
+        logger.info("Getting messages...");
         Futures.addCallback(_client.getMe().getFolders().getById("Inbox").getMessages().top(10).read(), new FutureCallback<List<Message>>() {
             @Override
             public void onSuccess(final List<Message> result) {
-                _resolver.getLogger().log("Preparing messages for display.", LogLevel.VERBOSE);
+                logger.info("Preparing messages for display.");
                 List<Map<String, String>> listOfMessages = new ArrayList<Map<String, String>>();
 
                 for (Message m : result) {
@@ -138,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onFailure(final Throwable t) {
-                _resolver.getLogger().log(t.getMessage(), LogLevel.ERROR);
+                logger.error(t.getMessage(), t);
             }
         });
     }

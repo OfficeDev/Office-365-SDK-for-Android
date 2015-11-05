@@ -21,7 +21,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
-    compile ('com.microsoft.services:outlook-services:1.0.0')
-    compile(group: 'com.microsoft.services.orc', name: 'orc-android', version: '1.2.0', ext: 'aar')
-    compile 'com.microsoft.aad:adal:1.1.7'
+    compile(group: 'com.microsoft.services', name: 'outlook-services', version: '1.0.1-V2-SNAPSHOT', ext: 'aar'){
+        transitive = true
+    }
 }
