@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
         final SettableFuture<Boolean> result = SettableFuture.create();
 
         try {
-            _authContext = new AuthenticationContext(this, getResources().getString(R.string.AADAuthority), true);
+            _authContext = new AuthenticationContext(this, "https://login.microsoftonline.com/common/v2.0", true);
         } catch (Exception e) {
             Log.e(TAG, "Failed to initialize Authentication Context with error: " + e.getMessage());
             _authContext = null;
@@ -86,10 +86,10 @@ public class MainActivity extends ActionBarActivity {
                     this,
                     new String[]{"https://outlook.office.com/Mail.Read"},
                     null,
-                    //"134f466a-06ef-4c7a-afec-2d86a1d5c348",
-                    //"urn:ietf:wg:oauth:2.0:oob",
-                    "da0398ad-d857-4aae-b1f5-bcf8b8df770c",
-                    "https://lagash.com/redirect",
+                    "134f466a-06ef-4c7a-afec-2d86a1d5c348",
+                    "urn:ietf:wg:oauth:2.0:oob",
+                    //"da0398ad-d857-4aae-b1f5-bcf8b8df770c",
+                    //"https://lagash.com/redirect",
                     PromptBehavior.Auto,
                     new AuthenticationCallback<AuthenticationResult>() {
 
