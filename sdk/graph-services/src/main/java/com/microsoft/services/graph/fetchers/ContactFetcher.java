@@ -60,15 +60,7 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
 
     
     
-         /**
-     * Gets contactphoto.
-     *
-     * @return the contact photo
-     */
-    public PhotoFetcher getContactPhoto() {
-        return new PhotoFetcher("ContactPhoto", this);
-    }
-
+    
      /**
      * Gets extensions.
      *
@@ -85,6 +77,14 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
      */
     public ExtensionFetcher getExtension(String id){
          return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets photo.
+     *
+     * @return the photo
+     */
+    public ProfilePhotoFetcher getPhoto() {
+        return new ProfilePhotoFetcher("Photo", this);
     }
 
 }

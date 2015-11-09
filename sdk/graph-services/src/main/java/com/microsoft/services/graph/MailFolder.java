@@ -26,28 +26,6 @@ public class MailFolder extends Entity {
         setODataType("#Microsoft.Graph.MailFolder");
     }
             
-    private String ParentFolderId;
-     
-    /**
-    * Gets the Parent Folder Id.
-    *
-    * @return the String
-    */
-    public String getParentFolderId() {
-        return this.ParentFolderId; 
-    }
-
-    /**
-    * Sets the Parent Folder Id.
-    *
-    * @param value the String
-    */
-    public void setParentFolderId(String value) { 
-        this.ParentFolderId = value; 
-        valueChanged("ParentFolderId", value);
-
-    }
-            
     private String DisplayName;
      
     /**
@@ -67,6 +45,28 @@ public class MailFolder extends Entity {
     public void setDisplayName(String value) { 
         this.DisplayName = value; 
         valueChanged("DisplayName", value);
+
+    }
+            
+    private String ParentFolderId;
+     
+    /**
+    * Gets the Parent Folder Id.
+    *
+    * @return the String
+    */
+    public String getParentFolderId() {
+        return this.ParentFolderId; 
+    }
+
+    /**
+    * Sets the Parent Folder Id.
+    *
+    * @param value the String
+    */
+    public void setParentFolderId(String value) { 
+        this.ParentFolderId = value; 
+        valueChanged("ParentFolderId", value);
 
     }
             
@@ -91,29 +91,48 @@ public class MailFolder extends Entity {
         valueChanged("ChildFolderCount", value);
 
     }
-    
-        
-    private java.util.List<MailFolder> ChildFolders = null;
-    
-    
+            
+    private Integer UnreadItemCount;
      
     /**
-    * Gets the Child Folders.
+    * Gets the Unread Item Count.
     *
-    * @return the java.util.List<MailFolder>
+    * @return the Integer
     */
-    public java.util.List<MailFolder> getChildFolders() {
-        return this.ChildFolders; 
+    public Integer getUnreadItemCount() {
+        return this.UnreadItemCount; 
     }
 
     /**
-    * Sets the Child Folders.
+    * Sets the Unread Item Count.
     *
-    * @param value the java.util.List<MailFolder>
+    * @param value the Integer
     */
-    public void setChildFolders(java.util.List<MailFolder> value) { 
-        this.ChildFolders = value; 
-        valueChanged("ChildFolders", value);
+    public void setUnreadItemCount(Integer value) { 
+        this.UnreadItemCount = value; 
+        valueChanged("UnreadItemCount", value);
+
+    }
+            
+    private Integer TotalItemCount;
+     
+    /**
+    * Gets the Total Item Count.
+    *
+    * @return the Integer
+    */
+    public Integer getTotalItemCount() {
+        return this.TotalItemCount; 
+    }
+
+    /**
+    * Sets the Total Item Count.
+    *
+    * @param value the Integer
+    */
+    public void setTotalItemCount(Integer value) { 
+        this.TotalItemCount = value; 
+        valueChanged("TotalItemCount", value);
 
     }
     
@@ -139,6 +158,31 @@ public class MailFolder extends Entity {
     public void setMessages(java.util.List<Message> value) { 
         this.Messages = value; 
         valueChanged("Messages", value);
+
+    }
+    
+        
+    private java.util.List<MailFolder> ChildFolders = null;
+    
+    
+     
+    /**
+    * Gets the Child Folders.
+    *
+    * @return the java.util.List<MailFolder>
+    */
+    public java.util.List<MailFolder> getChildFolders() {
+        return this.ChildFolders; 
+    }
+
+    /**
+    * Sets the Child Folders.
+    *
+    * @param value the java.util.List<MailFolder>
+    */
+    public void setChildFolders(java.util.List<MailFolder> value) { 
+        this.ChildFolders = value; 
+        valueChanged("ChildFolders", value);
 
     }
 }

@@ -62,24 +62,6 @@ public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperation
     
     
      /**
-     * Gets calendar view.
-     *
-     * @return the calendar view
-     */
-    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getCalendarView() {
-        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class);
-    }
-
-    /**
-     * Gets calendar view.
-     *
-     * @return the calendar view
-     */
-    public EventFetcher getCalendarView(String id){
-         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets events.
      *
      * @return the events
@@ -95,6 +77,24 @@ public class CalendarFetcher extends OrcEntityFetcher<Calendar,CalendarOperation
      */
     public EventFetcher getEvent(String id){
          return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Events", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets calendar view.
+     *
+     * @return the calendar view
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getCalendarView() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets calendar view.
+     *
+     * @return the calendar view
+     */
+    public EventFetcher getCalendarView(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("CalendarView", this, Event.class, EventCollectionOperations.class).getById(id);
     }
 
 }

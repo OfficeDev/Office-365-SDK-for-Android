@@ -16,12 +16,14 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type User Id Collection.
 */
 public class UserIdCollection extends ODataBaseEntity {
 
     public UserIdCollection(){
-        setODataType("#Microsoft.Graph.UserIdCollection");
+        setODataType("#Microsoft.Graph.userIdCollection");
     }
 }

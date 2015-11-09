@@ -24,7 +24,50 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class File extends ODataBaseEntity {
 
     public File(){
-        setODataType("#Microsoft.Graph.File");
+        setODataType("#Microsoft.Graph.file");
+    }
+
+    private Hashes hashes;
+
+    /**
+    * Gets the hashes.
+    *
+    * @return the Hashes
+    */
+    public Hashes getHashes() {
+        return this.hashes; 
+    }
+
+    /**
+    * Sets the hashes.
+    *
+    * @param value the Hashes
+    */
+    public void setHashes(Hashes value) { 
+        this.hashes = value;
+        valueChanged("hashes", value);
+
+    }
+
+    private String mimeType;
+
+    /**
+    * Gets the mime Type.
+    *
+    * @return the String
+    */
+    public String getMimeType() {
+        return this.mimeType; 
+    }
+
+    /**
+    * Sets the mime Type.
+    *
+    * @param value the String
+    */
+    public void setMimeType(String value) { 
+        this.mimeType = value;
+        valueChanged("mimeType", value);
+
     }
 }
-

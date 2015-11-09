@@ -24,28 +24,50 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class TaskDetails extends ODataBaseEntity {
 
     public TaskDetails(){
-        setODataType("#Microsoft.Graph.TaskDetails");
+        setODataType("#Microsoft.Graph.taskDetails");
     }
             
-    private String notes;
+    private String description;
      
     /**
-    * Gets the notes.
+    * Gets the description.
     *
     * @return the String
     */
-    public String getNotes() {
-        return this.notes; 
+    public String getDescription() {
+        return this.description; 
     }
 
     /**
-    * Sets the notes.
+    * Sets the description.
     *
     * @param value the String
     */
-    public void setNotes(String value) { 
-        this.notes = value; 
-        valueChanged("notes", value);
+    public void setDescription(String value) { 
+        this.description = value; 
+        valueChanged("description", value);
+
+    }
+            
+    private PreviewType previewType;
+     
+    /**
+    * Gets the preview Type.
+    *
+    * @return the PreviewType
+    */
+    public PreviewType getPreviewType() {
+        return this.previewType; 
+    }
+
+    /**
+    * Sets the preview Type.
+    *
+    * @param value the PreviewType
+    */
+    public void setPreviewType(PreviewType value) { 
+        this.previewType = value; 
+        valueChanged("previewType", value);
 
     }
             
@@ -93,6 +115,28 @@ public class TaskDetails extends ODataBaseEntity {
 
     }
             
+    private ChecklistItemCollection checklist;
+     
+    /**
+    * Gets the checklist.
+    *
+    * @return the ChecklistItemCollection
+    */
+    public ChecklistItemCollection getChecklist() {
+        return this.checklist; 
+    }
+
+    /**
+    * Sets the checklist.
+    *
+    * @param value the ChecklistItemCollection
+    */
+    public void setChecklist(ChecklistItemCollection value) { 
+        this.checklist = value; 
+        valueChanged("checklist", value);
+
+    }
+            
     private String id;
      
     /**
@@ -112,28 +156,6 @@ public class TaskDetails extends ODataBaseEntity {
     public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
-
-    }
-            
-    private String version;
-     
-    /**
-    * Gets the version.
-    *
-    * @return the String
-    */
-    public String getVersion() {
-        return this.version; 
-    }
-
-    /**
-    * Sets the version.
-    *
-    * @param value the String
-    */
-    public void setVersion(String value) { 
-        this.version = value; 
-        valueChanged("version", value);
 
     }
 }

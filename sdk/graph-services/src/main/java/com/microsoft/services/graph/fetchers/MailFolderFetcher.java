@@ -62,24 +62,6 @@ public class MailFolderFetcher extends OrcEntityFetcher<MailFolder,MailFolderOpe
     
     
      /**
-     * Gets child folders.
-     *
-     * @return the child folders
-     */
-    public OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations> getChildFolders() {
-        return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("ChildFolders", this, MailFolder.class, MailFolderCollectionOperations.class);
-    }
-
-    /**
-     * Gets child folder.
-     *
-     * @return the child folder
-     */
-    public MailFolderFetcher getChildFolder(String id){
-         return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("ChildFolders", this, MailFolder.class, MailFolderCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets messages.
      *
      * @return the messages
@@ -95,6 +77,24 @@ public class MailFolderFetcher extends OrcEntityFetcher<MailFolder,MailFolderOpe
      */
     public MessageFetcher getMessage(String id){
          return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets child folders.
+     *
+     * @return the child folders
+     */
+    public OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations> getChildFolders() {
+        return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("ChildFolders", this, MailFolder.class, MailFolderCollectionOperations.class);
+    }
+
+    /**
+     * Gets child folder.
+     *
+     * @return the child folder
+     */
+    public MailFolderFetcher getChildFolder(String id){
+         return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("ChildFolders", this, MailFolder.class, MailFolderCollectionOperations.class).getById(id);
     }
 
 }

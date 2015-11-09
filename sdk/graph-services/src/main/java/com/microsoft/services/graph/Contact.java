@@ -246,6 +246,72 @@ public class Contact extends OutlookItem {
 
     }
             
+    private String YomiGivenName;
+     
+    /**
+    * Gets the Yomi Given Name.
+    *
+    * @return the String
+    */
+    public String getYomiGivenName() {
+        return this.YomiGivenName; 
+    }
+
+    /**
+    * Sets the Yomi Given Name.
+    *
+    * @param value the String
+    */
+    public void setYomiGivenName(String value) { 
+        this.YomiGivenName = value; 
+        valueChanged("YomiGivenName", value);
+
+    }
+            
+    private String YomiSurname;
+     
+    /**
+    * Gets the Yomi Surname.
+    *
+    * @return the String
+    */
+    public String getYomiSurname() {
+        return this.YomiSurname; 
+    }
+
+    /**
+    * Sets the Yomi Surname.
+    *
+    * @param value the String
+    */
+    public void setYomiSurname(String value) { 
+        this.YomiSurname = value; 
+        valueChanged("YomiSurname", value);
+
+    }
+            
+    private String YomiCompanyName;
+     
+    /**
+    * Gets the Yomi Company Name.
+    *
+    * @return the String
+    */
+    public String getYomiCompanyName() {
+        return this.YomiCompanyName; 
+    }
+
+    /**
+    * Sets the Yomi Company Name.
+    *
+    * @param value the String
+    */
+    public void setYomiCompanyName(String value) { 
+        this.YomiCompanyName = value; 
+        valueChanged("YomiCompanyName", value);
+
+    }
+            
     private String Generation;
      
     /**
@@ -518,6 +584,28 @@ public class Contact extends OutlookItem {
         valueChanged("HomePhones", value);
 
     }
+            
+    private String MobilePhone1;
+     
+    /**
+    * Gets the Mobile Phone1.
+    *
+    * @return the String
+    */
+    public String getMobilePhone1() {
+        return this.MobilePhone1; 
+    }
+
+    /**
+    * Sets the Mobile Phone1.
+    *
+    * @param value the String
+    */
+    public void setMobilePhone1(String value) { 
+        this.MobilePhone1 = value; 
+        valueChanged("MobilePhone1", value);
+
+    }
     
         
     private java.util.List<String> BusinessPhones = null;
@@ -541,28 +629,6 @@ public class Contact extends OutlookItem {
     public void setBusinessPhones(java.util.List<String> value) { 
         this.BusinessPhones = value; 
         valueChanged("BusinessPhones", value);
-
-    }
-            
-    private String MobilePhone1;
-     
-    /**
-    * Gets the Mobile Phone1.
-    *
-    * @return the String
-    */
-    public String getMobilePhone1() {
-        return this.MobilePhone1; 
-    }
-
-    /**
-    * Sets the Mobile Phone1.
-    *
-    * @param value the String
-    */
-    public void setMobilePhone1(String value) { 
-        this.MobilePhone1 = value; 
-        valueChanged("MobilePhone1", value);
 
     }
             
@@ -629,72 +695,6 @@ public class Contact extends OutlookItem {
     public void setOtherAddress(PhysicalAddress value) { 
         this.OtherAddress = value; 
         valueChanged("OtherAddress", value);
-
-    }
-            
-    private String YomiCompanyName;
-     
-    /**
-    * Gets the Yomi Company Name.
-    *
-    * @return the String
-    */
-    public String getYomiCompanyName() {
-        return this.YomiCompanyName; 
-    }
-
-    /**
-    * Sets the Yomi Company Name.
-    *
-    * @param value the String
-    */
-    public void setYomiCompanyName(String value) { 
-        this.YomiCompanyName = value; 
-        valueChanged("YomiCompanyName", value);
-
-    }
-            
-    private String YomiGivenName;
-     
-    /**
-    * Gets the Yomi Given Name.
-    *
-    * @return the String
-    */
-    public String getYomiGivenName() {
-        return this.YomiGivenName; 
-    }
-
-    /**
-    * Sets the Yomi Given Name.
-    *
-    * @param value the String
-    */
-    public void setYomiGivenName(String value) { 
-        this.YomiGivenName = value; 
-        valueChanged("YomiGivenName", value);
-
-    }
-            
-    private String YomiSurname;
-     
-    /**
-    * Gets the Yomi Surname.
-    *
-    * @return the String
-    */
-    public String getYomiSurname() {
-        return this.YomiSurname; 
-    }
-
-    /**
-    * Sets the Yomi Surname.
-    *
-    * @param value the String
-    */
-    public void setYomiSurname(String value) { 
-        this.YomiSurname = value; 
-        valueChanged("YomiSurname", value);
 
     }
             
@@ -766,28 +766,6 @@ public class Contact extends OutlookItem {
         valueChanged("Children", value);
 
     }
-            
-    private Photo ContactPhoto;
-     
-    /**
-    * Gets the Contact Photo.
-    *
-    * @return the Photo
-    */
-    public Photo getContactPhoto() {
-        return this.ContactPhoto; 
-    }
-
-    /**
-    * Sets the Contact Photo.
-    *
-    * @param value the Photo
-    */
-    public void setContactPhoto(Photo value) { 
-        this.ContactPhoto = value; 
-        valueChanged("ContactPhoto", value);
-
-    }
     
         
     private java.util.List<Extension> Extensions = null;
@@ -811,6 +789,28 @@ public class Contact extends OutlookItem {
     public void setExtensions(java.util.List<Extension> value) { 
         this.Extensions = value; 
         valueChanged("Extensions", value);
+
+    }
+            
+    private ProfilePhoto Photo;
+     
+    /**
+    * Gets the Photo.
+    *
+    * @return the ProfilePhoto
+    */
+    public ProfilePhoto getPhoto() {
+        return this.Photo; 
+    }
+
+    /**
+    * Sets the Photo.
+    *
+    * @param value the ProfilePhoto
+    */
+    public void setPhoto(ProfilePhoto value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
 
     }
 }

@@ -16,78 +16,102 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Location.
 */
 public class Location extends ODataBaseEntity {
 
     public Location(){
-        setODataType("#Microsoft.Graph.location");
+        setODataType("#Microsoft.Graph.Location");
     }
 
-    private Double altitude;
+    private String DisplayName;
 
     /**
-    * Gets the altitude.
+    * Gets the Display Name.
     *
-    * @return the Double
+    * @return the String
     */
-    public Double getAltitude() {
-        return this.altitude; 
-    }
-
-    /**
-    * Sets the altitude.
-    *
-    * @param value the Double
-    */
-    public void setAltitude(Double value) { 
-        this.altitude = value;
-        valueChanged("altitude", value);
-
-    }
-
-    private Double latitude;
-
-    /**
-    * Gets the latitude.
-    *
-    * @return the Double
-    */
-    public Double getLatitude() {
-        return this.latitude; 
+    public String getDisplayName() {
+        return this.DisplayName; 
     }
 
     /**
-    * Sets the latitude.
+    * Sets the Display Name.
     *
-    * @param value the Double
+    * @param value the String
     */
-    public void setLatitude(Double value) { 
-        this.latitude = value;
-        valueChanged("latitude", value);
+    public void setDisplayName(String value) { 
+        this.DisplayName = value;
+        valueChanged("DisplayName", value);
 
     }
 
-    private Double longitude;
+    private String LocationEmailAddress;
 
     /**
-    * Gets the longitude.
+    * Gets the Location Email Address.
     *
-    * @return the Double
+    * @return the String
     */
-    public Double getLongitude() {
-        return this.longitude; 
+    public String getLocationEmailAddress() {
+        return this.LocationEmailAddress; 
     }
 
     /**
-    * Sets the longitude.
+    * Sets the Location Email Address.
     *
-    * @param value the Double
+    * @param value the String
     */
-    public void setLongitude(Double value) { 
-        this.longitude = value;
-        valueChanged("longitude", value);
+    public void setLocationEmailAddress(String value) { 
+        this.LocationEmailAddress = value;
+        valueChanged("LocationEmailAddress", value);
+
+    }
+
+    private PhysicalAddress Address;
+
+    /**
+    * Gets the Address.
+    *
+    * @return the PhysicalAddress
+    */
+    public PhysicalAddress getAddress() {
+        return this.Address; 
+    }
+
+    /**
+    * Sets the Address.
+    *
+    * @param value the PhysicalAddress
+    */
+    public void setAddress(PhysicalAddress value) { 
+        this.Address = value;
+        valueChanged("Address", value);
+
+    }
+
+    private OutlookGeoCoordinates Coordinates;
+
+    /**
+    * Gets the Coordinates.
+    *
+    * @return the OutlookGeoCoordinates
+    */
+    public OutlookGeoCoordinates getCoordinates() {
+        return this.Coordinates; 
+    }
+
+    /**
+    * Sets the Coordinates.
+    *
+    * @param value the OutlookGeoCoordinates
+    */
+    public void setCoordinates(OutlookGeoCoordinates value) { 
+        this.Coordinates = value;
+        valueChanged("Coordinates", value);
 
     }
 }

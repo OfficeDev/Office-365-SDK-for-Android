@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class PlanDetails extends ODataBaseEntity {
 
     public PlanDetails(){
-        setODataType("#Microsoft.Graph.PlanDetails");
+        setODataType("#Microsoft.Graph.planDetails");
     }
             
     private UserIdCollection sharedWith;
@@ -49,6 +49,138 @@ public class PlanDetails extends ODataBaseEntity {
 
     }
             
+    private String category0Description;
+     
+    /**
+    * Gets the category0Description.
+    *
+    * @return the String
+    */
+    public String getCategory0Description() {
+        return this.category0Description; 
+    }
+
+    /**
+    * Sets the category0Description.
+    *
+    * @param value the String
+    */
+    public void setCategory0Description(String value) { 
+        this.category0Description = value; 
+        valueChanged("category0Description", value);
+
+    }
+            
+    private String category1Description;
+     
+    /**
+    * Gets the category1Description.
+    *
+    * @return the String
+    */
+    public String getCategory1Description() {
+        return this.category1Description; 
+    }
+
+    /**
+    * Sets the category1Description.
+    *
+    * @param value the String
+    */
+    public void setCategory1Description(String value) { 
+        this.category1Description = value; 
+        valueChanged("category1Description", value);
+
+    }
+            
+    private String category2Description;
+     
+    /**
+    * Gets the category2Description.
+    *
+    * @return the String
+    */
+    public String getCategory2Description() {
+        return this.category2Description; 
+    }
+
+    /**
+    * Sets the category2Description.
+    *
+    * @param value the String
+    */
+    public void setCategory2Description(String value) { 
+        this.category2Description = value; 
+        valueChanged("category2Description", value);
+
+    }
+            
+    private String category3Description;
+     
+    /**
+    * Gets the category3Description.
+    *
+    * @return the String
+    */
+    public String getCategory3Description() {
+        return this.category3Description; 
+    }
+
+    /**
+    * Sets the category3Description.
+    *
+    * @param value the String
+    */
+    public void setCategory3Description(String value) { 
+        this.category3Description = value; 
+        valueChanged("category3Description", value);
+
+    }
+            
+    private String category4Description;
+     
+    /**
+    * Gets the category4Description.
+    *
+    * @return the String
+    */
+    public String getCategory4Description() {
+        return this.category4Description; 
+    }
+
+    /**
+    * Sets the category4Description.
+    *
+    * @param value the String
+    */
+    public void setCategory4Description(String value) { 
+        this.category4Description = value; 
+        valueChanged("category4Description", value);
+
+    }
+            
+    private String category5Description;
+     
+    /**
+    * Gets the category5Description.
+    *
+    * @return the String
+    */
+    public String getCategory5Description() {
+        return this.category5Description; 
+    }
+
+    /**
+    * Sets the category5Description.
+    *
+    * @param value the String
+    */
+    public void setCategory5Description(String value) { 
+        this.category5Description = value; 
+        valueChanged("category5Description", value);
+
+    }
+            
     private String id;
      
     /**
@@ -68,28 +200,6 @@ public class PlanDetails extends ODataBaseEntity {
     public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
-
-    }
-            
-    private String version;
-     
-    /**
-    * Gets the version.
-    *
-    * @return the String
-    */
-    public String getVersion() {
-        return this.version; 
-    }
-
-    /**
-    * Sets the version.
-    *
-    * @param value the String
-    */
-    public void setVersion(String value) { 
-        this.version = value; 
-        valueChanged("version", value);
 
     }
 }

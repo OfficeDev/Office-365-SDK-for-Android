@@ -468,23 +468,23 @@ public class Item extends ODataBaseEntity {
 
     }
             
-    private Location location;
+    private GeoCoordinates location;
      
     /**
     * Gets the location.
     *
-    * @return the Location
+    * @return the GeoCoordinates
     */
-    public Location getLocation() {
+    public GeoCoordinates getLocation() {
         return this.location; 
     }
 
     /**
     * Sets the location.
     *
-    * @param value the Location
+    * @param value the GeoCoordinates
     */
-    public void setLocation(Location value) { 
+    public void setLocation(GeoCoordinates value) { 
         this.location = value; 
         valueChanged("location", value);
 

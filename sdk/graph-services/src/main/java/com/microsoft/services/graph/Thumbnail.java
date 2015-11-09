@@ -14,7 +14,9 @@ root for authoritative license information.﻿
 package com.microsoft.services.graph;
 
 import com.microsoft.services.orc.core.ODataBaseEntity;
+
 import com.microsoft.services.orc.core.ODataStream;
+
 
 
 /**

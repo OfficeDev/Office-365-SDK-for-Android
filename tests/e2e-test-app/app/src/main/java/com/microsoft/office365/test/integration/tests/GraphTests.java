@@ -8,6 +8,7 @@ import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
+import com.microsoft.services.graph.fetchers.ProfilePhotoFetcher;
 import com.microsoft.services.orc.core.Constants;
 
 
@@ -1275,7 +1276,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    Photo userPhoto = client.getUsers().getById(ApplicationContext.getTestMail()).getUserPhoto().read().get();
+                    ProfilePhoto userPhoto = client.getUsers().getById(ApplicationContext.getTestMail()).getPhoto().read().get();
 
                     //Assert
                     if (userPhoto != null)
@@ -1335,7 +1336,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
-                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().read().get();
+                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getRoot().getChildren().read().get();
 
                     //Assert
                     if (files != null)
@@ -1365,7 +1366,7 @@ public class GraphTests extends TestGroup {
                     GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
-                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().top(1).read().get();
+                    List<Item> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getRoot().getChildren().top(1).read().get();
                     String fileId;
                     if (files != null && files.size() > 0) {
                         fileId = files.get(0).getId().toString();
@@ -1563,7 +1564,7 @@ public class GraphTests extends TestGroup {
 
                     List<PrivilegedRole> privilegedRoles = client.getPrivilegedRoles().top(1).read().get();
                     if(privilegedRoles != null){
-                        PrivilegedRoleSettings settings = client.getPrivilegedRoles().getById(privilegedRoles.get(0).getId().toString()).getSetting().read().get();
+                        PrivilegedRoleSettings settings = client.getPrivilegedRoles().getById(privilegedRoles.get(0).getId()).getSetting().read().get();
                         if(settings != null){
                             result.setStatus(TestStatus.Passed);
                         }

@@ -26,6 +26,50 @@ public class OutlookItem extends Entity {
         setODataType("#Microsoft.Graph.OutlookItem");
     }
             
+    private java.util.Calendar CreatedDateTime;
+     
+    /**
+    * Gets the Created Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getCreatedDateTime() {
+        return this.CreatedDateTime; 
+    }
+
+    /**
+    * Sets the Created Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setCreatedDateTime(java.util.Calendar value) { 
+        this.CreatedDateTime = value; 
+        valueChanged("CreatedDateTime", value);
+
+    }
+            
+    private java.util.Calendar LastModifiedDateTime;
+     
+    /**
+    * Gets the Last Modified Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getLastModifiedDateTime() {
+        return this.LastModifiedDateTime; 
+    }
+
+    /**
+    * Sets the Last Modified Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setLastModifiedDateTime(java.util.Calendar value) { 
+        this.LastModifiedDateTime = value; 
+        valueChanged("LastModifiedDateTime", value);
+
+    }
+            
     private String ChangeKey;
      
     /**
@@ -70,50 +114,6 @@ public class OutlookItem extends Entity {
     public void setCategories(java.util.List<String> value) { 
         this.Categories = value; 
         valueChanged("Categories", value);
-
-    }
-            
-    private java.util.Calendar DateTimeCreated;
-     
-    /**
-    * Gets the Date Time Created.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeCreated() {
-        return this.DateTimeCreated; 
-    }
-
-    /**
-    * Sets the Date Time Created.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeCreated(java.util.Calendar value) { 
-        this.DateTimeCreated = value; 
-        valueChanged("DateTimeCreated", value);
-
-    }
-            
-    private java.util.Calendar DateTimeLastModified;
-     
-    /**
-    * Gets the Date Time Last Modified.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeLastModified() {
-        return this.DateTimeLastModified; 
-    }
-
-    /**
-    * Sets the Date Time Last Modified.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeLastModified(java.util.Calendar value) { 
-        this.DateTimeLastModified = value; 
-        valueChanged("DateTimeLastModified", value);
 
     }
 }

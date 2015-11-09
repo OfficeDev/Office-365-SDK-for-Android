@@ -48,28 +48,6 @@ public class Calendar extends Entity {
 
     }
             
-    private String ChangeKey;
-     
-    /**
-    * Gets the Change Key.
-    *
-    * @return the String
-    */
-    public String getChangeKey() {
-        return this.ChangeKey; 
-    }
-
-    /**
-    * Sets the Change Key.
-    *
-    * @param value the String
-    */
-    public void setChangeKey(String value) { 
-        this.ChangeKey = value; 
-        valueChanged("ChangeKey", value);
-
-    }
-            
     private CalendarColor Color;
      
     /**
@@ -91,29 +69,26 @@ public class Calendar extends Entity {
         valueChanged("Color", value);
 
     }
-    
-        
-    private java.util.List<Event> CalendarView = null;
-    
-    
+            
+    private String ChangeKey;
      
     /**
-    * Gets the Calendar View.
+    * Gets the Change Key.
     *
-    * @return the java.util.List<Event>
+    * @return the String
     */
-    public java.util.List<Event> getCalendarView() {
-        return this.CalendarView; 
+    public String getChangeKey() {
+        return this.ChangeKey; 
     }
 
     /**
-    * Sets the Calendar View.
+    * Sets the Change Key.
     *
-    * @param value the java.util.List<Event>
+    * @param value the String
     */
-    public void setCalendarView(java.util.List<Event> value) { 
-        this.CalendarView = value; 
-        valueChanged("CalendarView", value);
+    public void setChangeKey(String value) { 
+        this.ChangeKey = value; 
+        valueChanged("ChangeKey", value);
 
     }
     
@@ -139,6 +114,31 @@ public class Calendar extends Entity {
     public void setEvents(java.util.List<Event> value) { 
         this.Events = value; 
         valueChanged("Events", value);
+
+    }
+    
+        
+    private java.util.List<Event> CalendarView = null;
+    
+    
+     
+    /**
+    * Gets the Calendar View.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getCalendarView() {
+        return this.CalendarView; 
+    }
+
+    /**
+    * Sets the Calendar View.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setCalendarView(java.util.List<Event> value) { 
+        this.CalendarView = value; 
+        valueChanged("CalendarView", value);
 
     }
 }

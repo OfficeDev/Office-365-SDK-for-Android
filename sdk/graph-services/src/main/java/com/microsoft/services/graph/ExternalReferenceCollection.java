@@ -16,12 +16,14 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type External Reference Collection.
 */
 public class ExternalReferenceCollection extends ODataBaseEntity {
 
     public ExternalReferenceCollection(){
-        setODataType("#Microsoft.Graph.ExternalReferenceCollection");
+        setODataType("#Microsoft.Graph.externalReferenceCollection");
     }
 }

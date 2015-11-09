@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Task extends ODataBaseEntity {
 
     public Task(){
-        setODataType("#Microsoft.Graph.Task");
+        setODataType("#Microsoft.Graph.task");
     }
             
     private String createdBy;
@@ -90,6 +90,28 @@ public class Task extends ODataBaseEntity {
     public void setPlanId(String value) { 
         this.planId = value; 
         valueChanged("planId", value);
+
+    }
+            
+    private String bucketId;
+     
+    /**
+    * Gets the bucket Id.
+    *
+    * @return the String
+    */
+    public String getBucketId() {
+        return this.bucketId; 
+    }
+
+    /**
+    * Sets the bucket Id.
+    *
+    * @param value the String
+    */
+    public void setBucketId(String value) { 
+        this.bucketId = value; 
+        valueChanged("bucketId", value);
 
     }
             
@@ -181,69 +203,69 @@ public class Task extends ODataBaseEntity {
 
     }
             
-    private java.util.Calendar startDate;
+    private java.util.Calendar startDateTime;
      
     /**
-    * Gets the start Date.
+    * Gets the start Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getStartDate() {
-        return this.startDate; 
+    public java.util.Calendar getStartDateTime() {
+        return this.startDateTime; 
     }
 
     /**
-    * Sets the start Date.
+    * Sets the start Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setStartDate(java.util.Calendar value) { 
-        this.startDate = value; 
-        valueChanged("startDate", value);
+    public void setStartDateTime(java.util.Calendar value) { 
+        this.startDateTime = value; 
+        valueChanged("startDateTime", value);
 
     }
             
-    private java.util.Calendar assignedToDate;
+    private java.util.Calendar assignedDateTime;
      
     /**
-    * Gets the assigned To Date.
+    * Gets the assigned Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getAssignedToDate() {
-        return this.assignedToDate; 
+    public java.util.Calendar getAssignedDateTime() {
+        return this.assignedDateTime; 
     }
 
     /**
-    * Sets the assigned To Date.
+    * Sets the assigned Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setAssignedToDate(java.util.Calendar value) { 
-        this.assignedToDate = value; 
-        valueChanged("assignedToDate", value);
+    public void setAssignedDateTime(java.util.Calendar value) { 
+        this.assignedDateTime = value; 
+        valueChanged("assignedDateTime", value);
 
     }
             
-    private java.util.Calendar createdDate;
+    private java.util.Calendar createdDateTime;
      
     /**
-    * Gets the created Date.
+    * Gets the created Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getCreatedDate() {
-        return this.createdDate; 
+    public java.util.Calendar getCreatedDateTime() {
+        return this.createdDateTime; 
     }
 
     /**
-    * Sets the created Date.
+    * Sets the created Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setCreatedDate(java.util.Calendar value) { 
-        this.createdDate = value; 
-        valueChanged("createdDate", value);
+    public void setCreatedDateTime(java.util.Calendar value) { 
+        this.createdDateTime = value; 
+        valueChanged("createdDateTime", value);
 
     }
             
@@ -269,91 +291,135 @@ public class Task extends ODataBaseEntity {
 
     }
             
-    private java.util.Calendar dueDate;
+    private java.util.Calendar dueDateTime;
      
     /**
-    * Gets the due Date.
+    * Gets the due Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getDueDate() {
-        return this.dueDate; 
+    public java.util.Calendar getDueDateTime() {
+        return this.dueDateTime; 
     }
 
     /**
-    * Sets the due Date.
+    * Sets the due Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setDueDate(java.util.Calendar value) { 
-        this.dueDate = value; 
-        valueChanged("dueDate", value);
+    public void setDueDateTime(java.util.Calendar value) { 
+        this.dueDateTime = value; 
+        valueChanged("dueDateTime", value);
 
     }
             
-    private Boolean hasNotes;
+    private Boolean hasDescription;
      
     /**
-    * Gets the has Notes.
+    * Gets the has Description.
     *
     * @return the Boolean
     */
-    public Boolean getHasNotes() {
-        return this.hasNotes; 
+    public Boolean getHasDescription() {
+        return this.hasDescription; 
     }
 
     /**
-    * Sets the has Notes.
+    * Sets the has Description.
     *
     * @param value the Boolean
     */
-    public void setHasNotes(Boolean value) { 
-        this.hasNotes = value; 
-        valueChanged("hasNotes", value);
+    public void setHasDescription(Boolean value) { 
+        this.hasDescription = value; 
+        valueChanged("hasDescription", value);
 
     }
             
-    private java.util.Calendar completedDate;
+    private PreviewType previewType;
      
     /**
-    * Gets the completed Date.
+    * Gets the preview Type.
+    *
+    * @return the PreviewType
+    */
+    public PreviewType getPreviewType() {
+        return this.previewType; 
+    }
+
+    /**
+    * Sets the preview Type.
+    *
+    * @param value the PreviewType
+    */
+    public void setPreviewType(PreviewType value) { 
+        this.previewType = value; 
+        valueChanged("previewType", value);
+
+    }
+            
+    private java.util.Calendar completedDateTime;
+     
+    /**
+    * Gets the completed Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getCompletedDate() {
-        return this.completedDate; 
+    public java.util.Calendar getCompletedDateTime() {
+        return this.completedDateTime; 
     }
 
     /**
-    * Sets the completed Date.
+    * Sets the completed Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setCompletedDate(java.util.Calendar value) { 
-        this.completedDate = value; 
-        valueChanged("completedDate", value);
+    public void setCompletedDateTime(java.util.Calendar value) { 
+        this.completedDateTime = value; 
+        valueChanged("completedDateTime", value);
 
     }
             
-    private Integer numberOfReferences;
+    private AppliedCategoriesCollection appliedCategories;
      
     /**
-    * Gets the number Of References.
+    * Gets the applied Categories.
     *
-    * @return the Integer
+    * @return the AppliedCategoriesCollection
     */
-    public Integer getNumberOfReferences() {
-        return this.numberOfReferences; 
+    public AppliedCategoriesCollection getAppliedCategories() {
+        return this.appliedCategories; 
     }
 
     /**
-    * Sets the number Of References.
+    * Sets the applied Categories.
     *
-    * @param value the Integer
+    * @param value the AppliedCategoriesCollection
     */
-    public void setNumberOfReferences(Integer value) { 
-        this.numberOfReferences = value; 
-        valueChanged("numberOfReferences", value);
+    public void setAppliedCategories(AppliedCategoriesCollection value) { 
+        this.appliedCategories = value; 
+        valueChanged("appliedCategories", value);
+
+    }
+            
+    private String conversationThreadId;
+     
+    /**
+    * Gets the conversation Thread Id.
+    *
+    * @return the String
+    */
+    public String getConversationThreadId() {
+        return this.conversationThreadId; 
+    }
+
+    /**
+    * Sets the conversation Thread Id.
+    *
+    * @param value the String
+    */
+    public void setConversationThreadId(String value) { 
+        this.conversationThreadId = value; 
+        valueChanged("conversationThreadId", value);
 
     }
             
@@ -379,28 +445,6 @@ public class Task extends ODataBaseEntity {
 
     }
             
-    private String version;
-     
-    /**
-    * Gets the version.
-    *
-    * @return the String
-    */
-    public String getVersion() {
-        return this.version; 
-    }
-
-    /**
-    * Sets the version.
-    *
-    * @param value the String
-    */
-    public void setVersion(String value) { 
-        this.version = value; 
-        valueChanged("version", value);
-
-    }
-            
     private TaskDetails details;
      
     /**
@@ -420,6 +464,72 @@ public class Task extends ODataBaseEntity {
     public void setDetails(TaskDetails value) { 
         this.details = value; 
         valueChanged("details", value);
+
+    }
+            
+    private TaskBoardTaskFormat assignedToTaskBoardFormat;
+     
+    /**
+    * Gets the assigned To Task Board Format.
+    *
+    * @return the TaskBoardTaskFormat
+    */
+    public TaskBoardTaskFormat getAssignedToTaskBoardFormat() {
+        return this.assignedToTaskBoardFormat; 
+    }
+
+    /**
+    * Sets the assigned To Task Board Format.
+    *
+    * @param value the TaskBoardTaskFormat
+    */
+    public void setAssignedToTaskBoardFormat(TaskBoardTaskFormat value) { 
+        this.assignedToTaskBoardFormat = value; 
+        valueChanged("assignedToTaskBoardFormat", value);
+
+    }
+            
+    private TaskBoardTaskFormat progressTaskBoardFormat;
+     
+    /**
+    * Gets the progress Task Board Format.
+    *
+    * @return the TaskBoardTaskFormat
+    */
+    public TaskBoardTaskFormat getProgressTaskBoardFormat() {
+        return this.progressTaskBoardFormat; 
+    }
+
+    /**
+    * Sets the progress Task Board Format.
+    *
+    * @param value the TaskBoardTaskFormat
+    */
+    public void setProgressTaskBoardFormat(TaskBoardTaskFormat value) { 
+        this.progressTaskBoardFormat = value; 
+        valueChanged("progressTaskBoardFormat", value);
+
+    }
+            
+    private TaskBoardTaskFormat bucketTaskBoardFormat;
+     
+    /**
+    * Gets the bucket Task Board Format.
+    *
+    * @return the TaskBoardTaskFormat
+    */
+    public TaskBoardTaskFormat getBucketTaskBoardFormat() {
+        return this.bucketTaskBoardFormat; 
+    }
+
+    /**
+    * Sets the bucket Task Board Format.
+    *
+    * @param value the TaskBoardTaskFormat
+    */
+    public void setBucketTaskBoardFormat(TaskBoardTaskFormat value) { 
+        this.bucketTaskBoardFormat = value; 
+        valueChanged("bucketTaskBoardFormat", value);
 
     }
 }

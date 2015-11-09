@@ -68,5 +68,29 @@ public class TaskFetcher extends OrcEntityFetcher<Task,TaskOperations>
     public TaskDetailsFetcher getDetail() {
         return new TaskDetailsFetcher("details", this);
     }
+     /**
+     * Gets assignedtotaskboardformat.
+     *
+     * @return the assigned to task board format
+     */
+    public TaskBoardTaskFormatFetcher getAssignedToTaskBoardFormat() {
+        return new TaskBoardTaskFormatFetcher("assignedToTaskBoardFormat", this);
+    }
+     /**
+     * Gets progresstaskboardformat.
+     *
+     * @return the progress task board format
+     */
+    public TaskBoardTaskFormatFetcher getProgressTaskBoardFormat() {
+        return new TaskBoardTaskFormatFetcher("progressTaskBoardFormat", this);
+    }
+     /**
+     * Gets buckettaskboardformat.
+     *
+     * @return the bucket task board format
+     */
+    public TaskBoardTaskFormatFetcher getBucketTaskBoardFormat() {
+        return new TaskBoardTaskFormatFetcher("bucketTaskBoardFormat", this);
+    }
 
 }

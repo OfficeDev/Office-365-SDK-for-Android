@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Plan extends ODataBaseEntity {
 
     public Plan(){
-        setODataType("#Microsoft.Graph.Plan");
+        setODataType("#Microsoft.Graph.plan");
     }
             
     private String createdBy;
@@ -93,50 +93,6 @@ public class Plan extends ODataBaseEntity {
 
     }
             
-    private Integer totalTasks;
-     
-    /**
-    * Gets the total Tasks.
-    *
-    * @return the Integer
-    */
-    public Integer getTotalTasks() {
-        return this.totalTasks; 
-    }
-
-    /**
-    * Sets the total Tasks.
-    *
-    * @param value the Integer
-    */
-    public void setTotalTasks(Integer value) { 
-        this.totalTasks = value; 
-        valueChanged("totalTasks", value);
-
-    }
-            
-    private Integer activeTasks;
-     
-    /**
-    * Gets the active Tasks.
-    *
-    * @return the Integer
-    */
-    public Integer getActiveTasks() {
-        return this.activeTasks; 
-    }
-
-    /**
-    * Sets the active Tasks.
-    *
-    * @param value the Integer
-    */
-    public void setActiveTasks(Integer value) { 
-        this.activeTasks = value; 
-        valueChanged("activeTasks", value);
-
-    }
-            
     private String id;
      
     /**
@@ -156,28 +112,6 @@ public class Plan extends ODataBaseEntity {
     public void setId(String value) { 
         this.id = value; 
         valueChanged("id", value);
-
-    }
-            
-    private String version;
-     
-    /**
-    * Gets the version.
-    *
-    * @return the String
-    */
-    public String getVersion() {
-        return this.version; 
-    }
-
-    /**
-    * Sets the version.
-    *
-    * @param value the String
-    */
-    public void setVersion(String value) { 
-        this.version = value; 
-        valueChanged("version", value);
 
     }
     
@@ -205,6 +139,31 @@ public class Plan extends ODataBaseEntity {
         valueChanged("tasks", value);
 
     }
+    
+        
+    private java.util.List<Bucket> buckets = null;
+    
+    
+     
+    /**
+    * Gets the buckets.
+    *
+    * @return the java.util.List<Bucket>
+    */
+    public java.util.List<Bucket> getBuckets() {
+        return this.buckets; 
+    }
+
+    /**
+    * Sets the buckets.
+    *
+    * @param value the java.util.List<Bucket>
+    */
+    public void setBuckets(java.util.List<Bucket> value) { 
+        this.buckets = value; 
+        valueChanged("buckets", value);
+
+    }
             
     private PlanDetails details;
      
@@ -225,6 +184,72 @@ public class Plan extends ODataBaseEntity {
     public void setDetails(PlanDetails value) { 
         this.details = value; 
         valueChanged("details", value);
+
+    }
+            
+    private PlanTaskBoard assignedToTaskBoard;
+     
+    /**
+    * Gets the assigned To Task Board.
+    *
+    * @return the PlanTaskBoard
+    */
+    public PlanTaskBoard getAssignedToTaskBoard() {
+        return this.assignedToTaskBoard; 
+    }
+
+    /**
+    * Sets the assigned To Task Board.
+    *
+    * @param value the PlanTaskBoard
+    */
+    public void setAssignedToTaskBoard(PlanTaskBoard value) { 
+        this.assignedToTaskBoard = value; 
+        valueChanged("assignedToTaskBoard", value);
+
+    }
+            
+    private PlanTaskBoard progressTaskBoard;
+     
+    /**
+    * Gets the progress Task Board.
+    *
+    * @return the PlanTaskBoard
+    */
+    public PlanTaskBoard getProgressTaskBoard() {
+        return this.progressTaskBoard; 
+    }
+
+    /**
+    * Sets the progress Task Board.
+    *
+    * @param value the PlanTaskBoard
+    */
+    public void setProgressTaskBoard(PlanTaskBoard value) { 
+        this.progressTaskBoard = value; 
+        valueChanged("progressTaskBoard", value);
+
+    }
+            
+    private PlanTaskBoard bucketTaskBoard;
+     
+    /**
+    * Gets the bucket Task Board.
+    *
+    * @return the PlanTaskBoard
+    */
+    public PlanTaskBoard getBucketTaskBoard() {
+        return this.bucketTaskBoard; 
+    }
+
+    /**
+    * Sets the bucket Task Board.
+    *
+    * @param value the PlanTaskBoard
+    */
+    public void setBucketTaskBoard(PlanTaskBoard value) { 
+        this.bucketTaskBoard = value; 
+        valueChanged("bucketTaskBoard", value);
 
     }
 }

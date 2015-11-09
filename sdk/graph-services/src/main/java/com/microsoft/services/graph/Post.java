@@ -48,25 +48,25 @@ public class Post extends OutlookItem {
 
     }
             
-    private java.util.Calendar DateTimeReceived;
+    private java.util.Calendar ReceivedDateTime;
      
     /**
-    * Gets the Date Time Received.
+    * Gets the Received Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getDateTimeReceived() {
-        return this.DateTimeReceived; 
+    public java.util.Calendar getReceivedDateTime() {
+        return this.ReceivedDateTime; 
     }
 
     /**
-    * Sets the Date Time Received.
+    * Sets the Received Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeReceived(java.util.Calendar value) { 
-        this.DateTimeReceived = value; 
-        valueChanged("DateTimeReceived", value);
+    public void setReceivedDateTime(java.util.Calendar value) { 
+        this.ReceivedDateTime = value; 
+        valueChanged("ReceivedDateTime", value);
 
     }
             
@@ -157,28 +157,6 @@ public class Post extends OutlookItem {
         valueChanged("ConversationThreadId", value);
 
     }
-            
-    private String ConversationId;
-     
-    /**
-    * Gets the Conversation Id.
-    *
-    * @return the String
-    */
-    public String getConversationId() {
-        return this.ConversationId; 
-    }
-
-    /**
-    * Sets the Conversation Id.
-    *
-    * @param value the String
-    */
-    public void setConversationId(String value) { 
-        this.ConversationId = value; 
-        valueChanged("ConversationId", value);
-
-    }
     
         
     private java.util.List<Recipient> NewParticipants = null;
@@ -204,29 +182,26 @@ public class Post extends OutlookItem {
         valueChanged("NewParticipants", value);
 
     }
-    
-        
-    private java.util.List<Attachment> Attachments = null;
-    
-    
+            
+    private String ConversationId;
      
     /**
-    * Gets the Attachments.
+    * Gets the Conversation Id.
     *
-    * @return the java.util.List<Attachment>
+    * @return the String
     */
-    public java.util.List<Attachment> getAttachments() {
-        return this.Attachments; 
+    public String getConversationId() {
+        return this.ConversationId; 
     }
 
     /**
-    * Sets the Attachments.
+    * Sets the Conversation Id.
     *
-    * @param value the java.util.List<Attachment>
+    * @param value the String
     */
-    public void setAttachments(java.util.List<Attachment> value) { 
-        this.Attachments = value; 
-        valueChanged("Attachments", value);
+    public void setConversationId(String value) { 
+        this.ConversationId = value; 
+        valueChanged("ConversationId", value);
 
     }
     
@@ -274,6 +249,31 @@ public class Post extends OutlookItem {
     public void setInReplyTo(Post value) { 
         this.InReplyTo = value; 
         valueChanged("InReplyTo", value);
+
+    }
+    
+        
+    private java.util.List<Attachment> Attachments = null;
+    
+    
+     
+    /**
+    * Gets the Attachments.
+    *
+    * @return the java.util.List<Attachment>
+    */
+    public java.util.List<Attachment> getAttachments() {
+        return this.Attachments; 
+    }
+
+    /**
+    * Sets the Attachments.
+    *
+    * @param value the java.util.List<Attachment>
+    */
+    public void setAttachments(java.util.List<Attachment> value) { 
+        this.Attachments = value; 
+        valueChanged("Attachments", value);
 
     }
 }

@@ -1364,31 +1364,6 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<MailFolder> Folders = null;
-    
-    
-     
-    /**
-    * Gets the Folders.
-    *
-    * @return the java.util.List<MailFolder>
-    */
-    public java.util.List<MailFolder> getFolders() {
-        return this.Folders; 
-    }
-
-    /**
-    * Sets the Folders.
-    *
-    * @param value the java.util.List<MailFolder>
-    */
-    public void setFolders(java.util.List<MailFolder> value) { 
-        this.Folders = value; 
-        valueChanged("Folders", value);
-
-    }
-    
-        
     private java.util.List<Message> Messages = null;
     
     
@@ -1414,27 +1389,52 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<Calendar> Calendars = null;
+    private java.util.List<Group> JoinedGroups = null;
     
     
      
     /**
-    * Gets the Calendars.
+    * Gets the Joined Groups.
     *
-    * @return the java.util.List<Calendar>
+    * @return the java.util.List<Group>
     */
-    public java.util.List<Calendar> getCalendars() {
-        return this.Calendars; 
+    public java.util.List<Group> getJoinedGroups() {
+        return this.JoinedGroups; 
     }
 
     /**
-    * Sets the Calendars.
+    * Sets the Joined Groups.
     *
-    * @param value the java.util.List<Calendar>
+    * @param value the java.util.List<Group>
     */
-    public void setCalendars(java.util.List<Calendar> value) { 
-        this.Calendars = value; 
-        valueChanged("Calendars", value);
+    public void setJoinedGroups(java.util.List<Group> value) { 
+        this.JoinedGroups = value; 
+        valueChanged("JoinedGroups", value);
+
+    }
+    
+        
+    private java.util.List<MailFolder> MailFolders = null;
+    
+    
+     
+    /**
+    * Gets the Mail Folders.
+    *
+    * @return the java.util.List<MailFolder>
+    */
+    public java.util.List<MailFolder> getMailFolders() {
+        return this.MailFolders; 
+    }
+
+    /**
+    * Sets the Mail Folders.
+    *
+    * @param value the java.util.List<MailFolder>
+    */
+    public void setMailFolders(java.util.List<MailFolder> value) { 
+        this.MailFolders = value; 
+        valueChanged("MailFolders", value);
 
     }
             
@@ -1457,6 +1457,31 @@ public class User extends DirectoryObject {
     public void setCalendar(Calendar value) { 
         this.Calendar = value; 
         valueChanged("Calendar", value);
+
+    }
+    
+        
+    private java.util.List<Calendar> Calendars = null;
+    
+    
+     
+    /**
+    * Gets the Calendars.
+    *
+    * @return the java.util.List<Calendar>
+    */
+    public java.util.List<Calendar> getCalendars() {
+        return this.Calendars; 
+    }
+
+    /**
+    * Sets the Calendars.
+    *
+    * @param value the java.util.List<Calendar>
+    */
+    public void setCalendars(java.util.List<Calendar> value) { 
+        this.Calendars = value; 
+        valueChanged("Calendars", value);
 
     }
     
@@ -1486,31 +1511,6 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<Event> Events = null;
-    
-    
-     
-    /**
-    * Gets the Events.
-    *
-    * @return the java.util.List<Event>
-    */
-    public java.util.List<Event> getEvents() {
-        return this.Events; 
-    }
-
-    /**
-    * Sets the Events.
-    *
-    * @param value the java.util.List<Event>
-    */
-    public void setEvents(java.util.List<Event> value) { 
-        this.Events = value; 
-        valueChanged("Events", value);
-
-    }
-    
-        
     private java.util.List<Event> CalendarView = null;
     
     
@@ -1532,6 +1532,31 @@ public class User extends DirectoryObject {
     public void setCalendarView(java.util.List<Event> value) { 
         this.CalendarView = value; 
         valueChanged("CalendarView", value);
+
+    }
+    
+        
+    private java.util.List<Event> Events = null;
+    
+    
+     
+    /**
+    * Gets the Events.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getEvents() {
+        return this.Events; 
+    }
+
+    /**
+    * Sets the Events.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setEvents(java.util.List<Event> value) { 
+        this.Events = value; 
+        valueChanged("Events", value);
 
     }
     
@@ -1585,48 +1610,139 @@ public class User extends DirectoryObject {
 
     }
             
-    private Photo UserPhoto;
+    private InferenceClassification InferenceClassification;
      
     /**
-    * Gets the User Photo.
+    * Gets the Inference Classification.
     *
-    * @return the Photo
+    * @return the InferenceClassification
     */
-    public Photo getUserPhoto() {
-        return this.UserPhoto; 
+    public InferenceClassification getInferenceClassification() {
+        return this.InferenceClassification; 
     }
 
     /**
-    * Sets the User Photo.
+    * Sets the Inference Classification.
     *
-    * @param value the Photo
+    * @param value the InferenceClassification
     */
-    public void setUserPhoto(Photo value) { 
-        this.UserPhoto = value; 
-        valueChanged("UserPhoto", value);
+    public void setInferenceClassification(InferenceClassification value) { 
+        this.InferenceClassification = value; 
+        valueChanged("InferenceClassification", value);
+
+    }
+            
+    private MailFolder RootFolder;
+     
+    /**
+    * Gets the Root Folder.
+    *
+    * @return the MailFolder
+    */
+    public MailFolder getRootFolder() {
+        return this.RootFolder; 
+    }
+
+    /**
+    * Sets the Root Folder.
+    *
+    * @param value the MailFolder
+    */
+    public void setRootFolder(MailFolder value) { 
+        this.RootFolder = value; 
+        valueChanged("RootFolder", value);
+
+    }
+            
+    private ProfilePhoto Photo;
+     
+    /**
+    * Gets the Photo.
+    *
+    * @return the ProfilePhoto
+    */
+    public ProfilePhoto getPhoto() {
+        return this.Photo; 
+    }
+
+    /**
+    * Sets the Photo.
+    *
+    * @param value the ProfilePhoto
+    */
+    public void setPhoto(ProfilePhoto value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
 
     }
     
         
-    private java.util.List<File> TrendingAround = null;
+    private java.util.List<ProfilePhoto> Photos = null;
+    
+    
+     
+    /**
+    * Gets the Photos.
+    *
+    * @return the java.util.List<ProfilePhoto>
+    */
+    public java.util.List<ProfilePhoto> getPhotos() {
+        return this.Photos; 
+    }
+
+    /**
+    * Sets the Photos.
+    *
+    * @param value the java.util.List<ProfilePhoto>
+    */
+    public void setPhotos(java.util.List<ProfilePhoto> value) { 
+        this.Photos = value; 
+        valueChanged("Photos", value);
+
+    }
+            
+    private Drive drive;
+     
+    /**
+    * Gets the drive.
+    *
+    * @return the Drive
+    */
+    public Drive getDrive() {
+        return this.drive; 
+    }
+
+    /**
+    * Sets the drive.
+    *
+    * @param value the Drive
+    */
+    public void setDrive(Drive value) { 
+        this.drive = value; 
+        valueChanged("drive", value);
+
+    }
+    
+        
+    private java.util.List<Item> TrendingAround = null;
     
     
      
     /**
     * Gets the Trending Around.
     *
-    * @return the java.util.List<File>
+    * @return the java.util.List<Item>
     */
-    public java.util.List<File> getTrendingAround() {
+    public java.util.List<Item> getTrendingAround() {
         return this.TrendingAround; 
     }
 
     /**
     * Sets the Trending Around.
     *
-    * @param value the java.util.List<File>
+    * @param value the java.util.List<Item>
     */
-    public void setTrendingAround(java.util.List<File> value) { 
+    public void setTrendingAround(java.util.List<Item> value) { 
         this.TrendingAround = value; 
         valueChanged("TrendingAround", value);
 
@@ -1654,53 +1770,6 @@ public class User extends DirectoryObject {
     public void setWorkingWith(java.util.List<User> value) { 
         this.WorkingWith = value; 
         valueChanged("WorkingWith", value);
-
-    }
-    
-        
-    private java.util.List<Group> JoinedGroups = null;
-    
-    
-     
-    /**
-    * Gets the Joined Groups.
-    *
-    * @return the java.util.List<Group>
-    */
-    public java.util.List<Group> getJoinedGroups() {
-        return this.JoinedGroups; 
-    }
-
-    /**
-    * Sets the Joined Groups.
-    *
-    * @param value the java.util.List<Group>
-    */
-    public void setJoinedGroups(java.util.List<Group> value) { 
-        this.JoinedGroups = value; 
-        valueChanged("JoinedGroups", value);
-
-    }
-            
-    private Drive drive;
-     
-    /**
-    * Gets the drive.
-    *
-    * @return the Drive
-    */
-    public Drive getDrive() {
-        return this.drive; 
-    }
-
-    /**
-    * Sets the drive.
-    *
-    * @param value the Drive
-    */
-    public void setDrive(Drive value) { 
-        this.drive = value; 
-        valueChanged("drive", value);
 
     }
     
@@ -1751,6 +1820,28 @@ public class User extends DirectoryObject {
     public void setPlans(java.util.List<Plan> value) { 
         this.plans = value; 
         valueChanged("plans", value);
+
+    }
+            
+    private Notes notes;
+     
+    /**
+    * Gets the notes.
+    *
+    * @return the Notes
+    */
+    public Notes getNotes() {
+        return this.notes; 
+    }
+
+    /**
+    * Sets the notes.
+    *
+    * @param value the Notes
+    */
+    public void setNotes(Notes value) { 
+        this.notes = value; 
+        valueChanged("notes", value);
 
     }
 }

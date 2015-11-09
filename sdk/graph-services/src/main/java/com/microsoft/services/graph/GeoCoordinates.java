@@ -16,122 +16,80 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Geo Coordinates.
 */
 public class GeoCoordinates extends ODataBaseEntity {
 
     public GeoCoordinates(){
-        setODataType("#Microsoft.Graph.GeoCoordinates");
+        setODataType("#Microsoft.Graph.geoCoordinates");
     }
 
-    private Double Altitude;
+    private Double altitude;
 
     /**
-    * Gets the Altitude.
+    * Gets the altitude.
     *
     * @return the Double
     */
     public Double getAltitude() {
-        return this.Altitude; 
+        return this.altitude; 
     }
 
     /**
-    * Sets the Altitude.
+    * Sets the altitude.
     *
     * @param value the Double
     */
     public void setAltitude(Double value) { 
-        this.Altitude = value;
-        valueChanged("Altitude", value);
+        this.altitude = value;
+        valueChanged("altitude", value);
 
     }
 
-    private Double Latitude;
+    private Double latitude;
 
     /**
-    * Gets the Latitude.
+    * Gets the latitude.
     *
     * @return the Double
     */
     public Double getLatitude() {
-        return this.Latitude; 
+        return this.latitude; 
     }
 
     /**
-    * Sets the Latitude.
+    * Sets the latitude.
     *
     * @param value the Double
     */
     public void setLatitude(Double value) { 
-        this.Latitude = value;
-        valueChanged("Latitude", value);
+        this.latitude = value;
+        valueChanged("latitude", value);
 
     }
 
-    private Double Longitude;
+    private Double longitude;
 
     /**
-    * Gets the Longitude.
+    * Gets the longitude.
     *
     * @return the Double
     */
     public Double getLongitude() {
-        return this.Longitude; 
+        return this.longitude; 
     }
 
     /**
-    * Sets the Longitude.
+    * Sets the longitude.
     *
     * @param value the Double
     */
     public void setLongitude(Double value) { 
-        this.Longitude = value;
-        valueChanged("Longitude", value);
-
-    }
-
-    private Double Accuracy;
-
-    /**
-    * Gets the Accuracy.
-    *
-    * @return the Double
-    */
-    public Double getAccuracy() {
-        return this.Accuracy; 
-    }
-
-    /**
-    * Sets the Accuracy.
-    *
-    * @param value the Double
-    */
-    public void setAccuracy(Double value) { 
-        this.Accuracy = value;
-        valueChanged("Accuracy", value);
-
-    }
-
-    private Double AltitudeAccuracy;
-
-    /**
-    * Gets the Altitude Accuracy.
-    *
-    * @return the Double
-    */
-    public Double getAltitudeAccuracy() {
-        return this.AltitudeAccuracy; 
-    }
-
-    /**
-    * Sets the Altitude Accuracy.
-    *
-    * @param value the Double
-    */
-    public void setAltitudeAccuracy(Double value) { 
-        this.AltitudeAccuracy = value;
-        valueChanged("AltitudeAccuracy", value);
+        this.longitude = value;
+        valueChanged("longitude", value);
 
     }
 }

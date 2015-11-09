@@ -16,6 +16,8 @@ package com.microsoft.services.graph;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Attendee.
 */
@@ -23,28 +25,6 @@ public class Attendee extends ODataBaseEntity {
 
     public Attendee(){
         setODataType("#Microsoft.Graph.Attendee");
-    }
-
-    private EmailAddress EmailAddress;
-
-    /**
-    * Gets the Email Address.
-    *
-    * @return the EmailAddress
-    */
-    public EmailAddress getEmailAddress() {
-        return this.EmailAddress; 
-    }
-
-    /**
-    * Sets the Email Address.
-    *
-    * @param value the EmailAddress
-    */
-    public void setEmailAddress(EmailAddress value) { 
-        this.EmailAddress = value;
-        valueChanged("EmailAddress", value);
-
     }
 
     private ResponseStatus Status;
@@ -88,6 +68,28 @@ public class Attendee extends ODataBaseEntity {
     public void setType(AttendeeType value) { 
         this.Type = value;
         valueChanged("Type", value);
+
+    }
+
+    private EmailAddress EmailAddress;
+
+    /**
+    * Gets the Email Address.
+    *
+    * @return the EmailAddress
+    */
+    public EmailAddress getEmailAddress() {
+        return this.EmailAddress; 
+    }
+
+    /**
+    * Sets the Email Address.
+    *
+    * @param value the EmailAddress
+    */
+    public void setEmailAddress(EmailAddress value) { 
+        this.EmailAddress = value;
+        valueChanged("EmailAddress", value);
 
     }
 }

@@ -59,12 +59,12 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
     }
 
     
-    public MailFolderFetcher asMailFolder(){
-        return new MailFolderFetcher(this.urlComponent, this.parent);
-    }   
-
     public OutlookItemFetcher asOutlookItem(){
         return new OutlookItemFetcher(this.urlComponent, this.parent);
+    }   
+
+    public MailFolderFetcher asMailFolder(){
+        return new MailFolderFetcher(this.urlComponent, this.parent);
     }   
 
     public CalendarFetcher asCalendar(){
@@ -79,16 +79,20 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new ContactFolderFetcher(this.urlComponent, this.parent);
     }   
 
-    public PhotoFetcher asPhoto(){
-        return new PhotoFetcher(this.urlComponent, this.parent);
+    public InferenceClassificationFetcher asInferenceClassification(){
+        return new InferenceClassificationFetcher(this.urlComponent, this.parent);
     }   
 
-    public ConversationFetcher asConversation(){
-        return new ConversationFetcher(this.urlComponent, this.parent);
+    public ProfilePhotoFetcher asProfilePhoto(){
+        return new ProfilePhotoFetcher(this.urlComponent, this.parent);
     }   
 
     public ConversationThreadFetcher asConversationThread(){
         return new ConversationThreadFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ConversationFetcher asConversation(){
+        return new ConversationFetcher(this.urlComponent, this.parent);
     }   
 
     public AttachmentFetcher asAttachment(){
@@ -97,6 +101,10 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
 
     public ExtensionFetcher asExtension(){
         return new ExtensionFetcher(this.urlComponent, this.parent);
+    }   
+
+    public InferenceClassificationOverrideFetcher asInferenceClassificationOverride(){
+        return new InferenceClassificationOverrideFetcher(this.urlComponent, this.parent);
     }   
 
     

@@ -368,28 +368,6 @@ public class Group extends DirectoryObject {
 
     }
             
-    private String EmailAddress;
-     
-    /**
-    * Gets the Email Address.
-    *
-    * @return the String
-    */
-    public String getEmailAddress() {
-        return this.EmailAddress; 
-    }
-
-    /**
-    * Sets the Email Address.
-    *
-    * @param value the String
-    */
-    public void setEmailAddress(String value) { 
-        this.EmailAddress = value; 
-        valueChanged("EmailAddress", value);
-
-    }
-            
     private Boolean AllowExternalSenders;
      
     /**
@@ -434,25 +412,25 @@ public class Group extends DirectoryObject {
 
     }
             
-    private Boolean IsSubscribedByMail;
+    private String EmailAddress;
      
     /**
-    * Gets the Is Subscribed By Mail.
+    * Gets the Email Address.
     *
-    * @return the Boolean
+    * @return the String
     */
-    public Boolean getIsSubscribedByMail() {
-        return this.IsSubscribedByMail; 
+    public String getEmailAddress() {
+        return this.EmailAddress; 
     }
 
     /**
-    * Sets the Is Subscribed By Mail.
+    * Sets the Email Address.
     *
-    * @param value the Boolean
+    * @param value the String
     */
-    public void setIsSubscribedByMail(Boolean value) { 
-        this.IsSubscribedByMail = value; 
-        valueChanged("IsSubscribedByMail", value);
+    public void setEmailAddress(String value) { 
+        this.EmailAddress = value; 
+        valueChanged("EmailAddress", value);
 
     }
             
@@ -475,6 +453,28 @@ public class Group extends DirectoryObject {
     public void setIsFavorite(Boolean value) { 
         this.IsFavorite = value; 
         valueChanged("IsFavorite", value);
+
+    }
+            
+    private Boolean IsSubscribedByMail;
+     
+    /**
+    * Gets the Is Subscribed By Mail.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsSubscribedByMail() {
+        return this.IsSubscribedByMail; 
+    }
+
+    /**
+    * Sets the Is Subscribed By Mail.
+    *
+    * @param value the Boolean
+    */
+    public void setIsSubscribedByMail(Boolean value) { 
+        this.IsSubscribedByMail = value; 
+        valueChanged("IsSubscribedByMail", value);
 
     }
             
@@ -621,53 +621,6 @@ public class Group extends DirectoryObject {
         valueChanged("owners", value);
 
     }
-            
-    private Photo GroupPhoto;
-     
-    /**
-    * Gets the Group Photo.
-    *
-    * @return the Photo
-    */
-    public Photo getGroupPhoto() {
-        return this.GroupPhoto; 
-    }
-
-    /**
-    * Sets the Group Photo.
-    *
-    * @param value the Photo
-    */
-    public void setGroupPhoto(Photo value) { 
-        this.GroupPhoto = value; 
-        valueChanged("GroupPhoto", value);
-
-    }
-    
-        
-    private java.util.List<Conversation> Conversations = null;
-    
-    
-     
-    /**
-    * Gets the Conversations.
-    *
-    * @return the java.util.List<Conversation>
-    */
-    public java.util.List<Conversation> getConversations() {
-        return this.Conversations; 
-    }
-
-    /**
-    * Sets the Conversations.
-    *
-    * @param value the java.util.List<Conversation>
-    */
-    public void setConversations(java.util.List<Conversation> value) { 
-        this.Conversations = value; 
-        valueChanged("Conversations", value);
-
-    }
     
         
     private java.util.List<ConversationThread> Threads = null;
@@ -717,6 +670,31 @@ public class Group extends DirectoryObject {
     }
     
         
+    private java.util.List<Event> CalendarView = null;
+    
+    
+     
+    /**
+    * Gets the Calendar View.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getCalendarView() {
+        return this.CalendarView; 
+    }
+
+    /**
+    * Sets the Calendar View.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setCalendarView(java.util.List<Event> value) { 
+        this.CalendarView = value; 
+        valueChanged("CalendarView", value);
+
+    }
+    
+        
     private java.util.List<Event> Events = null;
     
     
@@ -742,27 +720,74 @@ public class Group extends DirectoryObject {
     }
     
         
-    private java.util.List<Event> CalendarView = null;
+    private java.util.List<Conversation> Conversations = null;
     
     
      
     /**
-    * Gets the Calendar View.
+    * Gets the Conversations.
     *
-    * @return the java.util.List<Event>
+    * @return the java.util.List<Conversation>
     */
-    public java.util.List<Event> getCalendarView() {
-        return this.CalendarView; 
+    public java.util.List<Conversation> getConversations() {
+        return this.Conversations; 
     }
 
     /**
-    * Sets the Calendar View.
+    * Sets the Conversations.
     *
-    * @param value the java.util.List<Event>
+    * @param value the java.util.List<Conversation>
     */
-    public void setCalendarView(java.util.List<Event> value) { 
-        this.CalendarView = value; 
-        valueChanged("CalendarView", value);
+    public void setConversations(java.util.List<Conversation> value) { 
+        this.Conversations = value; 
+        valueChanged("Conversations", value);
+
+    }
+            
+    private ProfilePhoto Photo;
+     
+    /**
+    * Gets the Photo.
+    *
+    * @return the ProfilePhoto
+    */
+    public ProfilePhoto getPhoto() {
+        return this.Photo; 
+    }
+
+    /**
+    * Sets the Photo.
+    *
+    * @param value the ProfilePhoto
+    */
+    public void setPhoto(ProfilePhoto value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
+
+    }
+    
+        
+    private java.util.List<ProfilePhoto> Photos = null;
+    
+    
+     
+    /**
+    * Gets the Photos.
+    *
+    * @return the java.util.List<ProfilePhoto>
+    */
+    public java.util.List<ProfilePhoto> getPhotos() {
+        return this.Photos; 
+    }
+
+    /**
+    * Sets the Photos.
+    *
+    * @param value the java.util.List<ProfilePhoto>
+    */
+    public void setPhotos(java.util.List<ProfilePhoto> value) { 
+        this.Photos = value; 
+        valueChanged("Photos", value);
 
     }
     
@@ -839,31 +864,6 @@ public class Group extends DirectoryObject {
     }
     
         
-    private java.util.List<Task> tasks = null;
-    
-    
-     
-    /**
-    * Gets the tasks.
-    *
-    * @return the java.util.List<Task>
-    */
-    public java.util.List<Task> getTasks() {
-        return this.tasks; 
-    }
-
-    /**
-    * Sets the tasks.
-    *
-    * @param value the java.util.List<Task>
-    */
-    public void setTasks(java.util.List<Task> value) { 
-        this.tasks = value; 
-        valueChanged("tasks", value);
-
-    }
-    
-        
     private java.util.List<Plan> plans = null;
     
     
@@ -885,6 +885,28 @@ public class Group extends DirectoryObject {
     public void setPlans(java.util.List<Plan> value) { 
         this.plans = value; 
         valueChanged("plans", value);
+
+    }
+            
+    private Notes notes;
+     
+    /**
+    * Gets the notes.
+    *
+    * @return the Notes
+    */
+    public Notes getNotes() {
+        return this.notes; 
+    }
+
+    /**
+    * Sets the notes.
+    *
+    * @param value the Notes
+    */
+    public void setNotes(Notes value) { 
+        this.notes = value; 
+        valueChanged("notes", value);
 
     }
 }

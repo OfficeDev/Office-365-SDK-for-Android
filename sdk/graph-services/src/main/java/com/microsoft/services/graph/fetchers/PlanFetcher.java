@@ -78,6 +78,24 @@ public class PlanFetcher extends OrcEntityFetcher<Plan,PlanOperations>
     public TaskFetcher getTask(String id){
          return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class).getById(id);
     }
+
+     /**
+     * Gets buckets.
+     *
+     * @return the buckets
+     */
+    public OrcCollectionFetcher<Bucket, BucketFetcher, BucketCollectionOperations> getBuckets() {
+        return new OrcCollectionFetcher<Bucket, BucketFetcher, BucketCollectionOperations>("buckets", this, Bucket.class, BucketCollectionOperations.class);
+    }
+
+    /**
+     * Gets bucket.
+     *
+     * @return the bucket
+     */
+    public BucketFetcher getBucket(String id){
+         return new OrcCollectionFetcher<Bucket, BucketFetcher, BucketCollectionOperations>("buckets", this, Bucket.class, BucketCollectionOperations.class).getById(id);
+    }
      /**
      * Gets details.
      *
@@ -85,6 +103,30 @@ public class PlanFetcher extends OrcEntityFetcher<Plan,PlanOperations>
      */
     public PlanDetailsFetcher getDetail() {
         return new PlanDetailsFetcher("details", this);
+    }
+     /**
+     * Gets assignedtotaskboard.
+     *
+     * @return the assigned to task board
+     */
+    public PlanTaskBoardFetcher getAssignedToTaskBoard() {
+        return new PlanTaskBoardFetcher("assignedToTaskBoard", this);
+    }
+     /**
+     * Gets progresstaskboard.
+     *
+     * @return the progress task board
+     */
+    public PlanTaskBoardFetcher getProgressTaskBoard() {
+        return new PlanTaskBoardFetcher("progressTaskBoard", this);
+    }
+     /**
+     * Gets buckettaskboard.
+     *
+     * @return the bucket task board
+     */
+    public PlanTaskBoardFetcher getBucketTaskBoard() {
+        return new PlanTaskBoardFetcher("bucketTaskBoard", this);
     }
 
 }

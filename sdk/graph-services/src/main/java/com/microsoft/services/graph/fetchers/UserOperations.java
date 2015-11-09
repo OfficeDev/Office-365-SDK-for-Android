@@ -145,4 +145,55 @@ public class UserOperations extends DirectoryObjectOperations {
     }
 
 
+    
+    
+    /**
+     * FindMeetingTimes listenable future.
+     * @param attendees the attendees @param locationConstraint the locationConstraint @param timeConstraint the timeConstraint @param meetingDuration the meetingDuration @param maxCandidates the maxCandidates @param isOrganizerOptional the isOrganizerOptional 
+     * @return the listenable future
+     */         
+    public ListenableFuture<MeetingTimeCandidate> findMeetingTimes(java.util.List<AttendeeBase> attendees, LocationConstraint locationConstraint, TimeConstraint timeConstraint, org.joda.time.Period meetingDuration, Integer maxCandidates, Boolean isOrganizerOptional) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedAttendees = serializer.serialize(attendees);
+		String serializedLocationConstraint = serializer.serialize(locationConstraint);
+		String serializedTimeConstraint = serializer.serialize(timeConstraint);
+		String serializedMeetingDuration = serializer.serialize(meetingDuration);
+		String serializedMaxCandidates = serializer.serialize(maxCandidates);
+		String serializedIsOrganizerOptional = serializer.serialize(isOrganizerOptional);
+		  
+        
+        ListenableFuture<String> future = findMeetingTimesRaw(serializedAttendees, serializedLocationConstraint, serializedTimeConstraint, serializedMeetingDuration, serializedMaxCandidates, serializedIsOrganizerOptional);
+        return transformToEntityListenableFuture(future, MeetingTimeCandidate.class, getResolver());
+        
+    }
+
+     /**
+     * FindMeetingTimesRaw listenable future.
+     * @param attendees the attendees @param locationConstraint the locationConstraint @param timeConstraint the timeConstraint @param meetingDuration the meetingDuration @param maxCandidates the maxCandidates @param isOrganizerOptional the isOrganizerOptional 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> findMeetingTimesRaw(String attendees, String locationConstraint, String timeConstraint, String meetingDuration, String maxCandidates, String isOrganizerOptional){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("Attendees", attendees);
+		map.put("LocationConstraint", locationConstraint);
+		map.put("TimeConstraint", timeConstraint);
+		map.put("MeetingDuration", meetingDuration);
+		map.put("MaxCandidates", maxCandidates);
+		map.put("IsOrganizerOptional", isOrganizerOptional);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.Graph.FindMeetingTimes");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
 }

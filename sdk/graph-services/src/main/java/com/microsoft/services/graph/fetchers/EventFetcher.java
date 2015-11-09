@@ -60,31 +60,31 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
 
     
     
-    
-     /**
-     * Gets attachments.
-     *
-     * @return the attachments
-     */
-    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
-        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
-    }
-
-    /**
-     * Gets attachment.
-     *
-     * @return the attachment
-     */
-    public AttachmentFetcher getAttachment(String id){
-         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
-    }
-     /**
+         /**
      * Gets calendar.
      *
      * @return the calendar
      */
     public CalendarFetcher getCalendar() {
         return new CalendarFetcher("Calendar", this);
+    }
+
+     /**
+     * Gets instances.
+     *
+     * @return the instances
+     */
+    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getInstances() {
+        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Instances", this, Event.class, EventCollectionOperations.class);
+    }
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
+    public EventFetcher getInstance(String id){
+         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Instances", this, Event.class, EventCollectionOperations.class).getById(id);
     }
 
      /**
@@ -106,21 +106,21 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
     }
 
      /**
-     * Gets instances.
+     * Gets attachments.
      *
-     * @return the instances
+     * @return the attachments
      */
-    public OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations> getInstances() {
-        return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Instances", this, Event.class, EventCollectionOperations.class);
+    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
+        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
     }
 
     /**
-     * Gets instance.
+     * Gets attachment.
      *
-     * @return the instance
+     * @return the attachment
      */
-    public EventFetcher getInstance(String id){
-         return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Instances", this, Event.class, EventCollectionOperations.class).getById(id);
+    public AttachmentFetcher getAttachment(String id){
+         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
     }
 
 }
