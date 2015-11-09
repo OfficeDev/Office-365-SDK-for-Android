@@ -15,10 +15,12 @@ package com.microsoft.services.outlook;
 
 
 
+
+
 /**
  * The type Attendee.
 */
-public class Attendee extends Recipient {
+public class Attendee extends AttendeeBase {
 
     public Attendee(){
         setODataType("#Microsoft.OutlookServices.Attendee");
@@ -43,28 +45,6 @@ public class Attendee extends Recipient {
     public void setStatus(ResponseStatus value) { 
         this.Status = value;
         valueChanged("Status", value);
-
-    }
-
-    private AttendeeType Type;
-
-    /**
-    * Gets the Type.
-    *
-    * @return the AttendeeType
-    */
-    public AttendeeType getType() {
-        return this.Type; 
-    }
-
-    /**
-    * Sets the Type.
-    *
-    * @param value the AttendeeType
-    */
-    public void setType(AttendeeType value) { 
-        this.Type = value;
-        valueChanged("Type", value);
 
     }
 }

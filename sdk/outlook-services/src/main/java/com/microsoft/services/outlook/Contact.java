@@ -766,26 +766,101 @@ public class Contact extends Item {
         valueChanged("Children", value);
 
     }
-            
-    private Photo ContactPhoto;
+    
+        
+    private java.util.List<Extension> Extensions = null;
+    
+    
      
     /**
-    * Gets the Contact Photo.
+    * Gets the Extensions.
     *
-    * @return the Photo
+    * @return the java.util.List<Extension>
     */
-    public Photo getContactPhoto() {
-        return this.ContactPhoto; 
+    public java.util.List<Extension> getExtensions() {
+        return this.Extensions; 
     }
 
     /**
-    * Sets the Contact Photo.
+    * Sets the Extensions.
+    *
+    * @param value the java.util.List<Extension>
+    */
+    public void setExtensions(java.util.List<Extension> value) { 
+        this.Extensions = value; 
+        valueChanged("Extensions", value);
+
+    }
+            
+    private Photo Photo;
+     
+    /**
+    * Gets the Photo.
+    *
+    * @return the Photo
+    */
+    public Photo getPhoto() {
+        return this.Photo; 
+    }
+
+    /**
+    * Sets the Photo.
     *
     * @param value the Photo
     */
-    public void setContactPhoto(Photo value) { 
-        this.ContactPhoto = value; 
-        valueChanged("ContactPhoto", value);
+    public void setPhoto(Photo value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
+
+    }
+    
+        
+    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Single Value Extended Properties.
+    *
+    * @return the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
+        return this.SingleValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Single Value Extended Properties.
+    *
+    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
+        this.SingleValueExtendedProperties = value; 
+        valueChanged("SingleValueExtendedProperties", value);
+
+    }
+    
+        
+    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Multi Value Extended Properties.
+    *
+    * @return the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
+        return this.MultiValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Multi Value Extended Properties.
+    *
+    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
+        this.MultiValueExtendedProperties = value; 
+        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

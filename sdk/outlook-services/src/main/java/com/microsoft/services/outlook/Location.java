@@ -16,6 +16,8 @@ package com.microsoft.services.outlook;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Location.
 */
@@ -44,6 +46,28 @@ public class Location extends ODataBaseEntity {
     public void setDisplayName(String value) { 
         this.DisplayName = value;
         valueChanged("DisplayName", value);
+
+    }
+
+    private String LocationEmailAddress;
+
+    /**
+    * Gets the Location Email Address.
+    *
+    * @return the String
+    */
+    public String getLocationEmailAddress() {
+        return this.LocationEmailAddress; 
+    }
+
+    /**
+    * Sets the Location Email Address.
+    *
+    * @param value the String
+    */
+    public void setLocationEmailAddress(String value) { 
+        this.LocationEmailAddress = value;
+        valueChanged("LocationEmailAddress", value);
 
     }
 

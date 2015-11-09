@@ -91,27 +91,5 @@ public class FileAttachment extends Attachment {
         valueChanged("ContentBytes", value);
 
     }
-            
-    private Boolean IsContactPhoto;
-     
-    /**
-    * Gets the Is Contact Photo.
-    *
-    * @return the Boolean
-    */
-    public Boolean getIsContactPhoto() {
-        return this.IsContactPhoto; 
-    }
-
-    /**
-    * Sets the Is Contact Photo.
-    *
-    * @param value the Boolean
-    */
-    public void setIsContactPhoto(Boolean value) { 
-        this.IsContactPhoto = value; 
-        valueChanged("IsContactPhoto", value);
-
-    }
 }
 

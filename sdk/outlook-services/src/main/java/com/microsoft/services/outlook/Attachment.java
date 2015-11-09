@@ -26,6 +26,28 @@ public class Attachment extends Entity {
         setODataType("#Microsoft.OutlookServices.Attachment");
     }
             
+    private java.util.Calendar LastModifiedDateTime;
+     
+    /**
+    * Gets the Last Modified Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getLastModifiedDateTime() {
+        return this.LastModifiedDateTime; 
+    }
+
+    /**
+    * Sets the Last Modified Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setLastModifiedDateTime(java.util.Calendar value) { 
+        this.LastModifiedDateTime = value; 
+        valueChanged("LastModifiedDateTime", value);
+
+    }
+            
     private String Name;
      
     /**
@@ -111,28 +133,6 @@ public class Attachment extends Entity {
     public void setIsInline(Boolean value) { 
         this.IsInline = value; 
         valueChanged("IsInline", value);
-
-    }
-            
-    private java.util.Calendar DateTimeLastModified;
-     
-    /**
-    * Gets the Date Time Last Modified.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getDateTimeLastModified() {
-        return this.DateTimeLastModified; 
-    }
-
-    /**
-    * Sets the Date Time Last Modified.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setDateTimeLastModified(java.util.Calendar value) { 
-        this.DateTimeLastModified = value; 
-        valueChanged("DateTimeLastModified", value);
 
     }
 }

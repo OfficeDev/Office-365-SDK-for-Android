@@ -26,25 +26,25 @@ public class Subscription extends Entity {
         setODataType("#Microsoft.OutlookServices.Subscription");
     }
             
-    private String ResourceURL;
+    private String Resource;
      
     /**
-    * Gets the Resource URL.
+    * Gets the Resource.
     *
     * @return the String
     */
-    public String getResourceURL() {
-        return this.ResourceURL; 
+    public String getResource() {
+        return this.Resource; 
     }
 
     /**
-    * Sets the Resource URL.
+    * Sets the Resource.
     *
     * @param value the String
     */
-    public void setResourceURL(String value) { 
-        this.ResourceURL = value; 
-        valueChanged("ResourceURL", value);
+    public void setResource(String value) { 
+        this.Resource = value; 
+        valueChanged("Resource", value);
 
     }
             

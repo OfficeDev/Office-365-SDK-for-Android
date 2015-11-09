@@ -61,12 +61,12 @@ public class NotificationFetcher extends OrcEntityFetcher<Notification,Notificat
     
     
          /**
-     * Gets entity.
+     * Gets resourcedata.
      *
-     * @return the entity
+     * @return the resource data
      */
-    public EntityFetcher getEntity() {
-        return new EntityFetcher("Entity", this);
+    public EntityFetcher getResourceDatum() {
+        return new EntityFetcher("ResourceData", this);
     }
 
 }

@@ -48,25 +48,25 @@ public class Notification extends Entity {
 
     }
             
-    private java.util.Calendar SubscriptionExpirationTime;
+    private java.util.Calendar SubscriptionExpirationDateTime;
      
     /**
-    * Gets the Subscription Expiration Time.
+    * Gets the Subscription Expiration Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getSubscriptionExpirationTime() {
-        return this.SubscriptionExpirationTime; 
+    public java.util.Calendar getSubscriptionExpirationDateTime() {
+        return this.SubscriptionExpirationDateTime; 
     }
 
     /**
-    * Sets the Subscription Expiration Time.
+    * Sets the Subscription Expiration Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setSubscriptionExpirationTime(java.util.Calendar value) { 
-        this.SubscriptionExpirationTime = value; 
-        valueChanged("SubscriptionExpirationTime", value);
+    public void setSubscriptionExpirationDateTime(java.util.Calendar value) { 
+        this.SubscriptionExpirationDateTime = value; 
+        valueChanged("SubscriptionExpirationDateTime", value);
 
     }
             
@@ -114,25 +114,47 @@ public class Notification extends Entity {
 
     }
             
-    private Entity Entity;
+    private String Resource;
      
     /**
-    * Gets the Entity.
+    * Gets the Resource.
     *
-    * @return the Entity
+    * @return the String
     */
-    public Entity getEntity() {
-        return this.Entity; 
+    public String getResource() {
+        return this.Resource; 
     }
 
     /**
-    * Sets the Entity.
+    * Sets the Resource.
+    *
+    * @param value the String
+    */
+    public void setResource(String value) { 
+        this.Resource = value; 
+        valueChanged("Resource", value);
+
+    }
+            
+    private Entity ResourceData;
+     
+    /**
+    * Gets the Resource Data.
+    *
+    * @return the Entity
+    */
+    public Entity getResourceData() {
+        return this.ResourceData; 
+    }
+
+    /**
+    * Sets the Resource Data.
     *
     * @param value the Entity
     */
-    public void setEntity(Entity value) { 
-        this.Entity = value; 
-        valueChanged("Entity", value);
+    public void setResourceData(Entity value) { 
+        this.ResourceData = value; 
+        valueChanged("ResourceData", value);
 
     }
 }

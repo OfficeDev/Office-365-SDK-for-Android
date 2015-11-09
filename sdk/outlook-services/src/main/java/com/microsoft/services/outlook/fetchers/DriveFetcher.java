@@ -19,19 +19,19 @@ import com.microsoft.services.orc.core.*;
 import com.microsoft.services.orc.core.Readable;
 
 /**
- * The type  Folder
+ * The type  Drive
  */
-public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations> 
-                                     implements Readable<Folder> {
+public class DriveFetcher extends OrcEntityFetcher<Drive,DriveOperations> 
+                                     implements Readable<Drive> {
 
      /**
-     * Instantiates a new FolderFetcher.
+     * Instantiates a new DriveFetcher.
      *
      * @param urlComponent the url component
      * @param parent the parent
      */
-     public FolderFetcher(String urlComponent, OrcExecutable parent) {
-        super(urlComponent, parent, Folder.class, FolderOperations.class);
+     public DriveFetcher(String urlComponent, OrcExecutable parent) {
+        super(urlComponent, parent, Drive.class, DriveOperations.class);
     }
 
      /**
@@ -41,7 +41,7 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
      * @param value the value
      * @return the fetcher
      */
-    public FolderFetcher addParameter(String name, Object value) {
+    public DriveFetcher addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -53,7 +53,7 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
      * @param value the value
      * @return the fetcher
      */
-    public FolderFetcher addHeader(String name, String value) {
+    public DriveFetcher addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
@@ -62,39 +62,39 @@ public class FolderFetcher extends OrcEntityFetcher<Folder,FolderOperations>
     
     
      /**
-     * Gets messages.
+     * Gets extensions.
      *
-     * @return the messages
+     * @return the extensions
      */
-    public OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations> getMessages() {
-        return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class);
+    public OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations> getExtensions() {
+        return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class);
     }
 
     /**
-     * Gets message.
+     * Gets extension.
      *
-     * @return the message
+     * @return the extension
      */
-    public MessageFetcher getMessage(String id){
-         return new OrcCollectionFetcher<Message, MessageFetcher, MessageCollectionOperations>("Messages", this, Message.class, MessageCollectionOperations.class).getById(id);
+    public ExtensionFetcher getExtension(String id){
+         return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
     }
 
      /**
-     * Gets child folders.
+     * Gets files.
      *
-     * @return the child folders
+     * @return the files
      */
-    public OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getChildFolders() {
-        return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class);
+    public OrcCollectionFetcher<File, FileFetcher, FileCollectionOperations> getFiles() {
+        return new OrcCollectionFetcher<File, FileFetcher, FileCollectionOperations>("Files", this, File.class, FileCollectionOperations.class);
     }
 
     /**
-     * Gets child folder.
+     * Gets file.
      *
-     * @return the child folder
+     * @return the file
      */
-    public FolderFetcher getChildFolder(String id){
-         return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("ChildFolders", this, Folder.class, FolderCollectionOperations.class).getById(id);
+    public FileFetcher getFile(String id){
+         return new OrcCollectionFetcher<File, FileFetcher, FileCollectionOperations>("Files", this, File.class, FileCollectionOperations.class).getById(id);
     }
 
 }

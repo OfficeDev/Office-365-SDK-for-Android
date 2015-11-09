@@ -60,13 +60,67 @@ public class ContactFetcher extends OrcEntityFetcher<Contact,ContactOperations>
 
     
     
-         /**
-     * Gets contactphoto.
+    
+     /**
+     * Gets extensions.
      *
-     * @return the contact photo
+     * @return the extensions
      */
-    public PhotoFetcher getContactPhoto() {
-        return new PhotoFetcher("ContactPhoto", this);
+    public OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations> getExtensions() {
+        return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class);
+    }
+
+    /**
+     * Gets extension.
+     *
+     * @return the extension
+     */
+    public ExtensionFetcher getExtension(String id){
+         return new OrcCollectionFetcher<Extension, ExtensionFetcher, ExtensionCollectionOperations>("Extensions", this, Extension.class, ExtensionCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets photo.
+     *
+     * @return the photo
+     */
+    public PhotoFetcher getPhoto() {
+        return new PhotoFetcher("Photo", this);
+    }
+
+     /**
+     * Gets single value extended properties.
+     *
+     * @return the single value extended properties
+     */
+    public OrcCollectionFetcher<SingleValueLegacyExtendedProperty, SingleValueLegacyExtendedPropertyFetcher, SingleValueLegacyExtendedPropertyCollectionOperations> getSingleValueExtendedProperties() {
+        return new OrcCollectionFetcher<SingleValueLegacyExtendedProperty, SingleValueLegacyExtendedPropertyFetcher, SingleValueLegacyExtendedPropertyCollectionOperations>("SingleValueExtendedProperties", this, SingleValueLegacyExtendedProperty.class, SingleValueLegacyExtendedPropertyCollectionOperations.class);
+    }
+
+    /**
+     * Gets single value extended property.
+     *
+     * @return the single value extended property
+     */
+    public SingleValueLegacyExtendedPropertyFetcher getSingleValueExtendedProperty(String id){
+         return new OrcCollectionFetcher<SingleValueLegacyExtendedProperty, SingleValueLegacyExtendedPropertyFetcher, SingleValueLegacyExtendedPropertyCollectionOperations>("SingleValueExtendedProperties", this, SingleValueLegacyExtendedProperty.class, SingleValueLegacyExtendedPropertyCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets multi value extended properties.
+     *
+     * @return the multi value extended properties
+     */
+    public OrcCollectionFetcher<MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyFetcher, MultiValueLegacyExtendedPropertyCollectionOperations> getMultiValueExtendedProperties() {
+        return new OrcCollectionFetcher<MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyFetcher, MultiValueLegacyExtendedPropertyCollectionOperations>("MultiValueExtendedProperties", this, MultiValueLegacyExtendedProperty.class, MultiValueLegacyExtendedPropertyCollectionOperations.class);
+    }
+
+    /**
+     * Gets multi value extended property.
+     *
+     * @return the multi value extended property
+     */
+    public MultiValueLegacyExtendedPropertyFetcher getMultiValueExtendedProperty(String id){
+         return new OrcCollectionFetcher<MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyFetcher, MultiValueLegacyExtendedPropertyCollectionOperations>("MultiValueExtendedProperties", this, MultiValueLegacyExtendedProperty.class, MultiValueLegacyExtendedPropertyCollectionOperations.class).getById(id);
     }
 
 }

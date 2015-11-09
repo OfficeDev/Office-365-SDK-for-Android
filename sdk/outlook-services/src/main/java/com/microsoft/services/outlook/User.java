@@ -26,6 +26,28 @@ public class User extends DirectoryObject {
         setODataType("#Microsoft.OutlookServices.User");
     }
             
+    private String EmailAddress;
+     
+    /**
+    * Gets the Email Address.
+    *
+    * @return the String
+    */
+    public String getEmailAddress() {
+        return this.EmailAddress; 
+    }
+
+    /**
+    * Sets the Email Address.
+    *
+    * @param value the String
+    */
+    public void setEmailAddress(String value) { 
+        this.EmailAddress = value; 
+        valueChanged("EmailAddress", value);
+
+    }
+            
     private String DisplayName;
      
     /**
@@ -168,27 +190,27 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<Folder> Folders = null;
+    private java.util.List<MailFolder> MailFolders = null;
     
     
      
     /**
-    * Gets the Folders.
+    * Gets the Mail Folders.
     *
-    * @return the java.util.List<Folder>
+    * @return the java.util.List<MailFolder>
     */
-    public java.util.List<Folder> getFolders() {
-        return this.Folders; 
+    public java.util.List<MailFolder> getMailFolders() {
+        return this.MailFolders; 
     }
 
     /**
-    * Sets the Folders.
+    * Sets the Mail Folders.
     *
-    * @param value the java.util.List<Folder>
+    * @param value the java.util.List<MailFolder>
     */
-    public void setFolders(java.util.List<Folder> value) { 
-        this.Folders = value; 
-        valueChanged("Folders", value);
+    public void setMailFolders(java.util.List<MailFolder> value) { 
+        this.MailFolders = value; 
+        valueChanged("MailFolders", value);
 
     }
             
@@ -315,6 +337,31 @@ public class User extends DirectoryObject {
     }
     
         
+    private java.util.List<Person> People = null;
+    
+    
+     
+    /**
+    * Gets the People.
+    *
+    * @return the java.util.List<Person>
+    */
+    public java.util.List<Person> getPeople() {
+        return this.People; 
+    }
+
+    /**
+    * Sets the People.
+    *
+    * @param value the java.util.List<Person>
+    */
+    public void setPeople(java.util.List<Person> value) { 
+        this.People = value; 
+        valueChanged("People", value);
+
+    }
+    
+        
     private java.util.List<Contact> Contacts = null;
     
     
@@ -364,72 +411,169 @@ public class User extends DirectoryObject {
 
     }
             
-    private Folder RootFolder;
+    private InferenceClassification InferenceClassification;
+     
+    /**
+    * Gets the Inference Classification.
+    *
+    * @return the InferenceClassification
+    */
+    public InferenceClassification getInferenceClassification() {
+        return this.InferenceClassification; 
+    }
+
+    /**
+    * Sets the Inference Classification.
+    *
+    * @param value the InferenceClassification
+    */
+    public void setInferenceClassification(InferenceClassification value) { 
+        this.InferenceClassification = value; 
+        valueChanged("InferenceClassification", value);
+
+    }
+            
+    private MailFolder RootFolder;
      
     /**
     * Gets the Root Folder.
     *
-    * @return the Folder
+    * @return the MailFolder
     */
-    public Folder getRootFolder() {
+    public MailFolder getRootFolder() {
         return this.RootFolder; 
     }
 
     /**
     * Sets the Root Folder.
     *
-    * @param value the Folder
+    * @param value the MailFolder
     */
-    public void setRootFolder(Folder value) { 
+    public void setRootFolder(MailFolder value) { 
         this.RootFolder = value; 
         valueChanged("RootFolder", value);
 
     }
-            
-    private Photo UserPhoto;
+    
+        
+    private java.util.List<AggregatedSocialActivity> AggregatedSocialActivities = null;
+    
+    
      
     /**
-    * Gets the User Photo.
+    * Gets the Aggregated Social Activities.
     *
-    * @return the Photo
+    * @return the java.util.List<AggregatedSocialActivity>
     */
-    public Photo getUserPhoto() {
-        return this.UserPhoto; 
+    public java.util.List<AggregatedSocialActivity> getAggregatedSocialActivities() {
+        return this.AggregatedSocialActivities; 
     }
 
     /**
-    * Sets the User Photo.
+    * Sets the Aggregated Social Activities.
+    *
+    * @param value the java.util.List<AggregatedSocialActivity>
+    */
+    public void setAggregatedSocialActivities(java.util.List<AggregatedSocialActivity> value) { 
+        this.AggregatedSocialActivities = value; 
+        valueChanged("AggregatedSocialActivities", value);
+
+    }
+            
+    private Photo Photo;
+     
+    /**
+    * Gets the Photo.
+    *
+    * @return the Photo
+    */
+    public Photo getPhoto() {
+        return this.Photo; 
+    }
+
+    /**
+    * Sets the Photo.
     *
     * @param value the Photo
     */
-    public void setUserPhoto(Photo value) { 
-        this.UserPhoto = value; 
-        valueChanged("UserPhoto", value);
+    public void setPhoto(Photo value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
 
     }
     
         
-    private java.util.List<Photo> UserPhotos = null;
+    private java.util.List<Photo> Photos = null;
     
     
      
     /**
-    * Gets the User Photos.
+    * Gets the Photos.
     *
     * @return the java.util.List<Photo>
     */
-    public java.util.List<Photo> getUserPhotos() {
-        return this.UserPhotos; 
+    public java.util.List<Photo> getPhotos() {
+        return this.Photos; 
     }
 
     /**
-    * Sets the User Photos.
+    * Sets the Photos.
     *
     * @param value the java.util.List<Photo>
     */
-    public void setUserPhotos(java.util.List<Photo> value) { 
-        this.UserPhotos = value; 
-        valueChanged("UserPhotos", value);
+    public void setPhotos(java.util.List<Photo> value) { 
+        this.Photos = value; 
+        valueChanged("Photos", value);
+
+    }
+    
+        
+    private java.util.List<Drive> Drives = null;
+    
+    
+     
+    /**
+    * Gets the Drives.
+    *
+    * @return the java.util.List<Drive>
+    */
+    public java.util.List<Drive> getDrives() {
+        return this.Drives; 
+    }
+
+    /**
+    * Sets the Drives.
+    *
+    * @param value the java.util.List<Drive>
+    */
+    public void setDrives(java.util.List<Drive> value) { 
+        this.Drives = value; 
+        valueChanged("Drives", value);
+
+    }
+    
+        
+    private java.util.List<WorkingWithEntity> WorkingWithEntities = null;
+    
+    
+     
+    /**
+    * Gets the Working With Entities.
+    *
+    * @return the java.util.List<WorkingWithEntity>
+    */
+    public java.util.List<WorkingWithEntity> getWorkingWithEntities() {
+        return this.WorkingWithEntities; 
+    }
+
+    /**
+    * Sets the Working With Entities.
+    *
+    * @param value the java.util.List<WorkingWithEntity>
+    */
+    public void setWorkingWithEntities(java.util.List<WorkingWithEntity> value) { 
+        this.WorkingWithEntities = value; 
+        valueChanged("WorkingWithEntities", value);
 
     }
 }

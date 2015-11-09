@@ -67,6 +67,10 @@ public class AttachmentFetcher extends OrcEntityFetcher<Attachment,AttachmentOpe
         return new ItemAttachmentFetcher(this.urlComponent, this.parent);
     }   
 
+    public ReferenceAttachmentFetcher asReferenceAttachment(){
+        return new ReferenceAttachmentFetcher(this.urlComponent, this.parent);
+    }   
+
     
     
 }

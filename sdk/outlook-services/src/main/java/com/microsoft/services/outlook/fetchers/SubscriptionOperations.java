@@ -59,45 +59,4 @@ public class SubscriptionOperations extends EntityOperations {
         return this;
     }
 
-    
-    
-    /**
-     * Renew listenable future.
-     * @param expirationTime the expirationTime 
-     * @return the listenable future
-     */         
-    public ListenableFuture<Subscription> renew(java.util.Calendar expirationTime) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedExpirationTime = serializer.serialize(expirationTime);
-		  
-        
-        ListenableFuture<String> future = renewRaw(serializedExpirationTime);
-        return transformToEntityListenableFuture(future, Subscription.class, getResolver());
-        
-    }
-
-     /**
-     * RenewRaw listenable future.
-     * @param expirationTime the expirationTime 
-     * @return the listenable future
-     */ 
-    public ListenableFuture<String> renewRaw(String expirationTime){
-        
-        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
-        map.put("ExpirationTime", expirationTime);
-		
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
-        
-        request.setContent(getResolver().getJsonSerializer()
-               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Renew");
-        
-        ListenableFuture<OrcResponse> future = oDataExecute(request);
-        return transformToStringListenableFuture(future);
-    }
-
-
 }

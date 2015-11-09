@@ -48,25 +48,25 @@ public class Post extends Item {
 
     }
             
-    private java.util.Calendar DateTimeReceived;
+    private java.util.Calendar ReceivedDateTime;
      
     /**
-    * Gets the Date Time Received.
+    * Gets the Received Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getDateTimeReceived() {
-        return this.DateTimeReceived; 
+    public java.util.Calendar getReceivedDateTime() {
+        return this.ReceivedDateTime; 
     }
 
     /**
-    * Sets the Date Time Received.
+    * Sets the Received Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeReceived(java.util.Calendar value) { 
-        this.DateTimeReceived = value; 
-        valueChanged("DateTimeReceived", value);
+    public void setReceivedDateTime(java.util.Calendar value) { 
+        this.ReceivedDateTime = value; 
+        valueChanged("ReceivedDateTime", value);
 
     }
             
@@ -204,6 +204,31 @@ public class Post extends Item {
         valueChanged("ConversationId", value);
 
     }
+    
+        
+    private java.util.List<Extension> Extensions = null;
+    
+    
+     
+    /**
+    * Gets the Extensions.
+    *
+    * @return the java.util.List<Extension>
+    */
+    public java.util.List<Extension> getExtensions() {
+        return this.Extensions; 
+    }
+
+    /**
+    * Sets the Extensions.
+    *
+    * @param value the java.util.List<Extension>
+    */
+    public void setExtensions(java.util.List<Extension> value) { 
+        this.Extensions = value; 
+        valueChanged("Extensions", value);
+
+    }
             
     private Post InReplyTo;
      
@@ -249,6 +274,56 @@ public class Post extends Item {
     public void setAttachments(java.util.List<Attachment> value) { 
         this.Attachments = value; 
         valueChanged("Attachments", value);
+
+    }
+    
+        
+    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Single Value Extended Properties.
+    *
+    * @return the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
+        return this.SingleValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Single Value Extended Properties.
+    *
+    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
+        this.SingleValueExtendedProperties = value; 
+        valueChanged("SingleValueExtendedProperties", value);
+
+    }
+    
+        
+    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Multi Value Extended Properties.
+    *
+    * @return the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
+        return this.MultiValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Multi Value Extended Properties.
+    *
+    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
+        this.MultiValueExtendedProperties = value; 
+        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

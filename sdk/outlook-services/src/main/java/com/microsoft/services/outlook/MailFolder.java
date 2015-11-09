@@ -18,12 +18,12 @@ package com.microsoft.services.outlook;
 
 
 /**
- * The type Folder.
+ * The type Mail Folder.
 */
-public class Folder extends Entity {
+public class MailFolder extends Entity {
 
-    public Folder(){
-        setODataType("#Microsoft.OutlookServices.Folder");
+    public MailFolder(){
+        setODataType("#Microsoft.OutlookServices.MailFolder");
     }
             
     private String DisplayName;
@@ -162,27 +162,77 @@ public class Folder extends Entity {
     }
     
         
-    private java.util.List<Folder> ChildFolders = null;
+    private java.util.List<MailFolder> ChildFolders = null;
     
     
      
     /**
     * Gets the Child Folders.
     *
-    * @return the java.util.List<Folder>
+    * @return the java.util.List<MailFolder>
     */
-    public java.util.List<Folder> getChildFolders() {
+    public java.util.List<MailFolder> getChildFolders() {
         return this.ChildFolders; 
     }
 
     /**
     * Sets the Child Folders.
     *
-    * @param value the java.util.List<Folder>
+    * @param value the java.util.List<MailFolder>
     */
-    public void setChildFolders(java.util.List<Folder> value) { 
+    public void setChildFolders(java.util.List<MailFolder> value) { 
         this.ChildFolders = value; 
         valueChanged("ChildFolders", value);
+
+    }
+    
+        
+    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Single Value Extended Properties.
+    *
+    * @return the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
+        return this.SingleValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Single Value Extended Properties.
+    *
+    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
+        this.SingleValueExtendedProperties = value; 
+        valueChanged("SingleValueExtendedProperties", value);
+
+    }
+    
+        
+    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Multi Value Extended Properties.
+    *
+    * @return the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
+        return this.MultiValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Multi Value Extended Properties.
+    *
+    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
+        this.MultiValueExtendedProperties = value; 
+        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

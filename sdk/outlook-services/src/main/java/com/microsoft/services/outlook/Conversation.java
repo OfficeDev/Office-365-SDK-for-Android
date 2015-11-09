@@ -70,25 +70,25 @@ public class Conversation extends Entity {
 
     }
             
-    private java.util.Calendar DateTimeLastDelivered;
+    private java.util.Calendar LastDeliveredDateTime;
      
     /**
-    * Gets the Date Time Last Delivered.
+    * Gets the Last Delivered Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getDateTimeLastDelivered() {
-        return this.DateTimeLastDelivered; 
+    public java.util.Calendar getLastDeliveredDateTime() {
+        return this.LastDeliveredDateTime; 
     }
 
     /**
-    * Sets the Date Time Last Delivered.
+    * Sets the Last Delivered Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setDateTimeLastDelivered(java.util.Calendar value) { 
-        this.DateTimeLastDelivered = value; 
-        valueChanged("DateTimeLastDelivered", value);
+    public void setLastDeliveredDateTime(java.util.Calendar value) { 
+        this.LastDeliveredDateTime = value; 
+        valueChanged("LastDeliveredDateTime", value);
 
     }
     

@@ -97,4 +97,40 @@ public class ContactFolderFetcher extends OrcEntityFetcher<ContactFolder,Contact
          return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ChildFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
     }
 
+     /**
+     * Gets single value extended properties.
+     *
+     * @return the single value extended properties
+     */
+    public OrcCollectionFetcher<SingleValueLegacyExtendedProperty, SingleValueLegacyExtendedPropertyFetcher, SingleValueLegacyExtendedPropertyCollectionOperations> getSingleValueExtendedProperties() {
+        return new OrcCollectionFetcher<SingleValueLegacyExtendedProperty, SingleValueLegacyExtendedPropertyFetcher, SingleValueLegacyExtendedPropertyCollectionOperations>("SingleValueExtendedProperties", this, SingleValueLegacyExtendedProperty.class, SingleValueLegacyExtendedPropertyCollectionOperations.class);
+    }
+
+    /**
+     * Gets single value extended property.
+     *
+     * @return the single value extended property
+     */
+    public SingleValueLegacyExtendedPropertyFetcher getSingleValueExtendedProperty(String id){
+         return new OrcCollectionFetcher<SingleValueLegacyExtendedProperty, SingleValueLegacyExtendedPropertyFetcher, SingleValueLegacyExtendedPropertyCollectionOperations>("SingleValueExtendedProperties", this, SingleValueLegacyExtendedProperty.class, SingleValueLegacyExtendedPropertyCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets multi value extended properties.
+     *
+     * @return the multi value extended properties
+     */
+    public OrcCollectionFetcher<MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyFetcher, MultiValueLegacyExtendedPropertyCollectionOperations> getMultiValueExtendedProperties() {
+        return new OrcCollectionFetcher<MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyFetcher, MultiValueLegacyExtendedPropertyCollectionOperations>("MultiValueExtendedProperties", this, MultiValueLegacyExtendedProperty.class, MultiValueLegacyExtendedPropertyCollectionOperations.class);
+    }
+
+    /**
+     * Gets multi value extended property.
+     *
+     * @return the multi value extended property
+     */
+    public MultiValueLegacyExtendedPropertyFetcher getMultiValueExtendedProperty(String id){
+         return new OrcCollectionFetcher<MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyFetcher, MultiValueLegacyExtendedPropertyCollectionOperations>("MultiValueExtendedProperties", this, MultiValueLegacyExtendedProperty.class, MultiValueLegacyExtendedPropertyCollectionOperations.class).getById(id);
+    }
+
 }

@@ -371,50 +371,50 @@ public class Group extends DirectoryObject {
 
     }
             
-    private Photo GroupPhoto;
+    private Photo Photo;
      
     /**
-    * Gets the Group Photo.
+    * Gets the Photo.
     *
     * @return the Photo
     */
-    public Photo getGroupPhoto() {
-        return this.GroupPhoto; 
+    public Photo getPhoto() {
+        return this.Photo; 
     }
 
     /**
-    * Sets the Group Photo.
+    * Sets the Photo.
     *
     * @param value the Photo
     */
-    public void setGroupPhoto(Photo value) { 
-        this.GroupPhoto = value; 
-        valueChanged("GroupPhoto", value);
+    public void setPhoto(Photo value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
 
     }
     
         
-    private java.util.List<Photo> GroupPhotos = null;
+    private java.util.List<Photo> Photos = null;
     
     
      
     /**
-    * Gets the Group Photos.
+    * Gets the Photos.
     *
     * @return the java.util.List<Photo>
     */
-    public java.util.List<Photo> getGroupPhotos() {
-        return this.GroupPhotos; 
+    public java.util.List<Photo> getPhotos() {
+        return this.Photos; 
     }
 
     /**
-    * Sets the Group Photos.
+    * Sets the Photos.
     *
     * @param value the java.util.List<Photo>
     */
-    public void setGroupPhotos(java.util.List<Photo> value) { 
-        this.GroupPhotos = value; 
-        valueChanged("GroupPhotos", value);
+    public void setPhotos(java.util.List<Photo> value) { 
+        this.Photos = value; 
+        valueChanged("Photos", value);
 
     }
     

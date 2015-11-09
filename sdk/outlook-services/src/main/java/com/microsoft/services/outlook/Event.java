@@ -70,25 +70,47 @@ public class Event extends Item {
 
     }
             
-    private Integer Reminder;
+    private Integer ReminderMinutesBeforeStart;
      
     /**
-    * Gets the Reminder.
+    * Gets the Reminder Minutes Before Start.
     *
     * @return the Integer
     */
-    public Integer getReminder() {
-        return this.Reminder; 
+    public Integer getReminderMinutesBeforeStart() {
+        return this.ReminderMinutesBeforeStart; 
     }
 
     /**
-    * Sets the Reminder.
+    * Sets the Reminder Minutes Before Start.
     *
     * @param value the Integer
     */
-    public void setReminder(Integer value) { 
-        this.Reminder = value; 
-        valueChanged("Reminder", value);
+    public void setReminderMinutesBeforeStart(Integer value) { 
+        this.ReminderMinutesBeforeStart = value; 
+        valueChanged("ReminderMinutesBeforeStart", value);
+
+    }
+            
+    private Boolean IsReminderOn;
+     
+    /**
+    * Gets the Is Reminder On.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsReminderOn() {
+        return this.IsReminderOn; 
+    }
+
+    /**
+    * Sets the Is Reminder On.
+    *
+    * @param value the Boolean
+    */
+    public void setIsReminderOn(Boolean value) { 
+        this.IsReminderOn = value; 
+        valueChanged("IsReminderOn", value);
 
     }
             
@@ -199,6 +221,28 @@ public class Event extends Item {
     public void setImportance(Importance value) { 
         this.Importance = value; 
         valueChanged("Importance", value);
+
+    }
+            
+    private Sensitivity Sensitivity;
+     
+    /**
+    * Gets the Sensitivity.
+    *
+    * @return the Sensitivity
+    */
+    public Sensitivity getSensitivity() {
+        return this.Sensitivity; 
+    }
+
+    /**
+    * Sets the Sensitivity.
+    *
+    * @param value the Sensitivity
+    */
+    public void setSensitivity(Sensitivity value) { 
+        this.Sensitivity = value; 
+        valueChanged("Sensitivity", value);
 
     }
             
@@ -627,6 +671,31 @@ public class Event extends Item {
     }
     
         
+    private java.util.List<Extension> Extensions = null;
+    
+    
+     
+    /**
+    * Gets the Extensions.
+    *
+    * @return the java.util.List<Extension>
+    */
+    public java.util.List<Extension> getExtensions() {
+        return this.Extensions; 
+    }
+
+    /**
+    * Sets the Extensions.
+    *
+    * @param value the java.util.List<Extension>
+    */
+    public void setExtensions(java.util.List<Extension> value) { 
+        this.Extensions = value; 
+        valueChanged("Extensions", value);
+
+    }
+    
+        
     private java.util.List<Attachment> Attachments = null;
     
     
@@ -648,6 +717,56 @@ public class Event extends Item {
     public void setAttachments(java.util.List<Attachment> value) { 
         this.Attachments = value; 
         valueChanged("Attachments", value);
+
+    }
+    
+        
+    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Single Value Extended Properties.
+    *
+    * @return the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
+        return this.SingleValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Single Value Extended Properties.
+    *
+    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
+    */
+    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
+        this.SingleValueExtendedProperties = value; 
+        valueChanged("SingleValueExtendedProperties", value);
+
+    }
+    
+        
+    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
+    
+    
+     
+    /**
+    * Gets the Multi Value Extended Properties.
+    *
+    * @return the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
+        return this.MultiValueExtendedProperties; 
+    }
+
+    /**
+    * Sets the Multi Value Extended Properties.
+    *
+    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
+    */
+    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
+        this.MultiValueExtendedProperties = value; 
+        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

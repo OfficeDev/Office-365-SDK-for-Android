@@ -26,47 +26,47 @@ public class PushSubscription extends Subscription {
         setODataType("#Microsoft.OutlookServices.PushSubscription");
     }
             
-    private String CallbackURL;
+    private String NotificationURL;
      
     /**
-    * Gets the Callback URL.
+    * Gets the Notification URL.
     *
     * @return the String
     */
-    public String getCallbackURL() {
-        return this.CallbackURL; 
+    public String getNotificationURL() {
+        return this.NotificationURL; 
     }
 
     /**
-    * Sets the Callback URL.
+    * Sets the Notification URL.
     *
     * @param value the String
     */
-    public void setCallbackURL(String value) { 
-        this.CallbackURL = value; 
-        valueChanged("CallbackURL", value);
+    public void setNotificationURL(String value) { 
+        this.NotificationURL = value; 
+        valueChanged("NotificationURL", value);
 
     }
             
-    private java.util.Calendar ExpirationTime;
+    private java.util.Calendar SubscriptionExpirationDateTime;
      
     /**
-    * Gets the Expiration Time.
+    * Gets the Subscription Expiration Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getExpirationTime() {
-        return this.ExpirationTime; 
+    public java.util.Calendar getSubscriptionExpirationDateTime() {
+        return this.SubscriptionExpirationDateTime; 
     }
 
     /**
-    * Sets the Expiration Time.
+    * Sets the Subscription Expiration Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setExpirationTime(java.util.Calendar value) { 
-        this.ExpirationTime = value; 
-        valueChanged("ExpirationTime", value);
+    public void setSubscriptionExpirationDateTime(java.util.Calendar value) { 
+        this.SubscriptionExpirationDateTime = value; 
+        valueChanged("SubscriptionExpirationDateTime", value);
 
     }
 }

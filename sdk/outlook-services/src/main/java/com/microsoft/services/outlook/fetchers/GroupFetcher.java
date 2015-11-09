@@ -159,30 +159,30 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
          return new OrcCollectionFetcher<Subscription, SubscriptionFetcher, SubscriptionCollectionOperations>("Subscriptions", this, Subscription.class, SubscriptionCollectionOperations.class).getById(id);
     }
      /**
-     * Gets groupphoto.
+     * Gets photo.
      *
-     * @return the group photo
+     * @return the photo
      */
-    public PhotoFetcher getGroupPhoto() {
-        return new PhotoFetcher("GroupPhoto", this);
+    public PhotoFetcher getPhoto() {
+        return new PhotoFetcher("Photo", this);
     }
 
      /**
-     * Gets group photos.
+     * Gets photos.
      *
-     * @return the group photos
+     * @return the photos
      */
-    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getGroupPhotos() {
-        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("GroupPhotos", this, Photo.class, PhotoCollectionOperations.class);
+    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getPhotos() {
+        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("Photos", this, Photo.class, PhotoCollectionOperations.class);
     }
 
     /**
-     * Gets group photo.
+     * Gets photo.
      *
-     * @return the group photo
+     * @return the photo
      */
-    public PhotoFetcher getGroupPhoto(String id){
-         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("GroupPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
+    public PhotoFetcher getPhoto(String id){
+         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("Photos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
     }
 
      /**

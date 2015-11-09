@@ -116,21 +116,21 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
-     * Gets folders.
+     * Gets mail folders.
      *
-     * @return the folders
+     * @return the mail folders
      */
-    public OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations> getFolders() {
-        return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("Folders", this, Folder.class, FolderCollectionOperations.class);
+    public OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations> getMailFolders() {
+        return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("MailFolders", this, MailFolder.class, MailFolderCollectionOperations.class);
     }
 
     /**
-     * Gets folder.
+     * Gets mail folder.
      *
-     * @return the folder
+     * @return the mail folder
      */
-    public FolderFetcher getFolder(String id){
-         return new OrcCollectionFetcher<Folder, FolderFetcher, FolderCollectionOperations>("Folders", this, Folder.class, FolderCollectionOperations.class).getById(id);
+    public MailFolderFetcher getMailFolder(String id){
+         return new OrcCollectionFetcher<MailFolder, MailFolderFetcher, MailFolderCollectionOperations>("MailFolders", this, MailFolder.class, MailFolderCollectionOperations.class).getById(id);
     }
      /**
      * Gets calendar.
@@ -214,6 +214,24 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
+     * Gets people.
+     *
+     * @return the people
+     */
+    public OrcCollectionFetcher<Person, PersonFetcher, PersonCollectionOperations> getPeople() {
+        return new OrcCollectionFetcher<Person, PersonFetcher, PersonCollectionOperations>("People", this, Person.class, PersonCollectionOperations.class);
+    }
+
+    /**
+     * Gets person.
+     *
+     * @return the person
+     */
+    public PersonFetcher getPerson(String id){
+         return new OrcCollectionFetcher<Person, PersonFetcher, PersonCollectionOperations>("People", this, Person.class, PersonCollectionOperations.class).getById(id);
+    }
+
+     /**
      * Gets contacts.
      *
      * @return the contacts
@@ -249,38 +267,100 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
          return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
     }
      /**
+     * Gets inferenceclassification.
+     *
+     * @return the inference classification
+     */
+    public InferenceClassificationFetcher getInferenceClassification() {
+        return new InferenceClassificationFetcher("InferenceClassification", this);
+    }
+     /**
      * Gets rootfolder.
      *
      * @return the root folder
      */
-    public FolderFetcher getRootFolder() {
-        return new FolderFetcher("RootFolder", this);
-    }
-     /**
-     * Gets userphoto.
-     *
-     * @return the user photo
-     */
-    public PhotoFetcher getUserPhoto() {
-        return new PhotoFetcher("UserPhoto", this);
+    public MailFolderFetcher getRootFolder() {
+        return new MailFolderFetcher("RootFolder", this);
     }
 
      /**
-     * Gets user photos.
+     * Gets aggregated social activities.
      *
-     * @return the user photos
+     * @return the aggregated social activities
      */
-    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getUserPhotos() {
-        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class);
+    public OrcCollectionFetcher<AggregatedSocialActivity, AggregatedSocialActivityFetcher, AggregatedSocialActivityCollectionOperations> getAggregatedSocialActivities() {
+        return new OrcCollectionFetcher<AggregatedSocialActivity, AggregatedSocialActivityFetcher, AggregatedSocialActivityCollectionOperations>("AggregatedSocialActivities", this, AggregatedSocialActivity.class, AggregatedSocialActivityCollectionOperations.class);
     }
 
     /**
-     * Gets user photo.
+     * Gets aggregated social activity.
      *
-     * @return the user photo
+     * @return the aggregated social activity
      */
-    public PhotoFetcher getUserPhoto(String id){
-         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("UserPhotos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
+    public AggregatedSocialActivityFetcher getAggregatedSocialActivity(String id){
+         return new OrcCollectionFetcher<AggregatedSocialActivity, AggregatedSocialActivityFetcher, AggregatedSocialActivityCollectionOperations>("AggregatedSocialActivities", this, AggregatedSocialActivity.class, AggregatedSocialActivityCollectionOperations.class).getById(id);
+    }
+     /**
+     * Gets photo.
+     *
+     * @return the photo
+     */
+    public PhotoFetcher getPhoto() {
+        return new PhotoFetcher("Photo", this);
+    }
+
+     /**
+     * Gets photos.
+     *
+     * @return the photos
+     */
+    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getPhotos() {
+        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("Photos", this, Photo.class, PhotoCollectionOperations.class);
+    }
+
+    /**
+     * Gets photo.
+     *
+     * @return the photo
+     */
+    public PhotoFetcher getPhoto(String id){
+         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("Photos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets drives.
+     *
+     * @return the drives
+     */
+    public OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations> getDrives() {
+        return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("Drives", this, Drive.class, DriveCollectionOperations.class);
+    }
+
+    /**
+     * Gets drife.
+     *
+     * @return the drife
+     */
+    public DriveFetcher getDrife(String id){
+         return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("Drives", this, Drive.class, DriveCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets working with entities.
+     *
+     * @return the working with entities
+     */
+    public OrcCollectionFetcher<WorkingWithEntity, WorkingWithEntityFetcher, WorkingWithEntityCollectionOperations> getWorkingWithEntities() {
+        return new OrcCollectionFetcher<WorkingWithEntity, WorkingWithEntityFetcher, WorkingWithEntityCollectionOperations>("WorkingWithEntities", this, WorkingWithEntity.class, WorkingWithEntityCollectionOperations.class);
+    }
+
+    /**
+     * Gets working with entity.
+     *
+     * @return the working with entity
+     */
+    public WorkingWithEntityFetcher getWorkingWithEntity(String id){
+         return new OrcCollectionFetcher<WorkingWithEntity, WorkingWithEntityFetcher, WorkingWithEntityCollectionOperations>("WorkingWithEntities", this, WorkingWithEntity.class, WorkingWithEntityCollectionOperations.class).getById(id);
     }
 
 }

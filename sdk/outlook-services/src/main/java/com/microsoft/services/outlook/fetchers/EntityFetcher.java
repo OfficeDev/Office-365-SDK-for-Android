@@ -71,8 +71,8 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new DirectoryObjectFetcher(this.urlComponent, this.parent);
     }   
 
-    public FolderFetcher asFolder(){
-        return new FolderFetcher(this.urlComponent, this.parent);
+    public MailFolderFetcher asMailFolder(){
+        return new MailFolderFetcher(this.urlComponent, this.parent);
     }   
 
     public CalendarFetcher asCalendar(){
@@ -85,6 +85,22 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
 
     public ContactFolderFetcher asContactFolder(){
         return new ContactFolderFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ExtensionFetcher asExtension(){
+        return new ExtensionFetcher(this.urlComponent, this.parent);
+    }   
+
+    public DriveFetcher asDrive(){
+        return new DriveFetcher(this.urlComponent, this.parent);
+    }   
+
+    public FileFetcher asFile(){
+        return new FileFetcher(this.urlComponent, this.parent);
+    }   
+
+    public WorkingWithEntityFetcher asWorkingWithEntity(){
+        return new WorkingWithEntityFetcher(this.urlComponent, this.parent);
     }   
 
     public PhotoFetcher asPhoto(){
@@ -105,6 +121,22 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
 
     public ConversationThreadFetcher asConversationThread(){
         return new ConversationThreadFetcher(this.urlComponent, this.parent);
+    }   
+
+    public AggregatedSocialActivityFetcher asAggregatedSocialActivity(){
+        return new AggregatedSocialActivityFetcher(this.urlComponent, this.parent);
+    }   
+
+    public PersonFetcher asPerson(){
+        return new PersonFetcher(this.urlComponent, this.parent);
+    }   
+
+    public InferenceClassificationFetcher asInferenceClassification(){
+        return new InferenceClassificationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public InferenceClassificationOverrideFetcher asInferenceClassificationOverride(){
+        return new InferenceClassificationOverrideFetcher(this.urlComponent, this.parent);
     }   
 
     
