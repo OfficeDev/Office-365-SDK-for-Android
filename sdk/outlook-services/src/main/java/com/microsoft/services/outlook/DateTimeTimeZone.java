@@ -19,59 +19,55 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 /**
- * The type Multi Value Legacy Extended Property.
+ * The type Date Time Time Zone.
 */
-public class MultiValueLegacyExtendedProperty extends ODataBaseEntity {
+public class DateTimeTimeZone extends ODataBaseEntity {
 
-    public MultiValueLegacyExtendedProperty(){
-        setODataType("#Microsoft.OutlookServices.MultiValueLegacyExtendedProperty");
-    }
-    
-        
-    private java.util.List<String> Value = null;
-    
-    
-     
-    /**
-    * Gets the Value.
-    *
-    * @return the java.util.List<String>
-    */
-    public java.util.List<String> getValue() {
-        return this.Value; 
+    public DateTimeTimeZone(){
+        setODataType("#Microsoft.OutlookServices.DateTimeTimeZone");
     }
 
-    /**
-    * Sets the Value.
-    *
-    * @param value the java.util.List<String>
-    */
-    public void setValue(java.util.List<String> value) { 
-        this.Value = value; 
-        valueChanged("Value", value);
+    private String DateTime;
 
-    }
-            
-    private String PropertyId;
-     
     /**
-    * Gets the Property Id.
+    * Gets the Date Time.
     *
     * @return the String
     */
-    public String getPropertyId() {
-        return this.PropertyId; 
+    public String getDateTime() {
+        return this.DateTime; 
     }
 
     /**
-    * Sets the Property Id.
+    * Sets the Date Time.
     *
     * @param value the String
     */
-    public void setPropertyId(String value) { 
-        this.PropertyId = value; 
-        valueChanged("PropertyId", value);
+    public void setDateTime(String value) { 
+        this.DateTime = value;
+        valueChanged("DateTime", value);
+
+    }
+
+    private String TimeZone;
+
+    /**
+    * Gets the Time Zone.
+    *
+    * @return the String
+    */
+    public String getTimeZone() {
+        return this.TimeZone; 
+    }
+
+    /**
+    * Sets the Time Zone.
+    *
+    * @param value the String
+    */
+    public void setTimeZone(String value) { 
+        this.TimeZone = value;
+        valueChanged("TimeZone", value);
 
     }
 }
-

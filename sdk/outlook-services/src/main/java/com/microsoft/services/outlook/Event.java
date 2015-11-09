@@ -26,6 +26,50 @@ public class Event extends Item {
         setODataType("#Microsoft.OutlookServices.Event");
     }
             
+    private String OriginalStartTimeZone;
+     
+    /**
+    * Gets the Original Start Time Zone.
+    *
+    * @return the String
+    */
+    public String getOriginalStartTimeZone() {
+        return this.OriginalStartTimeZone; 
+    }
+
+    /**
+    * Sets the Original Start Time Zone.
+    *
+    * @param value the String
+    */
+    public void setOriginalStartTimeZone(String value) { 
+        this.OriginalStartTimeZone = value; 
+        valueChanged("OriginalStartTimeZone", value);
+
+    }
+            
+    private String OriginalEndTimeZone;
+     
+    /**
+    * Gets the Original End Time Zone.
+    *
+    * @return the String
+    */
+    public String getOriginalEndTimeZone() {
+        return this.OriginalEndTimeZone; 
+    }
+
+    /**
+    * Sets the Original End Time Zone.
+    *
+    * @param value the String
+    */
+    public void setOriginalEndTimeZone(String value) { 
+        this.OriginalEndTimeZone = value; 
+        valueChanged("OriginalEndTimeZone", value);
+
+    }
+            
     private ResponseStatus ResponseStatus;
      
     /**
@@ -246,23 +290,23 @@ public class Event extends Item {
 
     }
             
-    private java.util.Calendar Start;
+    private DateTimeTimeZone Start;
      
     /**
     * Gets the Start.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getStart() {
+    public DateTimeTimeZone getStart() {
         return this.Start; 
     }
 
     /**
     * Sets the Start.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setStart(java.util.Calendar value) { 
+    public void setStart(DateTimeTimeZone value) { 
         this.Start = value; 
         valueChanged("Start", value);
 
@@ -290,69 +334,25 @@ public class Event extends Item {
 
     }
             
-    private String StartTimeZone;
-     
-    /**
-    * Gets the Start Time Zone.
-    *
-    * @return the String
-    */
-    public String getStartTimeZone() {
-        return this.StartTimeZone; 
-    }
-
-    /**
-    * Sets the Start Time Zone.
-    *
-    * @param value the String
-    */
-    public void setStartTimeZone(String value) { 
-        this.StartTimeZone = value; 
-        valueChanged("StartTimeZone", value);
-
-    }
-            
-    private java.util.Calendar End;
+    private DateTimeTimeZone End;
      
     /**
     * Gets the End.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getEnd() {
+    public DateTimeTimeZone getEnd() {
         return this.End; 
     }
 
     /**
     * Sets the End.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setEnd(java.util.Calendar value) { 
+    public void setEnd(DateTimeTimeZone value) { 
         this.End = value; 
         valueChanged("End", value);
-
-    }
-            
-    private String EndTimeZone;
-     
-    /**
-    * Gets the End Time Zone.
-    *
-    * @return the String
-    */
-    public String getEndTimeZone() {
-        return this.EndTimeZone; 
-    }
-
-    /**
-    * Sets the End Time Zone.
-    *
-    * @param value the String
-    */
-    public void setEndTimeZone(String value) { 
-        this.EndTimeZone = value; 
-        valueChanged("EndTimeZone", value);
 
     }
             
@@ -671,31 +671,6 @@ public class Event extends Item {
     }
     
         
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
-
-    }
-    
-        
     private java.util.List<Attachment> Attachments = null;
     
     
@@ -717,56 +692,6 @@ public class Event extends Item {
     public void setAttachments(java.util.List<Attachment> value) { 
         this.Attachments = value; 
         valueChanged("Attachments", value);
-
-    }
-    
-        
-    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Single Value Extended Properties.
-    *
-    * @return the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
-        return this.SingleValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Single Value Extended Properties.
-    *
-    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
-        this.SingleValueExtendedProperties = value; 
-        valueChanged("SingleValueExtendedProperties", value);
-
-    }
-    
-        
-    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Multi Value Extended Properties.
-    *
-    * @return the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
-        return this.MultiValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Multi Value Extended Properties.
-    *
-    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
-        this.MultiValueExtendedProperties = value; 
-        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

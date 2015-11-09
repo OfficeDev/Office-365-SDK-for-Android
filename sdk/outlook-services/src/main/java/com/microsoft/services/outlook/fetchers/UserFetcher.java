@@ -214,24 +214,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
      /**
-     * Gets people.
-     *
-     * @return the people
-     */
-    public OrcCollectionFetcher<Person, PersonFetcher, PersonCollectionOperations> getPeople() {
-        return new OrcCollectionFetcher<Person, PersonFetcher, PersonCollectionOperations>("People", this, Person.class, PersonCollectionOperations.class);
-    }
-
-    /**
-     * Gets person.
-     *
-     * @return the person
-     */
-    public PersonFetcher getPerson(String id){
-         return new OrcCollectionFetcher<Person, PersonFetcher, PersonCollectionOperations>("People", this, Person.class, PersonCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets contacts.
      *
      * @return the contacts
@@ -267,100 +249,12 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
          return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
     }
      /**
-     * Gets inferenceclassification.
-     *
-     * @return the inference classification
-     */
-    public InferenceClassificationFetcher getInferenceClassification() {
-        return new InferenceClassificationFetcher("InferenceClassification", this);
-    }
-     /**
-     * Gets rootfolder.
-     *
-     * @return the root folder
-     */
-    public MailFolderFetcher getRootFolder() {
-        return new MailFolderFetcher("RootFolder", this);
-    }
-
-     /**
-     * Gets aggregated social activities.
-     *
-     * @return the aggregated social activities
-     */
-    public OrcCollectionFetcher<AggregatedSocialActivity, AggregatedSocialActivityFetcher, AggregatedSocialActivityCollectionOperations> getAggregatedSocialActivities() {
-        return new OrcCollectionFetcher<AggregatedSocialActivity, AggregatedSocialActivityFetcher, AggregatedSocialActivityCollectionOperations>("AggregatedSocialActivities", this, AggregatedSocialActivity.class, AggregatedSocialActivityCollectionOperations.class);
-    }
-
-    /**
-     * Gets aggregated social activity.
-     *
-     * @return the aggregated social activity
-     */
-    public AggregatedSocialActivityFetcher getAggregatedSocialActivity(String id){
-         return new OrcCollectionFetcher<AggregatedSocialActivity, AggregatedSocialActivityFetcher, AggregatedSocialActivityCollectionOperations>("AggregatedSocialActivities", this, AggregatedSocialActivity.class, AggregatedSocialActivityCollectionOperations.class).getById(id);
-    }
-     /**
      * Gets photo.
      *
      * @return the photo
      */
     public PhotoFetcher getPhoto() {
         return new PhotoFetcher("Photo", this);
-    }
-
-     /**
-     * Gets photos.
-     *
-     * @return the photos
-     */
-    public OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations> getPhotos() {
-        return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("Photos", this, Photo.class, PhotoCollectionOperations.class);
-    }
-
-    /**
-     * Gets photo.
-     *
-     * @return the photo
-     */
-    public PhotoFetcher getPhoto(String id){
-         return new OrcCollectionFetcher<Photo, PhotoFetcher, PhotoCollectionOperations>("Photos", this, Photo.class, PhotoCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets drives.
-     *
-     * @return the drives
-     */
-    public OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations> getDrives() {
-        return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("Drives", this, Drive.class, DriveCollectionOperations.class);
-    }
-
-    /**
-     * Gets drife.
-     *
-     * @return the drife
-     */
-    public DriveFetcher getDrife(String id){
-         return new OrcCollectionFetcher<Drive, DriveFetcher, DriveCollectionOperations>("Drives", this, Drive.class, DriveCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets working with entities.
-     *
-     * @return the working with entities
-     */
-    public OrcCollectionFetcher<WorkingWithEntity, WorkingWithEntityFetcher, WorkingWithEntityCollectionOperations> getWorkingWithEntities() {
-        return new OrcCollectionFetcher<WorkingWithEntity, WorkingWithEntityFetcher, WorkingWithEntityCollectionOperations>("WorkingWithEntities", this, WorkingWithEntity.class, WorkingWithEntityCollectionOperations.class);
-    }
-
-    /**
-     * Gets working with entity.
-     *
-     * @return the working with entity
-     */
-    public WorkingWithEntityFetcher getWorkingWithEntity(String id){
-         return new OrcCollectionFetcher<WorkingWithEntity, WorkingWithEntityFetcher, WorkingWithEntityCollectionOperations>("WorkingWithEntities", this, WorkingWithEntity.class, WorkingWithEntityCollectionOperations.class).getById(id);
     }
 
 }

@@ -394,31 +394,6 @@ public class Group extends DirectoryObject {
     }
     
         
-    private java.util.List<Photo> Photos = null;
-    
-    
-     
-    /**
-    * Gets the Photos.
-    *
-    * @return the java.util.List<Photo>
-    */
-    public java.util.List<Photo> getPhotos() {
-        return this.Photos; 
-    }
-
-    /**
-    * Sets the Photos.
-    *
-    * @param value the java.util.List<Photo>
-    */
-    public void setPhotos(java.util.List<Photo> value) { 
-        this.Photos = value; 
-        valueChanged("Photos", value);
-
-    }
-    
-        
     private java.util.List<DirectoryObject> AcceptedSenders = null;
     
     

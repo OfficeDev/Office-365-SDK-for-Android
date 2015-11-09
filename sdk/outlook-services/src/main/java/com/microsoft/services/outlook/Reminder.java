@@ -49,45 +49,45 @@ public class Reminder extends ODataBaseEntity {
 
     }
 
-    private java.util.Calendar EventStartTime;
+    private DateTimeTimeZone EventStartTime;
 
     /**
     * Gets the Event Start Time.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getEventStartTime() {
+    public DateTimeTimeZone getEventStartTime() {
         return this.EventStartTime; 
     }
 
     /**
     * Sets the Event Start Time.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setEventStartTime(java.util.Calendar value) { 
+    public void setEventStartTime(DateTimeTimeZone value) { 
         this.EventStartTime = value;
         valueChanged("EventStartTime", value);
 
     }
 
-    private java.util.Calendar EventEndTime;
+    private DateTimeTimeZone EventEndTime;
 
     /**
     * Gets the Event End Time.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getEventEndTime() {
+    public DateTimeTimeZone getEventEndTime() {
         return this.EventEndTime; 
     }
 
     /**
     * Sets the Event End Time.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setEventEndTime(java.util.Calendar value) { 
+    public void setEventEndTime(DateTimeTimeZone value) { 
         this.EventEndTime = value;
         valueChanged("EventEndTime", value);
 
@@ -181,23 +181,23 @@ public class Reminder extends ODataBaseEntity {
 
     }
 
-    private java.util.Calendar ReminderFireTime;
+    private DateTimeTimeZone ReminderFireTime;
 
     /**
     * Gets the Reminder Fire Time.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getReminderFireTime() {
+    public DateTimeTimeZone getReminderFireTime() {
         return this.ReminderFireTime; 
     }
 
     /**
     * Sets the Reminder Fire Time.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setReminderFireTime(java.util.Calendar value) { 
+    public void setReminderFireTime(DateTimeTimeZone value) { 
         this.ReminderFireTime = value;
         valueChanged("ReminderFireTime", value);
 

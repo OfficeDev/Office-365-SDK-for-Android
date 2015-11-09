@@ -87,22 +87,6 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new ContactFolderFetcher(this.urlComponent, this.parent);
     }   
 
-    public ExtensionFetcher asExtension(){
-        return new ExtensionFetcher(this.urlComponent, this.parent);
-    }   
-
-    public DriveFetcher asDrive(){
-        return new DriveFetcher(this.urlComponent, this.parent);
-    }   
-
-    public FileFetcher asFile(){
-        return new FileFetcher(this.urlComponent, this.parent);
-    }   
-
-    public WorkingWithEntityFetcher asWorkingWithEntity(){
-        return new WorkingWithEntityFetcher(this.urlComponent, this.parent);
-    }   
-
     public PhotoFetcher asPhoto(){
         return new PhotoFetcher(this.urlComponent, this.parent);
     }   
@@ -121,22 +105,6 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
 
     public ConversationThreadFetcher asConversationThread(){
         return new ConversationThreadFetcher(this.urlComponent, this.parent);
-    }   
-
-    public AggregatedSocialActivityFetcher asAggregatedSocialActivity(){
-        return new AggregatedSocialActivityFetcher(this.urlComponent, this.parent);
-    }   
-
-    public PersonFetcher asPerson(){
-        return new PersonFetcher(this.urlComponent, this.parent);
-    }   
-
-    public InferenceClassificationFetcher asInferenceClassification(){
-        return new InferenceClassificationFetcher(this.urlComponent, this.parent);
-    }   
-
-    public InferenceClassificationOverrideFetcher asInferenceClassificationOverride(){
-        return new InferenceClassificationOverrideFetcher(this.urlComponent, this.parent);
     }   
 
     

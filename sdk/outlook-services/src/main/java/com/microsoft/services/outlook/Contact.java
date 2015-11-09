@@ -766,31 +766,6 @@ public class Contact extends Item {
         valueChanged("Children", value);
 
     }
-    
-        
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
-
-    }
             
     private Photo Photo;
      
@@ -811,56 +786,6 @@ public class Contact extends Item {
     public void setPhoto(Photo value) { 
         this.Photo = value; 
         valueChanged("Photo", value);
-
-    }
-    
-        
-    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Single Value Extended Properties.
-    *
-    * @return the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
-        return this.SingleValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Single Value Extended Properties.
-    *
-    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
-        this.SingleValueExtendedProperties = value; 
-        valueChanged("SingleValueExtendedProperties", value);
-
-    }
-    
-        
-    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Multi Value Extended Properties.
-    *
-    * @return the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
-        return this.MultiValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Multi Value Extended Properties.
-    *
-    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
-        this.MultiValueExtendedProperties = value; 
-        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

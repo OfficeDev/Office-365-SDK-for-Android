@@ -337,31 +337,6 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<Person> People = null;
-    
-    
-     
-    /**
-    * Gets the People.
-    *
-    * @return the java.util.List<Person>
-    */
-    public java.util.List<Person> getPeople() {
-        return this.People; 
-    }
-
-    /**
-    * Sets the People.
-    *
-    * @param value the java.util.List<Person>
-    */
-    public void setPeople(java.util.List<Person> value) { 
-        this.People = value; 
-        valueChanged("People", value);
-
-    }
-    
-        
     private java.util.List<Contact> Contacts = null;
     
     
@@ -411,75 +386,6 @@ public class User extends DirectoryObject {
 
     }
             
-    private InferenceClassification InferenceClassification;
-     
-    /**
-    * Gets the Inference Classification.
-    *
-    * @return the InferenceClassification
-    */
-    public InferenceClassification getInferenceClassification() {
-        return this.InferenceClassification; 
-    }
-
-    /**
-    * Sets the Inference Classification.
-    *
-    * @param value the InferenceClassification
-    */
-    public void setInferenceClassification(InferenceClassification value) { 
-        this.InferenceClassification = value; 
-        valueChanged("InferenceClassification", value);
-
-    }
-            
-    private MailFolder RootFolder;
-     
-    /**
-    * Gets the Root Folder.
-    *
-    * @return the MailFolder
-    */
-    public MailFolder getRootFolder() {
-        return this.RootFolder; 
-    }
-
-    /**
-    * Sets the Root Folder.
-    *
-    * @param value the MailFolder
-    */
-    public void setRootFolder(MailFolder value) { 
-        this.RootFolder = value; 
-        valueChanged("RootFolder", value);
-
-    }
-    
-        
-    private java.util.List<AggregatedSocialActivity> AggregatedSocialActivities = null;
-    
-    
-     
-    /**
-    * Gets the Aggregated Social Activities.
-    *
-    * @return the java.util.List<AggregatedSocialActivity>
-    */
-    public java.util.List<AggregatedSocialActivity> getAggregatedSocialActivities() {
-        return this.AggregatedSocialActivities; 
-    }
-
-    /**
-    * Sets the Aggregated Social Activities.
-    *
-    * @param value the java.util.List<AggregatedSocialActivity>
-    */
-    public void setAggregatedSocialActivities(java.util.List<AggregatedSocialActivity> value) { 
-        this.AggregatedSocialActivities = value; 
-        valueChanged("AggregatedSocialActivities", value);
-
-    }
-            
     private Photo Photo;
      
     /**
@@ -499,81 +405,6 @@ public class User extends DirectoryObject {
     public void setPhoto(Photo value) { 
         this.Photo = value; 
         valueChanged("Photo", value);
-
-    }
-    
-        
-    private java.util.List<Photo> Photos = null;
-    
-    
-     
-    /**
-    * Gets the Photos.
-    *
-    * @return the java.util.List<Photo>
-    */
-    public java.util.List<Photo> getPhotos() {
-        return this.Photos; 
-    }
-
-    /**
-    * Sets the Photos.
-    *
-    * @param value the java.util.List<Photo>
-    */
-    public void setPhotos(java.util.List<Photo> value) { 
-        this.Photos = value; 
-        valueChanged("Photos", value);
-
-    }
-    
-        
-    private java.util.List<Drive> Drives = null;
-    
-    
-     
-    /**
-    * Gets the Drives.
-    *
-    * @return the java.util.List<Drive>
-    */
-    public java.util.List<Drive> getDrives() {
-        return this.Drives; 
-    }
-
-    /**
-    * Sets the Drives.
-    *
-    * @param value the java.util.List<Drive>
-    */
-    public void setDrives(java.util.List<Drive> value) { 
-        this.Drives = value; 
-        valueChanged("Drives", value);
-
-    }
-    
-        
-    private java.util.List<WorkingWithEntity> WorkingWithEntities = null;
-    
-    
-     
-    /**
-    * Gets the Working With Entities.
-    *
-    * @return the java.util.List<WorkingWithEntity>
-    */
-    public java.util.List<WorkingWithEntity> getWorkingWithEntities() {
-        return this.WorkingWithEntities; 
-    }
-
-    /**
-    * Sets the Working With Entities.
-    *
-    * @param value the java.util.List<WorkingWithEntity>
-    */
-    public void setWorkingWithEntities(java.util.List<WorkingWithEntity> value) { 
-        this.WorkingWithEntities = value; 
-        valueChanged("WorkingWithEntities", value);
 
     }
 }

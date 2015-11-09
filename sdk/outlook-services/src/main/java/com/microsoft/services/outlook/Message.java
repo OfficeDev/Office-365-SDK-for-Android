@@ -499,53 +499,6 @@ public class Message extends Item {
         valueChanged("WebLink", value);
 
     }
-            
-    private InferenceClassificationType InferenceClassification;
-     
-    /**
-    * Gets the Inference Classification.
-    *
-    * @return the InferenceClassificationType
-    */
-    public InferenceClassificationType getInferenceClassification() {
-        return this.InferenceClassification; 
-    }
-
-    /**
-    * Sets the Inference Classification.
-    *
-    * @param value the InferenceClassificationType
-    */
-    public void setInferenceClassification(InferenceClassificationType value) { 
-        this.InferenceClassification = value; 
-        valueChanged("InferenceClassification", value);
-
-    }
-    
-        
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
-
-    }
     
         
     private java.util.List<Attachment> Attachments = null;
@@ -569,56 +522,6 @@ public class Message extends Item {
     public void setAttachments(java.util.List<Attachment> value) { 
         this.Attachments = value; 
         valueChanged("Attachments", value);
-
-    }
-    
-        
-    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Single Value Extended Properties.
-    *
-    * @return the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
-        return this.SingleValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Single Value Extended Properties.
-    *
-    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
-        this.SingleValueExtendedProperties = value; 
-        valueChanged("SingleValueExtendedProperties", value);
-
-    }
-    
-        
-    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Multi Value Extended Properties.
-    *
-    * @return the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
-        return this.MultiValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Multi Value Extended Properties.
-    *
-    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
-        this.MultiValueExtendedProperties = value; 
-        valueChanged("MultiValueExtendedProperties", value);
 
     }
 }

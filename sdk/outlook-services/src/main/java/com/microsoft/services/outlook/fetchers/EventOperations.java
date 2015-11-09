@@ -195,7 +195,7 @@ public class EventOperations extends ItemOperations {
      * @param newReminderTime the newReminderTime 
      * @return the listenable future
      */         
-    public ListenableFuture<Integer> snoozeReminder(java.util.Calendar newReminderTime) { 
+    public ListenableFuture<Integer> snoozeReminder(DateTimeTimeZone newReminderTime) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedNewReminderTime = serializer.serialize(newReminderTime);
 		  

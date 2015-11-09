@@ -185,55 +185,5 @@ public class MailFolder extends Entity {
         valueChanged("ChildFolders", value);
 
     }
-    
-        
-    private java.util.List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Single Value Extended Properties.
-    *
-    * @return the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public java.util.List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
-        return this.SingleValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Single Value Extended Properties.
-    *
-    * @param value the java.util.List<SingleValueLegacyExtendedProperty>
-    */
-    public void setSingleValueExtendedProperties(java.util.List<SingleValueLegacyExtendedProperty> value) { 
-        this.SingleValueExtendedProperties = value; 
-        valueChanged("SingleValueExtendedProperties", value);
-
-    }
-    
-        
-    private java.util.List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties = null;
-    
-    
-     
-    /**
-    * Gets the Multi Value Extended Properties.
-    *
-    * @return the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public java.util.List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
-        return this.MultiValueExtendedProperties; 
-    }
-
-    /**
-    * Sets the Multi Value Extended Properties.
-    *
-    * @param value the java.util.List<MultiValueLegacyExtendedProperty>
-    */
-    public void setMultiValueExtendedProperties(java.util.List<MultiValueLegacyExtendedProperty> value) { 
-        this.MultiValueExtendedProperties = value; 
-        valueChanged("MultiValueExtendedProperties", value);
-
-    }
 }
 
