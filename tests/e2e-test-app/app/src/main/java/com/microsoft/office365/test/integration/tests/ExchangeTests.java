@@ -3,12 +3,14 @@ package com.microsoft.office365.test.integration.tests;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.orc.serialization.impl.CalendarSerializer;
+import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 import com.microsoft.services.outlook.*;
 import com.microsoft.services.outlook.Calendar;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
@@ -1952,20 +1954,19 @@ public class ExchangeTests extends TestGroup {
                     // Prepare
                     Event event = getSampleEvent();
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
+                    
+                    Date eventDate = GregorianCalendar.getInstance().getTime();
 
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String formattedTime = formatter.format(GregorianCalendar.getInstance());
-                    java.util.Calendar currentDate = GregorianCalendar.getInstance();
-                    currentDate.setTime(new Date());
                     //format date properly
-                    currentDate.add(java.util.Calendar.HOUR_OF_DAY, -2);
-                    String dateStart = formatter.format(currentDate.getTime());
+                    java.util.Calendar dateStart = java.util.Calendar.getInstance();
+                    dateStart.setTime(eventDate);
+                    dateStart.add(java.util.Calendar.HOUR, -2);
 
-                    currentDate.setTime(new Date());
-                    currentDate.add(java.util.Calendar.HOUR_OF_DAY, 2);
-                    String dateEnd = formatter.format(currentDate.getTime());
+                    java.util.Calendar dateEnd = java.util.Calendar.getInstance();
+                    dateEnd.setTime(eventDate);
+                    dateEnd.add(java.util.Calendar.HOUR, 2);
 
-                    // Act
+
                     List<Event> calendarView = client.getMe().getCalendarView()
                             .addParameter("startdatetime", dateStart)
                             .addParameter("enddatetime", dateEnd)
@@ -2221,7 +2222,7 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
 
                     // Prepare
@@ -2239,7 +2240,7 @@ public class ExchangeTests extends TestGroup {
 
                     DateTimeTimeZone dtzStart = new DateTimeTimeZone();
                     dtzStart.setDateTime(formatter.format(start));
-                    dtzStart.setTimeZone(TimeZone.getTimeZone("GMT").getDisplayName());
+                    dtzStart.setTimeZone("UTC");
 
                     event.setStart(dtzStart);
 
@@ -2285,12 +2286,12 @@ public class ExchangeTests extends TestGroup {
 
     private Event getSampleEvent() {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         String formattedTime = formatter.format(new Date());
 
         DateTimeTimeZone dtz = new DateTimeTimeZone();
         dtz.setDateTime(formattedTime);
-        dtz.setTimeZone(TimeZone.getTimeZone("GMT").getDisplayName());
+        dtz.setTimeZone("UTC");
 
         Event event = new Event();
         event.setSubject("Today's appointment");
