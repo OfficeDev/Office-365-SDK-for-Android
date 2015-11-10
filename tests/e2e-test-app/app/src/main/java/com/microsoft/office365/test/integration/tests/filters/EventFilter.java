@@ -38,6 +38,7 @@ public class EventFilter implements PropertyFilter {
     }
 
     private void fillEvent(Event event) {
+        /*
         event.setSubject("Today's appointment");
         event.setStart(java.util.Calendar.getInstance());
         event.setImportance(Importance.High);
@@ -57,5 +58,6 @@ public class EventFilter implements PropertyFilter {
         List<Attendee> listAttendees = new ArrayList<Attendee>();
         listAttendees.add(attendee1);
         event.setAttendees(listAttendees);
+        */
     }
 }

@@ -1953,15 +1953,17 @@ public class ExchangeTests extends TestGroup {
                     Event event = getSampleEvent();
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                    String formattedTime = formatter.format(addedEvent.getStart().getTime());
-
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String formattedTime = formatter.format(GregorianCalendar.getInstance());
+                    java.util.Calendar currentDate = GregorianCalendar.getInstance();
+                    currentDate.setTime(new Date());
                     //format date properly
-                    java.util.Calendar dateStart = (java.util.Calendar) addedEvent.getStart().clone();
-                    dateStart.add(java.util.Calendar.HOUR, -2);
+                    currentDate.add(java.util.Calendar.HOUR_OF_DAY, -2);
+                    String dateStart = formatter.format(currentDate.getTime());
 
-                    java.util.Calendar dateEnd = (java.util.Calendar) addedEvent.getStart().clone();
-                    dateEnd.add(java.util.Calendar.HOUR, 2);
+                    currentDate.setTime(new Date());
+                    currentDate.add(java.util.Calendar.HOUR_OF_DAY, 2);
+                    String dateEnd = formatter.format(currentDate.getTime());
 
                     // Act
                     List<Event> calendarView = client.getMe().getCalendarView()
@@ -2219,6 +2221,8 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -2233,7 +2237,11 @@ public class ExchangeTests extends TestGroup {
                     start.set(java.util.Calendar.SECOND, 0);
                     start.set(java.util.Calendar.MILLISECOND, 0);
 
-                    event.setStart(start);
+                    DateTimeTimeZone dtzStart = new DateTimeTimeZone();
+                    dtzStart.setDateTime(formatter.format(start));
+                    dtzStart.setTimeZone(TimeZone.getTimeZone("GMT").getDisplayName());
+
+                    event.setStart(dtzStart);
 
                     java.util.Calendar end = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 
@@ -2244,7 +2252,11 @@ public class ExchangeTests extends TestGroup {
                     end.set(java.util.Calendar.MILLISECOND, 0);
 
                     end.add(java.util.Calendar.DATE, 1);
-                    event.setEnd(end);
+
+                    DateTimeTimeZone dtzEnd = new DateTimeTimeZone();
+                    dtzEnd.setDateTime(formatter.format(end));
+                    dtzEnd.setTimeZone(TimeZone.getTimeZone("GMT").getDisplayName());
+                    event.setEnd(dtzEnd);
 
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
@@ -2272,9 +2284,17 @@ public class ExchangeTests extends TestGroup {
     }
 
     private Event getSampleEvent() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedTime = formatter.format(new Date());
+
+        DateTimeTimeZone dtz = new DateTimeTimeZone();
+        dtz.setDateTime(formattedTime);
+        dtz.setTimeZone(TimeZone.getTimeZone("GMT").getDisplayName());
+
         Event event = new Event();
         event.setSubject("Today's appointment");
-        event.setStart(java.util.Calendar.getInstance());
+        event.setStart(dtz);
         event.setImportance(Importance.High);
 
         //Event body
