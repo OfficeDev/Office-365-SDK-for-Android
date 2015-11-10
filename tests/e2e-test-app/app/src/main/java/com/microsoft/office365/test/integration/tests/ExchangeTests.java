@@ -1954,7 +1954,7 @@ public class ExchangeTests extends TestGroup {
                     // Prepare
                     Event event = getSampleEvent();
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
-                    
+
                     Date eventDate = GregorianCalendar.getInstance().getTime();
 
                     //format date properly
@@ -2230,8 +2230,8 @@ public class ExchangeTests extends TestGroup {
                     event.setIsAllDay(true);
                     event.setSubject("all day event");
 
-                    java.util.Calendar start = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-
+                    java.util.Calendar start = java.util.Calendar.getInstance();
+                    start.setTime(new Date());
                     // reset hour, minutes, seconds and millis
                     start.set(java.util.Calendar.HOUR_OF_DAY, 0);
                     start.set(java.util.Calendar.MINUTE, 0);
@@ -2239,24 +2239,22 @@ public class ExchangeTests extends TestGroup {
                     start.set(java.util.Calendar.MILLISECOND, 0);
 
                     DateTimeTimeZone dtzStart = new DateTimeTimeZone();
-                    dtzStart.setDateTime(formatter.format(start));
+                    dtzStart.setDateTime(formatter.format(start.getTime()));
                     dtzStart.setTimeZone("UTC");
 
                     event.setStart(dtzStart);
 
-                    java.util.Calendar end = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+                    java.util.Calendar end = java.util.Calendar.getInstance();
 
                     // reset hour, minutes, seconds and millis
-                    end.set(java.util.Calendar.HOUR_OF_DAY, 0);
-                    end.set(java.util.Calendar.MINUTE, 0);
-                    end.set(java.util.Calendar.SECOND, 0);
-                    end.set(java.util.Calendar.MILLISECOND, 0);
+                    end.setTime(start.getTime());
+
 
                     end.add(java.util.Calendar.DATE, 1);
 
                     DateTimeTimeZone dtzEnd = new DateTimeTimeZone();
-                    dtzEnd.setDateTime(formatter.format(end));
-                    dtzEnd.setTimeZone(TimeZone.getTimeZone("GMT").getDisplayName());
+                    dtzEnd.setDateTime(formatter.format(end.getTime()));
+                    dtzEnd.setTimeZone("UTC");
                     event.setEnd(dtzEnd);
 
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
