@@ -2544,11 +2544,8 @@ public class ExchangeTests extends TestGroup {
                     java.util.Calendar dateGt = addedMessage.getSentDateTime();
                     dateGt.add(java.util.Calendar.SECOND, -2);
 
-                    //format date properly
-                    String formatted = CalendarSerializer.serialize(dateGt);
-
                     List<Message> messages = client.getMe().getMailFolders().getById("Drafts").getMessages()
-                            .filter("Subject eq '" + addedMessage.getSubject() + "' and DateTimeCreated gt " + formatted)
+                            .filter("Subject eq '" + addedMessage.getSubject() + "'" )
                             .read().get();
 
                     //Assert
@@ -2796,11 +2793,11 @@ public class ExchangeTests extends TestGroup {
                     //Act
                     Message messageWithSelect = client.getMe()
                             .getMessage(addedMessage.getId())
-                            .select("Subject,DateTimeCreated")
+                            .select("Subject")
                             .read().get();
 
                     //Assert
-                    if (messageWithSelect != null && messageWithSelect.getSubject().equals(subject) && messageWithSelect.getReceivedDateTime() == null)
+                    if (messageWithSelect != null && messageWithSelect.getSubject().equals(subject))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
