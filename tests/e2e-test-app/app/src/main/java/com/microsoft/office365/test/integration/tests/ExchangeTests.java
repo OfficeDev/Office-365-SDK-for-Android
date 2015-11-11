@@ -78,6 +78,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canUpdateEvents("Can update events", true));
         this.addTest(canDeleteEvents("Can delete events", true));
         this.addTest(canCreateAllDayEvent("Can create all day event", true));
+        this.addTest(canSnoozeAndDismissEvent("Can snooze/dismiss event", true));
 
         //Contacts
         this.addTest(canGetContactsFolder("Can get contacts folder", true));
@@ -2282,6 +2283,47 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
+    private TestCase canSnoozeAndDismissEvent(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getOutlookClient();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+
+                    // Prepare
+                    Event event = getSampleEvent();
+
+                    Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
+
+                    //Act
+                    DateTimeTimeZone newDtz = new DateTimeTimeZone();
+                    newDtz.setDateTime(formatter.format(new Date()));
+                    newDtz.setTimeZone("UTC");
+                    client.getMe().getCalendars().getById("Calendar").getEvent(addedEvent.getId()).getOperations().snoozeReminder(newDtz);
+
+                    client.getMe().getCalendars().getById("Calendar").getEvent(addedEvent.getId()).getOperations().dismissReminder();
+
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
     private Event getSampleEvent() {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -2295,6 +2337,9 @@ public class ExchangeTests extends TestGroup {
         event.setSubject("Today's appointment");
         event.setStart(dtz);
         event.setImportance(Importance.High);
+        event.setIsReminderOn(true);
+        event.setReminderMinutesBeforeStart(15);
+
 
         //Event body
         ItemBody itemBody = new ItemBody();
