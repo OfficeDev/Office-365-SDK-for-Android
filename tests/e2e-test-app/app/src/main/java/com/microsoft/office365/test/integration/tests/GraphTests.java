@@ -1471,7 +1471,7 @@ public class GraphTests extends TestGroup {
 
                     String strContent = getStringFromInputStream(content);
 
-                    if (addedFile != null && strContent.equals("{\"contentStream\":\"TXkgb3RoZXIgQ29udGVudA==\\n\"}"))
+                    if (addedFile != null && strContent.equals("My other Content"))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
