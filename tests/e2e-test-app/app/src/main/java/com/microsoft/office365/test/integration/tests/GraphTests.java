@@ -12,6 +12,10 @@ import com.microsoft.services.graph.fetchers.ProfilePhotoFetcher;
 import com.microsoft.services.orc.core.Constants;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -62,8 +66,8 @@ public class GraphTests extends TestGroup {
         this.addTest(canGetUserDrive("Can get user's drive", true));
         this.addTest(canGetUserFiles("Can get user's files", true));
         this.addTest(canGetUserFilesById("Can get user's file by id", true));
-        //this.addTest(canCreateUserFiles("Can create user's files", true));
-        //this.addTest(canUpdateUserFiles("Can update user's files", true));
+        this.addTest(canCreateUserFiles("Can create user's files", true));
+        this.addTest(canUpdateUserFiles("Can update user's files", true));
         this.addTest(canDeleteUserFiles("Can delete user's files", true));
         this.addTest(canRetrieveConversation("Can retrieve conversation from group", true));
 
@@ -1389,7 +1393,7 @@ public class GraphTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
-    /*
+
     private TestCase canCreateUserFiles(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -1411,16 +1415,15 @@ public class GraphTests extends TestGroup {
 
                     Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().add(newFile).get();
                     client.getUsers().getById(ApplicationContext.getTestMail())
-                            .getDrive().getItems().getById(addedFile.getId())
-                            .getContent().uploadContent("My Content".getBytes()).get();
+                            .getDrive().getItems().getById(addedFile.getId()).getContent().putContent("My Content".getBytes()).get();
 
-                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().content().get();
+                    InputStream content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getContent().getStream().get();
 
                     //Assert
                     if (addedFile == null)
                         result.setStatus(TestStatus.Failed);
 
-                    if (content.length == 0)
+                    if (content == null)
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -1458,15 +1461,15 @@ public class GraphTests extends TestGroup {
 
                     Item addedFile = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().add(newFile).get();
                     //Prepare
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().uploadContent("My Content".getBytes()).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getContent().putContent("My Content".getBytes()).get();
 
                     //Act
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().uploadContent("My other Content".getBytes()).get();
+                    client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getContent().putContent("My other Content".getBytes()).get();
 
                     //Assert
-                    byte[] content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getOperations().content().get();
+                    InputStream content = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getItems().getById(addedFile.getId()).getContent().getStream().get();
 
-                    String strContent = new String(content);
+                    String strContent = getStringFromInputStream(content);
 
                     if (addedFile != null && strContent.equals("{\"contentStream\":\"TXkgb3RoZXIgQ29udGVudA==\\n\"}"))
                         result.setStatus(TestStatus.Passed);
@@ -1485,7 +1488,36 @@ public class GraphTests extends TestGroup {
         test.setEnabled(enabled);
         return test;
     }
-    */
+
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
+    }
+
     private TestCase canDeleteUserFiles(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
