@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ItemAttachment
- .
  */
 public class ItemAttachmentFetcher extends OrcEntityFetcher<ItemAttachment,ItemAttachmentOperations> 
                                      implements Readable<ItemAttachment> {
@@ -46,8 +45,8 @@ public class ItemAttachmentFetcher extends OrcEntityFetcher<ItemAttachment,ItemA
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class ItemAttachmentFetcher extends OrcEntityFetcher<ItemAttachment,ItemA
         return this;
     }
 
-             /**
+    
+    
+         /**
      * Gets item.
      *
      * @return the item

@@ -16,6 +16,8 @@ package com.microsoft.services.outlook;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Recurrence Range.
 */
@@ -47,47 +49,69 @@ public class RecurrenceRange extends ODataBaseEntity {
 
     }
 
-    private java.util.Calendar StartDate;
+    private java.util.Date StartDate;
 
     /**
     * Gets the Start Date.
     *
-    * @return the java.util.Calendar
+    * @return the java.util.Date
     */
-    public java.util.Calendar getStartDate() {
+    public java.util.Date getStartDate() {
         return this.StartDate; 
     }
 
     /**
     * Sets the Start Date.
     *
-    * @param value the java.util.Calendar
+    * @param value the java.util.Date
     */
-    public void setStartDate(java.util.Calendar value) { 
+    public void setStartDate(java.util.Date value) { 
         this.StartDate = value;
         valueChanged("StartDate", value);
 
     }
 
-    private java.util.Calendar EndDate;
+    private java.util.Date EndDate;
 
     /**
     * Gets the End Date.
     *
-    * @return the java.util.Calendar
+    * @return the java.util.Date
     */
-    public java.util.Calendar getEndDate() {
+    public java.util.Date getEndDate() {
         return this.EndDate; 
     }
 
     /**
     * Sets the End Date.
     *
-    * @param value the java.util.Calendar
+    * @param value the java.util.Date
     */
-    public void setEndDate(java.util.Calendar value) { 
+    public void setEndDate(java.util.Date value) { 
         this.EndDate = value;
         valueChanged("EndDate", value);
+
+    }
+
+    private String RecurrenceTimeZone;
+
+    /**
+    * Gets the Recurrence Time Zone.
+    *
+    * @return the String
+    */
+    public String getRecurrenceTimeZone() {
+        return this.RecurrenceTimeZone; 
+    }
+
+    /**
+    * Sets the Recurrence Time Zone.
+    *
+    * @param value the String
+    */
+    public void setRecurrenceTimeZone(String value) { 
+        this.RecurrenceTimeZone = value;
+        valueChanged("RecurrenceTimeZone", value);
 
     }
 

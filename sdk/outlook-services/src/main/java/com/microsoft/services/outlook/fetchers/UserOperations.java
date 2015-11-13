@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type UserOperations.
  */
-public class UserOperations extends EntityOperations {
+public class UserOperations extends DirectoryObjectOperations {
 
      /**
       * Instantiates a new UserOperations.
@@ -96,6 +96,49 @@ public class UserOperations extends EntityOperations {
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
         request.getUrl().appendPathComponent("Microsoft.OutlookServices.SendMail");
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * ReminderView listenable future.
+     * @param startDateTime the startDateTime @param endDateTime the endDateTime 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Reminder> reminderView(String startDateTime, String endDateTime) { 
+        JsonSerializer serializer = getResolver().getJsonSerializer();      
+        String serializedStartDateTime = serializer.serialize(startDateTime);
+		String serializedEndDateTime = serializer.serialize(endDateTime);
+		  
+        
+        ListenableFuture<String> future = reminderViewRaw(serializedStartDateTime, serializedEndDateTime);
+        return transformToEntityListenableFuture(future, Reminder.class, getResolver());
+        
+    }
+
+     /**
+     * ReminderViewRaw listenable future.
+     * @param startDateTime the startDateTime @param endDateTime the endDateTime 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> reminderViewRaw(String startDateTime, String endDateTime){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("StartDateTime", startDateTime);
+		map.put("EndDateTime", endDateTime);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.ReminderView");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

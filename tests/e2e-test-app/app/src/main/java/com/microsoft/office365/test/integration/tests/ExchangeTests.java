@@ -3,12 +3,14 @@ package com.microsoft.office365.test.integration.tests;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
 import com.microsoft.services.orc.serialization.impl.CalendarSerializer;
+import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 import com.microsoft.services.outlook.*;
 import com.microsoft.services.outlook.Calendar;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
@@ -76,6 +78,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canUpdateEvents("Can update events", true));
         this.addTest(canDeleteEvents("Can delete events", true));
         this.addTest(canCreateAllDayEvent("Can create all day event", true));
+        this.addTest(canSnoozeAndDismissEvent("Can snooze/dismiss event", true));
 
         //Contacts
         this.addTest(canGetContactsFolder("Can get contacts folder", true));
@@ -106,7 +109,7 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Message message = client.getMe().getFolders().getById("Inbox").getMessages()
+                    Message message = client.getMe().getMailFolders().getById("Inbox").getMessages()
                             .top(1).read().get().get(0);
                     message.setIsRead(false);
                     message.setIsRead(true);
@@ -142,7 +145,7 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder folder = client.getMe().getFolders().getById("Inbox").read().get();
+                    MailFolder folder = client.getMe().getMailFolders().getById("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
 
@@ -169,7 +172,7 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder folder = client.getMe().getFolder("Inbox").read().get();
+                    MailFolder folder = client.getMe().getMailFolder("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
 
@@ -200,17 +203,17 @@ public class ExchangeTests extends TestGroup {
 
                     //Create new folder
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder newFolder = new Folder();
+                    MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
-                    Folder addedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .add(newFolder).get();
 
                     // Assert
-                    Folder folder = client.getMe()
-                            .getFolders()
+                    MailFolder folder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .getById(addedFolder.getId()).read().get();
@@ -221,7 +224,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Cleanup
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .getById(folder.getId())
@@ -261,31 +264,31 @@ public class ExchangeTests extends TestGroup {
 
                     //Prepare for test
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder newFolder = new Folder();
+                    MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
-                    Folder addedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .add(newFolder).get();
 
                     // Delete folder
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .getById(addedFolder.getId())
                             .delete().get();
 
                     // Assert
-                    List<Folder> folders = client.getMe()
-                            .getFolders()
+                    List<MailFolder> folders = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .read().get();
 
                     boolean exists = false;
-                    for (Folder f : folders) {
+                    for (MailFolder f : folders) {
                         if (f.getId().equals(addedFolder.getId())) {
                             exists = true;
                         }
@@ -327,24 +330,24 @@ public class ExchangeTests extends TestGroup {
 
                     //Create new folder
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder newFolder = new Folder();
+                    MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
-                    Folder addedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .add(newFolder).get();
 
                     //Act
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(parentFolderName).getChildFolders()
                             .getById(addedFolder.getId())
                             .getOperations().move(destinationFolderName).get();
 
                     //Assert
-                    Folder movedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder movedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(destinationFolderName)
                             .getChildFolders()
                             .getById(addedFolder.getId())
@@ -355,7 +358,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Cleanup
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(destinationFolderName)
                             .getChildFolders()
                             .getById(movedFolder.getId())
@@ -396,24 +399,24 @@ public class ExchangeTests extends TestGroup {
 
                     //Create new folder
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder newFolder = new Folder();
+                    MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
-                    Folder addedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .add(newFolder).get();
 
                     //Act
-                    Folder copiedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder copiedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName).getChildFolders()
                             .getById(addedFolder.getId())
                             .getOperations().copy(destinationFolderName).get();
 
                     //Assert
-                    Folder folder = client.getMe()
-                            .getFolders()
+                    MailFolder folder = client.getMe()
+                            .getMailFolders()
                             .getById(destinationFolderName)
                             .getChildFolders()
                             .getById(copiedFolder.getId())
@@ -424,14 +427,14 @@ public class ExchangeTests extends TestGroup {
 
                     //Cleanup
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(destinationFolderName)
                             .getChildFolders()
                             .getById(copiedFolder.getId())
                             .delete().get();
 
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .getById(addedFolder.getId())
@@ -474,10 +477,10 @@ public class ExchangeTests extends TestGroup {
 
                     //Create new folder
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    Folder newFolder = new Folder();
+                    MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(folderName);
-                    Folder addedFolder = client.getMe()
-                            .getFolders()
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
                             .getById(parentFolderName)
                             .getChildFolders()
                             .add(newFolder).get();
@@ -485,13 +488,13 @@ public class ExchangeTests extends TestGroup {
                     //Act
                     newFolder.setDisplayName(updatedFolderName);
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(addedFolder.getId())
                             .update(newFolder).get();
 
                     // Assert
-                    Folder folder = client.getMe()
-                            .getFolders()
+                    MailFolder folder = client.getMe()
+                            .getMailFolders()
                             .getById(addedFolder.getId()).read().get();
 
                     if (folder == null || !folder.getDisplayName().equals(updatedFolderName)) {
@@ -500,7 +503,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Cleanup
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById(folder.getId())
                             .delete().get();
 
@@ -535,14 +538,14 @@ public class ExchangeTests extends TestGroup {
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
-                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(3).read().get();
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(3).read().get();
                     if (inboxMessages.size() == 0) {
                         String mailSubject = "Test get Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
 
                         client.getMe().getOperations().sendMail(message, true).get();
                         Thread.sleep(2000);
-                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
                     if (inboxMessages == null || inboxMessages.size() == 0 || inboxMessages.size() > 3)
@@ -580,14 +583,14 @@ public class ExchangeTests extends TestGroup {
 
                     //Assert
                     Message searchedMessage = client.getMe()
-                            .getFolder("Drafts")
+                            .getMailFolder("Drafts")
                             .getMessage(createdMessage.getId()).read().get();
 
                     if (searchedMessage == null || !searchedMessage.getSubject().equals("Test message"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getMe().getFolder("Drafts")
+                    client.getMe().getMailFolder("Drafts")
                             .getMessage(createdMessage.getId())
                             .delete().get();
                     return result;
@@ -668,7 +671,7 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
-                    List<Folder> folders = client.getMe().getFolders().read().get();
+                    List<MailFolder> folders = client.getMe().getMailFolders().read().get();
                     if (folders == null || folders.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
@@ -703,7 +706,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Assert
                     Message searchedMessage = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(createdMessage.getId()).read().get();
@@ -712,7 +715,7 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getMe().getFolders()
+                    client.getMe().getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(createdMessage.getId())
@@ -899,9 +902,9 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getOperations().sendMail(message, true).get();
 
                     //Assert
-                    List<Folder> sentFolder = client.getMe().getFolders().filter("DisplayName eq 'Sent Items'").read().get();
+                    List<MailFolder> sentFolder = client.getMe().getMailFolders().filter("DisplayName eq 'Sent Items'").read().get();
                     List<Message> messages = client.getMe()
-                            .getFolder(sentFolder.get(0).getId())
+                            .getMailFolder(sentFolder.get(0).getId())
                             .getMessages()
                             .filter("Subject eq '" + mailSubject + "'")
                             .read().get();
@@ -943,15 +946,15 @@ public class ExchangeTests extends TestGroup {
                     //Prepare
                     client.getMe().getOperations().sendMail(message, true).get();
 
-                    List<Folder> sentFolder = client.getMe().getFolders().filter("DisplayName eq 'Sent Items'").read().get();
+                    List<MailFolder> sentFolder = client.getMe().getMailFolders().filter("DisplayName eq 'Sent Items'").read().get();
                     List<Message> messages = client.getMe()
-                            .getFolder(sentFolder.get(0).getId())
+                            .getMailFolder(sentFolder.get(0).getId())
                             .getMessages()
                             .filter("Subject eq '" + mailSubject + "'")
                             .read().get();
 
                     //Act
-                    Message messageToReply = client.getMe().getFolder(sentFolder.get(0).getId())
+                    Message messageToReply = client.getMe().getMailFolder(sentFolder.get(0).getId())
                             .getMessage(messages.get(0).getId()).getOperations().createReply().get();
 
                     //Assert
@@ -992,7 +995,7 @@ public class ExchangeTests extends TestGroup {
                     message.setSubject("New Test Update Message");
                     client
                             .getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(addedMessage.getId())
@@ -1001,7 +1004,7 @@ public class ExchangeTests extends TestGroup {
                     Thread.sleep(1000);
                     //Assert
                     Message updatedMessage = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(addedMessage.getId()).read().get();
@@ -1010,7 +1013,7 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
-                    client.getMe().getFolders()
+                    client.getMe().getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(updatedMessage.getId())
@@ -1046,7 +1049,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Act
                     client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(addedMessage.getId())
@@ -1056,7 +1059,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Assert
                     List<Message> messages = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages().read().get();
 
@@ -1101,7 +1104,7 @@ public class ExchangeTests extends TestGroup {
                     Message addedMessage = client.getMe().getMessages().add(message).get();
                     //Act
                     Message movedMessage = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(addedMessage.getId())
@@ -1111,7 +1114,7 @@ public class ExchangeTests extends TestGroup {
                     //Assert
                     try {
                         Message m = client.getMe()
-                                .getFolders()
+                                .getMailFolders()
                                 .getById(destinationFolderName)
                                 .getMessages()
                                 .getById(movedMessage.getId())
@@ -1169,7 +1172,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Act
                     Message copiedMessage = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(addedMessage.getId())
@@ -1179,7 +1182,7 @@ public class ExchangeTests extends TestGroup {
                     //Assert
                     try {
                         Message m = client.getMe()
-                                .getFolders()
+                                .getMailFolders()
                                 .getById(destinationFolderName)
                                 .getMessages()
                                 .getById(copiedMessage.getId())
@@ -1234,13 +1237,13 @@ public class ExchangeTests extends TestGroup {
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
-                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     if (inboxMessages.size() == 0) {
                         String mailSubject = "Test reply Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                         client.getMe().getOperations().sendMail(message, true).get();
                         Thread.sleep(2000);
-                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
                     Message messageToReply = inboxMessages.get(0);
@@ -1252,7 +1255,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Assert
                     List<Message> messages = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages().read().get();
 
@@ -1299,19 +1302,19 @@ public class ExchangeTests extends TestGroup {
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
-                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     if (inboxMessages.size() == 0) {
                         String mailSubject = "Test reply all Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                         client.getMe().getOperations().sendMail(message, true).get();
                         Thread.sleep(2000);
-                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
                     Message messageToReply = inboxMessages.get(0);
                     //Act
                     Message repliedMessage = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(messageToReply.getId())
@@ -1319,7 +1322,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Assert
                     List<Message> messages = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages().read().get();
 
@@ -1366,20 +1369,20 @@ public class ExchangeTests extends TestGroup {
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
-                    List<Message> inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     if (inboxMessages.size() == 0) {
                         String mailSubject = "Test fw Message";
                         Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
 
                         client.getMe().getOperations().sendMail(message, true).get();
                         Thread.sleep(2000);
-                        inboxMessages = client.getMe().getFolders().getById("Inbox").getMessages().top(1).read().get();
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
                     }
 
                     Message messageToReply = inboxMessages.get(0);
                     //Act
                     Message repliedMessage = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages()
                             .getById(messageToReply.getId())
@@ -1387,7 +1390,7 @@ public class ExchangeTests extends TestGroup {
 
                     //Assert
                     List<Message> messages = client.getMe()
-                            .getFolders()
+                            .getMailFolders()
                             .getById("Drafts")
                             .getMessages().read().get();
 
@@ -1953,17 +1956,18 @@ public class ExchangeTests extends TestGroup {
                     Event event = getSampleEvent();
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                    String formattedTime = formatter.format(addedEvent.getStart().getTime());
+                    Date eventDate = GregorianCalendar.getInstance().getTime();
 
                     //format date properly
-                    java.util.Calendar dateStart = (java.util.Calendar) addedEvent.getStart().clone();
+                    java.util.Calendar dateStart = java.util.Calendar.getInstance();
+                    dateStart.setTime(eventDate);
                     dateStart.add(java.util.Calendar.HOUR, -2);
 
-                    java.util.Calendar dateEnd = (java.util.Calendar) addedEvent.getStart().clone();
+                    java.util.Calendar dateEnd = java.util.Calendar.getInstance();
+                    dateEnd.setTime(eventDate);
                     dateEnd.add(java.util.Calendar.HOUR, 2);
 
-                    // Act
+
                     List<Event> calendarView = client.getMe().getCalendarView()
                             .addParameter("startdatetime", dateStart)
                             .addParameter("enddatetime", dateEnd)
@@ -2184,7 +2188,7 @@ public class ExchangeTests extends TestGroup {
                     Integer accepted = client.getMe()
                             .getEvents()
                             .getById(addedEvent.getId())
-                            .getOperations().accept("Accepted").get();
+                            .getOperations().accept("Accepted", true).get();
 
                     //Assert
                     if (!addedEvent.getSubject().equals(event.getSubject()))
@@ -2219,32 +2223,40 @@ public class ExchangeTests extends TestGroup {
                     result.setTestCase(this);
 
                     OutlookClient client = ApplicationContext.getOutlookClient();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
 
                     // Prepare
                     Event event = getSampleEvent();
                     event.setIsAllDay(true);
                     event.setSubject("all day event");
 
-                    java.util.Calendar start = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-
+                    java.util.Calendar start = java.util.Calendar.getInstance();
+                    start.setTime(new Date());
                     // reset hour, minutes, seconds and millis
                     start.set(java.util.Calendar.HOUR_OF_DAY, 0);
                     start.set(java.util.Calendar.MINUTE, 0);
                     start.set(java.util.Calendar.SECOND, 0);
                     start.set(java.util.Calendar.MILLISECOND, 0);
 
-                    event.setStart(start);
+                    DateTimeTimeZone dtzStart = new DateTimeTimeZone();
+                    dtzStart.setDateTime(formatter.format(start.getTime()));
+                    dtzStart.setTimeZone("UTC");
 
-                    java.util.Calendar end = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+                    event.setStart(dtzStart);
+
+                    java.util.Calendar end = java.util.Calendar.getInstance();
 
                     // reset hour, minutes, seconds and millis
-                    end.set(java.util.Calendar.HOUR_OF_DAY, 0);
-                    end.set(java.util.Calendar.MINUTE, 0);
-                    end.set(java.util.Calendar.SECOND, 0);
-                    end.set(java.util.Calendar.MILLISECOND, 0);
+                    end.setTime(start.getTime());
+
 
                     end.add(java.util.Calendar.DATE, 1);
-                    event.setEnd(end);
+
+                    DateTimeTimeZone dtzEnd = new DateTimeTimeZone();
+                    dtzEnd.setDateTime(formatter.format(end.getTime()));
+                    dtzEnd.setTimeZone("UTC");
+                    event.setEnd(dtzEnd);
 
                     Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
 
@@ -2271,11 +2283,63 @@ public class ExchangeTests extends TestGroup {
         return test;
     }
 
+    private TestCase canSnoozeAndDismissEvent(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getOutlookClient();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+
+                    // Prepare
+                    Event event = getSampleEvent();
+
+                    Event addedEvent = client.getMe().getCalendars().getById("Calendar").getEvents().add(event).get();
+
+                    //Act
+                    DateTimeTimeZone newDtz = new DateTimeTimeZone();
+                    newDtz.setDateTime(formatter.format(new Date()));
+                    newDtz.setTimeZone("UTC");
+                    client.getMe().getCalendars().getById("Calendar").getEvent(addedEvent.getId()).getOperations().snoozeReminder(newDtz);
+
+                    client.getMe().getCalendars().getById("Calendar").getEvent(addedEvent.getId()).getOperations().dismissReminder();
+
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
     private Event getSampleEvent() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        String formattedTime = formatter.format(new Date());
+
+        DateTimeTimeZone dtz = new DateTimeTimeZone();
+        dtz.setDateTime(formattedTime);
+        dtz.setTimeZone("UTC");
+
         Event event = new Event();
         event.setSubject("Today's appointment");
-        event.setStart(java.util.Calendar.getInstance());
+        event.setStart(dtz);
         event.setImportance(Importance.High);
+        event.setIsReminderOn(true);
+        event.setReminderMinutesBeforeStart(15);
+
 
         //Event body
         ItemBody itemBody = new ItemBody();
@@ -2518,17 +2582,14 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
-                    Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+                    Message addedMessage = client.getMe().getMailFolders().getById("Drafts").getMessages().add(message).get();
 
                     //Act
-                    java.util.Calendar dateGt = addedMessage.getDateTimeCreated();
+                    java.util.Calendar dateGt = addedMessage.getSentDateTime();
                     dateGt.add(java.util.Calendar.SECOND, -2);
 
-                    //format date properly
-                    String formatted = CalendarSerializer.serialize(dateGt);
-
-                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
-                            .filter("Subject eq '" + addedMessage.getSubject() + "' and DateTimeCreated gt " + formatted)
+                    List<Message> messages = client.getMe().getMailFolders().getById("Drafts").getMessages()
+                            .filter("Subject eq '" + addedMessage.getSubject() + "'" )
                             .read().get();
 
                     //Assert
@@ -2566,16 +2627,16 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
-                    Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+                    Message addedMessage = client.getMe().getMailFolders().getById("Drafts").getMessages().add(message).get();
 
                     //Act
-                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
+                    List<Message> messages = client.getMe().getMailFolders().getById("Drafts").getMessages()
                             .filter("Subject eq '" + subject + "'")
-                            .select("Subject,DateTimeCreated")
+                            .select("Subject,SentDateTime")
                             .read().get();
 
                     //Assert
-                    if (messages.size() > 0 && !messages.get(0).getSubject().equals("") && messages.get(0).getDateTimeReceived() == null)
+                    if (messages.size() > 0 && !messages.get(0).getSubject().equals("") && messages.get(0).getReceivedDateTime() == null)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -2610,11 +2671,11 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
-                    Message addedMessage1 = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
-                    Message addedMessage2 = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+                    Message addedMessage1 = client.getMe().getMailFolders().getById("Drafts").getMessages().add(message).get();
+                    Message addedMessage2 = client.getMe().getMailFolders().getById("Drafts").getMessages().add(message).get();
 
                     //Act
-                    List<Message> messages = client.getMe().getFolders().getById("Drafts").getMessages()
+                    List<Message> messages = client.getMe().getMailFolders().getById("Drafts").getMessages()
                             .filter("Subject eq '" + subject + "'")
                             .top(1)
                             .read().get();
@@ -2656,7 +2717,7 @@ public class ExchangeTests extends TestGroup {
 
                     FileAttachment fileAttachment = getFileAttachment();
                     //Prepare
-                    Message added = client.getMe().getFolders()
+                    Message added = client.getMe().getMailFolders()
                             .getById("Drafts").getMessages().add(message).get();
 
                     client.getMe().getMessages()
@@ -2666,13 +2727,13 @@ public class ExchangeTests extends TestGroup {
 
                     //Act
                     List<Message> messagesWithExpand = client.getMe()
-                            .getFolder("Drafts")
+                            .getMailFolder("Drafts")
                             .getMessages()
                             .filter("Subject eq '" + added.getSubject() + "'")
                             .expand("Attachments").read().get();
 
                     List<Message> messagesWithoutExpand = client.getMe()
-                            .getFolder("Drafts")
+                            .getMailFolder("Drafts")
                             .getMessages()
                             .filter("Subject eq '" + added.getSubject() + "'")
                             .read().get();
@@ -2771,16 +2832,16 @@ public class ExchangeTests extends TestGroup {
                     OutlookClient client = ApplicationContext.getOutlookClient();
 
                     //Prepare
-                    Message addedMessage = client.getMe().getFolders().getById("Drafts").getMessages().add(message).get();
+                    Message addedMessage = client.getMe().getMailFolders().getById("Drafts").getMessages().add(message).get();
 
                     //Act
                     Message messageWithSelect = client.getMe()
                             .getMessage(addedMessage.getId())
-                            .select("Subject,DateTimeCreated")
+                            .select("Subject")
                             .read().get();
 
                     //Assert
-                    if (messageWithSelect != null && messageWithSelect.getSubject().equals(subject) && messageWithSelect.getDateTimeReceived() == null)
+                    if (messageWithSelect != null && messageWithSelect.getSubject().equals(subject))
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup

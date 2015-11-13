@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Event
- .
  */
 public class EventFetcher extends OrcEntityFetcher<Event,EventOperations> 
                                      implements Readable<Event> {
@@ -46,8 +45,8 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,25 +58,9 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
         return this;
     }
 
-        
-     /**
-     * Gets attachments.
-     *
-     * @return the attachments
-     */
-    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
-        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
-    }
-
-    /**
-     * Gets attachment.
-     *
-     * @return the attachment
-     */
-    public AttachmentFetcher getAttachment(String id){
-         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
-    }
-     /**
+    
+    
+         /**
      * Gets calendar.
      *
      * @return the calendar
@@ -102,6 +85,24 @@ public class EventFetcher extends OrcEntityFetcher<Event,EventOperations>
      */
     public EventFetcher getInstance(String id){
          return new OrcCollectionFetcher<Event, EventFetcher, EventCollectionOperations>("Instances", this, Event.class, EventCollectionOperations.class).getById(id);
+    }
+
+     /**
+     * Gets attachments.
+     *
+     * @return the attachments
+     */
+    public OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations> getAttachments() {
+        return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class);
+    }
+
+    /**
+     * Gets attachment.
+     *
+     * @return the attachment
+     */
+    public AttachmentFetcher getAttachment(String id){
+         return new OrcCollectionFetcher<Attachment, AttachmentFetcher, AttachmentCollectionOperations>("Attachments", this, Attachment.class, AttachmentCollectionOperations.class).getById(id);
     }
 
 }

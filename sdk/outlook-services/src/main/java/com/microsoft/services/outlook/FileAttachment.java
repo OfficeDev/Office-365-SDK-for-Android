@@ -15,6 +15,8 @@ package com.microsoft.services.outlook;
 
 
 
+
+
 /**
  * The type File Attachment.
 */
@@ -65,28 +67,6 @@ public class FileAttachment extends Attachment {
     public void setContentLocation(String value) { 
         this.ContentLocation = value; 
         valueChanged("ContentLocation", value);
-
-    }
-            
-    private Boolean IsContactPhoto;
-     
-    /**
-    * Gets the Is Contact Photo.
-    *
-    * @return the Boolean
-    */
-    public Boolean getIsContactPhoto() {
-        return this.IsContactPhoto; 
-    }
-
-    /**
-    * Sets the Is Contact Photo.
-    *
-    * @param value the Boolean
-    */
-    public void setIsContactPhoto(Boolean value) { 
-        this.IsContactPhoto = value; 
-        valueChanged("IsContactPhoto", value);
 
     }
             

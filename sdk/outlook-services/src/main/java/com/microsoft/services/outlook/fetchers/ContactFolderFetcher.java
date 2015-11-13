@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  ContactFolder
- .
  */
 public class ContactFolderFetcher extends OrcEntityFetcher<ContactFolder,ContactFolderOperations> 
                                      implements Readable<ContactFolder> {
@@ -46,8 +45,8 @@ public class ContactFolderFetcher extends OrcEntityFetcher<ContactFolder,Contact
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class ContactFolderFetcher extends OrcEntityFetcher<ContactFolder,Contact
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets contacts.
      *

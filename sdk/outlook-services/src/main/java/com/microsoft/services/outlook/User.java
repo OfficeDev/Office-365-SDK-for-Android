@@ -15,13 +15,37 @@ package com.microsoft.services.outlook;
 
 
 
+
+
 /**
  * The type User.
 */
-public class User extends Entity {
+public class User extends DirectoryObject {
 
     public User(){
         setODataType("#Microsoft.OutlookServices.User");
+    }
+            
+    private String EmailAddress;
+     
+    /**
+    * Gets the Email Address.
+    *
+    * @return the String
+    */
+    public String getEmailAddress() {
+        return this.EmailAddress; 
+    }
+
+    /**
+    * Sets the Email Address.
+    *
+    * @param value the String
+    */
+    public void setEmailAddress(String value) { 
+        this.EmailAddress = value; 
+        valueChanged("EmailAddress", value);
+
     }
             
     private String DisplayName;
@@ -91,27 +115,27 @@ public class User extends Entity {
     }
     
         
-    private java.util.List<Folder> Folders = null;
+    private java.util.List<Subscription> Subscriptions = null;
     
     
      
     /**
-    * Gets the Folders.
+    * Gets the Subscriptions.
     *
-    * @return the java.util.List<Folder>
+    * @return the java.util.List<Subscription>
     */
-    public java.util.List<Folder> getFolders() {
-        return this.Folders; 
+    public java.util.List<Subscription> getSubscriptions() {
+        return this.Subscriptions; 
     }
 
     /**
-    * Sets the Folders.
+    * Sets the Subscriptions.
     *
-    * @param value the java.util.List<Folder>
+    * @param value the java.util.List<Subscription>
     */
-    public void setFolders(java.util.List<Folder> value) { 
-        this.Folders = value; 
-        valueChanged("Folders", value);
+    public void setSubscriptions(java.util.List<Subscription> value) { 
+        this.Subscriptions = value; 
+        valueChanged("Subscriptions", value);
 
     }
     
@@ -139,26 +163,76 @@ public class User extends Entity {
         valueChanged("Messages", value);
 
     }
-            
-    private Folder RootFolder;
+    
+        
+    private java.util.List<Group> JoinedGroups = null;
+    
+    
      
     /**
-    * Gets the Root Folder.
+    * Gets the Joined Groups.
     *
-    * @return the Folder
+    * @return the java.util.List<Group>
     */
-    public Folder getRootFolder() {
-        return this.RootFolder; 
+    public java.util.List<Group> getJoinedGroups() {
+        return this.JoinedGroups; 
     }
 
     /**
-    * Sets the Root Folder.
+    * Sets the Joined Groups.
     *
-    * @param value the Folder
+    * @param value the java.util.List<Group>
     */
-    public void setRootFolder(Folder value) { 
-        this.RootFolder = value; 
-        valueChanged("RootFolder", value);
+    public void setJoinedGroups(java.util.List<Group> value) { 
+        this.JoinedGroups = value; 
+        valueChanged("JoinedGroups", value);
+
+    }
+    
+        
+    private java.util.List<MailFolder> MailFolders = null;
+    
+    
+     
+    /**
+    * Gets the Mail Folders.
+    *
+    * @return the java.util.List<MailFolder>
+    */
+    public java.util.List<MailFolder> getMailFolders() {
+        return this.MailFolders; 
+    }
+
+    /**
+    * Sets the Mail Folders.
+    *
+    * @param value the java.util.List<MailFolder>
+    */
+    public void setMailFolders(java.util.List<MailFolder> value) { 
+        this.MailFolders = value; 
+        valueChanged("MailFolders", value);
+
+    }
+            
+    private Calendar Calendar;
+     
+    /**
+    * Gets the Calendar.
+    *
+    * @return the Calendar
+    */
+    public Calendar getCalendar() {
+        return this.Calendar; 
+    }
+
+    /**
+    * Sets the Calendar.
+    *
+    * @param value the Calendar
+    */
+    public void setCalendar(Calendar value) { 
+        this.Calendar = value; 
+        valueChanged("Calendar", value);
 
     }
     
@@ -184,28 +258,6 @@ public class User extends Entity {
     public void setCalendars(java.util.List<Calendar> value) { 
         this.Calendars = value; 
         valueChanged("Calendars", value);
-
-    }
-            
-    private Calendar Calendar;
-     
-    /**
-    * Gets the Calendar.
-    *
-    * @return the Calendar
-    */
-    public Calendar getCalendar() {
-        return this.Calendar; 
-    }
-
-    /**
-    * Sets the Calendar.
-    *
-    * @param value the Calendar
-    */
-    public void setCalendar(Calendar value) { 
-        this.Calendar = value; 
-        valueChanged("Calendar", value);
 
     }
     
@@ -235,31 +287,6 @@ public class User extends Entity {
     }
     
         
-    private java.util.List<Event> Events = null;
-    
-    
-     
-    /**
-    * Gets the Events.
-    *
-    * @return the java.util.List<Event>
-    */
-    public java.util.List<Event> getEvents() {
-        return this.Events; 
-    }
-
-    /**
-    * Sets the Events.
-    *
-    * @param value the java.util.List<Event>
-    */
-    public void setEvents(java.util.List<Event> value) { 
-        this.Events = value; 
-        valueChanged("Events", value);
-
-    }
-    
-        
     private java.util.List<Event> CalendarView = null;
     
     
@@ -281,6 +308,31 @@ public class User extends Entity {
     public void setCalendarView(java.util.List<Event> value) { 
         this.CalendarView = value; 
         valueChanged("CalendarView", value);
+
+    }
+    
+        
+    private java.util.List<Event> Events = null;
+    
+    
+     
+    /**
+    * Gets the Events.
+    *
+    * @return the java.util.List<Event>
+    */
+    public java.util.List<Event> getEvents() {
+        return this.Events; 
+    }
+
+    /**
+    * Sets the Events.
+    *
+    * @param value the java.util.List<Event>
+    */
+    public void setEvents(java.util.List<Event> value) { 
+        this.Events = value; 
+        valueChanged("Events", value);
 
     }
     
@@ -331,6 +383,28 @@ public class User extends Entity {
     public void setContactFolders(java.util.List<ContactFolder> value) { 
         this.ContactFolders = value; 
         valueChanged("ContactFolders", value);
+
+    }
+            
+    private Photo Photo;
+     
+    /**
+    * Gets the Photo.
+    *
+    * @return the Photo
+    */
+    public Photo getPhoto() {
+        return this.Photo; 
+    }
+
+    /**
+    * Sets the Photo.
+    *
+    * @param value the Photo
+    */
+    public void setPhoto(Photo value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
 
     }
 }

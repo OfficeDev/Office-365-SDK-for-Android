@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  CalendarGroup
- .
  */
 public class CalendarGroupFetcher extends OrcEntityFetcher<CalendarGroup,CalendarGroupOperations> 
                                      implements Readable<CalendarGroup> {
@@ -46,8 +45,8 @@ public class CalendarGroupFetcher extends OrcEntityFetcher<CalendarGroup,Calenda
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -59,7 +58,9 @@ public class CalendarGroupFetcher extends OrcEntityFetcher<CalendarGroup,Calenda
         return this;
     }
 
-        
+    
+    
+    
      /**
      * Gets calendars.
      *

@@ -16,6 +16,8 @@ package com.microsoft.services.outlook;
 import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
+
+
 /**
  * The type Recipient.
 */

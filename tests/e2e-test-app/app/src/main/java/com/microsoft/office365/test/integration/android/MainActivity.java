@@ -54,7 +54,6 @@ import com.microsoft.office365.test.integration.tests.FilesTests;
 import com.microsoft.office365.test.integration.tests.GraphTests;
 import com.microsoft.office365.test.integration.tests.ListsTests;
 import com.microsoft.office365.test.integration.tests.OneNoteTests;
-import com.microsoft.office365.test.integration.tests.OutlookClientTests;
 import com.microsoft.office365.test.integration.tests.filters.OutlookFilters;
 import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 

@@ -21,17 +21,17 @@ import static com.microsoft.services.orc.core.Helpers.*;
 import com.microsoft.services.orc.serialization.JsonSerializer;
 
 /**
- * The type FolderOperations.
+ * The type MailFolderOperations.
  */
-public class FolderOperations extends EntityOperations {
+public class MailFolderOperations extends EntityOperations {
 
      /**
-      * Instantiates a new FolderOperations.
+      * Instantiates a new MailFolderOperations.
       *
       * @param urlComponent the url component
       * @param parent the parent
       */
-    public FolderOperations(String urlComponent, OrcExecutable parent) {
+    public MailFolderOperations(String urlComponent, OrcExecutable parent) {
             super(urlComponent, parent);
     }
 
@@ -42,7 +42,7 @@ public class FolderOperations extends EntityOperations {
      * @param value the value
      * @return the operations
      */
-    public FolderOperations addParameter(String name, Object value) {
+    public MailFolderOperations addParameter(String name, Object value) {
         addCustomParameter(name, value);
         return this;
     }
@@ -54,7 +54,7 @@ public class FolderOperations extends EntityOperations {
      * @param value the value
      * @return the operations
      */
-    public FolderOperations addHeader(String name, String value) {
+    public MailFolderOperations addHeader(String name, String value) {
         addCustomHeader(name, value);
         return this;
     }
@@ -66,13 +66,13 @@ public class FolderOperations extends EntityOperations {
      * @param destinationId the destinationId 
      * @return the listenable future
      */         
-    public ListenableFuture<Folder> copy(String destinationId) { 
+    public ListenableFuture<MailFolder> copy(String destinationId) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedDestinationId = serializer.serialize(destinationId);
 		  
         
         ListenableFuture<String> future = copyRaw(serializedDestinationId);
-        return transformToEntityListenableFuture(future, Folder.class, getResolver());
+        return transformToEntityListenableFuture(future, MailFolder.class, getResolver());
         
     }
 
@@ -107,13 +107,13 @@ public class FolderOperations extends EntityOperations {
      * @param destinationId the destinationId 
      * @return the listenable future
      */         
-    public ListenableFuture<Folder> move(String destinationId) { 
+    public ListenableFuture<MailFolder> move(String destinationId) { 
         JsonSerializer serializer = getResolver().getJsonSerializer();      
         String serializedDestinationId = serializer.serialize(destinationId);
 		  
         
         ListenableFuture<String> future = moveRaw(serializedDestinationId);
-        return transformToEntityListenableFuture(future, Folder.class, getResolver());
+        return transformToEntityListenableFuture(future, MailFolder.class, getResolver());
         
     }
 

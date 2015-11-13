@@ -20,7 +20,6 @@ import com.microsoft.services.orc.core.Readable;
 
 /**
  * The type  Entity
- .
  */
 public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations> 
                                      implements Readable<Entity> {
@@ -46,8 +45,8 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         addCustomParameter(name, value);
         return this;
     }
-
-     /**
+	
+	/**
      * Add header.
      *
      * @param name the name
@@ -68,12 +67,12 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new ItemFetcher(this.urlComponent, this.parent);
     }   
 
-    public UserFetcher asUser(){
-        return new UserFetcher(this.urlComponent, this.parent);
+    public DirectoryObjectFetcher asDirectoryObject(){
+        return new DirectoryObjectFetcher(this.urlComponent, this.parent);
     }   
 
-    public FolderFetcher asFolder(){
-        return new FolderFetcher(this.urlComponent, this.parent);
+    public MailFolderFetcher asMailFolder(){
+        return new MailFolderFetcher(this.urlComponent, this.parent);
     }   
 
     public CalendarFetcher asCalendar(){
@@ -87,5 +86,27 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
     public ContactFolderFetcher asContactFolder(){
         return new ContactFolderFetcher(this.urlComponent, this.parent);
     }   
+
+    public PhotoFetcher asPhoto(){
+        return new PhotoFetcher(this.urlComponent, this.parent);
+    }   
+
+    public SubscriptionFetcher asSubscription(){
+        return new SubscriptionFetcher(this.urlComponent, this.parent);
+    }   
+
+    public NotificationFetcher asNotification(){
+        return new NotificationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ConversationFetcher asConversation(){
+        return new ConversationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ConversationThreadFetcher asConversationThread(){
+        return new ConversationThreadFetcher(this.urlComponent, this.parent);
+    }   
+
+    
     
 }

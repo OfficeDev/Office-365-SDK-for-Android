@@ -15,6 +15,8 @@ package com.microsoft.services.outlook;
 
 
 
+
+
 /**
  * The type Contact.
 */
@@ -241,6 +243,72 @@ public class Contact extends Item {
     public void setTitle(String value) { 
         this.Title = value; 
         valueChanged("Title", value);
+
+    }
+            
+    private String YomiGivenName;
+     
+    /**
+    * Gets the Yomi Given Name.
+    *
+    * @return the String
+    */
+    public String getYomiGivenName() {
+        return this.YomiGivenName; 
+    }
+
+    /**
+    * Sets the Yomi Given Name.
+    *
+    * @param value the String
+    */
+    public void setYomiGivenName(String value) { 
+        this.YomiGivenName = value; 
+        valueChanged("YomiGivenName", value);
+
+    }
+            
+    private String YomiSurname;
+     
+    /**
+    * Gets the Yomi Surname.
+    *
+    * @return the String
+    */
+    public String getYomiSurname() {
+        return this.YomiSurname; 
+    }
+
+    /**
+    * Sets the Yomi Surname.
+    *
+    * @param value the String
+    */
+    public void setYomiSurname(String value) { 
+        this.YomiSurname = value; 
+        valueChanged("YomiSurname", value);
+
+    }
+            
+    private String YomiCompanyName;
+     
+    /**
+    * Gets the Yomi Company Name.
+    *
+    * @return the String
+    */
+    public String getYomiCompanyName() {
+        return this.YomiCompanyName; 
+    }
+
+    /**
+    * Sets the Yomi Company Name.
+    *
+    * @param value the String
+    */
+    public void setYomiCompanyName(String value) { 
+        this.YomiCompanyName = value; 
+        valueChanged("YomiCompanyName", value);
 
     }
             
@@ -516,6 +584,28 @@ public class Contact extends Item {
         valueChanged("HomePhones", value);
 
     }
+            
+    private String MobilePhone1;
+     
+    /**
+    * Gets the Mobile Phone1.
+    *
+    * @return the String
+    */
+    public String getMobilePhone1() {
+        return this.MobilePhone1; 
+    }
+
+    /**
+    * Sets the Mobile Phone1.
+    *
+    * @param value the String
+    */
+    public void setMobilePhone1(String value) { 
+        this.MobilePhone1 = value; 
+        valueChanged("MobilePhone1", value);
+
+    }
     
         
     private java.util.List<String> BusinessPhones = null;
@@ -539,28 +629,6 @@ public class Contact extends Item {
     public void setBusinessPhones(java.util.List<String> value) { 
         this.BusinessPhones = value; 
         valueChanged("BusinessPhones", value);
-
-    }
-            
-    private String MobilePhone1;
-     
-    /**
-    * Gets the Mobile Phone1.
-    *
-    * @return the String
-    */
-    public String getMobilePhone1() {
-        return this.MobilePhone1; 
-    }
-
-    /**
-    * Sets the Mobile Phone1.
-    *
-    * @param value the String
-    */
-    public void setMobilePhone1(String value) { 
-        this.MobilePhone1 = value; 
-        valueChanged("MobilePhone1", value);
 
     }
             
@@ -630,69 +698,94 @@ public class Contact extends Item {
 
     }
             
-    private String YomiCompanyName;
+    private String SpouseName;
      
     /**
-    * Gets the Yomi Company Name.
+    * Gets the Spouse Name.
     *
     * @return the String
     */
-    public String getYomiCompanyName() {
-        return this.YomiCompanyName; 
+    public String getSpouseName() {
+        return this.SpouseName; 
     }
 
     /**
-    * Sets the Yomi Company Name.
+    * Sets the Spouse Name.
     *
     * @param value the String
     */
-    public void setYomiCompanyName(String value) { 
-        this.YomiCompanyName = value; 
-        valueChanged("YomiCompanyName", value);
+    public void setSpouseName(String value) { 
+        this.SpouseName = value; 
+        valueChanged("SpouseName", value);
 
     }
             
-    private String YomiGivenName;
+    private String PersonalNotes;
      
     /**
-    * Gets the Yomi Given Name.
+    * Gets the Personal Notes.
     *
     * @return the String
     */
-    public String getYomiGivenName() {
-        return this.YomiGivenName; 
+    public String getPersonalNotes() {
+        return this.PersonalNotes; 
     }
 
     /**
-    * Sets the Yomi Given Name.
+    * Sets the Personal Notes.
     *
     * @param value the String
     */
-    public void setYomiGivenName(String value) { 
-        this.YomiGivenName = value; 
-        valueChanged("YomiGivenName", value);
+    public void setPersonalNotes(String value) { 
+        this.PersonalNotes = value; 
+        valueChanged("PersonalNotes", value);
+
+    }
+    
+        
+    private java.util.List<String> Children = null;
+    
+    
+     
+    /**
+    * Gets the Children.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getChildren() {
+        return this.Children; 
+    }
+
+    /**
+    * Sets the Children.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setChildren(java.util.List<String> value) { 
+        this.Children = value; 
+        valueChanged("Children", value);
 
     }
             
-    private String YomiSurname;
+    private Photo Photo;
      
     /**
-    * Gets the Yomi Surname.
+    * Gets the Photo.
     *
-    * @return the String
+    * @return the Photo
     */
-    public String getYomiSurname() {
-        return this.YomiSurname; 
+    public Photo getPhoto() {
+        return this.Photo; 
     }
 
     /**
-    * Sets the Yomi Surname.
+    * Sets the Photo.
     *
-    * @param value the String
+    * @param value the Photo
     */
-    public void setYomiSurname(String value) { 
-        this.YomiSurname = value; 
-        valueChanged("YomiSurname", value);
+    public void setPhoto(Photo value) { 
+        this.Photo = value; 
+        valueChanged("Photo", value);
 
     }
 }

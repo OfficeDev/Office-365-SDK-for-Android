@@ -15,6 +15,8 @@ package com.microsoft.services.outlook;
 
 
 
+
+
 /**
  * The type Calendar Group.
 */
@@ -46,28 +48,6 @@ public class CalendarGroup extends Entity {
 
     }
             
-    private String ChangeKey;
-     
-    /**
-    * Gets the Change Key.
-    *
-    * @return the String
-    */
-    public String getChangeKey() {
-        return this.ChangeKey; 
-    }
-
-    /**
-    * Sets the Change Key.
-    *
-    * @param value the String
-    */
-    public void setChangeKey(String value) { 
-        this.ChangeKey = value; 
-        valueChanged("ChangeKey", value);
-
-    }
-            
     private java.util.UUID ClassId;
      
     /**
@@ -87,6 +67,28 @@ public class CalendarGroup extends Entity {
     public void setClassId(java.util.UUID value) { 
         this.ClassId = value; 
         valueChanged("ClassId", value);
+
+    }
+            
+    private String ChangeKey;
+     
+    /**
+    * Gets the Change Key.
+    *
+    * @return the String
+    */
+    public String getChangeKey() {
+        return this.ChangeKey; 
+    }
+
+    /**
+    * Sets the Change Key.
+    *
+    * @param value the String
+    */
+    public void setChangeKey(String value) { 
+        this.ChangeKey = value; 
+        valueChanged("ChangeKey", value);
 
     }
     
