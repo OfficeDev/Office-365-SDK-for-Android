@@ -3,22 +3,38 @@ package com.microsoft.office365.test.integration.tests;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
 import com.microsoft.office365.test.integration.framework.TestStatus;
-import com.microsoft.services.orc.serialization.impl.CalendarSerializer;
-import com.microsoft.services.orc.serialization.impl.GsonSerializer;
-import com.microsoft.services.outlook.*;
+import com.microsoft.services.outlook.Attachment;
+import com.microsoft.services.outlook.Attendee;
+import com.microsoft.services.outlook.BodyType;
 import com.microsoft.services.outlook.Calendar;
+import com.microsoft.services.outlook.CalendarGroup;
+import com.microsoft.services.outlook.Contact;
+import com.microsoft.services.outlook.DateTimeTimeZone;
+import com.microsoft.services.outlook.EmailAddress;
+import com.microsoft.services.outlook.Event;
+import com.microsoft.services.outlook.FileAttachment;
+import com.microsoft.services.outlook.Importance;
+import com.microsoft.services.outlook.ItemBody;
+import com.microsoft.services.outlook.MailFolder;
+import com.microsoft.services.outlook.Message;
+import com.microsoft.services.outlook.Recipient;
+import com.microsoft.services.outlook.User;
 import com.microsoft.services.outlook.fetchers.OutlookClient;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.UUID;
 
 public class ExchangeTests extends TestGroup {
 
@@ -78,6 +94,7 @@ public class ExchangeTests extends TestGroup {
         this.addTest(canUpdateEvents("Can update events", true));
         this.addTest(canDeleteEvents("Can delete events", true));
         this.addTest(canCreateAllDayEvent("Can create all day event", true));
+        this.addTest(canGetReminderView("Can get reminderView()", true));
 
         //Contacts
         this.addTest(canGetContactsFolder("Can get contacts folder", true));
@@ -2544,7 +2561,7 @@ public class ExchangeTests extends TestGroup {
                     dateGt.add(java.util.Calendar.SECOND, -2);
 
                     List<Message> messages = client.getMe().getMailFolders().getById("Drafts").getMessages()
-                            .filter("Subject eq '" + addedMessage.getSubject() + "'" )
+                            .filter("Subject eq '" + addedMessage.getSubject() + "'")
                             .read().get();
 
                     //Assert
@@ -2905,6 +2922,38 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getContact(addedContact1.getId()).delete().get();
                     client.getMe().getContact(addedContact2.getId()).delete().get();
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canGetReminderView(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    OutlookClient client = ApplicationContext.getOutlookClient();
+
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mmZ");
+                    Date eventDate = GregorianCalendar.getInstance().getTime();
+
+                    String eventDateString = df.format(eventDate);
+                    client.getMe().getOperations().reminderView(eventDateString, eventDateString);
+                    result.setStatus(TestStatus.Passed);
 
                     return result;
                 } catch (Exception e) {
