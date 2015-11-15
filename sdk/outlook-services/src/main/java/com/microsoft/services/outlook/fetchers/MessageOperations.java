@@ -67,12 +67,15 @@ public class MessageOperations extends ItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Message> copy(String destinationId) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedDestinationId = serializer.serialize(destinationId);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedDestinationId = serializer.serialize(destinationId);
 		  
         
-        ListenableFuture<String> future = copyRaw(serializedDestinationId);
-        return transformToEntityListenableFuture(future, Message.class, getResolver());
+		
+		ListenableFuture<String> future = copyRaw(serializedDestinationId);
+		return transformToEntityListenableFuture(future, Message.class, getResolver());
         
     }
 
@@ -93,7 +96,8 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Copy");
+        request.getUrl().appendPathComponent("Copy");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -108,12 +112,15 @@ public class MessageOperations extends ItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Message> move(String destinationId) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedDestinationId = serializer.serialize(destinationId);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedDestinationId = serializer.serialize(destinationId);
 		  
         
-        ListenableFuture<String> future = moveRaw(serializedDestinationId);
-        return transformToEntityListenableFuture(future, Message.class, getResolver());
+		
+		ListenableFuture<String> future = moveRaw(serializedDestinationId);
+		return transformToEntityListenableFuture(future, Message.class, getResolver());
         
     }
 
@@ -134,7 +141,8 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Move");
+        request.getUrl().appendPathComponent("Move");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -150,10 +158,12 @@ public class MessageOperations extends ItemOperations {
      */         
     public ListenableFuture<Message> createReply() { 
               
-          
         
-        ListenableFuture<String> future = createReplyRaw();
-        return transformToEntityListenableFuture(future, Message.class, getResolver());
+		  
+        
+		
+		ListenableFuture<String> future = createReplyRaw();
+		return transformToEntityListenableFuture(future, Message.class, getResolver());
         
     }
 
@@ -168,7 +178,8 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.CreateReply");
+        request.getUrl().appendPathComponent("CreateReply");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -184,10 +195,12 @@ public class MessageOperations extends ItemOperations {
      */         
     public ListenableFuture<Message> createReplyAll() { 
               
-          
         
-        ListenableFuture<String> future = createReplyAllRaw();
-        return transformToEntityListenableFuture(future, Message.class, getResolver());
+		  
+        
+		
+		ListenableFuture<String> future = createReplyAllRaw();
+		return transformToEntityListenableFuture(future, Message.class, getResolver());
         
     }
 
@@ -202,7 +215,8 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.CreateReplyAll");
+        request.getUrl().appendPathComponent("CreateReplyAll");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -218,10 +232,12 @@ public class MessageOperations extends ItemOperations {
      */         
     public ListenableFuture<Message> createForward() { 
               
-          
         
-        ListenableFuture<String> future = createForwardRaw();
-        return transformToEntityListenableFuture(future, Message.class, getResolver());
+		  
+        
+		
+		ListenableFuture<String> future = createForwardRaw();
+		return transformToEntityListenableFuture(future, Message.class, getResolver());
         
     }
 
@@ -236,7 +252,8 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.CreateForward");
+        request.getUrl().appendPathComponent("CreateForward");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -251,12 +268,15 @@ public class MessageOperations extends ItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> reply(String comment) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedComment = serializer.serialize(comment);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedComment = serializer.serialize(comment);
 		  
         
-        ListenableFuture<String> future = replyRaw(serializedComment);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = replyRaw(serializedComment);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -277,7 +297,8 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Reply");
+        request.getUrl().appendPathComponent("Reply");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -292,12 +313,15 @@ public class MessageOperations extends ItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> replyAll(String comment) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedComment = serializer.serialize(comment);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedComment = serializer.serialize(comment);
 		  
         
-        ListenableFuture<String> future = replyAllRaw(serializedComment);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = replyAllRaw(serializedComment);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -318,7 +342,8 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.ReplyAll");
+        request.getUrl().appendPathComponent("ReplyAll");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -333,13 +358,16 @@ public class MessageOperations extends ItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> forward(String comment, java.util.List<Recipient> toRecipients) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedComment = serializer.serialize(comment);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedComment = serializer.serialize(comment);
 		String serializedToRecipients = serializer.serialize(toRecipients);
 		  
         
-        ListenableFuture<String> future = forwardRaw(serializedComment, serializedToRecipients);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = forwardRaw(serializedComment, serializedToRecipients);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -361,7 +389,8 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Forward");
+        request.getUrl().appendPathComponent("Forward");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -377,10 +406,12 @@ public class MessageOperations extends ItemOperations {
      */         
     public ListenableFuture<Integer> send() { 
               
-          
         
-        ListenableFuture<String> future = sendRaw();
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		  
+        
+		
+		ListenableFuture<String> future = sendRaw();
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -395,7 +426,8 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Send");
+        request.getUrl().appendPathComponent("Send");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

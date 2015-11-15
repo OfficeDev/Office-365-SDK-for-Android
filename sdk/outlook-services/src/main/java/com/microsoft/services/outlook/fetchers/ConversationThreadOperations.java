@@ -67,12 +67,15 @@ public class ConversationThreadOperations extends EntityOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> reply(Post post) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedPost = serializer.serialize(post);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedPost = serializer.serialize(post);
 		  
         
-        ListenableFuture<String> future = replyRaw(serializedPost);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = replyRaw(serializedPost);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -93,7 +96,8 @@ public class ConversationThreadOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Reply");
+        request.getUrl().appendPathComponent("Reply");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
