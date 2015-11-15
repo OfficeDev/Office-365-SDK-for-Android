@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type DriveOperations.
  */
-public class DriveOperations extends OrcOperations {
+public class DriveOperations extends EntityOperations {
 
      /**
       * Instantiates a new DriveOperations.
@@ -61,36 +61,30 @@ public class DriveOperations extends OrcOperations {
 
     
     
-    /**
+     /**
      * allPhotos listenable future.
      * 
      * @return the listenable future
      */         
-    public ListenableFuture<Item> allPhotos() { 
-              
-          
+    public ListenableFuture<DriveItem> allPhotos() { 
+		
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         
-        ListenableFuture<String> future = allPhotosRaw();
-        return transformToEntityListenableFuture(future, Item.class, getResolver());
-        
-    }
 
-     /**
-     * allPhotosRaw listenable future.
-     * 
-     * @return the listenable future
-     */ 
-    public ListenableFuture<String> allPhotosRaw(){
+		Request request = getResolver().createRequest();
+		request.setVerb(HttpVerb.GET);
+		String parameters = getFunctionParameters(map);
+        
+		        
+		request.getUrl().appendPathComponent("allPhotos(" + parameters + ")");   
+        
+		
+		ListenableFuture<OrcResponse> future = oDataExecute(request);
+		   
+        
+		return transformToEntityListenableFuture(transformToStringListenableFuture(future), DriveItem.class, getResolver());
         
         
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
-                        
-        request.getUrl().appendPathComponent("Microsoft.Graph.allPhotos");
-        
-        ListenableFuture<OrcResponse> future = oDataExecute(request);
-        return transformToStringListenableFuture(future);
-    }
-
-
+   }
+    
 }

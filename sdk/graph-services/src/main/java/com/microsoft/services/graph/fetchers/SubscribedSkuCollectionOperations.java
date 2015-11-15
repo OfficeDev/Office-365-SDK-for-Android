@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type SubscribedSkuCollectionOperations
  */
-public class SubscribedSkuCollectionOperations extends OrcOperations{
+public class SubscribedSkuCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new SubscribedSkuCollectionOperations.

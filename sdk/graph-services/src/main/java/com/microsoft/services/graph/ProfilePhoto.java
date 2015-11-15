@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class ProfilePhoto extends Entity {
 
     public ProfilePhoto(){
-        setODataType("#Microsoft.Graph.ProfilePhoto");
+        setODataType("#microsoft.graph.profilePhoto");
     }
             
     private Integer Height;

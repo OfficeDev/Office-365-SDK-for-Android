@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type ShareCollectionOperations
  */
-public class ShareCollectionOperations extends OrcOperations{
+public class ShareCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new ShareCollectionOperations.

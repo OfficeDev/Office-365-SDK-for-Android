@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class EventMessage extends Message {
 
     public EventMessage(){
-        setODataType("#Microsoft.Graph.EventMessage");
+        setODataType("#microsoft.graph.eventMessage");
     }
             
     private MeetingMessageType MeetingMessageType;

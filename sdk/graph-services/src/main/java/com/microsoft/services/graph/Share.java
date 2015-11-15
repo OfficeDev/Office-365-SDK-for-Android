@@ -13,7 +13,6 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 
@@ -21,32 +20,10 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 /**
  * The type Share.
 */
-public class Share extends ODataBaseEntity {
+public class Share extends Entity {
 
     public Share(){
-        setODataType("#Microsoft.Graph.share");
-    }
-            
-    private String id;
-     
-    /**
-    * Gets the id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.id; 
-    }
-
-    /**
-    * Sets the id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.id = value; 
-        valueChanged("id", value);
-
+        setODataType("#microsoft.graph.share");
     }
             
     private String name;
@@ -94,25 +71,25 @@ public class Share extends ODataBaseEntity {
     }
     
         
-    private java.util.List<Item> items = null;
+    private java.util.List<DriveItem> items = null;
     
     
      
     /**
     * Gets the items.
     *
-    * @return the java.util.List<Item>
+    * @return the java.util.List<DriveItem>
     */
-    public java.util.List<Item> getItems() {
+    public java.util.List<DriveItem> getItems() {
         return this.items; 
     }
 
     /**
     * Sets the items.
     *
-    * @param value the java.util.List<Item>
+    * @param value the java.util.List<DriveItem>
     */
-    public void setItems(java.util.List<Item> value) { 
+    public void setItems(java.util.List<DriveItem> value) { 
         this.items = value; 
         valueChanged("items", value);
 

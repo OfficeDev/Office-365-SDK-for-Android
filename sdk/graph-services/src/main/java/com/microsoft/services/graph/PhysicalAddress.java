@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class PhysicalAddress extends ODataBaseEntity {
 
     public PhysicalAddress(){
-        setODataType("#Microsoft.Graph.PhysicalAddress");
+        setODataType("#microsoft.graph.physicalAddress");
     }
 
     private String Street;

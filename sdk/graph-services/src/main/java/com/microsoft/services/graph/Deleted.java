@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Deleted extends ODataBaseEntity {
 
     public Deleted(){
-        setODataType("#Microsoft.Graph.deleted");
+        setODataType("#microsoft.graph.deleted");
     }
 
     private String state;

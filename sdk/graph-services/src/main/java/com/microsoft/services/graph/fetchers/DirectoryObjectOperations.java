@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type DirectoryObjectOperations.
  */
-public class DirectoryObjectOperations extends OrcOperations {
+public class DirectoryObjectOperations extends EntityOperations {
 
      /**
       * Instantiates a new DirectoryObjectOperations.
@@ -67,12 +67,15 @@ public class DirectoryObjectOperations extends OrcOperations {
      * @return the listenable future
      */         
     public ListenableFuture<String> checkMemberGroups(java.util.List<String> groupIds) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedgroupIds = serializer.serialize(groupIds);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedgroupIds = serializer.serialize(groupIds);
 		  
         
-        ListenableFuture<String> future = checkMemberGroupsRaw(serializedgroupIds);
-        return transformToEntityListenableFuture(future, String.class, getResolver());
+		
+		ListenableFuture<String> future = checkMemberGroupsRaw(serializedgroupIds);
+		return transformToEntityListenableFuture(future, String.class, getResolver());
         
     }
 
@@ -93,7 +96,8 @@ public class DirectoryObjectOperations extends OrcOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.checkMemberGroups");
+        request.getUrl().appendPathComponent("checkMemberGroups");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -108,12 +112,15 @@ public class DirectoryObjectOperations extends OrcOperations {
      * @return the listenable future
      */         
     public ListenableFuture<String> getMemberGroups(Boolean securityEnabledOnly) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedsecurityEnabledOnly = serializer.serialize(securityEnabledOnly);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedsecurityEnabledOnly = serializer.serialize(securityEnabledOnly);
 		  
         
-        ListenableFuture<String> future = getMemberGroupsRaw(serializedsecurityEnabledOnly);
-        return transformToEntityListenableFuture(future, String.class, getResolver());
+		
+		ListenableFuture<String> future = getMemberGroupsRaw(serializedsecurityEnabledOnly);
+		return transformToEntityListenableFuture(future, String.class, getResolver());
         
     }
 
@@ -134,7 +141,8 @@ public class DirectoryObjectOperations extends OrcOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.getMemberGroups");
+        request.getUrl().appendPathComponent("getMemberGroups");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -149,12 +157,15 @@ public class DirectoryObjectOperations extends OrcOperations {
      * @return the listenable future
      */         
     public ListenableFuture<String> getMemberObjects(Boolean securityEnabledOnly) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedsecurityEnabledOnly = serializer.serialize(securityEnabledOnly);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedsecurityEnabledOnly = serializer.serialize(securityEnabledOnly);
 		  
         
-        ListenableFuture<String> future = getMemberObjectsRaw(serializedsecurityEnabledOnly);
-        return transformToEntityListenableFuture(future, String.class, getResolver());
+		
+		ListenableFuture<String> future = getMemberObjectsRaw(serializedsecurityEnabledOnly);
+		return transformToEntityListenableFuture(future, String.class, getResolver());
         
     }
 
@@ -175,7 +186,8 @@ public class DirectoryObjectOperations extends OrcOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.getMemberObjects");
+        request.getUrl().appendPathComponent("getMemberObjects");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

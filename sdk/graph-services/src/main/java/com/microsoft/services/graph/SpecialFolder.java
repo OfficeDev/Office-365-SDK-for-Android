@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class SpecialFolder extends ODataBaseEntity {
 
     public SpecialFolder(){
-        setODataType("#Microsoft.Graph.specialFolder");
+        setODataType("#microsoft.graph.specialFolder");
     }
 
     private String name;

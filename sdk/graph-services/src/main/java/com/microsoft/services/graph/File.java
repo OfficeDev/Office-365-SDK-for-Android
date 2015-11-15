@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class File extends ODataBaseEntity {
 
     public File(){
-        setODataType("#Microsoft.Graph.file");
+        setODataType("#microsoft.graph.file");
     }
 
     private Hashes hashes;

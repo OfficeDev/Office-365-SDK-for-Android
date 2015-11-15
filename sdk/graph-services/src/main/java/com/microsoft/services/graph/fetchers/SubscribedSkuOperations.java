@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type SubscribedSkuOperations.
  */
-public class SubscribedSkuOperations extends OrcOperations {
+public class SubscribedSkuOperations extends EntityOperations {
 
      /**
       * Instantiates a new SubscribedSkuOperations.

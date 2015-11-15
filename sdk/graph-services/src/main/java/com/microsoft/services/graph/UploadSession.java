@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class UploadSession extends ODataBaseEntity {
 
     public UploadSession(){
-        setODataType("#Microsoft.Graph.uploadSession");
+        setODataType("#microsoft.graph.uploadSession");
     }
 
     private String uploadUrl;

@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Message extends OutlookItem {
 
     public Message(){
-        setODataType("#Microsoft.Graph.Message");
+        setODataType("#microsoft.graph.message");
     }
             
     private java.util.Calendar ReceivedDateTime;
@@ -497,53 +497,6 @@ public class Message extends OutlookItem {
     public void setWebLink(String value) { 
         this.WebLink = value; 
         valueChanged("WebLink", value);
-
-    }
-            
-    private InferenceClassificationType InferenceClassification;
-     
-    /**
-    * Gets the Inference Classification.
-    *
-    * @return the InferenceClassificationType
-    */
-    public InferenceClassificationType getInferenceClassification() {
-        return this.InferenceClassification; 
-    }
-
-    /**
-    * Sets the Inference Classification.
-    *
-    * @param value the InferenceClassificationType
-    */
-    public void setInferenceClassification(InferenceClassificationType value) { 
-        this.InferenceClassification = value; 
-        valueChanged("InferenceClassification", value);
-
-    }
-    
-        
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
 
     }
     

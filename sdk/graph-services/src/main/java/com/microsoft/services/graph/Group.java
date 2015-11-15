@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Group extends DirectoryObject {
 
     public Group(){
-        setODataType("#Microsoft.Graph.Group");
+        setODataType("#microsoft.graph.group");
     }
             
     private String description;
@@ -48,28 +48,6 @@ public class Group extends DirectoryObject {
 
     }
             
-    private Boolean dirSyncEnabled;
-     
-    /**
-    * Gets the dir Sync Enabled.
-    *
-    * @return the Boolean
-    */
-    public Boolean getDirSyncEnabled() {
-        return this.dirSyncEnabled; 
-    }
-
-    /**
-    * Sets the dir Sync Enabled.
-    *
-    * @param value the Boolean
-    */
-    public void setDirSyncEnabled(Boolean value) { 
-        this.dirSyncEnabled = value; 
-        valueChanged("dirSyncEnabled", value);
-
-    }
-            
     private String displayName;
      
     /**
@@ -89,31 +67,6 @@ public class Group extends DirectoryObject {
     public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
-
-    }
-    
-        
-    private java.util.List<String> creationOptions = null;
-    
-    
-     
-    /**
-    * Gets the creation Options.
-    *
-    * @return the java.util.List<String>
-    */
-    public java.util.List<String> getCreationOptions() {
-        return this.creationOptions; 
-    }
-
-    /**
-    * Sets the creation Options.
-    *
-    * @param value the java.util.List<String>
-    */
-    public void setCreationOptions(java.util.List<String> value) { 
-        this.creationOptions = value; 
-        valueChanged("creationOptions", value);
 
     }
     
@@ -142,50 +95,6 @@ public class Group extends DirectoryObject {
 
     }
             
-    private Boolean isPublic;
-     
-    /**
-    * Gets the is Public.
-    *
-    * @return the Boolean
-    */
-    public Boolean getIsPublic() {
-        return this.isPublic; 
-    }
-
-    /**
-    * Sets the is Public.
-    *
-    * @param value the Boolean
-    */
-    public void setIsPublic(Boolean value) { 
-        this.isPublic = value; 
-        valueChanged("isPublic", value);
-
-    }
-            
-    private java.util.Calendar lastDirSyncTime;
-     
-    /**
-    * Gets the last Dir Sync Time.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getLastDirSyncTime() {
-        return this.lastDirSyncTime; 
-    }
-
-    /**
-    * Sets the last Dir Sync Time.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setLastDirSyncTime(java.util.Calendar value) { 
-        this.lastDirSyncTime = value; 
-        valueChanged("lastDirSyncTime", value);
-
-    }
-            
     private String mail;
      
     /**
@@ -205,28 +114,6 @@ public class Group extends DirectoryObject {
     public void setMail(String value) { 
         this.mail = value; 
         valueChanged("mail", value);
-
-    }
-            
-    private String mailNickname;
-     
-    /**
-    * Gets the mail Nickname.
-    *
-    * @return the String
-    */
-    public String getMailNickname() {
-        return this.mailNickname; 
-    }
-
-    /**
-    * Sets the mail Nickname.
-    *
-    * @param value the String
-    */
-    public void setMailNickname(String value) { 
-        this.mailNickname = value; 
-        valueChanged("mailNickname", value);
 
     }
             
@@ -252,6 +139,50 @@ public class Group extends DirectoryObject {
 
     }
             
+    private String mailNickname;
+     
+    /**
+    * Gets the mail Nickname.
+    *
+    * @return the String
+    */
+    public String getMailNickname() {
+        return this.mailNickname; 
+    }
+
+    /**
+    * Sets the mail Nickname.
+    *
+    * @param value the String
+    */
+    public void setMailNickname(String value) { 
+        this.mailNickname = value; 
+        valueChanged("mailNickname", value);
+
+    }
+            
+    private java.util.Calendar onPremisesLastSyncDateTime;
+     
+    /**
+    * Gets the on Premises Last Sync Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getOnPremisesLastSyncDateTime() {
+        return this.onPremisesLastSyncDateTime; 
+    }
+
+    /**
+    * Sets the on Premises Last Sync Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setOnPremisesLastSyncDateTime(java.util.Calendar value) { 
+        this.onPremisesLastSyncDateTime = value; 
+        valueChanged("onPremisesLastSyncDateTime", value);
+
+    }
+            
     private String onPremisesSecurityIdentifier;
      
     /**
@@ -273,29 +204,26 @@ public class Group extends DirectoryObject {
         valueChanged("onPremisesSecurityIdentifier", value);
 
     }
-    
-        
-    private java.util.List<ProvisioningError> provisioningErrors = null;
-    
-    
+            
+    private Boolean onPremisesSyncEnabled;
      
     /**
-    * Gets the provisioning Errors.
+    * Gets the on Premises Sync Enabled.
     *
-    * @return the java.util.List<ProvisioningError>
+    * @return the Boolean
     */
-    public java.util.List<ProvisioningError> getProvisioningErrors() {
-        return this.provisioningErrors; 
+    public Boolean getOnPremisesSyncEnabled() {
+        return this.onPremisesSyncEnabled; 
     }
 
     /**
-    * Sets the provisioning Errors.
+    * Sets the on Premises Sync Enabled.
     *
-    * @param value the java.util.List<ProvisioningError>
+    * @param value the Boolean
     */
-    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
-        this.provisioningErrors = value; 
-        valueChanged("provisioningErrors", value);
+    public void setOnPremisesSyncEnabled(Boolean value) { 
+        this.onPremisesSyncEnabled = value; 
+        valueChanged("onPremisesSyncEnabled", value);
 
     }
     
@@ -343,6 +271,28 @@ public class Group extends DirectoryObject {
     public void setSecurityEnabled(Boolean value) { 
         this.securityEnabled = value; 
         valueChanged("securityEnabled", value);
+
+    }
+            
+    private String visibility;
+     
+    /**
+    * Gets the visibility.
+    *
+    * @return the String
+    */
+    public String getVisibility() {
+        return this.visibility; 
+    }
+
+    /**
+    * Sets the visibility.
+    *
+    * @param value the String
+    */
+    public void setVisibility(String value) { 
+        this.visibility = value; 
+        valueChanged("visibility", value);
 
     }
             
@@ -412,28 +362,6 @@ public class Group extends DirectoryObject {
 
     }
             
-    private String EmailAddress;
-     
-    /**
-    * Gets the Email Address.
-    *
-    * @return the String
-    */
-    public String getEmailAddress() {
-        return this.EmailAddress; 
-    }
-
-    /**
-    * Sets the Email Address.
-    *
-    * @param value the String
-    */
-    public void setEmailAddress(String value) { 
-        this.EmailAddress = value; 
-        valueChanged("EmailAddress", value);
-
-    }
-            
     private Boolean IsFavorite;
      
     /**
@@ -497,31 +425,6 @@ public class Group extends DirectoryObject {
     public void setUnseenCount(Integer value) { 
         this.UnseenCount = value; 
         valueChanged("UnseenCount", value);
-
-    }
-    
-        
-    private java.util.List<AppRoleAssignment> appRoleAssignments = null;
-    
-    
-     
-    /**
-    * Gets the app Role Assignments.
-    *
-    * @return the java.util.List<AppRoleAssignment>
-    */
-    public java.util.List<AppRoleAssignment> getAppRoleAssignments() {
-        return this.appRoleAssignments; 
-    }
-
-    /**
-    * Sets the app Role Assignments.
-    *
-    * @param value the java.util.List<AppRoleAssignment>
-    */
-    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) { 
-        this.appRoleAssignments = value; 
-        valueChanged("appRoleAssignments", value);
 
     }
     
@@ -767,31 +670,6 @@ public class Group extends DirectoryObject {
     }
     
         
-    private java.util.List<ProfilePhoto> Photos = null;
-    
-    
-     
-    /**
-    * Gets the Photos.
-    *
-    * @return the java.util.List<ProfilePhoto>
-    */
-    public java.util.List<ProfilePhoto> getPhotos() {
-        return this.Photos; 
-    }
-
-    /**
-    * Sets the Photos.
-    *
-    * @param value the java.util.List<ProfilePhoto>
-    */
-    public void setPhotos(java.util.List<ProfilePhoto> value) { 
-        this.Photos = value; 
-        valueChanged("Photos", value);
-
-    }
-    
-        
     private java.util.List<DirectoryObject> AcceptedSenders = null;
     
     
@@ -860,53 +738,6 @@ public class Group extends DirectoryObject {
     public void setDrive(Drive value) { 
         this.drive = value; 
         valueChanged("drive", value);
-
-    }
-    
-        
-    private java.util.List<Plan> plans = null;
-    
-    
-     
-    /**
-    * Gets the plans.
-    *
-    * @return the java.util.List<Plan>
-    */
-    public java.util.List<Plan> getPlans() {
-        return this.plans; 
-    }
-
-    /**
-    * Sets the plans.
-    *
-    * @param value the java.util.List<Plan>
-    */
-    public void setPlans(java.util.List<Plan> value) { 
-        this.plans = value; 
-        valueChanged("plans", value);
-
-    }
-            
-    private Notes notes;
-     
-    /**
-    * Gets the notes.
-    *
-    * @return the Notes
-    */
-    public Notes getNotes() {
-        return this.notes; 
-    }
-
-    /**
-    * Sets the notes.
-    *
-    * @param value the Notes
-    */
-    public void setNotes(Notes value) { 
-        this.notes = value; 
-        valueChanged("notes", value);
 
     }
 }

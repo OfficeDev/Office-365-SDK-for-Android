@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class VerifiedDomain extends ODataBaseEntity {
 
     public VerifiedDomain(){
-        setODataType("#Microsoft.Graph.VerifiedDomain");
+        setODataType("#microsoft.graph.verifiedDomain");
     }
 
     private String capabilities;
@@ -49,69 +49,47 @@ public class VerifiedDomain extends ODataBaseEntity {
 
     }
 
-    private Boolean $$__$$default;
+    private Boolean isDefault;
 
     /**
-    * Gets the default.
+    * Gets the is Default.
     *
     * @return the Boolean
     */
-    public Boolean getDefault() {
-        return this.$$__$$default; 
+    public Boolean getIsDefault() {
+        return this.isDefault; 
     }
 
     /**
-    * Sets the default.
+    * Sets the is Default.
     *
     * @param value the Boolean
     */
-    public void setDefault(Boolean value) { 
-        this.$$__$$default = value;
-        valueChanged("default", value);
+    public void setIsDefault(Boolean value) { 
+        this.isDefault = value;
+        valueChanged("isDefault", value);
 
     }
 
-    private String id;
+    private Boolean isInitial;
 
     /**
-    * Gets the id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.id; 
-    }
-
-    /**
-    * Sets the id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.id = value;
-        valueChanged("id", value);
-
-    }
-
-    private Boolean initial;
-
-    /**
-    * Gets the initial.
+    * Gets the is Initial.
     *
     * @return the Boolean
     */
-    public Boolean getInitial() {
-        return this.initial; 
+    public Boolean getIsInitial() {
+        return this.isInitial; 
     }
 
     /**
-    * Sets the initial.
+    * Sets the is Initial.
     *
     * @param value the Boolean
     */
-    public void setInitial(Boolean value) { 
-        this.initial = value;
-        valueChanged("initial", value);
+    public void setIsInitial(Boolean value) { 
+        this.isInitial = value;
+        valueChanged("isInitial", value);
 
     }
 

@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class OutlookItem extends Entity {
 
     public OutlookItem(){
-        setODataType("#Microsoft.Graph.OutlookItem");
+        setODataType("#microsoft.graph.outlookItem");
     }
             
     private java.util.Calendar CreatedDateTime;

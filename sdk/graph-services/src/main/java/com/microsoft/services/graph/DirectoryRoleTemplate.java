@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class DirectoryRoleTemplate extends DirectoryObject {
 
     public DirectoryRoleTemplate(){
-        setODataType("#Microsoft.Graph.DirectoryRoleTemplate");
+        setODataType("#microsoft.graph.directoryRoleTemplate");
     }
             
     private String description;

@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class ResponseStatus extends ODataBaseEntity {
 
     public ResponseStatus(){
-        setODataType("#Microsoft.Graph.ResponseStatus");
+        setODataType("#microsoft.graph.responseStatus");
     }
 
     private ResponseType Response;

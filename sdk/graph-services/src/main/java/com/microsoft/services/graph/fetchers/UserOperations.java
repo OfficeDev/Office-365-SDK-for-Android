@@ -67,13 +67,16 @@ public class UserOperations extends DirectoryObjectOperations {
      * @return the listenable future
      */         
     public ListenableFuture<User> assignLicense(java.util.List<AssignedLicense> addLicenses, java.util.List<java.util.UUID> removeLicenses) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedaddLicenses = serializer.serialize(addLicenses);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedaddLicenses = serializer.serialize(addLicenses);
 		String serializedremoveLicenses = serializer.serialize(removeLicenses);
 		  
         
-        ListenableFuture<String> future = assignLicenseRaw(serializedaddLicenses, serializedremoveLicenses);
-        return transformToEntityListenableFuture(future, User.class, getResolver());
+		
+		ListenableFuture<String> future = assignLicenseRaw(serializedaddLicenses, serializedremoveLicenses);
+		return transformToEntityListenableFuture(future, User.class, getResolver());
         
     }
 
@@ -95,7 +98,55 @@ public class UserOperations extends DirectoryObjectOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.assignLicense");
+        request.getUrl().appendPathComponent("assignLicense");
+        
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * changePassword listenable future.
+     * @param currentPassword the currentPassword @param newPassword the newPassword 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> changePassword(String currentPassword, String newPassword) { 
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedcurrentPassword = serializer.serialize(currentPassword);
+		String serializednewPassword = serializer.serialize(newPassword);
+		  
+        
+		
+		ListenableFuture<String> future = changePasswordRaw(serializedcurrentPassword, serializednewPassword);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * changePasswordRaw listenable future.
+     * @param currentPassword the currentPassword @param newPassword the newPassword 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> changePasswordRaw(String currentPassword, String newPassword){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("currentPassword", currentPassword);
+		map.put("newPassword", newPassword);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("changePassword");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -110,13 +161,16 @@ public class UserOperations extends DirectoryObjectOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> sendMail(Message message, Boolean saveToSentItems) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedMessage = serializer.serialize(message);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedMessage = serializer.serialize(message);
 		String serializedSaveToSentItems = serializer.serialize(saveToSentItems);
 		  
         
-        ListenableFuture<String> future = sendMailRaw(serializedMessage, serializedSaveToSentItems);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = sendMailRaw(serializedMessage, serializedSaveToSentItems);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -138,7 +192,8 @@ public class UserOperations extends DirectoryObjectOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.SendMail");
+        request.getUrl().appendPathComponent("SendMail");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -147,53 +202,32 @@ public class UserOperations extends DirectoryObjectOperations {
 
     
     
-    /**
-     * FindMeetingTimes listenable future.
-     * @param attendees the attendees @param locationConstraint the locationConstraint @param timeConstraint the timeConstraint @param meetingDuration the meetingDuration @param maxCandidates the maxCandidates @param isOrganizerOptional the isOrganizerOptional 
+     /**
+     * ReminderView listenable future.
+     * @param startDateTime the startDateTime @param endDateTime the endDateTime 
      * @return the listenable future
      */         
-    public ListenableFuture<MeetingTimeCandidate> findMeetingTimes(java.util.List<AttendeeBase> attendees, LocationConstraint locationConstraint, TimeConstraint timeConstraint, org.joda.time.Period meetingDuration, Integer maxCandidates, Boolean isOrganizerOptional) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedAttendees = serializer.serialize(attendees);
-		String serializedLocationConstraint = serializer.serialize(locationConstraint);
-		String serializedTimeConstraint = serializer.serialize(timeConstraint);
-		String serializedMeetingDuration = serializer.serialize(meetingDuration);
-		String serializedMaxCandidates = serializer.serialize(maxCandidates);
-		String serializedIsOrganizerOptional = serializer.serialize(isOrganizerOptional);
-		  
-        
-        ListenableFuture<String> future = findMeetingTimesRaw(serializedAttendees, serializedLocationConstraint, serializedTimeConstraint, serializedMeetingDuration, serializedMaxCandidates, serializedIsOrganizerOptional);
-        return transformToEntityListenableFuture(future, MeetingTimeCandidate.class, getResolver());
-        
-    }
-
-     /**
-     * FindMeetingTimesRaw listenable future.
-     * @param attendees the attendees @param locationConstraint the locationConstraint @param timeConstraint the timeConstraint @param meetingDuration the meetingDuration @param maxCandidates the maxCandidates @param isOrganizerOptional the isOrganizerOptional 
-     * @return the listenable future
-     */ 
-    public ListenableFuture<String> findMeetingTimesRaw(String attendees, String locationConstraint, String timeConstraint, String meetingDuration, String maxCandidates, String isOrganizerOptional){
-        
-        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
-        
-        map.put("Attendees", attendees);
-		map.put("LocationConstraint", locationConstraint);
-		map.put("TimeConstraint", timeConstraint);
-		map.put("MeetingDuration", meetingDuration);
-		map.put("MaxCandidates", maxCandidates);
-		map.put("IsOrganizerOptional", isOrganizerOptional);
+    public ListenableFuture<Reminder> reminderView(String startDateTime, String endDateTime) { 
 		
-        Request request = getResolver().createRequest();
-        request.setVerb(HttpVerb.POST);
-        
-        request.setContent(getResolver().getJsonSerializer()
-               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
-                        
-        request.getUrl().appendPathComponent("Microsoft.Graph.FindMeetingTimes");
-        
-        ListenableFuture<OrcResponse> future = oDataExecute(request);
-        return transformToStringListenableFuture(future);
-    }
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        map.put("StartDateTime", startDateTime);
+		map.put("EndDateTime", endDateTime);
+		
 
-
+		Request request = getResolver().createRequest();
+		request.setVerb(HttpVerb.GET);
+		String parameters = getFunctionParameters(map);
+        
+		        
+		request.getUrl().appendPathComponent("ReminderView(" + parameters + ")");   
+        
+		
+		ListenableFuture<OrcResponse> future = oDataExecute(request);
+		   
+        
+		return transformToEntityListenableFuture(transformToStringListenableFuture(future), Reminder.class, getResolver());
+        
+        
+   }
+    
 }

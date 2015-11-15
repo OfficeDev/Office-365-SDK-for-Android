@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class ItemReference extends ODataBaseEntity {
 
     public ItemReference(){
-        setODataType("#Microsoft.Graph.itemReference");
+        setODataType("#microsoft.graph.itemReference");
     }
 
     private String driveId;

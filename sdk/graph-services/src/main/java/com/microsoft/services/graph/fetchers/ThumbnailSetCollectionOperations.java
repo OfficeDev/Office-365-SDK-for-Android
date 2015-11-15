@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type ThumbnailSetCollectionOperations
  */
-public class ThumbnailSetCollectionOperations extends OrcOperations{
+public class ThumbnailSetCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new ThumbnailSetCollectionOperations.

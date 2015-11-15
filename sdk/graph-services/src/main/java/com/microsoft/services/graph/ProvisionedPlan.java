@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class ProvisionedPlan extends ODataBaseEntity {
 
     public ProvisionedPlan(){
-        setODataType("#Microsoft.Graph.ProvisionedPlan");
+        setODataType("#microsoft.graph.provisionedPlan");
     }
 
     private String capabilityStatus;

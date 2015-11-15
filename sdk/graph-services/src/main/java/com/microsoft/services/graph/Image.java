@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Image extends ODataBaseEntity {
 
     public Image(){
-        setODataType("#Microsoft.Graph.image");
+        setODataType("#microsoft.graph.image");
     }
 
     private Integer height;

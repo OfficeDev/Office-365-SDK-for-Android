@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type DirectoryObjectCollectionOperations
  */
-public class DirectoryObjectCollectionOperations extends OrcOperations{
+public class DirectoryObjectCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new DirectoryObjectCollectionOperations.

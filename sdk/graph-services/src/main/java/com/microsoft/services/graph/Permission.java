@@ -13,7 +13,6 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 
@@ -21,10 +20,10 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 /**
  * The type Permission.
 */
-public class Permission extends ODataBaseEntity {
+public class Permission extends Entity {
 
     public Permission(){
-        setODataType("#Microsoft.Graph.permission");
+        setODataType("#microsoft.graph.permission");
     }
             
     private IdentitySet grantedTo;
@@ -46,28 +45,6 @@ public class Permission extends ODataBaseEntity {
     public void setGrantedTo(IdentitySet value) { 
         this.grantedTo = value; 
         valueChanged("grantedTo", value);
-
-    }
-            
-    private String id;
-     
-    /**
-    * Gets the id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.id; 
-    }
-
-    /**
-    * Sets the id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.id = value; 
-        valueChanged("id", value);
 
     }
             

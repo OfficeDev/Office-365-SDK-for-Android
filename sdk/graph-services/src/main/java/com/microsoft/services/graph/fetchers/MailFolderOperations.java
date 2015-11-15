@@ -67,12 +67,15 @@ public class MailFolderOperations extends EntityOperations {
      * @return the listenable future
      */         
     public ListenableFuture<MailFolder> copy(String destinationId) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedDestinationId = serializer.serialize(destinationId);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedDestinationId = serializer.serialize(destinationId);
 		  
         
-        ListenableFuture<String> future = copyRaw(serializedDestinationId);
-        return transformToEntityListenableFuture(future, MailFolder.class, getResolver());
+		
+		ListenableFuture<String> future = copyRaw(serializedDestinationId);
+		return transformToEntityListenableFuture(future, MailFolder.class, getResolver());
         
     }
 
@@ -93,7 +96,8 @@ public class MailFolderOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.Copy");
+        request.getUrl().appendPathComponent("Copy");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -108,12 +112,15 @@ public class MailFolderOperations extends EntityOperations {
      * @return the listenable future
      */         
     public ListenableFuture<MailFolder> move(String destinationId) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedDestinationId = serializer.serialize(destinationId);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedDestinationId = serializer.serialize(destinationId);
 		  
         
-        ListenableFuture<String> future = moveRaw(serializedDestinationId);
-        return transformToEntityListenableFuture(future, MailFolder.class, getResolver());
+		
+		ListenableFuture<String> future = moveRaw(serializedDestinationId);
+		return transformToEntityListenableFuture(future, MailFolder.class, getResolver());
         
     }
 
@@ -134,7 +141,8 @@ public class MailFolderOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.Move");
+        request.getUrl().appendPathComponent("Move");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

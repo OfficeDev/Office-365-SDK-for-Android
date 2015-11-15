@@ -59,12 +59,12 @@ public class OutlookItemFetcher extends OrcEntityFetcher<OutlookItem,OutlookItem
     }
 
     
-    public MessageFetcher asMessage(){
-        return new MessageFetcher(this.urlComponent, this.parent);
-    }   
-
     public EventFetcher asEvent(){
         return new EventFetcher(this.urlComponent, this.parent);
+    }   
+
+    public MessageFetcher asMessage(){
+        return new MessageFetcher(this.urlComponent, this.parent);
     }   
 
     public ContactFetcher asContact(){

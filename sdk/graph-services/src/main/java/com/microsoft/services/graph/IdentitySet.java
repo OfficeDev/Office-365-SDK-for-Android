@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class IdentitySet extends ODataBaseEntity {
 
     public IdentitySet(){
-        setODataType("#Microsoft.Graph.identitySet");
+        setODataType("#microsoft.graph.identitySet");
     }
 
     private Identity application;

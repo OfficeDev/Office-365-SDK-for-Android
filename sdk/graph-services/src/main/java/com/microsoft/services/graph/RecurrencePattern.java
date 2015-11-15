@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class RecurrencePattern extends ODataBaseEntity {
 
     public RecurrencePattern(){
-        setODataType("#Microsoft.Graph.RecurrencePattern");
+        setODataType("#microsoft.graph.recurrencePattern");
     }
 
     private RecurrencePatternType Type;

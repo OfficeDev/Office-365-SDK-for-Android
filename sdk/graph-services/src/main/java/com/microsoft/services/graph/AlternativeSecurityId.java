@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class AlternativeSecurityId extends ODataBaseEntity {
 
     public AlternativeSecurityId(){
-        setODataType("#Microsoft.Graph.AlternativeSecurityId");
+        setODataType("#microsoft.graph.alternativeSecurityId");
     }
 
     private Integer type;

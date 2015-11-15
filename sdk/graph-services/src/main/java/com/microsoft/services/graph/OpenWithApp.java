@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class OpenWithApp extends ODataBaseEntity {
 
     public OpenWithApp(){
-        setODataType("#Microsoft.Graph.openWithApp");
+        setODataType("#microsoft.graph.openWithApp");
     }
 
     private Identity app;

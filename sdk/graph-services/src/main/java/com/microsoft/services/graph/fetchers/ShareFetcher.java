@@ -66,8 +66,8 @@ public class ShareFetcher extends OrcEntityFetcher<Share,ShareOperations>
      *
      * @return the items
      */
-    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getItems() {
-        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("items", this, Item.class, ItemCollectionOperations.class);
+    public OrcCollectionFetcher<DriveItem, DriveItemFetcher, DriveItemCollectionOperations> getItems() {
+        return new OrcCollectionFetcher<DriveItem, DriveItemFetcher, DriveItemCollectionOperations>("items", this, DriveItem.class, DriveItemCollectionOperations.class);
     }
 
     /**
@@ -75,8 +75,8 @@ public class ShareFetcher extends OrcEntityFetcher<Share,ShareOperations>
      *
      * @return the item
      */
-    public ItemFetcher getItem(String id){
-         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("items", this, Item.class, ItemCollectionOperations.class).getById(id);
+    public DriveItemFetcher getItem(String id){
+         return new OrcCollectionFetcher<DriveItem, DriveItemFetcher, DriveItemCollectionOperations>("items", this, DriveItem.class, DriveItemCollectionOperations.class).getById(id);
     }
 
 }

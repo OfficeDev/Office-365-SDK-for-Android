@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Hashes extends ODataBaseEntity {
 
     public Hashes(){
-        setODataType("#Microsoft.Graph.hashes");
+        setODataType("#microsoft.graph.hashes");
     }
 
     private String crc32Hash;

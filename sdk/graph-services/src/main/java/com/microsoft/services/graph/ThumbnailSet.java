@@ -13,7 +13,6 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 
@@ -21,32 +20,10 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 /**
  * The type Thumbnail Set.
 */
-public class ThumbnailSet extends ODataBaseEntity {
+public class ThumbnailSet extends Entity {
 
     public ThumbnailSet(){
-        setODataType("#Microsoft.Graph.thumbnailSet");
-    }
-            
-    private String id;
-     
-    /**
-    * Gets the id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.id; 
-    }
-
-    /**
-    * Sets the id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.id = value; 
-        valueChanged("id", value);
-
+        setODataType("#microsoft.graph.thumbnailSet");
     }
             
     private Thumbnail large;

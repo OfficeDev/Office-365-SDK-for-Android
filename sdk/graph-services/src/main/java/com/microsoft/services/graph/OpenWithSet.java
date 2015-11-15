@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class OpenWithSet extends ODataBaseEntity {
 
     public OpenWithSet(){
-        setODataType("#Microsoft.Graph.openWithSet");
+        setODataType("#microsoft.graph.openWithSet");
     }
 
     private OpenWithApp web;

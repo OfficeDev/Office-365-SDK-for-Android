@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Photo extends ODataBaseEntity {
 
     public Photo(){
-        setODataType("#Microsoft.Graph.photo");
+        setODataType("#microsoft.graph.photo");
     }
 
     private String cameraMake;

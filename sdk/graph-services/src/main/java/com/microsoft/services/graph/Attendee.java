@@ -13,7 +13,6 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 
@@ -21,10 +20,10 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 /**
  * The type Attendee.
 */
-public class Attendee extends ODataBaseEntity {
+public class Attendee extends Recipient {
 
     public Attendee(){
-        setODataType("#Microsoft.Graph.Attendee");
+        setODataType("#microsoft.graph.attendee");
     }
 
     private ResponseStatus Status;
@@ -68,28 +67,6 @@ public class Attendee extends ODataBaseEntity {
     public void setType(AttendeeType value) { 
         this.Type = value;
         valueChanged("Type", value);
-
-    }
-
-    private EmailAddress EmailAddress;
-
-    /**
-    * Gets the Email Address.
-    *
-    * @return the EmailAddress
-    */
-    public EmailAddress getEmailAddress() {
-        return this.EmailAddress; 
-    }
-
-    /**
-    * Sets the Email Address.
-    *
-    * @param value the EmailAddress
-    */
-    public void setEmailAddress(EmailAddress value) { 
-        this.EmailAddress = value;
-        valueChanged("EmailAddress", value);
 
     }
 }

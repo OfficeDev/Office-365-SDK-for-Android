@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type PermissionOperations.
  */
-public class PermissionOperations extends OrcOperations {
+public class PermissionOperations extends EntityOperations {
 
      /**
       * Instantiates a new PermissionOperations.

@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type DriveCollectionOperations
  */
-public class DriveCollectionOperations extends OrcOperations{
+public class DriveCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new DriveCollectionOperations.

@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class FileAttachment extends Attachment {
 
     public FileAttachment(){
-        setODataType("#Microsoft.Graph.FileAttachment");
+        setODataType("#microsoft.graph.fileAttachment");
     }
             
     private String ContentId;

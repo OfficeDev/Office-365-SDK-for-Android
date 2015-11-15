@@ -14,7 +14,6 @@ root for authoritative license information.﻿
 package com.microsoft.services.graph;
 
 
-import com.microsoft.services.orc.core.ODataStream;
 
 
 
@@ -24,7 +23,7 @@ import com.microsoft.services.orc.core.ODataStream;
 public class User extends DirectoryObject {
 
     public User(){
-        setODataType("#Microsoft.Graph.User");
+        setODataType("#microsoft.graph.user");
     }
             
     private Boolean accountEnabled;
@@ -98,6 +97,31 @@ public class User extends DirectoryObject {
         valueChanged("assignedPlans", value);
 
     }
+    
+        
+    private java.util.List<String> businessPhones = null;
+    
+    
+     
+    /**
+    * Gets the business Phones.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getBusinessPhones() {
+        return this.businessPhones; 
+    }
+
+    /**
+    * Sets the business Phones.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setBusinessPhones(java.util.List<String> value) { 
+        this.businessPhones = value; 
+        valueChanged("businessPhones", value);
+
+    }
             
     private String city;
      
@@ -118,6 +142,28 @@ public class User extends DirectoryObject {
     public void setCity(String value) { 
         this.city = value; 
         valueChanged("city", value);
+
+    }
+            
+    private String companyName;
+     
+    /**
+    * Gets the company Name.
+    *
+    * @return the String
+    */
+    public String getCompanyName() {
+        return this.companyName; 
+    }
+
+    /**
+    * Sets the company Name.
+    *
+    * @param value the String
+    */
+    public void setCompanyName(String value) { 
+        this.companyName = value; 
+        valueChanged("companyName", value);
 
     }
             
@@ -165,28 +211,6 @@ public class User extends DirectoryObject {
 
     }
             
-    private Boolean dirSyncEnabled;
-     
-    /**
-    * Gets the dir Sync Enabled.
-    *
-    * @return the Boolean
-    */
-    public Boolean getDirSyncEnabled() {
-        return this.dirSyncEnabled; 
-    }
-
-    /**
-    * Sets the dir Sync Enabled.
-    *
-    * @param value the Boolean
-    */
-    public void setDirSyncEnabled(Boolean value) { 
-        this.dirSyncEnabled = value; 
-        valueChanged("dirSyncEnabled", value);
-
-    }
-            
     private String displayName;
      
     /**
@@ -206,28 +230,6 @@ public class User extends DirectoryObject {
     public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
-
-    }
-            
-    private String facsimileTelephoneNumber;
-     
-    /**
-    * Gets the facsimile Telephone Number.
-    *
-    * @return the String
-    */
-    public String getFacsimileTelephoneNumber() {
-        return this.facsimileTelephoneNumber; 
-    }
-
-    /**
-    * Sets the facsimile Telephone Number.
-    *
-    * @param value the String
-    */
-    public void setFacsimileTelephoneNumber(String value) { 
-        this.facsimileTelephoneNumber = value; 
-        valueChanged("facsimileTelephoneNumber", value);
 
     }
             
@@ -253,28 +255,6 @@ public class User extends DirectoryObject {
 
     }
             
-    private String immutableId;
-     
-    /**
-    * Gets the immutable Id.
-    *
-    * @return the String
-    */
-    public String getImmutableId() {
-        return this.immutableId; 
-    }
-
-    /**
-    * Sets the immutable Id.
-    *
-    * @param value the String
-    */
-    public void setImmutableId(String value) { 
-        this.immutableId = value; 
-        valueChanged("immutableId", value);
-
-    }
-            
     private String jobTitle;
      
     /**
@@ -294,28 +274,6 @@ public class User extends DirectoryObject {
     public void setJobTitle(String value) { 
         this.jobTitle = value; 
         valueChanged("jobTitle", value);
-
-    }
-            
-    private java.util.Calendar lastDirSyncTime;
-     
-    /**
-    * Gets the last Dir Sync Time.
-    *
-    * @return the java.util.Calendar
-    */
-    public java.util.Calendar getLastDirSyncTime() {
-        return this.lastDirSyncTime; 
-    }
-
-    /**
-    * Sets the last Dir Sync Time.
-    *
-    * @param value the java.util.Calendar
-    */
-    public void setLastDirSyncTime(java.util.Calendar value) { 
-        this.lastDirSyncTime = value; 
-        valueChanged("lastDirSyncTime", value);
 
     }
             
@@ -363,25 +321,69 @@ public class User extends DirectoryObject {
 
     }
             
-    private String mobile;
+    private String mobilePhone;
      
     /**
-    * Gets the mobile.
+    * Gets the mobile Phone.
     *
     * @return the String
     */
-    public String getMobile() {
-        return this.mobile; 
+    public String getMobilePhone() {
+        return this.mobilePhone; 
     }
 
     /**
-    * Sets the mobile.
+    * Sets the mobile Phone.
     *
     * @param value the String
     */
-    public void setMobile(String value) { 
-        this.mobile = value; 
-        valueChanged("mobile", value);
+    public void setMobilePhone(String value) { 
+        this.mobilePhone = value; 
+        valueChanged("mobilePhone", value);
+
+    }
+            
+    private String onPremisesImmutableId;
+     
+    /**
+    * Gets the on Premises Immutable Id.
+    *
+    * @return the String
+    */
+    public String getOnPremisesImmutableId() {
+        return this.onPremisesImmutableId; 
+    }
+
+    /**
+    * Sets the on Premises Immutable Id.
+    *
+    * @param value the String
+    */
+    public void setOnPremisesImmutableId(String value) { 
+        this.onPremisesImmutableId = value; 
+        valueChanged("onPremisesImmutableId", value);
+
+    }
+            
+    private java.util.Calendar onPremisesLastSyncDateTime;
+     
+    /**
+    * Gets the on Premises Last Sync Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getOnPremisesLastSyncDateTime() {
+        return this.onPremisesLastSyncDateTime; 
+    }
+
+    /**
+    * Sets the on Premises Last Sync Date Time.
+    *
+    * @param value the java.util.Calendar
+    */
+    public void setOnPremisesLastSyncDateTime(java.util.Calendar value) { 
+        this.onPremisesLastSyncDateTime = value; 
+        valueChanged("onPremisesLastSyncDateTime", value);
 
     }
             
@@ -406,29 +408,26 @@ public class User extends DirectoryObject {
         valueChanged("onPremisesSecurityIdentifier", value);
 
     }
-    
-        
-    private java.util.List<String> otherMails = null;
-    
-    
+            
+    private Boolean onPremisesSyncEnabled;
      
     /**
-    * Gets the other Mails.
+    * Gets the on Premises Sync Enabled.
     *
-    * @return the java.util.List<String>
+    * @return the Boolean
     */
-    public java.util.List<String> getOtherMails() {
-        return this.otherMails; 
+    public Boolean getOnPremisesSyncEnabled() {
+        return this.onPremisesSyncEnabled; 
     }
 
     /**
-    * Sets the other Mails.
+    * Sets the on Premises Sync Enabled.
     *
-    * @param value the java.util.List<String>
+    * @param value the Boolean
     */
-    public void setOtherMails(java.util.List<String> value) { 
-        this.otherMails = value; 
-        valueChanged("otherMails", value);
+    public void setOnPremisesSyncEnabled(Boolean value) { 
+        this.onPremisesSyncEnabled = value; 
+        valueChanged("onPremisesSyncEnabled", value);
 
     }
             
@@ -476,25 +475,25 @@ public class User extends DirectoryObject {
 
     }
             
-    private String physicalDeliveryOfficeName;
+    private String officeLocation;
      
     /**
-    * Gets the physical Delivery Office Name.
+    * Gets the office Location.
     *
     * @return the String
     */
-    public String getPhysicalDeliveryOfficeName() {
-        return this.physicalDeliveryOfficeName; 
+    public String getOfficeLocation() {
+        return this.officeLocation; 
     }
 
     /**
-    * Sets the physical Delivery Office Name.
+    * Sets the office Location.
     *
     * @param value the String
     */
-    public void setPhysicalDeliveryOfficeName(String value) { 
-        this.physicalDeliveryOfficeName = value; 
-        valueChanged("physicalDeliveryOfficeName", value);
+    public void setOfficeLocation(String value) { 
+        this.officeLocation = value; 
+        valueChanged("officeLocation", value);
 
     }
             
@@ -568,31 +567,6 @@ public class User extends DirectoryObject {
     }
     
         
-    private java.util.List<ProvisioningError> provisioningErrors = null;
-    
-    
-     
-    /**
-    * Gets the provisioning Errors.
-    *
-    * @return the java.util.List<ProvisioningError>
-    */
-    public java.util.List<ProvisioningError> getProvisioningErrors() {
-        return this.provisioningErrors; 
-    }
-
-    /**
-    * Sets the provisioning Errors.
-    *
-    * @param value the java.util.List<ProvisioningError>
-    */
-    public void setProvisioningErrors(java.util.List<ProvisioningError> value) { 
-        this.provisioningErrors = value; 
-        valueChanged("provisioningErrors", value);
-
-    }
-    
-        
     private java.util.List<String> proxyAddresses = null;
     
     
@@ -614,28 +588,6 @@ public class User extends DirectoryObject {
     public void setProxyAddresses(java.util.List<String> value) { 
         this.proxyAddresses = value; 
         valueChanged("proxyAddresses", value);
-
-    }
-            
-    private String sipProxyAddress;
-     
-    /**
-    * Gets the sip Proxy Address.
-    *
-    * @return the String
-    */
-    public String getSipProxyAddress() {
-        return this.sipProxyAddress; 
-    }
-
-    /**
-    * Sets the sip Proxy Address.
-    *
-    * @param value the String
-    */
-    public void setSipProxyAddress(String value) { 
-        this.sipProxyAddress = value; 
-        valueChanged("sipProxyAddress", value);
 
     }
             
@@ -705,50 +657,6 @@ public class User extends DirectoryObject {
 
     }
             
-    private String telephoneNumber;
-     
-    /**
-    * Gets the telephone Number.
-    *
-    * @return the String
-    */
-    public String getTelephoneNumber() {
-        return this.telephoneNumber; 
-    }
-
-    /**
-    * Sets the telephone Number.
-    *
-    * @param value the String
-    */
-    public void setTelephoneNumber(String value) { 
-        this.telephoneNumber = value; 
-        valueChanged("telephoneNumber", value);
-
-    }
-            
-    private ODataStream thumbnailPhoto;
-     
-    /**
-    * Gets the thumbnail Photo.
-    *
-    * @return the ODataStream
-    */
-    public ODataStream getThumbnailPhoto() {
-        return this.thumbnailPhoto; 
-    }
-
-    /**
-    * Sets the thumbnail Photo.
-    *
-    * @param value the ODataStream
-    */
-    public void setThumbnailPhoto(ODataStream value) { 
-        this.thumbnailPhoto = value; 
-        valueChanged("thumbnailPhoto", value);
-
-    }
-            
     private String usageLocation;
      
     /**
@@ -815,28 +723,6 @@ public class User extends DirectoryObject {
 
     }
             
-    private java.util.UUID MailboxGuid;
-     
-    /**
-    * Gets the Mailbox Guid.
-    *
-    * @return the java.util.UUID
-    */
-    public java.util.UUID getMailboxGuid() {
-        return this.MailboxGuid; 
-    }
-
-    /**
-    * Sets the Mailbox Guid.
-    *
-    * @param value the java.util.UUID
-    */
-    public void setMailboxGuid(java.util.UUID value) { 
-        this.MailboxGuid = value; 
-        valueChanged("MailboxGuid", value);
-
-    }
-            
     private String aboutMe;
      
     /**
@@ -856,28 +742,6 @@ public class User extends DirectoryObject {
     public void setAboutMe(String value) { 
         this.aboutMe = value; 
         valueChanged("aboutMe", value);
-
-    }
-            
-    private String alias;
-     
-    /**
-    * Gets the alias.
-    *
-    * @return the String
-    */
-    public String getAlias() {
-        return this.alias; 
-    }
-
-    /**
-    * Sets the alias.
-    *
-    * @param value the String
-    */
-    public void setAlias(String value) { 
-        this.alias = value; 
-        valueChanged("alias", value);
 
     }
             
@@ -1018,28 +882,6 @@ public class User extends DirectoryObject {
         valueChanged("preferredName", value);
 
     }
-            
-    private String principalName;
-     
-    /**
-    * Gets the principal Name.
-    *
-    * @return the String
-    */
-    public String getPrincipalName() {
-        return this.principalName; 
-    }
-
-    /**
-    * Sets the principal Name.
-    *
-    * @param value the String
-    */
-    public void setPrincipalName(String value) { 
-        this.principalName = value; 
-        valueChanged("principalName", value);
-
-    }
     
         
     private java.util.List<String> responsibilities = null;
@@ -1113,81 +955,6 @@ public class User extends DirectoryObject {
     public void setSkills(java.util.List<String> value) { 
         this.skills = value; 
         valueChanged("skills", value);
-
-    }
-    
-        
-    private java.util.List<String> tags = null;
-    
-    
-     
-    /**
-    * Gets the tags.
-    *
-    * @return the java.util.List<String>
-    */
-    public java.util.List<String> getTags() {
-        return this.tags; 
-    }
-
-    /**
-    * Sets the tags.
-    *
-    * @param value the java.util.List<String>
-    */
-    public void setTags(java.util.List<String> value) { 
-        this.tags = value; 
-        valueChanged("tags", value);
-
-    }
-    
-        
-    private java.util.List<AppRoleAssignment> appRoleAssignments = null;
-    
-    
-     
-    /**
-    * Gets the app Role Assignments.
-    *
-    * @return the java.util.List<AppRoleAssignment>
-    */
-    public java.util.List<AppRoleAssignment> getAppRoleAssignments() {
-        return this.appRoleAssignments; 
-    }
-
-    /**
-    * Sets the app Role Assignments.
-    *
-    * @param value the java.util.List<AppRoleAssignment>
-    */
-    public void setAppRoleAssignments(java.util.List<AppRoleAssignment> value) { 
-        this.appRoleAssignments = value; 
-        valueChanged("appRoleAssignments", value);
-
-    }
-    
-        
-    private java.util.List<OAuth2PermissionGrant> oauth2PermissionGrants = null;
-    
-    
-     
-    /**
-    * Gets the oauth2Permission Grants.
-    *
-    * @return the java.util.List<OAuth2PermissionGrant>
-    */
-    public java.util.List<OAuth2PermissionGrant> getOauth2PermissionGrants() {
-        return this.oauth2PermissionGrants; 
-    }
-
-    /**
-    * Sets the oauth2Permission Grants.
-    *
-    * @param value the java.util.List<OAuth2PermissionGrant>
-    */
-    public void setOauth2PermissionGrants(java.util.List<OAuth2PermissionGrant> value) { 
-        this.oauth2PermissionGrants = value; 
-        valueChanged("oauth2PermissionGrants", value);
 
     }
     
@@ -1610,50 +1377,6 @@ public class User extends DirectoryObject {
 
     }
             
-    private InferenceClassification InferenceClassification;
-     
-    /**
-    * Gets the Inference Classification.
-    *
-    * @return the InferenceClassification
-    */
-    public InferenceClassification getInferenceClassification() {
-        return this.InferenceClassification; 
-    }
-
-    /**
-    * Sets the Inference Classification.
-    *
-    * @param value the InferenceClassification
-    */
-    public void setInferenceClassification(InferenceClassification value) { 
-        this.InferenceClassification = value; 
-        valueChanged("InferenceClassification", value);
-
-    }
-            
-    private MailFolder RootFolder;
-     
-    /**
-    * Gets the Root Folder.
-    *
-    * @return the MailFolder
-    */
-    public MailFolder getRootFolder() {
-        return this.RootFolder; 
-    }
-
-    /**
-    * Sets the Root Folder.
-    *
-    * @param value the MailFolder
-    */
-    public void setRootFolder(MailFolder value) { 
-        this.RootFolder = value; 
-        valueChanged("RootFolder", value);
-
-    }
-            
     private ProfilePhoto Photo;
      
     /**
@@ -1673,31 +1396,6 @@ public class User extends DirectoryObject {
     public void setPhoto(ProfilePhoto value) { 
         this.Photo = value; 
         valueChanged("Photo", value);
-
-    }
-    
-        
-    private java.util.List<ProfilePhoto> Photos = null;
-    
-    
-     
-    /**
-    * Gets the Photos.
-    *
-    * @return the java.util.List<ProfilePhoto>
-    */
-    public java.util.List<ProfilePhoto> getPhotos() {
-        return this.Photos; 
-    }
-
-    /**
-    * Sets the Photos.
-    *
-    * @param value the java.util.List<ProfilePhoto>
-    */
-    public void setPhotos(java.util.List<ProfilePhoto> value) { 
-        this.Photos = value; 
-        valueChanged("Photos", value);
 
     }
             
@@ -1720,128 +1418,6 @@ public class User extends DirectoryObject {
     public void setDrive(Drive value) { 
         this.drive = value; 
         valueChanged("drive", value);
-
-    }
-    
-        
-    private java.util.List<Item> TrendingAround = null;
-    
-    
-     
-    /**
-    * Gets the Trending Around.
-    *
-    * @return the java.util.List<Item>
-    */
-    public java.util.List<Item> getTrendingAround() {
-        return this.TrendingAround; 
-    }
-
-    /**
-    * Sets the Trending Around.
-    *
-    * @param value the java.util.List<Item>
-    */
-    public void setTrendingAround(java.util.List<Item> value) { 
-        this.TrendingAround = value; 
-        valueChanged("TrendingAround", value);
-
-    }
-    
-        
-    private java.util.List<User> WorkingWith = null;
-    
-    
-     
-    /**
-    * Gets the Working With.
-    *
-    * @return the java.util.List<User>
-    */
-    public java.util.List<User> getWorkingWith() {
-        return this.WorkingWith; 
-    }
-
-    /**
-    * Sets the Working With.
-    *
-    * @param value the java.util.List<User>
-    */
-    public void setWorkingWith(java.util.List<User> value) { 
-        this.WorkingWith = value; 
-        valueChanged("WorkingWith", value);
-
-    }
-    
-        
-    private java.util.List<Task> tasks = null;
-    
-    
-     
-    /**
-    * Gets the tasks.
-    *
-    * @return the java.util.List<Task>
-    */
-    public java.util.List<Task> getTasks() {
-        return this.tasks; 
-    }
-
-    /**
-    * Sets the tasks.
-    *
-    * @param value the java.util.List<Task>
-    */
-    public void setTasks(java.util.List<Task> value) { 
-        this.tasks = value; 
-        valueChanged("tasks", value);
-
-    }
-    
-        
-    private java.util.List<Plan> plans = null;
-    
-    
-     
-    /**
-    * Gets the plans.
-    *
-    * @return the java.util.List<Plan>
-    */
-    public java.util.List<Plan> getPlans() {
-        return this.plans; 
-    }
-
-    /**
-    * Sets the plans.
-    *
-    * @param value the java.util.List<Plan>
-    */
-    public void setPlans(java.util.List<Plan> value) { 
-        this.plans = value; 
-        valueChanged("plans", value);
-
-    }
-            
-    private Notes notes;
-     
-    /**
-    * Gets the notes.
-    *
-    * @return the Notes
-    */
-    public Notes getNotes() {
-        return this.notes; 
-    }
-
-    /**
-    * Sets the notes.
-    *
-    * @param value the Notes
-    */
-    public void setNotes(Notes value) { 
-        this.notes = value; 
-        valueChanged("notes", value);
 
     }
 }

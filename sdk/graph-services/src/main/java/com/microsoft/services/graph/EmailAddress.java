@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class EmailAddress extends ODataBaseEntity {
 
     public EmailAddress(){
-        setODataType("#Microsoft.Graph.EmailAddress");
+        setODataType("#microsoft.graph.emailAddress");
     }
 
     private String Name;

@@ -23,7 +23,51 @@ package com.microsoft.services.graph;
 public class Event extends OutlookItem {
 
     public Event(){
-        setODataType("#Microsoft.Graph.Event");
+        setODataType("#microsoft.graph.event");
+    }
+            
+    private String OriginalStartTimeZone;
+     
+    /**
+    * Gets the Original Start Time Zone.
+    *
+    * @return the String
+    */
+    public String getOriginalStartTimeZone() {
+        return this.OriginalStartTimeZone; 
+    }
+
+    /**
+    * Sets the Original Start Time Zone.
+    *
+    * @param value the String
+    */
+    public void setOriginalStartTimeZone(String value) { 
+        this.OriginalStartTimeZone = value; 
+        valueChanged("OriginalStartTimeZone", value);
+
+    }
+            
+    private String OriginalEndTimeZone;
+     
+    /**
+    * Gets the Original End Time Zone.
+    *
+    * @return the String
+    */
+    public String getOriginalEndTimeZone() {
+        return this.OriginalEndTimeZone; 
+    }
+
+    /**
+    * Sets the Original End Time Zone.
+    *
+    * @param value the String
+    */
+    public void setOriginalEndTimeZone(String value) { 
+        this.OriginalEndTimeZone = value; 
+        valueChanged("OriginalEndTimeZone", value);
+
     }
             
     private ResponseStatus ResponseStatus;
@@ -67,6 +111,50 @@ public class Event extends OutlookItem {
     public void setICalUId(String value) { 
         this.iCalUId = value; 
         valueChanged("iCalUId", value);
+
+    }
+            
+    private Integer ReminderMinutesBeforeStart;
+     
+    /**
+    * Gets the Reminder Minutes Before Start.
+    *
+    * @return the Integer
+    */
+    public Integer getReminderMinutesBeforeStart() {
+        return this.ReminderMinutesBeforeStart; 
+    }
+
+    /**
+    * Sets the Reminder Minutes Before Start.
+    *
+    * @param value the Integer
+    */
+    public void setReminderMinutesBeforeStart(Integer value) { 
+        this.ReminderMinutesBeforeStart = value; 
+        valueChanged("ReminderMinutesBeforeStart", value);
+
+    }
+            
+    private Boolean IsReminderOn;
+     
+    /**
+    * Gets the Is Reminder On.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsReminderOn() {
+        return this.IsReminderOn; 
+    }
+
+    /**
+    * Sets the Is Reminder On.
+    *
+    * @param value the Boolean
+    */
+    public void setIsReminderOn(Boolean value) { 
+        this.IsReminderOn = value; 
+        valueChanged("IsReminderOn", value);
 
     }
             
@@ -202,23 +290,23 @@ public class Event extends OutlookItem {
 
     }
             
-    private java.util.Calendar Start;
+    private DateTimeTimeZone Start;
      
     /**
     * Gets the Start.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getStart() {
+    public DateTimeTimeZone getStart() {
         return this.Start; 
     }
 
     /**
     * Sets the Start.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setStart(java.util.Calendar value) { 
+    public void setStart(DateTimeTimeZone value) { 
         this.Start = value; 
         valueChanged("Start", value);
 
@@ -246,69 +334,25 @@ public class Event extends OutlookItem {
 
     }
             
-    private String StartTimeZone;
-     
-    /**
-    * Gets the Start Time Zone.
-    *
-    * @return the String
-    */
-    public String getStartTimeZone() {
-        return this.StartTimeZone; 
-    }
-
-    /**
-    * Sets the Start Time Zone.
-    *
-    * @param value the String
-    */
-    public void setStartTimeZone(String value) { 
-        this.StartTimeZone = value; 
-        valueChanged("StartTimeZone", value);
-
-    }
-            
-    private java.util.Calendar End;
+    private DateTimeTimeZone End;
      
     /**
     * Gets the End.
     *
-    * @return the java.util.Calendar
+    * @return the DateTimeTimeZone
     */
-    public java.util.Calendar getEnd() {
+    public DateTimeTimeZone getEnd() {
         return this.End; 
     }
 
     /**
     * Sets the End.
     *
-    * @param value the java.util.Calendar
+    * @param value the DateTimeTimeZone
     */
-    public void setEnd(java.util.Calendar value) { 
+    public void setEnd(DateTimeTimeZone value) { 
         this.End = value; 
         valueChanged("End", value);
-
-    }
-            
-    private String EndTimeZone;
-     
-    /**
-    * Gets the End Time Zone.
-    *
-    * @return the String
-    */
-    public String getEndTimeZone() {
-        return this.EndTimeZone; 
-    }
-
-    /**
-    * Sets the End Time Zone.
-    *
-    * @param value the String
-    */
-    public void setEndTimeZone(String value) { 
-        this.EndTimeZone = value; 
-        valueChanged("EndTimeZone", value);
 
     }
             
@@ -623,31 +667,6 @@ public class Event extends OutlookItem {
     public void setInstances(java.util.List<Event> value) { 
         this.Instances = value; 
         valueChanged("Instances", value);
-
-    }
-    
-        
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
 
     }
     

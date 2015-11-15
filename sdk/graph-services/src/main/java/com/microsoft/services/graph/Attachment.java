@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Attachment extends Entity {
 
     public Attachment(){
-        setODataType("#Microsoft.Graph.Attachment");
+        setODataType("#microsoft.graph.attachment");
     }
             
     private java.util.Calendar LastModifiedDateTime;

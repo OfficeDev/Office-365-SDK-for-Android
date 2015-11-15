@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class ItemAttachment extends Attachment {
 
     public ItemAttachment(){
-        setODataType("#Microsoft.Graph.ItemAttachment");
+        setODataType("#microsoft.graph.itemAttachment");
     }
             
     private OutlookItem Item;

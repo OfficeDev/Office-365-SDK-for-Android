@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Post extends OutlookItem {
 
     public Post(){
-        setODataType("#Microsoft.Graph.Post");
+        setODataType("#microsoft.graph.post");
     }
             
     private ItemBody Body;
@@ -202,31 +202,6 @@ public class Post extends OutlookItem {
     public void setConversationId(String value) { 
         this.ConversationId = value; 
         valueChanged("ConversationId", value);
-
-    }
-    
-        
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
 
     }
             

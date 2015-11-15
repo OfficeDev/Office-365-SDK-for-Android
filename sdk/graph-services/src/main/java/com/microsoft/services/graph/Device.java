@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Device extends DirectoryObject {
 
     public Device(){
-        setODataType("#Microsoft.Graph.Device");
+        setODataType("#microsoft.graph.device");
     }
             
     private Boolean accountEnabled;
@@ -73,45 +73,45 @@ public class Device extends DirectoryObject {
 
     }
             
-    private java.util.Calendar approximateLastLogonTimestamp;
+    private java.util.Calendar approximateLastSignInDateTime;
      
     /**
-    * Gets the approximate Last Logon Timestamp.
+    * Gets the approximate Last Sign In Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getApproximateLastLogonTimestamp() {
-        return this.approximateLastLogonTimestamp; 
+    public java.util.Calendar getApproximateLastSignInDateTime() {
+        return this.approximateLastSignInDateTime; 
     }
 
     /**
-    * Sets the approximate Last Logon Timestamp.
+    * Sets the approximate Last Sign In Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setApproximateLastLogonTimestamp(java.util.Calendar value) { 
-        this.approximateLastLogonTimestamp = value; 
-        valueChanged("approximateLastLogonTimestamp", value);
+    public void setApproximateLastSignInDateTime(java.util.Calendar value) { 
+        this.approximateLastSignInDateTime = value; 
+        valueChanged("approximateLastSignInDateTime", value);
 
     }
             
-    private java.util.UUID deviceId;
+    private String deviceId;
      
     /**
     * Gets the device Id.
     *
-    * @return the java.util.UUID
+    * @return the String
     */
-    public java.util.UUID getDeviceId() {
+    public String getDeviceId() {
         return this.deviceId; 
     }
 
     /**
     * Sets the device Id.
     *
-    * @param value the java.util.UUID
+    * @param value the String
     */
-    public void setDeviceId(java.util.UUID value) { 
+    public void setDeviceId(String value) { 
         this.deviceId = value; 
         valueChanged("deviceId", value);
 
@@ -139,138 +139,25 @@ public class Device extends DirectoryObject {
 
     }
             
-    private Integer deviceObjectVersion;
+    private Integer deviceVersion;
      
     /**
-    * Gets the device Object Version.
+    * Gets the device Version.
     *
     * @return the Integer
     */
-    public Integer getDeviceObjectVersion() {
-        return this.deviceObjectVersion; 
+    public Integer getDeviceVersion() {
+        return this.deviceVersion; 
     }
 
     /**
-    * Sets the device Object Version.
+    * Sets the device Version.
     *
     * @param value the Integer
     */
-    public void setDeviceObjectVersion(Integer value) { 
-        this.deviceObjectVersion = value; 
-        valueChanged("deviceObjectVersion", value);
-
-    }
-            
-    private String deviceOSType;
-     
-    /**
-    * Gets the device OSType.
-    *
-    * @return the String
-    */
-    public String getDeviceOSType() {
-        return this.deviceOSType; 
-    }
-
-    /**
-    * Sets the device OSType.
-    *
-    * @param value the String
-    */
-    public void setDeviceOSType(String value) { 
-        this.deviceOSType = value; 
-        valueChanged("deviceOSType", value);
-
-    }
-            
-    private String deviceOSVersion;
-     
-    /**
-    * Gets the device OSVersion.
-    *
-    * @return the String
-    */
-    public String getDeviceOSVersion() {
-        return this.deviceOSVersion; 
-    }
-
-    /**
-    * Sets the device OSVersion.
-    *
-    * @param value the String
-    */
-    public void setDeviceOSVersion(String value) { 
-        this.deviceOSVersion = value; 
-        valueChanged("deviceOSVersion", value);
-
-    }
-    
-        
-    private java.util.List<String> devicePhysicalIds = null;
-    
-    
-     
-    /**
-    * Gets the device Physical Ids.
-    *
-    * @return the java.util.List<String>
-    */
-    public java.util.List<String> getDevicePhysicalIds() {
-        return this.devicePhysicalIds; 
-    }
-
-    /**
-    * Sets the device Physical Ids.
-    *
-    * @param value the java.util.List<String>
-    */
-    public void setDevicePhysicalIds(java.util.List<String> value) { 
-        this.devicePhysicalIds = value; 
-        valueChanged("devicePhysicalIds", value);
-
-    }
-            
-    private String deviceTrustType;
-     
-    /**
-    * Gets the device Trust Type.
-    *
-    * @return the String
-    */
-    public String getDeviceTrustType() {
-        return this.deviceTrustType; 
-    }
-
-    /**
-    * Sets the device Trust Type.
-    *
-    * @param value the String
-    */
-    public void setDeviceTrustType(String value) { 
-        this.deviceTrustType = value; 
-        valueChanged("deviceTrustType", value);
-
-    }
-            
-    private Boolean dirSyncEnabled;
-     
-    /**
-    * Gets the dir Sync Enabled.
-    *
-    * @return the Boolean
-    */
-    public Boolean getDirSyncEnabled() {
-        return this.dirSyncEnabled; 
-    }
-
-    /**
-    * Sets the dir Sync Enabled.
-    *
-    * @param value the Boolean
-    */
-    public void setDirSyncEnabled(Boolean value) { 
-        this.dirSyncEnabled = value; 
-        valueChanged("dirSyncEnabled", value);
+    public void setDeviceVersion(Integer value) { 
+        this.deviceVersion = value; 
+        valueChanged("deviceVersion", value);
 
     }
             
@@ -296,25 +183,182 @@ public class Device extends DirectoryObject {
 
     }
             
-    private java.util.Calendar lastDirSyncTime;
+    private Boolean isCompliant;
      
     /**
-    * Gets the last Dir Sync Time.
+    * Gets the is Compliant.
     *
-    * @return the java.util.Calendar
+    * @return the Boolean
     */
-    public java.util.Calendar getLastDirSyncTime() {
-        return this.lastDirSyncTime; 
+    public Boolean getIsCompliant() {
+        return this.isCompliant; 
     }
 
     /**
-    * Sets the last Dir Sync Time.
+    * Sets the is Compliant.
+    *
+    * @param value the Boolean
+    */
+    public void setIsCompliant(Boolean value) { 
+        this.isCompliant = value; 
+        valueChanged("isCompliant", value);
+
+    }
+            
+    private Boolean isManaged;
+     
+    /**
+    * Gets the is Managed.
+    *
+    * @return the Boolean
+    */
+    public Boolean getIsManaged() {
+        return this.isManaged; 
+    }
+
+    /**
+    * Sets the is Managed.
+    *
+    * @param value the Boolean
+    */
+    public void setIsManaged(Boolean value) { 
+        this.isManaged = value; 
+        valueChanged("isManaged", value);
+
+    }
+            
+    private java.util.Calendar onPremisesLastSyncDateTime;
+     
+    /**
+    * Gets the on Premises Last Sync Date Time.
+    *
+    * @return the java.util.Calendar
+    */
+    public java.util.Calendar getOnPremisesLastSyncDateTime() {
+        return this.onPremisesLastSyncDateTime; 
+    }
+
+    /**
+    * Sets the on Premises Last Sync Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setLastDirSyncTime(java.util.Calendar value) { 
-        this.lastDirSyncTime = value; 
-        valueChanged("lastDirSyncTime", value);
+    public void setOnPremisesLastSyncDateTime(java.util.Calendar value) { 
+        this.onPremisesLastSyncDateTime = value; 
+        valueChanged("onPremisesLastSyncDateTime", value);
+
+    }
+            
+    private Boolean onPremisesSyncEnabled;
+     
+    /**
+    * Gets the on Premises Sync Enabled.
+    *
+    * @return the Boolean
+    */
+    public Boolean getOnPremisesSyncEnabled() {
+        return this.onPremisesSyncEnabled; 
+    }
+
+    /**
+    * Sets the on Premises Sync Enabled.
+    *
+    * @param value the Boolean
+    */
+    public void setOnPremisesSyncEnabled(Boolean value) { 
+        this.onPremisesSyncEnabled = value; 
+        valueChanged("onPremisesSyncEnabled", value);
+
+    }
+            
+    private String operatingSystem;
+     
+    /**
+    * Gets the operating System.
+    *
+    * @return the String
+    */
+    public String getOperatingSystem() {
+        return this.operatingSystem; 
+    }
+
+    /**
+    * Sets the operating System.
+    *
+    * @param value the String
+    */
+    public void setOperatingSystem(String value) { 
+        this.operatingSystem = value; 
+        valueChanged("operatingSystem", value);
+
+    }
+            
+    private String operatingSystemVersion;
+     
+    /**
+    * Gets the operating System Version.
+    *
+    * @return the String
+    */
+    public String getOperatingSystemVersion() {
+        return this.operatingSystemVersion; 
+    }
+
+    /**
+    * Sets the operating System Version.
+    *
+    * @param value the String
+    */
+    public void setOperatingSystemVersion(String value) { 
+        this.operatingSystemVersion = value; 
+        valueChanged("operatingSystemVersion", value);
+
+    }
+    
+        
+    private java.util.List<String> physicalIds = null;
+    
+    
+     
+    /**
+    * Gets the physical Ids.
+    *
+    * @return the java.util.List<String>
+    */
+    public java.util.List<String> getPhysicalIds() {
+        return this.physicalIds; 
+    }
+
+    /**
+    * Sets the physical Ids.
+    *
+    * @param value the java.util.List<String>
+    */
+    public void setPhysicalIds(java.util.List<String> value) { 
+        this.physicalIds = value; 
+        valueChanged("physicalIds", value);
+
+    }
+            
+    private String trustType;
+     
+    /**
+    * Gets the trust Type.
+    *
+    * @return the String
+    */
+    public String getTrustType() {
+        return this.trustType; 
+    }
+
+    /**
+    * Sets the trust Type.
+    *
+    * @param value the String
+    */
+    public void setTrustType(String value) { 
+        this.trustType = value; 
+        valueChanged("trustType", value);
 
     }
     

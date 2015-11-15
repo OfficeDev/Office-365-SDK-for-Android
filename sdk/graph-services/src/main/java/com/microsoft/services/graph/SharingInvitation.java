@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class SharingInvitation extends ODataBaseEntity {
 
     public SharingInvitation(){
-        setODataType("#Microsoft.Graph.sharingInvitation");
+        setODataType("#microsoft.graph.sharingInvitation");
     }
 
     private String email;

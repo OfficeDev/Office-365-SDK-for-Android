@@ -13,7 +13,6 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 
@@ -21,32 +20,10 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 /**
  * The type Drive.
 */
-public class Drive extends ODataBaseEntity {
+public class Drive extends Entity {
 
     public Drive(){
-        setODataType("#Microsoft.Graph.drive");
-    }
-            
-    private String id;
-     
-    /**
-    * Gets the id.
-    *
-    * @return the String
-    */
-    public String getId() {
-        return this.id; 
-    }
-
-    /**
-    * Sets the id.
-    *
-    * @param value the String
-    */
-    public void setId(String value) { 
-        this.id = value; 
-        valueChanged("id", value);
-
+        setODataType("#microsoft.graph.drive");
     }
             
     private String driveType;
@@ -116,97 +93,97 @@ public class Drive extends ODataBaseEntity {
     }
     
         
-    private java.util.List<Item> items = null;
+    private java.util.List<DriveItem> items = null;
     
     
      
     /**
     * Gets the items.
     *
-    * @return the java.util.List<Item>
+    * @return the java.util.List<DriveItem>
     */
-    public java.util.List<Item> getItems() {
+    public java.util.List<DriveItem> getItems() {
         return this.items; 
     }
 
     /**
     * Sets the items.
     *
-    * @param value the java.util.List<Item>
+    * @param value the java.util.List<DriveItem>
     */
-    public void setItems(java.util.List<Item> value) { 
+    public void setItems(java.util.List<DriveItem> value) { 
         this.items = value; 
         valueChanged("items", value);
 
     }
     
         
-    private java.util.List<Item> shared = null;
+    private java.util.List<DriveItem> shared = null;
     
     
      
     /**
     * Gets the shared.
     *
-    * @return the java.util.List<Item>
+    * @return the java.util.List<DriveItem>
     */
-    public java.util.List<Item> getShared() {
+    public java.util.List<DriveItem> getShared() {
         return this.shared; 
     }
 
     /**
     * Sets the shared.
     *
-    * @param value the java.util.List<Item>
+    * @param value the java.util.List<DriveItem>
     */
-    public void setShared(java.util.List<Item> value) { 
+    public void setShared(java.util.List<DriveItem> value) { 
         this.shared = value; 
         valueChanged("shared", value);
 
     }
     
         
-    private java.util.List<Item> special = null;
+    private java.util.List<DriveItem> special = null;
     
     
      
     /**
     * Gets the special.
     *
-    * @return the java.util.List<Item>
+    * @return the java.util.List<DriveItem>
     */
-    public java.util.List<Item> getSpecial() {
+    public java.util.List<DriveItem> getSpecial() {
         return this.special; 
     }
 
     /**
     * Sets the special.
     *
-    * @param value the java.util.List<Item>
+    * @param value the java.util.List<DriveItem>
     */
-    public void setSpecial(java.util.List<Item> value) { 
+    public void setSpecial(java.util.List<DriveItem> value) { 
         this.special = value; 
         valueChanged("special", value);
 
     }
             
-    private Item root;
+    private DriveItem root;
      
     /**
     * Gets the root.
     *
-    * @return the Item
+    * @return the DriveItem
     */
-    public Item getRoot() {
+    public DriveItem getRoot() {
         return this.root; 
     }
 
     /**
     * Sets the root.
     *
-    * @param value the Item
+    * @param value the DriveItem
     */
-    public void setRoot(Item value) { 
+    public void setRoot(DriveItem value) { 
         this.root = value; 
         valueChanged("root", value);
 

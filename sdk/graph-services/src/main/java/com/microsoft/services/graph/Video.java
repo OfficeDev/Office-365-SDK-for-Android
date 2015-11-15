@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Video extends ODataBaseEntity {
 
     public Video(){
-        setODataType("#Microsoft.Graph.video");
+        setODataType("#microsoft.graph.video");
     }
 
     private Integer bitrate;

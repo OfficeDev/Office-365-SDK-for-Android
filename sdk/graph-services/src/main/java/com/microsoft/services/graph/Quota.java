@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Quota extends ODataBaseEntity {
 
     public Quota(){
-        setODataType("#Microsoft.Graph.quota");
+        setODataType("#microsoft.graph.quota");
     }
 
     private Long deleted;

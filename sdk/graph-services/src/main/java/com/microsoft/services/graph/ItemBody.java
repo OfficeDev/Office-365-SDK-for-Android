@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class ItemBody extends ODataBaseEntity {
 
     public ItemBody(){
-        setODataType("#Microsoft.Graph.ItemBody");
+        setODataType("#microsoft.graph.itemBody");
     }
 
     private BodyType ContentType;

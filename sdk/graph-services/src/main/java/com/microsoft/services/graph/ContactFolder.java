@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class ContactFolder extends Entity {
 
     public ContactFolder(){
-        setODataType("#Microsoft.Graph.ContactFolder");
+        setODataType("#microsoft.graph.contactFolder");
     }
             
     private String ParentFolderId;

@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class GeoCoordinates extends ODataBaseEntity {
 
     public GeoCoordinates(){
-        setODataType("#Microsoft.Graph.geoCoordinates");
+        setODataType("#microsoft.graph.geoCoordinates");
     }
 
     private Double altitude;

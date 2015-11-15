@@ -24,28 +24,28 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class AssignedPlan extends ODataBaseEntity {
 
     public AssignedPlan(){
-        setODataType("#Microsoft.Graph.AssignedPlan");
+        setODataType("#microsoft.graph.assignedPlan");
     }
 
-    private java.util.Calendar assignedTimestamp;
+    private java.util.Calendar assignedDateTime;
 
     /**
-    * Gets the assigned Timestamp.
+    * Gets the assigned Date Time.
     *
     * @return the java.util.Calendar
     */
-    public java.util.Calendar getAssignedTimestamp() {
-        return this.assignedTimestamp; 
+    public java.util.Calendar getAssignedDateTime() {
+        return this.assignedDateTime; 
     }
 
     /**
-    * Sets the assigned Timestamp.
+    * Sets the assigned Date Time.
     *
     * @param value the java.util.Calendar
     */
-    public void setAssignedTimestamp(java.util.Calendar value) { 
-        this.assignedTimestamp = value;
-        valueChanged("assignedTimestamp", value);
+    public void setAssignedDateTime(java.util.Calendar value) { 
+        this.assignedDateTime = value;
+        valueChanged("assignedDateTime", value);
 
     }
 

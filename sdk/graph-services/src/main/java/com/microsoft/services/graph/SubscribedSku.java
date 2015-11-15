@@ -13,7 +13,6 @@ root for authoritative license information.﻿
 ******************************************************************************/
 package com.microsoft.services.graph;
 
-import com.microsoft.services.orc.core.ODataBaseEntity;
 
 
 
@@ -21,10 +20,10 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 /**
  * The type Subscribed Sku.
 */
-public class SubscribedSku extends ODataBaseEntity {
+public class SubscribedSku extends Entity {
 
     public SubscribedSku(){
-        setODataType("#Microsoft.Graph.SubscribedSku");
+        setODataType("#microsoft.graph.subscribedSku");
     }
             
     private String capabilityStatus;
@@ -68,28 +67,6 @@ public class SubscribedSku extends ODataBaseEntity {
     public void setConsumedUnits(Integer value) { 
         this.consumedUnits = value; 
         valueChanged("consumedUnits", value);
-
-    }
-            
-    private String objectId;
-     
-    /**
-    * Gets the object Id.
-    *
-    * @return the String
-    */
-    public String getObjectId() {
-        return this.objectId; 
-    }
-
-    /**
-    * Sets the object Id.
-    *
-    * @param value the String
-    */
-    public void setObjectId(String value) { 
-        this.objectId = value; 
-        valueChanged("objectId", value);
 
     }
             
@@ -181,6 +158,28 @@ public class SubscribedSku extends ODataBaseEntity {
     public void setSkuPartNumber(String value) { 
         this.skuPartNumber = value; 
         valueChanged("skuPartNumber", value);
+
+    }
+            
+    private String appliesTo;
+     
+    /**
+    * Gets the applies To.
+    *
+    * @return the String
+    */
+    public String getAppliesTo() {
+        return this.appliesTo; 
+    }
+
+    /**
+    * Sets the applies To.
+    *
+    * @param value the String
+    */
+    public void setAppliesTo(String value) { 
+        this.appliesTo = value; 
+        valueChanged("appliesTo", value);
 
     }
 }

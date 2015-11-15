@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Recipients extends ODataBaseEntity {
 
     public Recipients(){
-        setODataType("#Microsoft.Graph.recipients");
+        setODataType("#microsoft.graph.recipients");
     }
 
     private String email;

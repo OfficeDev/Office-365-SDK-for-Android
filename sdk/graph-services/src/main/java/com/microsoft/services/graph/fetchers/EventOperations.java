@@ -67,13 +67,16 @@ public class EventOperations extends OutlookItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> accept(String comment, Boolean sendResponse) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedComment = serializer.serialize(comment);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedComment = serializer.serialize(comment);
 		String serializedSendResponse = serializer.serialize(sendResponse);
 		  
         
-        ListenableFuture<String> future = acceptRaw(serializedComment, serializedSendResponse);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = acceptRaw(serializedComment, serializedSendResponse);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -95,7 +98,8 @@ public class EventOperations extends OutlookItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.Accept");
+        request.getUrl().appendPathComponent("Accept");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -110,13 +114,16 @@ public class EventOperations extends OutlookItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> decline(String comment, Boolean sendResponse) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedComment = serializer.serialize(comment);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedComment = serializer.serialize(comment);
 		String serializedSendResponse = serializer.serialize(sendResponse);
 		  
         
-        ListenableFuture<String> future = declineRaw(serializedComment, serializedSendResponse);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = declineRaw(serializedComment, serializedSendResponse);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -138,7 +145,8 @@ public class EventOperations extends OutlookItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.Decline");
+        request.getUrl().appendPathComponent("Decline");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -153,13 +161,16 @@ public class EventOperations extends OutlookItemOperations {
      * @return the listenable future
      */         
     public ListenableFuture<Integer> tentativelyAccept(String comment, Boolean sendResponse) { 
-        JsonSerializer serializer = getResolver().getJsonSerializer();      
-        String serializedComment = serializer.serialize(comment);
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedComment = serializer.serialize(comment);
 		String serializedSendResponse = serializer.serialize(sendResponse);
 		  
         
-        ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment, serializedSendResponse);
-        return transformToEntityListenableFuture(future, Integer.class, getResolver());
+		
+		ListenableFuture<String> future = tentativelyAcceptRaw(serializedComment, serializedSendResponse);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
         
     }
 
@@ -181,7 +192,90 @@ public class EventOperations extends OutlookItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Microsoft.Graph.TentativelyAccept");
+        request.getUrl().appendPathComponent("TentativelyAccept");
+        
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * SnoozeReminder listenable future.
+     * @param newReminderTime the newReminderTime 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> snoozeReminder(DateTimeTimeZone newReminderTime) { 
+        
+		JsonSerializer serializer = getResolver().getJsonSerializer();      
+        
+		String serializedNewReminderTime = serializer.serialize(newReminderTime);
+		  
+        
+		
+		ListenableFuture<String> future = snoozeReminderRaw(serializedNewReminderTime);
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * SnoozeReminderRaw listenable future.
+     * @param newReminderTime the newReminderTime 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> snoozeReminderRaw(String newReminderTime){
+        
+        java.util.Map<String, String> map = new java.util.HashMap<String, String>();
+        
+        map.put("NewReminderTime", newReminderTime);
+		
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+        
+        request.setContent(getResolver().getJsonSerializer()
+               .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
+                        
+        request.getUrl().appendPathComponent("SnoozeReminder");
+        
+        
+        ListenableFuture<OrcResponse> future = oDataExecute(request);
+        return transformToStringListenableFuture(future);
+    }
+
+
+    
+    
+    /**
+     * DismissReminder listenable future.
+     * 
+     * @return the listenable future
+     */         
+    public ListenableFuture<Integer> dismissReminder() { 
+              
+        
+		  
+        
+		
+		ListenableFuture<String> future = dismissReminderRaw();
+		return transformToEntityListenableFuture(future, Integer.class, getResolver());
+        
+    }
+
+     /**
+     * DismissReminderRaw listenable future.
+     * 
+     * @return the listenable future
+     */ 
+    public ListenableFuture<String> dismissReminderRaw(){
+        
+        
+        Request request = getResolver().createRequest();
+        request.setVerb(HttpVerb.POST);
+                        
+        request.getUrl().appendPathComponent("DismissReminder");
+        
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class MailFolder extends Entity {
 
     public MailFolder(){
-        setODataType("#Microsoft.Graph.MailFolder");
+        setODataType("#microsoft.graph.mailFolder");
     }
             
     private String DisplayName;

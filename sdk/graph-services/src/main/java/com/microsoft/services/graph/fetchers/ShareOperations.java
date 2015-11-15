@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type ShareOperations.
  */
-public class ShareOperations extends OrcOperations {
+public class ShareOperations extends EntityOperations {
 
      /**
       * Instantiates a new ShareOperations.

@@ -59,40 +59,8 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
     }
 
     
-    public ApplicationFetcher asApplication(){
-        return new ApplicationFetcher(this.urlComponent, this.parent);
-    }   
-
-    public ExtensionPropertyFetcher asExtensionProperty(){
-        return new ExtensionPropertyFetcher(this.urlComponent, this.parent);
-    }   
-
-    public UserFetcher asUser(){
-        return new UserFetcher(this.urlComponent, this.parent);
-    }   
-
-    public AppRoleAssignmentFetcher asAppRoleAssignment(){
-        return new AppRoleAssignmentFetcher(this.urlComponent, this.parent);
-    }   
-
-    public GroupFetcher asGroup(){
-        return new GroupFetcher(this.urlComponent, this.parent);
-    }   
-
-    public OrgContactFetcher asOrgContact(){
-        return new OrgContactFetcher(this.urlComponent, this.parent);
-    }   
-
     public DeviceFetcher asDevice(){
         return new DeviceFetcher(this.urlComponent, this.parent);
-    }   
-
-    public DeviceConfigurationFetcher asDeviceConfiguration(){
-        return new DeviceConfigurationFetcher(this.urlComponent, this.parent);
-    }   
-
-    public DirectoryLinkChangeFetcher asDirectoryLinkChange(){
-        return new DirectoryLinkChangeFetcher(this.urlComponent, this.parent);
     }   
 
     public DirectoryRoleFetcher asDirectoryRole(){
@@ -103,12 +71,16 @@ public class DirectoryObjectFetcher extends OrcEntityFetcher<DirectoryObject,Dir
         return new DirectoryRoleTemplateFetcher(this.urlComponent, this.parent);
     }   
 
-    public ServicePrincipalFetcher asServicePrincipal(){
-        return new ServicePrincipalFetcher(this.urlComponent, this.parent);
+    public GroupFetcher asGroup(){
+        return new GroupFetcher(this.urlComponent, this.parent);
     }   
 
-    public TenantDetailFetcher asTenantDetail(){
-        return new TenantDetailFetcher(this.urlComponent, this.parent);
+    public OrganizationFetcher asOrganization(){
+        return new OrganizationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public UserFetcher asUser(){
+        return new UserFetcher(this.urlComponent, this.parent);
     }   
 
     

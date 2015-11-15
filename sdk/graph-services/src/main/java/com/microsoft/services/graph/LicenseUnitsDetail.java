@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class LicenseUnitsDetail extends ODataBaseEntity {
 
     public LicenseUnitsDetail(){
-        setODataType("#Microsoft.Graph.LicenseUnitsDetail");
+        setODataType("#microsoft.graph.licenseUnitsDetail");
     }
 
     private Integer enabled;

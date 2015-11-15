@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class ReferenceAttachment extends Attachment {
 
     public ReferenceAttachment(){
-        setODataType("#Microsoft.Graph.ReferenceAttachment");
+        setODataType("#microsoft.graph.referenceAttachment");
     }
 }
 

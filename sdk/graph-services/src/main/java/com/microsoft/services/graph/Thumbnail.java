@@ -25,7 +25,7 @@ import com.microsoft.services.orc.core.ODataStream;
 public class Thumbnail extends ODataBaseEntity {
 
     public Thumbnail(){
-        setODataType("#Microsoft.Graph.thumbnail");
+        setODataType("#microsoft.graph.thumbnail");
     }
 
     private ODataStream content;

@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class AssignedLicense extends ODataBaseEntity {
 
     public AssignedLicense(){
-        setODataType("#Microsoft.Graph.AssignedLicense");
+        setODataType("#microsoft.graph.assignedLicense");
     }
 
     private java.util.List<java.util.UUID> disabledPlans;

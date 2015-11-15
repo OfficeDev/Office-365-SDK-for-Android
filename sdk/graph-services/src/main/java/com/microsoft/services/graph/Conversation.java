@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Conversation extends Entity {
 
     public Conversation(){
-        setODataType("#Microsoft.Graph.Conversation");
+        setODataType("#microsoft.graph.conversation");
     }
             
     private String Topic;

@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Audio extends ODataBaseEntity {
 
     public Audio(){
-        setODataType("#Microsoft.Graph.audio");
+        setODataType("#microsoft.graph.audio");
     }
 
     private String album;

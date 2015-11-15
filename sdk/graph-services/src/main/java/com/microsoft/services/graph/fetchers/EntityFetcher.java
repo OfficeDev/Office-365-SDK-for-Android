@@ -59,16 +59,40 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
     }
 
     
-    public OutlookItemFetcher asOutlookItem(){
-        return new OutlookItemFetcher(this.urlComponent, this.parent);
+    public DirectoryObjectFetcher asDirectoryObject(){
+        return new DirectoryObjectFetcher(this.urlComponent, this.parent);
     }   
 
-    public MailFolderFetcher asMailFolder(){
-        return new MailFolderFetcher(this.urlComponent, this.parent);
+    public ConversationThreadFetcher asConversationThread(){
+        return new ConversationThreadFetcher(this.urlComponent, this.parent);
     }   
 
     public CalendarFetcher asCalendar(){
         return new CalendarFetcher(this.urlComponent, this.parent);
+    }   
+
+    public OutlookItemFetcher asOutlookItem(){
+        return new OutlookItemFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ConversationFetcher asConversation(){
+        return new ConversationFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ProfilePhotoFetcher asProfilePhoto(){
+        return new ProfilePhotoFetcher(this.urlComponent, this.parent);
+    }   
+
+    public DriveFetcher asDrive(){
+        return new DriveFetcher(this.urlComponent, this.parent);
+    }   
+
+    public SubscribedSkuFetcher asSubscribedSku(){
+        return new SubscribedSkuFetcher(this.urlComponent, this.parent);
+    }   
+
+    public MailFolderFetcher asMailFolder(){
+        return new MailFolderFetcher(this.urlComponent, this.parent);
     }   
 
     public CalendarGroupFetcher asCalendarGroup(){
@@ -79,32 +103,24 @@ public class EntityFetcher extends OrcEntityFetcher<Entity,EntityOperations>
         return new ContactFolderFetcher(this.urlComponent, this.parent);
     }   
 
-    public InferenceClassificationFetcher asInferenceClassification(){
-        return new InferenceClassificationFetcher(this.urlComponent, this.parent);
-    }   
-
-    public ProfilePhotoFetcher asProfilePhoto(){
-        return new ProfilePhotoFetcher(this.urlComponent, this.parent);
-    }   
-
-    public ConversationThreadFetcher asConversationThread(){
-        return new ConversationThreadFetcher(this.urlComponent, this.parent);
-    }   
-
-    public ConversationFetcher asConversation(){
-        return new ConversationFetcher(this.urlComponent, this.parent);
-    }   
-
     public AttachmentFetcher asAttachment(){
         return new AttachmentFetcher(this.urlComponent, this.parent);
     }   
 
-    public ExtensionFetcher asExtension(){
-        return new ExtensionFetcher(this.urlComponent, this.parent);
+    public DriveItemFetcher asDriveItem(){
+        return new DriveItemFetcher(this.urlComponent, this.parent);
     }   
 
-    public InferenceClassificationOverrideFetcher asInferenceClassificationOverride(){
-        return new InferenceClassificationOverrideFetcher(this.urlComponent, this.parent);
+    public ShareFetcher asShare(){
+        return new ShareFetcher(this.urlComponent, this.parent);
+    }   
+
+    public PermissionFetcher asPermission(){
+        return new PermissionFetcher(this.urlComponent, this.parent);
+    }   
+
+    public ThumbnailSetFetcher asThumbnailSet(){
+        return new ThumbnailSetFetcher(this.urlComponent, this.parent);
     }   
 
     

@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class SearchResult extends ODataBaseEntity {
 
     public SearchResult(){
-        setODataType("#Microsoft.Graph.searchResult");
+        setODataType("#microsoft.graph.searchResult");
     }
 
     private String onClickTelemetryUrl;

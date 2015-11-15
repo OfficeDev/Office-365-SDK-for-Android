@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Contact extends OutlookItem {
 
     public Contact(){
-        setODataType("#Microsoft.Graph.Contact");
+        setODataType("#microsoft.graph.contact");
     }
             
     private String ParentFolderId;
@@ -764,31 +764,6 @@ public class Contact extends OutlookItem {
     public void setChildren(java.util.List<String> value) { 
         this.Children = value; 
         valueChanged("Children", value);
-
-    }
-    
-        
-    private java.util.List<Extension> Extensions = null;
-    
-    
-     
-    /**
-    * Gets the Extensions.
-    *
-    * @return the java.util.List<Extension>
-    */
-    public java.util.List<Extension> getExtensions() {
-        return this.Extensions; 
-    }
-
-    /**
-    * Sets the Extensions.
-    *
-    * @param value the java.util.List<Extension>
-    */
-    public void setExtensions(java.util.List<Extension> value) { 
-        this.Extensions = value; 
-        valueChanged("Extensions", value);
 
     }
             

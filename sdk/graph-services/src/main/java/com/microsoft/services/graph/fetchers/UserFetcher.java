@@ -59,55 +59,8 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
     }
 
     
-    	
-
-	/**
-     * Gets thumbnail photo.
-     *
-     * @return the thumbnail photo
-     */
-    public OrcODataStreamFetcher getThumbnailPhoto() {
-		return new OrcODataStreamFetcher("thumbnailphoto", this, getResolver());
-    }
-
-	
     
-     /**
-     * Gets app role assignments.
-     *
-     * @return the app role assignments
-     */
-    public OrcCollectionFetcher<AppRoleAssignment, AppRoleAssignmentFetcher, AppRoleAssignmentCollectionOperations> getAppRoleAssignments() {
-        return new OrcCollectionFetcher<AppRoleAssignment, AppRoleAssignmentFetcher, AppRoleAssignmentCollectionOperations>("appRoleAssignments", this, AppRoleAssignment.class, AppRoleAssignmentCollectionOperations.class);
-    }
-
-    /**
-     * Gets app role assignment.
-     *
-     * @return the app role assignment
-     */
-    public AppRoleAssignmentFetcher getAppRoleAssignment(String id){
-         return new OrcCollectionFetcher<AppRoleAssignment, AppRoleAssignmentFetcher, AppRoleAssignmentCollectionOperations>("appRoleAssignments", this, AppRoleAssignment.class, AppRoleAssignmentCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets oauth2permission grants.
-     *
-     * @return the oauth2permission grants
-     */
-    public OrcCollectionFetcher<OAuth2PermissionGrant, OAuth2PermissionGrantFetcher, OAuth2PermissionGrantCollectionOperations> getOauth2PermissionGrants() {
-        return new OrcCollectionFetcher<OAuth2PermissionGrant, OAuth2PermissionGrantFetcher, OAuth2PermissionGrantCollectionOperations>("oauth2PermissionGrants", this, OAuth2PermissionGrant.class, OAuth2PermissionGrantCollectionOperations.class);
-    }
-
-    /**
-     * Gets oauth2permission grant.
-     *
-     * @return the oauth2permission grant
-     */
-    public OAuth2PermissionGrantFetcher getOauth2PermissionGrant(String id){
-         return new OrcCollectionFetcher<OAuth2PermissionGrant, OAuth2PermissionGrantFetcher, OAuth2PermissionGrantCollectionOperations>("oauth2PermissionGrants", this, OAuth2PermissionGrant.class, OAuth2PermissionGrantCollectionOperations.class).getById(id);
-    }
-
+    
      /**
      * Gets owned devices.
      *
@@ -394,46 +347,12 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
          return new OrcCollectionFetcher<ContactFolder, ContactFolderFetcher, ContactFolderCollectionOperations>("ContactFolders", this, ContactFolder.class, ContactFolderCollectionOperations.class).getById(id);
     }
      /**
-     * Gets inferenceclassification.
-     *
-     * @return the inference classification
-     */
-    public InferenceClassificationFetcher getInferenceClassification() {
-        return new InferenceClassificationFetcher("InferenceClassification", this);
-    }
-     /**
-     * Gets rootfolder.
-     *
-     * @return the root folder
-     */
-    public MailFolderFetcher getRootFolder() {
-        return new MailFolderFetcher("RootFolder", this);
-    }
-     /**
      * Gets photo.
      *
      * @return the photo
      */
     public ProfilePhotoFetcher getPhoto() {
         return new ProfilePhotoFetcher("Photo", this);
-    }
-
-     /**
-     * Gets photos.
-     *
-     * @return the photos
-     */
-    public OrcCollectionFetcher<ProfilePhoto, ProfilePhotoFetcher, ProfilePhotoCollectionOperations> getPhotos() {
-        return new OrcCollectionFetcher<ProfilePhoto, ProfilePhotoFetcher, ProfilePhotoCollectionOperations>("Photos", this, ProfilePhoto.class, ProfilePhotoCollectionOperations.class);
-    }
-
-    /**
-     * Gets photo.
-     *
-     * @return the photo
-     */
-    public ProfilePhotoFetcher getPhoto(String id){
-         return new OrcCollectionFetcher<ProfilePhoto, ProfilePhotoFetcher, ProfilePhotoCollectionOperations>("Photos", this, ProfilePhoto.class, ProfilePhotoCollectionOperations.class).getById(id);
     }
      /**
      * Gets drive.
@@ -442,86 +361,6 @@ public class UserFetcher extends OrcEntityFetcher<User,UserOperations>
      */
     public DriveFetcher getDrive() {
         return new DriveFetcher("drive", this);
-    }
-
-     /**
-     * Gets trending around.
-     *
-     * @return the trending around
-     */
-    public OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations> getTrendingAround() {
-        return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("TrendingAround", this, Item.class, ItemCollectionOperations.class);
-    }
-
-    /**
-     * Gets trending around.
-     *
-     * @return the trending around
-     */
-    public ItemFetcher getTrendingAround(String id){
-         return new OrcCollectionFetcher<Item, ItemFetcher, ItemCollectionOperations>("TrendingAround", this, Item.class, ItemCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets working with.
-     *
-     * @return the working with
-     */
-    public OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations> getWorkingWith() {
-        return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("WorkingWith", this, User.class, UserCollectionOperations.class);
-    }
-
-    /**
-     * Gets working with.
-     *
-     * @return the working with
-     */
-    public UserFetcher getWorkingWith(String id){
-         return new OrcCollectionFetcher<User, UserFetcher, UserCollectionOperations>("WorkingWith", this, User.class, UserCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets tasks.
-     *
-     * @return the tasks
-     */
-    public OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations> getTasks() {
-        return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class);
-    }
-
-    /**
-     * Gets task.
-     *
-     * @return the task
-     */
-    public TaskFetcher getTask(String id){
-         return new OrcCollectionFetcher<Task, TaskFetcher, TaskCollectionOperations>("tasks", this, Task.class, TaskCollectionOperations.class).getById(id);
-    }
-
-     /**
-     * Gets plans.
-     *
-     * @return the plans
-     */
-    public OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations> getPlans() {
-        return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class);
-    }
-
-    /**
-     * Gets plan.
-     *
-     * @return the plan
-     */
-    public PlanFetcher getPlan(String id){
-         return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class).getById(id);
-    }
-     /**
-     * Gets notes.
-     *
-     * @return the notes
-     */
-    public NotesFetcher getNote() {
-        return new NotesFetcher("notes", this);
     }
 
 }

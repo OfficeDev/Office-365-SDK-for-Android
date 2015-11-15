@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Folder extends ODataBaseEntity {
 
     public Folder(){
-        setODataType("#Microsoft.Graph.folder");
+        setODataType("#microsoft.graph.folder");
     }
 
     private Integer childCount;

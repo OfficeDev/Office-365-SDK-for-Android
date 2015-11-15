@@ -23,7 +23,7 @@ import com.microsoft.services.orc.serialization.JsonSerializer;
 /**
  * The type ThumbnailSetOperations.
  */
-public class ThumbnailSetOperations extends OrcOperations {
+public class ThumbnailSetOperations extends EntityOperations {
 
      /**
       * Instantiates a new ThumbnailSetOperations.

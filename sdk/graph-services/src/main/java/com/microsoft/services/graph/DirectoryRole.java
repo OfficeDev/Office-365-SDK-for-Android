@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class DirectoryRole extends DirectoryObject {
 
     public DirectoryRole(){
-        setODataType("#Microsoft.Graph.DirectoryRole");
+        setODataType("#microsoft.graph.directoryRole");
     }
             
     private String description;
@@ -67,50 +67,6 @@ public class DirectoryRole extends DirectoryObject {
     public void setDisplayName(String value) { 
         this.displayName = value; 
         valueChanged("displayName", value);
-
-    }
-            
-    private Boolean isSystem;
-     
-    /**
-    * Gets the is System.
-    *
-    * @return the Boolean
-    */
-    public Boolean getIsSystem() {
-        return this.isSystem; 
-    }
-
-    /**
-    * Sets the is System.
-    *
-    * @param value the Boolean
-    */
-    public void setIsSystem(Boolean value) { 
-        this.isSystem = value; 
-        valueChanged("isSystem", value);
-
-    }
-            
-    private Boolean roleDisabled;
-     
-    /**
-    * Gets the role Disabled.
-    *
-    * @return the Boolean
-    */
-    public Boolean getRoleDisabled() {
-        return this.roleDisabled; 
-    }
-
-    /**
-    * Sets the role Disabled.
-    *
-    * @param value the Boolean
-    */
-    public void setRoleDisabled(Boolean value) { 
-        this.roleDisabled = value; 
-        valueChanged("roleDisabled", value);
 
     }
             
@@ -158,81 +114,6 @@ public class DirectoryRole extends DirectoryObject {
     public void setMembers(java.util.List<DirectoryObject> value) { 
         this.members = value; 
         valueChanged("members", value);
-
-    }
-    
-        
-    private java.util.List<DirectoryObject> memberOf = null;
-    
-    
-     
-    /**
-    * Gets the member Of.
-    *
-    * @return the java.util.List<DirectoryObject>
-    */
-    public java.util.List<DirectoryObject> getMemberOf() {
-        return this.memberOf; 
-    }
-
-    /**
-    * Sets the member Of.
-    *
-    * @param value the java.util.List<DirectoryObject>
-    */
-    public void setMemberOf(java.util.List<DirectoryObject> value) { 
-        this.memberOf = value; 
-        valueChanged("memberOf", value);
-
-    }
-    
-        
-    private java.util.List<DirectoryObject> owners = null;
-    
-    
-     
-    /**
-    * Gets the owners.
-    *
-    * @return the java.util.List<DirectoryObject>
-    */
-    public java.util.List<DirectoryObject> getOwners() {
-        return this.owners; 
-    }
-
-    /**
-    * Sets the owners.
-    *
-    * @param value the java.util.List<DirectoryObject>
-    */
-    public void setOwners(java.util.List<DirectoryObject> value) { 
-        this.owners = value; 
-        valueChanged("owners", value);
-
-    }
-    
-        
-    private java.util.List<DirectoryObject> ownedObjects = null;
-    
-    
-     
-    /**
-    * Gets the owned Objects.
-    *
-    * @return the java.util.List<DirectoryObject>
-    */
-    public java.util.List<DirectoryObject> getOwnedObjects() {
-        return this.ownedObjects; 
-    }
-
-    /**
-    * Sets the owned Objects.
-    *
-    * @param value the java.util.List<DirectoryObject>
-    */
-    public void setOwnedObjects(java.util.List<DirectoryObject> value) { 
-        this.ownedObjects = value; 
-        valueChanged("ownedObjects", value);
 
     }
 }

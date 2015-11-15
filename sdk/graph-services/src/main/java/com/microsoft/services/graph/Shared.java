@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Shared extends ODataBaseEntity {
 
     public Shared(){
-        setODataType("#Microsoft.Graph.shared");
+        setODataType("#microsoft.graph.shared");
     }
 
     private IdentitySet owner;

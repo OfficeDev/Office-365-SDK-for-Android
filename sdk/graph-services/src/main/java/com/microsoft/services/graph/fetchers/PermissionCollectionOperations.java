@@ -25,7 +25,7 @@ import static com.microsoft.services.orc.core.Helpers.*;
 /**
  * The type PermissionCollectionOperations
  */
-public class PermissionCollectionOperations extends OrcOperations{
+public class PermissionCollectionOperations extends EntityCollectionOperations{
 
     /**
      * Instantiates a new PermissionCollectionOperations.

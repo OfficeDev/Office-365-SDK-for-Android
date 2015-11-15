@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class PasswordProfile extends ODataBaseEntity {
 
     public PasswordProfile(){
-        setODataType("#Microsoft.Graph.PasswordProfile");
+        setODataType("#microsoft.graph.passwordProfile");
     }
 
     private String password;
@@ -49,25 +49,25 @@ public class PasswordProfile extends ODataBaseEntity {
 
     }
 
-    private Boolean forceChangePasswordNextLogin;
+    private Boolean forceChangePasswordNextSignIn;
 
     /**
-    * Gets the force Change Password Next Login.
+    * Gets the force Change Password Next Sign In.
     *
     * @return the Boolean
     */
-    public Boolean getForceChangePasswordNextLogin() {
-        return this.forceChangePasswordNextLogin; 
+    public Boolean getForceChangePasswordNextSignIn() {
+        return this.forceChangePasswordNextSignIn; 
     }
 
     /**
-    * Sets the force Change Password Next Login.
+    * Sets the force Change Password Next Sign In.
     *
     * @param value the Boolean
     */
-    public void setForceChangePasswordNextLogin(Boolean value) { 
-        this.forceChangePasswordNextLogin = value;
-        valueChanged("forceChangePasswordNextLogin", value);
+    public void setForceChangePasswordNextSignIn(Boolean value) { 
+        this.forceChangePasswordNextSignIn = value;
+        valueChanged("forceChangePasswordNextSignIn", value);
 
     }
 }

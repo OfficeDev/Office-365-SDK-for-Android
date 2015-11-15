@@ -23,7 +23,7 @@ package com.microsoft.services.graph;
 public class Calendar extends Entity {
 
     public Calendar(){
-        setODataType("#Microsoft.Graph.Calendar");
+        setODataType("#microsoft.graph.calendar");
     }
             
     private String Name;

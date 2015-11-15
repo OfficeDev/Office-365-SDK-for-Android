@@ -62,24 +62,6 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
     
     
      /**
-     * Gets app role assignments.
-     *
-     * @return the app role assignments
-     */
-    public OrcCollectionFetcher<AppRoleAssignment, AppRoleAssignmentFetcher, AppRoleAssignmentCollectionOperations> getAppRoleAssignments() {
-        return new OrcCollectionFetcher<AppRoleAssignment, AppRoleAssignmentFetcher, AppRoleAssignmentCollectionOperations>("appRoleAssignments", this, AppRoleAssignment.class, AppRoleAssignmentCollectionOperations.class);
-    }
-
-    /**
-     * Gets app role assignment.
-     *
-     * @return the app role assignment
-     */
-    public AppRoleAssignmentFetcher getAppRoleAssignment(String id){
-         return new OrcCollectionFetcher<AppRoleAssignment, AppRoleAssignmentFetcher, AppRoleAssignmentCollectionOperations>("appRoleAssignments", this, AppRoleAssignment.class, AppRoleAssignmentCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets members.
      *
      * @return the members
@@ -230,24 +212,6 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
     }
 
      /**
-     * Gets photos.
-     *
-     * @return the photos
-     */
-    public OrcCollectionFetcher<ProfilePhoto, ProfilePhotoFetcher, ProfilePhotoCollectionOperations> getPhotos() {
-        return new OrcCollectionFetcher<ProfilePhoto, ProfilePhotoFetcher, ProfilePhotoCollectionOperations>("Photos", this, ProfilePhoto.class, ProfilePhotoCollectionOperations.class);
-    }
-
-    /**
-     * Gets photo.
-     *
-     * @return the photo
-     */
-    public ProfilePhotoFetcher getPhoto(String id){
-         return new OrcCollectionFetcher<ProfilePhoto, ProfilePhotoFetcher, ProfilePhotoCollectionOperations>("Photos", this, ProfilePhoto.class, ProfilePhotoCollectionOperations.class).getById(id);
-    }
-
-     /**
      * Gets accepted senders.
      *
      * @return the accepted senders
@@ -289,32 +253,6 @@ public class GroupFetcher extends OrcEntityFetcher<Group,GroupOperations>
      */
     public DriveFetcher getDrive() {
         return new DriveFetcher("drive", this);
-    }
-
-     /**
-     * Gets plans.
-     *
-     * @return the plans
-     */
-    public OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations> getPlans() {
-        return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class);
-    }
-
-    /**
-     * Gets plan.
-     *
-     * @return the plan
-     */
-    public PlanFetcher getPlan(String id){
-         return new OrcCollectionFetcher<Plan, PlanFetcher, PlanCollectionOperations>("plans", this, Plan.class, PlanCollectionOperations.class).getById(id);
-    }
-     /**
-     * Gets notes.
-     *
-     * @return the notes
-     */
-    public NotesFetcher getNote() {
-        return new NotesFetcher("notes", this);
     }
 
 }

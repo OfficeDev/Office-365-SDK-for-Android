@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Location extends ODataBaseEntity {
 
     public Location(){
-        setODataType("#Microsoft.Graph.Location");
+        setODataType("#microsoft.graph.location");
     }
 
     private String DisplayName;
@@ -49,28 +49,6 @@ public class Location extends ODataBaseEntity {
 
     }
 
-    private String LocationEmailAddress;
-
-    /**
-    * Gets the Location Email Address.
-    *
-    * @return the String
-    */
-    public String getLocationEmailAddress() {
-        return this.LocationEmailAddress; 
-    }
-
-    /**
-    * Sets the Location Email Address.
-    *
-    * @param value the String
-    */
-    public void setLocationEmailAddress(String value) { 
-        this.LocationEmailAddress = value;
-        valueChanged("LocationEmailAddress", value);
-
-    }
-
     private PhysicalAddress Address;
 
     /**
@@ -90,28 +68,6 @@ public class Location extends ODataBaseEntity {
     public void setAddress(PhysicalAddress value) { 
         this.Address = value;
         valueChanged("Address", value);
-
-    }
-
-    private OutlookGeoCoordinates Coordinates;
-
-    /**
-    * Gets the Coordinates.
-    *
-    * @return the OutlookGeoCoordinates
-    */
-    public OutlookGeoCoordinates getCoordinates() {
-        return this.Coordinates; 
-    }
-
-    /**
-    * Sets the Coordinates.
-    *
-    * @param value the OutlookGeoCoordinates
-    */
-    public void setCoordinates(OutlookGeoCoordinates value) { 
-        this.Coordinates = value;
-        valueChanged("Coordinates", value);
 
     }
 }

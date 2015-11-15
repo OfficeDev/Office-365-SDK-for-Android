@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class ChunkedUploadSessionDescriptor extends ODataBaseEntity {
 
     public ChunkedUploadSessionDescriptor(){
-        setODataType("#Microsoft.Graph.chunkedUploadSessionDescriptor");
+        setODataType("#microsoft.graph.chunkedUploadSessionDescriptor");
     }
 
     private String name;

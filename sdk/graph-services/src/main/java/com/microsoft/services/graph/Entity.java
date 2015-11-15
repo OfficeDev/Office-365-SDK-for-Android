@@ -24,28 +24,28 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class Entity extends ODataBaseEntity {
 
     public Entity(){
-        setODataType("#Microsoft.Graph.Entity");
+        setODataType("#microsoft.graph.entity");
     }
             
-    private String Id;
+    private String id;
      
     /**
-    * Gets the Id.
+    * Gets the id.
     *
     * @return the String
     */
     public String getId() {
-        return this.Id; 
+        return this.id; 
     }
 
     /**
-    * Sets the Id.
+    * Sets the id.
     *
     * @param value the String
     */
     public void setId(String value) { 
-        this.Id = value; 
-        valueChanged("Id", value);
+        this.id = value; 
+        valueChanged("id", value);
 
     }
 }

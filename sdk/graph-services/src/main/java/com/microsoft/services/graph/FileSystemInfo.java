@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class FileSystemInfo extends ODataBaseEntity {
 
     public FileSystemInfo(){
-        setODataType("#Microsoft.Graph.fileSystemInfo");
+        setODataType("#microsoft.graph.fileSystemInfo");
     }
 
     private java.util.Calendar createdDateTime;

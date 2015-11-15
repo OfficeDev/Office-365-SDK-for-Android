@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class SharingLink extends ODataBaseEntity {
 
     public SharingLink(){
-        setODataType("#Microsoft.Graph.sharingLink");
+        setODataType("#microsoft.graph.sharingLink");
     }
 
     private Identity application;

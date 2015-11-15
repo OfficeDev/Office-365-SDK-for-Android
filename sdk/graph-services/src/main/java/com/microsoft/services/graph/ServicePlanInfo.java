@@ -24,7 +24,7 @@ import com.microsoft.services.orc.core.ODataBaseEntity;
 public class ServicePlanInfo extends ODataBaseEntity {
 
     public ServicePlanInfo(){
-        setODataType("#Microsoft.Graph.ServicePlanInfo");
+        setODataType("#microsoft.graph.servicePlanInfo");
     }
 
     private java.util.UUID servicePlanId;
@@ -68,6 +68,50 @@ public class ServicePlanInfo extends ODataBaseEntity {
     public void setServicePlanName(String value) { 
         this.servicePlanName = value;
         valueChanged("servicePlanName", value);
+
+    }
+
+    private String provisioningStatus;
+
+    /**
+    * Gets the provisioning Status.
+    *
+    * @return the String
+    */
+    public String getProvisioningStatus() {
+        return this.provisioningStatus; 
+    }
+
+    /**
+    * Sets the provisioning Status.
+    *
+    * @param value the String
+    */
+    public void setProvisioningStatus(String value) { 
+        this.provisioningStatus = value;
+        valueChanged("provisioningStatus", value);
+
+    }
+
+    private String appliesTo;
+
+    /**
+    * Gets the applies To.
+    *
+    * @return the String
+    */
+    public String getAppliesTo() {
+        return this.appliesTo; 
+    }
+
+    /**
+    * Sets the applies To.
+    *
+    * @param value the String
+    */
+    public void setAppliesTo(String value) { 
+        this.appliesTo = value;
+        valueChanged("appliesTo", value);
 
     }
 }
