@@ -96,8 +96,7 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Copy");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Copy");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -141,8 +140,7 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Move");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Move");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -178,8 +176,7 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("CreateReply");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.CreateReply");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -215,8 +212,7 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("CreateReplyAll");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.CreateReplyAll");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -252,8 +248,7 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("CreateForward");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.CreateForward");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -297,8 +292,7 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Reply");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Reply");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -342,8 +336,7 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("ReplyAll");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.ReplyAll");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -389,8 +382,7 @@ public class MessageOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Forward");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Forward");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -426,8 +418,7 @@ public class MessageOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("Send");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Send");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

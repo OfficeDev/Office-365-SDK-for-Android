@@ -98,8 +98,7 @@ public class EventOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Accept");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Accept");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -145,8 +144,7 @@ public class EventOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Decline");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.Decline");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -192,8 +190,7 @@ public class EventOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("TentativelyAccept");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.TentativelyAccept");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -237,8 +234,7 @@ public class EventOperations extends ItemOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("SnoozeReminder");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.SnoozeReminder");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -274,8 +270,7 @@ public class EventOperations extends ItemOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("DismissReminder");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.DismissReminder");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

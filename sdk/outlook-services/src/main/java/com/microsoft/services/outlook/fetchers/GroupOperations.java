@@ -88,8 +88,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("SubscribeByMail");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.SubscribeByMail");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -125,8 +124,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("UnsubscribeByMail");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.UnsubscribeByMail");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -162,8 +160,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("AddFavorite");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.AddFavorite");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -199,8 +196,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("RemoveFavorite");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.RemoveFavorite");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -236,8 +232,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("ResetUnseenCount");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.ResetUnseenCount");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
