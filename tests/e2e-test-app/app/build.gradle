@@ -41,7 +41,7 @@ dependencies {
     compile 'com.microsoft.services:directory-services:0.16.1-SNAPSHOT'
     compile 'com.microsoft.services:discovery-services:1.0.1-SNAPSHOT'
     compile 'com.microsoft.services:onenote-services:0.15.1-SNAPSHOT'
-    compile 'com.microsoft.services:graph-services:1.0-PREVIEW-SNAPSHOT'
+    compile 'com.microsoft.services:graph-services:0.8-SNAPSHOT'
     compile 'com.microsoft.services:files-services:1.0.1-SNAPSHOT'
     compile 'com.microsoft.services:sharepoint-services:1.0.0'
 }
