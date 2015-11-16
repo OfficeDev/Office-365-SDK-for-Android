@@ -26,7 +26,7 @@ import com.microsoft.services.msa.LiveAuthClient;
 
 import com.microsoft.services.discovery.fetchers.DiscoveryClient;
 import com.microsoft.services.files.fetchers.FilesClient;
-import com.microsoft.services.graph.fetchers.GraphServiceClient;
+import com.microsoft.services.graph.fetchers.GraphClient;
 import com.microsoft.services.orc.auth.AuthenticationCredentials;
 import com.microsoft.services.orc.auth.MSAAuthentication;
 import com.microsoft.services.orc.core.DependencyResolver;
@@ -386,8 +386,8 @@ public class ApplicationContext {
         return getTClientLiveSDK(getOneNoteEndpoint(), OneNoteApiClient.class);
     }
 
-    public static GraphServiceClient getGraphServiceClient() {
-        return getTClientAAD(getGraphServerUrl(), getGraphEndpointUrl(), GraphServiceClient.class);
+    public static GraphClient getGraphClient() {
+        return getTClientAAD(getGraphServerUrl(), getGraphEndpointUrl(), GraphClient.class);
     }
 
     private static <TClient> TClient getTClientLiveSDK(final String endpointUrl, final Class<TClient> clientClass) {
