@@ -96,8 +96,7 @@ public class DirectoryObjectOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("checkMemberGroups");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.checkMemberGroups");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -141,8 +140,7 @@ public class DirectoryObjectOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("getMemberGroups");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.getMemberGroups");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -186,8 +184,7 @@ public class DirectoryObjectOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("getMemberObjects");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.getMemberObjects");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

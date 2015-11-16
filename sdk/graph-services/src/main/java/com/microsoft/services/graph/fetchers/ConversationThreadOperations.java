@@ -96,8 +96,7 @@ public class ConversationThreadOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Reply");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.Reply");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

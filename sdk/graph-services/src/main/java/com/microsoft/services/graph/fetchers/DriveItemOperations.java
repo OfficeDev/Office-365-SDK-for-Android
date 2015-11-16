@@ -104,8 +104,7 @@ public class DriveItemOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("invite");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.invite");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -151,8 +150,7 @@ public class DriveItemOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("copy");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.copy");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -196,8 +194,7 @@ public class DriveItemOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("createLink");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.createLink");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -241,8 +238,7 @@ public class DriveItemOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("createSession");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.createSession");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -266,7 +262,7 @@ public class DriveItemOperations extends EntityOperations {
 		String parameters = getFunctionParameters(map);
         
 		        
-		request.getUrl().appendPathComponent("allPhotos(" + parameters + ")");   
+		request.getUrl().appendPathComponent("microsoft.graph.allPhotos(" + parameters + ")");   
         
 		
 		ListenableFuture<OrcResponse> future = oDataExecute(request);
@@ -295,7 +291,7 @@ public class DriveItemOperations extends EntityOperations {
 		String parameters = getFunctionParameters(map);
         
 		        
-		request.getUrl().appendPathComponent("search(" + parameters + ")");   
+		request.getUrl().appendPathComponent("microsoft.graph.search(" + parameters + ")");   
         
 		
 		ListenableFuture<OrcResponse> future = oDataExecute(request);

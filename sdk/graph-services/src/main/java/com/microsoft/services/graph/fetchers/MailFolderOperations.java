@@ -96,8 +96,7 @@ public class MailFolderOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Copy");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.Copy");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -141,8 +140,7 @@ public class MailFolderOperations extends EntityOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("Move");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.Move");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);

@@ -76,7 +76,7 @@ public class DriveOperations extends EntityOperations {
 		String parameters = getFunctionParameters(map);
         
 		        
-		request.getUrl().appendPathComponent("allPhotos(" + parameters + ")");   
+		request.getUrl().appendPathComponent("microsoft.graph.allPhotos(" + parameters + ")");   
         
 		
 		ListenableFuture<OrcResponse> future = oDataExecute(request);

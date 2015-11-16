@@ -1,6 +1,8 @@
 package com.microsoft.office365.test.integration.tests;
 
 
+import android.util.Log;
+
 import com.microsoft.services.graph.*;
 import com.microsoft.services.graph.fetchers.GraphClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
@@ -15,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,6 +47,7 @@ public class GraphTests extends TestGroup {
         this.addTest(canGetUserCreatedObjects("Can get user's createdObjects", true));
         this.addTest(canGetUserOwnedObjects("Can get user's ownedObjects", true));
         this.addTest(canGetUserOwnedObjectsById("Can get user's ownedObject by id", true));
+
         this.addTest(canGetUserMessages("Can get user's Messages", true));
         this.addTest(canGetUserMessagesById("Can get user's Message by id", true));
         this.addTest(canSendMessage("Can send message", true));
@@ -63,8 +68,15 @@ public class GraphTests extends TestGroup {
         this.addTest(canCreateUserFiles("Can create user's files", true));
         this.addTest(canUpdateUserFiles("Can update user's files", true));
         this.addTest(canDeleteUserFiles("Can delete user's files", true));
-        this.addTest(canRetrieveConversation("Can retrieve conversation from group", true));
 
+        this.addTest(canRetrieveFolders("Can retrieve folders", true));
+        this.addTest(canRetrieveFolderById("Can retrieve folder by id", true));
+        this.addTest(canRetrieveFolder("Can Retrieve Folder (overload)", true));
+        this.addTest(canCreateFolder("Can create folder", true));
+        this.addTest(canDeleteFolder("Can delete folder", true));
+        this.addTest(canMoveFolder("Can move folder", true));
+        this.addTest(canCopyFolder("Can copy folder", true));
+        this.addTest(canUpdateFolder("Can update folder", true));
     }
 
     private TestCase canGetContacts(String name, boolean enabled) {
@@ -1333,7 +1345,7 @@ public class GraphTests extends TestGroup {
         return test;
     }
 
-    private TestCase canRetrieveConversation(String name, boolean enabled) {
+    private TestCase canRetrieveFolders(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
             @Override
@@ -1344,23 +1356,413 @@ public class GraphTests extends TestGroup {
                     result.setTestCase(this);
 
                     GraphClient client = ApplicationContext.getGraphClient();
+                    List<MailFolder> folders = client.getMe().getMailFolders().read().get();
+                    if (folders == null || folders.size() == 0)
+                        result.setStatus(TestStatus.Failed);
 
-                    List<Group> groups = client.getUsers().getById(ApplicationContext.getTestMail()).getJoinedGroups().read().get();
-
-                    if (groups.isEmpty()) {
-
-                    }
                     return result;
                 } catch (Exception e) {
                     return createResultFromException(e);
                 }
             }
         };
+
         test.setName(name);
         test.setEnabled(enabled);
         return test;
-
     }
+
+    private TestCase canRetrieveFolderById(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder folder = client.getMe().getMailFolders().getById("Inbox").read().get();
+                    if (folder == null || !folder.getDisplayName().equals("Inbox"))
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canRetrieveFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder folder = client.getMe().getMailFolder("Inbox").read().get();
+                    if (folder == null || !folder.getDisplayName().equals("Inbox"))
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Exception e) {
+                    return createResultFromException(e);
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+                    String parentFolderName = "Inbox";
+
+                    //Create new folder
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder newFolder = new MailFolder();
+                    newFolder.setDisplayName(newFolderName);
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
+
+                    // Assert
+                    MailFolder folder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .getById(addedFolder.getId()).read().get();
+
+                    if (folder == null || !folder.getDisplayName().equals(newFolderName)) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+                    //Cleanup
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .getById(folder.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canDeleteFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+                    ;
+                    String parentFolderName = "Inbox";
+
+                    //Prepare for test
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder newFolder = new MailFolder();
+                    newFolder.setDisplayName(newFolderName);
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
+
+                    // Delete folder
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .getById(addedFolder.getId())
+                            .delete().get();
+
+                    // Assert
+                    List<MailFolder> folders = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .read().get();
+
+                    boolean exists = false;
+                    for (MailFolder f : folders) {
+                        if (f.getId().equals(addedFolder.getId())) {
+                            exists = true;
+                        }
+                    }
+                    if (exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canMoveFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+
+                    String parentFolderName = "Inbox";
+                    String destinationFolderName = "Drafts";
+
+                    //Create new folder
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder newFolder = new MailFolder();
+                    newFolder.setDisplayName(newFolderName);
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
+
+                    //Act
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName).getChildFolders()
+                            .getById(addedFolder.getId())
+                            .getOperations().move(destinationFolderName).get();
+
+                    //Assert
+                    MailFolder movedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(destinationFolderName)
+                            .getChildFolders()
+                            .getById(addedFolder.getId())
+                            .read().get();
+
+                    if (movedFolder != null && movedFolder.getDisplayName().equals(newFolderName))
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(destinationFolderName)
+                            .getChildFolders()
+                            .getById(movedFolder.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCopyFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    String newFolderName = "TestFolder" + UUID.randomUUID();
+                    ;
+                    String parentFolderName = "Inbox";
+                    String destinationFolderName = "Drafts";
+
+                    //Create new folder
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder newFolder = new MailFolder();
+                    newFolder.setDisplayName(newFolderName);
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
+
+                    //Act
+                    MailFolder copiedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName).getChildFolders()
+                            .getById(addedFolder.getId())
+                            .getOperations().copy(destinationFolderName).get();
+
+                    //Assert
+                    MailFolder folder = client.getMe()
+                            .getMailFolders()
+                            .getById(destinationFolderName)
+                            .getChildFolders()
+                            .getById(copiedFolder.getId())
+                            .read().get();
+
+                    if (folder != null && folder.getDisplayName().equals(newFolderName))
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(destinationFolderName)
+                            .getChildFolders()
+                            .getById(copiedFolder.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .getById(addedFolder.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canUpdateFolder(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String folderName = "TestFolder" + UUID.randomUUID();
+                    ;
+                    String updatedFolderName = "UpdatedTestFolder" + UUID.randomUUID();
+                    ;
+                    String parentFolderName = "Inbox";
+
+                    //Create new folder
+                    GraphClient client = ApplicationContext.getGraphClient();
+                    MailFolder newFolder = new MailFolder();
+                    newFolder.setDisplayName(folderName);
+                    MailFolder addedFolder = client.getMe()
+                            .getMailFolders()
+                            .getById(parentFolderName)
+                            .getChildFolders()
+                            .add(newFolder).get();
+
+                    //Act
+                    newFolder.setDisplayName(updatedFolderName);
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(addedFolder.getId())
+                            .update(newFolder).get();
+
+                    // Assert
+                    MailFolder folder = client.getMe()
+                            .getMailFolders()
+                            .getById(addedFolder.getId()).read().get();
+
+                    if (folder == null || !folder.getDisplayName().equals(updatedFolderName)) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+                    //Cleanup
+                    client.getMe()
+                            .getMailFolders()
+                            .getById(folder.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable e) {
+                    StringWriter writer = new StringWriter();
+                    e.printStackTrace(new PrintWriter(writer));
+
+                    String stackTrace = e.toString();
+                    Log.e("SDK-Error", stackTrace);
+
+                    return createResultFromException(new Exception("Error in test execution", e));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
 
     private Message getSampleMessage(String subject, String to, String cc) {
         Message m = new Message();

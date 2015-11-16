@@ -98,8 +98,7 @@ public class UserOperations extends DirectoryObjectOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("assignLicense");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.assignLicense");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -145,8 +144,7 @@ public class UserOperations extends DirectoryObjectOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("changePassword");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.changePassword");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -192,8 +190,7 @@ public class UserOperations extends DirectoryObjectOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("SendMail");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.SendMail");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -219,7 +216,7 @@ public class UserOperations extends DirectoryObjectOperations {
 		String parameters = getFunctionParameters(map);
         
 		        
-		request.getUrl().appendPathComponent("ReminderView(" + parameters + ")");   
+		request.getUrl().appendPathComponent("microsoft.graph.ReminderView(" + parameters + ")");   
         
 		
 		ListenableFuture<OrcResponse> future = oDataExecute(request);

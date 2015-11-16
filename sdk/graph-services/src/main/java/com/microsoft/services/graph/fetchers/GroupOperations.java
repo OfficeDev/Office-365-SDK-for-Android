@@ -88,8 +88,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("SubscribeByMail");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.SubscribeByMail");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -125,8 +124,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("UnsubscribeByMail");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.UnsubscribeByMail");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -162,8 +160,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("AddFavorite");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.AddFavorite");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -199,8 +196,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("RemoveFavorite");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.RemoveFavorite");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -236,8 +232,7 @@ public class GroupOperations extends DirectoryObjectOperations {
         Request request = getResolver().createRequest();
         request.setVerb(HttpVerb.POST);
                         
-        request.getUrl().appendPathComponent("ResetUnseenCount");
-        
+        request.getUrl().appendPathComponent("microsoft.graph.ResetUnseenCount");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
