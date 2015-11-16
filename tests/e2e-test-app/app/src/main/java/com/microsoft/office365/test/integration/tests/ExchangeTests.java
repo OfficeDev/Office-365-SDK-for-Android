@@ -4,6 +4,7 @@
 import android.util.Log;
 
 import com.microsoft.office365.test.integration.ApplicationContext;
+import com.microsoft.office365.test.integration.framework.ExpectedValueException;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
 import com.microsoft.office365.test.integration.framework.TestResult;
@@ -138,8 +139,8 @@ public class ExchangeTests extends TestGroup {
                     }
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -167,8 +168,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -194,8 +195,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -248,14 +249,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -314,13 +309,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -382,14 +372,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -458,14 +442,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -525,14 +503,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -569,8 +541,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -611,8 +583,8 @@ public class ExchangeTests extends TestGroup {
                             .getMessage(createdMessage.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -638,8 +610,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -666,8 +638,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -693,8 +665,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -738,8 +710,8 @@ public class ExchangeTests extends TestGroup {
                             .getById(createdMessage.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -780,8 +752,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessage(added.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -823,8 +795,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getMessage(added.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -854,8 +826,8 @@ public class ExchangeTests extends TestGroup {
                             .getMe().getOperations().sendMail(message, true).get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -885,8 +857,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessage(addedMessage.getId()).getOperations().send();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -930,8 +902,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -981,8 +953,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getMessage(messageToReply.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1036,8 +1008,8 @@ public class ExchangeTests extends TestGroup {
                             .getById(updatedMessage.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1090,8 +1062,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1151,14 +1123,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1224,14 +1190,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1296,8 +1256,8 @@ public class ExchangeTests extends TestGroup {
                             .getById(repliedMessage.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1363,8 +1323,8 @@ public class ExchangeTests extends TestGroup {
                             .getById(repliedMessage.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1431,8 +1391,8 @@ public class ExchangeTests extends TestGroup {
                             .getById(repliedMessage.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1512,8 +1472,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1555,8 +1515,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1599,8 +1559,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1645,8 +1605,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1691,8 +1651,8 @@ public class ExchangeTests extends TestGroup {
                     }
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1735,8 +1695,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1766,8 +1726,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1807,8 +1767,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1852,8 +1812,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1900,8 +1860,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1946,8 +1906,8 @@ public class ExchangeTests extends TestGroup {
                     }
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2005,8 +1965,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getEvent(addedEvent.getId()).delete();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2047,8 +2007,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2087,8 +2047,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2131,8 +2091,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2174,8 +2134,8 @@ public class ExchangeTests extends TestGroup {
                     }
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2218,8 +2178,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2289,8 +2249,8 @@ public class ExchangeTests extends TestGroup {
                             .delete().get();
                     */
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2329,8 +2289,8 @@ public class ExchangeTests extends TestGroup {
 
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2401,8 +2361,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2437,8 +2397,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getContacts().getById(addedContact.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2475,8 +2435,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getContacts().getById(addedContact.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2517,8 +2477,8 @@ public class ExchangeTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2558,8 +2518,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getContacts().getById(addedContact.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2617,8 +2577,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2660,8 +2620,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2706,8 +2666,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessages().getById(addedMessage2.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2767,8 +2727,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getMessage(added.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2822,8 +2782,8 @@ public class ExchangeTests extends TestGroup {
                     //Cleanup
                     client.getMe().getMessage(added.getId()).delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2865,8 +2825,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getMessages().getById(addedMessage.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2916,8 +2876,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getContact(addedContact2.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -2969,8 +2929,8 @@ public class ExchangeTests extends TestGroup {
                     client.getMe().getContact(addedContact2.getId()).delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -3001,8 +2961,8 @@ public class ExchangeTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };

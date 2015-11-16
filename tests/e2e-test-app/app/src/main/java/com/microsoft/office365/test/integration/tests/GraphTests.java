@@ -4,7 +4,7 @@ package com.microsoft.office365.test.integration.tests;
 import android.util.Log;
 
 import com.microsoft.services.graph.*;
-import com.microsoft.services.graph.fetchers.GraphClient;
+import com.microsoft.services.graph.fetchers.GraphServiceClient;
 import com.microsoft.office365.test.integration.ApplicationContext;
 import com.microsoft.office365.test.integration.framework.TestCase;
 import com.microsoft.office365.test.integration.framework.TestGroup;
@@ -51,17 +51,34 @@ public class GraphTests extends TestGroup {
         this.addTest(canGetUserMessages("Can get user's Messages", true));
         this.addTest(canGetUserMessagesById("Can get user's Message by id", true));
         this.addTest(canSendMessage("Can send message", true));
+        this.addTest(canCreateMessageAttachment("Can create message with attachment", true));
+        this.addTest(canGetMessageAttachments("Can get message attachment", true));
+        this.addTest(canSendWithMessageOperations("Can send with message operations", true));
+        this.addTest(canSendHtmlMessage("Can send html message", true));
+        this.addTest(canReplyHtmlMessage("Can reply html message", true));
+        this.addTest(canUpdateMessage("Can update message", true));
+        this.addTest(canDeleteMessage("Can delete message", true));
+        this.addTest(canMoveMessage("Can move message", true));
+        this.addTest(canCopyMessage("Can copy message", true));
+        this.addTest(canCreateReplyMessage("Can create reply", true));
+        this.addTest(canCreateReplyAllMessage("Can create reply all", true));
+        this.addTest(canCreateForwardMessage("Can create forward", true));
+        this.addTest(canUpdateSendingOnlyUpdatedValues("Can update sending only updated values", true));
+        
+        
         this.addTest(canGetUserCalendars("Can get user's Calendars", true));
         this.addTest(canGetUserCalendarsById("Can get user's Calendar by id", true));
         this.addTest(canGetUserCalendar("Can get user's default Calendar", true));
         this.addTest(canGetUserCalendarGroups("Can get user's CalendarGroups", true));
         this.addTest(canGetUserCalendarGroupsById("Can get user's CalendarGroup by id", true));
+
         this.addTest(canGetUserEvents("Can get user's Events", true));
         this.addTest(canGetUserEventsById("Can get user's Event by id", true));
         this.addTest(canCreateUserEvent("Can create user's Event", true));
         this.addTest(canUpdateUserEvent("Can update user's Event", true));
         this.addTest(canDeleteUserEvent("Can delete user's Event", true));
         this.addTest(canGetUserCalendarView("Can get user's CalendarView", true));
+
         this.addTest(canGetUserUserPhoto("Can get user's UserPhoto", true));
         this.addTest(canGetUserDrive("Can get user's drive", true));
         this.addTest(canGetUserFilesById("Can get user's file by id", true));
@@ -89,7 +106,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<Contact> contacts = client.getMe().getContacts().read().get();
@@ -99,8 +116,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -121,7 +138,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<Device> devices = client.getDevices().read().get();
@@ -131,8 +148,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -152,7 +169,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<Group> groups = client.getGroups().read().get();
@@ -162,8 +179,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -183,7 +200,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryRole> directoryRoles = client.getDirectoryRoles().read().get();
@@ -193,8 +210,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -214,7 +231,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryRoleTemplate> directoryRoleTemplates = client.getDirectoryRoleTemplates().read().get();
@@ -224,8 +241,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -246,7 +263,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<User> users = client.getUsers().read().get();
@@ -256,8 +273,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -277,7 +294,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<SubscribedSku> SubscribedSkus = client.getSubscribedSkus().read().get();
@@ -287,8 +304,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -309,7 +326,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryObject> ownedDevices = client.getUsers().getById(ApplicationContext.getTestMail()).getOwnedDevices().read().get();
@@ -319,8 +336,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -339,7 +356,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryObject> registeredDevices = client.getUsers().getById(ApplicationContext.getTestMail()).getRegisteredDevices().read().get();
@@ -349,8 +366,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -369,7 +386,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryObject> directReports = client.getUsers().getById(ApplicationContext.getTestMail()).getDirectReports().read().get();
@@ -379,8 +396,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -399,7 +416,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     List<DirectoryObject> directReports = client.getUsers().getById(ApplicationContext.getTestMail()).getDirectReports().top(1).read().get();
@@ -416,8 +433,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available DirectReports"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -436,7 +453,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryObject> memberOf = client.getUsers().getById(ApplicationContext.getTestMail()).getMemberOf().read().get();
@@ -446,8 +463,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -466,7 +483,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 //Prepare
                     List<DirectoryObject> memberOf = client.getUsers().getById(ApplicationContext.getTestMail()).getMemberOf().top(1).read().get();
@@ -483,8 +500,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available MemberOf"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -503,7 +520,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryObject> createdObjects = client.getUsers().getById(ApplicationContext.getTestMail()).getCreatedObjects().read().get();
@@ -513,8 +530,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -533,7 +550,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<DirectoryObject> ownedObjects = client.getUsers().getById(ApplicationContext.getTestMail()).getOwnedObjects().read().get();
@@ -543,8 +560,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -563,7 +580,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     List<DirectoryObject> ownedObjects = client.getUsers().getById(ApplicationContext.getTestMail()).getOwnedObjects().top(1).read().get();
@@ -580,8 +597,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available OwnedObjects"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -600,7 +617,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<Message> Messages = client.getUsers().getById(ApplicationContext.getTestMail()).getMessages().read().get();
@@ -610,8 +627,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -630,7 +647,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     List<Message> Messages = client.getUsers().getById(ApplicationContext.getTestMail()).getMessages().top(1).read().get();
@@ -647,11 +664,96 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available Messages"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+    
+    private TestCase canCreateMessageAttachment(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(getFileAttachment()).get();
+
+                    //Assert
+                    Message storedMessage = client.getMe().getMessages().getById(added.getId()).read().get();
+
+                    if (!storedMessage.getHasAttachments())
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canGetMessageAttachments(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    Message message = getSampleMessage("Test message", ApplicationContext.getTestMail(), "");
+
+                    //Prepare
+                    Message added = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessages()
+                            .getById(added.getId())
+                            .getAttachments()
+                            .add(getFileAttachment()).get();
+
+                    //Act
+                    List<Attachment> attachments = client.getMe().getMessage(added.getId()).getAttachments().read().get();
+
+                    //Assert
+                    if (attachments != null && attachments.size() > 0)
+                        result.setStatus(TestStatus.Passed);
+
+
+                    //Cleanup
+                    client.getMe().getMessage(added.getId()).delete().get();
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
         test.setName(name);
         test.setEnabled(enabled);
         return test;
@@ -667,22 +769,626 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
-                    Message message = getSampleMessage("Mail sent using graph", ApplicationContext.getTestMail(), "");
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test Send Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
                     //Act
-                    client.getUsers().getById(ApplicationContext.getTestMail()).getOperations().sendMail(message, true).get();
+                    client
+                            .getMe().getOperations().sendMail(message, true).get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
+
         test.setName(name);
         test.setEnabled(enabled);
         return test;
     }
 
+    private TestCase canSendWithMessageOperations(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test Send Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+                    client.getMe().getMessage(addedMessage.getId()).getOperations().send();
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canSendHtmlMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+                    ItemBody itemBody = message.getBody();
+                    itemBody.setContentType(BodyType.HTML);
+                    itemBody.setContent("<h1>This is an Html body.</h1><a href='#'>With Link!</a>");
+                    message.setBody(itemBody);
+
+                    //Act
+                    client.getMe().getOperations().sendMail(message, true).get();
+
+                    //Assert
+                    List<MailFolder> sentFolder = client.getMe().getMailFolders().filter("DisplayName eq 'Sent Items'").read().get();
+                    List<Message> messages = client.getMe()
+                            .getMailFolder(sentFolder.get(0).getId())
+                            .getMessages()
+                            .filter("Subject eq '" + mailSubject + "'")
+                            .read().get();
+
+                    if (messages.size() > 0 && messages.get(0).getBody().getContentType() == BodyType.HTML)
+                        result.setStatus(TestStatus.Passed);
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canReplyHtmlMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Failed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+                    ItemBody itemBody = message.getBody();
+                    itemBody.setContentType(BodyType.HTML);
+                    itemBody.setContent("<h1>This is an Html body.</h1><a href='#'>With Link!</a>");
+                    message.setBody(itemBody);
+
+                    //Prepare
+                    client.getMe().getOperations().sendMail(message, true).get();
+
+                    List<MailFolder> sentFolder = client.getMe().getMailFolders().filter("DisplayName eq 'Sent Items'").read().get();
+                    List<Message> messages = client.getMe()
+                            .getMailFolder(sentFolder.get(0).getId())
+                            .getMessages()
+                            .filter("Subject eq '" + mailSubject + "'")
+                            .read().get();
+
+                    //Act
+                    Message messageToReply = client.getMe().getMailFolder(sentFolder.get(0).getId())
+                            .getMessage(messages.get(0).getId()).getOperations().createReply().get();
+
+                    //Assert
+                    if (messageToReply.getBody().getContentType() == BodyType.HTML)
+                        result.setStatus(TestStatus.Passed);
+
+                    //Cleanup
+                    client.getMe().getMessage(messageToReply.getId()).delete().get();
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canUpdateMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test Update Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    //Act
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+                    message.setSubject("New Test Update Message");
+                    client
+                            .getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(addedMessage.getId())
+                            .update(message).get();
+
+                    Thread.sleep(1000);
+                    //Assert
+                    Message updatedMessage = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(addedMessage.getId()).read().get();
+
+                    if (updatedMessage == null || !updatedMessage.getSubject().equals("New Test Update Message"))
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe().getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(updatedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canDeleteMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test Delete Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+
+                    //Act
+                    client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(addedMessage.getId())
+                            .delete().get();
+
+                    Thread.sleep(1000);
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for (Message m : messages) {
+                        if (m.getId().equals(addedMessage.getId()))
+                            exists = true;
+                    }
+
+                    if (exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canMoveMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String destinationFolderName = "Inbox";
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test move Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+                    //Act
+                    Message movedMessage = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(addedMessage.getId())
+                            .getOperations().move(destinationFolderName).get();
+
+                    Thread.sleep(2000);
+                    //Assert
+                    try {
+                        Message m = client.getMe()
+                                .getMailFolders()
+                                .getById(destinationFolderName)
+                                .getMessages()
+                                .getById(movedMessage.getId())
+                                .read().get();
+
+                        if (m == null && !m.getId().equals(movedMessage.getId()))
+                            result.setStatus(TestStatus.Failed);
+                    } catch (Throwable t) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(movedMessage.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCopyMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    String destinationFolderName = "Inbox";
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    String mailSubject = "Test copy Message";
+                    Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                    Message addedMessage = client.getMe().getMessages().add(message).get();
+
+                    //Act
+                    Message copiedMessage = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(addedMessage.getId())
+                            .getOperations().copy(destinationFolderName).get();
+
+                    Thread.sleep(2000);
+                    //Assert
+                    try {
+                        Message m = client.getMe()
+                                .getMailFolders()
+                                .getById(destinationFolderName)
+                                .getMessages()
+                                .getById(copiedMessage.getId())
+                                .read().get();
+
+                        if (m == null && !m.getId().equals(copiedMessage.getId()))
+                            result.setStatus(TestStatus.Failed);
+                    } catch (Throwable t) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(copiedMessage.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(addedMessage.getId())
+                            .delete().get();
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+
+    private TestCase canCreateReplyMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
+                    if (inboxMessages.size() == 0) {
+                        String mailSubject = "Test reply Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+                        client.getMe().getOperations().sendMail(message, true).get();
+                        Thread.sleep(2000);
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    Message messageToReply = inboxMessages.get(0);
+                    //Act
+                    Message repliedMessage = client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .getOperations().createReply().get();
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for (Message m : messages) {
+                        if (m.getConversationId().equals(messageToReply.getConversationId()))
+                            exists = true;
+                    }
+
+                    if (!exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(repliedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateReplyAllMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
+                    if (inboxMessages.size() == 0) {
+                        String mailSubject = "Test reply all Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+                        client.getMe().getOperations().sendMail(message, true).get();
+                        Thread.sleep(2000);
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    Message messageToReply = inboxMessages.get(0);
+                    //Act
+                    Message repliedMessage = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .getOperations().createReplyAll().get();
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for (Message m : messages) {
+                        if (m.getConversationId().equals(messageToReply.getConversationId()))
+                            exists = true;
+                    }
+
+                    if (!exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(repliedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canCreateForwardMessage(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+
+                    List<Message> inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
+                    if (inboxMessages.size() == 0) {
+                        String mailSubject = "Test fw Message";
+                        Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
+
+                        client.getMe().getOperations().sendMail(message, true).get();
+                        Thread.sleep(2000);
+                        inboxMessages = client.getMe().getMailFolders().getById("Inbox").getMessages().top(1).read().get();
+                    }
+
+                    Message messageToReply = inboxMessages.get(0);
+                    //Act
+                    Message repliedMessage = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .getOperations().createForward().get();
+
+                    //Assert
+                    List<Message> messages = client.getMe()
+                            .getMailFolders()
+                            .getById("Drafts")
+                            .getMessages().read().get();
+
+                    boolean exists = false;
+                    for (Message m : messages) {
+                        if (m.getConversationId().equals(messageToReply.getConversationId()))
+                            exists = true;
+                    }
+
+                    if (!exists)
+                        result.setStatus(TestStatus.Failed);
+
+                    //Cleanup
+                    client.getMe()
+                            .getMessages()
+                            .getById(messageToReply.getId())
+                            .delete().get();
+
+                    client.getMe()
+                            .getMessages()
+                            .getById(repliedMessage.getId())
+                            .delete().get();
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+
+    private TestCase canUpdateSendingOnlyUpdatedValues(String name, boolean enabled) {
+        TestCase test = new TestCase() {
+
+            @Override
+            public TestResult executeTest() {
+                try {
+                    TestResult result = new TestResult();
+                    result.setStatus(TestStatus.Passed);
+                    result.setTestCase(this);
+
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
+                    Message message = client.getMe().getMailFolders().getById("Inbox").getMessages()
+                            .top(1).read().get().get(0);
+                    message.setIsRead(false);
+                    message.setIsRead(true);
+
+                    Message updatedMessage = client.getMe().getMessage(message.getId()).update(message).get();
+
+                    if (updatedMessage == null || !updatedMessage.getIsRead()) {
+                        result.setStatus(TestStatus.Failed);
+                    }
+
+                    return result;
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
+                }
+            }
+        };
+
+        test.setName(name);
+        test.setEnabled(enabled);
+        return test;
+    }
+    
     private TestCase canGetUserCalendars(String name, boolean enabled) {
         TestCase test = new TestCase() {
 
@@ -693,7 +1399,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<Calendar> Calendars = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendars().read().get();
@@ -703,8 +1409,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -723,7 +1429,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     List<Calendar> Calendars = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendars().top(1).read().get();
@@ -740,8 +1446,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available Calendars"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -760,7 +1466,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     Calendar calendar = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendar().read().get();
@@ -770,8 +1476,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -790,7 +1496,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<CalendarGroup> CalendarGroups = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendarGroups().read().get();
@@ -800,8 +1506,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -820,7 +1526,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 //Prepare
                     List<CalendarGroup> CalendarGroups = client.getUsers().getById(ApplicationContext.getTestMail()).getCalendarGroups().top(1).read().get();
@@ -837,8 +1543,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available CalendarGroups"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -857,7 +1563,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     List<Event> Events = client.getUsers().getById(ApplicationContext.getTestMail()).getEvents().read().get();
@@ -867,8 +1573,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -887,7 +1593,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     List<Event> Events = client.getUsers().getById(ApplicationContext.getTestMail()).getEvents().top(1).read().get();
@@ -904,8 +1610,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available Events"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -924,7 +1630,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -942,8 +1648,8 @@ public class GraphTests extends TestGroup {
                             .getById(addedEvent.getId())
                             .delete().get();
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -962,7 +1668,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -990,8 +1696,8 @@ public class GraphTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1010,7 +1716,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     // Prepare
                     Event event = getSampleEvent();
@@ -1037,8 +1743,8 @@ public class GraphTests extends TestGroup {
                     }
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1057,7 +1763,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
 
                     //format date properly
@@ -1078,8 +1784,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1098,7 +1804,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     ProfilePhoto userPhoto = client.getUsers().getById(ApplicationContext.getTestMail()).getPhoto().read().get();
@@ -1108,8 +1814,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1128,7 +1834,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Act
                     Drive drive = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().read().get();
@@ -1138,8 +1844,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Passed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1159,7 +1865,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     List<DriveItem> files = client.getUsers().getById(ApplicationContext.getTestMail()).getDrive().getRoot().getChildren().top(1).read().get();
@@ -1176,8 +1882,8 @@ public class GraphTests extends TestGroup {
                         result.setException(new Exception("No available Files"));
                     }
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1196,7 +1902,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     DriveItem newFile = new DriveItem();
@@ -1223,8 +1929,8 @@ public class GraphTests extends TestGroup {
 
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1243,7 +1949,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Failed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     DriveItem newFile = new DriveItem();
@@ -1271,8 +1977,8 @@ public class GraphTests extends TestGroup {
 
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1320,7 +2026,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
 
                     //Prepare
                     DriveItem newFile = new DriveItem();
@@ -1335,8 +2041,8 @@ public class GraphTests extends TestGroup {
 
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1355,14 +2061,14 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     List<MailFolder> folders = client.getMe().getMailFolders().read().get();
                     if (folders == null || folders.size() == 0)
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1382,14 +2088,14 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder folder = client.getMe().getMailFolders().getById("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Exception e) {
-                    return createResultFromException(e);
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1409,7 +2115,7 @@ public class GraphTests extends TestGroup {
                     result.setStatus(TestStatus.Passed);
                     result.setTestCase(this);
 
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder folder = client.getMe().getMailFolder("Inbox").read().get();
                     if (folder == null || !folder.getDisplayName().equals("Inbox"))
                         result.setStatus(TestStatus.Failed);
@@ -1440,7 +2146,7 @@ public class GraphTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Create new folder
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
                     MailFolder addedFolder = client.getMe()
@@ -1469,14 +2175,8 @@ public class GraphTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1501,7 +2201,7 @@ public class GraphTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Prepare for test
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
                     MailFolder addedFolder = client.getMe()
@@ -1535,13 +2235,8 @@ public class GraphTests extends TestGroup {
                         result.setStatus(TestStatus.Failed);
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1567,7 +2262,7 @@ public class GraphTests extends TestGroup {
                     String destinationFolderName = "Drafts";
 
                     //Create new folder
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
                     MailFolder addedFolder = client.getMe()
@@ -1603,14 +2298,8 @@ public class GraphTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1636,7 +2325,7 @@ public class GraphTests extends TestGroup {
                     String destinationFolderName = "Drafts";
 
                     //Create new folder
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(newFolderName);
                     MailFolder addedFolder = client.getMe()
@@ -1679,14 +2368,8 @@ public class GraphTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1714,7 +2397,7 @@ public class GraphTests extends TestGroup {
                     String parentFolderName = "Inbox";
 
                     //Create new folder
-                    GraphClient client = ApplicationContext.getGraphClient();
+                    GraphServiceClient client = ApplicationContext.getGraphServiceClient();
                     MailFolder newFolder = new MailFolder();
                     newFolder.setDisplayName(folderName);
                     MailFolder addedFolder = client.getMe()
@@ -1746,14 +2429,8 @@ public class GraphTests extends TestGroup {
                             .delete().get();
 
                     return result;
-                } catch (Throwable e) {
-                    StringWriter writer = new StringWriter();
-                    e.printStackTrace(new PrintWriter(writer));
-
-                    String stackTrace = e.toString();
-                    Log.e("SDK-Error", stackTrace);
-
-                    return createResultFromException(new Exception("Error in test execution", e));
+                } catch (Throwable t) {
+                    return createResultFromException(new Exception(t));
                 }
             }
         };
@@ -1794,6 +2471,15 @@ public class GraphTests extends TestGroup {
         return m;
     }
 
+    FileAttachment getFileAttachment() {
+        FileAttachment att = new FileAttachment();
+
+        att.setContentBytes("hello world".getBytes());
+        att.setName(UUID.randomUUID().toString() + "-myFile.txt");
+
+        return att;
+    }
+    
     private Event getSampleEvent() {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
