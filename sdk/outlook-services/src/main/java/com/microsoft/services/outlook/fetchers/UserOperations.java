@@ -98,8 +98,7 @@ public class UserOperations extends DirectoryObjectOperations {
         request.setContent(getResolver().getJsonSerializer()
                .jsonObjectFromJsonMap(map).getBytes(Constants.UTF8));
                         
-        request.getUrl().appendPathComponent("SendMail");
-        
+        request.getUrl().appendPathComponent("Microsoft.OutlookServices.SendMail");
         
         ListenableFuture<OrcResponse> future = oDataExecute(request);
         return transformToStringListenableFuture(future);
@@ -125,7 +124,7 @@ public class UserOperations extends DirectoryObjectOperations {
 		String parameters = getFunctionParameters(map);
         
 		        
-		request.getUrl().appendPathComponent("ReminderView(" + parameters + ")");   
+		request.getUrl().appendPathComponent("Microsoft.OutlookServices.ReminderView(" + parameters + ")");   
         
 		
 		ListenableFuture<OrcResponse> future = oDataExecute(request);
