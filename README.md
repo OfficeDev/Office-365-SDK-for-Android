@@ -29,10 +29,11 @@ Current services, service versions, and SDK versions:
 |OneNote|1.0|0.15.0|onenote-services|
 |SharePoint Lists|1.0|1.0.0|sharepoint-services|
 
-#Microsoft Graph SDK and Microsoft Outlook SDK
+##Microsoft Graph SDK and Microsoft Outlook SDK
 
 Looking for the new Microsoft Graph or Microsoft Oulook SDK for Android?
 Please, refer to the following new repos:
+
 [Microsoft Graph SDK]: https://github.com/OfficeDev/Microsoft-Graph-SDK-Android
 [Outlook SDK]: https://github.com/OfficeDev/Outlook-SDK-Android
 
