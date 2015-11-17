@@ -31,13 +31,13 @@ Current services, service versions, and SDK versions:
 
 ##Microsoft Graph SDK and Microsoft Outlook SDK
 
-Looking for the new Microsoft Graph or Microsoft Oulook SDK for Android?
+Looking for the new Microsoft Graph (preview) or Microsoft Oulook SDK for Android?
 Please, refer to the following new repos:
 
-- [Microsoft Graph SDK] - One endpoint to rule them all
+- [Microsoft Graph SDK (preview)] - One endpoint to rule them all
 - [Outlook SDK] - Build apps for Outlook, Outlook.com, and Office 365 users with one set of APIs
 
-[Microsoft Graph SDK]: https://github.com/OfficeDev/Microsoft-Graph-SDK-Android
+[Microsoft Graph SDK (preview)]: https://github.com/OfficeDev/Microsoft-Graph-SDK-Android
 [Outlook SDK]: https://github.com/OfficeDev/Outlook-SDK-Android
 
 ## Samples
