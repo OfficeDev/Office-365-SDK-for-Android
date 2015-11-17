@@ -34,13 +34,8 @@ Current services, service versions, and SDK versions:
 Looking for the new Microsoft Graph or Microsoft Oulook SDK for Android?
 Please, refer to the following new repos:
 
-[Microsoft Graph SDK]: https://github.com/OfficeDev/Microsoft-Graph-SDK-Android
-[Outlook SDK]: https://github.com/OfficeDev/Outlook-SDK-Android
-
-
-[Vipr]: https://github.com/microsoft/vipr
-[Vipr-T4TemplateWriter]: https://github.com/msopentech/vipr-t4templatewriter
-[orc-for-android]: https://github.com/msopentech/orc-for-android
+- [Microsoft Graph SDK]: https://github.com/OfficeDev/Microsoft-Graph-SDK-Android
+- [Outlook SDK]: https://github.com/OfficeDev/Outlook-SDK-Android
 
 ## Samples
 - [O365-Android-Connect] - Getting started and authentication
