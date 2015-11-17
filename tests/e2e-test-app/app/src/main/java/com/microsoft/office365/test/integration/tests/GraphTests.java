@@ -836,7 +836,7 @@ public class GraphTests extends TestGroup {
                     String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                     ItemBody itemBody = message.getBody();
-                    itemBody.setContentType(BodyType.HTML);
+                    itemBody.setContentType(BodyType.html);
                     itemBody.setContent("<h1>This is an Html body.</h1><a href='#'>With Link!</a>");
                     message.setBody(itemBody);
 
@@ -851,7 +851,7 @@ public class GraphTests extends TestGroup {
                             .filter("Subject eq '" + mailSubject + "'")
                             .read().get();
 
-                    if (messages.size() > 0 && messages.get(0).getBody().getContentType() == BodyType.HTML)
+                    if (messages.size() > 0 && messages.get(0).getBody().getContentType() == BodyType.html)
                         result.setStatus(TestStatus.Passed);
 
                     return result;
@@ -881,7 +881,7 @@ public class GraphTests extends TestGroup {
                     String mailSubject = "Test Send Message" + UUID.randomUUID().toString();
                     Message message = getSampleMessage(mailSubject, ApplicationContext.getTestMail(), "");
                     ItemBody itemBody = message.getBody();
-                    itemBody.setContentType(BodyType.HTML);
+                    itemBody.setContentType(BodyType.html);
                     itemBody.setContent("<h1>This is an Html body.</h1><a href='#'>With Link!</a>");
                     message.setBody(itemBody);
 
@@ -900,7 +900,7 @@ public class GraphTests extends TestGroup {
                             .getMessage(messages.get(0).getId()).getOperations().createReply().get();
 
                     //Assert
-                    if (messageToReply.getBody().getContentType() == BodyType.HTML)
+                    if (messageToReply.getBody().getContentType() == BodyType.html)
                         result.setStatus(TestStatus.Passed);
 
                     //Cleanup
@@ -1676,7 +1676,7 @@ public class GraphTests extends TestGroup {
 
                     // Act
                     event.setSubject("Updated Subject");
-                    event.setImportance(Importance.Low);
+                    event.setImportance(Importance.low);
 
                     Event updatedEvent = client.getUsers()
                             .getById(ApplicationContext.getTestMail())
@@ -1685,7 +1685,7 @@ public class GraphTests extends TestGroup {
                             .update(event).get();
 
                     //Assert
-                    if (updatedEvent.getImportance() != Importance.Low || !updatedEvent.getSubject().equals("Updated Subject"))
+                    if (updatedEvent.getImportance() != Importance.low || !updatedEvent.getSubject().equals("Updated Subject"))
                         result.setStatus(TestStatus.Failed);
 
                     //Cleanup
@@ -2492,12 +2492,12 @@ public class GraphTests extends TestGroup {
         Event event = new Event();
         event.setSubject("Today's appointment");
         event.setStart(dtz);
-        event.setImportance(Importance.High);
+        event.setImportance(Importance.high);
 
         //Event body
         ItemBody itemBody = new ItemBody();
         itemBody.setContent("This is the appointment info");
-        itemBody.setContentType(BodyType.Text);
+        itemBody.setContentType(BodyType.text);
 
         event.setBody(itemBody);
 
