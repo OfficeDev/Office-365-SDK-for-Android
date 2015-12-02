@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="AADAuthority">https://login.windows.net/common</string>
+    <string name="AADResourceId">https://graph.microsoft.com</string>
+    <string name="AADClientId"></string>
+    <string name="AADRedirectUrl">https://client.test.app</string>
+    <string name="EndpointUrl">https://graph.microsoft.com/v1.0</string>
+</resources>
