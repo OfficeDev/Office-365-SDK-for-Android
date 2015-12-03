@@ -5,4 +5,7 @@
     <string name="AADClientId"></string>
     <string name="AADRedirectUrl">https://client.test.app</string>
     <string name="EndpointUrl">https://graph.microsoft.com/v1.0</string>
+
+    <string name="AttendeeMail1">john.doe@microsoft.com</string>
+    <string name="AttendeeMail2">dona.mercer@outlook.com</string>
 </resources>
