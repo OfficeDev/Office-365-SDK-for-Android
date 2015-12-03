@@ -20,4 +20,42 @@
         </activity>
         <activity android:name=".EventsActivity"></activity>
     </application>
+
+    <logback>
+        <configuration>
+            <appender
+                name="LOGCAT"
+                class="ch.qos.logback.classic.android.LogcatAppender">
+                <tagEncoder>
+                    <pattern>%logger{0}</pattern>
+                </tagEncoder>
+                <encoder>
+                    <pattern>[ %thread ] %msg%n</pattern>
+                </encoder>
+            </appender>
+
+            <root level="INFO">
+                <appender-ref ref="LOGCAT" />
+            </root>
+
+            <appender
+                name="FILE"
+                class="ch.qos.logback.core.FileAppender">
+                <file>/sdcard/testFile.log</file>
+                <append>true</append>
+                <encoder>
+                    <pattern>[ %thread ] %msg%n</pattern>
+                </encoder>
+            </appender>
+
+            <root level="DEBUG">
+                <appender-ref ref="FILE" />
+            </root>
+        </configuration>
+
+    </logback>
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

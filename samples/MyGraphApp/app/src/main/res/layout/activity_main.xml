@@ -32,14 +32,14 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mark as Read"
+        android:text="Mark Read"
         android:id="@+id/buttonMarkRead" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mark as Unread"
+        android:text="Mark Unread"
         android:id="@+id/buttonMarkUnRead" />
 
     </LinearLayout>

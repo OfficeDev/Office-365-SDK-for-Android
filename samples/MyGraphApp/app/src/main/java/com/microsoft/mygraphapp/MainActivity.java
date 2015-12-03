@@ -31,6 +31,9 @@ import com.microsoft.services.orc.http.impl.OAuthCredentials;
 import com.microsoft.services.orc.http.impl.OkHttpTransport;
 import com.microsoft.services.orc.serialization.impl.GsonSerializer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView mMessagesList;
     private List<MessageDisplayItem> mReturnedMessages;
 
+    static Logger logger = LoggerFactory.getLogger(MainActivity.class);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +64,14 @@ public class MainActivity extends AppCompatActivity {
         final ToggleButton button = (ToggleButton) findViewById(R.id.buttonCheckAll);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                for (MessageDisplayItem m : mReturnedMessages) {
-                    m.setIsSelected(button.isChecked());
-                }
+                if (mReturnedMessages != null) {
 
-                refreshListView();
+                    for (MessageDisplayItem m : mReturnedMessages) {
+                        m.setIsSelected(button.isChecked());
+                    }
+
+                    refreshListView();
+                }
             }
         });
 
@@ -87,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         loginProcess();
     }
 
-    protected void loginProcess(){
+    protected void loginProcess() {
         try {
             Futures.addCallback(logon(), new FutureCallback<Boolean>() {
                 @Override
@@ -98,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Throwable t) {
-                    Log.e("logon", t.getMessage());
+                    logger.error("logon", t.getMessage());
                 }
             });
 
@@ -109,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void updateMessages(boolean read){
-        for (final MessageDisplayItem mItem :  mReturnedMessages){
-            if(mItem.getIsSelected()) {
+    protected void updateMessages(boolean read) {
+        for (final MessageDisplayItem mItem : mReturnedMessages) {
+            if (mItem.getIsSelected()) {
                 mItem.setStatus("Updating");
                 Message msg = mItem.getMessage();
                 msg.setIsRead(read);
@@ -132,14 +140,14 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Throwable t) {
                                 mItem.setStatus("Error");
-                                Log.d("MyGraphApp", "Error updating message" + t.getMessage());
+                                logger.error("MyGraphApp", "Error updating message" + t.getMessage());
                             }
                         });
             }
         }
     }
 
-    protected void refreshListView(){
+    protected void refreshListView() {
         MessageAdapter adapter = (MessageAdapter) mMessagesList.getAdapter();
 
         adapter.clear();
@@ -213,12 +221,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void loadInformation(){
+    protected void loadInformation() {
         loadProfilePhoto();
         loadMessages();
     }
 
-    protected void loadProfilePhoto(){
+    protected void loadProfilePhoto() {
         Futures.addCallback(
                 mClient.getMe()
                         .getPhoto()
@@ -237,12 +245,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(final Throwable t) {
-                        Log.e("MyGraphApp", t.getMessage());
+                        logger.error("MyGraphApp", t.getMessage());
                     }
                 });
     }
 
-    protected void loadMessages(){
+    protected void loadMessages() {
         Futures.addCallback(
                 mClient.getMe()
                         .getMailFolders()
@@ -261,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                                 MessageAdapter messageAdapter = new MessageAdapter(MainActivity.this, R.layout.row_list_messages);
                                 mMessagesList.setAdapter(messageAdapter);
 
-                                for (Message m: result) {
+                                for (Message m : result) {
                                     mReturnedMessages.add(new MessageDisplayItem(m));
 
                                 }
@@ -273,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(final Throwable t) {
-                        Log.e("getMessages", t.getMessage());
+                        logger.error("getMessages", t.getMessage());
                     }
                 });
     }
