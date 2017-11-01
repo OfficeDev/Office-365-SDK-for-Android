@@ -1,3 +1,5 @@
+**Important**: This preview SDK has been deprecated and is no longer being maintained. We recommend that you use [Microsoft Graph](https://graph.microsoft.com/) and the associated [Microsoft Graph SDKs](https://developer.microsoft.com/en-us/graph/code-samples-and-sdks) instead.
+
 # Office 365 SDKs for Android
 
 Easily integrate services and data from Office 365 into native Android apps using these Android/Java libraries.
