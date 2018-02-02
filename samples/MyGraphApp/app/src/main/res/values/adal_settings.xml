@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="AADAuthority">https://login.windows.net/common</string>
+    <string name="AADResourceId">https://graph.microsoft.com</string>
+    <string name="AADClientId">4a63455a-cfa1-4ac6-bd2e-0d046cf1c3f7</string>
+    <string name="AADRedirectUrl">https://client.test.app</string>
+    <string name="EndpointUrl">https://graph.microsoft.com/v1.0</string>
+
+    <string name="AttendeeMail1">john.doe@microsoft.com</string>
+    <string name="AttendeeMail2">dona.mercer@outlook.com</string>
+</resources>
